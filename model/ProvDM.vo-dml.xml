@@ -10,7 +10,7 @@
   <author>Mireille Louys</author>
   <author>Adrian Partl</author>
   <version>0.x</version>
-  <lastModified>2014-05-06T10:14:17</lastModified>
+  <lastModified>2014-05-07T11:18:45</lastModified>
   <import>
     <name>IVOA</name>
     <url>http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.vo-dml.xml</url>
@@ -21,9 +21,21 @@
     <name>Activity</name>
     <description>An Activity is any kind of link between input and result data.</description>
     <attribute>
+      <vodml-id>Activity.id</vodml-id>
+      <name>id</name>
+      <description>A unique id for the Activity so that it can be referred to.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
       <vodml-id>Activity.name</vodml-id>
       <name>name</name>
-      <description>String for naming an activity.</description>
+      <description>String for naming an Activity. There could be multiple alternative names. </description>
       <datatype>
         <utype>IVOA:string</utype>
       </datatype>
@@ -45,6 +57,18 @@
       </multiplicity>
     </attribute>
     <attribute>
+      <vodml-id>Activity.executionDuration</vodml-id>
+      <name>executionDuration</name>
+      <description>Can provide the duration of the execution, i.e. could also contain exposure time for observation (or is this characterisation??) or how long the pipeline needed to process the image/data set.</description>
+      <datatype>
+        <utype>IVOA:datetime</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
       <vodml-id>Activity.executionState</vodml-id>
       <name>executionState</name>
       <description>String that specifies the execution state of an activity. Values for that string could be something like PROCESSING, COMPLETED, etc.
@@ -54,18 +78,6 @@ Default could be COMPLETED.</description>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </attribute>
-    <attribute>
-      <vodml-id>Activity.executionDuration</vodml-id>
-      <name>executionDuration</name>
-      <description>Can provide the duration of the execution, i.e. could also contain exposure time for observation (or is this characterisation??) or how long the pipeline needed to process the image/data set.</description>
-      <datatype>
-        <utype>IVOA:datetime</utype>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
@@ -117,12 +129,36 @@ Default could be COMPLETED.</description>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </reference>
+    <reference>
+      <vodml-id>Activity.project</vodml-id>
+      <name>project</name>
+      <description>A link to the project that is responsible for the Activity. Would be good to have at least one project per Activity, but we won't enforce this.</description>
+      <datatype>
+        <utype>ProvDM:Project</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </reference>
   </objectType>
 
   <objectType>
     <vodml-id>Method</vodml-id>
     <name>Method</name>
-    <description>The method describes how an activity is performed. This could be, for instance, the (name of the) code of a processing pipeline.</description>
+    <description>The Method describes how an Activity is performed. This could be, for instance, the name of the code of a processing pipeline.</description>
+    <attribute>
+      <vodml-id>Method.id</vodml-id>
+      <name>id</name>
+      <description>Unique id for the Method for referencing.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
     <attribute>
       <vodml-id>Method.name</vodml-id>
       <name>name</name>
@@ -131,7 +167,7 @@ Default could be COMPLETED.</description>
         <utype>IVOA:string</utype>
       </datatype>
       <multiplicity>
-        <minOccurs>1</minOccurs>
+        <minOccurs>0</minOccurs>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </attribute>
@@ -149,8 +185,8 @@ Default could be COMPLETED.</description>
       </multiplicity>
     </attribute>
     <reference>
-      <vodml-id>Method.inputDataType</vodml-id>
-      <name>inputDataType</name>
+      <vodml-id>Method.inputDataDescription</vodml-id>
+      <name>inputDataDescription</name>
       <description>A set of type specifications for the zero-to-many input data components.</description>
       <datatype>
         <utype>ProvDM:DataDescription</utype>
@@ -161,14 +197,14 @@ Default could be COMPLETED.</description>
       </multiplicity>
     </reference>
     <reference>
-      <vodml-id>Method.resultDataType</vodml-id>
-      <name>resultDataType</name>
-      <description>A type specification of the output data component.</description>
+      <vodml-id>Method.resultDataDescription</vodml-id>
+      <name>resultDataDescription</name>
+      <description>A specification of the output data component(s),</description>
       <datatype>
         <utype>ProvDM:DataDescription</utype>
       </datatype>
       <multiplicity>
-        <minOccurs>0</minOccurs>
+        <minOccurs>1</minOccurs>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </reference>
@@ -194,11 +230,11 @@ Default could be COMPLETED.</description>
       </multiplicity>
     </attribute>
     <reference>
-      <vodml-id>Processing.processor</vodml-id>
-      <name>processor</name>
+      <vodml-id>Processing.processingMethod</vodml-id>
+      <name>processingMethod</name>
       <description>An instance of the Processor class used to describe the processing pipeline.</description>
       <datatype>
-        <utype>ProvDM:Processor</utype>
+        <utype>ProvDM:ProcessingMethod</utype>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -208,15 +244,15 @@ Default could be COMPLETED.</description>
   </objectType>
 
   <objectType>
-    <vodml-id>Processor</vodml-id>
-    <name>Processor</name>
+    <vodml-id>ProcessingMethod</vodml-id>
+    <name>ProcessingMethod</name>
     <description>Processor which inherits from Method describes all activities that belong to the Processing sub-class.
 General description for e.g. flatfielding, astrometric calibration, imageStacking etc.</description>
     <extends>
       <utype>ProvDM:Method</utype>
     </extends>
     <attribute>
-      <vodml-id>Processor.author</vodml-id>
+      <vodml-id>ProcessingMethod.author</vodml-id>
       <name>author</name>
       <description>Author of the code/processing algorithm/,,, used</description>
       <datatype>
@@ -228,7 +264,7 @@ General description for e.g. flatfielding, astrometric calibration, imageStackin
       </multiplicity>
     </attribute>
     <attribute>
-      <vodml-id>Processor.version</vodml-id>
+      <vodml-id>ProcessingMethod.version</vodml-id>
       <name>version</name>
       <description>Version of the processor (code, algorithm, ...), if applicable.
 Not mandatory.</description>
@@ -287,9 +323,9 @@ Not mandatory.</description>
   <objectType>
     <vodml-id>Agent</vodml-id>
     <name>Agent</name>
-    <description>This class defines a contact for a certain activity. Typically this is the person, a project or the institution that has performed the activity.
-Details like address etc. could be useful, but at least the current affiliation should be given, so that it's possible to credit the right person/project/institution for certain tasks or products and to find someone when questions arise.
-People change affiliations, but it is likely that someone from the old affiliation knows where a person was going to or who else is in charge now. In that sense providing a project leader may be helpful as well.</description>
+    <description>This class defines a contact for a certain activity. Typically this is the person  that has performed the activity (allow also institutions??).
+Details like address etc. could be useful, but at least the current affiliation should be given, so that it's possible to credit the right person/institution for certain tasks or products and to find someone when questions arise.
+People change affiliations, but it is likely that someone from the old affiliation knows where a person was going to or who else is in charge now. </description>
     <attribute>
       <vodml-id>Agent.name</vodml-id>
       <name>name</name>
@@ -298,7 +334,7 @@ People change affiliations, but it is likely that someone from the old affiliati
         <utype>IVOA:string</utype>
       </datatype>
       <multiplicity>
-        <minOccurs>0</minOccurs>
+        <minOccurs>1</minOccurs>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </attribute>
@@ -315,22 +351,9 @@ People change affiliations, but it is likely that someone from the old affiliati
       </multiplicity>
     </attribute>
     <attribute>
-      <vodml-id>Agent.project</vodml-id>
-      <name>project</name>
-      <description>This is the project responsible for executing an activity (e.g. the RAVE collaboration). There could also be more than one project.
-This attribute is optional.</description>
-      <datatype>
-        <utype>IVOA:string</utype>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>-1</maxOccurs>
-      </multiplicity>
-    </attribute>
-    <attribute>
-      <vodml-id>Agent.projectLeader</vodml-id>
-      <name>projectLeader</name>
-      <description>A string to specify the person in charge of the project which has performed a certain activity.</description>
+      <vodml-id>Agent.role</vodml-id>
+      <name>role</name>
+      <description>role of the contact, e.g. owner, publisher, ...</description>
       <datatype>
         <utype>IVOA:string</utype>
       </datatype>
@@ -344,7 +367,7 @@ This attribute is optional.</description>
   <objectType>
     <vodml-id>DataComponent</vodml-id>
     <name>DataComponent</name>
-    <description>This class is the central component of our composite design pattern. This concept aims at treating the two major groups of data, files and parameter values on the one hand, and complete data sets on the other hand, in the same way. The DataComponent class includes the basic properties and functionality (usually the interface) for both groups of data.
+    <description>This class is the central component of our composite design pattern. This concept aims at treating the two major groups of data, files and parameter values on the one hand, and complete data set on the other hand, in the same way. The DataComponent class includes the basic properties and functionality (i.e. mainly the interface) for both groups of data.
 </description>
     <attribute>
       <vodml-id>DataComponent.id</vodml-id>
@@ -360,6 +383,18 @@ This attribute is optional.</description>
       </multiplicity>
     </attribute>
     <attribute>
+      <vodml-id>DataComponent.name</vodml-id>
+      <name>name</name>
+      <description>The name for a DataComponent. Multiple alternative names are also allowed.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
       <vodml-id>DataComponent.creationDate</vodml-id>
       <name>creationDate</name>
       <description>Date/time when the data component (individual data element or the complete set) was created.</description>
@@ -368,6 +403,19 @@ This attribute is optional.</description>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>DataComponent.validity</vodml-id>
+      <name>validity</name>
+      <description>The validity gives an expiration date (or a timespan?) to indicate the time range in which the data (values) are valid.
+This is mainly important for ambient conditions (seeing, moon light, etc.) and instrument characteristics, since these are functions of time.</description>
+      <datatype>
+        <utype>IVOA:datetime</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
@@ -393,18 +441,6 @@ This attribute is optional.</description>
       <multiplicity>
         <minOccurs>1</minOccurs>
         <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </reference>
-    <reference>
-      <vodml-id>DataComponent.storage</vodml-id>
-      <name>storage</name>
-      <description>An instance of the Storage class which tells where to locate a certain data component.</description>
-      <datatype>
-        <utype>ProvDM:Storage</utype>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </reference>
     <reference>
@@ -465,18 +501,54 @@ This attribute is optional.</description>
   <objectType>
     <vodml-id>DataDescription</vodml-id>
     <name>DataDescription</name>
-    <description>This class describes the form/structure of a data item or a data set.</description>
+    <description>This class describes the form/structure of a data item.</description>
+    <attribute>
+      <vodml-id>DataDescription.id</vodml-id>
+      <name>id</name>
+      <description>Unique id for the DataDescription.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>DataDescription.description</vodml-id>
+      <name>description</name>
+      <description>A free text describing the data format.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <reference>
+      <vodml-id>DataDescription.createdFromMethod</vodml-id>
+      <name>createdFromMethod</name>
+      <description>A DataDescription contains  a link to the Method that describes the Activity that generated the data.</description>
+      <datatype>
+        <utype>ProvDM:Method</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
   </objectType>
 
   <objectType>
-    <vodml-id>Parameter</vodml-id>
-    <name>Parameter</name>
+    <vodml-id>TransientData</vodml-id>
+    <name>TransientData</name>
     <description>Data components which are not data sets are either represented as parameters or structured data. The Parameter sub-class of DataComponent contains a set of key-value pairs, for instance from a configuration or a log file.</description>
     <extends>
       <utype>ProvDM:DataComponent</utype>
     </extends>
     <attribute>
-      <vodml-id>Parameter.name</vodml-id>
+      <vodml-id>TransientData.name</vodml-id>
       <name>name</name>
       <description>Name of a parameter</description>
       <datatype>
@@ -488,7 +560,7 @@ This attribute is optional.</description>
       </multiplicity>
     </attribute>
     <attribute>
-      <vodml-id>Parameter.numericValue</vodml-id>
+      <vodml-id>TransientData.numericValue</vodml-id>
       <name>numericValue</name>
       <description>The value of a Parameter instance of type real.</description>
       <datatype>
@@ -500,7 +572,7 @@ This attribute is optional.</description>
       </multiplicity>
     </attribute>
     <attribute>
-      <vodml-id>Parameter.stringValue</vodml-id>
+      <vodml-id>TransientData.stringValue</vodml-id>
       <name>stringValue</name>
       <description>The value of a Parameter instance of string type.</description>
       <datatype>
@@ -512,11 +584,11 @@ This attribute is optional.</description>
       </multiplicity>
     </attribute>
     <reference>
-      <vodml-id>Parameter.parameterType</vodml-id>
-      <name>parameterType</name>
+      <vodml-id>TransientData.transientDataDescription</vodml-id>
+      <name>transientDataDescription</name>
       <description>The data type underlying a parameter.</description>
       <datatype>
-        <utype>ProvDM:ParameterType</utype>
+        <utype>ProvDM:TransientDataDescription</utype>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -526,37 +598,49 @@ This attribute is optional.</description>
   </objectType>
 
   <objectType>
-    <vodml-id>StructuredData</vodml-id>
-    <name>StructuredData</name>
-    <description>Data components which are not data sets are either represented as parameters or structured data. The StructuredData sub-class of DataComponent contains single data entities like a structured binary file or a database table.</description>
+    <vodml-id>StoredData</vodml-id>
+    <name>StoredData</name>
+    <description>StoredData are stored somewhere on disk, e.g. as a file or a database table. This is the "usual" type of data.</description>
     <extends>
       <utype>ProvDM:DataComponent</utype>
     </extends>
     <reference>
-      <vodml-id>StructuredData.structuredDataType</vodml-id>
-      <name>structuredDataType</name>
+      <vodml-id>StoredData.storedDataDescription</vodml-id>
+      <name>storedDataDescription</name>
       <description>The format in which an instance of the StructuredData class is present.</description>
       <datatype>
-        <utype>ProvDM:StructuredDataType</utype>
+        <utype>ProvDM:StoredDataDescription</utype>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </reference>
+    <reference>
+      <vodml-id>StoredData.storage</vodml-id>
+      <name>storage</name>
+      <description>An instance of the Storage class which tells where to locate a certain data component.</description>
+      <datatype>
+        <utype>ProvDM:Storage</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </reference>
   </objectType>
 
   <objectType>
-    <vodml-id>ParameterType</vodml-id>
-    <name>ParameterType</name>
-    <description>ParameterType specifies the data type of a Parameter object.</description>
+    <vodml-id>TransientDataDescription</vodml-id>
+    <name>TransientDataDescription</name>
+    <description>Describes the type of transient data, e.g. by using ucds.</description>
     <extends>
       <utype>ProvDM:DataDescription</utype>
     </extends>
     <attribute>
-      <vodml-id>ParameterType.ucd</vodml-id>
+      <vodml-id>TransientDataDescription.ucd</vodml-id>
       <name>ucd</name>
-      <description>A string giving the data type of a parameter as a ucd.</description>
+      <description>A string giving the data type as a ucd.</description>
       <datatype>
         <utype>IVOA:string</utype>
       </datatype>
@@ -568,14 +652,14 @@ This attribute is optional.</description>
   </objectType>
 
   <objectType>
-    <vodml-id>StructuredDataType</vodml-id>
-    <name>StructuredDataType</name>
-    <description>StructuredDataType specifies the format of a StructuredData object, e.g. a description of the file format (fits), or the table columns in the database.</description>
+    <vodml-id>StoredDataDescription</vodml-id>
+    <name>StoredDataDescription</name>
+    <description>Describes the type/structure of stored data, e.g. a description of the file format (fits), the parameters of an input file or the table columns in the database.</description>
     <extends>
       <utype>ProvDM:DataDescription</utype>
     </extends>
     <attribute>
-      <vodml-id>StructuredDataType.format</vodml-id>
+      <vodml-id>StoredDataDescription.format</vodml-id>
       <name>format</name>
       <description>A string giving the format of a structured data element (e.g. description of the file format (fits, ascii, ...) or description of a database table)</description>
       <datatype>
@@ -586,6 +670,105 @@ This attribute is optional.</description>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </attribute>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Quality</vodml-id>
+    <name>Quality</name>
+    <description>A class for describing the quality of an Activity or DataComponent. The Quality object could just contain a list of possible keywords.</description>
+  </objectType>
+
+  <objectType>
+    <vodml-id>TemporaryData</vodml-id>
+    <name>TemporaryData</name>
+    <description>This class can be used to specify data that existed only for a certain time and was deleted already, but is still usefull to describe the provenance of an activity/another data set. E.g. a telescope pipeline may produce images in between after each processing step, but only the final image is stored permanently.</description>
+    <extends>
+      <utype>ProvDM:DataComponent</utype>
+    </extends>
+    <reference>
+      <vodml-id>TemporaryData.temporaryDataDescription</vodml-id>
+      <name>temporaryDataDescription</name>
+      <description>Link to the description of the temporary data</description>
+      <datatype>
+        <utype>ProvDM:TemporaryDataDescription</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>TemporaryDataDescription</vodml-id>
+    <name>TemporaryDataDescription</name>
+    <description>Describes the type/structure of temporary data.</description>
+    <extends>
+      <utype>ProvDM:DataDescription</utype>
+    </extends>
+  </objectType>
+
+  <objectType>
+    <vodml-id>DataSetDescription</vodml-id>
+    <name>DataSetDescription</name>
+    <description>Description of a data set as a whole, contains references to descriptions of the individual parts.</description>
+    <extends>
+      <utype>ProvDM:DataDescription</utype>
+    </extends>
+    <reference>
+      <vodml-id>DataSetDescription.dataDescription</vodml-id>
+      <name>dataDescription</name>
+      <description>Link to the description of the components of a DataSet.</description>
+      <datatype>
+        <utype>ProvDM:DataDescription</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Project</vodml-id>
+    <name>Project</name>
+    <description>This is the project responsible for executing an Activity (e.g. the RAVE collaboration). There could also be more than one project involved in an Activity.</description>
+    <attribute>
+      <vodml-id>Project.id</vodml-id>
+      <name>id</name>
+      <description>A unique id of the project for referencing it from different Activities.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Project.name</vodml-id>
+      <name>name</name>
+      <description>Name(s) of the project. Alternative names can also be given.</description>
+      <datatype>
+        <utype>IVOA:string</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <reference>
+      <vodml-id>Project.projectLeader</vodml-id>
+      <name>projectLeader</name>
+      <description>A string to specify the person in charge of the project which has performed a certain activity.</description>
+      <datatype>
+        <utype>ProvDM:Agent</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
   </objectType>
 
 </vo-dml:model>
