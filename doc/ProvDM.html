@@ -220,7 +220,7 @@ IETF standard RFC 2119 <cite>std:RFC2119</cite>.</p>
 
 <p>In this document, we describe a draft for an IVOA standard data model for describing the
 provenance of data. We focus here on observational data, since provenance for
-simulated data is already (at least partially) covered by SimDM 
+simulated data is already (at least mainly) covered by SimDM 
 <cite>std:SimDM</cite>.</p>
 
 </div> <!-- section introduction -->
@@ -237,9 +237,9 @@ simulated data is already (at least partially) covered by SimDM
 
 <p>A provenance data model should provide solutions to the following tasks:
 <ul class="nonestylelist">
-	<li><strong>A: </strong>Steps of production.</li>
-	<li><strong>B: </strong>Aid in figuring out which processing steps have
-already been done.</li>
+	<li><strong>A: </strong>Recover steps of production.</li>
+	<li><strong>B: </strong>Aid in figuring out which processing steps have 
+		already been done.</li>
 	<li><strong>C: </strong>Attribution.</li>
 	<li><strong>D: </strong>Aid in debugging.</li>
 	<li><strong>E: </strong>Quality assessment of an observation/reduction.</li>
@@ -261,7 +261,7 @@ still present in my neutrino data sample?</li>
 	<li><strong>C1: </strong>I want to use an image - who was involved in
 creating it?</li>
 	<li><strong>C2: </strong>I have a question about column xxx in the data
-table. Whom can I ask about that?</li>
+table. Who can I ask about that?</li>
 	<li><strong>D1: </strong>I found something strange in an image. Where does
 the image come from? Which instrument was used, with which characteristics
 etc.? Was there noted anything strange when the image was taken?</li>
@@ -287,12 +287,13 @@ same calibration data set.</li>
 <p>In order to model provenance, we started with the SimDM data model, which
 already includes the provenance for simulation data.</p>
 
-<p>In SimDM and the Unified Domain Model, the two central classes are called
+<p>In SimDM (and also in the Unified Domain Model), the two central classes are called
 &quot;Experiment&quot; and &quot;Protocol&quot;. Protocol is the plan or method
 which describes how to do something whereas Experiment is the actual execution of
 this plan. We decided to rename &quot;Experiment&quot; to the more generic term
 &quot;Activity&quot; used by the provenance model of the W3C consortium
-<cite>std:W3CProvDM</cite>. Instead of &quot;Protocol&quot;, we use the term &quot;Method&quot;, for not confusing it with e.g. IVOA protocols.</p>
+<cite>std:W3CProvDM</cite>. Instead of &quot;Protocol&quot;, we use the term &quot;Method&quot;, 
+for not confusing it with e.g. IVOA protocols.</p>
 
 <div class="figure" align="center">
 <img src="ProvDM-classdiagram.png" width="80%" 
@@ -311,10 +312,10 @@ generally speaking, to perform an activity. The two sub-classes of
 &quot;Processor&quot;, an &quot;Observation&quot; is illustrated by the
 &quot;ObservationMethod&quot; class.</p>
 
-<p><em>A clearer definiton of method or protocol, some more clarification
-what it is and what it is not, would be useful here.</em></p>
+There MUST be one Method per Activity. If steps from a pipeline shall be 
+grouped together, one needs to create a proper Method for describing all 
+the steps at once. This Method can then be refered by the pipeline-Activity. 
 
-<p><em>Should also add that links between data/activities should go backwards (in time) only.</em></p>
 
 
 <div class="section"><h4><a id="data_desc">Data and DataDescription</a></h4>
@@ -326,6 +327,24 @@ The link from an &quot;Activity&quot; to the corresponding &quot;Data&quot;
 object would tell then if the piece of data is used as input or output (see
 figure at <span class="xref">links_between_data</span>).</p>
 
+<p>The relation between Activity and DatatComponent is an aggregation (or in other words: it is an association with the aggregationKind "shared").
+All the DataComponents linked to an Activity (either as input or output) will survive if the Activity is 
+destroyed and are almost always shared with other Activities.</p>
+
+<p>The aggregation relation from Activity to inputDataComponents is directed: the Activity needs
+to have a list of all necessary input data (files, tables, parameters, images, ...), but the input
+data should not have a reference forward to all the activities where they are used.
+</p>
+
+<p>The aggregation relation from Activity to resultDataComponents is not directed: 
+here we need both directions: the Activity needs a result-list and all the 
+resultDataComponents must know where they are coming from. 
+This is the most important relation of the provenance data model, which allows  
+to track the history of a DataComponent (together with the link between Activity and inputData).
+</p>
+
+
+
 <p>Following the scheme that each &quot;Activity&quot; is described
 by the more general &quot;Method&quot;, we associate each input or
 output data set with a corresponding description of the data type. Each activity
@@ -333,6 +352,8 @@ usually makes assumptions on the structure of input data (FITS file, data
 table, binary file of a certain structure ...) and produces a certain form of
 output data, which should be described in the general &quot;DataDescription&quot;
 class, so that it can be reused for multiple instances of this class.</p>
+
+
 </div> <!-- subsubsection data_desc -->
 
 
@@ -345,7 +366,7 @@ There are two major data classes:
 all its tables and files, all files from one observing slot<br/>
 </li>
 <li>individual data items<br/>
-e.g. a file, table, parameter value
+e.g. a file, table in a database, parameter value, an image, a fits-file containing a table and image
 </li>
 </ul>
 
@@ -354,7 +375,8 @@ Data can only be grouped to a data set, if they have the same origin (i.e. they 
 produced by the same activity, i.e. they have the same provenance).
 We would leave it to the person/tool recording provenance to decide, how detailed a data set will be  
 separated into individual items. It is also possible to just record provenance for e.g. RAVE DR4 as a 
-whole, without listing everything that belongs to DR4.
+whole, without listing everything that belongs to DR4. The level of detail could then be specified via 
+the DataDescription.
 </p>
 
 <p>
@@ -367,10 +389,10 @@ the same way, with the same interface. This demand led us to the
 We introduce an abstract class called &quot;DataComponent&quot;, which 
 includes the basic properties and functionality for both, data items like files or 
 parameter values or a complete data set. Such common properties are e.g. the link 
-to the activity which created the data/dataSet, a creation date/time, a link to a
+to the activity which created the data/dataSet, a creation date/time and a link to a
 storage-object (which is not further specified in this data model).
 
-Each DataComponent can either be a single item (like a file, table or a parameter) 
+Each DataComponent can either be a single item (like a file, database table or a parameter) 
 or a DataSet. A DataSet contains additionally a (non-empty) list of child-DataComponents, 
 which could again contain a list of 
 further children etc. This way, one could represent complete data trees, if necessary.
@@ -385,39 +407,58 @@ sets.
 </div> <!-- subsubsection data_set -->
 
 <div class="section"><h4><a id="storage">Storage</a></h4>
-<p>If there exist other copies of the data, it would be useful to include a link
-here, indicated by (multiple) association(s) from &quot;Storage&quot; to the
-copies. We also need a link from the copies back to the Storage (bidirectional
-association), so that it becomes immediately clear to which data the copy
-belongs. The Storage itself (the &quot;original&quot; object) would be the one
-that was actually used or produced by the activity. </p>
+<p>The modeling of storage is not included in this model. 
+It would be useful to be able to make a reference from the DataComponent to a storage
+object that contains the link to where the data is stored. But we haven't fixed the 
+details here.
+</p>
 </div> <!-- subsubsection storage -->
 
 
-<div class="section"><h4><a id="params_strucdata">Parameters and Structured 
-Data</a></h4>
-<p>We divide DataComponents that are not DataSets into &quot;Parameter&quot; and &quot;StructuredData&quot;.
-The &quot;StructuredData&quot; class is represented by data that comes, for
-example, in the form of a table or a structured binary file, where multiple data
-points are collected in a structured way. We would not want to model each single
-row of a table as one data item or data set.</p>
-
-<p>Parameters are somehow different entities: usually we have here a pair of keys and
-values, which may be stored in a log file or a parameter file, in the header of
-an output file or inside a published article.</p>
-
-<p>The main difference is probably what someone would be interested in: for
-&quot;Parameter&quot;, one usually wants to know the value whereas for
-&quot;StructuredData&quot;, the more relevant information is the file location.
+<div class="section"><h4><a id="dataelements">Different data elements</a></h4>
+<p>We divide DataComponents into three different types: 
+<ul>
+<li>TransientData: These are parameters that are not stored. E.g. a parameter given in the 
+command line when starting a code. Or an output value that was printed in the terminal when 
+a program was executed and is lost when the session is closed. A command-line input parameter
+may be stored in the log-output file, but still one would want to define this as a transient
+data element for specifying the input for the activity completely.
+</li> 
+<li>TemporaryData: This captured data that are produced during an Activity but are deleted again 
+during the process. They could also just have lived in memory. It may be useful to record 
+them in the provenance of the final data set anyway to get a clearer picture of 
+the Activity steps involved.  
+</li>
+<li>StoredData: These are the "usual" data, stored as a file, in a database table; as an image, table,
+binary file, template, ....
+</li>
+</ul>
 </p>
-</div> <!-- subsubsection params_strucdata -->
+
+<p>
+We had discussed making a distinction between "Parameters" and "Data". Parameters 
+would come as key-value pairs and users would usually be interested in their 
+values directly. "Data" would have meant everything else, i.e. data for which mainly 
+the name and storage location would be important for the user.  We would not want to model each single
+row of a table as one data item. However, during some discussions we came up with this 
+distinction that hopefully is a better representation of the world of data.</p>
+
+<p>If an Activity needs five parameters, the Method for this Activity needs to define if these
+are expected to come as a parameter file (StoredData) or if they are to be entered 
+on the command line (TransientData). </p>
+
+<p>NOTE: So what if the Activity expects 5 parameters entered directly, but I create an input file
+and pipe it into the Activity? Then this input file would contain the TransientData and 
+they would be StoredData instead.
+</p>
+
+</div> <!-- subsubsection dataelements -->
 
 
 <div class="section"><h4><a id="links_between_data">Links Between Data</a></h4>
-<p>It would be
-convenient if each data object or even each file (&quot;Storage&quot; object)
-would get a unique &quot;dataId&quot; that can be referenced. If several copies have been
-made out of a data set and one of them is corrupted, it is relevant to know
+<p>It would be convenient if each data object or even each file (&quot;Storage&quot; object)
+gets a unique &quot;dataId&quot; that can be referenced. If several copies have been
+made out of a data set and one of them is corrupted, it would even be useful to know
 exactly which copy was used by a given activity.</p>
 
 <p><em>Maybe DataLink can help here?</em></p>
@@ -436,7 +477,7 @@ or output.</p>
 
 </div> <!-- subsubsection links_between_data -->
 
-<div class="section"><h4><a id="calib_data">Calibration Data</a></h4>
+<div class="section"><h4><a id="calib_data">Calibration data</a></h4>
 <p>The calibration data set consists of images that can be used to calibrate the
 raw data. It is not necessary to mention them explicitly in the model. Instead
 they can be included by adding an activity called &quot;Calibration&quot;:
@@ -465,24 +506,29 @@ activity as suggested here.
 <div class="section"><h4><a id="ambient_conditions">Ambient Conditions</a></h4>
 <p>
 Ambient conditions are environmental properties, which are special in a way: 
-they represent the part of an
-&quot;experiment&quot; (observation) which cannot be (fully) controlled by an
-experimentalist, in contrast to other data that can be fully reproduced.
+they represent the part of an activity, usually an observation, which cannot be 
+(fully) controlled by an
+observer, in contrast to other data that can be fully reproduced.
 Nevertheless we now decided that they can be fully described by our 
 data classes. Thus they are not forming a separate class in our data model, but should 
 be treated as just another input data set. 
 </p>
 
-<p>Our model could then also take into account that a certain observation
+<p>Our model can then also take into account that a certain observation
 method requires special ambient conditions, already defined via the method
 (e.g. radio observations rely on different ambient conditions than observations
 of gamma rays), just following our data - data description scheme.
 </p>
 
+<p>Ambient conditions are recorded for a certain time (executionDate) and are
+usually only valid for a certain time interval. This time interval should be recorded
+with the validity-attribute for DataComponents.
+</p>
+
 <p><em>We wondered if ambient conditions could also play a role for some
 processing steps or any other activity besides observations? Is there any
 additional step performed in which room temperature etc. may play a role and thus
-should be recorded? The only example we could think of was the storage of
+should be recorded? The only example that came to our minds was the storage of
 photographic plates, where the humidity and temperature variations can affect the
 quality of the photographic plates.</em></p>
 
@@ -520,15 +566,36 @@ The values could range from a float number to free text.</p>
 </div> <!-- subsubsection quality -->
 
 <div class="section"><h4><a id="agent">Agent</a></h4>
-<p>In SimDM, someone performing a certain experiment is called &quot;Party&quot;.
-However, the W3C provenance data model suggests the term &quot;Agent&quot; which
-we adopted here. It is desired to have an agent given for each activity, but it
+<p>In SimDM, someone performing a certain experiment is called &quot;Contact&quot;, 
+the W3C provenance data model suggests the term &quot;Agent&quot;. We want to 
+describe here someone who is responsible for an activity, e.g. who pressed a button, 
+ran a script or performed the observation. The agent could be a single person 
+(specified by name), a group of persons (e.g. MUSE WISE Team) or a project (RAVE). 
+For each of them a name needs to be specified.
+</p>
+<p>
+It is desired to have an agent given for each activity, but it
 is not enforced (hence 0..*).  It would also increase the value of the given
 information if the (current) affiliation of the agent and a project leader/group
 leader were specified in order to maximize the chance of finding someone later
-on. <em>(Note: we could also use the term &quot;Contact&quot; here.)</em></p>
+on. But the agent should not only be used for getting contact information, but also 
+to fulfill our "Attribution" requirement, so that proper credit goes to the right 
+people/projects.
+</p>
+
+<em>NOTE: Use "Contact" instead of "Agent" to make it clearer that 
+a person or project is meant, not a piece of code (like the "TargetProcessor" for MUSE)?</em>
+
+<em>TODO: Specify contact or agent roles (see SimDM: owner, creator, publisher, contributer; any more?)</em>
 
 </div> <!-- subsubsection agent -->
+
+<div class="section"><h4><a id="project">Project</a></h4>
+<p>To each Activity one can assign a Project that is responsible for the Activity. 
+One may also specify a projectLeader, who is an Agent with name and maybe even contact details provided
+for further reference.
+</p>
+</div> <!-- subsubsection project -->
 
 </div> <!-- subsection domain_model -->
 </div> <!-- section prov_dm -->
