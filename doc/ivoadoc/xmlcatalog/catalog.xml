@@ -1,0 +1,11 @@
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" uri="xhtml1-strict.dtd"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" uri="xhtml1-transitional.dtd"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd" uri="xhtml1-frameset.dtd"/>
+  <public publicId="-//W3C//DTD XHTML 1.0 Strict//EN" uri="xhtml1-strict.dtd"/>
+  <public publicId="-//W3C//DTD XHTML 1.0 Transitional//EN" uri="xhtml1-transitional.dtd"/>
+  <public publicId="-//W3C//DTD XHTML 1.0 Frameset//EN" uri="xhtml1-frameset.dtd"/>
+  <public publicId="-//W3C//ENTITIES Latin 1 for XHTML//EN" uri="xhtml-lat1.ent"/>
+  <public publicId="-//W3C//ENTITIES Special for XHTML//EN" uri="xhtml-special.ent"/> 
+  <public publicId="-//W3C//ENTITIES Symbols for XHTML//EN" uri="xhtml-symbol.ent"/> 
+</catalog>

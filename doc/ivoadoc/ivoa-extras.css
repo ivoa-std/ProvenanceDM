@@ -1,0 +1,52 @@
+.xmlelement {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+}
+div.example {
+	border: thin solid #000000;
+	background-color: #EEEEEE;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 90%;
+}
+
+
+    .issue {background-color: yellow}
+    .postponedissue {background-color: yellow}
+    .def code
+    .future {background-color: pink}
+    .draftedit {background-color: white}
+    .draftdelete {background-color: white}
+    .note { margin-left: 4em }
+    code { font-weight: bold;
+           font-family: monospace } 
+
+div.exampleInner pre { margin-left: 1em;
+                       margin-top: 0em; margin-bottom: 0em}
+div.exampleOuter {border: 4px double gray;
+                  margin: 0em; padding: 0em}
+div.exampleInner { border-top-width: 4px;
+                   border-top-style: double;
+                   border-top-color: white;
+                   border-bottom-width: 4px;
+                   border-bottom-style: double;
+                   border-bottom-color: white;
+                   padding: 0px; margin: 0em }
+div.exampleWrapper { margin: 4px }
+div.exampleHeader { font-weight: bold;
+                    margin: 4px}
+
+div.schemaInner pre { margin-left: 1em;
+                      margin-top: 0em; margin-bottom: 0em;
+                       }
+div.schemaOuter {border: 4px double gray; padding: 0em}
+div.schemaInner { background-color: #eeeeee;
+                   border-top-width: 4px;
+                   border-top-style: double;
+                   border-top-color: #d3d3d3;
+                   border-bottom-width: 4px;
+                   border-bottom-style: double;
+                   border-bottom-color: #d3d3d3;
+                   padding: 4px; margin: 0em }
+div.schemaHeader { font-weight: bold;
+                    margin: 4px}

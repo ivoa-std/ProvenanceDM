@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- this source is meant to be processed with Paul Harrison's
+ivoadoc toolkit, see somewhere at http://code.google.com/p/volute/ -->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+<title>Provenance Data Model IVOA Working Draft  5 May 2014</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="author" content="K. Riebe, kriebe@aip.de; F. Rothmaier, gavo@ari.uni-heidelberg.de"/>
+<meta name="maintainedBy" content="Kristin Riebe, kriebe@aip.de"/>
+
+<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_a.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_wd.css"/>
+<link rel="stylesheet" type="text/css" href="./ivoadoc/XMLPrint.css"/>
+<link rel="stylesheet" type="text/css" href="./ivoadoc/ivoa-extras.css"/>
+
+<style type="text/css" xml:space="preserve">
+
+.TODO {
+	background-color: #FF0000;
+}
+
+div.ignorefornow {
+	color: #aaaaaa;
+}
+
+code {
+	font-weight:normal;
+}
+
+.results tr td {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+table.results {
+	empty-cells: show;
+	border-style: none;
+	border-spacing: 0px;
+}
+
+th.thVertical {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	margin-bottom: 2px;
+	padding-left: 3px;
+	padding-right: 3px;
+	margin: 0px 0px 0px 0px;
+	position: relative;
+}
+
+.results td {
+	padding-left: 4px;
+	padding-right: 40px;
+	border-collapse: collapse;
+	border:2px solid white;
+}
+
+tr.even {
+	padding-top:4px;
+	padding-bottom:4px;
+	background: #EEEEFF;
+}
+
+ul.nonestylelist {
+    list-style-type: none;
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_wd.css"/></head>
+<body>
+<div class="head">
+<div id="titlehead" style="position:relative;height:170px;width: 500px">
+  <div id="logo" style="position:absolute;width:300px;height:169px;left: 10px;top: 0px;">
+    <img src="http://www.ivoa.net/pub/images/IVOA_wb_300.jpg" alt="IVOA logo"/>
+  </div>
+  <div id="logo-title" style="position:absolute;width:200px;height:115px;left: 300px;top: 5px;">
+    <p>
+      <b>
+        <i>
+          <span style="font-size: 14pt; color: #005A9C;"> I</span>
+        </i>
+      </b>
+      <i>
+        <span style="font-size: 14pt; color: #005A9C;">nternational</span>
+      </i>
+    </p>
+    <p>
+      <b>
+        <i>
+          <span style="font-size: 14pt; color: #005A9C;padding-left:30px">V</span>
+        </i>
+      </b>
+      <i>
+        <span style="font-size: 14pt; color: #005A9C;">irtual</span>
+      </i>
+    </p>
+    <p>
+      <b>
+        <i>
+          <span style="font-size: 14pt; color: #005A9C;padding-left:30px">O</span>
+        </i>
+      </b>
+      <i>
+        <span style="font-size: 14pt; color: #005A9C;">bservatory</span>
+      </i>
+    </p>
+    <p>
+      <b>
+        <i>
+          <span style="font-size: 14pt; color: #005A9C;">A</span>
+        </i>
+      </b>
+      <i>
+        <span style="font-size: 14pt; color: #005A9C;">lliance</span>
+      </i>
+    </p>
+  </div>
+</div>
+
+<h1>Provenance Data Model<br/>
+Version <span class="docversion">0.1</span></h1>
+<h2 class="subtitle">IVOA Working Draft  5 May 2014</h2>
+
+<dl><dt>Working Group:</dt><dd>
+    <a href="http://wiki.ivoa.net/twiki/bin/view/IVOA/IvoaDataModel" shape="rect">IVOA Data Model</a></dd>
+<dt>This version:</dt>
+<dd><a class="currentlink" href="http://www.ivoa.net/Documents/ProvDM-20140505">http://www.ivoa.net/Documents/ProvDM-20140505</a></dd>
+<dt><b>Latest version:</b></dt>
+      <dd><a href="http://www.ivoa.net/Documents/latest/latest-version-name" shape="rect">http://www.ivoa.net/Documents/latest/latest-version-name</a></dd>
+    <dt>Previous versions:</dt>
+<dt>Authors (possibly):</dt>
+<dd>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/KristinRiebe" shape="rect">Kristin Riebe</a><br/>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/FlorianRothmaier" shape="rect">Florian Rothmaier</a><br/>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/MarkusDemleitner" shape="rect">Markus Demleitner</a><br/>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/GerardLemson" shape="rect">Gerard Lemson</a><br/>
+	                Adrian Partl<br/>
+	                Harry Enke<br/>
+	<a href="http://wiki.ivoa.net/twiki/bin/view/IVOA/MireilleLouys" shape="rect">Mireille Louys</a><br/>
+</dd>
+</dl>
+<hr/>
+
+<!--
+ !  ========
+ !  Abstract
+ !  ========
+ !-->
+
+<h2>Abstract</h2>
+
+<p>Type your abstract here</p>
+
+
+<!--
+ !  =======================
+ !  Status of this Document
+ !  =======================
+ !-->
+
+<h2>Status of this Document</h2>
+
+<p id="statusdecl"><em>
+                    This is an IVOA Working Draft for review by IVOA members
+                    and other interested parties.  It is a draft document and
+                    may be updated, replaced, or obsoleted by other documents
+                    at any time. It is inappropriate to use IVOA Working Drafts
+                    as reference materials or to cite them as other than "work
+                    in progress".
+                </em></p>
+
+<p><em>A list of</em> <span style="background: transparent">
+<a href="http://www.ivoa.net/Documents/" shape="rect"><i>current IVOA
+Recommendations and other technical documents</i></a></span><em> can be
+found at http://www.ivoa.net/Documents/.</em></p>
+
+
+<!--
+ !  ===============
+ !  Acknowledgments
+ !  ===============
+ !-->
+
+<h2 class="prologue-heading-western">Acknowledgments</h2>
+
+<p>This document has been developed in part with support from the German
+Astronomical Virtual Observatory (BMBF Bewilligungsnummer 05A08VHA).</p>
+
+<h2 class="prologue-heading-western">Conformance-related definitions</h2>
+
+<p>The words "MUST ", "SHOULD", "MAY", "RECOMMENDED", and "OPTIONAL" (in upper or
+lower case) used in this document are to be interpreted as described in the
+IETF standard RFC 2119 <cite>[<a href="#std:RFC2119">std:RFC2119</a>]</cite>.</p>
+
+
+<!--
+ !  ========
+ !  Contents
+ !  ========
+ !-->
+
+<h2>Contents</h2>
+<?toc?><div id="toc" class="toc"><ul><li><a href="#intro"><span class="secnum">1. </span>Introduction</a></li><li><a href="#prov_dm"><span class="secnum">2. </span>A Provenance Data Model</a><ul><li><a href="#requirements"><span class="secnum">2.1. </span>Requirements for Provenance and Use Cases</a></li><li><a href="#domain_model"><span class="secnum">2.2. </span>Domain model for provenance</a><ul><li><a href="#data_desc"><span class="secnum">2.2.1. </span>Data and DataDescription</a></li><li><a href="#data_sets"><span class="secnum">2.2.2. </span>Data sets - Composite pattern</a></li><li><a href="#storage"><span class="secnum">2.2.3. </span>Storage</a></li><li><a href="#params_strucdata"><span class="secnum">2.2.4. </span>Parameters and Structured Data</a></li><li><a href="#links_between_data"><span class="secnum">2.2.5. </span>Links Between Data</a></li><li><a href="#calib_data"><span class="secnum">2.2.6. </span>Calibration Data</a></li><li><a href="#ambient_conditions"><span class="secnum">2.2.7. </span>Ambient Conditions</a></li><li><a href="#instrument_characs"><span class="secnum">2.2.8. </span>Instrument Characteristics</a></li><li><a href="#quality"><span class="secnum">2.2.9. </span>Quality</a></li><li><a href="#agent"><span class="secnum">2.2.10. </span>Agent</a></li></ul></li></ul></li><li><a href="#references"><span class="secnum"/>References</a></li></ul></div>
+
+</div> <!-- class="head" -->
+
+<div class="body">
+
+<!--
+ !  ============
+ !  Introduction
+ !  ============
+ !-->
+
+<div class="section"><h2><a id="intro"><span class="secnum">1. </span>Introduction</a></h2>
+
+<p>In this document, we describe a draft for an IVOA standard data model for describing the
+provenance of data. We focus here on observational data, since provenance for
+simulated data is already (at least partially) covered by SimDM 
+<cite>[<a href="#std:SimDM">std:SimDM</a>]</cite>.</p>
+
+</div> <!-- section introduction -->
+
+<!--
+ !  =======================
+ !  A Provenance Data Model
+ !  =======================
+ !-->
+
+<div class="section"><h2><a id="prov_dm"><span class="secnum">2. </span>A Provenance Data Model</a></h2>
+
+<div class="section"><h3><a id="requirements"><span class="secnum">2.1. </span>Requirements for Provenance and Use Cases</a></h3>
+
+<p>A provenance data model should provide solutions to the following tasks:
+<ul class="nonestylelist">
+	<li><strong>A: </strong>Steps of production.</li>
+	<li><strong>B: </strong>Aid in figuring out which processing steps have
+already been done.</li>
+	<li><strong>C: </strong>Attribution.</li>
+	<li><strong>D: </strong>Aid in debugging.</li>
+	<li><strong>E: </strong>Quality assessment of an observation/reduction.</li>
+	<li><strong>F: </strong>Search in structured provenance metadata.</li>
+</ul>
+</p>
+
+<p>To give concrete examples, we formulate here some use cases derived from the
+list of tasks given above:
+<ul class="nonestylelist">
+	<li><strong>A1: </strong>Is the image from catalogue xxx already calibrated?
+What about dark field subtraction? Were foreground stars removed? Which technique
+was used?</li>
+	<li><strong>B1: </strong>Which pipeline version was used – the old one
+with a known bug for treating bright objects or a newer version? <em>(similar to
+A, isn't it?)</em></li>
+	<li><strong>B2: </strong>Is the background noise of atmospheric muons
+still present in my neutrino data sample?</li>
+	<li><strong>C1: </strong>I want to use an image - who was involved in
+creating it?</li>
+	<li><strong>C2: </strong>I have a question about column xxx in the data
+table. Whom can I ask about that?</li>
+	<li><strong>D1: </strong>I found something strange in an image. Where does
+the image come from? Which instrument was used, with which characteristics
+etc.? Was there noted anything strange when the image was taken?</li>
+	<li><strong>D2: </strong>This light curve doesn't look quite right. How was
+the photometry determined for each data point?</li>
+	<li><strong>E1: </strong>Since wrong calibration images may increase the
+number of atrifacts on an image rather than removing them, the knowledge about
+the calibration image set will help to assess the quality of the calibrated
+image.</li>
+	<li><strong>F1: </strong>I want to know the complete history of my image,
+where are the raw files located, which processing steps were done, etc.</li>
+	<li><strong>F2: </strong>Give me more images that were produced using the
+same pipeline.</li>
+	<li><strong>F3: </strong>Give me an overview on all images reduced with the
+same calibration data set.</li>
+</ul>
+</p>
+
+</div> <!-- subsection requirements -->
+
+
+<div class="section"><h3><a id="domain_model"><span class="secnum">2.2. </span>Domain model for provenance</a></h3>
+<p>In order to model provenance, we started with the SimDM data model, which
+already includes the provenance for simulation data.</p>
+
+<p>In SimDM and the Unified Domain Model, the two central classes are called
+"Experiment" and "Protocol". Protocol is the plan or method
+which describes how to do something whereas Experiment is the actual execution of
+this plan. We decided to rename "Experiment" to the more generic term
+"Activity" used by the provenance model of the W3C consortium
+<cite>[<a href="#std:W3CProvDM">std:W3CProvDM</a>]</cite>. Instead of "Protocol", we use the term "Method", for not confusing it with e.g. IVOA protocols.</p>
+
+<div class="figure" align="center">
+<img src="ProvDM-classdiagram.png" width="80%" alt="[The Provenance Data Model class diagram]"/>
+<p class="figurecaption"><strong>Figure 1:</strong> The Provenance Data Model
+class diagram.</p>
+</div>
+
+<p>Examples for "Activities" are observations and processing steps like
+flat-fielding, correcting bias, astrometric calibration etc. The type or method
+underlying an activity is specified by the "Method" class.
+This could be, for instance, the name of the code used to run an experiment or,
+generally speaking, to perform an activity. The two sub-classes of
+"Activity" are mirrored by sub-classes of
+"Method": "Processing" is described by a
+"Processor", an "Observation" is illustrated by the
+"ObservationMethod" class.</p>
+
+<p><em>A clearer definiton of method or protocol, some more clarification
+what it is and what it is not, would be useful here.</em></p>
+
+<p><em>Should also add that links between data/activities should go backwards (in time) only.</em></p>
+
+
+<div class="section"><h4><a id="data_desc"><span class="secnum">2.2.1. </span>Data and DataDescription</a></h4>
+<p>We define a general "Data" class (actually: DataComponent, see next section), 
+which can represent either input
+or output/result data. Since the results of one activity can be input data for
+another activity, the structure of input and output data is necessarily the same.
+The link from an "Activity" to the corresponding "Data"
+object would tell then if the piece of data is used as input or output (see
+figure at <span class="xref"><a href="#links_between_data">2.2.5</a></span>).</p>
+
+<p>Following the scheme that each "Activity" is described
+by the more general "Method", we associate each input or
+output data set with a corresponding description of the data type. Each activity
+usually makes assumptions on the structure of input data (FITS file, data
+table, binary file of a certain structure ...) and produces a certain form of
+output data, which should be described in the general "DataDescription"
+class, so that it can be reused for multiple instances of this class.</p>
+</div> <!-- subsubsection data_desc -->
+
+
+<div class="section"><h4><a id="data_sets"><span class="secnum">2.2.2. </span>Data sets - Composite pattern</a></h4>
+<p>
+There are two major data classes: 
+</p>
+<ul> 
+<li>data sets <br/>e.g. RAVE-DR4 with its databases and database tables, SDSS DR9 with 
+all its tables and files, all files from one observing slot<br/>
+</li>
+<li>individual data items<br/>
+e.g. a file, table, parameter value
+</li>
+</ul>
+
+<p>
+Data can only be grouped to a data set, if they have the same origin (i.e. they were
+produced by the same activity, i.e. they have the same provenance).
+We would leave it to the person/tool recording provenance to decide, how detailed a data set will be  
+separated into individual items. It is also possible to just record provenance for e.g. RAVE DR4 as a 
+whole, without listing everything that belongs to DR4.
+</p>
+
+<p>
+For our data model, it would be desirable to be able to treat data sets and individual data items in
+the same way, with the same interface. This demand led us to the 
+<strong>Composite design pattern</strong>:
+</p>
+ 
+<p>
+We introduce an abstract class called "DataComponent", which 
+includes the basic properties and functionality for both, data items like files or 
+parameter values or a complete data set. Such common properties are e.g. the link 
+to the activity which created the data/dataSet, a creation date/time, a link to a
+storage-object (which is not further specified in this data model).
+
+Each DataComponent can either be a single item (like a file, table or a parameter) 
+or a DataSet. A DataSet contains additionally a (non-empty) list of child-DataComponents, 
+which could again contain a list of 
+further children etc. This way, one could represent complete data trees, if necessary.
+
+Each DataComponent also has a link to its parent, which would be 
+emtpy (or point to itself) for the root-DataComponent.
+
+We hope that such a representation would make it easier for clients to handle data 
+objects, since they don't have to make the distinction between data items and data 
+sets. 
+</p>
+</div> <!-- subsubsection data_set -->
+
+<div class="section"><h4><a id="storage"><span class="secnum">2.2.3. </span>Storage</a></h4>
+<p>If there exist other copies of the data, it would be useful to include a link
+here, indicated by (multiple) association(s) from "Storage" to the
+copies. We also need a link from the copies back to the Storage (bidirectional
+association), so that it becomes immediately clear to which data the copy
+belongs. The Storage itself (the "original" object) would be the one
+that was actually used or produced by the activity. </p>
+</div> <!-- subsubsection storage -->
+
+
+<div class="section"><h4><a id="params_strucdata"><span class="secnum">2.2.4. </span>Parameters and Structured Data</a></h4>
+<p>We divide DataComponents that are not DataSets into "Parameter" and "StructuredData".
+The "StructuredData" class is represented by data that comes, for
+example, in the form of a table or a structured binary file, where multiple data
+points are collected in a structured way. We would not want to model each single
+row of a table as one data item or data set.</p>
+
+<p>Parameters are somehow different entities: usually we have here a pair of keys and
+values, which may be stored in a log file or a parameter file, in the header of
+an output file or inside a published article.</p>
+
+<p>The main difference is probably what someone would be interested in: for
+"Parameter", one usually wants to know the value whereas for
+"StructuredData", the more relevant information is the file location.
+</p>
+</div> <!-- subsubsection params_strucdata -->
+
+
+<div class="section"><h4><a id="links_between_data"><span class="secnum">2.2.5. </span>Links Between Data</a></h4>
+<p>It would be
+convenient if each data object or even each file ("Storage" object)
+would get a unique "dataId" that can be referenced. If several copies have been
+made out of a data set and one of them is corrupted, it is relevant to know
+exactly which copy was used by a given activity.</p>
+
+<p><em>Maybe DataLink can help here?</em></p>
+
+<p>We need to be able to refer from an activity to the ResultData of another
+activity. A possible data flow is shown in the figure below:</p>
+
+<div class="figure" align="center">
+<img src="ProvDM-activities.png" width="45%" alt="[Example for activities]"/>
+<p class="figurecaption"><strong>Figure 2:</strong> The black arrows indicate the
+data flow, gray arrows just show which activity would be attached to the step. It
+is defined by the key in the corresponding Activity whether data is used as input
+or output.</p>
+</div>
+
+</div> <!-- subsubsection links_between_data -->
+
+<div class="section"><h4><a id="calib_data"><span class="secnum">2.2.6. </span>Calibration Data</a></h4>
+<p>The calibration data set consists of images that can be used to calibrate the
+raw data. It is not necessary to mention them explicitly in the model. Instead
+they can be included by adding an activity called "Calibration":
+<ul>
+	<li>Activity: Calibration (status: planned or finished)</li>
+	<li>InputData: uncalibrated image, calibration data set</li>
+	<li>ResultData: null or calibrated data</li>
+	<li>Agent: null or name</li>
+</ul>
+</p>
+
+<p>If the calibration has not yet been done, the calibration activity would still
+need to be described to make sure that the calibration data sets and links to the
+uncalibrated data will be recorded. In that case, the calibration activity would
+have the status "planned" or similar and we would have null results.
+</p>
+
+<p>Basically, the calibration data could also be recorded as the result of the
+activity "Generating calibration data", but it is not required to
+include this into our model. However, the link between input data and their
+calibration data sets is needed and could be established via the Calibration
+activity as suggested here.
+</p>
+</div> <!-- subsubsection calib_data -->
+
+<div class="section"><h4><a id="ambient_conditions"><span class="secnum">2.2.7. </span>Ambient Conditions</a></h4>
+<p>
+Ambient conditions are environmental properties, which are special in a way: 
+they represent the part of an
+"experiment" (observation) which cannot be (fully) controlled by an
+experimentalist, in contrast to other data that can be fully reproduced.
+Nevertheless we now decided that they can be fully described by our 
+data classes. Thus they are not forming a separate class in our data model, but should 
+be treated as just another input data set. 
+</p>
+
+<p>Our model could then also take into account that a certain observation
+method requires special ambient conditions, already defined via the method
+(e.g. radio observations rely on different ambient conditions than observations
+of gamma rays), just following our data - data description scheme.
+</p>
+
+<p><em>We wondered if ambient conditions could also play a role for some
+processing steps or any other activity besides observations? Is there any
+additional step performed in which room temperature etc. may play a role and thus
+should be recorded? The only example we could think of was the storage of
+photographic plates, where the humidity and temperature variations can affect the
+quality of the photographic plates.</em></p>
+
+</div> <!-- subsubsection ambient_conditions -->
+
+<div class="section"><h4><a id="instrument_characs"><span class="secnum">2.2.8. </span>Instrument Characteristics</a></h4>
+<p>In contrast to the ambient conditions, instrument characteristics do not
+change from one observation to the other, so they are static, strictly related to
+the instrument. 
+All the characteristics could be described either as key-value pairs directly with the 
+observation or just as data, using the DataComponent class. One would then 
+link the instrument characteristics as a type of input data set to a certain 
+observation activity. Thus we don't need a separate Instrument or Device class.
+</p>
+
+<p>
+One should also keep in mind that some instrument related parameters can change within time,
+e.g. the CCD temperature. These should probably rather go into ambient conditions.
+Instruments can also change within time because of aging.
+</p>
+
+</div> <!-- subsubsection instrument_characs -->
+
+<div class="section"><h4><a id="quality"><span class="secnum">2.2.9. </span>Quality</a></h4>
+<p>Here we could simply define additional attributes for each "Activity"
+or "Data" object, i.e. zero, one, or more properties in the form of
+key-value pairs. We could use a "Quality" namespace to mark a keyword
+as quality-related:
+<ul>
+	<li>quality.comment: [some text]</li>
+	<li>quality.seeing: [some value]</li>
+</ul>
+The values could range from a float number to free text.</p>
+</div> <!-- subsubsection quality -->
+
+<div class="section"><h4><a id="agent"><span class="secnum">2.2.10. </span>Agent</a></h4>
+<p>In SimDM, someone performing a certain experiment is called "Party".
+However, the W3C provenance data model suggests the term "Agent" which
+we adopted here. It is desired to have an agent given for each activity, but it
+is not enforced (hence 0..*).  It would also increase the value of the given
+information if the (current) affiliation of the agent and a project leader/group
+leader were specified in order to maximize the chance of finding someone later
+on. <em>(Note: we could also use the term "Contact" here.)</em></p>
+
+</div> <!-- subsubsection agent -->
+
+</div> <!-- subsection domain_model -->
+</div> <!-- section prov_dm -->
+
+
+</div><!-- class="body" -->
+
+
+
+<!--
+ !  ==========
+ !  References
+ !  ==========
+ !-->
+
+<div class="section-nonum"><h2><a id="references"><span class="secnum"/>References</a></h2>
+
+<?bibliography prov-refs?><dl>
+
+<dt><a name="std:W3CProvDM">[std:W3CProvDM] Khalid Belhajjame, Reza B'Far,
+  James Cheney, Sam Coppens, Stephen Cresswell, Yolanda Gil, Paul Groth, Graham
+  Klyne, Timothy Lebo, Jim McCusker, Simon Miles, James Myers, Satya Sahoo, and
+  Curt Tilmes.</a></dt> <dd>
+  <a href="http://www.w3.org/TR/prov-dm/">PROV-DM: The prov data model</a>.
+  W3C Recommendation, April 2013.
+</dd>
+
+<dt><a name="std:RFC2119">[std:RFC2119] Scott Bradner.</a></dt> <dd>
+  <a href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+  indicate requirement levels</a>.
+  RFC 2119, March 1997.
+</dd>
+
+<dt><a name="std:SimDM">[std:SimDM] Gerard Lemson, Laurent Bourgès, Miguel
+  Cerviño, Claudio Gheller, Norman Gray, Franck LePetit, Mireille Louys,
+  Benjamin Ooghe, Rick Wagner, and Hervé Wozniak.</a></dt> <dd>
+  <a href="http://www.ivoa.net/documents/SimDM/">Simulation data model,
+  version 1.0</a>.
+  IVOA Recommendation, May 2012.
+</dd>
+
+</dl>
+
+</div> <!-- section references -->
+
+
+</body></html><!-- vi: sw=2:et:sta
+-->

@@ -1,0 +1,15 @@
+<!--
+   XHTML 1.0 (Second Edition) Frameset DTD with XML Schema support
+-->
+
+<!ENTITY % XHTML1Frameset PUBLIC
+   "-//W3C//DTD XHTML 1.0 Frameset//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+%XHTML1Frameset;
+
+<!ENTITY % xsi "xsi" >
+<!ENTITY % xsidecl
+   "xmlns:%xsi; CDATA #FIXED 'http://www.w3.org/2001/XMLSchema-instance'
+    %xsi;:schemaLocation CDATA #IMPLIED"
+>
+<!ATTLIST html %xsidecl; >

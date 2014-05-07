@@ -1,0 +1,11 @@
+Desired features
+
+* improve table handling in the PDF generation
+* allow font customization in the PDF generation http://xmlgraphics.apache.org/fop/1.0/fonts.html
+
+* equation handling - find way to run latex and produce nice output.
+How to invoke latex from inside
+<xsl:value-of select="Runtime:exec(Runtime:getRuntime(), 'latex')"
+xmlns:Runtime="java:java.lang.Runtime"/>
+
+to get equations http://www.fauskes.net/nb/htmleqII/ in html - or texvc from mediawiki....

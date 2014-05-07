@@ -1,0 +1,129 @@
+# Makefile to drive ivoadoc.
+#
+# To use this, you must have checked out ivoadoc as svn:externals into
+# your document directory.  Copy this Makefile into that directory and
+# edit it as necessary.
+#
+# To make this work, you need xalan and fop; on Debian systems, the following
+# should do the trick:
+#
+# sudo aptitude install xalan fop w3c-dtd-xhtml libxml-commons-resolver1.1-java
+#
+# You most likely want the hyphenation patterns for fop (the PDF
+# formatter), too.  Presumably for licensing reasons, you have to 
+# get them manually from http://offo.sourceforge.net.  Drop them
+# into /usr/share/fop/fop-hyph.jar (that's FOPHYPH below)
+#
+# Edit your source as $(STDNAME).html; available targets then are:
+#
+# * default: format the html, expanding the magic things explained in
+#   ivoadoc/README
+# * $(STDNAME).pdf: same, but make a pdf
+# * package: package the docs, css, all pngs and whatever is in
+#   PACKAGE_EXTRAS into an aptly-named zip that expands into a
+#   nicely-named subdirectory.
+# * biblio: remake the bibliography (this is never done automatically).
+#   Unless you try the experimental includebibliography PI, you have
+#   to manually insert the result into your HTML.
+#
+# Contact for this Makefile: Markus Demleitner (gavo@ari.uni-heidelberg.de)
+#
+# Fix (and maintain, as you go on) the following set of variables:
+#
+# The base name of the files (a sensible abbreviation of your standard's 
+# title; this is case sensitive)
+STDNAME=FIXME
+# The current version
+DOCVERSION=1.0
+# YYYYMMDD of the current release
+DOCDATE=FIXME
+# One of NOTE, WD, PR, REC
+PUBSTATUS=FIXME
+# Extra files that need to end up in the final package
+# (pngs are included automatically)
+PACKAGE_EXTRAS=FIXME
+
+
+# You probably want to configure your system so the following works
+# Basically, RESOLVERJAR must eventally point to a jar of apache
+# xml commons resolver, and SAXONJAR to a jar containing saxon-b
+#
+# For Debian Squeeze, you need to install the backported fop to make
+# this work.
+
+CATALOG=ivoadoc/xmlcatalog/catalog.xml
+FOPHYPH=/usr/share/fop/fop-hyph.jar
+
+JARROOT=/usr/share/java
+RESOLVERJAR=$(JARROOT)/xml-resolver.jar
+SAXONJAR=$(JARROOT)/saxonb.jar
+SAXON=java -cp $(RESOLVERJAR):$(SAXONJAR) \
+	-Dxml.catalog.files=$(CATALOG) -Dxml.catalog.verbosity=1\
+	net.sf.saxon.Transform\
+	-novw -r org.apache.xml.resolver.tools.CatalogResolver\
+	-x org.apache.xml.resolver.tools.ResolvingXMLReader\
+	-y org.apache.xml.resolver.tools.ResolvingXMLReader
+BIBTEX=bibtex
+SED=sed
+
+# TODO: make fop use our custom catalog
+FOP=FOP_HYPHENATION_PATH=$(FOPHYPH) fop -catalog
+
+HTMLSTYLE=ivoadoc/ivoarestructure.xslt
+FOSTYLE=ivoadoc/ivoa-fo.xsl
+CITEEXSTYLE=ivoadoc/extractcite.xslt
+
+# You should not need to edit anything below this line
+
+versionedName:=$(PUBSTATUS)-$(STDNAME)-$(DOCVERSION)
+ifneq "$(PUBSTATUS)" "REC"
+		versionedName:=$(versionedName)-$(subst -,,$(DOCDATE))
+endif
+
+.PHONY: package
+
+%-fmt.html: %.html $(HTMLSTYLE)
+	$(SAXON) -o $@ $< $(HTMLSTYLE) docdate=$(DOCDATE)\
+		docversion=$(DOCVERSION) pubstatus=$(PUBSTATUS) ivoname=$(STDNAME)
+
+%.fo: %-fmt.html
+	$(SAXON) -o $@ $< $(FOSTYLE) docdate=$(DOCDATE)\
+		docversion=$(DOCVERSION) pubstatus=$(PUBSTATUS) ivoname=$(STDNAME)
+
+%.pdf: %.fo
+	$(FOP) -pdf $@ -fo $<
+
+# this is for BibTex
+%.aux: %.html
+	$(SAXON) -o:$@ -xsl:$(CITEEXSTYLE) -s:$< 
+
+%.bbl: %.aux
+	$(BIBTEX) $<
+	$(SED) -f ivoadoc/detex.sed $@ > $@.tmp
+	mv $@.tmp $@
+
+default: $(STDNAME)-fmt.html
+
+cleanbbl:
+	rm -f $(STDNAME).bbl
+
+biblio: cleanbbl $(STDNAME).bbl
+
+package: $(STDNAME)-fmt.html $(STDNAME).pdf
+	rm -rf -- $(versionedName)
+	mkdir $(versionedName)
+	cp $(STDNAME)-fmt.html $(versionedName)/$(versionedName).html
+	cp $(STDNAME).pdf $(versionedName)/$(versionedName).pdf
+	mkdir $(versionedName)/ivoadoc
+	cp ivoadoc/*.css $(versionedName)/ivoadoc
+	cp *.png $(SCHEMA_FILE) $(PACKAGE_EXTRAS) $(versionedName)
+	zip -r $(versionedName).zip $(versionedName)
+	rm -rf -- $(versionedName)
+
+clean:
+	rm -f $(PUBSTATUS)-$(STDNAME)-*.html
+	rm -f $(PUBSTATUS)-$(STDNAME)-*.pdf
+	rm -f $(STDNAME).pdf
+	rm -r $(PUBSTATUS)-$(STDNAME)*.zip
+
+-include make.local

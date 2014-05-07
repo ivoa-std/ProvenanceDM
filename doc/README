@@ -1,0 +1,70 @@
+Provenance Data Model - Working Draft
+======================================
+
+What's what?
+------------
+
+* ProvDM.html -- the document source code.  This is what you
+  should be editing.
+* ProvDM-fmt.html -- the formatted document.  This will be overwritten, so
+    DO NOT edit this.  To rebuild it, say "make" (provided you have the
+    necessary dependencies, cf. below) or "make package".
+* Makefile -- document date, version, and status are defined in there.
+	This may also need some adaptation if your build environment is
+  not a Debian wheezy (or Ubuntu 13.xx); a common target is "package".
+
+See the comment at the top of Makefile for instructions on how to set up
+things so they should work.
+
+
+
+Working with the SVN Repository
+===============================
+
+Get the code
+------------
+
+Check-out the repository:
+
+svn checkout --username volute@g-vo.org \
+ https://volute.googlecode.com/svn/trunk/projects/provenance/
+
+
+Make use of "ivoadoc"
+---------------------
+
+(1) Have a look at:
+http://volute.googlecode.com/svn/trunk/projects/ivoapub/ivoadoc/README
+
+This file explains how to make use of "ivoadoc", a collection of scripts helping
+with the authorship of IVOA documents, which are supposed to be delivered as
+HTML (and PDF) files.
+
+
+(2) In your working copy, give the command
+
+svn propedit svn:externals \
+ "ivoadoc https://volute.googlecode.com/svn/trunk/projects/ivoapub/ivoadoc" .
+
+followed by a
+
+svn commit
+svn update
+
+
+(3) If your Makefile says
+
+FOSTYLE=ivoadoc/ivoa-fo.xsl 
+
+this file has to be edited for changing the layout of your PDF.
+
+"ivoadoc/ivoa-fo.xsl" is the stylesheet which is used (in combination with the
+"Xalan" XSLT transformer) to convert the XHTML document to XSL-FO (Extensible
+Stylesheet Language Formatting Objects). In a second step, the XSL-FO document
+is passed to the Apache FOP formatter ("FOP" refers to "Formatting Objects
+Processor") that will generate a PDF output document.
+
+These processing steps are specified in the Makefile of the "provenance"
+directory.
+
+

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!-- $Id:$ 
+Note that this file should be xhtml with div to mark sections - see README for more information
+Paul Harrison -->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "ivoadoc/xmlcatalog/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Template IVOA Document</title>
+<meta name="Title" content="IVOA WG Internal Draft" />
+<meta name="author" content="Paul Harrison, paul.harrison@manchester.ac.uk" />
+<meta name="maintainedBy" content="Paul Harrison, paul.harrison@manchester.ac.uk" />
+<link href="http://www.ivoa.net/misc/ivoa_a.css" rel="stylesheet" type="text/css" />
+<!-- Add other styling information here (but this element, if present, mustn't be empty)
+  <style type="text/css"></style>
+-->
+<link href="./ivoadoc/XMLPrint.css" rel="stylesheet" type="text/css" />
+<link href="./ivoadoc/ivoa-extras.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="head">
+  <div id="titlehead" style="position:relative;height:170px;width: 500px">
+    <div id="logo" style="position:absolute;width:300px;height:169px;left: 50px;top: 0px;">
+    <img src="http://www.ivoa.net/pub/images/IVOA_wb_300.jpg" alt="IVOA logo"/></div>
+    <div id="logo-title"
+         style="position: absolute; width: 200px; height: 115px; left: 320px; top: 5px; font-size: 14pt; color: #005A9C; font-style: italic;">
+      <p style='position: absolute; left: 0px; top: 0px;'><span style='font-weight: bold;'>I</span> nternational</p>
+      <p style='position: absolute; left: 15pt; top: 25pt;'><span style='font-weight: bold;'>V</span> irtual</p>
+      <p style='position: absolute; left: 15pt; top: 50pt;'><span style='font-weight: bold;'>O</span> bservatory</p>
+      <p style='position: absolute; left: 0px; top: 75pt;'><span style='font-weight: bold;'>A</span> lliance</p>
+    </div>
+  </div>
+<h1>Title<br/>
+  Version <span class="docversion">0.1</span></h1>
+<h2 class="subtitle">Filled in automatically</h2>
+<dl>
+  <dt>Working Group</dt>
+  <dd><a href="http://www.ivoa.net/twiki/bin/view/IVOA/IvoaGridAndWebServices">http://www.ivoa.net/twiki/bin/view/IVOA/IvoaGridAndWebServices</a></dd>
+  <dt><b>This version:</b></dt>
+  <dd><a href="" class="currentlink">filled in automatically</a></dd>
+  <dt><b>Latest version:</b></dt>
+  <dd> not issued outside
+    GWS-WG</dd>
+  <dt><b>Previous version(s):</b></dt>
+  <dd> Internal Working Draft
+    v0.1, 2005-01-24
+  Internal Working Draft
+  v0.2, 2006-05-11 Internal
+    Working Draft v.0.3, 2007-04-26  Internal
+    Working Draft v.04  2008-05-10</dd>
+    <dt><b>Author(s):</b></dt>
+  <dd>  Paul Harrison</dd>
+</dl>
+
+<h2>Abstract</h2>
+<p >Blah Blah</p>
+<h2> Status of This Document</h2>
+<p >This is an  working draft of
+  the GWS-WG. The first release of this document was on 2005-01-24
+  within the working group; This version is the first public WD.</p>
+<p id="statusdecl">(updated automatically)</p>
+<p> <em >A list of </em><span style="background: transparent"><a  href="http://www.ivoa.net/documents/"><i>current
+  IVOA Recommendations and other technical documents</i></a></span><em > can be found at http://www.ivoa.net/documents/.</em></p>
+<h2 class="prologue-heading-western"  >Acknowledgements</h2>
+<p>blah</p>
+</div>
+<h2>Contents</h2>
+<div>
+<?toc ?>
+</div>
+<div class="body">
+<div class="section">
+<h1><a id="Introduction"></a>Introduction</h1>
+  <p >&nbsp;</p>
+  <div class="section">
+    <h2 >Subtitle</h2>
+    <p >subtext</p>
+    <p>A citation can begin like <cite>std:RM</cite></p>
+    </div>
+  <div class="section">
+    <h2> Subtitle</h2>
+    <p >subtext</p>
+    </div>
+  </div>
+<div class="section">
+    <h1> Section</h1>
+    <div class="section">
+      <h2> Subsection</h2>
+      <p>Subsection blah</p>
+    <div class="section"><h3>SubSubSection</h3></div>
+       <p>subsubsection blah</p>
+    </div>
+    </div>
+ 
+    <div class="section">
+      <h3 > Section</h3>
+      <p >blah blah</p>
+    </div>
+  </div>
+  <div class="appendices">
+  <div class="section">
+  <h1>An appendix</h1>
+  <p>Include some xml.</p>
+    <div>
+    <?incxml href="http://www.ivoa.net/xml/VOResource/VOResource-v1.0.xsd"?>
+    </div>
+</div>
+</div>
+
+<div class="section-nonum">
+  <h1 ><a name="References" id="References"></a>References</h1>
+  <?bibliography ivoadoc/refs ?>  <!-- omit '.bib' -->
+</div>
+<hr/>
+<p style="text-align: right; font-size: x-small; color: #888;">
+$Revision: 847 $ $Date: 2008-10-29 14:33:57 +0000 (Wed, 29. Oct 2008) $ $HeadURL: $
+</p>
+
+</body>
+</html>

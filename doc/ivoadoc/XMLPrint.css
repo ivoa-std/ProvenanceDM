@@ -1,0 +1,82 @@
+/*
+
+ $Id: XMLPrettyPrint.css,v 1.1 2008/10/08 14:14:49 pah Exp $
+ */
+
+.viewxml {
+	font-family: Monaco, "Lucida Console", monospace;
+	font-weight: normal;
+	color: black;
+	white-space: normal;
+	font-size: 80%; 
+}
+ .element {
+	position: relative;
+}
+.indent {
+	margin-left: 1em;
+}
+.start-tag {
+	color: #009999;
+	font-weight: bold;
+}
+.end-tag {
+	color: #009999;
+	font-weight: bold;
+}
+.comment {
+	font-family: monospace;
+	white-space: pre;
+	color: green;
+	font-style: italic;
+	background-color: #D4EA8D;
+}
+.cdata {
+ color: #CC0066;
+}
+.doctype {
+ color: steelblue;
+ font-style: italic;
+}
+.pi {
+ color: orchid;
+ font-style: italic;
+}
+.entity {
+ color:#FF4500;
+ font-weight: normal;
+}
+.text {
+  font-weight: normal;
+}
+.attribute-name {
+	color: #E88CA4;
+	font-weight: bold;
+}
+.attribute-value {
+ color: blue;
+ font-weight: normal;
+}
+.summary {
+ display: block;
+ background-color: #FFFFCC;
+ width: 90%;
+ border: solid;
+ border-width: 1pt;
+ font-family: sans-serif;
+}
+.popup {
+  font-weight: normal;
+}
+.markup {
+	color: #009933;
+	font-weight: normal;
+}
+.error, .error > .start-tag, .error > .end-tag,
+.error > .comment, .error > .cdata, .error > .doctype,
+.error > .pi, .error > .entity, .error > .attribute-name,
+.error > .attribute-value {
+  color: red;
+  font-weight: bold;
+}
+

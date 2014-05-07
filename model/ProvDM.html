@@ -1,0 +1,1822 @@
+<html xmlns:vo-dml="http://volute.googlecode.com/dm/vo-dml/v0.9">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Provenance Data Model</title>
+    <link rel="stylesheet" href="../ivoa_wg.css" type="text/css">
+    <link rel="stylesheet" href="../xmi.css" type="text/css">
+  </head>
+  <body>
+    <h1>Provenance Data Model</h1>
+    <h2><a id="contents" name="contents">Table of Contents</a></h2>
+    <div class="head">
+      <table class=".toc">
+        <tr>
+          <td>1.</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#model_section">model: ProvDM</a></td>
+        </tr>
+        <tr>
+          <td>2.</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#packages">Packages and Types</a></td>
+        </tr>
+        <tr>
+          <td>2.1</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rootpackage">[root package]</a></td>
+        </tr>
+        <tr>
+          <td>2.1.1</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Activity">objectType:Activity</a></td>
+        </tr>
+        <tr>
+          <td>2.1.2</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Agent">objectType:Agent</a></td>
+        </tr>
+        <tr>
+          <td>2.1.3</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataComponent">objectType:DataComponent</a></td>
+        </tr>
+        <tr>
+          <td>2.1.4</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataDescription">objectType:DataDescription</a></td>
+        </tr>
+        <tr>
+          <td>2.1.5</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataSet">objectType:DataSet</a></td>
+        </tr>
+        <tr>
+          <td>2.1.6</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Method">objectType:Method</a></td>
+        </tr>
+        <tr>
+          <td>2.1.7</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Observation">objectType:Observation</a></td>
+        </tr>
+        <tr>
+          <td>2.1.8</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ObservationMethod">objectType:ObservationMethod</a></td>
+        </tr>
+        <tr>
+          <td>2.1.9</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Parameter">objectType:Parameter</a></td>
+        </tr>
+        <tr>
+          <td>2.1.10</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ParameterType">objectType:ParameterType</a></td>
+        </tr>
+        <tr>
+          <td>2.1.11</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Processing">objectType:Processing</a></td>
+        </tr>
+        <tr>
+          <td>2.1.12</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Processor">objectType:Processor</a></td>
+        </tr>
+        <tr>
+          <td>2.1.13</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Storage">objectType:Storage</a></td>
+        </tr>
+        <tr>
+          <td>2.1.14</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#StructuredData">objectType:StructuredData</a></td>
+        </tr>
+        <tr>
+          <td>2.1.15</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#StructuredDataType">objectType:StructuredDataType</a></td>
+        </tr>
+        <tr>
+          <td>3.</td>
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#utypes">vodml-id-s</a></td>
+        </tr>
+        <tr>
+          <td>4.</td>
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#modelimports">Imported Models</a></td>
+        </tr>
+        <tr>
+          <td>4.1</td>
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">IVOA</a></td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+    <h1><a name="ProvDM"></a><a name="model_section">1. Model: Provenance Data Model (ProvDM)</a></h1>
+    <table>
+      <tr>
+        <td align="right"><b>Authors</b></td>
+        <td> : </td>
+        <td>Kristin Riebe, Florian Rothmaier, Markus Demleitner, Gerard Lemson, Mireille Louys, Adrian Partl</td>
+      </tr>
+      <tr>
+        <td align="right"><b>Date</b></td>
+        <td> : </td>
+        <td>2014-05-06T10:14:17</td>
+      </tr>
+      <tr>
+        <td align="right"><b>Version</b></td>
+        <td> : </td>
+        <td>0.x</td>
+      </tr>
+      <tr>
+        <td align="right" valign="top"><b>Abstract</b></td>
+        <td valign="top"> : </td>
+        <td>This is the data model for the provenance of observations. It contains the IVOA UML Profile and imports the IVOA_Profile data
+          model with primitive types.
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <h1>2.<a name="packages">Model contents: Packages and Types</a></h1>
+    <p>
+      The following sub-sections present all packages in the model with their types.
+      The packages are listed here in alphabetical order.
+      Each sub-section contains a description of the package and a table containing its various features.
+      
+    </p>
+    <h3><a name="rootpackage"></a>2.1 [root package]
+    </h3>
+    <table border="1" cellspacing="2" width="100%">
+      <tr>
+        <td class="objecttype-title" width="20%">Model</td>
+        <td class="objecttype-name">ProvDM</td>
+      </tr>
+      <tr>
+        <td width="20%" class="info-title">Object types</td>
+        <td colspan="2" class="feature-detail"><a href="#Activity">Activity</a> <a href="#Agent">Agent</a> <a href="#DataComponent">DataComponent</a> <a href="#DataDescription">DataDescription</a> <a href="#DataSet">DataSet</a> <a href="#Method">Method</a> <a href="#Observation">Observation</a> <a href="#ObservationMethod">ObservationMethod</a> <a href="#Parameter">Parameter</a> <a href="#ParameterType">ParameterType</a> <a href="#Processing">Processing</a> <a href="#Processor">Processor</a> <a href="#Storage">Storage</a> <a href="#StructuredData">StructuredData</a> <a href="#StructuredDataType">StructuredDataType</a> 
+        </td>
+      </tr>
+    </table>
+    <h3><a name="Activity"></a>2.1.1 objectType: Activity
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Activity</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">An Activity is any kind of link between input and result data.</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td class="info-title">Subclasses in this model</td>
+                      <td class="feature-detail" colspan="3"><a href="#Observation">Observation</a> <a href="#Processing">Processing</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.name"></a><b>name</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.name</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">String for naming an activity.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.executionDate"></a><b>executionDate</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.executionDate</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Date/time when the Activity was executed (start time)</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.executionState"></a><b>executionState</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.executionState</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">String that specifies the execution state of an activity. Values for that string could be something like PROCESSING, COMPLETED,
+                        etc.
+                        Default could be COMPLETED.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.executionDuration"></a><b>executionDuration</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.executionDuration</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Can provide the duration of the execution, i.e. could also contain exposure time for observation (or is this characterisation??)
+                        or how long the pipeline needed to process the image/data set.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.agent"></a><b>agent</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#Agent">Agent</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.agent</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information.
+                        Zero-to-many instances are allowed.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.inputDataList"></a><b>inputDataList</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.inputDataList</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The collection of input data used to perform an activity. The set of input data usually originates from a previous activity.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.method"></a><b>method</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#Method">Method</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.method</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">An instance of the Method class which describes how an activity is executed. For one activity there is exactly one description,
+                        i.e. the multiplicity is set to 1.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.resultDataList"></a><b>resultDataList</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.resultDataList</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Ouput data as produced by an activity. The multiplicity for this activity is set to one to many data components (or data sets).</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Agent"></a>2.1.2 objectType: Agent
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Agent</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">This class defines a contact for a certain activity. Typically this is the person, a project or the institution that has performed
+            the activity.
+            Details like address etc. could be useful, but at least the current affiliation should be given, so that it's possible to
+            credit the right person/project/institution for certain tasks or products and to find someone when questions arise.
+            People change affiliations, but it is likely that someone from the old affiliation knows where a person was going to or who
+            else is in charge now. In that sense providing a project leader may be helpful as well.
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Activity">Activity</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.name"></a><b>name</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Agent.name</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Name of a person, can also be omitted, if an affiliation or project is given instead.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.affiliation"></a><b>affiliation</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Agent.affiliation</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A string giving the affiliation of the contact for a certain activity.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.project"></a><b>project</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Agent.project</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">This is the project responsible for executing an activity (e.g. the RAVE collaboration). There could also be more than one
+                        project.
+                        This attribute is optional.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.projectLeader"></a><b>projectLeader</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Agent.projectLeader</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A string to specify the person in charge of the project which has performed a certain activity.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="DataComponent"></a>2.1.3 objectType: DataComponent
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">DataComponent</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">This class is the central component of our composite design pattern. This concept aims at treating the two major groups of
+            data, files and parameter values on the one hand, and complete data sets on the other hand, in the same way. The DataComponent
+            class includes the basic properties and functionality (usually the interface) for both groups of data.
+            
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td class="info-title">Subclasses in this model</td>
+                      <td class="feature-detail" colspan="3"><a href="#DataSet">DataSet</a> <a href="#Parameter">Parameter</a> <a href="#StructuredData">StructuredData</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Activity">Activity</a> <a href="#DataSet">DataSet</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.id"></a><b>id</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataComponent.id</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">An id for the data component, could be a DAL-identififier or so. 
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.creationDate"></a><b>creationDate</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataComponent.creationDate</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Date/time when the data component (individual data element or the complete set) was created.</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.createdFromActivity"></a><b>createdFromActivity</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#Activity">Activity</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataComponent.createdFromActivity</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Link from the result data to the activity by which it has been produced.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.dataDescription"></a><b>dataDescription</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataComponent.dataDescription</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">An instance of the DataDescription class that describes the form/structure of a data item.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.parentDataSet"></a><b>parentDataSet</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataSet">DataSet</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataComponent.parentDataSet</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Link to the data set to which a component belongs.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.storage"></a><b>storage</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#Storage">Storage</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataComponent.storage</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">An instance of the Storage class which tells where to locate a certain data component.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="DataDescription"></a>2.1.4 objectType: DataDescription
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">DataDescription</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">This class describes the form/structure of a data item or a data set.</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td class="info-title">Subclasses in this model</td>
+                      <td class="feature-detail" colspan="3"><a href="#ParameterType">ParameterType</a> <a href="#StructuredDataType">StructuredDataType</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> <a href="#Method">Method</a> 
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="DataSet"></a>2.1.5 objectType: DataSet
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">DataSet</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">This class covers data sets like RAVE-DR4 with its databases and database tables.
+            
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataSet.dataComponent"></a><b>dataComponent</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">DataSet.dataComponent</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">If pieces of data have the same origin, i.e. were produced by the same activity, they can be grouped to a data set. We decided
+                        to leave it to the person/tool recording provenance to decide how detailed a data set shall be separated into individual items.
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Method"></a>2.1.6 objectType: Method
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Method</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">The method describes how an activity is performed. This could be, for instance, the (name of the) code of a processing pipeline.</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td class="info-title">Subclasses in this model</td>
+                      <td class="feature-detail" colspan="3"><a href="#ObservationMethod">ObservationMethod</a> <a href="#Processor">Processor</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Activity">Activity</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.name"></a><b>name</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Method.name</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">String to specify the name of a method (e.g. "Flatfielding", "Creating the master bias", name of the code for a pipeline or
+                        post-processing)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.description"></a><b>description</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Method.description</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Free text to shortly describe the method used. (Like 'Protocol' in SimDM.)
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.inputDataType"></a><b>inputDataType</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Method.inputDataType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A set of type specifications for the zero-to-many input data components.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.resultDataType"></a><b>resultDataType</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Method.resultDataType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A type specification of the output data component.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Observation"></a>2.1.7 objectType: Observation
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Observation</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">Observation inherits from Activity covering all cases in which the result data have been acquired by an (astronomical) observation.</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#Activity">Activity</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Observation.target"></a><b>target</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Observation.target</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The target of an observation, e.g. M31, Star xxx, ...</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Observation.observationMethod"></a><b>observationMethod</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#ObservationMethod">ObservationMethod</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Observation.observationMethod</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">An instance of an ObservationMethod class used to describe how the observation has been done.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="ObservationMethod"></a>2.1.8 objectType: ObservationMethod
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">ObservationMethod</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">ObservationMethod which inherits from Method describes all activities that are considered observations.</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#Method">Method</a></td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Observation">Observation</a> 
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Parameter"></a>2.1.9 objectType: Parameter
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Parameter</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">Data components which are not data sets are either represented as parameters or structured data. The Parameter sub-class of
+            DataComponent contains a set of key-value pairs, for instance from a configuration or a log file.
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Parameter.name"></a><b>name</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Parameter.name</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Name of a parameter</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Parameter.numericValue"></a><b>numericValue</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#quantity.RealQuantity">quantity.RealQuantity</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Parameter.numericValue</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The value of a Parameter instance of type real.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Parameter.stringValue"></a><b>stringValue</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Parameter.stringValue</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The value of a Parameter instance of string type.</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Parameter.parameterType"></a><b>parameterType</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#ParameterType">ParameterType</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Parameter.parameterType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The data type underlying a parameter.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="ParameterType"></a>2.1.10 objectType: ParameterType
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">ParameterType</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">ParameterType specifies the data type of a Parameter object.</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Parameter">Parameter</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="ParameterType.ucd"></a><b>ucd</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">ParameterType.ucd</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A string giving the data type of a parameter as a ucd.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Processing"></a>2.1.11 objectType: Processing
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Processing</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">Processing inherits from Activity. All processing steps like flat-fielding or astrometric calibration are covered by this
+            class.
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#Activity">Activity</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Processing.operatingSystem"></a><b>operatingSystem</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Processing.operatingSystem</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Details about the operating system on which the processing was executed.</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Processing.processor"></a><b>processor</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#Processor">Processor</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Processing.processor</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">An instance of the Processor class used to describe the processing pipeline.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Processor"></a>2.1.12 objectType: Processor
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Processor</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">Processor which inherits from Method describes all activities that belong to the Processing sub-class.
+            General description for e.g. flatfielding, astrometric calibration, imageStacking etc.
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#Method">Method</a></td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Processing">Processing</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Processor.author"></a><b>author</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Processor.author</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">1..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Author of the code/processing algorithm/,,, used</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Processor.version"></a><b>version</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Processor.version</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Version of the processor (code, algorithm, ...), if applicable.
+                        Not mandatory.
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Storage"></a>2.1.13 objectType: Storage
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Storage</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">Storage specifies where the (original) data produced by an activity can be found. This is not part of the Provenance Data
+            Model (therefore the different coloring).
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Storage.referenceURI"></a><b>referenceURI</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#anyURI">anyURI</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Storage.referenceURI</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A reference to a file path, URL resource, .... where a description of the DataComponent (or the DataComponent itself??) can
+                        be found. Is this covered already by "Storage"?
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="StructuredData"></a>2.1.14 objectType: StructuredData
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">StructuredData</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">Data components which are not data sets are either represented as parameters or structured data. The StructuredData sub-class
+            of DataComponent contains single data entities like a structured binary file or a database table.
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="StructuredData.structuredDataType"></a><b>structuredDataType</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#StructuredDataType">StructuredDataType</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">StructuredData.structuredDataType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">The format in which an instance of the StructuredData class is present.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="StructuredDataType"></a>2.1.15 objectType: StructuredDataType
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">StructuredDataType</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">StructuredDataType specifies the format of a StructuredData object, e.g. a description of the file format (fits), or the table
+            columns in the database.
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                    </tr>
+                    <tr>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#StructuredData">StructuredData</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="StructuredDataType.format"></a><b>format</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">StructuredDataType.format</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..*</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">A string giving the format of a structured data element (e.g. description of the file format (fits, ascii, ...) or description
+                        of a database table)
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><hr>
+    <h1>3.<a name="utypes">UTYPEs</a></h1>  
+    The following table shows all UTYPEs for this data model.
+    It is ordered alphabetically and the UTYPEs are hyper-linked to the location
+    in the document where the actual element is fully defined.
+    
+    
+    <table style="border-style:solid;border-width:1px;" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="feature-heading">UTYPE</td>
+        <td class="feature-heading">feature type</td>
+        <td class="feature-heading">description</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#"></a></td>
+        <td class="feature-detail">vo-dml:model</td>
+        <td class="feature-detail">This is the data model for the provenance of observations. It contains the IVOA UML Profile and imports the IVOA_Profile data
+          model with primitive types.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity">Activity</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">An Activity is any kind of link between input and result data.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.agent">Activity.agent</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information.
+          Zero-to-many instances are allowed.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.executionDate">Activity.executionDate</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Date/time when the Activity was executed (start time)</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.executionDuration">Activity.executionDuration</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Can provide the duration of the execution, i.e. could also contain exposure time for observation (or is this characterisation??)
+          or how long the pipeline needed to process the image/data set.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.executionState">Activity.executionState</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">String that specifies the execution state of an activity. Values for that string could be something like PROCESSING, COMPLETED,
+          etc.
+          Default could be COMPLETED.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.inputDataList">Activity.inputDataList</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">The collection of input data used to perform an activity. The set of input data usually originates from a previous activity.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.method">Activity.method</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">An instance of the Method class which describes how an activity is executed. For one activity there is exactly one description,
+          i.e. the multiplicity is set to 1.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.name">Activity.name</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">String for naming an activity.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.resultDataList">Activity.resultDataList</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">Ouput data as produced by an activity. The multiplicity for this activity is set to one to many data components (or data sets).</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Agent">Agent</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">This class defines a contact for a certain activity. Typically this is the person, a project or the institution that has performed
+          the activity.
+          Details like address etc. could be useful, but at least the current affiliation should be given, so that it's possible to
+          credit the right person/project/institution for certain tasks or products and to find someone when questions arise.
+          People change affiliations, but it is likely that someone from the old affiliation knows where a person was going to or who
+          else is in charge now. In that sense providing a project leader may be helpful as well.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Agent.affiliation">Agent.affiliation</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">A string giving the affiliation of the contact for a certain activity.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Agent.name">Agent.name</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Name of a person, can also be omitted, if an affiliation or project is given instead.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Agent.project">Agent.project</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">This is the project responsible for executing an activity (e.g. the RAVE collaboration). There could also be more than one
+          project.
+          This attribute is optional.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Agent.projectLeader">Agent.projectLeader</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">A string to specify the person in charge of the project which has performed a certain activity.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">This class is the central component of our composite design pattern. This concept aims at treating the two major groups of
+          data, files and parameter values on the one hand, and complete data sets on the other hand, in the same way. The DataComponent
+          class includes the basic properties and functionality (usually the interface) for both groups of data.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent.createdFromActivity">DataComponent.createdFromActivity</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">Link from the result data to the activity by which it has been produced.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent.creationDate">DataComponent.creationDate</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Date/time when the data component (individual data element or the complete set) was created.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent.dataDescription">DataComponent.dataDescription</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">An instance of the DataDescription class that describes the form/structure of a data item.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent.id">DataComponent.id</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">An id for the data component, could be a DAL-identififier or so. 
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent.parentDataSet">DataComponent.parentDataSet</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">Link to the data set to which a component belongs.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataComponent.storage">DataComponent.storage</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">An instance of the Storage class which tells where to locate a certain data component.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">This class describes the form/structure of a data item or a data set.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataSet">DataSet</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">This class covers data sets like RAVE-DR4 with its databases and database tables.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#DataSet.dataComponent">DataSet.dataComponent</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">If pieces of data have the same origin, i.e. were produced by the same activity, they can be grouped to a data set. We decided
+          to leave it to the person/tool recording provenance to decide how detailed a data set shall be separated into individual items.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Method">Method</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">The method describes how an activity is performed. This could be, for instance, the (name of the) code of a processing pipeline.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Method.description">Method.description</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Free text to shortly describe the method used. (Like 'Protocol' in SimDM.)
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Method.inputDataType">Method.inputDataType</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">A set of type specifications for the zero-to-many input data components.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Method.name">Method.name</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">String to specify the name of a method (e.g. "Flatfielding", "Creating the master bias", name of the code for a pipeline or
+          post-processing)
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Method.resultDataType">Method.resultDataType</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">A type specification of the output data component.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Observation">Observation</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">Observation inherits from Activity covering all cases in which the result data have been acquired by an (astronomical) observation.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Observation.observationMethod">Observation.observationMethod</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">An instance of an ObservationMethod class used to describe how the observation has been done.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Observation.target">Observation.target</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">The target of an observation, e.g. M31, Star xxx, ...</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#ObservationMethod">ObservationMethod</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">ObservationMethod which inherits from Method describes all activities that are considered observations.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Parameter">Parameter</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">Data components which are not data sets are either represented as parameters or structured data. The Parameter sub-class of
+          DataComponent contains a set of key-value pairs, for instance from a configuration or a log file.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Parameter.name">Parameter.name</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Name of a parameter</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Parameter.numericValue">Parameter.numericValue</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">The value of a Parameter instance of type real.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Parameter.parameterType">Parameter.parameterType</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">The data type underlying a parameter.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Parameter.stringValue">Parameter.stringValue</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">The value of a Parameter instance of string type.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#ParameterType">ParameterType</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">ParameterType specifies the data type of a Parameter object.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#ParameterType.ucd">ParameterType.ucd</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">A string giving the data type of a parameter as a ucd.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Processing">Processing</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">Processing inherits from Activity. All processing steps like flat-fielding or astrometric calibration are covered by this
+          class.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Processing.operatingSystem">Processing.operatingSystem</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Details about the operating system on which the processing was executed.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Processing.processor">Processing.processor</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">An instance of the Processor class used to describe the processing pipeline.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Processor">Processor</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">Processor which inherits from Method describes all activities that belong to the Processing sub-class.
+          General description for e.g. flatfielding, astrometric calibration, imageStacking etc.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Processor.author">Processor.author</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Author of the code/processing algorithm/,,, used</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Processor.version">Processor.version</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Version of the processor (code, algorithm, ...), if applicable.
+          Not mandatory.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Storage">Storage</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">Storage specifies where the (original) data produced by an activity can be found. This is not part of the Provenance Data
+          Model (therefore the different coloring).
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Storage.referenceURI">Storage.referenceURI</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">A reference to a file path, URL resource, .... where a description of the DataComponent (or the DataComponent itself??) can
+          be found. Is this covered already by "Storage"?
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#StructuredData">StructuredData</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">Data components which are not data sets are either represented as parameters or structured data. The StructuredData sub-class
+          of DataComponent contains single data entities like a structured binary file or a database table.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#StructuredData.structuredDataType">StructuredData.structuredDataType</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">The format in which an instance of the StructuredData class is present.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#StructuredDataType">StructuredDataType</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">StructuredDataType specifies the format of a StructuredData object, e.g. a description of the file format (fits), or the table
+          columns in the database.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#StructuredDataType.format">StructuredDataType.format</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">A string giving the format of a structured data element (e.g. description of the file format (fits, ascii, ...) or description
+          of a database table)
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <h1>4.<a name="modelimports">Imported Models</a></h1>
+    <p>This section lists the external models imported by the current data model.
+      For each imported model we list URLs to the VO-DML and HTML representations and the prefix used for utype-s from inside the
+      model.
+    </p>
+    <h2><a name="IVOA"></a>4.1 IVOA Reference Types Data Model ala VO-URP
+    </h2>
+    <table border="1" cellspacing="2" width="100%">
+      <tr>
+        <td class="objecttype-title" width="20%">Model name/prefix</td>
+        <td class="objecttype-name">IVOA</td>
+      </tr>
+      <tr>
+        <td width="30%" class="info-title">url</td>
+        <td><a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.vo-dml.xml">http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.vo-dml.xml</a></td>
+      </tr>
+      <tr>
+        <td width="30%" class="info-title">documentation url</td>
+        <td><a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html">http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html</a></td>
+      </tr>
+    </table>
+  </body>
+</html>
