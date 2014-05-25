@@ -354,6 +354,7 @@ output data, which should be described in the general &quot;DataDescription&quot
 class, so that it can be reused for multiple instances of this class.</p>
 
 
+
 </div> <!-- subsubsection data_desc -->
 
 
@@ -404,6 +405,23 @@ We hope that such a representation would make it easier for clients to handle da
 objects, since they don't have to make the distinction between data items and data 
 sets. 
 </p>
+
+<p>Similar to the DataComponent, each DataSet also has a description counterpart, the
+ "DataSetDescription". This contains meta-information about the structure of a DataSet, in 
+particular links to descriptions of its elements. For example, an Observation may have a
+number of fits-images as output, summarized to one DataSet. 
+The DataSetDescription then also contains a reference to a (single) DataDescription of a 
+fits-image.
+These references are needed to keep the Method and DataDescriptions complete, similar to a template or prototype, independent of the actual data.
+</p>
+
+<p>On the description-side, the aggregation link from DataSetDescription to DataDescription 
+goes only in one direction, from set to elements. The opposite direction is not needed: 
+a description of a fits-image does not need a reference to a DataSetDescription where it
+is being used. This is different to elements of DataSets, which need to have a link
+to their parent.</p> 
+
+
 </div> <!-- subsubsection data_set -->
 
 <div class="section"><h4><a id="storage">Storage</a></h4>
@@ -429,7 +447,8 @@ during the process. They could also just have lived in memory. It may be useful 
 them in the provenance of the final data set anyway to get a clearer picture of 
 the Activity steps involved.  
 </li>
-<li>StoredData: These are the "usual" data, stored as a file, in a database table; as an image, table,
+<li>StoredData: These are the "u
+sual" data, stored as a file, in a database table; as an image, table,
 binary file, template, ....
 </li>
 </ul>

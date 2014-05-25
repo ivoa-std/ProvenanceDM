@@ -10,7 +10,7 @@
   <author>Mireille Louys</author>
   <author>Adrian Partl</author>
   <version>0.x</version>
-  <lastModified>2014-05-07T11:18:45</lastModified>
+  <lastModified>2014-05-25T21:47:51</lastModified>
   <import>
     <name>IVOA</name>
     <url>http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.vo-dml.xml</url>
@@ -19,7 +19,7 @@
   <objectType>
     <vodml-id>Activity</vodml-id>
     <name>Activity</name>
-    <description>An Activity is any kind of link between input and result data.</description>
+    <description>An Activity is any kind of link between input and result data. It is a process that acts upon an entity (data), usually with the goal of changing that entity. Here, it is usually an observation or postprocessing of images.</description>
     <attribute>
       <vodml-id>Activity.id</vodml-id>
       <name>id</name>
@@ -81,6 +81,30 @@ Default could be COMPLETED.</description>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
+    <collection>
+      <vodml-id>Activity.inputDataList</vodml-id>
+      <name>inputDataList</name>
+      <description>The collection of input data used to perform an activity. The set of input data usually originates from a previous activity.</description>
+      <datatype>
+        <utype>ProvDM:InputData</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </collection>
+    <collection>
+      <vodml-id>Activity.resultDataList</vodml-id>
+      <name>resultDataList</name>
+      <description>Ouput data as produced by an activity. The multiplicity for this activity is set to one to many data components (or data sets).</description>
+      <datatype>
+        <utype>ProvDM:ResultData</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </collection>
     <reference>
       <vodml-id>Activity.method</vodml-id>
       <name>method</name>
@@ -99,30 +123,6 @@ Default could be COMPLETED.</description>
       <description>The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information. Zero-to-many instances are allowed.</description>
       <datatype>
         <utype>ProvDM:Agent</utype>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>-1</maxOccurs>
-      </multiplicity>
-    </reference>
-    <reference>
-      <vodml-id>Activity.resultDataList</vodml-id>
-      <name>resultDataList</name>
-      <description>Ouput data as produced by an activity. The multiplicity for this activity is set to one to many data components (or data sets).</description>
-      <datatype>
-        <utype>ProvDM:DataComponent</utype>
-      </datatype>
-      <multiplicity>
-        <minOccurs>1</minOccurs>
-        <maxOccurs>-1</maxOccurs>
-      </multiplicity>
-    </reference>
-    <reference>
-      <vodml-id>Activity.inputDataList</vodml-id>
-      <name>inputDataList</name>
-      <description>The collection of input data used to perform an activity. The set of input data usually originates from a previous activity.</description>
-      <datatype>
-        <utype>ProvDM:DataComponent</utype>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -184,30 +184,30 @@ Default could be COMPLETED.</description>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </attribute>
-    <reference>
+    <collection>
       <vodml-id>Method.inputDataDescription</vodml-id>
       <name>inputDataDescription</name>
       <description>A set of type specifications for the zero-to-many input data components.</description>
       <datatype>
-        <utype>ProvDM:DataDescription</utype>
+        <utype>ProvDM:InputDataDescription</utype>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
-    </reference>
-    <reference>
+    </collection>
+    <collection>
       <vodml-id>Method.resultDataDescription</vodml-id>
       <name>resultDataDescription</name>
       <description>A specification of the output data component(s),</description>
       <datatype>
-        <utype>ProvDM:DataDescription</utype>
+        <utype>ProvDM:ResultDataDescription</utype>
       </datatype>
       <multiplicity>
-        <minOccurs>1</minOccurs>
+        <minOccurs>0</minOccurs>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
-    </reference>
+    </collection>
   </objectType>
 
   <objectType>
@@ -420,18 +420,6 @@ This is mainly important for ambient conditions (seeing, moon light, etc.) and i
       </multiplicity>
     </attribute>
     <reference>
-      <vodml-id>DataComponent.createdFromActivity</vodml-id>
-      <name>createdFromActivity</name>
-      <description>Link from the result data to the activity by which it has been produced.</description>
-      <datatype>
-        <utype>ProvDM:Activity</utype>
-      </datatype>
-      <multiplicity>
-        <minOccurs>1</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </reference>
-    <reference>
       <vodml-id>DataComponent.parentDataSet</vodml-id>
       <name>parentDataSet</name>
       <description>Link to the data set to which a component belongs.</description>
@@ -439,7 +427,7 @@ This is mainly important for ambient conditions (seeing, moon light, etc.) and i
         <utype>ProvDM:DataSet</utype>
       </datatype>
       <multiplicity>
-        <minOccurs>1</minOccurs>
+        <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </reference>
@@ -452,6 +440,20 @@ This is mainly important for ambient conditions (seeing, moon light, etc.) and i
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>DataComponent.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:ResultData</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </reference>
@@ -527,14 +529,16 @@ This is mainly important for ambient conditions (seeing, moon light, etc.) and i
       </multiplicity>
     </attribute>
     <reference>
-      <vodml-id>DataDescription.createdFromMethod</vodml-id>
-      <name>createdFromMethod</name>
-      <description>A DataDescription contains  a link to the Method that describes the Activity that generated the data.</description>
+      <vodml-id>DataDescription.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <datatype>
-        <utype>ProvDM:Method</utype>
+        <utype>ProvDM:ResultDataDescription</utype>
       </datatype>
       <multiplicity>
-        <minOccurs>1</minOccurs>
+        <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </reference>
@@ -763,6 +767,198 @@ This is mainly important for ambient conditions (seeing, moon light, etc.) and i
       <description>A string to specify the person in charge of the project which has performed a certain activity.</description>
       <datatype>
         <utype>ProvDM:Agent</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>InputData</vodml-id>
+    <name>InputData</name>
+    <description>This class serves to specify the role that a DataComponent takes when used as input for an Activity.</description>
+    <container>
+      <vodml-id>InputData.CONTAINER</vodml-id>
+      <name>CONTAINER</name>
+      <description>Reference to container in collection inputDataList</description>
+      <datatype>
+        <utype>ProvDM:Activity</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+      <collection>
+        <utype>ProvDM:Activity.inputDataList</utype>
+      </collection>
+    </container>
+    <reference>
+      <vodml-id>InputData.role</vodml-id>
+      <name>role</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:DataComponent</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>InputData.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:InputDataDescription</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>ResultData</vodml-id>
+    <name>ResultData</name>
+    <description>This class serves to specify the role that a DataComponent takes when produced as result by an Activity.</description>
+    <container>
+      <vodml-id>ResultData.CONTAINER</vodml-id>
+      <name>CONTAINER</name>
+      <description>Reference to container in collection resultDataList</description>
+      <datatype>
+        <utype>ProvDM:Activity</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+      <collection>
+        <utype>ProvDM:Activity.resultDataList</utype>
+      </collection>
+    </container>
+    <reference>
+      <vodml-id>ResultData.createdFromActivity</vodml-id>
+      <name>createdFromActivity</name>
+      <description>Link from the result data to the activity by which it has been produced.</description>
+      <datatype>
+        <utype>ProvDM:Activity</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>ResultData.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:DataComponent</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>ResultData.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:ResultDataDescription</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>InputDataDescription</vodml-id>
+    <name>InputDataDescription</name>
+    <description>This class describes the different roles of input data required for a certain method, e.g. parameter, parameter file, fits-image, etc. in a format specific for just this method. </description>
+    <container>
+      <vodml-id>InputDataDescription.CONTAINER</vodml-id>
+      <name>CONTAINER</name>
+      <description>Reference to container in collection inputDataDescription</description>
+      <datatype>
+        <utype>ProvDM:Method</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+      <collection>
+        <utype>ProvDM:Method.inputDataDescription</utype>
+      </collection>
+    </container>
+    <reference>
+      <vodml-id>InputDataDescription.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:DataDescription</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>ResultDataDescription</vodml-id>
+    <name>ResultDataDescription</name>
+    <description>This class describes the different roles of result data typical for a certain method, e.g. fits-image, binary files etc. in a format specific for just this method. </description>
+    <container>
+      <vodml-id>ResultDataDescription.CONTAINER</vodml-id>
+      <name>CONTAINER</name>
+      <description>Reference to container in collection resultDataDescription</description>
+      <datatype>
+        <utype>ProvDM:Method</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+      <collection>
+        <utype>ProvDM:Method.resultDataDescription</utype>
+      </collection>
+    </container>
+    <reference>
+      <vodml-id>ResultDataDescription.createdFromMethod</vodml-id>
+      <name>createdFromMethod</name>
+      <description>A DataDescription contains  a link to the Method that describes the Activity that generated the data.</description>
+      <datatype>
+        <utype>ProvDM:Method</utype>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>ResultDataDescription.</vodml-id>
+      <name/>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <utype>ProvDM:DataDescription</utype>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
