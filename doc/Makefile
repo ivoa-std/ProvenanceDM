@@ -37,7 +37,7 @@ STDNAME=ProvDM
 # The current version
 DOCVERSION=0.1
 # YYYYMMDD of the current release
-DOCDATE=20140507
+DOCDATE=20141008
 # One of NOTE, WD, PR, REC
 PUBSTATUS=WD
 # Extra files that need to end up in the final package

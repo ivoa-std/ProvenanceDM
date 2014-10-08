@@ -3,16 +3,16 @@ ivoadoc toolkit, see somewhere at http://code.google.com/p/volute/ -->
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head profile="http://www.w3.org/1999/xhtml/vocab"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Provenance Data Model - IVOA Working Draft  7 May 2014</title>
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+<title>Provenance Data Model IVOA Working Draft  7 May 2014</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="author" content="K. Riebe, kriebe@aip.de; F. Rothmaier, gavo@ari.uni-heidelberg.de"/>
+<meta name="maintainedBy" content="Kristin Riebe, kriebe@aip.de"/>
 
-<meta name="author" content="K. Riebe, kriebe@aip.de; F. Rothmaier, gavo@ari.uni-heidelberg.de" />
-<meta name="maintainedBy" content="Kristin Riebe, kriebe@aip.de" />
-
-<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_a.css" />
-<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_wd.css" />
-<link rel="stylesheet" type="text/css" href="./ivoadoc/XMLPrint.css" />
-<link rel="stylesheet" type="text/css" href="./ivoadoc/ivoa-extras.css" />
+<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_a.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_wd.css"/>
+<link rel="stylesheet" type="text/css" href="./ivoadoc/XMLPrint.css"/>
+<link rel="stylesheet" type="text/css" href="./ivoadoc/ivoa-extras.css"/>
 
 <style type="text/css" xml:space="preserve">
 
@@ -69,12 +69,12 @@ ul.nonestylelist {
 }
 
 </style>
-</head>
+<link rel="stylesheet" type="text/css" href="http://www.ivoa.net/misc/ivoa_wd.css"/></head>
 <body>
 <div class="head">
 <div id="titlehead" style="position:relative;height:170px;width: 500px">
   <div id="logo" style="position:absolute;width:300px;height:169px;left: 10px;top: 0px;">
-    <img src="http://www.ivoa.net/pub/images/IVOA_wb_300.jpg" alt="IVOA logo" />
+    <img src="http://www.ivoa.net/pub/images/IVOA_wb_300.jpg" alt="IVOA logo"/>
   </div>
   <div id="logo-title" style="position:absolute;width:200px;height:115px;left: 300px;top: 5px;">
     <p>
@@ -120,29 +120,30 @@ ul.nonestylelist {
   </div>
 </div>
 
-<h1>Provenance Data Model<br />
+<h1>Provenance Data Model<br/>
 Version <span class="docversion">0.1</span></h1>
 <h2 class="subtitle">IVOA Working Draft  7 May 2014</h2>
 
 <dl><dt>Working Group:</dt><dd>
     <a href="http://wiki.ivoa.net/twiki/bin/view/IVOA/IvoaDataModel" shape="rect">IVOA Data Model</a></dd>
 <dt>This version:</dt>
-<dd><a class="currentlink" href="http://www.ivoa.net/documents/ProvDM/20140507">http://www.ivoa.net/documents/ProvDM/20140507</a></dd>
+<dd><a class="currentlink" href="http://www.ivoa.net/Documents/ProvDM-20140507">http://www.ivoa.net/Documents/ProvDM-20140507</a></dd>
 <dt><b>Latest version:</b></dt>
       <dd><a href="http://www.ivoa.net/Documents/latest/latest-version-name" shape="rect">http://www.ivoa.net/Documents/latest/latest-version-name</a></dd>
     <dt>Previous versions:</dt>
 <dt>Authors (possibly):</dt>
 <dd>
-	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/KristinRiebe" shape="rect">Kristin Riebe</a><br />
-	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/FlorianRothmaier" shape="rect">Florian Rothmaier</a><br />
-	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/MarkusDemleitner" shape="rect">Markus Demleitner</a><br />
-	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/GerardLemson" shape="rect">Gerard Lemson</a><br />
-	                Adrian Partl<br />
-	                Harry Enke<br />
-	<a href="http://wiki.ivoa.net/twiki/bin/view/IVOA/MireilleLouys" shape="rect">Mireille Louys</a><br />
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/KristinRiebe" shape="rect">Kristin Riebe</a><br/>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/FlorianRothmaier" shape="rect">Florian Rothmaier</a><br/>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/MarkusDemleitner" shape="rect">Markus Demleitner</a><br/>
+	<a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/GerardLemson" shape="rect">Gerard Lemson</a><br/>
+	                Adrian Partl<br/>
+	                Jochen Klar<br/>
+	                Harry Enke<br/>
+	<a href="http://wiki.ivoa.net/twiki/bin/view/IVOA/MireilleLouys" shape="rect">Mireille Louys</a><br/>
 </dd>
 </dl>
-<hr />
+<hr/>
 
 <!--
  !  ========
@@ -187,7 +188,7 @@ found at http://www.ivoa.net/Documents/.</em></p>
 <h2 class="prologue-heading-western">Acknowledgments</h2>
 
 <p>This document has been developed in part with support from the German
-Astronomical Virtual Observatory (BMBF Bewilligungsnummer 05A08VHA).</p>
+Astrophysical Virtual Observatory (BMBF Bewilligungsnummer 05A08VHA).</p>
 
 <h2 class="prologue-heading-western">Conformance-related definitions</h2>
 
@@ -203,7 +204,7 @@ IETF standard RFC 2119 <cite>[<a href="#std:RFC2119">std:RFC2119</a>]</cite>.</p
  !-->
 
 <h2>Contents</h2>
-<?toc?><div id="toc" class="toc"><ul><li><a href="#intro"><span class="secnum">1. </span>Introduction</a><ul><li><a href="#othermodels"><span class="secnum">1.1. </span>Previous efforts on provenance modelling</a></li></ul></li><li><a href="#prov_dm"><span class="secnum">2. </span>A Provenance Data Model</a><ul><li><a href="#requirements"><span class="secnum">2.1. </span>Requirements for Provenance and Use Cases [TODO: update this section!!]</a></li><li><a href="#domain_model"><span class="secnum">2.2. </span>A model for provenance</a><ul><li><a href="#activity_method"><span class="secnum">2.2.1. </span>Activity and method; relation to SimDM</a></li><li><a href="#data_desc"><span class="secnum">2.2.2. </span>Data and DataDescription</a></li><li><a href="#data_sets"><span class="secnum">2.2.3. </span>Data Collections - Composite pattern</a></li><li><a href="#storage"><span class="secnum">2.2.4. </span>Storage</a></li><li><a href="#dataelements"><span class="secnum">2.2.5. </span>Different data elements</a></li><li><a href="#links_between_data"><span class="secnum">2.2.6. </span>Links Between Data</a></li><li><a href="#calib_data"><span class="secnum">2.2.7. </span>Calibration data</a></li><li><a href="#ambient_conditions"><span class="secnum">2.2.8. </span>Ambient Conditions</a></li><li><a href="#instrument_characs"><span class="secnum">2.2.9. </span>Instrument Characteristics</a></li><li><a href="#quality"><span class="secnum">2.2.10. </span>Quality</a></li><li><a href="#agent"><span class="secnum">2.2.11. </span>Agent</a></li><li><a href="#project"><span class="secnum">2.2.12. </span>Project</a></li></ul></li></ul></li><li><a href="#references"><span class="secnum"></span>References</a></li></ul></div>
+<?toc?><div id="toc" class="toc"><ul><li><a href="#intro"><span class="secnum">1. </span>Introduction</a><ul><li><a href="#requirements"><span class="secnum">1.1. </span>Requirements for Provenance and Use Cases</a></li><li><a href="#othermodels"><span class="secnum">1.2. </span>Previous efforts on provenance modelling</a></li></ul></li><li><a href="#prov_dm"><span class="secnum">2. </span>A Provenance Data Model</a><ul><li><a href="#prototype_model"><span class="secnum">2.1. </span>A model using prototypes</a><ul><li><a href="#activity_method"><span class="secnum">2.1.1. </span>Activity and method</a></li><li><a href="#data_desc"><span class="secnum">2.1.2. </span>Data and DataDescription</a></li><li><a href="#data_sets"><span class="secnum">2.1.3. </span>Data Collections - Composite pattern</a></li><li><a href="#agent"><span class="secnum">2.1.4. </span>Agent</a></li><li><a href="#storage"><span class="secnum">2.1.5. </span>Storage</a></li><li><a href="#links_between_data"><span class="secnum">2.1.6. </span>Links Between Data</a></li><li><a href="#calib_data"><span class="secnum">2.1.7. </span>Calibration data</a></li><li><a href="#ambient_conditions"><span class="secnum">2.1.8. </span>Ambient Conditions</a></li><li><a href="#instrument_characs"><span class="secnum">2.1.9. </span>Instrument Characteristics</a></li><li><a href="#quality"><span class="secnum">2.1.10. </span>Quality</a></li><li><a href="#discussion"><span class="secnum">2.1.11. </span>Discussion</a></li></ul></li><li><a href="#w3clike_model"><span class="secnum">2.2. </span>A simpler model based on W3C</a><ul><li><a href="#discussion2"><span class="secnum">2.2.1. </span>Discussion</a></li></ul></li></ul></li><li><a href="#references"><span class="secnum"/>References</a></li></ul></div>
 
 </div> <!-- class="head" -->
 
@@ -223,13 +224,94 @@ simulated data is already covered by SimDM
 <cite>[<a href="#std:SimDM">std:SimDM</a>]</cite>. This draft is at a very preliminary state and may change at any time.</p> 
 
 
-<div class="section"><h3><a id="othermodels"><span class="secnum">1.1. </span>Previous efforts on provenance modelling</a></h3>
+
+<div class="section"><h3><a id="requirements"><span class="secnum">1.1. </span>Requirements for Provenance and Use Cases</a></h3>
+
+<p>A provenance data model should provide solutions to the following tasks:
+<ul>
+	<li><strong>A: Tracking the production history</strong><br/>
+		Find out which steps were taken to produce this piece of data/image and which methods/tools/software was involved. 
+		Track the history back to the raw data files/raw images.<br/>
+
+		Examples: 
+		<ul>
+			<li>Is the image from catalogue xxx already calibrated?
+What about dark field subtraction? Were foreground stars removed? Which technique
+was used?</li>
+			
+			<li>Is the background noise of atmospheric muons still present in my neutrino data sample?</li>
+		</ul>
+
+		We don't go so far as to consider easy reproducability as a use case -- this would be too ambitious. But at least the 
+		major steps undertaken to create a piece of data should be recoverable.
+
+	</li>
+
+	<li><strong>B: Attribution and further information</strong><br/>
+		Find the people involved in the production, the people/organizations/institutes that need to be cited or can be asked for more information<br/>
+
+		<ul>
+			<li>I want to use an image for my own work - who was involved in
+creating it? Whom do I need to cite or who can I contact to get this information?</li>
+			<li>I have a question about column xxx in the data
+table. Who can I ask about that?</li>
+		</ul>
+	</li>
+
+	<li><strong>C: Aid in debugging</strong><br/>
+		Find possible error sources.<br/>
+
+		<ul>
+			<li>I found something strange in an image. Where does
+the image come from? Which instrument was used, with which characteristics
+etc.? Was there anything strange noted when the image was taken?</li>
+			<li>Which pipeline version was used -- the old one
+with a known bug for treating bright objects or a newer version?</li>
+			<li>This light curve doesn't look quite right. How was
+the photometry determined for each data point?</li>
+		</ul>
+
+	</li>
+
+	<li><strong>D: Quality assessment</strong><br/>
+		Judge the quality of an observation, production step or data set.<br/>
+		
+		<ul>
+			<li>Since wrong calibration images may increase the
+number of artifacts on an image rather than removing them, the knowledge about
+the calibration image set will help to assess the quality of the calibrated
+image.</li>
+		</ul>
+	</li>
+
+	<li><strong>E: Search in structured provenance metadata</strong><br/>
+		Find all images produced by a certain processing step and similar tasks.
+		
+		<ul>
+			<li>Give me more images that were produced using the
+same pipeline.</li>
+			<li>Give me an overview on all images reduced with the same calibration data set.</li>
+			<li>Are there any more images attributed to this observer?</li>
+			<li>Which images of the crab nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?</li>
+		</ul>
+
+		This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed A separately, since we may decide that we can't keep this one, but we definitely want A.
+	</li>
+</ul>
+</p>
+
+	
+</div> <!-- subsection requirements -->
+
+
+
+<div class="section"><h3><a id="othermodels"><span class="secnum">1.2. </span>Previous efforts on provenance modelling</a></h3>
 <!-- There has been considerable work on provenance models, especially in other communities as  well. -->
 
 <div class="subsection"><h4><a id="previvoaprov">Provenance in the IVOA</a> [TODO]</h4>
 <p>
-Provenance was already discussed since the early days of the IVOA, but previous efforts from the IVOA community unfortunately are mostly not well documented or we could not find it. 
-There exists a vocabulary list by Arnold Rots, we got a provenance diagram from a talk by Francois Bonnarell, and there exists workflows to track provenance for specific projects (e.g. CTA), but this is all very specific and too detailed for the first steps. We therefore went a step back to start with a more abstract core model as discussed in this document.
+Provenance was already discussed since the early days of the IVOA, but previous efforts from the IVOA community unfortunately are mostly not well documented or we were not able to find them. 
+There exists a vocabulary list by Arnold Rots, we got a provenance diagram from a talk by Francois Bonnarell, and there exist workflows to track provenance for specific projects (e.g. CTA), but this is all very specific and too detailed for a general provenance model. We therefore went a step back to start with a more abstract core model as discussed in this document.
 </p>
 
 <p>
@@ -240,10 +322,10 @@ There exists a vocabulary list by Arnold Rots, we got a provenance diagram from 
 <div class="subsection"><h4><a id="opmw3c">Open Provenance Model (OPM) and W3C PROV-DM</a></h4>
 <p>
 Other communities have put considerable efforts into establishing a provenance model.
-The Provenance Challenge series (2006 - 2010) was a community effort to achieve inter-operability between different representations of provenance in scientific workflows. It resulted in the Open Provenance Model (<cite>[<a href="#OPM">OPM</a>]</cite>), and some members of that challenge continued their work by joining the W3C Provenance Working Group. The W3C Provenance Data Model was released as Recommendation in 2013. The cores of OPM and W3C are in principle the same, therefore we describe here briefly the basic concepts of the Provenance Data Model (PROV-DM, see <cite>[<a href="#std:W3CProvDM">std:W3CProvDM</a>]</cite>) by the W3C consortium in this section.
+The Provenance Challenge series (2006 - 2010) was a community effort to achieve inter-operability between different representations of provenance in scientific workflows. It resulted in the Open Provenance Model (<cite>[<a href="#OPM">OPM</a>]</cite>), and some members of that challenge continued their work by joining the W3C Provenance Working Group. The W3C Provenance Data Model was released as Recommendation in 2013. The cores of OPM and W3C are in principle the same, therefore we describe here briefly the basic concepts of the W3C Provenance Data Model (PROV-DM, see <cite>[<a href="#std:W3CProvDM">std:W3CProvDM</a>]</cite>) in this section.
 </p>
 
-<p>OPM was designed to be applicable to anything, scientific data as well as cars or immaterial things like decisions. With W3C, this becomes more focused on the web. Nevertheless, the core concepts should be useful for astronomical data sets as well, though we can expect that it can be made more specific and less abstract for our purposes. 
+<p>OPM was designed to be applicable to anything, scientific data as well as cars or immaterial things like decisions. With W3C, this becomes more focused on the web. Nevertheless, the core concepts are still fairly general and should be useful for astronomical data sets as well, though we could aim at making it more specific and less abstract for our purposes. 
 </p>
 
 <p>
@@ -263,18 +345,36 @@ There are also different possible relations between these components. Those impo
 </p>
 
 <ul>
-<li>Generation: a new entitiy is generated by an activity (activity -&gt; output data)
-</li><li>Usage: an entity is used by an activity (activity -&gt; input data)
-</li><li>Association: agents have responsibility for an activity (agent -&gt; activity)
+<li>Generation: a new entitiy is generated by an activity (output_data wasGeneratedFrom activity)
+</li><li>Usage: an entity is used by an activity (activity used input_data)
+</li><li>Association: agents have responsibility for an activity (agent wasAssociatedWith activity)
 </li>
 </ul>
+
+There is one more relation that could be interesting for us:
+<ul>
+<li>Attribution: an entitiy can be attributed to an agent (entity wasAttributedTo agent)
+</li>
+</ul>
+The attributed-to-agent may be different from the agent that is associated with the activity that created an entity.
+
+The following figure summarizes the (core) classes and relations of the W3C provenance model that are interesting for us:
+
+<div class="figure" align="center">
+<img src="ProvDM-W3C-classdiagram.png" width="80%" alt="[The main W3C Prov-DM classes and relations]"/>
+<p class="figurecaption"><strong>Figure 1:</strong> The main classes and relations of the W3C Prov-DM, that could be useful for the VO.
+</p>
+</div>
 
 
 
 <p>
-The W3C PROV-DM further specifies a derivation relation, which directly links a derived entity to its predecessor. This was introduced to make the link between entities more explicite. If activity A used entitites A1 and A2 as input and produced A3 as output, it is not clear, if A3 is a derivative (or, in OPM terms, "was generated from") A1 or A2 or both or neither. A1 and A2 could have been just parameter files for an observation.  
+The W3C PROV-DM further specifies a derivation relation, which directly links a derived entity to its predecessor. This was introduced to make the link between entities more explicite. If activity a used entities e1 and e2 as input and produced e3 as output, then it is not clear, if e3 is a derivative (or, in W3C terms, "wasDerivedFrom") e1 or e2 or both or neither. e1 and e2 could have been only parameter files for an observation.  
 
-However, in this model we approach this problem differently by using a Method object that is used as a template for each activity. The types of input/output data and their roles are described using additional classes for the method, so that any kind of relation between input/output data can be covered by this. This will be explained in a later section.
+However, for the IVOA provenance model we are fairly sure that this is not needed. Instead, at the moment we favour adding a <em>role</em> to each dataItem or entity, which can explain in more detail in which way the entity was used.
+
+We will discuss later on an approach using the additional Method-class as prototype or template for each activity.
+The types of input/output data and their roles are described using additional classes for the method, so that any kind of relation between input/output data can be covered.
 </p>
 
 <p>
@@ -287,7 +387,7 @@ The IVOA community should specify and describe the possible roles for each metho
 <p>
 OPM also suggests to allow hierarchical descriptions, i.e. allow to include different ways of getting from data set A to data set B, with different levels of detail. 
 This needs to be discussed further. 
-(After talk at InterOp-Madrid, some people said that this would be important for them!)
+(After talk at InterOp-Madrid, May 2014, some people said that this would be important for them!)
 </p>
 
 <p>
@@ -313,81 +413,33 @@ W3C describes a collection as an aggregation of entities. This is a useful conce
  !-->
 
 <div class="section"><h2><a id="prov_dm"><span class="secnum">2. </span>A Provenance Data Model</a></h2>
-
-<div class="section"><h3><a id="requirements"><span class="secnum">2.1. </span>Requirements for Provenance and Use Cases [TODO: update this section!!]</a></h3>
-
-<p>A provenance data model should provide solutions to the following tasks:
-<ul class="nonestylelist">
-	<li><strong>A: </strong>Recover steps of production.</li>
-	<li><strong>B: </strong>Aid in figuring out which processing steps have 
-		already been done.</li>
-	<li><strong>C: </strong>Attribution.</li>
-	<li><strong>D: </strong>Aid in debugging.</li>
-	<li><strong>E: </strong>Quality assessment of an observation/reduction.</li>
-	<li><strong>F: </strong>Search in structured provenance metadata.</li>
-</ul>
-</p>
-
-<p>To give concrete examples, we formulate here some use cases derived from the
-list of tasks given above:
-<ul class="nonestylelist">
-	<li><strong>A1: </strong>Is the image from catalogue xxx already calibrated?
-What about dark field subtraction? Were foreground stars removed? Which technique
-was used?</li>
-	<li><strong>B1: </strong>Which pipeline version was used – the old one
-with a known bug for treating bright objects or a newer version? <em>(similar to
-A, isn't it?)</em></li>
-	<li><strong>B2: </strong>Is the background noise of atmospheric muons
-still present in my neutrino data sample?</li>
-	<li><strong>C1: </strong>I want to use an image - who was involved in
-creating it?</li>
-	<li><strong>C2: </strong>I have a question about column xxx in the data
-table. Who can I ask about that?</li>
-	<li><strong>D1: </strong>I found something strange in an image. Where does
-the image come from? Which instrument was used, with which characteristics
-etc.? Was there noted anything strange when the image was taken?</li>
-	<li><strong>D2: </strong>This light curve doesn't look quite right. How was
-the photometry determined for each data point?</li>
-	<li><strong>E1: </strong>Since wrong calibration images may increase the
-number of atrifacts on an image rather than removing them, the knowledge about
-the calibration image set will help to assess the quality of the calibrated
-image.</li>
-	<li><strong>F1: </strong>I want to know the complete history of my image,
-where are the raw files located, which processing steps were done, etc.</li>
-	<li><strong>F2: </strong>Give me more images that were produced using the
-same pipeline.</li>
-	<li><strong>F3: </strong>Give me an overview on all images reduced with the
-same calibration data set.</li>
-</ul>
-</p>
-
-</div> <!-- subsection requirements -->
-
-
-
-<div class="section"><h3><a id="domain_model"><span class="secnum">2.2. </span>A model for provenance</a></h3>
-<p>We present here the core concepts for modelling provenance. The resulting model can be reused as a kind of pattern, everywhere where provenance is needed. (TODO: How exactly may be described here as well or even in the other data models.)</p> 
+<p>We describe here the core concepts for modelling provenance. The resulting model could then be reused as a kind of pattern everywhere where provenance is needed in the VO. [TODO: How exactly may be described here as well or even in the other data models.]</p> 
 
 <p>
-The class diagram generated with MagicDraw Community Edition is given in the following figure; the details are described in the next sections.</p>
+Currently, we are still debating which way to go: a model using prototypes similar to <cite>[<a href="#std:SimDM">std:SimDM</a>]</cite> or rather a variant of the W3C-model.
+We present them here along with some of their advantages/diadvantages.
+</p>
+
+<div class="section"><h3><a id="prototype_model"><span class="secnum">2.1. </span>A model using prototypes</a></h3>
+<p>This model is inspired by <cite>[<a href="#std:SimDM">std:SimDM</a>]</cite>, a data model for simulation data published in May 2013. Especially we copied the central classes: Protocol and Experiment.  A Protocol is the plan or method
+which describes how to do something whereas Experiment is the actual execution of
+this plan. Defining such protocols allows them to be reused, which is very useful when performing series of experiments of the same type, as is typically done in astronomy. For our provenance mdoel, we use the more generic term
+"Activity" instead of Experiment, as it us used by the W3C Provenance Data Model (<cite>[<a href="#std:W3CProvDM">std:W3CProvDM</a>]</cite>). Instead of "Protocol", we use the term "Method", 
+for not confusing it with e.g. IVOA protocols.</p>
+
+
+<p>The class diagram generated with MagicDraw Community Edition is given in the following figure; the details are described in the next sections.</p>
 
 <div class="figure" align="center">
-<img src="ProvDM-classdiagram.png" width="80%" alt="[The Provenance Data Model class diagram]" />
-<p class="figurecaption"><strong>Figure 1:</strong> The (current) Provenance Data Model
-class diagram. It will certainly change again, so use it with care.</p>
+<img src="ProvDM-classdiagram-prototypes.png" width="80%" alt="[The Provenance Data Model class diagram]"/>
+<p class="figurecaption"><strong>Figure 2:</strong> The (current) Provenance Data Model
+class diagram. It will certainly change again, so use it with care. In this version, we stripped it now from nearly all derived classes, so we can concentrate on the core elements. The green and blue boxes belong to 'prototype' classes.</p>
 </div>
 
 
 
-<div class="section"><h4><a id="activity_method"><span class="secnum">2.2.1. </span>Activity and method; relation to SimDM</a></h4>
-<p>The provenance of simulation data is already covered within the SimDM data model <cite>[<a href="#std:SimDM">std:SimDM</a>]</cite>, which is an IVOA recommendation since May 2013. In SimDM as well as in the Unified Domain Model, there are two central classes: Protocol and Experiment. A Protocol is the plan or method
-which describes how to do something whereas Experiment is the actual execution of
-this plan. Defining such protocols allows them to be reused, which is very useful when performing series of experiments of the same type, as is typically done in astronomy. 
-
-Therefore, we adopt this approach here, but use the more generic term
-"Activity" instead of Experiment, as it us used by the W3C Provenance Data Model (<cite>[<a href="#std:W3CProvDM">std:W3CProvDM</a>]</cite>). Instead of "Protocol", we use the term "Method", 
-for not confusing it with e.g. IVOA protocols.</p>
-
+<div class="section"><h4><a id="activity_method"><span class="secnum">2.1.1. </span>Activity and method</a></h4>
+<p>Activity corresponds to Experiment and Method to Protocol from <cite>[<a href="#std:SimDM">std:SimDM</a>]</cite>.</p>
 
 <p>Examples for astronomical activities are observations and processing steps like
 flat-fielding, correcting bias, astrometric calibration etc. The type or method
@@ -402,7 +454,7 @@ the steps at once. This method can then be refered by the pipeline-activity.
 </div> <!-- subsubsection activity_method -->
 
 
-<div class="section"><h4><a id="data_desc"><span class="secnum">2.2.2. </span>Data and DataDescription</a></h4>
+<div class="section"><h4><a id="data_desc"><span class="secnum">2.1.2. </span>Data and DataDescription</a></h4>
 <p>We define a general "Data" class (actually: DataComponent, see next section), 
 which can represent either an individual data item or a collection of data. The W3C equivalent to this class is called "Entity"; we use  "Data" instead, since we do not aim to model cars and abstract ideas here, but more concretely astronomical data of any kind. 
 </p>
@@ -417,65 +469,36 @@ output data, which should be described in the general "DataDescription"
 class, so that it can be reused for multiple instances of this class.</p>
 
 
-<p>There has been some dispute (before and at the InterOp in Madrid, 2014) about the different roles of input and output data. Since the results of one activity can be input data for
+<p>There has been some dispute (before and at the InterOp in Madrid, May 2014) about the different roles of input and output data. Since the results of one activity can be input data for
 another activity, the structure of input and output data is necessarily the same.
 The link from an "Activity" to the corresponding "Data"
 object could tell then if the piece of data is used as input or output (see
-figure at <span class="xref"><a href="#links_between_data">2.2.6</a></span>).</p>
+figure at <span class="xref"><a href="#links_between_data">2.1.6</a></span>).</p>
 
-<p>However, input data can take different roles in an activity (auxiliary data like a parameter file, two images, with one that needs to be subtracted from the other) and it must be made explicit which data component that is used by or generated from an activity fulfills which role. In W3C, this is solved by adding a derivation relation between the entities (data). Here, we add a mapping-class between activity and data as well as between method and datadescription. The mapping-class at the description side, i.e. between the Method and its DataComponentDescriptions, contains additionally a role for each relation, e.g. parameter, dark frame, raw image, etc. </p>
+<p>However, input data can take different roles in an activity (auxiliary data like a parameter file, two images, with one that needs to be subtracted from the other) and it must be made explicit which data component that is used by or generated from an activity fulfills which role. In W3C, this is partially solved by adding a derivation relation between the entities (data). Here, we add a mapping-class between activity and data as well as between method and dataDescription. The mapping-class at the description side, i.e. between the Method and its DataComponentDescriptions, contains additionally a role for each relation, e.g. parameter, dark frame, raw image, etc.  If a dataComponent is used as input to an activity or results from it, will become clear with these roles.</p>
 
 <p><em>Note: Suggestion by Jochen: What about defining a Role-class for methods? This way each method should define the roles that are allowed for the method (probably taken from a specified list of vocabularies), enhancing inter-operability.</em></p>
 
-<p><em>TODO: Do we really need to distinguish between input and output data? What about such things like ambient conditions, which can be considered as one or the other? Should this be covered by the roles? The original idea of the distinction was, that there is a bidirectional link between activity and output, but NOT between activity and input, since the input data does not necessarily need to know where it is used further on. However, as Jochen pointed out, transfering this to a relational database, the distinction is only one field in a database table, so we could just include it for both and have one common table for input and output relations.</em>
-</p>
 
+<p>Without the mapping tables, the relation between activity/method and data/datadescription would be an aggregation relation, or in other words: an association with the aggregationKind "shared". That would be required to ensure that all DataComponents linked to an activity (either as input or output) will survive if the activity is destroyed, since they are almost always shared with other activities. </p>
 
-
-<p>Without the mapping tables, the relation between activity/method and data/datadescription would be an aggregation relation, or in other words: an association with the aggregationKind "shared". That would be required to ensure that all DataComponents linked to an activity (either as input or output) will survive if the activity is destroyed, since they are almost always shared with other activities.</p>
-
-
-
-
-<!-- old text without mapping tables: 
-
-<p>The aggregation relation from Activity to inputDataComponents is directed: the Activity needs
-to have a list of all necessary input data (files, tables, parameters, images, ...), but the input
-data should not have a reference forward to all the activities where they are used.
-</p>
-
-<p>The aggregation relation from Activity to resultDataComponents is not directed: 
-here we need both directions: the Activity needs a result-list and all the 
-resultDataComponents must know where they are coming from. 
-This is the most important relation of the provenance data model, which allows  
-to track the history of a DataComponent (together with the link between Activity and inputData). 
-</p>
-<p>Note that there is always exactly 1 activity that created the data or none. This is how we define it. If there are multiple activities involved for producing one result, then they have to be defined separately, possibly with temporary results in between. Or, alternatively, we define one big activity that is actually a combination of multiple steps, but the 
-steps themselves are not defined further (i.e. they get no extra rows in a database representation of our model).  
-</p>
-
--->
 
 <p>
-By using the mapping tables we can use a composition relation to the activity/method and simple associations to the individual data components and their descriptions. But as mentioned above, whether we need a clear distinction between input/output or not, is still to be discussed. 
+By using the mapping tables we make the role of a dataComponent in an activity more explicit and thus can replace the aggregation by a composition relation to the activity/method and simple associations to the individual data components and their descriptions. 
 </p>
-
- 
-
-
 
 </div> <!-- subsubsection data_desc -->
 
 
-<div class="section"><h4><a id="data_sets"><span class="secnum">2.2.3. </span>Data Collections - Composite pattern</a></h4>
+<div class="section"><h4><a id="data_sets"><span class="secnum">2.1.3. </span>Data Collections - Composite pattern</a></h4>
 <p>
 There are two major data classes: 
 </p>
 <ul> 
-<li>data collections <br />e.g. RAVE-DR4 with its databases and database tables, SDSS DR9 with 
-all its tables and files, all files from one observing slot<br />
+<li>data collections <br/>e.g. RAVE-DR4 with its databases and database tables, SDSS DR9 with 
+all its tables and files, all files from one observing slot<br/>
 </li>
-<li>individual data items<br />
+<li>individual data components<br/>
 e.g. a file, table in a database, parameter value, an image, a fits-file containing a table and image
 </li>
 </ul>
@@ -512,11 +535,37 @@ emtpy (or point to itself) for the root-DataComponent.
 
 We hope that such a representation would make it easier for clients to handle data 
 objects, since they don't have to make the distinction between data items and data 
-sets. 
+collections. 
 </p>
 </div> <!-- subsubsection data_set -->
 
-<div class="section"><h4><a id="storage"><span class="secnum">2.2.4. </span>Storage</a></h4>
+
+
+<div class="section"><h4><a id="agent"><span class="secnum">2.1.4. </span>Agent</a></h4>
+<p>In SimDM, someone performing a certain experiment is called "Contact", 
+the W3C provenance data model suggests the term "Agent", so we adopted it here.
+We want to describe someone who is responsible for an activity, e.g. who pressed a button, 
+ran a script or performed the observation. The agent could be a single person 
+(specified by name), a group of persons (e.g. MUSE WISE Team), project/organization (RAVE) or an institute. 
+For each of them a name should be specified.
+</p>
+<p>
+It is desired to have an agent given for each activity, but it
+is not enforced (hence 0..*).  It would also increase the value of the given
+information if the (current) affiliation of the agent and a project leader/group
+leader were specified in order to maximize the chance of finding someone later
+on. The agent should not only be used for getting contact information, but also 
+to fulfill our "Attribution" requirement, so that proper credit goes to the right 
+people/projects. To this end, it could also make sense to add a relation between a DataComponent and Agent, similar to W3C's wasAttributedTo-relation.
+</p>
+
+<em>TODO: Specify pre-defined contact or agent roles to choose from, in order maximize interoperability (see SimDM: owner, creator, publisher, contributer; any more?)</em>
+
+</div> <!-- subsubsection agent -->
+
+
+
+<div class="section"><h4><a id="storage"><span class="secnum">2.1.5. </span>Storage</a></h4>
 <p>The modeling of storage is not included in this model. 
 It would be useful to be able to make a reference from the DataComponent to a storage
 object that contains the link to where the data is stored. But we haven't fixed the 
@@ -525,47 +574,7 @@ details here.
 </div> <!-- subsubsection storage -->
 
 
-<div class="section"><h4><a id="dataelements"><span class="secnum">2.2.5. </span>Different data elements</a></h4>
-<p>We divide DataComponents into three different types: 
-<ul>
-<li>TransientData: These are parameters that are not stored. E.g. a parameter given in the 
-command line when starting a code. Or an output value that was printed in the terminal when 
-a program was executed and is lost when the session is closed. A command-line input parameter
-may be stored in the log-output file, but still one would want to define this as a transient
-data element for specifying the input for the activity completely.
-</li> 
-<li>TemporaryData: This captured data that are produced during an Activity but are deleted again 
-during the process. They could also just have lived in memory. It may be useful to record 
-them in the provenance of the final data set anyway to get a clearer picture of 
-the Activity steps involved.  
-</li>
-<li>StoredData: These are the "usual" data, stored as a file, in a database table; as an image, table,
-binary file, template, ....
-</li>
-</ul>
-</p>
-
-<p>
-We had discussed making a distinction between "Parameters" and "Data". Parameters 
-would come as key-value pairs and users would usually be interested in their 
-values directly. "Data" would have meant everything else, i.e. data for which mainly 
-the name and storage location would be important for the user.  We would not want to model each single
-row of a table as one data item. However, during some discussions we came up with this 
-distinction that hopefully is a better representation of the world of data.</p>
-
-<p>If an Activity needs five parameters, the Method for this Activity needs to define if these
-are expected to come as a parameter file (StoredData) or if they are to be entered 
-on the command line (TransientData). </p>
-
-<p>NOTE: So what if the Activity expects 5 parameters entered directly, but I create an input file
-and pipe it into the Activity? Then this input file would contain the TransientData and 
-they would be StoredData instead.
-</p>
-
-</div> <!-- subsubsection dataelements -->
-
-
-<div class="section"><h4><a id="links_between_data"><span class="secnum">2.2.6. </span>Links Between Data</a></h4>
+<div class="section"><h4><a id="links_between_data"><span class="secnum">2.1.6. </span>Links Between Data</a></h4>
 <p>It would be convenient if each data object or even each file ("Storage" object)
 gets a unique "dataId" that can be referenced. If several copies have been
 made out of a data set and one of them is corrupted, it would even be useful to know
@@ -577,53 +586,32 @@ exactly which copy was used by a given activity.</p>
 activity. A possible data flow is shown in the figure below:</p>
 
 <div class="figure" align="center">
-<img src="ProvDM-activities.png" width="45%" alt="[Example for activities]" />
-<p class="figurecaption"><strong>Figure 2:</strong> The black arrows indicate the
-data flow, gray arrows just show which activity would be attached to the step. It
-is defined by the key in the corresponding Activity whether data is used as input
+<img src="ProvDM-activities.png" width="45%" alt="[Example for activities]"/>
+<p class="figurecaption"><strong>Figure 3:</strong> The black arrows indicate the
+data flow, gray lines just show which activity would be attached to the step. It
+is defined by the role in the corresponding Activity whether data is used as input
 or output.</p>
 </div>
 
 </div> <!-- subsubsection links_between_data -->
 
-<div class="section"><h4><a id="calib_data"><span class="secnum">2.2.7. </span>Calibration data</a></h4>
+<div class="section"><h4><a id="calib_data"><span class="secnum">2.1.7. </span>Calibration data</a></h4>
 <p>The calibration data set consists of images that can be used to calibrate the
-raw data. It is not necessary to mention them explicitly in the model. Instead
-they can be included by adding an activity called "Calibration":
-<ul>
-	<li>Activity: Calibration (status: planned or finished)</li>
-	<li>InputData: uncalibrated image, calibration data set</li>
-	<li>ResultData: null or calibrated data</li>
-	<li>Agent: null or name</li>
-</ul>
+raw data. It is not necessary to mention them explicitly in the model, they are just another dataSet that is used by activities with a calibration-method.
 </p>
 
-<p>If the calibration has not yet been done, the calibration activity would still
-need to be described to make sure that the calibration data sets and links to the
-uncalibrated data will be recorded. In that case, the calibration activity would
-have the status "planned" or similar and we would have null results.
-</p>
-
-<p>Basically, the calibration data could also be recorded as the result of the
-activity "Generating calibration data", but it is not required to
-include this into our model. However, the link between input data and their
-calibration data sets is needed and could be established via the Calibration
-activity as suggested here.
-</p>
 </div> <!-- subsubsection calib_data -->
 
-<div class="section"><h4><a id="ambient_conditions"><span class="secnum">2.2.8. </span>Ambient Conditions</a></h4>
+<div class="section"><h4><a id="ambient_conditions"><span class="secnum">2.1.8. </span>Ambient Conditions</a></h4>
 <p>
 Ambient conditions are environmental properties, which are special in a way: 
 they represent the part of an activity, usually an observation, which cannot be 
 (fully) controlled by an
 observer, in contrast to other data that can be fully reproduced.
-Nevertheless we now decided that they can be fully described by our 
-data classes. Thus they are not forming a separate class in our data model, but should 
-be treated as just another input data set. 
-</p>
+Nevertheless we decided that they can be fully described by our 
+data class already and don't need a separate class in our data model. 
 
-<p>Our model can then also take into account that a certain observation
+Our model can then also take into account that a certain observation
 method requires special ambient conditions, already defined via the method
 (e.g. radio observations rely on different ambient conditions than observations
 of gamma rays), just following our data - data description scheme.
@@ -631,7 +619,7 @@ of gamma rays), just following our data - data description scheme.
 
 <p>Ambient conditions are recorded for a certain time (executionDate) and are
 usually only valid for a certain time interval. This time interval should be recorded
-with the validity-attribute for DataComponents.
+with a validity-attribute for DataComponents.
 </p>
 
 <p><em>We wondered if ambient conditions could also play a role for some
@@ -643,8 +631,8 @@ quality of the photographic plates.</em></p>
 
 </div> <!-- subsubsection ambient_conditions -->
 
-<div class="section"><h4><a id="instrument_characs"><span class="secnum">2.2.9. </span>Instrument Characteristics</a></h4>
-<p>In contrast to the ambient conditions, instrument characteristics do not
+<div class="section"><h4><a id="instrument_characs"><span class="secnum">2.1.9. </span>Instrument Characteristics</a></h4>
+<p>In contrast to ambient conditions, instrument characteristics do (usually) not
 change from one observation to the other, so they are static, strictly related to
 the instrument. 
 All the characteristics could be described either as key-value pairs directly with the 
@@ -655,14 +643,13 @@ observation activity. Thus we don't need a separate Instrument or Device class.
 
 <p>
 One should also keep in mind that some instrument related parameters can change within time,
-e.g. the CCD temperature. These should probably rather go into ambient conditions.
-Instruments can also change within time because of aging.
+e.g. the CCD temperature. The instruments can also change within time because of aging.
 </p>
 
 </div> <!-- subsubsection instrument_characs -->
 
-<div class="section"><h4><a id="quality"><span class="secnum">2.2.10. </span>Quality</a></h4>
-<p>Here we could simply define additional attributes for each "Activity"
+<div class="section"><h4><a id="quality"><span class="secnum">2.1.10. </span>Quality</a></h4>
+<p>We could simply define additional attributes for each "Activity"
 or "Data" object, i.e. zero, one, or more properties in the form of
 key-value pairs. We could use a "Quality" namespace to mark a keyword
 as quality-related:
@@ -673,39 +660,57 @@ as quality-related:
 The values could range from a float number to free text.</p>
 </div> <!-- subsubsection quality -->
 
-<div class="section"><h4><a id="agent"><span class="secnum">2.2.11. </span>Agent</a></h4>
-<p>In SimDM, someone performing a certain experiment is called "Contact", 
-the W3C provenance data model suggests the term "Agent". We want to 
-describe here someone who is responsible for an activity, e.g. who pressed a button, 
-ran a script or performed the observation. The agent could be a single person 
-(specified by name), a group of persons (e.g. MUSE WISE Team) or a project (RAVE). 
-For each of them a name needs to be specified.
-</p>
+
+<div class="section"><h4><a id="discussion"><span class="secnum">2.1.11. </span>Discussion</a></h4>
+<p>This model was established with having a database implementation in mind. However, we'll look again at W3C in the next section, which may offer simpler possibilities to store provenance with the dataComponents themselves, e.g. as an additional structure in fits-headers.</p>
+
 <p>
-It is desired to have an agent given for each activity, but it
-is not enforced (hence 0..*).  It would also increase the value of the given
-information if the (current) affiliation of the agent and a project leader/group
-leader were specified in order to maximize the chance of finding someone later
-on. But the agent should not only be used for getting contact information, but also 
-to fulfill our "Attribution" requirement, so that proper credit goes to the right 
-people/projects.
+A model using prototypes has the advantage of normalisation: methods could be described once and for all at some place (this <em>some place</em> is actually the crucial point here!) and then be reused when describing the actual provenance of certain dataComponents and activities.
+However, building such a look-up place for all the possible methods and dataDescriptions is a quite challenging task -- it will probably never be complete. There's also the issue of persistent identifiers/broken links to consider.
+Normalisation is useful for closed systems, e.g. for describing the provenance for data produced by a certain pipeline (e.g. MuseWise system) or with workflow tools or when a task needs to be repeated many times. However, the VO is quite the contrary of a closed system and we need to keep an eye on what is actually achievable.
 </p>
 
-<em>NOTE: Use "Contact" instead of "Agent" to make it clearer that 
-a person or project is meant, not a piece of code (like the "TargetProcessor" for MUSE)?</em>
+</div> <!-- subsubsection discussion -->
 
-<em>TODO: Specify contact or agent roles (see SimDM: owner, creator, publisher, contributer; any more?)</em>
 
-</div> <!-- subsubsection agent -->
+</div> <!-- subsection prototype_model -->
 
-<div class="section"><h4><a id="project"><span class="secnum">2.2.12. </span>Project</a></h4>
-<p>To each Activity one can assign a Project that is responsible for the Activity. 
-One may also specify a projectLeader, who is an Agent with name and maybe even contact details provided
-for further reference.
+<div class="section"><h3><a id="w3clike_model"><span class="secnum">2.2. </span>A simpler model based on W3C</a></h3>
+
+<p>
+When trying to write down a simple serialisation of e.g. the provenance for a stacked image with the protoype-model, it soon becomes quite cumbersome to define everything twice: first the descriptions, then the instances. This basically doubles the number of entries to describe provenance (unless there is already some place with all the descriptions to which we can refer).</p>
+
+<p>
+Thus, we consider the W3C-model again, and adjust it by replacing the used- and wasGeneratedFrom-relations by a mapping class between activity and entity in the following class diagram:
 </p>
-</div> <!-- subsubsection project -->
 
-</div> <!-- subsection domain_model -->
+<div class="figure" align="center">
+<img src="ProvDM-W3C-adjusted.png" width="45%" alt="[W3C adjusted to VO Prov-DM]"/>
+<p class="figurecaption"><strong>Figure 4:</strong> An adjusted W3C model for provenance of astronomical data.</p>
+</div>
+
+The different methods and data types are here hidden in pre-defined vocabulary lists. 
+An example for writing down the provenance for a stacked image in W3C and with the protoype-model is given in the accompanying files 
+at h<code>prov-example-incl-prototypes.txt</code> and 
+<code>prov-example-w3c.txt</code> in 
+https://code.google.com/p/volute/source/browse/trunk/projects/dm/provenance/description/.
+
+
+
+
+<div class="section"><h4><a id="discussion2"><span class="secnum">2.2.1. </span>Discussion</a></h4>
+<p>
+Expressing provenance for a stacked image with this smaller set of classes may be simpler, but on the other hand constructing a database schema becomes much harder. 
+
+The question is: could we just derive a simple exchange format from the prototype-model? Should we be instance-driven here? Which model would be more useful?
+</p>
+
+</div> <!-- subsubsection discussion2 -->
+
+
+</div> <!-- subsection w3clike_model -->
+
+
 </div> <!-- section prov_dm -->
 
 
@@ -719,9 +724,33 @@ for further reference.
  !  ==========
  !-->
 
-<div class="section-nonum"><h2><a id="references"><span class="secnum"></span>References</a></h2>
+<div class="section-nonum"><h2><a id="references"><span class="secnum"/>References</a></h2>
 
-<?bibliography prov-refs?>
+<?bibliography prov-refs?><dl>
+
+<dt><a name="std:W3CProvDM">[std:W3CProvDM] Khalid Belhajjame, Reza B'Far,
+  James Cheney, Sam Coppens, Stephen Cresswell, Yolanda Gil, Paul Groth, Graham
+  Klyne, Timothy Lebo, Jim McCusker, Simon Miles, James Myers, Satya Sahoo, and
+  Curt Tilmes.</a></dt> <dd>
+  <a href="http://www.w3.org/TR/prov-dm/">PROV-DM: The prov data model</a>.
+  W3C Recommendation, April 2013.
+</dd>
+
+<dt><a name="std:RFC2119">[std:RFC2119] Scott Bradner.</a></dt> <dd>
+  <a href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+  indicate requirement levels</a>.
+  RFC 2119, March 1997.
+</dd>
+
+<dt><a name="std:SimDM">[std:SimDM] Gerard Lemson, Laurent Bourgès, Miguel
+  Cerviño, Claudio Gheller, Norman Gray, Franck LePetit, Mireille Louys,
+  Benjamin Ooghe, Rick Wagner, and Hervé Wozniak.</a></dt> <dd>
+  <a href="http://www.ivoa.net/documents/SimDM/">Simulation data model,
+  version 1.0</a>.
+  IVOA Recommendation, May 2012.
+</dd>
+
+</dl>
 
 </div> <!-- section references -->
 
