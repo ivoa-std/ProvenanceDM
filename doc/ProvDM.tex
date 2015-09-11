@@ -563,26 +563,16 @@ as quality-related:
 The values could range from a float number to free text.
 
 \subsubsection{Discussion}
-This model was established with having a database implementation in mind. However, we'll look again at W3C in the next section, which may offer simpler possibilities to store provenance with the dataComponents themselves, e.g. as an additional structure in fits-headers.
-
+This model was established with having a database implementation in mind. However, the W3C model may offer simpler possibilities to store provenance with the dataComponents themselves, e.g. as an additional structure in fits-headers.
 
 A model using prototypes has the advantage of normalisation: methods could be described once and for all at some place (this \emph{some place} is actually the crucial point here!) and then be reused when describing the actual provenance of certain dataComponents and activities.
 However, building such a look-up place for all the possible methods and dataDescriptions is a quite challenging task -- it will probably never be complete. There's also the issue of persistent identifiers/broken links to consider.
 Normalisation is useful for closed systems, e.g. for describing the provenance for data produced by a certain pipeline (e.g. MuseWise system) or with workflow tools or when a task needs to be repeated many times. However, the VO is quite the contrary of a closed system and we need to keep an eye on what is actually achievable.
 
-
-
-
-
-
-\subsubsection{Discussion}
-
 When writing down a simple serialisation of e.g. the provenance for a stacked image with the protoype-model, it soon becomes quite cumbersome to define everything twice: first the descriptions, then the instances. This basically doubles the number of entries to describe provenance (unless there is already some place with all the descriptions to which we can refer).
 
 Expressing provenance for a stacked image with this smaller set of classes may be simpler, but on the other hand constructing a database schema becomes much harder. 
-
 The question is: could we just derive a simple exchange format from the prototype-model? Should we be instance-driven here? Which model would be more useful?
-
 Though we currently favour the simpler model, we could still come back to the prototype model in a later version, if we consider it more useful.
 
 
@@ -604,7 +594,7 @@ The workflow is not included completely, only some major steps are taken into ac
 
 
 \section{Implementations}
-\TODO{Maybe combine with exampples?}
+\TODO{Maybe combine with examples?}
 
 
 \appendix
