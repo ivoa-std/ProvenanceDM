@@ -13,14 +13,22 @@
 \author{Adrian Partl}
 \author{Jochen Klar}
 \author{Mireille Louys}
+\author{Francois Bonnarell}
 
 % \previousversion[????URL????]{????Funny Label????}
-\previousversion{This is the first draft}
+\previousversion{This is still an internal draft}
        
+
+% own definitions
+\definecolor{todocolor}{rgb}{1,0.7,0.0}
+\newcommand{\TODO}[1]{\noindent \textcolor{todocolor}{[\textbf{TODO:} #1]}}
+\newcommand{\paragraphlb}[1]{\paragraph{#1}\mbox{}\\} % paragraph with line break
 
 \begin{document}
 \begin{abstract}
-[TODO]
+\TODO{}
+
+This version is still an internal working draft, any comments welcome!
 
 NOTE: The urls above won't work yet, because this draft is only circulated via the volute-repository for now.
 \end{abstract}
@@ -40,7 +48,7 @@ The words ``MUST'', ``SHALL'', ``SHOULD'', ``MAY'', ``RECOMMENDED'', and
 interpreted as described in IETF standard, \citet{std:RFC2119}.
 
 The \emph{Virtual Observatory (VO)} is
-general term for a collection of federated resources that can be used
+a general term for a collection of federated resources that can be used
 to conduct astronomical research, education, and outreach.
 The \href{http://www.ivoa.net}{International
 Virtual Observatory Alliance (IVOA)} is a global
@@ -53,38 +61,39 @@ infrastructure that enable VO applications.
 In this document, we discuss a draft for an IVOA standard data model for describing the
 provenance of data. We focus here on observational data, since provenance for
 simulated data is already covered by SimDM 
-\cite{std:SimDM}. This ProvDM draft is at a very preliminary state and may change at any time.
+\cite{std:SimDM}. However, the currently discussed version is abstract enough so that 
+it could be applied to any kind of processes, including extraction of data from databases 
+or the flow of scientific proposals from application to acceptance and scheduling of 
+the proposed observations.
+
+This draft is at a very preliminary state and may change at any time.
 
 
 \subsection{Role within the VO Architecture}
 
-\begin{figure}
-\centering
+% Skipping this for now. Let's not let this draft look more official than it 
+% currently is.
 
-% Get the architecture diagram from the TCG chair
-% http://wiki.ivoa.net/twiki/bin/view/IVOA/IvoaTCG
-% If they give you a PDF, for now dumb it down to a png by
-% convert -antialias -density 72x72 archdiag.pdf archdiag.png
-% Oh -- Notes don't need this; you'd have to remove archdiag.png
-% from FIGURES in the Makefile, too.
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{archdiag.png}
+%\caption{Architecture diagram for this document}
+%\label{fig:archdiag}
+%\end{figure}
 
-\includegraphics[width=0.9\textwidth]{archdiag.png}
-\caption{Architecture diagram for this document}
-\label{fig:archdiag}
-\end{figure}
-
-Fig.~\ref{fig:archdiag} shows the role this document plays within the
-IVOA architecture \citep{note:VOARCH}.
+%Fig.~\ref{fig:archdiag} shows the role this document plays within the
+%IVOA architecture \citep{note:VOARCH}.
 
 
 \subsection{Requirements for Provenance and Use Cases}
-A provenance data model should provide solutions to the following tasks:
-\begin{itemize}
-\item   \textbf{A: Tracking the production history}\\
-		Find out which steps were taken to produce this piece of data/image and which methods/tools/software was involved. 
-		Track the history back to the raw data files/raw images.
 
-		Examples: 
+An IVOA provenance data model should provide solutions to the following tasks:
+
+\paragraphlb{A: Tracking the production history}
+		Find out which steps were taken to produce a dataset and list the methods/tools/software that was involved. 
+		Track the history back to the raw data files/raw images, show the workflow.
+
+		\noindent Examples: 
 		\begin{itemize}
 			\item Is the image from catalogue xxx already calibrated?
 What about dark field subtraction? Were foreground stars removed? Which technique
@@ -93,15 +102,14 @@ was used?
 			\item Is the background noise of atmospheric muons still present in my neutrino data sample?  
 		\end{itemize}
 
-		We don't go so far as to consider easy reproducability as a use case -- this would be too ambitious. But at least the 
+		We don't go so far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
 		major steps undertaken to create a piece of data should be recoverable.
 
 	  
+\paragraphlb{B: Attribution and further information}
+		Find the people involved in the production, the people/organizations/institutes that need to be cited or can be asked for more information.
 
-	\item   \textbf{B: Attribution and further information}\\
-		Find the people involved in the production, the people/organizations/institutes that need to be cited or can be asked for more information
-
-		Examples: 
+		\noindent Examples: 
 		\begin{itemize}
 			\item I want to use an image for my own work - who was involved in
 creating it? Whom do I need to cite or who can I contact to get this information?  
@@ -110,10 +118,10 @@ table. Who can I ask about that?
 		\end{itemize}
 	  
 
-	\item   \textbf{C: Aid in debugging}\\
+\paragraphlb{C: Aid in debugging}
 		Find possible error sources.
 
-		Examples: 
+		\noindent Examples:
 		\begin{itemize}
 			\item I found something strange in an image. Where does
 the image come from? Which instrument was used, with which characteristics
@@ -126,10 +134,10 @@ the photometry determined for each data point?
 
 	  
 
-	\item   \textbf{D: Quality assessment}\\
+\paragraphlb{D: Quality assessment}
 		Judge the quality of an observation, production step or data set.
 		
-		Examples: 
+		\noindent Examples:
 		\begin{itemize}
 			\item Since wrong calibration images may increase the
 number of artifacts on an image rather than removing them, the knowledge about
@@ -138,10 +146,10 @@ image.
 		\end{itemize}
 	  
 
-	\item   \textbf{E: Search in structured provenance metadata}\\
+\paragraphlb{E: Search in structured provenance metadata}
 		Find all images produced by a certain processing step and similar tasks.
 		
-		Examples: 
+		\noindent Examples:
 		\begin{itemize}
 			\item Give me more images that were produced using the
 same pipeline.  
@@ -150,63 +158,137 @@ same pipeline.
 			\item Which images of the crab nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?  
 		\end{itemize}
 
-		This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed A separately, since we may decide that we can't keep this one, but we definitely want A.
+		This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed this task separately, since we may decide that we can't keep this one, but we definitely want A.
 	  
-\end{itemize}
+
+\subsection{Further possible applications}
+The previously listed use cases were collected having an external scientist in mind who retrieves data from the virtual observatory and needs to get more background information. When looking at internal processes, one can also use provenance for checking workflows, e.g. if reduced images from a pipeline don't look quite right, the pipeline can be re-run with different parameters. Tracking the workflow in a common provenance description can help to quickly identify the problematic parameters and to keep a better track of changes. It can also be used to exchange pipeline recipes between different projects in a standardized way.
+
+The provenance of the flow of scientific proposals at observatories could also be tracked. The information could be used to check internal processes, e.g. if the proposal was approved by a person from a certain committee, if the time span between application and acceptance/refusal does not extend a certain period etc. 
 
 
-\section{Previous efforts on provenance modelling}
-\subsection{Provenance in the IVOA}
+\subsection{Goal of the provenance model}
+The goal of the provenance data model is to describe how provenance information can be modeled and stored/exchanged within the virtual observatory. Its scope is mainly to model the flow of data, the relations between data and processing steps. Characteristics of observations like ambient conditions and instrument characteristics won't be modeled here explicitely. They are to be included in the form of data sets (entities) only.
 
+
+\subsection{Previous efforts}
 Provenance was already discussed since the early days of the IVOA, but previous efforts from the IVOA community unfortunately are mostly not well documented or we were not able to find them. 
 There exists a vocabulary list by Arnold Rots, we got a provenance diagram from a talk by Francois Bonnarell, and there exist workflows to track provenance for specific projects (e.g. CTA), but this is all very specific and too detailed for a general provenance model. We therefore went a step back to start with a more abstract core model as discussed in this document.
 
-\emph{TODO: give more specific references, check other data models and where they touch provenance}
+\TODO{Give more specific references, check other data models and where they touch provenance}
+
+Outside of the astronomical community, the Provenance Challenge series (2006 - 2010), a community effort to achieve inter-operability between different representations of provenance in scientific workflows, resulted in the Open Provenance Model (\cite{moreau2010}). 
+Later, the W3C Provenance Working Group was founded and released the W3C Provenance Data Model as Recommendation in 2013 (\cite{std:W3CProvDM}). 
+OPM was designed to be applicable to anything, scientific data as well as cars or immaterial things like decisions. With the W3C model, this becomes more focused on the web.  Nevertheless, the core concepts are still in principle the same in both models and fairly general, so they can be applied to astronomical data sets and workflows as well. 
+The W3C model was taken up by a larger number of applications and tools than OPM, we are therefore basing our modeling efforts on the W3C Provenance data model, making it less abstract, more specific or extend it where necessary. 
 
 
-\subsection{Open Provenance Model (OPM) and W3C PROV-DM}
-
-Other communities have put considerable efforts into establishing a provenance model.
-The Provenance Challenge series (2006 - 2010) was a community effort to achieve inter-operability between different representations of provenance in scientific workflows. It resulted in the Open Provenance Model (\cite{moreau2010}), and some members of that challenge continued their work by joining the W3C Provenance Working Group. The W3C Provenance Data Model was released as Recommendation in 2013. The cores of OPM and W3C are in principle the same, therefore we focus here on describing the basic concepts of the W3C Provenance Data Model (PROV-DM, see \cite{std:W3CProvDM}).
+The W3C model even specifies already PROV-DM Extensibility points (section 6 in \cite{std:W3CProvDM}) for extending the core model. This allows to specify additional roles and types to each entity, agent or relation using the attributes \texttt{prov:type} and \texttt{prov:role}.
+By specifying the allowed values for the IVOA model, we could adjust the model to our needs while still being compliant to W3C.
 
 
-OPM was designed to be applicable to anything, scientific data as well as cars or immaterial things like decisions. With W3C, this becomes more focused on the web. Nevertheless, the core concepts are still fairly general and should be useful for astronomical data sets as well, though we could aim at making it more specific and less abstract for our purposes. 
+\section{A provenance data model}
+\subsection{Overview - W3C core}
+We describe here the core concepts for modelling provenance. The resulting model can then be reused as a pattern everywhere where provenance
+is needed in the VO. Some examples for different use cases are given in Section \ref{sec:examples}.
 
-The elements of a provenance model can be expressed as a directed graph to capture the causal dependencies. In W3C, there are three core components, i.e. nodes of the graph:
-(see Section 1+2 and Fig. 1 in \cite{std:W3CProvDM} for the detailed specification, which we reproduce here only partially):
+The elements of a provenance model can be expressed as a directed graph to capture the causal dependencies. 
+Based on the W3C PROV-DM, we identified the need for the same three core elements, which represent the nodes of a provenance graph
+(see Section 1+2 and Fig. 1 in \cite{std:W3CProvDM}). They will be discussed in detail later on.
 
 \begin{itemize}
-\item Entity: a thing, at a certain state (car, paper, data set, idea)
-\item Activity: an action/process or series of actions, occurs over a period of time, performed on or caused by entities, usually results in new entities
-\item Agent: executes/controls an activity
+
+\item \emph{Entity:} a thing at a certain state (car, paper, data set, idea).
+
+\item \emph{Activity:} an action/process or a series of actions, occurs over a period of time, performed on or caused by entities, usually results in new entities.
+
+\item \emph{Agent:} executes/controls an activity, is responsible for an activity
 \end{itemize}
 
-There are also different possible relations between these components. Those important for astronomical data are:
+\noindent
+There are also different possible relations between these components. The main important core relations are:
 \begin{itemize}
-\item Generation: a new entitiy is generated by an activity (output\_data wasGeneratedFrom activity)
-\item Usage: an entity is used by an activity (activity used input\_data)
-\item Association: agents have responsibility for an activity (agent wasAssociatedWith activity)
+\item \emph{Generation:} a new entitiy is generated by an activity\\
+		(output\_data wasGeneratedFrom activity)
+\item \emph{Usage:} an entity is used by an activity\\
+		(activity used input\_data)
+\item \emph{Association:} agents have responsibility for an activity\\
+ 		(agent wasAssociatedWith activity)
+\item \emph{Attribution:} an entity can be attributed to an agent (entity wasAttributedTo agent)
 \end{itemize}
 
-There is one more relation that could be interesting for us:
-\begin{itemize}
-\item Attribution: an entitiy can be attributed to an agent (entity wasAttributedTo agent)
-\end{itemize}
-The attributed-to-agent may be different from the agent that is associated with the activity that created an entity.
-
-Figure \ref{fig:w3cclasses} summarizes the (core) classes and relations of the W3C provenance model that are interesting for us.
+Figure \ref{fig:w3cclasses} summarizes these (core) classes and relations of the W3C provenance model that are interesting for us.
+Its components are now discussed in more detail with respect to the role they play in provenance for the virtual observatory.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{ProvDM-W3C-classdiagram.png}
-\caption{The main classes and relations of the W3C Prov-DM, that could be useful for the VO.}
+\caption{The main core classes and relations of the W3C Provenance Data Model.}
 \label{fig:w3cclasses}
 \end{figure}
 
 
-The W3C PROV-DM further specifies a Derivation relation, which directly links a derived entity to its predecessor. This was introduced to make the link between entities more explicite. If activity a used entities e1 and e2 as input and produced e3 as output, then it is not clear, if e3 is a derivative (or, in W3C terms, "wasDerivedFrom") e1 or e2 or both or neither. e1 and e2 could have been only parameter files for an observation.  
+\TODO{Decide, which elements of W3C-PROV are needed, what else to include here.}
 
-However, for the IVOA provenance model we are fairly sure that this is not needed. Instead, at the moment we favour adding a \emph{role} to each dataItem or entity, which can explain in more detail in which way the entity was used.
+
+\subsection{Detailed discussion}
+%We are now going to discuss each component and relation in more detail.
+
+\subsubsection{Entity}
+Entities in the VO are usually (astronomical/astrophysical) data sets in the form of images, tables, numbers, etc.. But they can also be observation/simulation log files, observation proposals, scientific articles or manuals and other documents. According to the W3C model,  provenance information can also be an entity itself. 
+
+\subsubsection{Activity}
+Activities in the VO include all steps in the reduction of images and production of new data sets, like image calibration, bias subtraction, image stacking; light curve generation from a number of observations, radial velocity determination from spectra, etc.
+
+\begin{itemize}
+\item For each data flow it should be possible to clearly identify entities and activities. If the activities shall not be recorded explicitely, one can also use the \emph{Derivation}-relation (see below) to link derived entities to their originals.
+
+\item Data entities are results from activities (\emph{wasGeneratedBy}-relation), and can be used as input for other activities (\emph{used}-relation). 
+%The difference between input data and output data becomes clear by specifying the relations. 
+
+\end{itemize}
+
+\subsubsection{Agent}
+An agent can be an organization or a person, and can take different roles for an activity or an entity. 
+There can be more than one agent for each activity/entity (with different roles) and one agent can be responsible for more than one activity/entity. This many-to-many relationship can be made more explicite by adding role-maps for agents explicitely in the UML-class diagram, as "qualifiers" 
+for the relations. 
+
+In order to make it clearer what the agent is useful for, we suggest here possible roles an agent can have:\\
+\begin{center}
+\begin{tabular}{l|l|p{0.5\textwidth}}
+\multicolumn{3}{c}{\textbf{AgentRoles}}\\ \hline
+\textbf{prov:role} & \textbf{prov:type} & \textbf{Comment} \\ \hline
+author & prov:person & someone who wrote an article, software, proposal\\
+contributor & prov:person & someone who contributed to something (but not enough to gain authorship)\\
+editor & prov:person & editor of e.g. an article, before publishing\\
+publisher & prov:organization & organization (publishing house, institute) that published something\\
+observer & prov:person & observer at the telescope\\
+operator & prov:person & performing a given task (executor?)\\
+coordinator/PI & prov:person & someone coordinating/leading a project\\
+project & prov:organization & the project for which certain tasks are done, which published the data, etc.\\
+\end{tabular}
+\end{center}
+This list is not complete. 
+Such roles are domain-specific and thus not fixed in W3C's PROV-DM. However, since we are considering here the Astronomy-domain, we could 
+probably fix these roles. 
+
+\TODO{Do we have a specific use case for fixing the agent-roles? Is anyone going to search for specific roles in the Provenance meta-data?
+Or shall we leave it open, which roles can be defined and just give examples here?}
+
+
+\TODO{We still need to clarify, in which way a \emph{software agent} is distinct from an activity.}
+
+Note that the attributed-to-agent for a dataset may be different from the agent that is associated with the activity that created an entity, someone who is performing a task is not necessarily given full attribution, especially if he acts on behalf of someone else.
+
+
+
+
+
+
+\subsubsection{Roles of entities}
+The W3C PROV-DM specifies a \textbf{Derivation} relation, which directly links a derived entity to its predecessor. This was introduced to make the link between entities more explicite. If activity a1 used entities e1 and e2 as input and produced e3 as output, then it is not clear, if e3 is a derivative (or, in W3C terms, "wasDerivedFrom") of e1 or if it was derived from e2 or from both or neither. e1 and e2 could have been only parameter files for an observation.  
+
+However, for the IVOA provenance model we currently favour adding a \emph{role} to each data item or entity, which can explain in more detail in which way the entity was used.
 
 We will discuss later an approach using the additional Method-class as prototype or template for each activity.
 The types of input/output data and their roles are described using additional classes for the method, so that any kind of relation between input/output data can be covered.
@@ -214,36 +296,61 @@ The types of input/output data and their roles are described using additional cl
 One of the important details here is that e.g. many data sets used by one activity may have different roles for that process (one file is a parameter file, another one is the raw image, and the third one is the dark field that should be subtracted). Since these roles are very important for an activity, they have to be included in the provenance model.
 
 These roles don't have to be unique (see \cite{moreau2010}, after Definition 10), many data sets may have the same role for a process (e.g. raw image input).
-The IVOA community should specify and describe the possible roles for each method (which is the template for the activity), in order to facilitate interoperability. A vocabulary list or thesaurus could be useful here.
 
+Each activity requires specific roles for each entity (provided in the used- or wasGeneratedFrom-relation). 
+
+\TODO{In order to facilitate interoperability, for each activity, the possible entity-roles should be defined and described by the IVOA community, in a vocabulary list or thesaurus.}
+
+
+\subsubsection{Mapping classes}
+We could adjust the W3C model by 
+replacing the used- and wasGeneratedFrom-relations by a mapping class between activity and entity in the following class diagram, for making the possible \emph{roles} of input and output data more specific:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{ProvDM-W3C-adjusted.png}
+\caption{An adjusted W3C model for provenance of astronomical data.}
+\label{fig:classes-w3c-adjusted}
+\end{figure}
+
+
+The different methods and data types are here hidden in pre-defined vocabulary lists. 
+An example for writing down the provenance for a stacked image in W3C and with the protoype-model is given in the accompanying files 
+\texttt{prov-example-incl-prototypes.txt} and 
+\texttt{prov-example-w3c.txt} at \href{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/}{volute}.
+
+
+% The derivation relation together with entities is already enough to produce a data flow view, but in Astronomy we are probably even more interested in the Processes (as discussed in our first draft for requirements for provenance).
+
+
+\subsubsection{Bundle/Collection}
+W3C describes a collection as an aggregation of entities. This is a useful concept to adapt here, since it allows to treat many data (e.g. a RAVE data set containing data tables and spectra) and then define provenance for this complete bundle.
+On the other hand, this means that we need to define for each element of the bundle an "isChildOf" or "isMemberOf"-relation with the bundle.
+This can become quite cumbersome and will not look much more concise than writing the used- or wasGeneratedBy-relationship down for each of them.
+
+
+
+
+\subsubsection{Work flows}
+W3C suggests to use the term \emph{Plan} for entities that represent workflows and recipes. This could be interesting to include for workflow systems such as AstroTaverna. 
+
+
+\subsubsection{Hierarchical descriptions}
 OPM also suggests to allow hierarchical descriptions, i.e. allow to include different ways of getting from data set a to data set b, with different levels of detail. 
 This needs to be discussed further. 
-(After talk at InterOp-Madrid, May 2014, some people said that this would be important for them!)
+%(After talk at InterOp-Madrid, May 2014, some people said that this would be important for them!)
 
-W3C describes a collection as an aggregation of entities. This is a useful concept to adapt here, since it allows to treat many data (e.g. the RAVE survey) as one entity.
-
-It is possible to extend the core model of the W3C provenance model by using the PROV-DM Extensibility points (section 6 in \cite{std:W3CProvDM}). This allows to specify additional roles and types to each entity, agent or relation using the attributes \texttt{prov:type} and \texttt{prov:role}.
-By specifying the allowed values for the IVOA model, we can adjust the model to our needs while still being compliant to W3C.
-
-
-
-
-
-\emph{TODO: more details about W3C; explain reasons, why the other relations (e.g. Communication) are not needed. Should we include specific agent-relations like attribution, delegation?}
-
-
-
-\section{A Provenance Data Model}
-We describe here the core concepts for modelling provenance. The resulting model could then be reused as a kind of pattern everywhere where provenance is needed in the VO. [TODO: How exactly may be described here as well or even in the other data models.] 
-
-
-Currently, we are still debating which way to go: a model using prototypes similar to \cite{std:SimDM} or rather a variant of the W3C-model.
-We present them here along with some of their advantages/diadvantages.
 
 \subsection{A model using prototypes}
-This model is inspired by \cite{std:SimDM}, a data model for simulation data published in May 2013. Especially we copied the central classes: Protocol and Experiment.  A Protocol is the plan or method
+Inspired by \cite{std:SimDM}, a data model for simulation data published in May 2013, we also discussed a provenance data model for the IVOA using protoypes. 
+Currently, we are still debating about this, but favour to follow the example of the W3C-model and postpone a decision for or against prototypes to a later version of this model. 
+The W3C-model has the advantage of being already an approved standard, and it contains all the necessary main features needed for a Provenance model for Astronomy. Nevertheless, we still include here some sections on what we had in mind for the prototype model. 
+
+\TODO{The following sections need to be rewritten.}
+
+From SimDM we adopt 2 central classes: Protocol and Experiment.  A Protocol is the plan or method
 which describes how to do something whereas Experiment is the actual execution of
-this plan. Defining such protocols allows them to be reused, which is very useful when performing series of experiments of the same type, as is typically done in astronomy. For our provenance mdoel, we use the more generic term
+this plan. Defining such protocols allows them to be reused, which is very useful when performing series of experiments of the same type, as is typically done in astronomy. For our model here, we use the more generic term
 \texttt{Activity} instead of Experiment, as it us used by the W3C Provenance Data Model (\cite{std:W3CProvDM}). Instead of \texttt{Protocol}, we use the term \texttt{Method}, 
 for not confusing it with e.g. IVOA protocols.
 
@@ -254,7 +361,7 @@ The class diagram generated with MagicDraw Community Edition is given in the fig
 \includegraphics[width=0.8\textwidth]{ProvDM-classdiagram-prototypes.png}
 \caption{The (current) Provenance Data Model
 class diagram. It will certainly change again, so use it with care. In this version, we stripped it now from nearly all derived classes, so we can concentrate on the core elements. The green and blue boxes belong to 'prototype' classes.}
-\label{fig:w3cclasses}
+\label{fig:classes-prototypes}
 \end{figure}
 
 \subsubsection{Activity and method}
@@ -362,7 +469,7 @@ to fulfill our "Attribution" requirement, so that proper credit goes to the righ
 people/projects. To this end, it could also make sense to add a relation between a DataComponent and Agent, similar to W3C's wasAttributedTo-relation.
 
 
-\emph{TODO: Specify pre-defined contact or agent roles to choose from, in order to maximize interoperability (see SimDM: owner, creator, publisher, contributer; any more?)}
+\TODO{Specify pre-defined contact or agent roles to choose from, in order to maximize interoperability (see SimDM: owner, creator, publisher, contributer; any more?)}
 
 
 \subsubsection{Storage}
@@ -464,42 +571,46 @@ However, building such a look-up place for all the possible methods and dataDesc
 Normalisation is useful for closed systems, e.g. for describing the provenance for data produced by a certain pipeline (e.g. MuseWise system) or with workflow tools or when a task needs to be repeated many times. However, the VO is quite the contrary of a closed system and we need to keep an eye on what is actually achievable.
 
 
-\subsection{A simpler model based on W3C}
-
-
-When trying to write down a simple serialisation of e.g. the provenance for a stacked image with the protoype-model, it soon becomes quite cumbersome to define everything twice: first the descriptions, then the instances. This basically doubles the number of entries to describe provenance (unless there is already some place with all the descriptions to which we can refer).
-
-
-Thus, we consider the W3C-model again, and adjust it by replacing the used- and wasGeneratedFrom-relations by a mapping class between activity and entity in the following class diagram:
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ProvDM-W3C-adjusted.png}
-\caption{An adjusted W3C model for provenance of astronomical data.}
-\label{fig:classes-w3c-adjusted}
-\end{figure}
-
-
-The different methods and data types are here hidden in pre-defined vocabulary lists. 
-An example for writing down the provenance for a stacked image in W3C and with the protoype-model is given in the accompanying files 
-\texttt{prov-example-incl-prototypes.txt} and 
-\texttt{prov-example-w3c.txt} at \href{https://code.google.com/p/volute/source/browse/trunk/projects/dm/provenance/description/}{volute}.
 
 
 
 
 \subsubsection{Discussion}
 
+When writing down a simple serialisation of e.g. the provenance for a stacked image with the protoype-model, it soon becomes quite cumbersome to define everything twice: first the descriptions, then the instances. This basically doubles the number of entries to describe provenance (unless there is already some place with all the descriptions to which we can refer).
+
 Expressing provenance for a stacked image with this smaller set of classes may be simpler, but on the other hand constructing a database schema becomes much harder. 
 
 The question is: could we just derive a simple exchange format from the prototype-model? Should we be instance-driven here? Which model would be more useful?
 
+Though we currently favour the simpler model, we could still come back to the prototype model in a later version, if we consider it more useful.
 
+
+
+\section{Examples}\label{sec:examples}
+
+\subsection{One processing step in PROV-N notation}
+\TODO{Put the very simple example here (see talk)}
+See \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-incl-prototypes.txt}
+and \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-w3c.txt}
+
+
+\subsection{Provenance of RAVE database tables (DR4)}
+This example shows how the workflow of RAVE data, from images to the final database tables, can be expressed using Provenance. 
+The workflow is not included completely, only some major steps are taken into account. It shows that the provenance concepts explained in this draft can be applied directly to data obtained from astronomical observations.
+
+\TODO{Include here figure from InterOp talk.}
+
+
+
+\section{Implementations}
+\TODO{Maybe combine with exampples?}
 
 
 \appendix
 \section{Changes from Previous Versions}
-%\subsection{Changes from previous version}
+[No official previous versions yet, so not keeping track of changes here.]
+%\subsection{Changes from ... }
 %Transformed from ivoadoc to tex-version.
 % No previous versions yet.  
 % these would be subsections "Changes from v. WD-..."
