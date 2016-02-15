@@ -281,20 +281,25 @@ A "version" attribute could also be useful.
 
 
 \subsubsection{Agent}
-An agent can be an organization or a person, and can take different roles for an activity or an entity. 
-There can be more than one agent for each activity/entity (with different roles) and one agent can be responsible for more than one activity/entity. This many-to-many relationship can be made more explicite by adding role-maps for agents explicitely in the UML-class diagram, as "qualifiers" 
-for the relations. 
-
-The possible types of agents are:
+An agent can be an organization or a person, and can take different roles for an activity or an entity. The possible types of agents are:
 \begin{itemize}
-\item prov:person
-\item prov:organization: a publishing house, institute, ...
-\item project: a collaboration for a certain project (or is this an organization?)
+\item prov:person: a person, specified by first and last name, email address, possibly also by affiliation (though all these parts may change in time)
+\item prov:organization: a publishing house, institute, scientific project
 \item prov:SoftwareAgent (still needs to be discussed)
 \end{itemize}
 
+A definition of organizations in the sense of the VO is given in the IVOA Recommendation on Resource Metadata \citep{std:ResourceMeta}, hereafter refered to as RM. This also specifies that scientific projects can be considered as organizations on a finer lever.
 
-In order to make it clearer what the agent is useful for, we suggest here possible roles an agent can have:\\
+There can be more than one agent for each activity/entity (with different roles) and one agent can be responsible for more than one activity/entity. This many-to-many relationship could be made more explicite by adding role-maps for agents explicitely in the UML-class diagram, as "qualifiers" for the relations. The W3C PROV-DM document specifies two relations instead, which we can extend with a "role" attribute as well. These are:
+
+\begin{itemize}
+\item wasAssociatedWith: relates an \emph{activity} to an agent
+\item wasAttributedTo: relates an \emph{entity} to an agent
+\end{itemize}
+
+Note that the attributed-to-agent for a dataset may be different from the agent that is associated with the activity that created an entity. Someone who is performing a task is not necessarily given full attribution, especially if he acts on behalf of someone else.
+
+In order to make it clearer what an agent is useful for, we suggest here possible roles an agent can have (along with descriptions partially taken from RM)\\
 \begin{center}
 \begin{tabular}{l|l|p{0.5\textwidth}}
 \multicolumn{3}{c}{\textbf{AgentRoles}}\\ \hline
@@ -306,20 +311,18 @@ editor & prov:person & editor of e.g. an article, before publishing\\
 publisher & prov:organization & organization (publishing house, institute) that published something\\
 observer & prov:person & observer at the telescope\\
 operator & prov:person & performing a given task (executor?)\\
-coordinator/PI & prov:person & someone coordinating/leading a project\\
+coordinator/PI & prov:person & someone coordinating/leading a proje'ct\\
+provider & prov:organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)
 %& prov:project & the project for which certain tasks are done, which published the data, etc.\\
 \end{tabular}
 \end{center}
 This list is not complete. Such roles are domain-specific and thus not fixed in W3C's PROV-DM. However, since we are considering here the Astronomy-domain, we could 
-consider fixing these roles. Most likely we would want to keep them in a vocabulary list.
+consider fixing these roles, most likely by keeping them in a vocabulary list.
 
 \TODO{Do we have a specific use case for fixing the agent-roles? Is anyone going to search for specific roles in the Provenance meta-data?
 Or shall we leave it open, which roles can be defined and just give examples here?}
 
-\TODO{We still need to clarify, in which way a \emph{software agent} is distinct from an activity.}
-
-Note that the attributed-to-agent for a dataset may be different from the agent that is associated with the activity that created an entity, someone who is performing a task is not necessarily given full attribution, especially if he acts on behalf of someone else.
-
+\TODO{We still need to clarify precisely, in which way a \emph{software agent} is distinct from an activity.}
 
 
 \subsubsection{Roles of entities}
