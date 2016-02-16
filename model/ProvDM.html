@@ -1,9 +1,9 @@
-<html xmlns:vo-dml="http://volute.googlecode.com/dm/vo-dml/v0.9">
+<html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1.0">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Provenance Data Model</title>
-    <link rel="stylesheet" href="../../vo-dml/models/ivoa_wg.css" type="text/css">
-    <link rel="stylesheet" href="../../vo-dml/models/xmi.css" type="text/css">
+    <link rel="stylesheet" href="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa_wg.css" type="text/css">
+    <link rel="stylesheet" href="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/xmi.css" type="text/css">
   </head>
   <body>
     <h1>Provenance Data Model</h1>
@@ -12,7 +12,7 @@
       <table class=".toc">
         <tr>
           <td>1.</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#model_section">model: ProvDM</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#model_section">model: ProvDM-W3C</a></td>
         </tr>
         <tr>
           <td>2.</td>
@@ -32,96 +32,52 @@
         </tr>
         <tr>
           <td>2.1.3</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataComponent">objectType:DataComponent</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Collection">objectType:Collection</a></td>
         </tr>
         <tr>
           <td>2.1.4</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataDescription">objectType:DataDescription</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Entity">objectType:Entity</a></td>
         </tr>
         <tr>
           <td>2.1.5</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataSet">objectType:DataSet</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Organization">objectType:Organization</a></td>
         </tr>
         <tr>
           <td>2.1.6</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#DataSetDescription">objectType:DataSetDescription</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Person">objectType:Person</a></td>
         </tr>
         <tr>
           <td>2.1.7</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#InputData">objectType:InputData</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#SoftwareAgent">objectType:SoftwareAgent</a></td>
         </tr>
         <tr>
           <td>2.1.8</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#InputDataDescription">objectType:InputDataDescription</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#hadMember">objectType:hadMember</a></td>
         </tr>
         <tr>
           <td>2.1.9</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Method">objectType:Method</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#used">objectType:used</a></td>
         </tr>
         <tr>
           <td>2.1.10</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Observation">objectType:Observation</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#wasAssociatedWith">objectType:wasAssociatedWith</a></td>
         </tr>
         <tr>
           <td>2.1.11</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ObservationMethod">objectType:ObservationMethod</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#wasAttributedTo">objectType:wasAttributedTo</a></td>
         </tr>
         <tr>
           <td>2.1.12</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Processing">objectType:Processing</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#wasDerivedFrom">objectType:wasDerivedFrom</a></td>
         </tr>
         <tr>
           <td>2.1.13</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ProcessingMethod">objectType:ProcessingMethod</a></td>
-        </tr>
-        <tr>
-          <td>2.1.14</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Project">objectType:Project</a></td>
-        </tr>
-        <tr>
-          <td>2.1.15</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Quality">objectType:Quality</a></td>
-        </tr>
-        <tr>
-          <td>2.1.16</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ResultData">objectType:ResultData</a></td>
-        </tr>
-        <tr>
-          <td>2.1.17</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ResultDataDescription">objectType:ResultDataDescription</a></td>
-        </tr>
-        <tr>
-          <td>2.1.18</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Storage">objectType:Storage</a></td>
-        </tr>
-        <tr>
-          <td>2.1.19</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#StoredData">objectType:StoredData</a></td>
-        </tr>
-        <tr>
-          <td>2.1.20</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#StoredDataDescription">objectType:StoredDataDescription</a></td>
-        </tr>
-        <tr>
-          <td>2.1.21</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#TemporaryData">objectType:TemporaryData</a></td>
-        </tr>
-        <tr>
-          <td>2.1.22</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#TemporaryDataDescription">objectType:TemporaryDataDescription</a></td>
-        </tr>
-        <tr>
-          <td>2.1.23</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#TransientData">objectType:TransientData</a></td>
-        </tr>
-        <tr>
-          <td>2.1.24</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#TransientDataDescription">objectType:TransientDataDescription</a></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#wasGeneratedBy">objectType:wasGeneratedBy</a></td>
         </tr>
         <tr>
           <td>3.</td>
           <td>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#utypes">vodml-id-s</a></td>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#vodml-ids">vodml-id-s</a></td>
         </tr>
         <tr>
           <td>4.</td>
@@ -131,12 +87,12 @@
         <tr>
           <td>4.1</td>
           <td>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">IVOA</a></td>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#IVOA">IVOA</a></td>
         </tr>
       </table>
     </div>
     <hr>
-    <h1><a name="ProvDM"></a><a name="model_section">1. Model: Provenance Data Model (ProvDM)</a></h1>
+    <h1><a name="model_section">1. Model: Provenance Data Model (ProvDM-W3C)</a></h1>
     <table>
       <tr>
         <td align="right"><b>Authors</b></td>
@@ -146,7 +102,7 @@
       <tr>
         <td align="right"><b>Date</b></td>
         <td> : </td>
-        <td>2014-05-25T21:47:51</td>
+        <td>2016-02-16T22:34:24</td>
       </tr>
       <tr>
         <td align="right"><b>Version</b></td>
@@ -173,30 +129,19 @@
         <td colspan="3"></td>
       </tr>
     </table><img src="ProvDM.png" usemap="#GVmap"><map id="GVmap" name="GVmap">
-<area shape="rect" id="node2" href="#Activity" title="{Activity|+id : IVOA:string\l+name : IVOA:string\l+executionDate : IVOA:datetime\l+executionDuration : IVOA:datetime\l+executionState : IVOA:string\l}" alt="" coords="1356,123,1580,226"/>
-<area shape="rect" id="node3" href="#Method" title="{Method|+id : IVOA:string\l+name : IVOA:string\l+description : IVOA:string\l}" alt="" coords="1631,294,1799,370"/>
-<area shape="rect" id="node8" href="#Agent" title="{Agent|+name : IVOA:string\l+affiliation : IVOA:string\l+role : IVOA:string\l}" alt="" coords="1384,445,1541,521"/>
-<area shape="rect" id="node21" href="#Project" title="{Project|+id : IVOA:string\l+name : IVOA:string\l}" alt="" coords="1332,301,1471,363"/>
-<area shape="rect" id="node22" href="#InputData" title="{InputData}" alt="" coords="972,307,1047,357"/>
-<area shape="rect" id="node23" href="#ResultData" title="{ResultData}" alt="" coords="1188,602,1271,651"/>
-<area shape="rect" id="node24" href="#InputDataDescription" title="{InputDataDescription}" alt="" coords="987,458,1125,507"/>
-<area shape="rect" id="node25" href="#ResultDataDescription" title="{ResultDataDescription}" alt="" coords="1156,710,1303,759"/>
-<area shape="rect" id="node4" href="#Processing" title="{Processing|+operatingSystem : IVOA:string\l}" alt="" coords="1695,6,1897,55"/>
-<area shape="rect" id="node5" href="#ProcessingMethod" title="{ProcessingMethod|+author : IVOA:string\l+version : IVOA:string\l}" alt="" coords="1759,143,1905,206"/>
-<area shape="rect" id="node6" href="#Observation" title="{Observation|+target : IVOA:string\l}" alt="" coords="1508,6,1647,55"/>
-<area shape="rect" id="node7" href="#ObservationMethod" title="{ObservationMethod}" alt="" coords="1604,150,1735,199"/>
-<area shape="rect" id="node9" href="#DataComponent" title="{DataComponent|+id : IVOA:string\l+name : IVOA:string\l+creationDate : IVOA:datetime\l+validity : IVOA:datetime\l}" alt="" coords="192,438,387,527"/>
-<area shape="rect" id="node10" href="#DataSet" title="{DataSet}" alt="" coords="253,602,325,651"/>
-<area shape="rect" id="node12" href="#DataDescription" title="{DataDescription|+id : IVOA:string\l+description : IVOA:string\l}" alt="" coords="908,595,1076,658"/>
-<area shape="rect" id="node11" href="#Storage" title="{Storage|+referenceURI : IVOA:anyURI\l}" alt="" coords="779,458,963,507"/>
-<area shape="rect" id="node13" href="#TransientData" title="{TransientData|+name : IVOA:string\l+numericValue : IVOA:quantity.RealQuantity\l+stringValue : IVOA:string\l}" alt="" coords="17,294,284,370"/>
-<area shape="rect" id="node15" href="#TransientDataDescription" title="{TransientDataDescription|+ucd : IVOA:string\l}" alt="" coords="5,458,168,507"/>
-<area shape="rect" id="node14" href="#StoredData" title="{StoredData}" alt="" coords="596,307,681,357"/>
-<area shape="rect" id="node16" href="#StoredDataDescription" title="{StoredDataDescription|+format : IVOA:string\l}" alt="" coords="605,458,755,507"/>
-<area shape="rect" id="node17" href="#Quality" title="{Quality}" alt="" coords="1921,6,1993,55"/>
-<area shape="rect" id="node18" href="#TemporaryData" title="{TemporaryData}" alt="" coords="347,307,453,357"/>
-<area shape="rect" id="node19" href="#TemporaryDataDescription" title="{TemporaryDataDescription}" alt="" coords="411,458,581,507"/>
-<area shape="rect" id="node20" href="#DataSetDescription" title="{DataSetDescription}" alt="" coords="1149,458,1280,507"/>
+<area shape="rect" id="node2" href="#Activity" title="{Activity|+id : \l+startTime : \l+endTime : \l+label : \l+type : \l+description : \l+docuLink : \l}" alt="" coords="424,6,531,135"/>
+<area shape="rect" id="node10" href="#used" title="{used|+id : \l+role : \l}" alt="" coords="283,187,355,250"/>
+<area shape="rect" id="node11" href="#wasAssociatedWith" title="{wasAssociatedWith|+id : \l+role : \l}" alt="" coords="503,275,633,338"/>
+<area shape="rect" id="node3" href="#Agent" title="{Agent|+id : \l+role : \l+label : \l+description : \l}" alt="" coords="604,662,711,751"/>
+<area shape="rect" id="node4" href="#Collection" title="{Collection|+ : \l+memberType : \l}" alt="" coords="280,547,395,610"/>
+<area shape="rect" id="node5" href="#Entity" title="{Entity|+id : \l+label : \l+type : \l+description : \l+dataType : \l+storageLocation : \l}" alt="" coords="177,363,311,479"/>
+<area shape="rect" id="node12" href="#wasAttributedTo" title="{wasAttributedTo|+id : \l+role : \l}" alt="" coords="5,547,117,610"/>
+<area shape="rect" id="node13" href="#wasDerivedFrom" title="{wasDerivedFrom|+id : \l}" alt="" coords="141,554,256,603"/>
+<area shape="rect" id="node14" href="#wasGeneratedBy" title="{wasGeneratedBy|+id : \l}" alt="" coords="419,554,536,603"/>
+<area shape="rect" id="node6" href="#Organization" title="{Organization|+webpage : \l+contact : \l}" alt="" coords="611,547,704,610"/>
+<area shape="rect" id="node7" href="#Person" title="{Person|+email : \l+affiliation : \l}" alt="" coords="728,547,821,610"/>
+<area shape="rect" id="node8" href="#SoftwareAgent" title="{SoftwareAgent}" alt="" coords="845,554,949,603"/>
+<area shape="rect" id="node9" href="#hadMember" title="{hadMember|+id : \l+role : \l}" alt="" coords="555,39,643,102"/>
 </map>
 
     <hr>
@@ -212,11 +157,11 @@
     <table border="1" cellspacing="2" width="100%">
       <tr>
         <td class="objecttype-title" width="20%">Model</td>
-        <td class="objecttype-name">ProvDM</td>
+        <td class="objecttype-name">ProvDM-W3C</td>
       </tr>
       <tr>
         <td width="20%" class="info-title">Object types</td>
-        <td colspan="2" class="feature-detail"><a href="#Activity">Activity</a> <a href="#Agent">Agent</a> <a href="#DataComponent">DataComponent</a> <a href="#DataDescription">DataDescription</a> <a href="#DataSet">DataSet</a> <a href="#DataSetDescription">DataSetDescription</a> <a href="#InputData">InputData</a> <a href="#InputDataDescription">InputDataDescription</a> <a href="#Method">Method</a> <a href="#Observation">Observation</a> <a href="#ObservationMethod">ObservationMethod</a> <a href="#Processing">Processing</a> <a href="#ProcessingMethod">ProcessingMethod</a> <a href="#Project">Project</a> <a href="#Quality">Quality</a> <a href="#ResultData">ResultData</a> <a href="#ResultDataDescription">ResultDataDescription</a> <a href="#Storage">Storage</a> <a href="#StoredData">StoredData</a> <a href="#StoredDataDescription">StoredDataDescription</a> <a href="#TemporaryData">TemporaryData</a> <a href="#TemporaryDataDescription">TemporaryDataDescription</a> <a href="#TransientData">TransientData</a> <a href="#TransientDataDescription">TransientDataDescription</a> 
+        <td colspan="2" class="feature-detail"><a href="#Activity">Activity</a> <a href="#Agent">Agent</a> <a href="#Collection">Collection</a> <a href="#Entity">Entity</a> <a href="#Organization">Organization</a> <a href="#Person">Person</a> <a href="#SoftwareAgent">SoftwareAgent</a> <a href="#hadMember">hadMember</a> <a href="#used">used</a> <a href="#wasAssociatedWith">wasAssociatedWith</a> <a href="#wasAttributedTo">wasAttributedTo</a> <a href="#wasDerivedFrom">wasDerivedFrom</a> <a href="#wasGeneratedBy">wasGeneratedBy</a> 
         </td>
       </tr>
     </table>
@@ -230,8 +175,9 @@
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">An Activity is any kind of link between input and result data. It is a process that acts upon an entity (data), usually with
-            the goal of changing that entity. Here, it is usually an observation or postprocessing of images.
+          <td class="feature-detail" colspan="1">W3C term.
+            An Activity is any kind of process, in our case usually a link between input and result data. It is a process that acts upon
+            an entity (data), usually with the goal of changing that entity.
           </td>
         </tr>
         <tr>
@@ -241,13 +187,8 @@
                 <td colspan="2" bgcolor="#cacaca">
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
-                      <td class="info-title">Subclasses in this model</td>
-                      <td class="feature-detail" colspan="3"><a href="#Observation">Observation</a> <a href="#Processing">Processing</a> 
-                      </td>
-                    </tr>
-                    <tr>
                       <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#ResultData">ResultData</a> 
+                      <td class="feature-detail" colspan="3"><a href="#wasGeneratedBy">wasGeneratedBy</a> 
                       </td>
                     </tr>
                     <tr>
@@ -261,7 +202,7 @@
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
@@ -269,54 +210,37 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
                       <td class="feature-detail">A unique id for the Activity so that it can be referred to.</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.name"></a><b>name</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.startTime"></a><b>startTime</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.name</td>
+                      <td class="feature-detail">Activity.startTime</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">String for naming an Activity. There could be multiple alternative names. </td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.executionDate"></a><b>executionDate</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.executionDate</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
                       <td class="feature-detail">Date/time when the Activity was executed (start time)</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.executionDuration"></a><b>executionDuration</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.endTime"></a><b>endTime</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.executionDuration</td>
+                      <td class="feature-detail">Activity.endTime</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -329,23 +253,83 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.executionState"></a><b>executionState</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.label"></a><b>label</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.executionState</td>
+                      <td class="feature-detail">Activity.label</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">String that specifies the execution state of an activity. Values for that string could be something like PROCESSING, COMPLETED,
-                        etc.
-                        Default could be COMPLETED.
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.type"></a><b>type</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.type</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.description"></a><b>description</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.description</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.docuLink"></a><b>docuLink</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Activity.docuLink</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
                     <tr>
@@ -357,60 +341,23 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.agent"></a><b>agent</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Agent">Agent</a></td>
+                      <td class="feature-detail"><a href="#wasAssociatedWith">wasAssociatedWith [ProvDM-W3C:wasAssociatedWith]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.agent</td>
+                      <td class="feature-detail">Activity.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information.
-                        Zero-to-many instances are allowed.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.method"></a><b>method</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Method">Method</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.method</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">An instance of the Method class which describes how an activity is executed. For one activity there is exactly one description,
-                        i.e. the multiplicity is set to 1.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Activity.project"></a><b>project</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Project">Project</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.project</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A link to the project that is responsible for the Activity. Would be good to have at least one project per Activity, but we
-                        won't enforce this.
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
                     <tr>
@@ -422,17 +369,17 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="5"><a name="Activity.inputDataList"></a><b>inputDataList</b></td>
+                      <td class="feature-detail" valign="top" rowspan="5"><a name="Activity."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#InputData">InputData</a></td>
+                      <td class="feature-detail"><a href="#used">used [ProvDM-W3C:used]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.inputDataList</td>
+                      <td class="feature-detail">Activity.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">isOrdered</td>
@@ -440,28 +387,10 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The collection of input data used to perform an activity. The set of input data usually originates from a previous activity.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="5"><a name="Activity.resultDataList"></a><b>resultDataList</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ResultData">ResultData</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Activity.resultDataList</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">isOrdered</td>
-                      <td class="feature-detail">false</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Ouput data as produced by an activity. The multiplicity for this activity is set to one to many data components (or data sets).</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                   </table>
                 </td>
@@ -480,12 +409,9 @@
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class defines a contact for a certain activity. Typically this is the person  that has performed the activity (allow
-            also institutions??).
-            Details like address etc. could be useful, but at least the current affiliation should be given, so that it's possible to
-            credit the right person/institution for certain tasks or products and to find someone when questions arise.
-            People change affiliations, but it is likely that someone from the old affiliation knows where a person was going to or who
-            else is in charge now. 
+          <td class="feature-detail" colspan="1">W3C term.
+            This can be a prov:Organization, prov:Person or prov:SoftwareAgent; it can be anything that is responsible for an activity
+            or is attributed to an entity.
           </td>
         </tr>
         <tr>
@@ -495,8 +421,13 @@
                 <td colspan="2" bgcolor="#cacaca">
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
+                      <td class="info-title">Subclasses in this model</td>
+                      <td class="feature-detail" colspan="3"><a href="#Organization">Organization</a> <a href="#Person">Person</a> <a href="#SoftwareAgent">SoftwareAgent</a> 
+                      </td>
+                    </tr>
+                    <tr>
                       <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#Activity">Activity</a> <a href="#Project">Project</a> 
+                      <td class="feature-detail" colspan="3"><a href="#wasAssociatedWith">wasAssociatedWith</a> <a href="#wasAttributedTo">wasAttributedTo</a> 
                       </td>
                     </tr>
                     <tr>
@@ -508,43 +439,26 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.name"></a><b>name</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Agent.name</td>
+                      <td class="feature-detail">Agent.id</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1..*</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
                       <td class="feature-detail">Name of a person, can also be omitted, if an affiliation or project is given instead.</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.affiliation"></a><b>affiliation</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Agent.affiliation</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A string giving the affiliation of the contact for a certain activity.</td>
-                    </tr>
-                    <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.role"></a><b>role</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
@@ -552,148 +466,23 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">role of the contact, e.g. owner, publisher, ...</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="DataComponent"></a>2.1.3 objectType: DataComponent
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">DataComponent</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class is the central component of our composite design pattern. This concept aims at treating the two major groups of
-            data, files and parameter values on the one hand, and complete data set on the other hand, in the same way. The DataComponent
-            class includes the basic properties and functionality (i.e. mainly the interface) for both groups of data.
-            
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td class="info-title">Subclasses in this model</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataSet">DataSet</a> <a href="#StoredData">StoredData</a> <a href="#TemporaryData">TemporaryData</a> <a href="#TransientData">TransientData</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataSet">DataSet</a> <a href="#InputData">InputData</a> <a href="#ResultData">ResultData</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">attributes</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.id"></a><b>id</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.id</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">An id for the data component, could be a DAL-identififier or so. 
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.name"></a><b>name</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.name</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">The name for a DataComponent. Multiple alternative names are also allowed.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.creationDate"></a><b>creationDate</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.creationDate</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Date/time when the data component (individual data element or the complete set) was created.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.validity"></a><b>validity</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#datetime">datetime</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.validity</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
                       <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The validity gives an expiration date (or a timespan?) to indicate the time range in which the data (values) are valid.
-                        This is mainly important for ambient conditions (seeing, moon light, etc.) and instrument characteristics, since these are
-                        functions of time.
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent."></a><b></b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.label"></a><b>label</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ResultData">ResultData</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.</td>
+                      <td class="feature-detail">Agent.label</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -707,132 +496,13 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.dataDescription"></a><b>dataDescription</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.description"></a><b>description</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.dataDescription</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">An instance of the DataDescription class that describes the form/structure of a data item.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataComponent.parentDataSet"></a><b>parentDataSet</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataSet">DataSet</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataComponent.parentDataSet</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Link to the data set to which a component belongs.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="DataDescription"></a>2.1.4 objectType: DataDescription
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">DataDescription</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class describes the form/structure of a data item.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td class="info-title">Subclasses in this model</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataSetDescription">DataSetDescription</a> <a href="#StoredDataDescription">StoredDataDescription</a> <a href="#TemporaryDataDescription">TemporaryDataDescription</a> <a href="#TransientDataDescription">TransientDataDescription</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> <a href="#DataSetDescription">DataSetDescription</a> <a href="#InputDataDescription">InputDataDescription</a> <a href="#ResultDataDescription">ResultDataDescription</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">attributes</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataDescription.id"></a><b>id</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataDescription.id</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Unique id for the DataDescription.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataDescription.description"></a><b>description</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataDescription.description</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A free text describing the data format.</td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataDescription."></a><b></b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ResultDataDescription">ResultDataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataDescription.</td>
+                      <td class="feature-detail">Agent.description</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -852,17 +522,19 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="DataSet"></a>2.1.5 objectType: DataSet
+    </div><br><h3><a name="Collection"></a>2.1.3 objectType: Collection
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">DataSet</td>
+          <td class="objecttype-name" colspan="1">Collection</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class covers data sets like RAVE-DR4 with its databases and database tables.
+          <td class="feature-detail" colspan="1">This class covers data sets like RAVE-DR4 with its databases and database tables or any other collection of data. The data
+            types can be mixed, e.g. a parameter plus n image files. The structure of the collection must be described in the corresponding
+            DataCollectionDescription.
             
           </td>
         </tr>
@@ -874,11 +546,59 @@
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
                       <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                      <td colspan="3" class="feature-detail"><a href="#Entity">Entity [ProvDM-W3C:Entity]</a></td>
                     </tr>
                     <tr>
                       <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> 
+                      <td class="feature-detail" colspan="3"><a href="#Entity">Entity</a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Collection."></a><b></b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Collection.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">memberType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Collection.memberType"></a><b>memberType</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Collection.memberType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
                     <tr>
@@ -890,13 +610,13 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataSet.dataComponent"></a><b>dataComponent</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Collection.entity"></a><b>entity</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                      <td class="feature-detail"><a href="#Entity">Entity [ProvDM-W3C:Entity]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataSet.dataComponent</td>
+                      <td class="feature-detail">Collection.entity</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -916,214 +636,20 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="DataSetDescription"></a>2.1.6 objectType: DataSetDescription
+    </div><br><h3><a name="Entity"></a>2.1.4 objectType: Entity
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">DataSetDescription</td>
+          <td class="objecttype-name" colspan="1">Entity</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Description of a data set as a whole, contains references to descriptions of the individual parts.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="DataSetDescription.dataDescription"></a><b>dataDescription</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">DataSetDescription.dataDescription</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Link to the description of the components of a DataSet.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
+          <td class="feature-detail" colspan="1">W3C term.
+            In our case, these are our data components.
+            
           </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="InputData"></a>2.1.7 objectType: InputData
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">InputData</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class serves to specify the role that a DataComponent takes when used as input for an Activity.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title"><a name="InputData.CONTAINER"></a>container
-                      </td>
-                      <td colspan="3" class="feature-detail"><a href="#Activity">Activity</a>.<a href="#Activity.inputDataList">inputDataList</a></td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="InputData."></a><b></b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#InputDataDescription">InputDataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">InputData.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="InputData.role"></a><b>role</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">InputData.role</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="InputDataDescription"></a>2.1.8 objectType: InputDataDescription
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">InputDataDescription</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class describes the different roles of input data required for a certain method, e.g. parameter, parameter file, fits-image,
-            etc. in a format specific for just this method. 
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title"><a name="InputDataDescription.CONTAINER"></a>container
-                      </td>
-                      <td colspan="3" class="feature-detail"><a href="#Method">Method</a>.<a href="#Method.inputDataDescription">inputDataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#InputData">InputData</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="InputDataDescription."></a><b></b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">InputDataDescription.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="Method"></a>2.1.9 objectType: Method
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">Method</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">The Method describes how an Activity is performed. This could be, for instance, the name of the code of a processing pipeline.</td>
         </tr>
         <tr>
           <td colspan="2">
@@ -1133,12 +659,12 @@
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
                       <td class="info-title">Subclasses in this model</td>
-                      <td class="feature-detail" colspan="3"><a href="#ObservationMethod">ObservationMethod</a> <a href="#ProcessingMethod">ProcessingMethod</a> 
+                      <td class="feature-detail" colspan="3"><a href="#Collection">Collection</a> 
                       </td>
                     </tr>
                     <tr>
                       <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#Activity">Activity</a> <a href="#ResultDataDescription">ResultDataDescription</a> 
+                      <td class="feature-detail" colspan="3"><a href="#Collection">Collection</a> <a href="#used">used</a> <a href="#wasDerivedFrom">wasDerivedFrom</a> 
                       </td>
                     </tr>
                     <tr>
@@ -1150,163 +676,123 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.id"></a><b>id</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Method.id</td>
+                      <td class="feature-detail">Entity.id</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Unique id for the Method for referencing.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.name"></a><b>name</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Method.name</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">String to specify the name of a method (e.g. "Flatfielding", "Creating the master bias", name of the code for a pipeline or
-                        post-processing)
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Method.description"></a><b>description</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Method.description</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Free text to shortly describe the method used. (Like 'Protocol' in SimDM.)
+                      <td class="feature-detail">An id for the data component, could be a DAL-identififier or so. 
                         
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="3" class="info-title">collections</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="5"><a name="Method.inputDataDescription"></a><b>inputDataDescription</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.label"></a><b>label</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#InputDataDescription">InputDataDescription</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Method.inputDataDescription</td>
+                      <td class="feature-detail">Entity.label</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">isOrdered</td>
-                      <td class="feature-detail">false</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A set of type specifications for the zero-to-many input data components.</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="5"><a name="Method.resultDataDescription"></a><b>resultDataDescription</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.type"></a><b>type</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ResultDataDescription">ResultDataDescription</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Method.resultDataDescription</td>
+                      <td class="feature-detail">Entity.type</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">isOrdered</td>
-                      <td class="feature-detail">false</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A specification of the output data component(s),</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="Observation"></a>2.1.10 objectType: Observation
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">Observation</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Observation inherits from Activity covering all cases in which the result data have been acquired by an (astronomical) observation.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#Activity">Activity</a></td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                     <tr>
-                      <td colspan="3" class="info-title">attributes</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Observation.target"></a><b>target</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.description"></a><b>description</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Observation.target</td>
+                      <td class="feature-detail">Entity.description</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The target of an observation, e.g. M31, Star xxx, ...</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.dataType"></a><b>dataType</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Entity.dataType</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.storageLocation"></a><b>storageLocation</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Entity.storageLocation</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -1317,56 +803,102 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Observation.observationMethod"></a><b>observationMethod</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ObservationMethod">ObservationMethod</a></td>
+                      <td class="feature-detail"><a href="#wasAttributedTo">wasAttributedTo [ProvDM-W3C:wasAttributedTo]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Observation.observationMethod</td>
+                      <td class="feature-detail">Entity.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">An instance of an ObservationMethod class used to describe how the observation has been done.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="ObservationMethod"></a>2.1.11 objectType: ObservationMethod
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">ObservationMethod</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">ObservationMethod which inherits from Method describes all activities that are considered observations.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#Method">Method</a></td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#Observation">Observation</a> 
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity."></a><b></b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#wasAttributedTo">wasAttributedTo [ProvDM-W3C:wasAttributedTo]</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Entity.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity."></a><b></b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#wasDerivedFrom">wasDerivedFrom [ProvDM-W3C:wasDerivedFrom]</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Entity.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity."></a><b></b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#wasGeneratedBy">wasGeneratedBy [ProvDM-W3C:wasGeneratedBy]</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Entity.</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.collection"></a><b>collection</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#Collection">Collection [ProvDM-W3C:Collection]</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Entity.collection</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">Link to the data set to which a component belongs.</td>
+                    </tr>
                   </table>
                 </td>
               </tr>
@@ -1374,18 +906,18 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="Processing"></a>2.1.12 objectType: Processing
+    </div><br><h3><a name="Organization"></a>2.1.5 objectType: Organization
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">Processing</td>
+          <td class="objecttype-name" colspan="1">Organization</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Processing inherits from Activity. All processing steps like flat-fielding or astrometric calibration are covered by this
-            class.
+          <td class="feature-detail" colspan="1">This is the organization or project responsible for executing an Activity (e.g. the RAVE collaboration). There could also
+            be more than one project involved in an Activity.
           </td>
         </tr>
         <tr>
@@ -1396,7 +928,7 @@
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
                       <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#Activity">Activity</a></td>
+                      <td colspan="3" class="feature-detail"><a href="#Agent">Agent [ProvDM-W3C:Agent]</a></td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">attributes</td>
@@ -1407,21 +939,305 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Processing.operatingSystem"></a><b>operatingSystem</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Organization.webpage"></a><b>webpage</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Processing.operatingSystem</td>
+                      <td class="feature-detail">Organization.webpage</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Details about the operating system on which the processing was executed.</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Organization.contact"></a><b>contact</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Organization.contact</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="Person"></a>2.1.6 objectType: Person
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">Person</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">A person associated with an activity or attributed to an entity,</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#Agent">Agent [ProvDM-W3C:Agent]</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Person.email"></a><b>email</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Person.email</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="Person.affiliation"></a><b>affiliation</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">Person.affiliation</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="SoftwareAgent"></a>2.1.7 objectType: SoftwareAgent
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">SoftwareAgent</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td width="20%" class="info-title">extends</td>
+                      <td colspan="3" class="feature-detail"><a href="#Agent">Agent [ProvDM-W3C:Agent]</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="hadMember"></a>2.1.8 objectType: hadMember
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">hadMember</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="hadMember.id"></a><b>id</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">hadMember.id</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="hadMember.role"></a><b>role</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">hadMember.role</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div><br><h3><a name="used"></a>2.1.9 objectType: used
+    </h3>
+    <div align="center">
+      <table border="1" width="100%" cellspacing="2">
+        <tr>
+          <td class="objecttype-title" width="20%">vodml-id</td>
+          <td class="objecttype-name" colspan="1">used</td>
+        </tr>
+        <tr>
+          <td class="info-title">description</td>
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td colspan="2" bgcolor="#cacaca">
+                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
+                    <tr>
+                      <td colspan="3" class="info-title">attributes</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="used.id"></a><b>id</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">used.id</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="used.role"></a><b>role</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">used.role</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -1432,100 +1248,23 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Processing.processingMethod"></a><b>processingMethod</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="used."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ProcessingMethod">ProcessingMethod</a></td>
+                      <td class="feature-detail"><a href="#Entity">Entity [ProvDM-W3C:Entity]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Processing.processingMethod</td>
+                      <td class="feature-detail">used.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">An instance of the Processor class used to describe the processing pipeline.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="ProcessingMethod"></a>2.1.13 objectType: ProcessingMethod
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">ProcessingMethod</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Processor which inherits from Method describes all activities that belong to the Processing sub-class.
-            General description for e.g. flatfielding, astrometric calibration, imageStacking etc.
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#Method">Method</a></td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#Processing">Processing</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">attributes</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ProcessingMethod.author"></a><b>author</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ProcessingMethod.author</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Author of the code/processing algorithm/,,, used</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ProcessingMethod.version"></a><b>version</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ProcessingMethod.version</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Version of the processor (code, algorithm, ...), if applicable.
-                        Not mandatory.
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
                   </table>
@@ -1535,18 +1274,19 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="Project"></a>2.1.14 objectType: Project
+    </div><br><h3><a name="wasAssociatedWith"></a>2.1.10 objectType: wasAssociatedWith
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">Project</td>
+          <td class="objecttype-name" colspan="1">wasAssociatedWith</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This is the project responsible for executing an Activity (e.g. the RAVE collaboration). There could also be more than one
-            project involved in an Activity.
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
           </td>
         </tr>
         <tr>
@@ -1569,141 +1309,13 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Project.id"></a><b>id</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasAssociatedWith.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Project.id</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A unique id of the project for referencing it from different Activities.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Project.name"></a><b>name</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Project.name</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">Name(s) of the project. Alternative names can also be given.</td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Project.projectLeader"></a><b>projectLeader</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Agent">Agent</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Project.projectLeader</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A string to specify the person in charge of the project which has performed a certain activity.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="Quality"></a>2.1.15 objectType: Quality
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">Quality</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">A class for describing the quality of an Activity or DataComponent. The Quality object could just contain a list of possible
-            keywords.
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1"></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="ResultData"></a>2.1.16 objectType: ResultData
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">ResultData</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class serves to specify the role that a DataComponent takes when produced as result by an Activity.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title"><a name="ResultData.CONTAINER"></a>container
-                      </td>
-                      <td colspan="3" class="feature-detail"><a href="#Activity">Activity</a>.<a href="#Activity.resultDataList">resultDataList</a></td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataComponent">DataComponent</a> 
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ResultData."></a><b></b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ResultData.</td>
+                      <td class="feature-detail">wasAssociatedWith.id</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -1717,13 +1329,13 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ResultData."></a><b></b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasAssociatedWith.role"></a><b>role</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#ResultDataDescription">ResultDataDescription</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ResultData.</td>
+                      <td class="feature-detail">wasAssociatedWith.role</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -1737,21 +1349,31 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ResultData.createdFromActivity"></a><b>createdFromActivity</b></td>
+                      <td colspan="3" class="info-title">references</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading" width="20%">name</td>
+                      <td class="feature-heading" width="10%">feature</td>
+                      <td class="feature-heading" width="70%">value</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasAssociatedWith.agent"></a><b>agent</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Activity">Activity</a></td>
+                      <td class="feature-detail"><a href="#Agent">Agent [ProvDM-W3C:Agent]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ResultData.createdFromActivity</td>
+                      <td class="feature-detail">wasAssociatedWith.agent</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..*</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Link from the result data to the activity by which it has been produced.</td>
+                      <td class="feature-detail">The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information.
+                        Zero-to-many instances are allowed.
+                      </td>
                     </tr>
                   </table>
                 </td>
@@ -1760,18 +1382,19 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="ResultDataDescription"></a>2.1.17 objectType: ResultDataDescription
+    </div><br><h3><a name="wasAttributedTo"></a>2.1.11 objectType: wasAttributedTo
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">ResultDataDescription</td>
+          <td class="objecttype-name" colspan="1">wasAttributedTo</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class describes the different roles of result data typical for a certain method, e.g. fits-image, binary files etc. in
-            a format specific for just this method. 
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
           </td>
         </tr>
         <tr>
@@ -1781,17 +1404,12 @@
                 <td colspan="2" bgcolor="#cacaca">
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
-                      <td width="20%" class="info-title"><a name="ResultDataDescription.CONTAINER"></a>container
-                      </td>
-                      <td colspan="3" class="feature-detail"><a href="#Method">Method</a>.<a href="#Method.resultDataDescription">resultDataDescription</a></td>
-                    </tr>
-                    <tr>
                       <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#DataDescription">DataDescription</a> <a href="#ResultData">ResultData</a> 
+                      <td class="feature-detail" colspan="3"><a href="#Entity">Entity</a> 
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="3" class="info-title">references</td>
+                      <td colspan="3" class="info-title">attributes</td>
                     </tr>
                     <tr>
                       <td class="feature-heading" width="20%">name</td>
@@ -1799,13 +1417,13 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ResultDataDescription."></a><b></b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasAttributedTo.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ResultDataDescription.</td>
+                      <td class="feature-detail">wasAttributedTo.id</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -1819,109 +1437,24 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="ResultDataDescription.createdFromMethod"></a><b>createdFromMethod</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasAttributedTo.role"></a><b>role</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Method">Method</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">ResultDataDescription.createdFromMethod</td>
+                      <td class="feature-detail">wasAttributedTo.role</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A DataDescription contains  a link to the Method that describes the Activity that generated the data.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="Storage"></a>2.1.18 objectType: Storage
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">Storage</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Storage specifies where the (original) data produced by an activity can be found. This is not part of the Provenance Data
-            Model (therefore the different coloring).
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#StoredData">StoredData</a> 
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">attributes</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="Storage.referenceURI"></a><b>referenceURI</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#anyURI">anyURI</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">Storage.referenceURI</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A reference to a file path, URL resource, .... where a description of the DataComponent (or the DataComponent itself??) can
-                        be found. Is this covered already by "Storage"?
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="StoredData"></a>2.1.19 objectType: StoredData
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">StoredData</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">StoredData are stored somewhere on disk, e.g. as a file or a database table. This is the "usual" type of data.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -1932,30 +1465,13 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="StoredData.storage"></a><b>storage</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasAttributedTo."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Storage">Storage</a></td>
+                      <td class="feature-detail"><a href="#Agent">Agent [ProvDM-W3C:Agent]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">StoredData.storage</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">An instance of the Storage class which tells where to locate a certain data component.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="StoredData.storedDataDescription"></a><b>storedDataDescription</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#StoredDataDescription">StoredDataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">StoredData.storedDataDescription</td>
+                      <td class="feature-detail">wasAttributedTo.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -1963,7 +1479,10 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The format in which an instance of the StructuredData class is present.</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                   </table>
                 </td>
@@ -1972,18 +1491,19 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="StoredDataDescription"></a>2.1.20 objectType: StoredDataDescription
+    </div><br><h3><a name="wasDerivedFrom"></a>2.1.12 objectType: wasDerivedFrom
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">StoredDataDescription</td>
+          <td class="objecttype-name" colspan="1">wasDerivedFrom</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Describes the type/structure of stored data, e.g. a description of the file format (fits), the parameters of an input file
-            or the table columns in the database.
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
           </td>
         </tr>
         <tr>
@@ -1993,12 +1513,8 @@
                 <td colspan="2" bgcolor="#cacaca">
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-                    </tr>
-                    <tr>
                       <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#StoredData">StoredData</a> 
+                      <td class="feature-detail" colspan="3"><a href="#Entity">Entity</a> 
                       </td>
                     </tr>
                     <tr>
@@ -2010,55 +1526,24 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="StoredDataDescription.format"></a><b>format</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasDerivedFrom.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">StoredDataDescription.format</td>
+                      <td class="feature-detail">wasDerivedFrom.id</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A string giving the format of a structured data element (e.g. description of the file format (fits, ascii, ...) or description
-                        of a database table)
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="TemporaryData"></a>2.1.21 objectType: TemporaryData
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">TemporaryData</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">This class can be used to specify data that existed only for a certain time and was deleted already, but is still usefull
-            to describe the provenance of an activity/another data set. E.g. a telescope pipeline may produce images in between after
-            each processing step, but only the final image is stored permanently.
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -2069,13 +1554,13 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="TemporaryData.temporaryDataDescription"></a><b>temporaryDataDescription</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasDerivedFrom."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#TemporaryDataDescription">TemporaryDataDescription</a></td>
+                      <td class="feature-detail"><a href="#Entity">Entity [ProvDM-W3C:Entity]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">TemporaryData.temporaryDataDescription</td>
+                      <td class="feature-detail">wasDerivedFrom.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -2083,40 +1568,9 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Link to the description of the temporary data</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="TemporaryDataDescription"></a>2.1.22 objectType: TemporaryDataDescription
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">TemporaryDataDescription</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Describes the type/structure of temporary data.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#TemporaryData">TemporaryData</a> 
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
                     </tr>
                   </table>
@@ -2126,18 +1580,19 @@
           </td>
         </tr>
       </table>
-    </div><br><h3><a name="TransientData"></a>2.1.23 objectType: TransientData
+    </div><br><h3><a name="wasGeneratedBy"></a>2.1.13 objectType: wasGeneratedBy
     </h3>
     <div align="center">
       <table border="1" width="100%" cellspacing="2">
         <tr>
           <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">TransientData</td>
+          <td class="objecttype-name" colspan="1">wasGeneratedBy</td>
         </tr>
         <tr>
           <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Data components which are not data sets are either represented as parameters or structured data. The Parameter sub-class of
-            DataComponent contains a set of key-value pairs, for instance from a configuration or a log file.
+          <td class="feature-detail" colspan="1">
+            TODO : Missing description : please, update your UML model asap.
+            
           </td>
         </tr>
         <tr>
@@ -2147,8 +1602,9 @@
                 <td colspan="2" bgcolor="#cacaca">
                   <table width="100%" border="0" cellpadding="3" cellspacing="1">
                     <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
+                      <td class="info-title">referrers</td>
+                      <td class="feature-detail" colspan="3"><a href="#Entity">Entity</a> 
+                      </td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">attributes</td>
@@ -2159,55 +1615,24 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="TransientData.name"></a><b>name</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasGeneratedBy.id"></a><b>id</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
+                      <td class="feature-detail"></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">TransientData.name</td>
+                      <td class="feature-detail">wasGeneratedBy.id</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Name of a parameter</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="TransientData.numericValue"></a><b>numericValue</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#quantity.RealQuantity">quantity.RealQuantity</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">TransientData.numericValue</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">The value of a Parameter instance of type real.</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="TransientData.stringValue"></a><b>stringValue</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">TransientData.stringValue</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">The value of a Parameter instance of string type.</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -2218,13 +1643,13 @@
                       <td class="feature-heading" width="70%">value</td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="TransientData.transientDataDescription"></a><b>transientDataDescription</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="wasGeneratedBy."></a><b></b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#TransientDataDescription">TransientDataDescription</a></td>
+                      <td class="feature-detail"><a href="#Activity">Activity [ProvDM-W3C:Activity]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">TransientData.transientDataDescription</td>
+                      <td class="feature-detail">wasGeneratedBy.</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -2232,66 +1657,10 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The data type underlying a parameter.</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div><br><h3><a name="TransientDataDescription"></a>2.1.24 objectType: TransientDataDescription
-    </h3>
-    <div align="center">
-      <table border="1" width="100%" cellspacing="2">
-        <tr>
-          <td class="objecttype-title" width="20%">vodml-id</td>
-          <td class="objecttype-name" colspan="1">TransientDataDescription</td>
-        </tr>
-        <tr>
-          <td class="info-title">description</td>
-          <td class="feature-detail" colspan="1">Describes the type of transient data, e.g. by using ucds.</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td colspan="2" bgcolor="#cacaca">
-                  <table width="100%" border="0" cellpadding="3" cellspacing="1">
-                    <tr>
-                      <td width="20%" class="info-title">extends</td>
-                      <td colspan="3" class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-                    </tr>
-                    <tr>
-                      <td class="info-title">referrers</td>
-                      <td class="feature-detail" colspan="3"><a href="#TransientData">TransientData</a> 
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
                       </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" class="info-title">attributes</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="TransientDataDescription.ucd"></a><b>ucd</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#IVOA">IVOA</a>:<a href="http://volute.googlecode.com/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html#string">string</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">TransientDataDescription.ucd</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">0..*</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">A string giving the data type as a ucd.</td>
                     </tr>
                   </table>
                 </td>
@@ -2301,15 +1670,15 @@
         </tr>
       </table>
     </div><br><hr>
-    <h1>3.<a name="utypes">UTYPEs</a></h1>  
-    The following table shows all UTYPEs for this data model.
-    It is ordered alphabetically and the UTYPEs are hyper-linked to the location
+    <h1>3.<a name="vodml-ids">Element Identifiers/VO-DMLrefs</a></h1>  
+    The following table shows all fully qualified vodml-ids for this data model.
+    It is ordered alphabetically and the identifiers are hyper-linked to the location
     in the document where the actual element is fully defined.
     
     
     <table style="border-style:solid;border-width:1px;" border="1" cellspacing="0" cellpadding="0">
       <tr>
-        <td class="feature-heading">UTYPE</td>
+        <td class="feature-heading">vodml-id</td>
         <td class="feature-heading">feature type</td>
         <td class="feature-heading">description</td>
       </tr>
@@ -2323,35 +1692,48 @@
       <tr>
         <td class="feature-detail"><a href="#Activity">Activity</a></td>
         <td class="feature-detail">objectType</td>
-        <td class="feature-detail">An Activity is any kind of link between input and result data. It is a process that acts upon an entity (data), usually with
-          the goal of changing that entity. Here, it is usually an observation or postprocessing of images.
+        <td class="feature-detail">W3C term.
+          An Activity is any kind of process, in our case usually a link between input and result data. It is a process that acts upon
+          an entity (data), usually with the goal of changing that entity.
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Activity.agent">Activity.agent</a></td>
+        <td class="feature-detail"><a href="#Activity.">Activity.</a></td>
+        <td class="feature-detail">collection</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.">Activity.</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information.
-          Zero-to-many instances are allowed.
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Activity.executionDate">Activity.executionDate</a></td>
+        <td class="feature-detail"><a href="#Activity.description">Activity.description</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Date/time when the Activity was executed (start time)</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Activity.executionDuration">Activity.executionDuration</a></td>
+        <td class="feature-detail"><a href="#Activity.docuLink">Activity.docuLink</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.endTime">Activity.endTime</a></td>
         <td class="feature-detail">attribute</td>
         <td class="feature-detail">Can provide the duration of the execution, i.e. could also contain exposure time for observation (or is this characterisation??)
           or how long the pipeline needed to process the image/data set.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Activity.executionState">Activity.executionState</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">String that specifies the execution state of an activity. Values for that string could be something like PROCESSING, COMPLETED,
-          etc.
-          Default could be COMPLETED.
         </td>
       </tr>
       <tr>
@@ -2360,144 +1742,82 @@
         <td class="feature-detail">A unique id for the Activity so that it can be referred to.</td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Activity.inputDataList">Activity.inputDataList</a></td>
-        <td class="feature-detail">collection</td>
-        <td class="feature-detail">The collection of input data used to perform an activity. The set of input data usually originates from a previous activity.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Activity.method">Activity.method</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">An instance of the Method class which describes how an activity is executed. For one activity there is exactly one description,
-          i.e. the multiplicity is set to 1.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Activity.name">Activity.name</a></td>
+        <td class="feature-detail"><a href="#Activity.label">Activity.label</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">String for naming an Activity. There could be multiple alternative names. </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Activity.project">Activity.project</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">A link to the project that is responsible for the Activity. Would be good to have at least one project per Activity, but we
-          won't enforce this.
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Activity.resultDataList">Activity.resultDataList</a></td>
-        <td class="feature-detail">collection</td>
-        <td class="feature-detail">Ouput data as produced by an activity. The multiplicity for this activity is set to one to many data components (or data sets).</td>
+        <td class="feature-detail"><a href="#Activity.startTime">Activity.startTime</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">Date/time when the Activity was executed (start time)</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Activity.type">Activity.type</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#Agent">Agent</a></td>
         <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class defines a contact for a certain activity. Typically this is the person  that has performed the activity (allow
-          also institutions??).
-          Details like address etc. could be useful, but at least the current affiliation should be given, so that it's possible to
-          credit the right person/institution for certain tasks or products and to find someone when questions arise.
-          People change affiliations, but it is likely that someone from the old affiliation knows where a person was going to or who
-          else is in charge now. 
+        <td class="feature-detail">W3C term.
+          This can be a prov:Organization, prov:Person or prov:SoftwareAgent; it can be anything that is responsible for an activity
+          or is attributed to an entity.
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Agent.affiliation">Agent.affiliation</a></td>
+        <td class="feature-detail"><a href="#Agent.description">Agent.description</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A string giving the affiliation of the contact for a certain activity.</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Agent.name">Agent.name</a></td>
+        <td class="feature-detail"><a href="#Agent.id">Agent.id</a></td>
         <td class="feature-detail">attribute</td>
         <td class="feature-detail">Name of a person, can also be omitted, if an affiliation or project is given instead.</td>
       </tr>
       <tr>
+        <td class="feature-detail"><a href="#Agent.label">Agent.label</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
         <td class="feature-detail"><a href="#Agent.role">Agent.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">role of the contact, e.g. owner, publisher, ...</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataComponent">DataComponent</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class is the central component of our composite design pattern. This concept aims at treating the two major groups of
-          data, files and parameter values on the one hand, and complete data set on the other hand, in the same way. The DataComponent
-          class includes the basic properties and functionality (i.e. mainly the interface) for both groups of data.
-          
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataComponent.">DataComponent.</a></td>
-        <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
           
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#DataComponent.creationDate">DataComponent.creationDate</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Date/time when the data component (individual data element or the complete set) was created.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataComponent.dataDescription">DataComponent.dataDescription</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">An instance of the DataDescription class that describes the form/structure of a data item.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataComponent.id">DataComponent.id</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">An id for the data component, could be a DAL-identififier or so. 
+        <td class="feature-detail"><a href="#Collection">Collection</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">This class covers data sets like RAVE-DR4 with its databases and database tables or any other collection of data. The data
+          types can be mixed, e.g. a parameter plus n image files. The structure of the collection must be described in the corresponding
+          DataCollectionDescription.
           
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#DataComponent.name">DataComponent.name</a></td>
+        <td class="feature-detail"><a href="#Collection.">Collection.</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">The name for a DataComponent. Multiple alternative names are also allowed.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataComponent.parentDataSet">DataComponent.parentDataSet</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">Link to the data set to which a component belongs.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataComponent.validity">DataComponent.validity</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">The validity gives an expiration date (or a timespan?) to indicate the time range in which the data (values) are valid.
-          This is mainly important for ambient conditions (seeing, moon light, etc.) and instrument characteristics, since these are
-          functions of time.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataDescription">DataDescription</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class describes the form/structure of a data item.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataDescription.">DataDescription.</a></td>
-        <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
           
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#DataDescription.description">DataDescription.description</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A free text describing the data format.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataDescription.id">DataDescription.id</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Unique id for the DataDescription.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataSet">DataSet</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class covers data sets like RAVE-DR4 with its databases and database tables.
-          
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#DataSet.dataComponent">DataSet.dataComponent</a></td>
+        <td class="feature-detail"><a href="#Collection.entity">Collection.entity</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">If pieces of data have the same origin, i.e. were produced by the same activity, they can be grouped to a data set. We decided
           to leave it to the person/tool recording provenance to decide how detailed a data set shall be separated into individual items.
@@ -2505,22 +1825,23 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#DataSetDescription">DataSetDescription</a></td>
+        <td class="feature-detail"><a href="#Collection.memberType">Collection.memberType</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity">Entity</a></td>
         <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Description of a data set as a whole, contains references to descriptions of the individual parts.</td>
+        <td class="feature-detail">W3C term.
+          In our case, these are our data components.
+          
+        </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#DataSetDescription.dataDescription">DataSetDescription.dataDescription</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">Link to the description of the components of a DataSet.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#InputData">InputData</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class serves to specify the role that a DataComponent takes when used as input for an Activity.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#InputData.">InputData.</a></td>
+        <td class="feature-detail"><a href="#Entity.">Entity.</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
@@ -2528,7 +1849,7 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#InputData.role">InputData.role</a></td>
+        <td class="feature-detail"><a href="#Entity.">Entity.</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
@@ -2536,14 +1857,7 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#InputDataDescription">InputDataDescription</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class describes the different roles of input data required for a certain method, e.g. parameter, parameter file, fits-image,
-          etc. in a format specific for just this method. 
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#InputDataDescription.">InputDataDescription.</a></td>
+        <td class="feature-detail"><a href="#Entity.">Entity.</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
@@ -2551,131 +1865,7 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Method">Method</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">The Method describes how an Activity is performed. This could be, for instance, the name of the code of a processing pipeline.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Method.description">Method.description</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Free text to shortly describe the method used. (Like 'Protocol' in SimDM.)
-          
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Method.id">Method.id</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Unique id for the Method for referencing.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Method.inputDataDescription">Method.inputDataDescription</a></td>
-        <td class="feature-detail">collection</td>
-        <td class="feature-detail">A set of type specifications for the zero-to-many input data components.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Method.name">Method.name</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">String to specify the name of a method (e.g. "Flatfielding", "Creating the master bias", name of the code for a pipeline or
-          post-processing)
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Method.resultDataDescription">Method.resultDataDescription</a></td>
-        <td class="feature-detail">collection</td>
-        <td class="feature-detail">A specification of the output data component(s),</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Observation">Observation</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Observation inherits from Activity covering all cases in which the result data have been acquired by an (astronomical) observation.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Observation.observationMethod">Observation.observationMethod</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">An instance of an ObservationMethod class used to describe how the observation has been done.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Observation.target">Observation.target</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">The target of an observation, e.g. M31, Star xxx, ...</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ObservationMethod">ObservationMethod</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">ObservationMethod which inherits from Method describes all activities that are considered observations.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Processing">Processing</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Processing inherits from Activity. All processing steps like flat-fielding or astrometric calibration are covered by this
-          class.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Processing.operatingSystem">Processing.operatingSystem</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Details about the operating system on which the processing was executed.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Processing.processingMethod">Processing.processingMethod</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">An instance of the Processor class used to describe the processing pipeline.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ProcessingMethod">ProcessingMethod</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Processor which inherits from Method describes all activities that belong to the Processing sub-class.
-          General description for e.g. flatfielding, astrometric calibration, imageStacking etc.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ProcessingMethod.author">ProcessingMethod.author</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Author of the code/processing algorithm/,,, used</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ProcessingMethod.version">ProcessingMethod.version</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Version of the processor (code, algorithm, ...), if applicable.
-          Not mandatory.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Project">Project</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This is the project responsible for executing an Activity (e.g. the RAVE collaboration). There could also be more than one
-          project involved in an Activity.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Project.id">Project.id</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A unique id of the project for referencing it from different Activities.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Project.name">Project.name</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Name(s) of the project. Alternative names can also be given.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Project.projectLeader">Project.projectLeader</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">A string to specify the person in charge of the project which has performed a certain activity.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Quality">Quality</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">A class for describing the quality of an Activity or DataComponent. The Quality object could just contain a list of possible
-          keywords.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ResultData">ResultData</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class serves to specify the role that a DataComponent takes when produced as result by an Activity.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ResultData.">ResultData.</a></td>
+        <td class="feature-detail"><a href="#Entity.">Entity.</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
@@ -2683,7 +1873,143 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#ResultData.">ResultData.</a></td>
+        <td class="feature-detail"><a href="#Entity.collection">Entity.collection</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">Link to the data set to which a component belongs.</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity.dataType">Entity.dataType</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity.description">Entity.description</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity.id">Entity.id</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">An id for the data component, could be a DAL-identififier or so. 
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity.label">Entity.label</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity.storageLocation">Entity.storageLocation</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Entity.type">Entity.type</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Organization">Organization</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">This is the organization or project responsible for executing an Activity (e.g. the RAVE collaboration). There could also
+          be more than one project involved in an Activity.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Organization.contact">Organization.contact</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Organization.webpage">Organization.webpage</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Person">Person</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">A person associated with an activity or attributed to an entity,</td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Person.affiliation">Person.affiliation</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#Person.email">Person.email</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#SoftwareAgent">SoftwareAgent</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#hadMember">hadMember</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#hadMember.id">hadMember.id</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#hadMember.role">hadMember.role</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#used">used</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#used.">used.</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
@@ -2691,19 +2017,62 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#ResultData.createdFromActivity">ResultData.createdFromActivity</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">Link from the result data to the activity by which it has been produced.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#ResultDataDescription">ResultDataDescription</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class describes the different roles of result data typical for a certain method, e.g. fits-image, binary files etc. in
-          a format specific for just this method. 
+        <td class="feature-detail"><a href="#used.id">used.id</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#ResultDataDescription.">ResultDataDescription.</a></td>
+        <td class="feature-detail"><a href="#used.role">used.role</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAssociatedWith">wasAssociatedWith</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAssociatedWith.agent">wasAssociatedWith.agent</a></td>
+        <td class="feature-detail">reference</td>
+        <td class="feature-detail">The collection of contacts for an activity. Though is not required to specify a contact, this is a very useful piece of information.
+          Zero-to-many instances are allowed.
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAssociatedWith.id">wasAssociatedWith.id</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAssociatedWith.role">wasAssociatedWith.role</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAttributedTo">wasAttributedTo</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAttributedTo.">wasAttributedTo.</a></td>
         <td class="feature-detail">reference</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
@@ -2711,120 +2080,81 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#ResultDataDescription.createdFromMethod">ResultDataDescription.createdFromMethod</a></td>
+        <td class="feature-detail"><a href="#wasAttributedTo.id">wasAttributedTo.id</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasAttributedTo.role">wasAttributedTo.role</a></td>
+        <td class="feature-detail">attribute</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasDerivedFrom">wasDerivedFrom</a></td>
+        <td class="feature-detail">objectType</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="feature-detail"><a href="#wasDerivedFrom.">wasDerivedFrom.</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">A DataDescription contains  a link to the Method that describes the Activity that generated the data.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#Storage">Storage</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Storage specifies where the (original) data produced by an activity can be found. This is not part of the Provenance Data
-          Model (therefore the different coloring).
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#Storage.referenceURI">Storage.referenceURI</a></td>
+        <td class="feature-detail"><a href="#wasDerivedFrom.id">wasDerivedFrom.id</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A reference to a file path, URL resource, .... where a description of the DataComponent (or the DataComponent itself??) can
-          be found. Is this covered already by "Storage"?
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#StoredData">StoredData</a></td>
+        <td class="feature-detail"><a href="#wasGeneratedBy">wasGeneratedBy</a></td>
         <td class="feature-detail">objectType</td>
-        <td class="feature-detail">StoredData are stored somewhere on disk, e.g. as a file or a database table. This is the "usual" type of data.</td>
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
+        </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#StoredData.storage">StoredData.storage</a></td>
+        <td class="feature-detail"><a href="#wasGeneratedBy.">wasGeneratedBy.</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">An instance of the Storage class which tells where to locate a certain data component.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#StoredData.storedDataDescription">StoredData.storedDataDescription</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">The format in which an instance of the StructuredData class is present.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#StoredDataDescription">StoredDataDescription</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Describes the type/structure of stored data, e.g. a description of the file format (fits), the parameters of an input file
-          or the table columns in the database.
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#StoredDataDescription.format">StoredDataDescription.format</a></td>
+        <td class="feature-detail"><a href="#wasGeneratedBy.id">wasGeneratedBy.id</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A string giving the format of a structured data element (e.g. description of the file format (fits, ascii, ...) or description
-          of a database table)
+        <td class="feature-detail">
+          TODO : Missing description : please, update your UML model asap.
+          
         </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TemporaryData">TemporaryData</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">This class can be used to specify data that existed only for a certain time and was deleted already, but is still usefull
-          to describe the provenance of an activity/another data set. E.g. a telescope pipeline may produce images in between after
-          each processing step, but only the final image is stored permanently.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TemporaryData.temporaryDataDescription">TemporaryData.temporaryDataDescription</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">Link to the description of the temporary data</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TemporaryDataDescription">TemporaryDataDescription</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Describes the type/structure of temporary data.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientData">TransientData</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Data components which are not data sets are either represented as parameters or structured data. The Parameter sub-class of
-          DataComponent contains a set of key-value pairs, for instance from a configuration or a log file.
-        </td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientData.name">TransientData.name</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Name of a parameter</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientData.numericValue">TransientData.numericValue</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">The value of a Parameter instance of type real.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientData.stringValue">TransientData.stringValue</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">The value of a Parameter instance of string type.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientData.transientDataDescription">TransientData.transientDataDescription</a></td>
-        <td class="feature-detail">reference</td>
-        <td class="feature-detail">The data type underlying a parameter.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientDataDescription">TransientDataDescription</a></td>
-        <td class="feature-detail">objectType</td>
-        <td class="feature-detail">Describes the type of transient data, e.g. by using ucds.</td>
-      </tr>
-      <tr>
-        <td class="feature-detail"><a href="#TransientDataDescription.ucd">TransientDataDescription.ucd</a></td>
-        <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A string giving the data type as a ucd.</td>
       </tr>
     </table>
     <hr>
     <h1>4.<a name="modelimports">Imported Models</a></h1>
     <p>This section lists the external models imported by the current data model.
-      For each imported model we list URLs to the VO-DML and HTML representations and the prefix used for utype-s from inside the
-      model.
+      For each imported model we list URLs to the VO-DML and HTML representations and the prefix used for vodml-ids from inside
+      the model.
     </p>
-    <h2><a name="IVOA"></a>4.1 IVOA Reference Types Data Model ala VO-URP
+    <h2><a name=""></a>4.1 
     </h2>
     <table border="1" cellspacing="2" width="100%">
       <tr>
-        <td class="objecttype-title" width="20%">Model name/prefix</td>
+        <td class="objecttype-title" width="20%">Model vodml-id</td>
         <td class="objecttype-name">IVOA</td>
       </tr>
       <tr>
