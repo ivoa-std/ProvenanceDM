@@ -1,0 +1,20 @@
+\subsection{Discussion}
+This model was established with having a database implementation in mind. However, the W3C model may offer simpler possibilities to store provenance with the dataEntities themselves, e.g. as an additional extension in fits-headers.
+
+A model using prototypes has the advantage of normalisation: the common processes could be described once and for all at some place (this \emph{some place} is actually the crucial point here!) and then be reused when describing the actual provenance of certain dataEntities and activities.
+In an ideal world, ``some place'' could collect all the descriptions from all 
+the possible datasets and methods in astronomy, but building such a look-up place is a quite challenging task -- it will probably never be complete. There's also the issue of persistent identifiers/broken links to consider.
+Normalisation is useful for closed systems, e.g. for describing the provenance for data produced by a certain pipeline (e.g. MuseWise system) or with workflow tools or when a task needs to be repeated many times. However, the VO is quite the contrary of a closed system and we need to keep an eye on what is actually achievable.
+
+When writing down a simple serialisation of e.g. the provenance for a stacked image with the protoype-model, it soon becomes quite cumbersome to define everything twice: first the descriptions, then the instances. This basically doubles the number of entries to describe provenance (unless there is already some place with all the descriptions to which we can refer).
+
+Expressing provenance for a stacked image with this smaller set of classes may be simpler, but on the other hand constructing a database schema becomes much harder. 
+We could leave it to the implementors to choose what is more useful for them, and when extracting provenance, serialising it, then the descriptions are combined with the activity/dataEntity for 
+the serialisation, thus probably producing some repetition, but avoiding too many 
+links between different items.
+
+\Note{Descriptions could be present in W3C-conform serialisations, if we 
+put them into entities.}
+
+\TODO{Check, if PROV-Templates from the W3C (inofficial note) could be used for ActivityDescriptions.}
+

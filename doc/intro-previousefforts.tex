@@ -1,0 +1,11 @@
+\subsection{Previous efforts}
+
+Outside of the astronomical community, the Provenance Challenge series (2006 - 2010), a community effort to achieve inter-operability between different representations of provenance in scientific workflows, resulted in the Open Provenance Model (\cite{moreau2010}). 
+Later, the W3C Provenance Working Group was founded and released the W3C Provenance Data Model as Recommendation in 2013 (\cite{std:W3CProvDM}). 
+OPM was designed to be applicable to anything, scientific data as well as cars or immaterial things like decisions. With the W3C model, this becomes more focused on the web.  Nevertheless, the core concepts are still in principle the same in both models and very general, so they can be applied to astronomical data sets and workflows as well. 
+The W3C model was taken up by a larger number of applications and tools than OPM, we are therefore basing our modeling efforts on the W3C Provenance data model, making it less abstract, more specific or extend it where necessary. 
+
+
+The W3C model even specifies already PROV-DM Extensibility points (section 6 in \cite{std:W3CProvDM}) for extending the core model. This allows to specify additional roles and types to each entity, agent or relation using the attributes \texttt{prov:type} and \texttt{prov:role}.
+By specifying the allowed values for the IVOA model, we could adjust the model to our needs while still being compliant to W3C.
+
