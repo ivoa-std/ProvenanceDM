@@ -4,10 +4,10 @@
 DOCNAME = ProvDM
 
 # count up; you probably do not want to bother with versions <1.0
-DOCVERSION = 0.1
+DOCVERSION = 0.2
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2016-04-15
+DOCDATE = 2016-04-28
 
 # What is it you're writing: NOTE, WD, PR, or REC
 DOCTYPE = WD
