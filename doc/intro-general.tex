@@ -1,31 +1,33 @@
 In this document, we discuss a draft for an IVOA standard data model for describing the
 provenance of data. We focus here on observational data, since provenance for
-simulated data is already covered by SimDM 
-\cite{std:SimDM}. However, the currently discussed version is abstract enough so that 
-it could be applied to any kind of processes, including extraction of data from 
+simulated data is already covered by the Simulation Data Model (SimDM 
+\citep{std:SimDM}). However, the currently discussed version is abstract enough so that 
+its core pattern could be applied to any kind of processes, including extraction of data from 
 databases or even the flow of scientific proposals from application to 
-acceptance and scheduling of the proposed observations.
+acceptance and scheduling of the proposed observations. The provenance information 
+could be used to check internal processes, e.g. if the proposal was approved by 
+a person from a certain committee, if the time span between application and 
+acceptance/refusal does not extend a certain period etc. 
 
-\subsubsection{Further possible applications}
 
-The provenance of the flow of scientific proposals at observatories could also be tracked using the core provenance model. The provenance information could be used to check internal processes, e.g. if the proposal was approved by a person from a certain committee, if the time span between application and acceptance/refusal does not extend a certain period etc. 
+\subsection{Goal of the provenance model}\label{sec:goals}
+The goal of the provenance data model is to describe how provenance information 
+can be modeled, stored and exchanged within the virtual observatory. Its scope 
+is mainly to allow modelling of the flow of data, the relations between data 
+and processing steps. Characteristics of observations like ambient conditions 
+and instrument characteristics won't be modeled here explicitely. They can be 
+included in the form of additional data linked to an observaton or as 
+attributes to observation process.
+
+In general, the model shall enable a scientist who has no prior knowledge about 
+a data set to get more 
+background information. This will help the scientist to decide if the data set 
+is adequate for his research goal, judge its quality and get enough information 
+to be able to trace back its history as far as possible. 
+
+Provenance information can be recorded very detailed or in more general steps, 
+depending on the desired level of detail of the individual projects that record 
+provenance and the intended usage.
 
 
-\subsection{Goal of the provenance model}
-The goal of the provenance data model is to describe how provenance information can be modeled and stored/exchanged within the virtual observatory. Its scope is mainly to allow modelling of the flow of data, the relations between data and processing steps. Characteristics of observations like ambient conditions and instrument characteristics won't be modeled here explicitely. They are to be included in the form of data sets (entities) only.
-
-\subsubsection{User views on provenance}\label{sec:userviews}
-
-The listed requirements/use cases were collected having an external scientist in mind who retrieves data from the virtual observatory and needs to get more background information. When looking at internal processes, one can also use provenance for checking workflows, e.g. if reduced images from a pipeline don't look quite right, the pipeline can be re-run with different parameters. Tracking the workflow in a common provenance description can help to quickly identify the problematic parameters and to keep a better track of changes. It can also be used to exchange pipeline recipes between different projects in a standardized way.
-
-Thus, we could classifiy different views on the provenance information:
-\begin{itemize}
-\item \textbf{basic view}: This gives just the main datasets and activities or only collections of them, if they exist, and their relations. This provides an overview on the main steps and could be converted into a figure for e.g. project reports with existing PROV-tools (e.g. ProvStore(\url{https://provenance.ecs.soton.ac.uk/store/} or the prov-Python package \url{https://pypi.python.org/pypi/prov})  
-
-\item \textbf{detail view}: This gives e.g. an external scientist enough information to track back the history of one given entity, e.g. an observation-entry in a table, a file or an image. Most external scientists are probably only interested in science-ready data, so maybe there is no need to show all details for e.g. uncalibrated raw images.
-
-\item \textbf{full view}: A full view would be required for scientists who want to use the information to reprocess data from the beginning, i.e. they may need all the information including e.g. raw images from observations and which flat-fields were taken etc.
-\end{itemize}
-
-\Note{Maybe split this section into 1) use case: different users have different needs, which appears here and 2) define different views on provenance, which should be put into a different section in the main part, not in introduction.}
 

@@ -187,7 +187,7 @@ An example for writing down the provenance for a stacked image in W3C and with t
 \subsubsection{Collection}
 W3C describes a collection as an aggregation of entities. This is a useful concept to adapt here, since it allows to treat many data (e.g. a RAVE data set containing data tables and spectra) and then define provenance for this complete bundle. Therefore we included the ``Collection''-object into our class diagrams. A Collection is an entity, and has ``hadMember'' relations to each of its members.
 
-The advantage is, that one can describe the provenance workflow on a coarser level, just using collections and the activities that created them. If users ask for more details on specific data sets one would additionally include the hadMember-relations to get the full provenance. Thus it allows us to hide complexity where necessary, i.e. to adjust the granularity of the provenance (also see Section \ref{sec:userviews}).
+The advantage is, that one can describe the provenance workflow on a coarser level, just using collections and the activities that created them. If users ask for more details on specific data sets one would additionally include the hadMember-relations to get the full provenance. Thus it allows us to hide complexity where necessary, i.e. to adjust the granularity of the provenance (also see Section \ref{sec:goals}).
 
 On the other hand, defining for each member of a collection a hadMember-relation can 
 become quite cumbersome and will not look much more concise than writing the used- or wasGeneratedBy-relationship down for each of them. But it reduces the number of relations to about 1/2.
