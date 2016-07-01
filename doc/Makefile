@@ -7,7 +7,7 @@ DOCNAME = ProvDM
 DOCVERSION = 0.3
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2016-06-21
+DOCDATE = 2016-06-...
 
 # What is it you're writing: NOTE, WD, PR, or REC
 DOCTYPE = WD
