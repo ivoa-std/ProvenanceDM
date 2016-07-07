@@ -67,9 +67,9 @@ classes. The names were again chosen to match the W3C names:
 
 
 \subsubsection{Entity}
-Entities in the VO are usually astronomical or astrophysical data sets in the form of images, tables, numbers, etc. But they can also be observation or simulation log files or, in a wider sense they could also be observation proposals, scientific articles or manuals and other documents. An entity is not restricted to files. It can even be just a number in a table, depending on how fine-grained the provenance shall be described.
+Entities in astronomy are usually astronomical or astrophysical data sets in the form of images, tables, numbers, etc. But they can also be observation or simulation log files or, in a wider sense also observation proposals, scientific articles or manuals and other documents. An entity is not restricted to files. It can even be just a number in a table, depending on how fine-grained the provenance shall be described.
 
-Entities in Astronomy are often called ``dataset'', which could mean a single 
+Entities in the VO are often called ``dataset'', which could mean a single 
 table, an image or a collection of them. The Dataset Data Model 
 \citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
 are considered to be a single deliverable''. We adopt this definition here and 
@@ -78,7 +78,7 @@ define ``Dataset'' as a subclass to Entity, as shown in Figure \ref{fig:entitycl
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{../datamodel-diagrams/ProvDM-entity-classes.png}
-\caption{The main core classes and relations of the Provenance Data Model, which also occur in the W3C model.}
+\caption{The Entity class and related subclasses}
 \label{fig:entityclasses}
 \end{figure}
 
@@ -87,33 +87,72 @@ We use the namespace ``prov'', if the attribute also appears in ProvDM of W3C.
 
 \begin{table}[h]
 
+\small
+
+\tymax	0.5\textwidth
+
 \textbf{Entity}\vspace{0.25em}\\
-\begin{tabular}[h]{|l|l|p{0.6\textwidth}|}
-\hline
-\textbf{\em Attribute Name} & \textbf{\em Type} & \textbf{\em Description}\\\hline
-\textbf{entityID} & string & a unique id for this entity (unique in its realm)\\\hline
-prov:label        & string & a label (to be displayed by clients)\\\hline
-prov:type         & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\\hline
-\end{tabular}
+\begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}lL@{}}
+\toprule
+\head{Attribute} & \head{Utype} & \head{Type} & \head{Description}\\
+\midrule
+\textbf{entityID} & DataID.observationID & string & a unique id for this entity (unique in its realm)\\
+prov:label        & W3C model & string & a label (to be displayed by clients)\\
+prov:type         & W3C model & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
+\bottomrule
+\end{tabulary}
 
 \vspace{1cm}
 
 \textbf{Dataset}\vspace{0.25em}\\
-\begin{tabular}[h]{|l|l|p{0.6\textwidth}|}
-\hline
-\textbf{\em Attribute Name} & \textbf{\em Type} & \textbf{\em Description}\\\hline
-dataproduct\_type & string       & refers to dataproduct\_type from the ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\\hline
-calib\_level       & enum integer & integer between 0 calibration level, if applicable, from ObsCore data model\\\hline
-datatype          & string       & type of the physical representation of the entity, e.g. binary file, fits file, database, database table, ASCII file, tar-file, directory, integer, float\\\hline
-prov:description  & string       & text describing the entity in more detail\\\hline
-prov:location or access\_url & string & where the entity can be found/downloaded\\\hline
-access & string & values: public, restricted or internal\\\hline
-\end{tabular}
+\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{3cm}lL@{}}
+\toprule
+\head{Attribute} & \head{Utype} & \head{Type} & \head{Description}\\
+\midrule
+dataproduct\_type  & ObsDataset.data-ProductType & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
+calib\_level       & ObsDataset.calib-Level & enum integer & integer between 0 calibration level, if applicable, from ObsCore data model\\
+%datatype           &                            & string       & type of the physical representation of the entity, e.g. binary file, fits file, database, database table, ASCII file, tar-file, directory, integer, float\\\hline
+prov:description   & W3C model & string       & text describing the entity in more detail\\
+prov:location or access\_url& W3C model & string & where the entity can be found/downloaded\\
+access             & & string & values: public, restricted or internal\\
+\bottomrule
+\end{tabulary}
+
 \caption{Attributes of entities and datasets. Mandatory attributes are marked as bold.}\label{tab:entity-attributes}
 \end{table}
 
 The difference between entities that are used as input data or output data 
 becomes clear by specifying the relations between the data and activities producing/using these data.
+More details on this will follow in Section \ref{sec:entity-activity-relations}.
+
+
+\subsubsection{Collection}
+Collections are datasets that are grouped together and can be treated as one single entity. 
+In the provenance sense, they have some kind of common origin. The term ``Collection'' is 
+also used in the Dataset Data Model for grouping datasets together, e.g. a collection 
+with the name `RAVE survey' could consist of a number of database tables and spectra files.
+
+The entity-collection relation can be modeled using the Composite design pattern: 
+Collection is a subclass of Entity, but also an aggregation of 1 to many entities.
+
+In order to be compliant to vodml, we model the membership-relation explicitely 
+by including a `HadMember'' class in our model, which is connected to the
+``Collection'' class via a composition. It may contain an additional role-attribute.
+
+``Collection''s are also known in the W3C model, in the same sense as used here. 
+The name for the mapping class, ``HadMember'' was adopted from the W3C model.
+
+Advantages:
+\begin{itemize}
+\item use collections to provide overview, individual data for very detailed provenance; 
+	  thus use collections for different levels of detail (granularity), hiding 
+	  complexity where necessary
+\item \TODO{Anything else?}
+\end{itemize}
+
+\TODO{Do we really gain that much?}
+\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
+
 
 \subsubsection{Activity}
 Activities in the VO include all steps in the reduction of images and production of new data sets, like image calibration, bias subtraction, image stacking; light curve generation from a number of observations, radial velocity determination from spectra, etc.
@@ -140,6 +179,8 @@ Here's a list of useful further attributes for activities:
 \end{itemize}
 
 A ``version'' attribute could also be useful.
+
+\subsection{Entity-Activity relations}\label{sec:entity-activity-relations}
 
 
 
@@ -209,38 +250,9 @@ Each activity requires specific roles for each entity (provided in the used- or 
 \TODO{In order to facilitate interoperability, for each activity, the possible entity-roles could be defined and described by the IVOA community, in a vocabulary list or thesaurus.}
 
 
-\subsubsection{Mapping classes and input/output data}
-We could adjust the W3C model by 
-replacing the used- and wasGeneratedBy-relations by a mapping class between activity and entity in the class diagram in Figure~\ref{fig:classes-w3c-adjusted}, for making the possible \emph{roles} of input and output data more specific.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ProvDM-W3C-adjusted.png}
-\caption{An adjusted W3C model for provenance of astronomical data.}
-\label{fig:classes-w3c-adjusted}
-\end{figure}
-
-
-The different methods and data types are here hidden in pre-defined vocabulary lists. 
-An example for writing down the provenance for a stacked image in W3C and with the protoype-model (which is discussed in a later section) is given in the accompanying files 
-\texttt{prov-example-incl-prototypes.txt} and 
-\texttt{prov-example-w3c.txt} at \href{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/}{volute}.
-
 
 % The derivation relation together with entities is already enough to produce a data flow view, but in Astronomy we are probably even more interested in the Processes (as discussed in our first draft for requirements for provenance).
 
-
-\subsubsection{Collection}
-W3C describes a collection as an aggregation of entities. This is a useful concept to adapt here, since it allows to treat many data (e.g. a RAVE data set containing data tables and spectra) and then define provenance for this complete bundle. Therefore we included the ``Collection''-object into our class diagrams. A Collection is an entity, and has ``hadMember'' relations to each of its members.
-
-The advantage is, that one can describe the provenance workflow on a coarser level, just using collections and the activities that created them. If users ask for more details on specific data sets one would additionally include the hadMember-relations to get the full provenance. Thus it allows us to hide complexity where necessary, i.e. to adjust the granularity of the provenance (also see Section \ref{sec:goals}).
-
-On the other hand, defining for each member of a collection a hadMember-relation can 
-become quite cumbersome and will not look much more concise than writing the used- or wasGeneratedBy-relationship down for each of them. But it reduces the number of relations to about 1/2.
-
-\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
-
-%this means that we need to define for each element of the collection an "isChildOf" or "isMemberOf"-relation with the bundle.
 
 
 \subsubsection{Work flows: Plan and Bundle}

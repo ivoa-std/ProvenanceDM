@@ -2,6 +2,7 @@
 \input tthdefs
 
 \usepackage[utf8]{inputenc}
+\usepackage{booktabs, tabulary}    % for nicer tables
 
 \title{IVOA Provenance Data Model}
 
@@ -16,7 +17,7 @@
 
 % \previousversion[????URL????]{????Funny Label????}
 \previousversion[http://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/ProvDM-0.1-20141008.pdf]{ProvDM-0.1-20141008.pdf}
-       
+
 
 % own definitions
 \definecolor{todocolor}{rgb}{1,1,0.8}
@@ -63,7 +64,13 @@
     \vspace{\baselineskip}
 }%
 
+% for nicer tables:
+\renewcommand{\arraystretch}{1.3}
+\newcommand{\head}[1]{\textbf{#1}}
+
 \begin{document}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} 
+
 \begin{abstract}
 This draft is still an internal working draft, any comments welcome! 
 The urls above also won't work yet, because this draft is only circulated 
