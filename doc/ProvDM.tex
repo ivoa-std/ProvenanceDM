@@ -16,7 +16,7 @@
 \author{Francois Bonnarel}
 
 % \previousversion[????URL????]{????Funny Label????}
-\previousversion[http://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/ProvDM-0.1-20141008.pdf]{ProvDM-0.1-20141008.pdf}
+\previousversion[http://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/ProvDM-0.2-20160428.pdf]{ProvDM-0.1-20141008.pdf}
 
 
 % own definitions
@@ -34,7 +34,7 @@
     \colorbox{todocolor}{%
             \parbox{0.85\linewidth}{\sffamily \textbf{TODO:}\\
             #1}
-    }%    
+    }%
     \vspace{2pt}
 
 }
@@ -67,6 +67,10 @@
 % for nicer tables:
 \renewcommand{\arraystretch}{1.3}
 \newcommand{\head}[1]{\textbf{#1}}
+
+
+% define new command for classes, in case we decide later on for a different style
+\newcommand{\class}[1]{\emph{#1}} 
 
 \begin{document}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X} 
@@ -139,7 +143,7 @@ other VO data models and how provenance information can be stored.
 \appendix
 \section{Changes from Previous Versions}
 No official previous versions yet.
-% No previous versions yet.  
+% No previous versions yet.
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
 
