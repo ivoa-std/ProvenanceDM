@@ -1,4 +1,4 @@
-\subsection{Requirements for Provenance and Use Cases}
+\subsection{Requirements for provenance and use cases}
 \subsubsection{Requirements}\label{sec:requirements}
 
 An IVOA provenance data model should provide solutions to the following tasks:
@@ -9,25 +9,26 @@ An IVOA provenance data model should provide solutions to the following tasks:
 
         \noindent Examples: 
         \begin{itemize}
-            \item Is the image from catalogue xxx already calibrated?
+            \item Is an image from catalogue xxx already calibrated?
 What about dark field subtraction? Were foreground stars removed? Which technique
 was used?  
             
             \item Is the background noise of atmospheric muons still present in my neutrino data sample?  
         \end{itemize}
 
-        We don't go so far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
+        We do not go so far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
         major steps undertaken to create a piece of data should be recoverable.
 
       
 \paragraphlb{B: Attribution and further information}
-        Find the people involved in the production, the people/organizations/institutes that need to be cited or can be asked for more information.
+        Find the people involved in the production of a dataset,
+        the people/organizations/institutes that need to be cited or can be asked for more information.
 
         \noindent Examples: 
         \begin{itemize}
             \item I want to use an image for my own work -- who was involved in
-creating it? Whom do I need to cite or who can I contact to get this information?  
-            \item I have a question about column xxx in the data
+creating it? Who do I need to cite or who can I contact to get this information?  
+            \item I have a question about column xxx in a data
 table. Who can I ask about that?  
         \end{itemize}
       
@@ -48,12 +49,12 @@ the photometry determined for each data point?
 
 
 \paragraphlb{D: Quality assessment}
-        Judge the quality of an observation, production step or data set.
+        Judge the quality of an observation, production step or dataset.
         
         \noindent Examples:
         \begin{itemize}
             \item Since wrong calibration images may increase the
-number of artifacts on an image rather than removing them, the knowledge about
+number of artifacts on an image rather than removing them, knowledge about
 the calibration image set will help to assess the quality of the calibrated
 image.  
         \end{itemize}
@@ -66,7 +67,7 @@ image.
         \begin{itemize}
             \item Give me more images that were produced using the
 same pipeline.  
-            \item Give me an overview on all images reduced with the same calibration data set.  
+            \item Give me an overview on all images reduced with the same calibration dataset.  
             \item Are there any more images attributed to this observer?  
             \item Which images of the crab nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?  
         \end{itemize}
@@ -75,4 +76,4 @@ same pipeline.
 
 
 \subsubsection{More specific use cases}
-More specific use cases with example serialisations for different types of astronomical data sets are given in Section \ref{sec:usecases-implementations}.
+More specific use cases with example serialisations for different types of astronomical datasets are given in Section \ref{sec:usecases-implementations}.

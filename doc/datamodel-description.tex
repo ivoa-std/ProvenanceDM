@@ -3,9 +3,9 @@ start with the UML diagram and then give in the following sections more details
 for each class and relation.
 
 \subsection{UML class diagram}
-Figure \ref{fig:classdiagram} shows the UML diagram for an IVOA provenance data
-model. It's core elements, which can also be found in the W3C provenance data
-model are colored in blue. This pattern is very general and can be reused everywhere 
+Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA provenance data
+model. Its core elements, which can also be found in the W3C provenance data
+model, are colored in blue. This pattern is very general and can be reused everywhere 
 where provenance is needed. 
 
 \begin{figure}[h]
@@ -91,10 +91,11 @@ compliant provenance.
 
 
 \subsubsection{Entity}
-Entities in astronomy are usually astronomical or astrophysical data sets in the 
+Entities in astronomy are usually astronomical or astrophysical datasets in the 
 form of images, tables, numbers, etc. But they can also be observation or 
-simulation log files or, in a wider sense also observation proposals, scientific 
-articles or manuals and other documents. An entity is not restricted to files. 
+simulation log files or, in a wider sense, also observation proposals, scientific 
+articles, or manuals and other documents. An entity is not restricted to being
+a file. 
 It can even be just a number in a table, depending on how fine-grained the 
 provenance shall be described.
 
@@ -219,11 +220,11 @@ will point to utypes of SimDM.
 \end{table}
 
 
-\subsubsection{Collection}
+\subsubsection{Collections}
 Collections are datasets that are grouped together and can be treated as one single entity. 
-In the provenance sense, they have to have the same origin, i.e. they were 
+In the provenance sense, they have to have the same origin, i.e., they were 
 produced by the same activity (which could also be the activity of collecting
-data for publication or similar). The term ``Collection'' is 
+data for publication or similar). The term ``collection'' is 
 also used in the Dataset Data Model for grouping datasets. As an example, a collection 
 with the name `RAVE survey' could consist of a number of database tables and spectra files.
 
@@ -233,16 +234,16 @@ which could be collections themselves.
 
 In order to be compliant to vodml, we model the membership-relation explicitely 
 by including a `HadMember'' class in our model, which is connected to the
-``Collection'' class via a composition. It may contain an additional role-attribute.
+``Collection'' class via a composition. It may contain an additional role attribute.
 
-``Collection''s are also known in the W3C model, in the same sense as used here. 
+Collections are also known in the W3C model, in the same sense as used here. 
 The name for the mapping class, ``HadMember'' was adopted from the W3C model.
 
 
 Similar to \class{EntityDescription} we also need a description class for collections: 
 \class{CollectionDescription}. 
 
-\TODO{CollectionDescription is only needed, if it has different attributes than 
+\TODO{CollectionDescription is only needed if it has different attributes than 
 the EntityDescription -- Check with use cases!}
 
 Advantages:
@@ -264,7 +265,7 @@ Advantages:
 
 \subsubsection{Activity}
 Activities in astronomy include all steps from obtaining data to the reduction of 
-images and production of new data sets, like image calibration, bias subtraction, image stacking; 
+images and production of new datasets, like image calibration, bias subtraction, image stacking; 
 light curve generation from a number of observations, radial velocity 
 determination from spectra, post-processing steps of simulations etc.
 
@@ -381,7 +382,7 @@ Each activity requires specific roles for each input or output entity, thus
 we store this information on the description side, in the role-attributes for 
 the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
 
-%In W3C, this is partially solved by adding a derivation relation between the Entities (data). Here, we have a mapping-class between Activity and DataEntities as well as between ActivityDescription and DataDescription. The mapping-class at the description side, i.e. between the ActivityDescription and its DataEntityDescriptions, contains additionally a role for each relation, e.g. parameter, dark frame, raw image, etc.  If a data set is used as input to an activity or if it results from it, will become clear with these roles.
+%In W3C, this is partially solved by adding a derivation relation between the Entities (data). Here, we have a mapping-class between Activity and DataEntities as well as between ActivityDescription and DataDescription. The mapping-class at the description side, i.e. between the ActivityDescription and its DataEntityDescriptions, contains additionally a role for each relation, e.g. parameter, dark frame, raw image, etc.  If a dataset is used as input to an activity or if it results from it, will become clear with these roles.
 
 
 Some example roles are given in Table \ref{tab:entity-roles}.
@@ -567,7 +568,7 @@ attribute DOI instead of storageLocation.}
 
 
 \subsubsection{Calibration data}
-The calibration data set consists of images that can be used to calibrate the
+The calibration dataset consists of images that can be used to calibrate the
 raw data. It is not necessary to mention them explicitly in the model, 
 they are just another dataset that is used by activities with a 
 calibration-method.
@@ -594,7 +595,7 @@ the instrument.
 All the characteristics could be described either as key-value pairs directly with the 
 observation (as attributes) or just as datasets, using the \class{Entity} class. 
 One would then 
-link the instrument characteristics as a type of input (or output?) data set to a certain 
+link the instrument characteristics as a type of input (or output?) dataset to a certain 
 observation activity. Thus we don't need a separate Instrument or Device class.
 
 \Note{One should also keep in mind that some instrument related parameters can change within time,

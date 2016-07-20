@@ -1,33 +1,32 @@
-In this document, we discuss a draft for an IVOA standard data model for describing the
-provenance of data. We focus here on observational data, since provenance for
-simulated data is already covered by the Simulation Data Model (SimDM 
-\citep{std:SimDM}). However, the currently discussed version is abstract enough so that 
-its core pattern could be applied to any kind of processes, including extraction of data from 
+In this document, we discuss a draft for an IVOA standard data model for
+describing the provenance of data. We focus on observational data, since
+provenance for simulated data is already covered by the Simulation Data Model
+(SimDM \citep{std:SimDM}). However, the version currently discussed is
+sufficiently abstract, so that its core pattern could be applied to any kind
+of process, including extraction of data from 
 databases or even the flow of scientific proposals from application to 
-acceptance and scheduling of the proposed observations. The provenance information 
-could be used to check internal processes, e.g. if the proposal was approved by 
-a person from a certain committee, if the time span between application and 
-acceptance/refusal does not extend a certain period etc. 
+acceptance, including scheduling of the observations proposed therein.
+Provenance information could also be used to check internal processes,
+e.g., whether a proposal was approved by a person from a certain committee,
+or whether the time span between application and acceptance or rejection
+does not extend a certain period, etc.\,. 
 
 
 \subsection{Goal of the provenance model}\label{sec:goals}
-The goal of the provenance data model is to describe how provenance information 
-can be modeled, stored and exchanged within the virtual observatory. Its scope 
-is mainly to allow modelling of the flow of data, the relations between data 
-and processing steps. Characteristics of observations like ambient conditions 
-and instrument characteristics won't be modeled here explicitely. They can be 
-included in the form of additional data linked to an observaton or as 
-attributes to observation process.
+The goal of the provenance data model is to describe how provenance information
+can be modeled, stored and exchanged within the Virtual Observatory. Its scope
+is mainly modeling of the flow of data, of the relations between data,
+and of processing steps. Characteristics of observations such as ambient
+conditions and instrument characteristics will not be modeled here
+explicitely. They can be included in form of additional data linked to
+observations, or as attributes of observation processes.
 
-In general, the model shall enable a scientist who has no prior knowledge about 
-a data set to get more 
-background information. This will help the scientist to decide if the data set 
-is adequate for his research goal, judge its quality and get enough information 
+In general, the model shall enable a scientist who has no prior knowledge about
+a dataset to get more 
+background information. This will help the scientist decide if the dataset 
+is adequate for his research goal, judge its quality and get enough information
 to be able to trace back its history as far as possible. 
 
-Provenance information can be recorded very detailed or in more general steps, 
-depending on the desired level of detail of the individual projects that record 
-provenance and the intended usage.
-
-
-
+Provenance information may be recorded in minute detail or by using coarser
+elements, depending on the intended usage and the desired level of detail
+for a specific project that records provenance.
