@@ -228,6 +228,9 @@ data for publication or similar). The term ``collection'' is
 also used in the Dataset Data Model for grouping datasets. As an example, a collection 
 with the name `RAVE survey' could consist of a number of database tables and spectra files.
 
+\TODO{Do we allow empty collections? Or should collections always contain at least 1 member? (otherwise they are just prov:entities?)}
+
+
 The entity-collection relation can be modeled using the \emph{Composite} design pattern: 
 Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
@@ -248,7 +251,7 @@ the EntityDescription -- Check with use cases!}
 
 Advantages:
 \begin{itemize}
-\item use collections to provide overview, individual data for very detailed provenance; 
+\item use collections to provide overview, but individual data for very detailed provenance; 
 	  thus use collections for different levels of detail (granularity), hiding 
 	  complexity where necessary
 \item \TODO{Anything else?}
@@ -532,7 +535,7 @@ creator & ?? &  (about the same as author?)\\
 \end{center}
 \end{table}
 
-This list is not complete. We could consider  providing a vocabulary for this, 
+This list is not complete. We could consider providing a vocabulary for this, 
 restricted to provenance in the astronomy domain.
 
 \TODO{Provide more links into other data models, e.g. there is a \class{Curation} object in SpectralDM, see http://www.ivoa.net/documents/SpectralDM/20150206/PR-SpectralDM-2.0-20150206.pdf, section 2.4.}
