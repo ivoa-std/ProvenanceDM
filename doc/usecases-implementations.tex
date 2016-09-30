@@ -1,16 +1,32 @@
 \subsection{One processing step in PROV-N notation}
+
 \TODO{Put the very simple example here}
 See \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-incl-prototypes.txt}
 and \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-w3c.txt}
 
 
 \subsection{Provenance of RAVE database tables (DR4)}
+
 This example shows how the workflow of RAVE data, from images to the final database tables, can be expressed using Provenance. 
 The workflow is not included completely, only some major steps are taken into account. It shows that the provenance concepts explained in this draft can be applied directly to data obtained from astronomical observations.
 
 \TODO{Include here figure from InterOp talk. See also https://provenance.ecs.soton.ac.uk/store/documents/84064/}
 
+\subsection{Provenance for CTA}
+
+The Cherenkov Telescope Array (CTA) project is an initiative to build the next generation ground-based very high energy (VHE) gamma-ray instrument. It will provide a deep insight into the non-thermal high-energy universe. Contrary to previous Cherenkov experiments, it will serve as an open observatory providing data to a wide astrophysics community, with the requirement to propose self-described data products to users that may be unaware of the Cherenkov astronomy specificities.
+
+Data acquisition and processing in Cherenkov astronomy are different from other astronomy domains (radio astronomy, ground-based optical telescopes, X-ray space observatories, ...). An array of Cherenkov telescope is used to observe the Cherenkov light emitted by particles interacting with the upper atmosphere. The origin, energy and time of the incident particle then have to be reconstructed using various methods. The detection of astrophysical sources is thus indirect and dependant on the methods used. Moreover, the response of the instrument has to be determined through detailed simulations corresponding to the observing conditions. Because of this complexity in the detection process, Provenance information of data products are necessary to the user to  perform a correct scientific analysis.
+
+Provenance concepts are relevant for different aspects of CTA :
+\begin{itemize}
+\item Data diffusion: the diffused data products have to contain all the relevant context information with the assumptions made as well as a description of the methods and algorithms used during the data processing.
+\item Pipeline : the CTA Observatory must ensure that data processing is traceable and reproducible.
+\item Instrument Configuration : the characteristics of the instrument at a given time have to be available and traceable (hardware changes, measurements of e.g. a reflectivity curve of a mirror, ...)
+\end{itemize}
+
+
 \subsection{POLLUX database}
 
-\subsection{CTA provenance}
 
+ 
