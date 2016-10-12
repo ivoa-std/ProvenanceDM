@@ -7,7 +7,7 @@ DOCNAME = ProvDM
 DOCVERSION = 0.3
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2016-06-...
+DOCDATE = $(DATE)
 
 # What is it you're writing: NOTE, WD, PR, or REC
 DOCTYPE = WD
@@ -17,7 +17,8 @@ DOCTYPE = WD
 SOURCES = $(DOCNAME).tex
 
 # List of pixel image files to be included in submitted package 
-FIGURES = archdiag.png ProvDM-W3C-classdiagram.png ProvDM-classdiagram-prototypes.png ProvDM-W3C-adjusted.png
+FIGURES = VOArchitecture-Prov2016.png ProvDM-W3C-classdiagram.png ProvDM-classdiagram-prototypes.png ProvDM-W3C-adjusted.png
+#updated the architecture diag . Mireille
 
 # List of PDF figures (for vector graphics)
 VECTORFIGURES = 
