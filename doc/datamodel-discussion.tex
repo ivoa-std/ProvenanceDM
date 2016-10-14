@@ -1,3 +1,76 @@
+\subsection{Discussion}
+
+
+\subsubsection{Links, ids}\label{sec:links_between_data}
+It would be convenient, if each data object or even each file 
+gets a unique id that can be referenced. The W3C provenance model requires ids
+for entities, activities and agents, and they have to be qualified strings, 
+i.e. containing a namespace. For example, an activity in the RAVE-pipeline could 
+have the id \texttt{'rave:radialvelocity\_pipeline'}. Using a namespace for each 
+project for these ids will help to make them unique. 
+
+If several copies of a dataset exist, and one of them is corrupted, it would even be useful to know
+exactly which copy was used by a given activity. This can be modeled already 
+with the existing tools (using a copy-activity), but we doubt that many people
+would actually need this level of detail.
+
+\TODO{What about DOI's for datasets? They should be unique. Maybe add another
+attribute DOI instead of storageLocation.}
+
+
+\subsubsection{Calibration data}
+The calibration dataset consists of images that can be used to calibrate the
+raw data. It is not necessary to mention them explicitly in the model, 
+they are just another dataset that is used by activities with a 
+calibration-method.
+
+
+\subsubsection{Parameters}
+We consider adding a parameter class for describing additional properties of activities.
+
+For example for observations, the \emph{ambient conditions} as well as 
+\emph{instrument characteristics} need to be stored. But they can both be treated
+as additional entities as well. 
+Our model can then also take into account that a certain observation
+method requires special ambient conditions, already defined via the 
+ActivityDescription (e.g. radio observations rely on different ambient 
+conditions than observations
+of gamma rays), just following our data -- data description scheme.
+Ambient conditions are recorded for a certain time (startTime, endTime) and are
+usually only valid for a certain time interval. This time interval should be recorded
+with a \emph{validity}-attribute for such entities.
+
+In contrast to ambient conditions, instrument characteristics do (usually) not
+change from one observation to the other, so they are static, strictly related to
+the instrument. 
+All the characteristics could be described either as key-value pairs directly with the 
+observation (as attributes) or just as datasets, using the \class{Entity} class. 
+One would then 
+link the instrument characteristics as a type of input (or output?) dataset to a certain 
+observation activity. Thus we don't need a separate Instrument or Device class.
+
+\Note{One should also keep in mind that some instrument related parameters can change within time,
+e.g. the CCD temperature. The instruments can also change within time because of aging.}
+
+
+\subsubsection{Quality}
+For expressing the quality of data, we could simply define additional 
+attributes for each \class{Activity}
+or \class{DataEntity} object, i.e. zero, one, or more properties in the form of
+key-value pairs. We could use a \class{Quality} namespace to mark a keyword
+as quality-related:
+\begin{itemize}
+    \item quality:comment: [some text]
+    \item quality:seeing: [some value]
+\end{itemize}
+The values could range from a float number to free text.
+
+
+\subsubsection{Provenance of provenance}
+``Bundles'' are used to name a set of provenance descriptions. It is a type for 
+an entity, and allows to express provenance of provenance. This is probably also 
+very interestíng for workflow systems.
+
 \subsubsection{Discussion of descripton side}
 This model was established with mainly having a database implementation in mind. 
 However, it may be better in the long run to store provenance with 

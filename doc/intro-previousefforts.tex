@@ -1,5 +1,5 @@
 \subsection{Previous efforts}
-The provenance concept was early introduced by the IVOA within the scope of the Observation Data Model (ref1 : IVOA note 2005) as a class  describing where the data are coming from. A full observation data model dedicated to the specific spectral data was then designed (Ref2 : spectral data model) as well as a fully generic characterisation data model of the measureemnt axes of the data (ref3: characterisation data model) while the progress on the provenance data model were slowing down.
+The provenance concept was early introduced by the IVOA within the scope of the Observation Data Model (ref1 : IVOA note 2005) as a class describing where the data are coming from. A full observation data model dedicated to the specific spectral data was then designed (Ref2 : spectral data model) as well as a fully generic characterisation data model of the measureemnt axes of the data (ref3: characterisation data model) while the progress on the provenance data model were slowing down.
 
 IVOA DM WG first gathered various use cases coming from different communities of observational  astronomy (optical,  radio, Xray, interferometry). Common motivations for a provenance tracing of the history included : quality assesment, discovery of dataset progenitors and access to metadata necessary for reprocessing. Provenance datamodel was then designed as the combination of Data processing, Observing Configuration and Observation ambiant conditions datamodel classes. 
 The Processing class was embedding a sequence of processing stages which were hooking specific ad hoc details and links to input and output datasets, as well as processing step description. 
@@ -11,6 +11,6 @@ OPM was designed to be applicable to anything, scientific data as well as cars o
 The W3C model was taken up by a larger number of applications and tools than OPM, we are therefore basing our modeling efforts on the W3C Provenance data model, making it less abstract and more specific, or extending it where necessary. 
 
 
-The W3C model even already specifies PROV-DM Extensibility points (section 6 in \cite{std:W3CProvDM}) for extending the core model. This allows to specify additional roles and types to each entity, agent or relation using the attributes \texttt{prov:type} and \texttt{prov:role}.
-By specifying the allowed values for the IVOA model, we could adjust the model to our needs while still being compliant to W3C.
+The W3C model even already specifies PROV-DM Extensibility points (section 6 in \cite{std:W3CProvDM}) for extending the core model. This allows one to specify additional roles and types to each entity, agent or relation using the attributes \texttt{prov:type} and \texttt{prov:role}.
+By specifying the allowed values for the IVOA model, we can adjust the model to our needs while still being compliant to W3C.
 
