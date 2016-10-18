@@ -30,3 +30,81 @@ to be able to trace back its history as far as possible.
 Provenance information may be recorded in minute detail or by using coarser
 elements, depending on the intended usage and the desired level of detail
 for a specific project that records provenance.
+
+The following list is a collection of tasks which the Provenance Data Model should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets and with [P] for tasks that are probably more important for data producers and publishers.
+
+\paragraphlb{A: Tracking the production history [S]}
+        Find out which steps were taken to produce a dataset and list the methods/tools/software that was involved. 
+        Track the history back to the raw data files/raw images, show the workflow (backwards search) or return a list of progenitor datasets.
+
+        \noindent Examples: 
+        \begin{itemize}
+            \item Is an image from catalogue xxx already calibrated?
+What about dark field subtraction? Were foreground stars removed? Which technique
+was used?  
+            
+            \item Is the background noise of atmospheric muons still present in my neutrino data sample?  
+        \end{itemize}
+
+        We do not go so far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
+        major steps undertaken to create a piece of data should be recoverable.
+
+
+\paragraphlb{B: Attribution and contact information [S]}
+        Find the people involved in the production of a dataset,
+        the people/organizations/institutes that need to be cited or can be asked for more information.
+
+        \noindent Examples: 
+        \begin{itemize}
+            \item I want to use an image for my own work -- who was involved in
+creating it? Who do I need to cite or who can I contact to get this information?  
+            \item I have a question about column xxx in a data
+table. Who can I ask about that?  
+        \end{itemize}
+
+
+\paragraphlb{C: Aid in debugging [S, P]}
+        Find possible error sources.
+
+        \noindent Examples:
+        \begin{itemize}
+            \item I found something strange in an image. Where does
+the image come from? Which instrument was used, with which characteristics
+etc.? Was there anything strange noted when the image was taken?  
+            \item Which pipeline version was used -- the old one
+with a known bug for treating bright objects or a newer version?  
+            \item This light curve doesn't look quite right. How was
+the photometry determined for each data point?  
+        \end{itemize}
+
+
+\paragraphlb{D: Quality assessment [P]}
+        Judge the quality of an observation, production step or dataset.
+        
+        \noindent Examples:
+        \begin{itemize}
+            \item Since wrong calibration images may increase the
+number of artifacts on an image rather than removing them, knowledge about
+the calibration image set will help to assess the quality of the calibrated
+image.  
+        \end{itemize}
+      
+
+\paragraphlb{E: Search in structured provenance metadata [P, S]}
+        This would allow one to also do a ``forward search'', i.e. locate derived datasets or outputs, e.g. finding all images produced by a certain processing step or derived from data which were taken by a given facility.
+        
+        \noindent Examples:
+        \begin{itemize}
+            \item Give me more images that were produced using the
+same pipeline.  
+            \item Give me an overview on all images reduced with the same calibration dataset.  
+            \item Are there any more images attributed to this observer?  
+            \item Which images of the crab nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?
+          % add another specific use case for tracking scientific productivity?
+        \end{itemize}
+
+        This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed this task separately, since we may decide that we can't keep this one, but we definitely want A.
+
+        
+More specific use cases in the astronomy domain for different types of datasets and workflows along with example implementations are given in Section \ref{sec:usecases-implementations}.
+

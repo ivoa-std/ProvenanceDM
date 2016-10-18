@@ -7,7 +7,8 @@ DOCNAME = ProvenanceDM
 DOCVERSION = 0.3
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = $(DATE)
+date := $(shell date +"%Y-%m-%d")
+DOCDATE = $(date)
 
 # What is it you're writing: NOTE, WD, PR, or REC
 DOCTYPE = WD

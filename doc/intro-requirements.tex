@@ -1,79 +1,72 @@
-\subsection{Requirements for provenance and use cases}
-\subsubsection{Requirements}\label{sec:requirements}
+\subsection{Minimum requirements for provenance}\label{sec:requirements}
 
-An IVOA provenance data model should provide solutions to the following tasks:
+We derived from our goals and use cases the following minimum requirements for the Provenance Data Model:
 
-\paragraphlb{A: Tracking the production history}
-        Find out which steps were taken to produce a dataset and list the methods/tools/software that was involved. 
-        Track the history back to the raw data files/raw images, show the workflow.
+\TODO{Readers do not know about the terms \emph{activity} and \emph{entity}, yet at this point!!}
 
-        \noindent Examples: 
-        \begin{itemize}
-            \item Is an image from catalogue xxx already calibrated?
-What about dark field subtraction? Were foreground stars removed? Which technique
-was used?  
-            
-            \item Is the background noise of atmospheric muons still present in my neutrino data sample?  
-        \end{itemize}
+\begin{itemize}
 
-        We do not go so far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
-        major steps undertaken to create a piece of data should be recoverable.
+% == other models / serialisation
 
-      
-\paragraphlb{B: Attribution and further information}
-        Find the people involved in the production of a dataset,
-        the people/organizations/institutes that need to be cited or can be asked for more information.
+\item Provenance information must be stored in a standard model, with standard serialization formats.
 
-        \noindent Examples: 
-        \begin{itemize}
-            \item I want to use an image for my own work -- who was involved in
-creating it? Who do I need to cite or who can I contact to get this information?  
-            \item I have a question about column xxx in a data
-table. Who can I ask about that?  
-        \end{itemize}
-      
+\item Provenance information must be machine readable.
 
-\paragraphlb{C: Aid in debugging}
-        Find possible error sources.
+\item Provenance data model classes and attributes should be linked to other IVOA concepts when relevant (ObsCoreDM, SimDM, VOTable, UCDs...).
 
-        \noindent Examples:
-        \begin{itemize}
-            \item I found something strange in an image. Where does
-the image come from? Which instrument was used, with which characteristics
-etc.? Was there anything strange noted when the image was taken?  
-            \item Which pipeline version was used -- the old one
-with a known bug for treating bright objects or a newer version?  
-            \item This light curve doesn't look quite right. How was
-the photometry determined for each data point?  
-        \end{itemize}
+\item Provenance information should be serializable into the W3C PROV standard formats with minimum information loss.
 
 
-\paragraphlb{D: Quality assessment}
-        Judge the quality of an observation, production step or dataset.
-        
-        \noindent Examples:
-        \begin{itemize}
-            \item Since wrong calibration images may increase the
-number of artifacts on an image rather than removing them, knowledge about
-the calibration image set will help to assess the quality of the calibrated
-image.  
-        \end{itemize}
-      
 
-\paragraphlb{E: Search in structured provenance metadata}
-        Find all images produced by a certain processing step and similar tasks.
-        
-        \noindent Examples:
-        \begin{itemize}
-            \item Give me more images that were produced using the
-same pipeline.  
-            \item Give me an overview on all images reduced with the same calibration dataset.  
-            \item Are there any more images attributed to this observer?  
-            \item Which images of the crab nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?  
-        \end{itemize}
+% == links between entity/activity
 
-        This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed this task separately, since we may decide that we can't keep this one, but we definitely want A.
+\item Provenance metadata must contain information to find immediate progenitor(s) (if existing) for a given entity, i.e. a dataset.
+%All produced entities must contain information to find its immediate progenitor(s).
 
 
-\subsubsection{More specific use cases}
-More specific use cases with example serialisations for different types of astronomical datasets are given in Section \ref{sec:usecases-implementations}.
+\item An entity must point to the activity that generated it (if the activity is recorded).
+%Provenance metadata must contain information to find the activity that generated a given entity.
+%* All produced entities must contain information to find the activity that generated it
+\item Activities may point to output entities.
+
+\item Activities must point to input entities (if applicable).
+
+\item Provenance information should make it possible to derive the chronological sequence of activities.
+%The order of the activities should be available.
+
+
+%\item Provenance information should contain the list of activities and progenitor entities.
+% too vague .... must be an ordered list ... One step should also be allowed.
+\end{itemize}
+
+% ==== Comment: 
+%These links can be used to trace back the sequence of processing steps (activities) and possibly the interim results.
+
+
+% == additional information
+
+\begin{itemize}
+
+% Released entities must have a unique, persistent identifier (DOI, obs_publisher_did, ...), at least in their domain.
+\item Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
+% comment: (DOI, obs_publisher_did, ...)
+% Thus entities have to have a unique, persistent identifier.
+% (to avoid ambiguities).
+
+\item Released entities should have a main contact.
+
+\item It is recommended that all activities and entities have contact information and contain a (short) description or link to a description.
+% could also be the documentation.
+
+\end{itemize}
+
+
+% Should this go into the requirements or the model?
+%\item Activities should be defined by following keywords (attributes):
+%    \begin{itemize}
+%    \item unique ID
+%    \item status (COMPLETED/ERROR/...)
+%
+%... (see working draft and data model)
+%* Entities should be defined by... (see working draft and data model)
+
