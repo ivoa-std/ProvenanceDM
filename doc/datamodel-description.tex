@@ -1,18 +1,17 @@
 In this section, we describe the currently discussed provenance data model. We 
-start with the UML diagram and then give in the following sections more details 
-for each class and relation.
+start with a UML class diagram that contains the main important classes 
+and then give in the following sections more details for each class and relation.
 
-\subsection{UML class diagram}
-Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA provenance data
-model. Its core elements, which can also be found in the W3C provenance data
-model, are colored in blue. This pattern is very general and can be reused everywhere 
-where provenance is needed. 
+\subsection{Overview: UML class diagram}
+Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
+Model. 
+%Its core elements are colored in blue. These core elements can also be found in the W3C Provenance Data
+%Model. The pattern defined by these classes is very general and can be reused everywhere where provenance is needed. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{../datamodel-diagrams/classes-overview}
-\caption{Overview of the classes for the provenance data model in a class diagram. The blue classes are core elements. Their names match the corresponding counterparts in the W3C provenance 
-data model. Green classes belong to other IVOA classes (IVOA Dataset Data Model)}
+\caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements, which also appear in the W3C Provenance Data Model. Green classes belong to other IVOA classes (IVOA Dataset Data Model)}
 \label{fig:classdiagram}
 \end{figure}
 
@@ -62,7 +61,6 @@ classes. The names were again chosen to match the W3C model names:
 		(entity ``image m31.fits'' wasAttributedTo ``M31 observation campaign'')
 \end{itemize}
 
-
 Inspired by SimDM (\cite{std:SimDM}), an IVOA  data model for simulation data 
 published in May 2012, we also separate descriptions of activities from the 
 actual processes and introduce an additional \class{ActivityDescription} class.
@@ -99,9 +97,11 @@ provenance shall be described.
 Entities in the VO are often called ``dataset'', which could mean a single 
 table, an image or a collection of them. The Dataset Data Model 
 \citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
-are considered to be a single deliverable''. We adopt this definition here and 
-link \class{Dataset} and \class{Entity} via a composition relation, as shown in 
-Figure \ref{fig:entityclasses}.
+are considered to be a single deliverable''. If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
+directly to the \class{Entity} class, as indicated in Figure \ref{fig:entityclasses}.
+
+The detailed mapping of classes and attributes from the Dataset Data Model 
+to \class{Entity} and \class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
 
 \begin{figure}[h]
 \centering
@@ -111,7 +111,7 @@ the IVOA Dataset Data Model.}
 \label{fig:entityclasses}
 \end{figure}
 
-For entities and datasets, we suggest the attributes given in Table 
+For entities, we suggest the attributes given in Table 
 \ref{tab:entity-attributes}. 
 We use the namespace ``prov'', if the attribute also appears in the W3C 
 Provenance Data Model.
@@ -126,50 +126,53 @@ Provenance Data Model.
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{ID} & DataID.observationID & string & a unique id for this entity (unique in its realm)\\
+\textbf{ID} & DataID.publisherDID & string & a unique id for this entity (unique in its realm)\\
 prov:label        & W3C ProvDM & string & a label (to be displayed by clients)\\
 prov:type         & W3C ProvDM  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
 {[prov:description]}  & W3C ProvDM  & string & link to text describing the entity in more detail or link (foreign key) to \class{EntityDescription}\\
+access            & Curation.Rights & string & access rights for the data, values: public, restricted or internal\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of entities. Mandatory attributes are marked as bold.
+\caption{Attributes of entities. Mandatory attributes are marked in bold.
 }\label{tab:entity-attributes}
 \end{table}
 
-\begin{table}[h]
-\small
-\tymax	0.5\textwidth
-\textbf{\normalsize Dataset}\vspace{0.25em}\\
-\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{3cm}lL@{}}
-\toprule
-\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
-\midrule
+%\begin{table}[h]
+%\small
+%\tymax	0.5\textwidth
+%\textbf{\normalsize Dataset}\vspace{0.25em}\\
+%\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{3cm}lL@{}}
+%\toprule
+%\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+%\midrule
 
 %datatype           &                            & string       & type of the physical representation of the entity, e.g. binary file, fits file, database, database table, ASCII file, tar-file, directory, integer, float\\\hline
-prov:location or access\_url& W3C ProvDM  & string & where the entity can be found/downloaded\\
-access           & & string & values: public, restricted or internal; or use obs\_release\_date from ObsCore\\
-size             & & string & a number with unit, e.g. ``5 MB'', rough estimate\\
-format           & & string & format of the entity, e.g. binary file, VO table\\
-\bottomrule
-\end{tabulary}
-\caption{Attributes of datasets.
-}\label{tab:dataset-attributes}
-\end{table}
+%prov:location or access\_url& W3C ProvDM  & string & where the entity can be found/downloaded\\
+%access           & & string & values: public, restricted or internal; or use obs\_release\_date from ObsCore\\
+%size             & & string & a number with unit, e.g. ``5 MB'', rough estimate\\
+%format           & & string & format of the entity, e.g. binary file, VO table\\
+%\bottomrule
+%\end{tabulary}
+%\caption{Attributes of datasets.
+%}\label{tab:dataset-attributes}
+%\end{table}
 
-\TODO{format and size may not be needed, if entities with the same content but different format and size are considered as the same entity.}
+We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
+entity of the same content but different format (and thus size) as the same entity.
+
+%\TODO{format and size may not be needed, if entities with the same content but different format and size are considered as the same entity.}
 
 The difference between entities that are used as input data or output data 
-becomes clear by specifying the relations between the data and activities producing/using these data.
+becomes clear by specifying the relations between the data and activities producing or using these data.
 More details on this will follow in Section \ref{sec:entity-activity-relations}.
 
 The types of entities or datasets in astronomy can be predefined using a description
 class \class{EntityDescription}. %Similar to the \class{Dataset} class we define a \class{DatasetDescription} 
 %class, as a subclass of EntityDescription. 
-This class stores dataset-related 
+This class stores entity-related 
 attributes, describing the content of the data, which can mainly be derived from 
-other IVOA data models like ObsCore DM in the case of observational data or 
-Spectrum DM for spectra. 
-The additional attributes are summarized in Table 
+Dataset Data Model, the general model for observational data.
+The description attributes are summarized in Table 
 \ref{tab:entitydescription-attributes}.
 
 The \class{EntityDescription} does NOT contain any information about the usage 
@@ -177,8 +180,6 @@ of the data, it tells nothing about them being used as input or output. This is
 defined only by the relations (and the relation descriptions) between acitivities
 and entities (see Section \ref{sec:entity-activity-relations}).
 
-
-\TODO{Use a subclass \class{DatasetDescription} instead?}
 
 \begin{table}[h]
 \small
@@ -188,31 +189,20 @@ and entities (see Section \ref{sec:entity-activity-relations}).
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-ID & & string & a unique identifier for this description\\
+\textbf{ID} & & string & a unique identifier for this description\\
 prov:label  & W3C ProvDM & string & a name or label for the entity description\\
 prov:description  & W3C ProvDM & string & a decription for this kind of entity\\
-url &  & url & link to more documentation\\
-%\bottomrule
-%\end{tabulary}
-
-%\vspace{1cm}
-%
-%\textbf{\normalsize DatasetDescription}\vspace{0.25em}\\
-%\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{3cm}lL@{}}
-%\toprule
-%\head{Attribute} & \head{Utype} & \head{Data type} & \head{Description}\\
-%\midrule
-\multicolumn{4}{@{}l}{\textbf{Following attributes may be assigned to a subclass \class{DatasetDescription} instead:}}\\
-(dataproduct\_) type  & obscore: ObsDataset.data-ProductType, ... & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
-(dataproduct\_) subtype & obscore: ObsDataset.data-ProductSubtype, ... & string       & from ObsCore data model, more specific subtype\\
-level   & obscore: ObsDataset.calib-Level, ... & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
+docuLink &  & url & link to more documentation\\
+dataproduct\_ type  & Dataset.data-ProductType, ... & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
+dataproduct\_ subtype & Dataset.data-ProductSubtype, ... & string       & from ObsCore data model, more specific subtype\\
+level   & Dataset.calib-Level, ... & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{EntityDescription} and \class{DatasetDescription}. For simple use cases, 
+\caption{Attributes of \class{EntityDescription}. For simple use cases, 
 the description classes may be ignored and its attributes may be used for 
-\class{Entity} or \class{Dataset} instead. 
+\class{Entity} instead. 
 The utypes may vary depending on the data model, e.g. for simulation data they 
-will point to utypes of SimDM.
+would point to utypes of SimDM.
 }\label{tab:entitydescription-attributes}
 \end{table}
 
@@ -225,30 +215,24 @@ data for publication or similar). The term ``collection'' is
 also used in the Dataset Data Model for grouping datasets. As an example, a collection 
 with the name `RAVE survey' could consist of a number of database tables and spectra files.
 
-\TODO{Do we allow empty collections? Or should collections always contain at least 1 member? (otherwise they are just prov:entities?)}
-
-
-
+%\TODO{Do we allow empty collections? Or should collections always contain at least 1 member? (otherwise they are just prov:entities?)}
 
 The entity-collection relation can be modeled using the \emph{Composite} design pattern: 
 Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
 
-In order to be compliant to vodml, we model the membership-relation explicitely 
-by including a `HadMember'' class in our model, which is connected to the
+In order to be compliant to VODML, we model the membership-relation explicitely 
+by including a ``HadMember'' class in our model, which is connected to the
 ``Collection'' class via a composition. It may contain an additional role attribute.
 
 Collections are also known in the W3C model, in the same sense as used here. 
 The name for the mapping class, ``HadMember'' was adopted from the W3C model.
 
+An additional class \class{CollectionDescription} is only 
+needed if it has different attributes than 
+the EntityDescription. This should therefore only be introduced if a use case requires it.
 
-Similar to \class{EntityDescription} we also need a description class for collections: 
-\class{CollectionDescription}. 
-
-\TODO{CollectionDescription is only needed if it has different attributes than 
-the EntityDescription -- Check with use cases!}
-
-Advantages:
+\paragraph{Advantages of collections:}
 \begin{itemize}
 \item use collections to provide overview, but individual data for very detailed provenance; 
 	  thus use collections for different levels of detail (granularity), hiding 
@@ -256,11 +240,10 @@ Advantages:
 \item \TODO{Anything else?}
 \end{itemize}
 
-\TODO{Do we really gain that much by using collections?}
 
-\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
+%\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
 
-\TODO{W3C does NOT include links from a member of a collection to the collection, but this could be useful to have (for faster look-ups). Include such a link in our model or not?}
+%\TODO{W3C does NOT include links from a member of a collection to the collection, but this could be useful to have (for faster look-ups). Include such a link in our model or not?} -- Just an implementation issue.
 
 
 
@@ -271,23 +254,23 @@ images and production of new datasets, like image calibration, bias subtraction,
 light curve generation from a number of observations, radial velocity 
 determination from spectra, post-processing steps of simulations etc.
 
-The method underlying an activity is specified by the corresponding 
+The method underlying an activity can be specified by a corresponding 
 \class{ActivityDescription} class (previously named \class{Method}, corresponds 
 to the \class{Protocol} class in SimDM). This could be, 
 for instance, the name of the code used to perform an activity or a more general 
 description of the underlying algorithm or process. An activity is then a 
 concrete case (instance) of using such a method, with a startTime and endTime, 
-and it has to refer to a corresponding description for further information.
+and it refers to a corresponding description for further information.
 
-There MUST be exactly one \class{ActivityDescription} per \class{Activity}. If steps from a 
+There MUST be exactly zero or  one \class{ActivityDescription} per \class{Activity}. If steps from a 
 pipeline shall be grouped together, one needs to create a proper 
 \class{ActivityDescription} for describing all the steps at once. This method can then 
 be refered to by the pipeline-activity. For grouped activities, also see the 
 next section \ref{sec:activity-collection}.
 
-When serialising the data model, the attributes
+When serializing the data model, the attributes
 of the description class may be assigned to the activity in order to produce 
-a W3C compliant serialisation.
+a W3C compliant serialization (same as with Entity/EntitDescription).
 
 \begin{table}[h]
 
@@ -323,6 +306,7 @@ prov:label        & W3C ProvDM  & string & a label (to be displayed by clients)\
 type         & & string & one of the processes from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
 subtype  & & string & more specific subtype of the activity\\
 prov:description & W3C ProvDM & string & a description for the activity\\
+code & & string & the code used for this process\\
 version & & string & a version number\\
 docuLink & & string & link to further documentation on this process, e.g. a paper, the source code in a version control system etc.\\
 \bottomrule
@@ -346,7 +330,7 @@ in between.
 
 \TODO{Needed for Mich\`{e}le's use case. Put example here!}
 
-\TODO{What about D-PROV for workflows?}
+%\TODO{What about D-PROV for workflows?}
 
 
 
@@ -533,21 +517,36 @@ creator & ?? &  (about the same as author?)\\
 \label{tab:agent-roles}
 \end{center}
 \end{table}
+\TODO{Go through these roles, pick only the necessary ones, crosscheck with other data models.}
 
 This list is not complete. We could consider providing a vocabulary for this, 
 restricted to provenance in the astronomy domain.
-
-\TODO{Provide more links into other data models, e.g. there is a \class{Curation} object in SpectralDM, see http://www.ivoa.net/documents/SpectralDM/20150206/PR-SpectralDM-2.0-20150206.pdf, section 2.4.}
 
 \TODO{Do we have a specific use case for fixing the agent-roles? Is anyone 
 going to search for specific roles in the Provenance meta-data?
 Or shall we leave it open, which roles can be defined and just give examples here?}
 
-\TODO{Do we need to fix the prov:types to the given roles? Or leave it free?}
-
-\TODO{We still need to clarify precisely, in which way a \emph{software agent} 
-is distinct from an activity.}
+%\TODO{We still need to clarify precisely, in which way a \emph{software agent} 
+%is distinct from an activity.}
 
 
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\begin{center}
+\begin{tabulary}{1.0\textwidth}{@{}lllL@{}}
+\multicolumn{4}{c}{\textbf{Agent}}\\
+\toprule
+\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+\midrule
+ID & W3C ProvDM & string & unique identifier for an agent\\
+name &  & string & a common name for this agent; e.g. first name and last name; project name, ...\\
+type & prov:type & string & type of the agent: either person or organization\\
+\bottomrule
+\end{tabulary}
+\caption{Agent attributes}
+\label{tab:agent-attributes}
+\end{center}
+\end{table}
 
 

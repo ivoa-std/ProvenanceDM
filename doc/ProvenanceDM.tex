@@ -130,9 +130,11 @@ infrastructure that enable VO applications.
 \input{datamodel-discussion}
 
 
-\section{Applications/Interactions with other Data models}
+\section{Applications/Interactions with other Data models}\label{sec:dmlinks}
 In this section we discuss how the provenance data model interacts with
-other VO data models (e.g. ObscoreDM, DatasetDM, SpectralDM, SimDM) and how provenance information can be stored.
+other VO data models (especially DatasetDM)
+%(e.g. DatasetDM, SpectralDM (share some same classes), SimDM) 
+and how provenance information can be stored.
 
 
 \begin{figure}[h]
@@ -142,7 +144,38 @@ other VO data models (e.g. ObscoreDM, DatasetDM, SpectralDM, SimDM) and how prov
 \label{fig:class-relations-dm}
 \end{figure}
 
-\TODO{Put this in appendix? Or in datamodel-description? Or even in introduction?}
+%\TODO{Put this in appendix? Or in datamodel-description? Or even in introduction?}
+
+Table \ref{tab:datasetmapping} maps classes and attributes from the Dataset Data Model to concepts in the Provenance Data Model.
+
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\begin{tabulary}{1.0\textwidth}{@{}lLp{4cm}@{}}
+\toprule
+\head{Dataset DM} & \head{Provenance DM} & \head{Comment}\\
+\midrule
+DataID.title      & Entity.label               & title of the dataset\\
+DataID.collection    & HadMember.collectionID  & link to the collection to which the dataset belongs\\
+DataID.creator       & Agent.name          & name of agent\\ 
+DataID.creatorDID    & AlternateOf.entityID     & id for the dataset given by the creator\\
+DataID.ObservationID & wasGeneratedBy.activityID  & identifier to everything describing the observation; maybe it belongs to entity?\\
+DataID.PublisherDID  & Entity.ID      & unique identifier for the dataset\\
+Curation.PublisherID & Agent.ID  & link to the publisher; role: publisher, type: organization/astronomer private collection)\\
+Curation.Publisher     & Agent.name & name of the publisher\\
+Curation.Date          & Entity.releaseDate & release date of the dataset\\
+Curation.Version       & Entity.version     & version of the dataset\\
+Curation.Rights        & Entity.access      & access rights to the dataset; one of [...]\\
+Curation.Reference     & Entity.link        & link to publication\\
+Curation.Contact       & Agent.ID or name? & link to Agent with role contact\\
+DataProductType  & EntityDescription & subclass to EntityDescription\\
+DataProductSubType & EntityDescription & subclass to EntityDescription\\
+CalibLevel       & EntityDescription & subclass to EntityDescription, calibration level\\\hline
+\bottomrule
+\end{tabulary}
+\caption{Mapping between attributes from \class{Dataset}-classes from DatasetDM to classes in ProvenanceDM.}
+\label{tab:datasetmapping}
+\end{table}
 
 
 \section{Accessing provenance information}

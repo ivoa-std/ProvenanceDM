@@ -14,8 +14,7 @@ exactly which copy was used by a given activity. This can be modeled already
 with the existing tools (using a copy-activity), but we doubt that many people
 would actually need this level of detail.
 
-\TODO{What about DOI's for datasets? They should be unique. Maybe add another
-attribute DOI instead of storageLocation.}
+IVOIDs and DOI's are potentially good candidates for unique identifiers.
 
 
 \subsubsection{Calibration data}
@@ -56,7 +55,7 @@ e.g. the CCD temperature. The instruments can also change within time because of
 \subsubsection{Quality}
 For expressing the quality of data, we could simply define additional 
 attributes for each \class{Activity}
-or \class{DataEntity} object, i.e. zero, one, or more properties in the form of
+or \class{Entity} object, i.e. zero, one, or more properties in the form of
 key-value pairs. We could use a \class{Quality} namespace to mark a keyword
 as quality-related:
 \begin{itemize}
@@ -68,10 +67,10 @@ The values could range from a float number to free text.
 
 \subsubsection{Provenance of provenance}
 ``Bundles'' are used to name a set of provenance descriptions. It is a type for 
-an entity, and allows to express provenance of provenance. This is probably also 
-very interestíng for workflow systems.
+an entity, and allows to express provenance of provenance. This is probably  
+very interesting for workflow systems.
 
-\subsubsection{Discussion of descripton side}
+\subsubsection{Discussion of description side}
 This model was established with mainly having a database implementation in mind. 
 However, it may be better in the long run to store provenance with 
 the entities themselves, e.g. as an additional extension in fits-headers.
@@ -102,13 +101,13 @@ be simpler, but on the other hand constructing a database schema becomes much
 harder. 
 We could leave it to the implementors to choose what is more useful for them, 
 and when extracting provenance, serialising it, then the descriptions are 
-combined with the activity/dataEntity for 
+combined with the activity/entity for 
 the serialisation, thus probably producing some repetition, but avoiding too 
 many links between different items.
 
-\Note{Descriptions could be present in W3C-conform serialisations, if we 
-put them into entities.}
+%\Note{Descriptions could be present in W3C-conform serialisations, if we 
+%put them into entities.}
 
-\TODO{Check, if PROV-Templates from the W3C (inofficial note) could be used 
-for ActivityDescriptions.}
+%\TODO{Check, if PROV-Templates from the W3C (inofficial note) could be used 
+%for ActivityDescriptions.}
 
