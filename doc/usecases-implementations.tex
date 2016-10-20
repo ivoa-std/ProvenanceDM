@@ -31,9 +31,16 @@ A preliminary version of the Django webapp is available at https://github.com/kr
 
 \subsection{Provenance for CTA}
 
-The Cherenkov Telescope Array (CTA) project is an initiative to build the next generation ground-based very high energy (VHE) gamma-ray instrument. It will provide a deep insight into the non-thermal high-energy universe. Contrary to previous Cherenkov experiments, it will serve as an open observatory providing data to a wide astrophysics community, with the requirement to propose self-described data products to users that may be unaware of the Cherenkov astronomy specificities.
+The Cherenkov Telescope Array (CTA) is the next generation ground-based very high energy gamma-ray instrument. It will provide a deep insight into the non-thermal high-energy universe. Contrary to previous Cherenkov experiments, it will serve as an open observatory providing data to a wide astrophysics community, with the requirement to propose self-described data products to users that may be unaware of the Cherenkov astronomy specificities. The proposed structure of the metadata is presented in Figure~\ref{fig:cta_dm}.
 
-Data acquisition and processing in Cherenkov astronomy are different from other astronomy domains (radio astronomy, ground-based optical telescopes, X-ray space observatories, ...). An array of Cherenkov telescope is used to observe the Cherenkov light emitted by particles interacting with the upper atmosphere. The origin, energy and time of the incident particle then have to be reconstructed using various methods. The detection of astrophysical sources is thus indirect and dependant on the methods used. Moreover, the response of the instrument has to be determined through detailed simulations corresponding to the observing conditions. Because of this complexity in the detection process, Provenance information of data products are necessary to the user to  perform a correct scientific analysis.
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{CTA_DM_high_level.png}
+\caption{CTA high level data model structure with Pipeline stages and connection to IVOA ProvenanceDM.}
+\label{fig:cta_dm}
+\end{figure}
+
+Cherenkov telescopes indirectly detect gamma-rays by observing the flashes of Cherenkov light emitted by particle cascades initiated when the gamma-rays interact with nuclei in the atmosphere. The main difficulty  is that charged cosmic rays also produce such cascades in the atmosphere, which represent an enormous background compared to genuine gamma-ray-induced cascades. Monte Carlo  simulations of the shower development and Cherenkov light emission and detection, corresponding to many different  observing conditions, are used to model the response of the detectors.  With an array of such detectors the shower is observed  from several points and, working backwards, one can figure out where the origin, energy and time of the incident particle. The main stages of the CTA Pipeline are presented inside Figure~\ref{fig:cta_dm}. Because of this complexity in the detection process, Provenance information of data products are necessary to the user to perform a correct scientific analysis.
 
 Provenance concepts are relevant for different aspects of CTA :
 \begin{itemize}
@@ -41,6 +48,15 @@ Provenance concepts are relevant for different aspects of CTA :
 \item Pipeline : the CTA Observatory must ensure that data processing is traceable and reproducible.
 \item Instrument Configuration : the characteristics of the instrument at a given time have to be available and traceable (hardware changes, measurements of e.g. a reflectivity curve of a mirror, ...)
 \end{itemize}
+
+We tested the tracking of Provenance information using the Python prov package inside OPUS\footnote{\url{https://github.com/ParisAstronomicalDataCentre/OPUS}} (Observatoire de Paris UWS System), a job control system developed at PADC (Paris Astronomical Data Centre). This system has been used to run CTA analysis tools and provides a description of the Provenance in the PROV-XML or PROV-JSON serialisations, as well as a graph visualization (see Figure~\ref{fig:cta_prov}).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{CTA_prov.png}
+\caption{Provenance description of a CTA analysis step.}
+\label{fig:cta_prov}
+\end{figure}
 
 
 \subsection{POLLUX database}
