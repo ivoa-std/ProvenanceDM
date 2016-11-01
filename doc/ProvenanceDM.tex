@@ -44,7 +44,7 @@
 
 }
 
-\newcommand{\Note}[1]{%
+\newcommand{\note}[1]{%
     \noindent%
     \textcolor{darkgrey}{{\sffamily Note:} \emph{#1}}%    
 }
@@ -81,15 +81,25 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X} 
 
 \begin{abstract}
-This draft is still an internal working draft, any comments welcome! 
-The urls above also won't work yet, because this draft is only circulated 
-via the volute-repository for now.
-
-\warning{
-    Everything described here is at a very 
-    preliminary state and may change at any time!
+\note{
+  This draft is still an internal working draft, any comments welcome! 
+  The urls above also won't work yet, because this draft is only circulated 
+  via the volute-repository for now.
 }
 
+%\warning{
+%    Everything described here is at a very 
+%    preliminary state and may change at any time!
+%}
+
+This document describes, how provenance information for astronomical datasets 
+(with the focus on observational data) can be modeled, stored and exchanged within 
+the astronomical community in a standardized way.
+Such provenance information is important to enable any scientist to trace back
+the origin of a dataset (e.g. an image, spectrum, catalog or single points in a 
+spectral energy distribution diagram or a light curve), learn about the people and 
+organizations involved in a project and assess the quality of the dataset as well
+as the usefulness of the dataset for her own scientific work.
 \end{abstract}
 
 
@@ -97,10 +107,12 @@ via the volute-repository for now.
 
 This document has been developed in part with support from the German
 Astrophysical Virtual Observatory, funded by BMBF Bewilligungsnummer 05A08VHA.
+Some of the authors received support from the ASTERICS project.
+\TODO{Mireille: please check how to mention ASTERICS here.}
 
 Thanks for fruitful discussions to (in alphabetical order):
-François Bonnarel, Markus Demleitner, Jochen Klar, Gerard Lemson, 
-Mireille Louys and Adrian Partl.
+Markus Demleitner, Harry Enke, Jochen Klar, Gerard Lemson, Markus Nullmeier
+and Adrian Partl.
 
 
 
@@ -132,9 +144,9 @@ infrastructure that enable VO applications.
 
 \section{Applications/Interactions with other Data models}\label{sec:dmlinks}
 In this section we discuss how the provenance data model interacts with
-other VO data models (especially DatasetDM)
+other VO data models (especially DatasetDM).
 %(e.g. DatasetDM, SpectralDM (share some same classes), SimDM) 
-and how provenance information can be stored.
+%and how provenance information can be stored.
 
 
 \begin{figure}[h]
