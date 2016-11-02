@@ -4,14 +4,14 @@ and then give in the following sections more details for each class and relation
 
 \subsection{Overview: UML class diagram}
 Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
-Model. 
+Model. It contains the most basic classes; details will be explained in the following sections.
 %Its core elements are colored in blue. These core elements can also be found in the W3C Provenance Data
 %Model. The pattern defined by these classes is very general and can be reused everywhere where provenance is needed. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{../datamodel-diagrams/classes-overview}
-\caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements, which also appear in the W3C Provenance Data Model. Green classes belong to other IVOA classes (IVOA Dataset Data Model)}
+\caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements. Objects in the blue box also appear in the W3C Provenance Data Model. Green classes belong to other IVOA classes (IVOA Dataset Data Model).}
 \label{fig:classdiagram}
 \end{figure}
 
@@ -207,25 +207,25 @@ would point to utypes of SimDM.
 \end{table}
 
 
-\subsubsection{Collections}
-Collections are datasets that are grouped together and can be treated as one single entity. 
-In the provenance sense, they have to have the same origin, i.e., they were 
+\subsubsection{EntityCollections}
+EntityCollections are datasets that are grouped together and can be treated as one single entity. 
+In the provenance sense, they have to have the \emph{same origin}, i.e., they were 
 produced by the same activity (which could also be the activity of collecting
 data for publication or similar). The term ``collection'' is 
-also used in the Dataset Data Model for grouping datasets. As an example, a collection 
+also used in the Dataset Data Model for grouping datasets (but with a slightly different meaning). 
+As an example, a collection 
 with the name `RAVE survey' could consist of a number of database tables and spectra files.
 
 %\TODO{Do we allow empty collections? Or should collections always contain at least 1 member? (otherwise they are just prov:entities?)}
 
-The entity-collection relation can be modeled using the \emph{Composite} design pattern: 
+The Entity-EntityCollection relation can be modeled using the \emph{Composite} design pattern: 
 Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
-
 In order to be compliant to VODML, we model the membership-relation explicitely 
 by including a ``HadMember'' class in our model, which is connected to the
 ``Collection'' class via a composition. It may contain an additional role attribute.
 
-Collections are also known in the W3C model, in the same sense as used here. 
+EntityCollections are also known in the W3C model as ``Collection'', in the same sense as used here. 
 The name for the mapping class, ``HadMember'' was adopted from the W3C model.
 
 An additional class \class{CollectionDescription} is only 
@@ -317,16 +317,17 @@ docuLink & & string & link to further documentation on this process, e.g. a pape
 
 \subsubsection{ActivityCollection}\label{sec:activity-collection}
 For facilitating grouping of activities while still making it obvious that this 
-group contains activities, we introduce the class \class{ActivityCollection}, 
-and on its description side also an \class{ActivityCollectionDescription}. 
+group contains activities, we introduce the class \class{ActivityCollection}.
 This can be used for describing workflows or pipelines, instead of using the 
 entity type \class{Plan} as suggested by the W3C model.
 Grouping activities together is useful, if the intermediate entities generated 
-by the smaller steps shall not be described explicitely. 
+by the smaller steps shall not be described explicitely.
 The activities can be chained together in the correct order using 
-W3C's ``wasInformedBy'' relation (also called ``Communication'' relation) 
+W3C's ``WasInformedBy'' relation (also called ``Communication'' relation) 
 in between.
 
+We also allow ActivityCollections to consist of a whole provenance graph of 
+activities and entities being linked together.
 
 \TODO{Needed for Mich\`{e}le's use case. Put example here!}
 
