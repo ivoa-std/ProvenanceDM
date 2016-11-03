@@ -126,7 +126,7 @@ Provenance Data Model.
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{ID} & DataID.publisherDID & string & a unique id for this entity (unique in its realm)\\
+\textbf{prov:id} & DataID.publisherDID & string & a unique id for this entity (unique in its realm)\\
 prov:label        & W3C ProvDM & string & a label (to be displayed by clients)\\
 prov:type         & W3C ProvDM  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
 {[prov:description]}  & W3C ProvDM  & string & link to text describing the entity in more detail or link (foreign key) to \class{EntityDescription}\\
@@ -137,28 +137,10 @@ access            & Curation.Rights & string & access rights for the data, value
 }\label{tab:entity-attributes}
 \end{table}
 
-%\begin{table}[h]
-%\small
-%\tymax	0.5\textwidth
-%\textbf{\normalsize Dataset}\vspace{0.25em}\\
-%\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{3cm}lL@{}}
-%\toprule
-%\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
-%\midrule
-
-%datatype           &                            & string       & type of the physical representation of the entity, e.g. binary file, fits file, database, database table, ASCII file, tar-file, directory, integer, float\\\hline
-%prov:location or access\_url& W3C ProvDM  & string & where the entity can be found/downloaded\\
-%access           & & string & values: public, restricted or internal; or use obs\_release\_date from ObsCore\\
-%size             & & string & a number with unit, e.g. ``5 MB'', rough estimate\\
-%format           & & string & format of the entity, e.g. binary file, VO table\\
-%\bottomrule
-%\end{tabulary}
-%\caption{Attributes of datasets.
-%}\label{tab:dataset-attributes}
-%\end{table}
-
 We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
-entity of the same content but different format (and thus size) as the same entity.
+entity of the same content but different format (and thus size) as the same entity,
+unless they do not have the same provenance (e.g. when the ``transformation'' activity
+for converting one format into another shall be included in the provenance description).
 
 %\TODO{format and size may not be needed, if entities with the same content but different format and size are considered as the same entity.}
 
@@ -167,8 +149,7 @@ becomes clear by specifying the relations between the data and activities produc
 More details on this will follow in Section \ref{sec:entity-activity-relations}.
 
 The types of entities or datasets in astronomy can be predefined using a description
-class \class{EntityDescription}. %Similar to the \class{Dataset} class we define a \class{DatasetDescription} 
-%class, as a subclass of EntityDescription. 
+class \class{EntityDescription}.
 This class stores entity-related 
 attributes, describing the content of the data, which can mainly be derived from 
 Dataset Data Model, the general model for observational data.
@@ -189,7 +170,7 @@ and entities (see Section \ref{sec:entity-activity-relations}).
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{ID} & & string & a unique identifier for this description\\
+\textbf{prov:id} & & string & a unique identifier for this description\\
 prov:label  & W3C ProvDM & string & a name or label for the entity description\\
 prov:description  & W3C ProvDM & string & a decription for this kind of entity\\
 docuLink &  & url & link to more documentation\\
@@ -207,44 +188,42 @@ would point to utypes of SimDM.
 \end{table}
 
 
-\subsubsection{EntityCollections}
-EntityCollections are datasets that are grouped together and can be treated as one single entity. 
+\subsubsection{Collection}
+Collections are entities that are grouped together and can be treated as one single entity. 
 In the provenance sense, they have to have the \emph{same origin}, i.e., they were 
 produced by the same activity (which could also be the activity of collecting
-data for publication or similar). The term ``collection'' is 
-also used in the Dataset Data Model for grouping datasets (but with a slightly different meaning). 
+data for a publication or similar). The term ``collection'' is 
+also used in the Dataset Data Model for grouping datasets.
+% (but with a slightly different meaning). 
 As an example, a collection 
 with the name `RAVE survey' could consist of a number of database tables and spectra files.
 
 %\TODO{Do we allow empty collections? Or should collections always contain at least 1 member? (otherwise they are just prov:entities?)}
 
-The Entity-EntityCollection relation can be modeled using the \emph{Composite} design pattern: 
+The Entity-Collection relation can be modeled using the \emph{Composite} design pattern: 
 Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
 In order to be compliant to VODML, we model the membership-relation explicitely 
 by including a ``HadMember'' class in our model, which is connected to the
 ``Collection'' class via a composition. It may contain an additional role attribute.
 
-EntityCollections are also known in the W3C model as ``Collection'', in the same sense as used here. 
+Collections are also known in the W3C model, in the same sense as used here. 
 The name for the mapping class, ``HadMember'' was adopted from the W3C model.
 
 An additional class \class{CollectionDescription} is only 
 needed if it has different attributes than 
-the EntityDescription. This should therefore only be introduced if a use case requires it.
+the \class{EntityDescription}. This should therefore only be introduced if a use case requires it.
 
 \paragraph{Advantages of collections:}
 \begin{itemize}
-\item use collections to provide overview, but individual data for very detailed provenance; 
-	  thus use collections for different levels of detail (granularity), hiding 
-	  complexity where necessary
+\item Collections can be used to collect entities with the same provenance together, 
+    in order to hide complexity where necessar. They can be used for defining 
+    different levels of detail (granularity).
 \item \TODO{Anything else?}
 \end{itemize}
 
 
-%\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
-
-%\TODO{W3C does NOT include links from a member of a collection to the collection, but this could be useful to have (for faster look-ups). Include such a link in our model or not?} -- Just an implementation issue.
-
+\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
 
 
 
@@ -282,7 +261,7 @@ a W3C compliant serialization (same as with Entity/EntitDescription).
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{ID} & W3C ProvDM  & string & a unique id for this activity (unique in its realm)\\
+\textbf{prov:id} & W3C ProvDM  & string & a unique id for this activity (unique in its realm)\\
 prov:label        & W3C ProvDM  & string & a label (to be displayed by clients)\\
 \textbf{prov:startTime} & W3C ProvDM  & datetime & start of an activity\\
 \textbf{prov:endTime} & W3C ProvDM  & datetime & end of an activity\\
@@ -301,7 +280,7 @@ prov:label        & W3C ProvDM  & string & a label (to be displayed by clients)\
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{ID} &   & string & a unique id for this activity description (unique in its realm)\\
+\textbf{prov:id} &   & string & a unique id for this activity description (unique in its realm)\\
 prov:label        & W3C ProvDM  & string & a label (to be displayed by clients)\\
 type         & & string & one of the processes from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
 subtype  & & string & more specific subtype of the activity\\
@@ -313,25 +292,6 @@ docuLink & & string & link to further documentation on this process, e.g. a pape
 \end{tabulary}
 \caption{Attributes of \class{ActivityDescription}.}
 \end{table}
-
-
-\subsubsection{ActivityCollection}\label{sec:activity-collection}
-For facilitating grouping of activities while still making it obvious that this 
-group contains activities, we introduce the class \class{ActivityCollection}.
-This can be used for describing workflows or pipelines, instead of using the 
-entity type \class{Plan} as suggested by the W3C model.
-Grouping activities together is useful, if the intermediate entities generated 
-by the smaller steps shall not be described explicitely.
-The activities can be chained together in the correct order using 
-W3C's ``WasInformedBy'' relation (also called ``Communication'' relation) 
-in between.
-
-We also allow ActivityCollections to consist of a whole provenance graph of 
-activities and entities being linked together.
-
-\TODO{Needed for Mich\`{e}le's use case. Put example here!}
-
-%\TODO{What about D-PROV for workflows?}
 
 
 
@@ -374,7 +334,7 @@ the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
 
 Some example roles are given in Table \ref{tab:entity-roles}.
 Note that these roles don't have to be unique, many datasets may play the same role for 
-a process. For example, many image entities may be used as science-ready-image for an 
+a process. For example, many image entities may be used as science-ready-images for an 
 image stacking process.
 
 \begin{table}[h]
@@ -430,33 +390,38 @@ e.g. check if entity-type matches used-role!}
 
 
 \subsubsection{Agent}\label{sec:w3c-agent}
-In SimDM, someone performing a certain experiment is called \emph{Contact}. However, 
-the W3C provenance data model suggests the term \emph{Agent}, so we adopted it here.
-We want to describe someone who is responsible for an activity, e.g. who pressed a button, 
-ran a script or performed the observation. The agent could be a single person 
-(specified by name), a group of persons (e.g. MUSE WISE Team), a 
+An \class{Agent} describes someone who responsible for a certain task or
+entity, e.g. who pressed a button, 
+ran a script, performed the observation or published a dataset.
+The agent can be a single person, a group of persons (e.g. MUSE WISE Team), a 
 project (RAVE) or an institute. Similar to W3C we specify therefore two types
 of agents: 
 
 \begin{itemize}
-\item prov:person: a person, specified by first and last name, email address, 
+\item prov:person: a person, specified by name, email address, 
 possibly also by affiliation (though all these parts may change in time)
 \item prov:organisation: a publishing house, institute, scientific project
 %\item prov:SoftwareAgent: still needs to be discussed, if it should be included
 \end{itemize}
+We do not include they type prov:softwareagent from W3C, since it is not required for 
+our use cases.
 
-It is desired to have at least one agent given for each activity, but it
-is not enforced (hence 0..*).  
 For each agent a \emph{name} should be specified.
 It would also increase the value of the given
-information if the (current) affiliation of the agent and a project leader/group
-leader were specified in order to maximize the chance of finding any contact 
-person later on. The agent cannot only be used for getting contact 
-information, but also to fulfill our ``Attribution'' requirement 
+information if the (current) affiliation of the agent (and a project leader/group
+leader) were specified in order to maximize the chance of finding any contact 
+person later on. 
+
+It is desired to have at least one agent given for each activity (and entity), but it
+is not enforced, hence the multiplicity between \class{Entity}/\class{Activity} and the relations
+to the \class{Agent} is 0..*.
+
+The Agent information is important for getting contact details in case more 
+information about a certain step in the past of a dataset is required, but also in order
+to know who was involved and to fulfill our ``Attribution'' requirement 
 (Section~\ref{sec:requirements}), so that proper credits are given to the right 
-people/projects. To this end, we also add a 
-relation between \class{Entity} and \class{Agent}, similar to W3C's 
-wasAttributedTo-relation.
+people/projects.
+
 
 A definition of organisations in the sense of the VO is given in the 
 IVOA Recommendation on Resource Metadata \citep{std:ResourceMeta}, hereafter 
@@ -488,8 +453,9 @@ especially if he acts on behalf of someone else (the project, university, ...).
 
 In order to make it clearer what an agent is useful for, we suggest
 possible roles an agent can have (along with descriptions partially taken from RM)
-in Table~\ref{tab:agent-roles}. For comparison, SimDM contains following roles for 
-a Contact: owner, creator, publisher amd  contributor.
+in Table~\ref{tab:agent-roles}. For comparison, SimDM contains following roles 
+for their \emph{Contact} class: 
+owner, creator, publisher and contributor.
 
 
 \begin{table}[h]
@@ -540,9 +506,9 @@ Or shall we leave it open, which roles can be defined and just give examples her
 \toprule
 \head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
 \midrule
-ID & W3C ProvDM & string & unique identifier for an agent\\
-name &  & string & a common name for this agent; e.g. first name and last name; project name, ...\\
-type & prov:type & string & type of the agent: either person or organization\\
+prov:id & W3C ProvDM & string & unique identifier for an agent\\
+prov:name &  & string & a common name for this agent; e.g. first name and last name; project name, ...\\
+prov:type & prov:type & string & type of the agent: either person or organization\\
 \bottomrule
 \end{tabulary}
 \caption{Agent attributes}
@@ -551,3 +517,42 @@ type & prov:type & string & type of the agent: either person or organization\\
 \end{table}
 
 
+%% Additional classes for grouping and short-cuts
+
+\subsubsection{ActivityFlow}\label{sec:activity-collection}
+For facilitating grouping of activities (and their related entities etc.)
+we introduce the class \class{ActivityFlow}.
+It can be used for hiding a part of the workflow or provenance 
+description, if different levels of granularity are needed.
+
+In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
+provenance descriptions are called \class{Bundle}. However, we do not reuse these 
+terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
+with all the relations and properties that an \class{Activity} also has. 
+
+
+%while still making it obvious that this 
+%group contains activities, we introduce the class \class{ActivityFlow}.
+%This can be used for describing workflows or pipelines, or for 
+%
+%We also allow ActivityCollections to consist of a whole provenance graph of 
+%activities and entities being linked together.
+
+\subsubsection{Shortcuts: WasDerivedFrom and WasInformedBy}\label{sec:shortcuts}
+The classes \class{WasDerivedFrom} and \class{WasInformedBy} can be used as ``shortcuts'' and 
+are used in the same way as the corresponding W3C classes.
+
+\class{WasDerivedFrom} defines the relation that links two entities together, if one entity was derived
+from the other entity. In principle, one can find this information also by tracing the 
+history of an entity backwards to the generating activity and its input entities. 
+The descriptions for activity, entity and their relations should provide enough
+information to find the progenitor entity from which an entity was derived.
+Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicite 
+link between an entity and its progenitor is useful (e.g. for speeding up searches for 
+progenitors or if the activity in between is not important).
+
+The class \class{WasInformedBy} links two activities together without defining the
+intermediate entities that may have been exchanged. This is useful for e.g. pipelines, 
+if the intermediate entities don't play a major role or only exist temporarily, so that
+their provenance information is not deemed to be important enough to be recorded.
+%``WasInformedBy'' relation (also called ``Communication'' relation, borrowed from W3C's model) 
