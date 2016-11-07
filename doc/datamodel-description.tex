@@ -523,12 +523,33 @@ prov:type & prov:type & string & type of the agent: either person or organizatio
 For facilitating grouping of activities (and their related entities etc.)
 we introduce the class \class{ActivityFlow}.
 It can be used for hiding a part of the workflow or provenance 
-description, if different levels of granularity are needed.
+description, if different levels of granularity are needed. Figure \ref{fig:provgraph-activityflow}
+illustrates an example provenance graph in a detailed level (left side) 
+and using the ActivityFlow (right side).
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{../datamodel-diagrams/provgraph-activityflow}
+\caption{An example provenance graph. The detailed version is shown on the left side. It also uses 
+the shortcut \class{WasInformedBy} to connect two activities where the intermediate entity is not
+that interesting.
+An ActivityFlow can be used to ``hide'' a part of the provenance graph as is shown on the right side.
+Activities are marked by blue rectangles, Entities by yellow ellipses.}
+\label{fig:provgraph-activityflow}
+\end{figure}
+
+\TODO{BEWARE: Allowing this means that there can be 2 or more wasGeneratedBy-relations
+per entity!! This is currently NOT allowed in our model (multiplicity 0..1)! Or shall we 
+allow the encapsulating parts of a provenance graph 
+only in the view, i.e. on the implementation side?}
+
 
 In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
 provenance descriptions are called \class{Bundle}. However, we do not reuse these 
 terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
 with all the relations and properties that an \class{Activity} also has. 
+
 
 
 %while still making it obvious that this 
