@@ -13,7 +13,7 @@ Model. It contains the most basic classes; details will be explained in the foll
 \includegraphics[width=1.0\textwidth]{../datamodel-diagrams/classes-overview.pdf}
 \caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements.
 %Objects in the blue box also appear in the W3C Provenance Data Model. 
-Green classes are links to the IVOA Dataset Data Model.}
+Green classes are links to the IVOA Dataset Metadata Model.}
 \label{fig:classdiagram}
 \end{figure}
 
@@ -96,27 +96,29 @@ a file.
 It can even be just a number in a table, depending on how fine-grained the 
 provenance shall be described.
 
-Entities in the VO are often called ``dataset'', which could mean a single 
-table, an image or a collection of them. The Dataset Data Model 
-\citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
-are considered to be a single deliverable''. If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
-directly to the \class{Entity} class, as indicated in Figure \ref{fig:entityclasses}.
-
-The detailed mapping of classes and attributes from the Dataset Data Model 
-to \class{Entity} and \class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
-
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{../datamodel-diagrams/classes-entity-collection}
-\caption{The relation between Entity, Dataset and Collection. The Dataset class belongs to
-the IVOA Dataset Data Model.}
+\includegraphics[scale=0.7]{../datamodel-diagrams/entity-details}
+\caption{The relation between Entity, Dataset and Collection (see Section~\ref{sec:collection}). 
+The Dataset class as well as the classes with green boxes belong to
+the IVOA Dataset Metadata Model. Some attributes of Dataset actually link to Entity-attributes, 
+see Section~\ref{sec:dmlinks} for more details.}
 \label{fig:entityclasses}
 \end{figure}
 
+Entities in the VO are often called ``dataset'', which could mean a single 
+table, an image or a collection of them. The Dataset Metadata Model 
+\citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
+are considered to be a single deliverable''. If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
+directly to the \class{Entity} class, as indicated in Figure \ref{fig:entityclasses}.
+The detailed mapping of classes and attributes from the Dataset Metadata Model 
+to \class{Entity} and \class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
+
 For entities, we suggest the attributes given in Table 
-\ref{tab:entity-attributes}. 
-We use the namespace ``prov'', if the attribute also appears in the W3C 
-Provenance Data Model.
+\ref{tab:entity-attributes}. If the attribute also exists in the W3C 
+Provenance Data Model, we also list its name in the second column.
+%We use the namespace ``prov'', if the attribute also appears in the W3C 
+%Provenance Data Model.
 
 \begin{table}[h]
 
@@ -154,7 +156,7 @@ The types of entities or datasets in astronomy can be predefined using a descrip
 class \class{EntityDescription}.
 This class stores entity-related 
 attributes, describing the content of the data, which can mainly be derived from 
-Dataset Data Model, the general model for observational data.
+Dataset Metadata Model, the general model for observational data.
 The description attributes are summarized in Table 
 \ref{tab:entitydescription-attributes}.
 
@@ -190,12 +192,12 @@ the description classes may be ignored and its attributes may be used for
 \end{table}
 
 
-\subsubsection{Collection}
+\subsubsection{Collection}\label{sec:collection}
 Collections are entities that are grouped together and can be treated as one single entity. 
 In the provenance sense, they have to have the \emph{same origin}, i.e., they were 
 produced by the same activity (which could also be the activity of collecting
 data for a publication or similar). The term ``collection'' is 
-also used in the Dataset Data Model for grouping datasets.
+also used in the Dataset Metadata Model for grouping datasets.
 % (but with a slightly different meaning). 
 As an example, a collection 
 with the name `RAVE survey' could consist of a number of database tables and spectra files.
@@ -206,11 +208,11 @@ The Entity-Collection relation can be modeled using the \emph{Composite} design 
 Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
 In order to be compliant to VODML, we model the membership-relation explicitely 
-by including a ``HadMember'' class in our model, which is connected to the
-``Collection'' class via a composition. It may contain an additional role attribute.
+by including a \class{HadMember} class in our model, which is connected to the
+\emph{Collection} class via a composition. It may contain an additional role attribute.
 
-Collections are also known in the W3C model, in the same sense as used here. 
-The name for the mapping class, ``HadMember'' was adopted from the W3C model.
+Collections are also known in the W3C model, in the same sense as used here.
+The relation between entity and collection is also called ``HadMember'' in the W3C model.
 
 An additional class \class{CollectionDescription} is only 
 needed if it has different attributes than 
@@ -246,7 +248,7 @@ and it refers to a corresponding description for further information.
 There MUST be exactly zero or  one \class{ActivityDescription} per \class{Activity}. If steps from a 
 pipeline shall be grouped together, one needs to create a proper 
 \class{ActivityDescription} for describing all the steps at once. This method can then 
-be refered to by the pipeline-activity. For grouped activities, also see the 
+be refered to by the pipeline-activity. For grouping activities, also see the 
 next section \ref{sec:activity-collection}.
 
 When serializing the data model, the attributes
@@ -403,7 +405,7 @@ entity, e.g. who pressed a button,
 ran a script, performed the observation or published a dataset.
 The agent can be a single person, a group of persons (e.g. MUSE WISE Team), a 
 project (RAVE) or an institute. 
-This is also reflected in the IVOA Dataset Data Model, where \class{Party} 
+This is also reflected in the IVOA Dataset Metadata Model, where \class{Party} 
 represents an agent, and it has two subtypes: \class{Individual} and \class{Organization},
 which are explained in more detail in Table \ref{tab:agent-types}.
 Both types are also used for agent types in the W3C Provenance Data Model, though 
@@ -457,13 +459,13 @@ people/projects.
 \centering
 \includegraphics[scale=0.7]{../datamodel-diagrams/agent-relations.pdf}
 \caption{The relations between the \class{Agent} class within the Provenance Data Model 
-(grey and yellow classes) and with classes from the Dataset Data Model (green).}
+(grey and yellow classes) and with classes from the Dataset Metadata Model (green).}
 \label{fig:agent-relations}
 \end{figure}
 
 
 The relations between \class{Agent} and other classes from the Provenance Data Model and
-the IVOA Dataset Data Model are detailed in Figure \ref{fig:agent-relations}.
+the IVOA Dataset Metadata Model are detailed in Figure \ref{fig:agent-relations}.
 
 It is desired to have at least one agent given for each activity (and entity), but it
 is not enforced.

@@ -169,21 +169,21 @@ Table \ref{tab:datasetmapping} maps classes and attributes from the Dataset Data
 \head{Dataset DM} & \head{Provenance DM} & \head{Comment}\\
 \midrule
 DataID.title      & Entity.label               & title of the dataset\\
-DataID.collection    & HadMember.collectionID  & link to the collection to which the dataset belongs\\
+DataID.collection    & HadMember.collectionId  & link to the collection to which the dataset belongs\\
 DataID.creator       & Agent.name          & name of agent\\ 
-DataID.creatorDID    & AlternateOf.entityID     & id for the dataset given by the creator\\
-DataID.ObservationID & wasGeneratedBy.activityID  & identifier to everything describing the observation; maybe it belongs to entity?\\
-DataID.PublisherDID  & Entity.ID      & unique identifier for the dataset\\
-Curation.PublisherID & Agent.ID  & link to the publisher; role: publisher, type: organization/astronomer private collection)\\
+DataID.creatorDID    & AlternateOf.entityId     & id for the dataset given by the creator\\
+DataID.ObservationID & WasGeneratedBy.activityId  & identifier to everything describing the observation; maybe it belongs to entity?\\
+Curation.PublisherDID  & Entity.id      & unique identifier for the dataset assigned by the publisher\\
+Curation.PublisherID & Agent.id  & link to the publisher; role: publisher, type: organization/astronomer private collection)\\
 Curation.Publisher     & Agent.name & name of the publisher\\
 Curation.Date          & Entity.releaseDate & release date of the dataset\\
 Curation.Version       & Entity.version     & version of the dataset\\
 Curation.Rights        & Entity.access      & access rights to the dataset; one of [...]\\
 Curation.Reference     & Entity.link        & link to publication\\
-Curation.Contact       & Agent.ID or name? & link to Agent with role contact\\
+Curation.Contact       & Agent.Id or name? & link to Agent with role contact\\
 DataProductType  & EntityDescription.type & subclass to EntityDescription\\
 DataProductSubType & EntityDescription.subtype & subclass to EntityDescription\\
-CalibLevel       & EntityDescription.level & subclass to EntityDescription, calibration level\\\hline
+ObsDataset.calibLevel       & EntityDescription.level & subclass to EntityDescription, calibration level\\\hline
 \bottomrule
 \end{tabulary}
 \caption{Mapping between attributes from \class{Dataset}-classes from DatasetDM to classes in ProvenanceDM.}
