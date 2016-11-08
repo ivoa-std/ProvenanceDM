@@ -2,8 +2,6 @@
 
 We derived from our goals and use cases the following minimum requirements for the Provenance Data Model:
 
-\TODO{Readers do not know about the terms \emph{activity} and \emph{entity}, yet at this point!!}
-
 \begin{itemize}
 
 % == other models / serialisation
@@ -12,10 +10,9 @@ We derived from our goals and use cases the following minimum requirements for t
 
 \item Provenance information must be machine readable.
 
-\item Provenance data model classes and attributes should be linked to other IVOA concepts when relevant (ObsCoreDM, SimDM, VOTable, UCDs...).
+\item Provenance data model classes and attributes should be linked to other IVOA concepts when relevant (DatasetDM, ObsCoreDM, SimDM, VOTable, UCDs...).
 
-\item Provenance information should be serializable into the W3C PROV standard formats with minimum information loss.
-
+\item Provenance information should be serializable into the W3C provenance standard formats (PROV-N, PROV-XML, PROV-JSON) with minimum information loss.
 
 
 % == links between entity/activity
@@ -27,13 +24,13 @@ We derived from our goals and use cases the following minimum requirements for t
 \item An entity must point to the activity that generated it (if the activity is recorded).
 %Provenance metadata must contain information to find the activity that generated a given entity.
 %* All produced entities must contain information to find the activity that generated it
-\item Activities may point to output entities.
 
 \item Activities must point to input entities (if applicable).
 
+\item Activities may point to output entities.
+
 \item Provenance information should make it possible to derive the chronological sequence of activities.
 %The order of the activities should be available.
-
 
 %\item Provenance information should contain the list of activities and progenitor entities.
 % too vague .... must be an ordered list ... One step should also be allowed.
