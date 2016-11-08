@@ -10,8 +10,10 @@ Model. It contains the most basic classes; details will be explained in the foll
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/classes-overview}
-\caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements. Objects in the blue box also appear in the W3C Provenance Data Model. Green classes belong to other IVOA classes (IVOA Dataset Data Model).}
+\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/classes-overview.pdf}
+\caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements.
+%Objects in the blue box also appear in the W3C Provenance Data Model. 
+Green classes are links to the IVOA Dataset Data Model.}
 \label{fig:classdiagram}
 \end{figure}
 
@@ -122,15 +124,15 @@ Provenance Data Model.
 \tymax	0.5\textwidth
 
 \textbf{\normalsize Entity}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}p{2cm}L@{}}
 \toprule
-\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{prov:id} & DataID.publisherDID & string & a unique id for this entity (unique in its realm)\\
-prov:label        & W3C ProvDM & string & a label (to be displayed by clients)\\
-prov:type         & W3C ProvDM  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
-{[prov:description]}  & W3C ProvDM  & string & link to text describing the entity in more detail or link (foreign key) to \class{EntityDescription}\\
-access            & Curation.Rights & string & access rights for the data, values: public, restricted or internal\\
+\textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
+label        & prov:label & string & a label (to be displayed by clients)\\
+type         & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
+{[description]}  & [prov:description] & string & link to text describing the entity in more detail or link (foreign key) to \class{EntityDescription}\\
+access            & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of entities. Mandatory attributes are marked in bold.
@@ -166,24 +168,24 @@ and entities (see Section \ref{sec:entity-activity-relations}).
 \small
 \tymax	0.5\textwidth
 \textbf{\normalsize EntityDescription}\vspace{0.25em}\\
-\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{3cm}lL@{}}
+\begin{tabulary}{\textwidth}{@{}p{2.75cm}p{0cm}p{2cm}L@{}}
 \toprule
-\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+\head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{prov:id} & & string & a unique identifier for this description\\
-prov:label  & W3C ProvDM & string & a name or label for the entity description\\
-prov:description  & W3C ProvDM & string & a decription for this kind of entity\\
-docuLink &  & url & link to more documentation\\
-dataproduct\_ type  & Dataset.data-ProductType, ... & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
-dataproduct\_ subtype & Dataset.data-ProductSubtype, ... & string       & from ObsCore data model, more specific subtype\\
-level   & Dataset.calib-Level, ... & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
+\textbf{id} & & (qualified) string & a unique identifier for this description\\
+label       & & string & a name or label for the entity description\\
+description & & string & a decription for this kind of entity\\
+docuLink    & & url & link to more documentation\\
+dataproduct\_ type  & & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
+dataproduct\_ subtype & & string       & from ObsCore data model, more specific subtype\\
+level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{EntityDescription}. For simple use cases, 
 the description classes may be ignored and its attributes may be used for 
 \class{Entity} instead. 
-The utypes may vary depending on the data model, e.g. for simulation data they 
-would point to utypes of SimDM.
+%The utypes may vary depending on the data model, e.g. for simulation data they 
+%would point to utypes of SimDM.
 }\label{tab:entitydescription-attributes}
 \end{table}
 
@@ -217,7 +219,7 @@ the \class{EntityDescription}. This should therefore only be introduced if a use
 \paragraph{Advantages of collections:}
 \begin{itemize}
 \item Collections can be used to collect entities with the same provenance together, 
-    in order to hide complexity where necessar. They can be used for defining 
+    in order to hide complexity where necessary. They can be used for defining 
     different levels of detail (granularity).
 \item \TODO{Anything else?}
 \end{itemize}
@@ -249,7 +251,7 @@ next section \ref{sec:activity-collection}.
 
 When serializing the data model, the attributes
 of the description class may be assigned to the activity in order to produce 
-a W3C compliant serialization (same as with Entity/EntitDescription).
+a W3C compliant serialization (same as with Entity/EntityDescription).
 
 \begin{table}[h]
 
@@ -257,37 +259,40 @@ a W3C compliant serialization (same as with Entity/EntitDescription).
 \tymax	0.5\textwidth
 
 \textbf{\normalsize Activity}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}lp{2.5cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lp{2.5cm}p{2cm}L@{}}
 \toprule
-\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{prov:id} & W3C ProvDM  & string & a unique id for this activity (unique in its realm)\\
-prov:label        & W3C ProvDM  & string & a label (to be displayed by clients)\\
-\textbf{prov:startTime} & W3C ProvDM  & datetime & start of an activity\\
-\textbf{prov:endTime} & W3C ProvDM  & datetime & end of an activity\\
-{[prov:description]}  & W3C ProvDM & string & a description for the activity, 
+\textbf{id} & prov:id  & (qualified) string & a unique id for this activity (unique in its realm)\\
+label        & prov:label  & string & a label (to be displayed by clients)\\
+\textbf{startTime} & prov:startTime & datetime & start of an activity\\
+\textbf{endTime} & prov:endTime  & datetime & end of an activity\\
+annotation        & --  & string & additional explanations for the specific activity instance\\
+{[description]}  & [prov:description] & string/url/ foreign key & a description for the activity, 
 				link to documentation or link to \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{Activity}.}
+\caption{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
+Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
 \end{table}
+
 
 \begin{table}[ht]
 \small
 \tymax	0.5\textwidth
 \textbf{\normalsize ActivityDescription}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}lp{2.5cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
 \toprule
-\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+\head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
-\textbf{prov:id} &   & string & a unique id for this activity description (unique in its realm)\\
-prov:label        & W3C ProvDM  & string & a label (to be displayed by clients)\\
-type         & & string & one of the processes from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
-subtype  & & string & more specific subtype of the activity\\
-prov:description & W3C ProvDM & string & a description for the activity\\
-code & & string & the code used for this process\\
-version & & string & a version number\\
-docuLink & & string & link to further documentation on this process, e.g. a paper, the source code in a version control system etc.\\
+\textbf{id}  & & string & a unique id for this activity description (unique in its realm)\\
+label        & & string & a label (to be displayed by clients)\\
+type         & & string & type of the activity, from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
+subtype      & & string & more specific subtype of the activity\\
+description  & & string & additional free text description for the activity\\
+%code         & & string & the code used for this process\\
+%version      & & string & a version number for the code\\
+docuLink     & & url    & link to further documentation on this process, e.g. a paper, the source code in a version control system etc.\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{ActivityDescription}.}
@@ -389,39 +394,42 @@ e.g. check if entity-type matches used-role!}
 \TODO{Add an example here! (From discussions in Heidelberg.)}
 
 
+
+
 \subsubsection{Agent}\label{sec:w3c-agent}
-An \class{Agent} describes someone who responsible for a certain task or
+
+An \class{Agent} describes someone who is responsible for a certain task or
 entity, e.g. who pressed a button, 
 ran a script, performed the observation or published a dataset.
 The agent can be a single person, a group of persons (e.g. MUSE WISE Team), a 
-project (RAVE) or an institute. Similar to W3C we specify therefore two types
-of agents: 
-
-\begin{itemize}
-\item prov:person: a person, specified by name, email address, 
-possibly also by affiliation (though all these parts may change in time)
-\item prov:organisation: a publishing house, institute, scientific project
-%\item prov:SoftwareAgent: still needs to be discussed, if it should be included
-\end{itemize}
-We do not include they type prov:softwareagent from W3C, since it is not required for 
+project (RAVE) or an institute. 
+This is also reflected in the IVOA Dataset Data Model, where \class{Party} 
+represents an agent, and it has two subtypes: \class{Individual} and \class{Organization},
+which are explained in more detail in Table \ref{tab:agent-types}.
+Both types are also used for agent types in the W3C Provenance Data Model, though 
+\class{Individual} is called \class{Person} there. 
+We do not include the type \class{SoftwareAgent} from W3C, since it is not required for 
 our use cases.
 
-For each agent a \emph{name} should be specified.
-It would also increase the value of the given
-information if the (current) affiliation of the agent (and a project leader/group
-leader) were specified in order to maximize the chance of finding any contact 
-person later on. 
-
-It is desired to have at least one agent given for each activity (and entity), but it
-is not enforced, hence the multiplicity between \class{Entity}/\class{Activity} and the relations
-to the \class{Agent} is 0..*.
-
-The Agent information is important for getting contact details in case more 
-information about a certain step in the past of a dataset is required, but also in order
-to know who was involved and to fulfill our ``Attribution'' requirement 
-(Section~\ref{sec:requirements}), so that proper credits are given to the right 
-people/projects.
-
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\begin{center}
+\begin{tabulary}{1.0\textwidth}{@{}lllL@{}}
+\multicolumn{3}{c}{\textbf{AgentType}}\\
+\toprule
+\head{Class} & \head{W3C ProvDM} & \head{DatasetDM} &\head{Comment} \\
+\midrule
+Agent       & Agent  & Party & \\
+Individual  & Person & Individual & a person, specified by name, email, address, 
+      (though all these parts may change in time)\\
+Organization & Organization & Organization & a publishing house, institute or scientific project\\
+\bottomrule
+\end{tabulary}
+\caption{Types of agents}
+\label{tab:agent-types}
+\end{center}
+\end{table}
 
 A definition of organisations in the sense of the VO is given in the 
 IVOA Recommendation on Resource Metadata \citep{std:ResourceMeta}, hereafter 
@@ -434,26 +442,53 @@ agency. At a finer level, it could be a specific scientific project, space missi
 or individual researcher. A provider is an organisation that makes data and/or services
 available to users over the network.''
 
-There can be more than one agent for each activity/entity with different \emph{roles} 
-and one agent can be responsible for more than one activity/entity. This 
-many-to-many relationship is made explicite in our model by adding role-maps 
-for agents explicitely in the UML-class diagram.
+For each agent a \emph{name} should be specified.
+It would also increase the value of the given
+information if the (current) affiliation of the agent (and a project leader/group
+leader) were specified in order to maximize the chance of finding any contact 
+person later on. 
+The contact information is needed in case more information about a certain step in the past of a dataset is required,
+but also in order
+to know who was involved and to fulfill our ``Attribution'' requirement 
+(Section~\ref{sec:requirements}), so that proper credits are given to the right 
+people/projects.
 
-Adopting the naming scheme from W3C ProvDM, we have the following two relations:
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{../datamodel-diagrams/agent-relations.pdf}
+\caption{The relations between the \class{Agent} class within the Provenance Data Model 
+(grey and yellow classes) and with classes from the Dataset Data Model (green).}
+\label{fig:agent-relations}
+\end{figure}
+
+
+The relations between \class{Agent} and other classes from the Provenance Data Model and
+the IVOA Dataset Data Model are detailed in Figure \ref{fig:agent-relations}.
+
+It is desired to have at least one agent given for each activity (and entity), but it
+is not enforced.
+% , hence the multiplicity between \class{Entity}/\class{Activity} and the relations
+%to the \class{Agent} starts with 0.
+There can also be more than one agent for each activity/entity with different \emph{roles} 
+and one agent can be responsible for more than one activity or entity. This 
+many-to-many relationship is made explicite in our model by adding the two
+following relation classes:
 
 \begin{itemize}
 \item wasAssociatedWith: relates an \emph{activity} to an agent
 \item wasAttributedTo: relates an \emph{entity} to an agent
 \end{itemize}
 
+We adopted here the same naming scheme as was used in W3C ProvDM.
 Note that the attributed-to-agent for a dataset may be different from the 
 agent that is associated with the activity that created an entity. 
 Someone who is performing a task is not necessarily given full attribution, 
 especially if he acts on behalf of someone else (the project, university, ...).
 
-In order to make it clearer what an agent is useful for, we suggest
+In order to make it clearer what an agent is useful for, we suggest the
 possible roles an agent can have (along with descriptions partially taken from RM)
-in Table~\ref{tab:agent-roles}. For comparison, SimDM contains following roles 
+in Table~\ref{tab:agent-roles}. 
+For comparison, SimDM contains following roles 
 for their \emph{Contact} class: 
 owner, creator, publisher and contributor.
 
@@ -484,31 +519,29 @@ creator & ?? &  (about the same as author?)\\
 \label{tab:agent-roles}
 \end{center}
 \end{table}
-\TODO{Go through these roles, pick only the necessary ones, crosscheck with other data models.}
 
-This list is not complete. We could consider providing a vocabulary for this, 
-restricted to provenance in the astronomy domain.
+\TODO{\textbf{Mireille + Francois}: Go through these roles, pick only the necessary ones, crosscheck with other data models.}
 
-\TODO{Do we have a specific use case for fixing the agent-roles? Is anyone 
-going to search for specific roles in the Provenance meta-data?
-Or shall we leave it open, which roles can be defined and just give examples here?}
+This list is \emph{not} complete. We consider providing a vocabulary list for this 
+in a future version of this model, collected from (future) implementations of this model.
 
-%\TODO{We still need to clarify precisely, in which way a \emph{software agent} 
-%is distinct from an activity.}
-
+%\TODO{Do we have a specific use case for fixing the agent-roles? Is anyone 
+%going to search for specific roles in the Provenance meta-data?
+%Or shall we leave it open, which roles can be defined and just give examples here?}
+% ... Yes, just give examples here. Should have a vocabulary list somewhere ...
 
 \begin{table}[h]
 \small
 \tymax  0.5\textwidth
 \begin{center}
-\begin{tabulary}{1.0\textwidth}{@{}lllL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}llp{2cm}L@{}}
 \multicolumn{4}{c}{\textbf{Agent}}\\
 \toprule
-\head{Attribute} & \head{Utype/DM} & \head{Data type} & \head{Description}\\
+\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
-prov:id & W3C ProvDM & string & unique identifier for an agent\\
-prov:name &  & string & a common name for this agent; e.g. first name and last name; project name, ...\\
-prov:type & prov:type & string & type of the agent: either person or organization\\
+id & prov:id & (qualified) string & unique identifier for an agent\\
+name & prov:name & string & a common name for this agent; e.g. first name and last name; project name, ...\\
+type & prov:type & string & type of the agent: either person or organization\\
 \bottomrule
 \end{tabulary}
 \caption{Agent attributes}

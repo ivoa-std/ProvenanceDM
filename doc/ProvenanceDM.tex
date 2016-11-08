@@ -181,9 +181,9 @@ Curation.Version       & Entity.version     & version of the dataset\\
 Curation.Rights        & Entity.access      & access rights to the dataset; one of [...]\\
 Curation.Reference     & Entity.link        & link to publication\\
 Curation.Contact       & Agent.ID or name? & link to Agent with role contact\\
-DataProductType  & EntityDescription & subclass to EntityDescription\\
-DataProductSubType & EntityDescription & subclass to EntityDescription\\
-CalibLevel       & EntityDescription & subclass to EntityDescription, calibration level\\\hline
+DataProductType  & EntityDescription.type & subclass to EntityDescription\\
+DataProductSubType & EntityDescription.subtype & subclass to EntityDescription\\
+CalibLevel       & EntityDescription.level & subclass to EntityDescription, calibration level\\\hline
 \bottomrule
 \end{tabulary}
 \caption{Mapping between attributes from \class{Dataset}-classes from DatasetDM to classes in ProvenanceDM.}
