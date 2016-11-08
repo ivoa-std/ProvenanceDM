@@ -114,14 +114,14 @@ provenance shall be described.
 The Dataset class as well as the classes with green boxes belong to
 the IVOA Dataset Metadata Model. Some attributes of Dataset actually link to Entity-attributes, 
 see Section~\ref{sec:dmlinks} for more details.}
-\label{fig:entityclasses}
+\label{fig:entity-details}
 \end{figure}
 
 Entities in the VO are often called ``dataset'', which could mean a single 
 table, an image or a collection of them. The Dataset Metadata Model 
 \citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
 are considered to be a single deliverable''. If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
-directly to the \class{Entity} class, as indicated in Figure \ref{fig:entityclasses}.
+directly to the \class{Entity} class, as indicated in Figure \ref{fig:entity-details}.
 The detailed mapping of classes and attributes from the Dataset Metadata Model 
 to \class{Entity} and \class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
 
@@ -203,7 +203,7 @@ the description classes may be ignored and its attributes may be used for
 \end{table}
 
 
-In Figure~\ref{fig:entity-relations} there is one more relation that we have not mentioned yet: 
+In Figure~\ref{fig:entity-details} there is one more relation that we have not mentioned yet: 
 the \class{WasDerivedFrom}-relation which links two entities together, borrowed from the W3C model. 
 Is is used to express that 
 one entity was derived from another, i.e. it can be used to find one (or more) progenitor(s) 
@@ -256,6 +256,16 @@ the \class{EntityDescription}. This should therefore only be introduced if a use
 
 
 \subsubsection{Activity}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{../datamodel-diagrams/activity-details}
+\caption{Details for Activity, ActivityDescription and ActivityFlow (see Section~\ref{sec:activity-collection}). 
+}
+\label{fig:activity-details}
+\end{figure}
+
+
 Activities in astronomy include all steps from obtaining data to the reduction of 
 images and production of new datasets, like image calibration, bias subtraction, image stacking; 
 light curve generation from a number of observations, radial velocity 
@@ -639,3 +649,31 @@ with all the relations and properties that an \class{Activity} also has.
 %if the intermediate entities don't play a major role or only exist temporarily, so that
 %their provenance information is not deemed to be important enough to be recorded.
 %``WasInformedBy'' relation (also called ``Communication'' relation, borrowed from W3C's model) 
+
+\subsubsection{Parameters}
+We add a \class{Parameter} class along with a \class{ParameterDescription} 
+for describing additional properties of activities.
+
+For example for observations, the \emph{ambient conditions} as well as 
+\emph{instrument characteristics} need to be stored. But they can both be treated
+as additional entities as well. 
+Our model can then also take into account that a certain observation
+method requires special ambient conditions, already defined via the 
+ActivityDescription (e.g. radio observations rely on different ambient 
+conditions than observations
+of gamma rays), just following our data -- data description scheme.
+Ambient conditions are recorded for a certain time (startTime, endTime) and are
+usually only valid for a certain time interval. This time interval should be recorded
+with a \emph{validity}-attribute for such entities.
+
+In contrast to ambient conditions, instrument characteristics do (usually) not
+change from one observation to the other, so they are static, strictly related to
+the instrument. 
+All the characteristics could be described either as key-value pairs directly with the 
+observation (as attributes) or just as datasets, using the \class{Entity} class. 
+One would then 
+link the instrument characteristics as a type of input (or output?) dataset to a certain 
+observation activity. Thus we don't need a separate Instrument or Device class.
+
+\note{One should also keep in mind that some instrument related parameters can change within time,
+e.g. the CCD temperature. The instruments can also change within time because of aging.}

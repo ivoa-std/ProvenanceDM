@@ -24,32 +24,6 @@ they are just another dataset that is used by activities with a
 calibration-method.
 
 
-\subsubsection{Parameters}
-We consider adding a parameter class for describing additional properties of activities.
-
-For example for observations, the \emph{ambient conditions} as well as 
-\emph{instrument characteristics} need to be stored. But they can both be treated
-as additional entities as well. 
-Our model can then also take into account that a certain observation
-method requires special ambient conditions, already defined via the 
-ActivityDescription (e.g. radio observations rely on different ambient 
-conditions than observations
-of gamma rays), just following our data -- data description scheme.
-Ambient conditions are recorded for a certain time (startTime, endTime) and are
-usually only valid for a certain time interval. This time interval should be recorded
-with a \emph{validity}-attribute for such entities.
-
-In contrast to ambient conditions, instrument characteristics do (usually) not
-change from one observation to the other, so they are static, strictly related to
-the instrument. 
-All the characteristics could be described either as key-value pairs directly with the 
-observation (as attributes) or just as datasets, using the \class{Entity} class. 
-One would then 
-link the instrument characteristics as a type of input (or output?) dataset to a certain 
-observation activity. Thus we don't need a separate Instrument or Device class.
-
-\note{One should also keep in mind that some instrument related parameters can change within time,
-e.g. the CCD temperature. The instruments can also change within time because of aging.}
 
 
 \subsubsection{Quality}
