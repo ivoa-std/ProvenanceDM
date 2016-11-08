@@ -2,9 +2,10 @@ In this section, we describe the currently discussed provenance data model. We
 start with a UML class diagram that contains the main important classes 
 and then give in the following sections more details for each class and relation.
 
-\subsection{Overview: UML class diagram}
+\subsection{Overview: UML class diagram and introduction to core classes}
 Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
-Model. It contains the most basic classes; details will be explained in the following sections.
+Model. We give in this section an overview on the main classes. More details about 
+each class and their relations will be explained in the following sections.
 %Its core elements are colored in blue. These core elements can also be found in the W3C Provenance Data
 %Model. The pattern defined by these classes is very general and can be reused everywhere where provenance is needed. 
 
@@ -18,7 +19,7 @@ Green classes are links to the IVOA Dataset Metadata Model.}
 \end{figure}
 
 
-\subsection{Main classes}\label{sec:core}
+\label{sec:core}
 % Some examples for different use cases are given in Section \ref{sec:usecases-implementations}.
 % The elements of a provenance model can be expressed as a directed graph to capture the causal dependencies. 
 
@@ -28,7 +29,6 @@ Green classes are links to the IVOA Dataset Metadata Model.}
 \caption{The main core classes and relations of the Provenance Data Model, which also occur in the W3C model.}
 \label{fig:coreclasses}
 \end{figure}
-
 
 The core elements of the provenance data model are \class{Entity}, \class{Activity} and \class{Agent}. 
 We chose for these elements the same names as were used in the Provenance Data 
@@ -63,16 +63,20 @@ classes. The names were again chosen to match the W3C model names:
 		(entity ``image m31.fits'' wasAttributedTo ``M31 observation campaign'')
 \end{itemize}
 
-Inspired by SimDM (\cite{std:SimDM}), an IVOA  data model for simulation data 
-published in May 2012, we also separate descriptions of activities from the 
-actual processes and introduce an additional \class{ActivityDescription} class.
-\class{Activity} and \class{ActivityDescription} are our Provenance Data Model 
-terms for the classes \class{Experiment} and \class{Protocol} in SimDM. 
-We also apply the same pattern for \class{Entity} and add an \class{EntityDescription}
+
+In the domain of astronomy, certain processes and steps are repeated again and 
+again with different parameters. We therefore separate the descriptions of activities
+from the actual processes and introduce an additional \class{ActivityDescription} class.
+Likewise, we also apply the same pattern for \class{Entity} and add an \class{EntityDescription}
 class.
 Defining such descriptions allows them to be reused, which is very useful 
 when performing a series of tasks of the same type, as is typically done in 
 astronomy. 
+
+A similar normalization of descriptions from the actual processes and datasets 
+can also be found in the IVOA Simulation Data Model SimDM (\cite{std:SimDM}), 
+which describes simulation metadata. The SimDM classes \class{Experiment} and \class{Protocol} 
+correspond to the Provenance terms \class{Activity} and \class{ActivityDescription}.
 
 %The W3C-model has the advantage of being already an approved standard, and it 
 %contains all the necessary main features needed for a Provenance model for 
@@ -80,13 +84,20 @@ astronomy.
 %templates or descriptions for activities and entities,  the model may fit better 
 %to the astronomy domain.
 
-It still remains to be seen if this separation into two classes is necessary, 
-useful or just nice to have. Currently, we include the descriptions in our model, 
-for normalization purposes. But when serialising the provenance one could 
-integrate the description side into the other classes, thus producing W3C 
-compliant provenance.
+This separation into two classes may not be needed for each and every project,
+and everyone is free to choose which classes make sense for his/her use case.
+When serializing provenance, one could integrate the description side into the 
+other classes, thus producing a W3C compliant provenance description.
+%It still remains to be seen if this separation into two classes is necessary, 
+%useful or just nice to have. Currently, we include the descriptions in our model, 
+%for normalization purposes. 
+
+%But when serialising the provenance one could 
+%integrate the description side into the other classes, thus producing W3C 
+%compliant provenance.
 
 
+\subsection{Model description}
 \subsubsection{Entity}
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
 form of images, tables, numbers, etc. But they can also be observation or 
@@ -131,8 +142,8 @@ Provenance Data Model, we also list its name in the second column.
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
-label        & prov:label & string & a label (to be displayed by clients)\\
-type         & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
+label       & prov:label & string & a label (to be displayed by clients)\\
+type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
 {[description]}  & [prov:description] & string & link to text describing the entity in more detail or link (foreign key) to \class{EntityDescription}\\
 access            & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
 \bottomrule
@@ -162,7 +173,7 @@ The description attributes are summarized in Table
 
 The \class{EntityDescription} does NOT contain any information about the usage 
 of the data, it tells nothing about them being used as input or output. This is 
-defined only by the relations (and the relation descriptions) between acitivities
+defined only by the relations (and the relation descriptions) between activities
 and entities (see Section \ref{sec:entity-activity-relations}).
 
 
@@ -190,6 +201,19 @@ the description classes may be ignored and its attributes may be used for
 %would point to utypes of SimDM.
 }\label{tab:entitydescription-attributes}
 \end{table}
+
+
+In Figure~\ref{fig:entity-relations} there is one more relation that we have not mentioned yet: 
+the \class{WasDerivedFrom}-relation which links two entities together, borrowed from the W3C model. 
+Is is used to express that 
+one entity was derived from another, i.e. it can be used to find one (or more) progenitor(s) 
+of a dataset, without having to mention the activities in between. It can therefore serve as 
+a shortcut. The information this link provides is somewhat redundant, since progenitors for entities
+can be found through the links to activity and the corresponding descriptions.
+Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicite 
+link between an entity and its progenitor is useful (e.g. for speeding up searches for 
+progenitors or if the activity in between is not important).
+
 
 
 \subsubsection{Collection}\label{sec:collection}
@@ -245,10 +269,15 @@ description of the underlying algorithm or process. An activity is then a
 concrete case (instance) of using such a method, with a startTime and endTime, 
 and it refers to a corresponding description for further information.
 
-There MUST be exactly zero or  one \class{ActivityDescription} per \class{Activity}. If steps from a 
+There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a 
 pipeline shall be grouped together, one needs to create a proper 
 \class{ActivityDescription} for describing all the steps at once. This method can then 
-be refered to by the pipeline-activity. For grouping activities, also see the 
+be refered to by the pipeline-activity. 
+The individual steps of a pipeline can be chained
+together directly, without mentioning the intermediate datasets, using the \class{WasInformedBy}-relation.
+This relation can be used as a short-cut, if the exchanged datasets are deemed to be not important
+enough to be recorded.
+For grouping activities, also see the 
 next section \ref{sec:activity-collection}.
 
 When serializing the data model, the attributes
@@ -294,7 +323,8 @@ subtype      & & string & more specific subtype of the activity\\
 description  & & string & additional free text description for the activity\\
 %code         & & string & the code used for this process\\
 %version      & & string & a version number for the code\\
-docuLink     & & url    & link to further documentation on this process, e.g. a paper, the source code in a version control system etc.\\
+docuLink     & & url    & link to further documentation on this process, e.g. a 
+paper, the source code in a version control system etc.\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{ActivityDescription}.}
@@ -303,7 +333,6 @@ docuLink     & & url    & link to further documentation on this process, e.g. a 
 
 
 \subsubsection{Entity-Activity relations}\label{sec:entity-activity-relations}
-\TODO{This section is quite long ... Shorten?}
 
 For each data flow it should be possible to clearly identify entities and 
 activities. 
@@ -543,7 +572,7 @@ in a future version of this model, collected from (future) implementations of th
 \midrule
 id & prov:id & (qualified) string & unique identifier for an agent\\
 name & prov:name & string & a common name for this agent; e.g. first name and last name; project name, ...\\
-type & prov:type & string & type of the agent: either person or organization\\
+type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
 \bottomrule
 \end{tabulary}
 \caption{Agent attributes}
@@ -551,8 +580,6 @@ type & prov:type & string & type of the agent: either person or organization\\
 \end{center}
 \end{table}
 
-
-%% Additional classes for grouping and short-cuts
 
 \subsubsection{ActivityFlow}\label{sec:activity-collection}
 For facilitating grouping of activities (and their related entities etc.)
@@ -594,21 +621,21 @@ with all the relations and properties that an \class{Activity} also has.
 %We also allow ActivityCollections to consist of a whole provenance graph of 
 %activities and entities being linked together.
 
-\subsubsection{Shortcuts: WasDerivedFrom and WasInformedBy}\label{sec:shortcuts}
-The classes \class{WasDerivedFrom} and \class{WasInformedBy} can be used as ``shortcuts'' and 
-are used in the same way as the corresponding W3C classes.
+%\subsubsection{Shortcuts: WasDerivedFrom and WasInformedBy}\label{sec:shortcuts}
+%The classes \class{WasDerivedFrom} and \class{WasInformedBy} can be used as ``shortcuts'' and 
+%are used in the same way as the corresponding W3C classes.
 
-\class{WasDerivedFrom} defines the relation that links two entities together, if one entity was derived
-from the other entity. In principle, one can find this information also by tracing the 
-history of an entity backwards to the generating activity and its input entities. 
-The descriptions for activity, entity and their relations should provide enough
-information to find the progenitor entity from which an entity was derived.
-Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicite 
-link between an entity and its progenitor is useful (e.g. for speeding up searches for 
-progenitors or if the activity in between is not important).
+%\class{WasDerivedFrom} defines the relation that links two entities together, if one entity was derived
+%from the other entity. In principle, one can find this information also by tracing the 
+%history of an entity backwards to the generating activity and its input entities. 
+%The descriptions for activity, entity and their relations should provide enough
+%information to find the progenitor entity from which an entity was derived.
+%Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicite 
+%link between an entity and its progenitor is useful (e.g. for speeding up searches for 
+%progenitors or if the activity in between is not important).
 
-The class \class{WasInformedBy} links two activities together without defining the
-intermediate entities that may have been exchanged. This is useful for e.g. pipelines, 
-if the intermediate entities don't play a major role or only exist temporarily, so that
-their provenance information is not deemed to be important enough to be recorded.
+%The class \class{WasInformedBy} links two activities together without defining the
+%intermediate entities that may have been exchanged. This is useful for e.g. pipelines, 
+%if the intermediate entities don't play a major role or only exist temporarily, so that
+%their provenance information is not deemed to be important enough to be recorded.
 %``WasInformedBy'' relation (also called ``Communication'' relation, borrowed from W3C's model) 
