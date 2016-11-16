@@ -140,27 +140,27 @@ infrastructure that enable VO applications.
 
 \section{The provenance data model}
 \input{datamodel-description}
-\input{datamodel-discussion}
 
 
 %\section{Applying provenance -- Interactions with other Data models}\label{sec:dmlinks}
-\section{Interactions with other Data models}\label{sec:dmlinks}
+\section{Links to other data models}\label{sec:dmlinks}
 In this section we discuss how the provenance data model interacts with
 other VO data models (especially DatasetDM).
 %(e.g. DatasetDM, SpectralDM (share some same classes), SimDM) 
 %and how provenance information can be stored.
+Entities and their descriptions in the Provenance Data Model 
+are tightly linked to the \class{DataSet}-class in the DatasetDM/ObsCore Data Model, as well as to 
+InputDataset and OutputDataSet in the Simulation Data Model \citep[SimDM,][]{std:SimDM}).
+Table \ref{tab:datasetmapping} maps classes and attributes from the Dataset Data Model 
+to concepts in the Provenance Data Model.
 
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{../datamodel-diagrams/classes-relations-dms}
-\caption{Links between Agent and Party, Entity and Dataset.}
-\label{fig:class-relations-dm}
-\end{figure}
-
-%\TODO{Put this in appendix? Or in datamodel-description? Or even in introduction?}
-
-Table \ref{tab:datasetmapping} maps classes and attributes from the Dataset Data Model to concepts in the Provenance Data Model.
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=\textwidth]{../datamodel-diagrams/classes-relations-dms}
+%\caption{Links between Agent and Party, Entity and Dataset.}
+%\label{fig:class-relations-dm}
+%\end{figure}
+% --> a similar figure is already given in the sections on entity and agent.
 
 \begin{table}[h]
 \small
@@ -192,6 +192,17 @@ ObsDataset.calibLevel       & EntityDescription.level & subclass to EntityDescri
 \end{table}
 
 
+The \class{Agent} class, which is used for defining responsible persons and 
+organizations, is similar to the \class{Party} class in the Dataset Metadata Model and SimDM.
+In SimDM one also encounters a normalization similar to our split-up of descriptions from 
+actual data instances and executions of processes: the SimDM class ``experiment'' 
+is a type of \class{Activity} and its general, reusable description is called a ``protocol'',
+which can be considered as a type of this model's \class{ActivityDescription}.
+
+More similarities and links to other data models will be detailed in future 
+versions of this working draft.
+
+
 \section{Accessing provenance information}
 \input{provaccess}
 
@@ -200,12 +211,21 @@ ObsDataset.calibLevel       & EntityDescription.level & subclass to EntityDescri
 \input{usecases-implementations}
 
 
+\input{discussion}
+
+
 \appendix
 \section{Changes from Previous Versions}
 No official previous versions yet.
 % No previous versions yet.
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
+
+\section{Implementation details}\label{sec:implementation-details}
+In this section we will give more details on the classes and attributes which were used 
+in implementations for each use case.
+
+TBD.
 
 
 \bibliography{ivoatex/ivoabib,prov-refs}

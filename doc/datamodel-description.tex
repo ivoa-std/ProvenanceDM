@@ -1,11 +1,10 @@
 In this section, we describe the currently discussed provenance data model. We 
-start with a UML class diagram that contains the main important classes 
-and then give in the following sections more details for each class and relation.
+start with an UML class diagram and explainng the core elements and then give 
+in the following sections more details for each class and relation.
 
 \subsection{Overview: UML class diagram and introduction to core classes}
-Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
-Model. We give in this section an overview on the main classes. More details about 
-each class and their relations will be explained in the following sections.
+ %We give in this section an overview on the main classes. More details about 
+%each class and their relations will be explained in the following sections.
 %Its core elements are colored in blue. These core elements can also be found in the W3C Provenance Data
 %Model. The pattern defined by these classes is very general and can be reused everywhere where provenance is needed. 
 
@@ -19,17 +18,12 @@ Green classes are links to the IVOA Dataset Metadata Model.}
 \end{figure}
 
 
-\label{sec:core}
+%\label{sec:core}
 % Some examples for different use cases are given in Section \ref{sec:usecases-implementations}.
 % The elements of a provenance model can be expressed as a directed graph to capture the causal dependencies. 
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.8]{../datamodel-diagrams/classes-core-w3c}
-\caption{The main core classes and relations of the Provenance Data Model, which also occur in the W3C model.}
-\label{fig:coreclasses}
-\end{figure}
-
+Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
+Model.
 The core elements of the provenance data model are \class{Entity}, \class{Activity} and \class{Agent}. 
 We chose for these elements the same names as were used in the Provenance Data 
 Model of the World Wide Web Consortium (W3C, \cite{std:W3CProvDM}), which defines 
@@ -50,6 +44,16 @@ a short description and some examples:
 
 \noindent
 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{../datamodel-diagrams/classes-core-w3c}
+\caption{The main core classes and relations of the Provenance Data Model, which also occur in the W3C model.}
+\label{fig:coreclasses}
+\end{figure}
+
+These core classes along with their relations to each other are provided in Figure~\ref{fig:coreclasses}.
 We use the following relation classes to specify the mapping between the three core 
 classes. The names were again chosen to match the W3C model names:
 \begin{itemize}
@@ -87,7 +91,10 @@ correspond to the Provenance terms \class{Activity} and \class{ActivityDescripti
 This separation into two classes may not be needed for each and every project,
 and everyone is free to choose which classes make sense for his/her use case.
 When serializing provenance, one could integrate the description side into the 
-other classes, thus producing a W3C compliant provenance description.
+other classes, thus producing a W3C compliant provenance description. More details about 
+all these classes and relations are given in the following section.
+
+
 %It still remains to be seen if this separation into two classes is necessary, 
 %useful or just nice to have. Currently, we include the descriptions in our model, 
 %for normalization purposes. 
@@ -98,7 +105,7 @@ other classes, thus producing a W3C compliant provenance description.
 
 
 \subsection{Model description}
-\subsubsection{Entity}
+\subsubsection{Entity and EntityDescription}
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
 form of images, tables, numbers, etc. But they can also be observation or 
 simulation log files or, in a wider sense, also observation proposals, scientific 
@@ -120,16 +127,15 @@ see Section~\ref{sec:dmlinks} for more details.}
 Entities in the VO are often called ``dataset'', which could mean a single 
 table, an image or a collection of them. The Dataset Metadata Model 
 \citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
-are considered to be a single deliverable''. If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
+are considered to be a single deliverable''. 
+Most parts of the \class{Dataset} class can be mapped
 directly to the \class{Entity} class, as indicated in Figure \ref{fig:entity-details}.
+If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
+directly to the \class{Entity} class or its description class \class{EntityDescription},
+as indicated in Figure \ref{fig:entity-details}.
 The detailed mapping of classes and attributes from the Dataset Metadata Model 
-to \class{Entity} and \class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
+to \class{Entity}/\class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
 
-For entities, we suggest the attributes given in Table 
-\ref{tab:entity-attributes}. If the attribute also exists in the W3C 
-Provenance Data Model, we also list its name in the second column.
-%We use the namespace ``prov'', if the attribute also appears in the W3C 
-%Provenance Data Model.
 
 \begin{table}[h]
 
@@ -152,6 +158,11 @@ access            & -- & string & access rights for the data, values: public, re
 }\label{tab:entity-attributes}
 \end{table}
 
+For entities, we suggest the attributes given in Table 
+\ref{tab:entity-attributes}. If the attribute also exists in the W3C 
+Provenance Data Model, we also list its name in the second column.
+%We use the namespace ``prov'', if the attribute also appears in the W3C 
+%Provenance Data Model.
 We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
 entity of the same content but different format (and thus size) as the same entity,
 unless they do not have the same provenance (e.g. when the ``transformation'' activity
@@ -163,11 +174,13 @@ The difference between entities that are used as input data or output data
 becomes clear by specifying the relations between the data and activities producing or using these data.
 More details on this will follow in Section \ref{sec:entity-activity-relations}.
 
-The types of entities or datasets in astronomy can be predefined using a description
+\paragraph{EntityDescription.}
+As already mentioned before, the types of entities or datasets in astronomy 
+can be predefined using a description
 class \class{EntityDescription}.
 This class stores entity-related 
 attributes, describing the content of the data, which can mainly be derived from 
-Dataset Metadata Model, the general model for observational data.
+the Dataset Metadata Model, the general model for observational data.
 The description attributes are summarized in Table 
 \ref{tab:entitydescription-attributes}.
 
@@ -202,7 +215,7 @@ the description classes may be ignored and its attributes may be used for
 }\label{tab:entitydescription-attributes}
 \end{table}
 
-
+\paragraph{WasDerivedFrom.}
 In Figure~\ref{fig:entity-details} there is one more relation that we have not mentioned yet: 
 the \class{WasDerivedFrom}-relation which links two entities together, borrowed from the W3C model. 
 Is is used to express that 
@@ -242,62 +255,31 @@ An additional class \class{CollectionDescription} is only
 needed if it has different attributes than 
 the \class{EntityDescription}. This should therefore only be introduced if a use case requires it.
 
-\paragraph{Advantages of collections:}
-\begin{itemize}
-\item Collections can be used to collect entities with the same provenance together, 
+\paragraph{Advantages of collections:} Collections can be used to collect entities with the same provenance together, 
     in order to hide complexity where necessary. They can be used for defining 
     different levels of detail (granularity).
-\item \TODO{Anything else?}
-\end{itemize}
 
 
-\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
+%\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
 
 
 
-\subsubsection{Activity}
+\subsubsection{Activity and ActivityDescription}
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{../datamodel-diagrams/activity-details}
-\caption{Details for Activity, ActivityDescription and ActivityFlow (see Section~\ref{sec:activity-collection}). 
+\caption{Details for Activity, ActivityDescription and ActivityFlow (see Section~\ref{sec:activityflow}). 
 }
 \label{fig:activity-details}
 \end{figure}
 
 
-Activities in astronomy include all steps from obtaining data to the reduction of 
-images and production of new datasets, like image calibration, bias subtraction, image stacking; 
-light curve generation from a number of observations, radial velocity 
-determination from spectra, post-processing steps of simulations etc.
-
-The method underlying an activity can be specified by a corresponding 
-\class{ActivityDescription} class (previously named \class{Method}, corresponds 
-to the \class{Protocol} class in SimDM). This could be, 
-for instance, the name of the code used to perform an activity or a more general 
-description of the underlying algorithm or process. An activity is then a 
-concrete case (instance) of using such a method, with a startTime and endTime, 
-and it refers to a corresponding description for further information.
-
-There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a 
-pipeline shall be grouped together, one needs to create a proper 
-\class{ActivityDescription} for describing all the steps at once. This method can then 
-be refered to by the pipeline-activity. 
-The individual steps of a pipeline can be chained
-together directly, without mentioning the intermediate datasets, using the \class{WasInformedBy}-relation.
-This relation can be used as a short-cut, if the exchanged datasets are deemed to be not important
-enough to be recorded.
-For grouping activities, also see the 
-next section \ref{sec:activity-collection}.
-
-When serializing the data model, the attributes
-of the description class may be assigned to the activity in order to produce 
-a W3C compliant serialization (same as with Entity/EntityDescription).
 
 \begin{table}[h]
 
 \small
-\tymax	0.5\textwidth
+\tymax  0.5\textwidth
 
 \textbf{\normalsize Activity}\vspace{0.25em}\\
 \begin{tabulary}{1.0\textwidth}{@{}lp{2.5cm}p{2cm}L@{}}
@@ -310,7 +292,7 @@ label        & prov:label  & string & a label (to be displayed by clients)\\
 \textbf{endTime} & prov:endTime  & datetime & end of an activity\\
 annotation        & --  & string & additional explanations for the specific activity instance\\
 {[description]}  & [prov:description] & string/url/ foreign key & a description for the activity, 
-				link to documentation or link to \class{ActivityDescription}\\
+                link to documentation or link to \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
@@ -320,7 +302,7 @@ Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
 
 \begin{table}[ht]
 \small
-\tymax	0.5\textwidth
+\tymax  0.5\textwidth
 \textbf{\normalsize ActivityDescription}\vspace{0.25em}\\
 \begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
 \toprule
@@ -341,6 +323,79 @@ paper, the source code in a version control system etc.\\
 \end{table}
 
 
+Activities in astronomy include all steps from obtaining data to the reduction of 
+images and production of new datasets, like image calibration, bias subtraction, image stacking; 
+light curve generation from a number of observations, radial velocity 
+determination from spectra, post-processing steps of simulations etc.
+
+\paragraph{ActivityDescription.}
+The method underlying an activity can be specified by a corresponding 
+\class{ActivityDescription} class (previously named \class{Method}, corresponds 
+to the \class{Protocol} class in SimDM). This could be, 
+for instance, the name of the code used to perform an activity or a more general 
+description of the underlying algorithm or process. An activity is then a 
+concrete case (instance) of using such a method, with a startTime and endTime, 
+and it refers to a corresponding description for further information.
+
+There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a 
+pipeline shall be grouped together, one needs to create a proper 
+\class{ActivityDescription} for describing all the steps at once. This method can then 
+be refered to by the pipeline-activity. 
+
+When serializing the data model, the attributes
+of the description class may be assigned to the activity in order to produce 
+a W3C compliant serialization (same as with Entity/EntityDescription).
+
+
+\paragraph{WasInformedBy.}
+The individual steps of a pipeline can be chained
+together directly, without mentioning the intermediate datasets, using the \class{WasInformedBy}-relation.
+This relation can be used as a short-cut, if the exchanged datasets are deemed to be not important
+enough to be recorded. For grouping activities, also see the 
+next section \ref{sec:activityflow}.
+
+
+\subsubsection{ActivityFlow}\label{sec:activityflow}
+For facilitating grouping of activities (and their related entities etc.)
+we introduce the class \class{ActivityFlow}.
+It can be used for hiding a part of the workflow or provenance 
+description, if different levels of granularity are needed. Figure \ref{fig:provgraph-activityflow}
+illustrates an example provenance graph in a detailed level (left side) 
+and using the ActivityFlow (right side).
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{../datamodel-diagrams/provgraph-activityflow}
+\caption{An example provenance graph. The detailed version is shown on the left side. It also shows
+the shortcut \class{WasInformedBy} to connect two activities, which could be used if the entity e2 
+would not be needed anywhere else. 
+An ActivityFlow can be used to ``hide'' a part of the provenance graph as is shown on the right side.
+Activities are marked by blue rectangles, entities by yellow ellipses.}
+\label{fig:provgraph-activityflow}
+\end{figure}
+
+%\TODO{BEWARE: Allowing this means that there can be 2 or more wasGeneratedBy-relations
+%per entity!! This is currently NOT allowed in our model (multiplicity 0..1)! Or shall we 
+%allow the encapsulating parts of a provenance graph 
+%only in the view, i.e. on the implementation side?}
+
+
+In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
+provenance descriptions are called \class{Bundle}. However, we do not reuse these 
+terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
+with all the relations and properties that an \class{Activity} also has. 
+
+
+
+%while still making it obvious that this 
+%group contains activities, we introduce the class \class{ActivityFlow}.
+%This can be used for describing workflows or pipelines, or for 
+%
+%We also allow ActivityCollections to consist of a whole provenance graph of 
+%activities and entities being linked together.
+
+
 
 \subsubsection{Entity-Activity relations}\label{sec:entity-activity-relations}
 
@@ -349,7 +404,7 @@ activities.
 %If the activities shall not be recorded explicitely, one could also 
 %use the \emph{Derivation}-relation as suggested in the W3C Provenance Data Model
 %to link derived entities to their originals.
-Entities are usually results from activities, expressed by a link from 
+Each entity is usually a result from an activity, expressed by a link from 
 the entity to its generation activity using the \class{WasGeneratedBy} relation,
 and can be used as input for (many) other activities, expressed by the \class{Used} relation.
 Thus the information on whether data is used as input or was produced as output of 
@@ -359,21 +414,39 @@ some activity is given by the \emph{relation-types} between activities and entit
 % -- Is this true?
 
 We use two relations, \class{Used} and \class{WasGeneratedBy}, instead of just one
-mapping class with a flag for input/output, in order to model the different 
-multiplicities explicitely: an entity always has only one (or none) 
-\class{WasGeneratedBy} relation, but may be \class{Used} many times as input for 
-different activities.
+mapping class with a flag for input/output, because their descriptions and role-attributes
+can be different. 
+%in order to model the different 
+%multiplicities explicitely: an entity always has only one (or none) 
+%\class{WasGeneratedBy} relation, but may be \class{Used} many times as input for 
+%different activities.
+In previous versions of this model we only allowed one wasGeneratedBy-activity per 
+entity. However, we introduced in Section~\ref{sec:activityflow} the additional \class{ActivityFlow} as 
+a subclass to \class{Activity} for grouping activities together. Thus we need to 
+weaken the constraint and allow more than one wasGeneratedBy-activity per entity. 
 
-
-Additionally, input (and also output) data can take different roles in an 
-activity. For example, one file could
-be a parameter file, another one is the raw image, and the third one is the 
-dark field that should be subtracted. Since these roles are very important, 
-it must be made explicit which data component needs to fulfill which role as 
-input in or output from an activity.
 Each activity requires specific roles for each input or output entity, thus 
 we store this information on the description side, in the role-attributes for 
 the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
+For example, an activity for darkframe-subtraction requires two input images. But it is 
+very important to know which of the images is the raw image and 
+which one fulfills the role of dark frame.
+
+The role is in general NOT an attribute for \class{EntityDescription} or \class{Entity}, 
+since the same entity (e.g. a specific fits file containing an image) may play 
+different roles with different activities. Only if this is not the case, if the 
+image can only play the same role everywhere, only then it is an intrinsic 
+property of the entity and should be stored in the \class{EntityDescription}.
+
+%Additionally, input (and also output) data can take different roles in an 
+%activity. For example, one file could
+%be a parameter file, another one is the raw image, and the third one is the 
+%dark field that should be subtracted. Since these roles are very important, 
+%it must be made explicit which data component needs to fulfill which role as 
+%input in or output from an activity.
+%Each activity requires specific roles for each input or output entity, thus 
+%we store this information on the description side, in the role-attributes for 
+%the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
 
 %In W3C, this is partially solved by adding a derivation relation between the Entities (data). Here, we have a mapping-class between Activity and DataEntities as well as between ActivityDescription and DataDescription. The mapping-class at the description side, i.e. between the ActivityDescription and its DataEntityDescriptions, contains additionally a role for each relation, e.g. parameter, dark frame, raw image, etc.  If a dataset is used as input to an activity or if it results from it, will become clear with these roles.
 
@@ -385,15 +458,15 @@ image stacking process.
 
 \begin{table}[h]
 \small
-\begin{tabulary}{1.0\textwidth}{@{}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}L@{}}
 \toprule
-\head{Name} & \head{Description}\\
+\head{Name} \\%& \head{Description}\\
 \midrule
-parameter & \\
-dark frame & \\
-calibration image & \\
-raw image & \\
-science-ready image & \\
+parameter \\%& \\
+dark frame \\%& \\
+calibration image \\%& \\
+raw image \\%& \\
+science-ready image \\%& \\
 \bottomrule
 \end{tabulary}
 \caption{Example values for the entity roles as attributes in the 
@@ -401,18 +474,15 @@ science-ready image & \\
 \label{tab:entity-roles}
 \end{table}
 
-The role is in general NOT an attribute for \class{EntityDescription} or \class{Entity}, 
-since the same entity (e.g. a specific fits file containing an image) may play 
-different roles with different activities. Only if this is not the case, if the 
-image can only play the same role everywhere, only then it is an intrinsic 
-property of the entity and should be stored in the \class{EntityDescription}.
 
-\TODO{In order to facilitate interoperability, the possible 
+In order to facilitate interoperability, the possible 
 entity-roles could be defined and described for each activity by the IVOA community, in a 
-vocabulary list or thesaurus.}
+vocabulary list or thesaurus.
+% TODO!!
 
-\TODO{Roles can be used for checking (validation) if processes use the correct type of entities, 
-e.g. check if entity-type matches used-role!}
+
+%\TODO{Roles can be used for checking (validation) if processes use the correct type of entities, 
+%e.g. check if entity-type matches used-role!}
 
 %Without the mapping tables, the relation between \class{Activity} 
 %(\class{ActivityDescription}) and \class{Entity} (\class{EntityDescription})
@@ -432,9 +502,37 @@ e.g. check if entity-type matches used-role!}
 % Data flow view, but in astronomy we are probably even more interested in the 
 % Processes (as discussed in our first draft for requirements for provenance).
 
-\TODO{Add an example here! (From discussions in Heidelberg.)}
+%\TODO{Add an example here! (From discussions in Heidelberg.)}
 
 
+
+\subsubsection{Parameters}
+We add a \class{Parameter} class along with a \class{ParameterDescription} 
+for describing additional properties of activities.
+
+For example for observations, the \emph{ambient conditions} as well as 
+\emph{instrument characteristics} need to be stored. But they can both be treated
+as additional entities as well. 
+Our model can then also take into account that a certain observation
+method requires special ambient conditions, already defined via the 
+ActivityDescription (e.g. radio observations rely on different ambient 
+conditions than observations
+of gamma rays), just following our data -- data description scheme.
+Ambient conditions are recorded for a certain time (startTime, endTime) and are
+usually only valid for a certain time interval. This time interval should be recorded
+with a \emph{validity}-attribute for such entities.
+
+In contrast to ambient conditions, instrument characteristics do (usually) not
+change from one observation to the other, so they are static, strictly related to
+the instrument. 
+All the characteristics could be described either as key-value pairs directly with the 
+observation (as attributes) or just as datasets, using the \class{Entity} class. 
+One would then 
+link the instrument characteristics as a type of input (or output?) dataset to a certain 
+observation activity. Thus we don't need a separate Instrument or Device class.
+
+%\note{One should also keep in mind that some instrument related parameters can change within time,
+%e.g. the CCD temperature. The instruments can also change within time because of aging.}
 
 
 \subsubsection{Agent}\label{sec:w3c-agent}
@@ -457,7 +555,7 @@ our use cases.
 \tymax  0.5\textwidth
 \begin{center}
 \begin{tabulary}{1.0\textwidth}{@{}lllL@{}}
-\multicolumn{3}{c}{\textbf{AgentType}}\\
+\multicolumn{4}{c}{\textbf{AgentType}}\\
 \toprule
 \head{Class} & \head{W3C ProvDM} & \head{DatasetDM} &\head{Comment} \\
 \midrule
@@ -498,7 +596,7 @@ people/projects.
 \centering
 \includegraphics[scale=0.7]{../datamodel-diagrams/agent-relations.pdf}
 \caption{The relations between the \class{Agent} class within the Provenance Data Model 
-(grey and yellow classes) and with classes from the Dataset Metadata Model (green).}
+(grey and yellow classes) with classes from the Dataset Metadata Model (green).}
 \label{fig:agent-relations}
 \end{figure}
 
@@ -591,46 +689,6 @@ type & prov:type & string & type of the agent: either Individual (Person) or Org
 \end{table}
 
 
-\subsubsection{ActivityFlow}\label{sec:activity-collection}
-For facilitating grouping of activities (and their related entities etc.)
-we introduce the class \class{ActivityFlow}.
-It can be used for hiding a part of the workflow or provenance 
-description, if different levels of granularity are needed. Figure \ref{fig:provgraph-activityflow}
-illustrates an example provenance graph in a detailed level (left side) 
-and using the ActivityFlow (right side).
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{../datamodel-diagrams/provgraph-activityflow}
-\caption{An example provenance graph. The detailed version is shown on the left side. It also uses 
-the shortcut \class{WasInformedBy} to connect two activities where the intermediate entity is not
-that interesting.
-An ActivityFlow can be used to ``hide'' a part of the provenance graph as is shown on the right side.
-Activities are marked by blue rectangles, Entities by yellow ellipses.}
-\label{fig:provgraph-activityflow}
-\end{figure}
-
-\TODO{BEWARE: Allowing this means that there can be 2 or more wasGeneratedBy-relations
-per entity!! This is currently NOT allowed in our model (multiplicity 0..1)! Or shall we 
-allow the encapsulating parts of a provenance graph 
-only in the view, i.e. on the implementation side?}
-
-
-In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
-provenance descriptions are called \class{Bundle}. However, we do not reuse these 
-terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
-with all the relations and properties that an \class{Activity} also has. 
-
-
-
-%while still making it obvious that this 
-%group contains activities, we introduce the class \class{ActivityFlow}.
-%This can be used for describing workflows or pipelines, or for 
-%
-%We also allow ActivityCollections to consist of a whole provenance graph of 
-%activities and entities being linked together.
-
 %\subsubsection{Shortcuts: WasDerivedFrom and WasInformedBy}\label{sec:shortcuts}
 %The classes \class{WasDerivedFrom} and \class{WasInformedBy} can be used as ``shortcuts'' and 
 %are used in the same way as the corresponding W3C classes.
@@ -649,31 +707,3 @@ with all the relations and properties that an \class{Activity} also has.
 %if the intermediate entities don't play a major role or only exist temporarily, so that
 %their provenance information is not deemed to be important enough to be recorded.
 %``WasInformedBy'' relation (also called ``Communication'' relation, borrowed from W3C's model) 
-
-\subsubsection{Parameters}
-We add a \class{Parameter} class along with a \class{ParameterDescription} 
-for describing additional properties of activities.
-
-For example for observations, the \emph{ambient conditions} as well as 
-\emph{instrument characteristics} need to be stored. But they can both be treated
-as additional entities as well. 
-Our model can then also take into account that a certain observation
-method requires special ambient conditions, already defined via the 
-ActivityDescription (e.g. radio observations rely on different ambient 
-conditions than observations
-of gamma rays), just following our data -- data description scheme.
-Ambient conditions are recorded for a certain time (startTime, endTime) and are
-usually only valid for a certain time interval. This time interval should be recorded
-with a \emph{validity}-attribute for such entities.
-
-In contrast to ambient conditions, instrument characteristics do (usually) not
-change from one observation to the other, so they are static, strictly related to
-the instrument. 
-All the characteristics could be described either as key-value pairs directly with the 
-observation (as attributes) or just as datasets, using the \class{Entity} class. 
-One would then 
-link the instrument characteristics as a type of input (or output?) dataset to a certain 
-observation activity. Thus we don't need a separate Instrument or Device class.
-
-\note{One should also keep in mind that some instrument related parameters can change within time,
-e.g. the CCD temperature. The instruments can also change within time because of aging.}

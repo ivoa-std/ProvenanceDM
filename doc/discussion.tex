@@ -1,7 +1,6 @@
-\subsection{Discussion}
+\section{Discussion}
 
-
-\subsubsection{Links, ids}\label{sec:links_between_data}
+\subsection{Links, ids}\label{sec:links_between_data}
 It would be convenient, if each data object or even each file 
 gets a unique id that can be referenced. The W3C provenance model requires ids
 for entities, activities and agents, and they have to be qualified strings, 
@@ -17,34 +16,32 @@ would actually need this level of detail.
 IVOIDs and DOI's are potentially good candidates for unique identifiers.
 
 
-\subsubsection{Calibration data}
-The calibration dataset consists of images that can be used to calibrate the
-raw data. It is not necessary to mention them explicitly in the model, 
-they are just another dataset that is used by activities with a 
-calibration-method.
+%\subsubsection{Calibration data}
+%The calibration dataset consists of images that can be used to calibrate the
+%raw data. It is not necessary to mention them explicitly in the model, 
+%they are just another dataset that is used by activities with a 
+%calibration-method.
+
+%\subsubsection{Quality}
+%For expressing the quality of data, we could simply define additional 
+%attributes for each \class{Activity}
+%or \class{Entity} object, i.e. zero, one, or more properties in the form of
+%key-value pairs. We could use a \class{Quality} namespace to mark a keyword
+%as quality-related:
+%\begin{itemize}
+%    \item quality:comment: [some text]
+%    \item quality:seeing: [some value]
+%\end{itemize}
+%The values could range from a float number to free text.
 
 
+%\subsubsection{Provenance of provenance}
+%``Bundles'' are used to name a set of provenance descriptions. It is a type for 
+%an entity, and allows to express provenance of provenance. This is probably  
+%very interesting for workflow systems.
+% -- partially covered already with ActivityFlow
 
-
-\subsubsection{Quality}
-For expressing the quality of data, we could simply define additional 
-attributes for each \class{Activity}
-or \class{Entity} object, i.e. zero, one, or more properties in the form of
-key-value pairs. We could use a \class{Quality} namespace to mark a keyword
-as quality-related:
-\begin{itemize}
-    \item quality:comment: [some text]
-    \item quality:seeing: [some value]
-\end{itemize}
-The values could range from a float number to free text.
-
-
-\subsubsection{Provenance of provenance}
-``Bundles'' are used to name a set of provenance descriptions. It is a type for 
-an entity, and allows to express provenance of provenance. This is probably  
-very interesting for workflow systems.
-
-\subsubsection{Discussion of description side}
+\subsection{Discussion of description side}
 This model was established with mainly having a database implementation in mind. 
 However, it may be better in the long run to store provenance with 
 the entities themselves, e.g. as an additional extension in fits-headers.
@@ -85,3 +82,26 @@ many links between different items.
 %\TODO{Check, if PROV-Templates from the W3C (inofficial note) could be used 
 %for ActivityDescriptions.}
 
+\subsection{Discussion of ActivityFlow}
+By introducing the \class{ActivityFlow} class, one entity can now have many 
+wasGeneratedBy-links to activities. One of them would be the actual generation-activity, 
+the other activities can only be activityflows containing this generation-activity.
+This is not expressed explicitely in the current model. 
+
+We could introduce an additional abstract class, e.g. \class{AbstractActivity}, with \class{Activity} and 
+\class{ActivityFlow} being subclasses to this one. But this adds another layer of complexity 
+that we may not want in this data model.
+
+Since we introduced \class{ActivityFlow} mainly for having different view levels, 
+we may want to add an attribute \emph{viewLevel} to descriptions of activityflows.
+
+We are planning to test how it all works in implementations and will then adjust the model 
+accordingly.
+
+\subsection{VO-DML representation}
+We do not yet have a VO-DML compliant representation of the model. This is one 
+of the issues to be discussed for the next version of this model.
+
+\subsection{Links to other data models}
+Section~\ref{sec:dmlinks} still needs to be expanded further, especially making detailed links with the 
+Simulation Data Model will be very useful.

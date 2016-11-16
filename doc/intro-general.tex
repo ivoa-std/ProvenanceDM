@@ -1,13 +1,15 @@
 
 In this document, we discuss a draft for an IVOA standard data model for
 describing the provenance of astronomical data. 
-We follow the definition of provenance as proposed by the W3C (see \url{https://www.w3.org/TR/prov-overview/}), i.e. that provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.
+We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
-In astronomy, entities are generally datasets composed of VOTables, FITS files or database tables, or files containing logs, values (spectra, lightcurves), parameters... The activities correspond to an observation, a simulation, or processing steps (image stacking, object extraction, ...). The people involved can be individual persons (observer, publisher...) or organisations.
+In astronomy, entities are generally datasets composed of VOTables, FITS files or database tables, or files containing logs, values (spectra, lightcurves), parameters... The activities correspond to an observation, a simulation, or processing steps (image stacking, object extraction, etc.). The people involved can be individual persons (observer, publisher...) or organisations.
 
 We note that the provenance of simulated data is already described inside the Simulation Data Model
 \citep[SimDM,][]{std:SimDM}. However, the Provenance Data Model currently discussed is
-sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data. It could also be used to describe the flow of scientific proposals from application to acceptance or the publication of scientific articles based on astronomical data.
+sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data. It could also be used to describe the flow of scientific proposals from application to acceptance or the publication of scientific articles based on astronomical data. 
+The links between the Provenance Data Model and other IVOA data models 
+will be discussed in Section~\ref{sec:dmlinks}.
 
 %including extraction of data from 
 %databases or even the flow of scientific proposals from application to 
@@ -39,7 +41,7 @@ elements, depending on the intended usage and the desired level of detail
 for a specific project that records provenance. 
 This granularity depends on the needs of the project when implementing a system to track provenance information.
 
-The following list is a collection of tasks which the Provenance Data Model should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets and with [P] for tasks that are probably more important for data producers and publishers.
+The following list is a collection of tasks which the Provenance Data Model should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets (usually a scientist) and with [P] for tasks that are probably more important for data producers and publishers.
 More specific use cases in the astronomy domain for different types of datasets and workflows along with example implementations are given in Section \ref{sec:usecases-implementations}.
 
 
