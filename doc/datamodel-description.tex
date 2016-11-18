@@ -520,33 +520,81 @@ vocabulary list or thesaurus.
 
 
 \subsubsection{Parameters}
-We add a \class{Parameter} class along with a \class{ParameterDescription} 
-for describing additional properties of activities.
 
-For example for observations, the \emph{ambient conditions} as well as 
-\emph{instrument characteristics} need to be stored. But they can both be treated
-as additional entities as well. 
-Our model can then also take into account that a certain observation
-method requires special ambient conditions, already defined via the 
-ActivityDescription (e.g. radio observations rely on different ambient 
-conditions than observations
-of gamma rays), just following our data -- data description scheme.
-Ambient conditions are recorded for a certain time (startTime, endTime) and are
-usually only valid for a certain time interval. This time interval should be recorded
-with a \emph{validity}-attribute for such entities.
+The concept of activity configuration, generally a set of parameters that can be configured, is different to the concept of provenance information. However, it is tightly connected. We identify three different ways to link configuration information to an activity:
+\begin{itemize}
+\item Declare a parameter set (or each parameter) as an input entity that is used by the activity,
+\item Define families of activities, each one with fixed parameters,
+\item Add activity attributes in the form of key-value parameters.
+\end{itemize}
 
-In contrast to ambient conditions, instrument characteristics do (usually) not
-change from one observation to the other, so they are static, strictly related to
-the instrument. 
-% at least the instrument characteristics change on a longer time scale
-All the characteristics could be described either as key-value pairs directly with the 
-observation (as attributes) or just as datasets, using the \class{Entity} class. 
-One would then 
-link the instrument characteristics as a type of input (or output?) dataset to a certain 
-observation activity. Thus we don't need a separate Instrument or Device class.
+To enable the later solution, we add a \class{Parameter} class along with a \class{ParameterDescription} for describing additional properties of activities. In this solution, Parameters are directly connected to an Activity without complex Entity-Activity relations. Moreover, we can then describe each parameter in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTable}.
+
+
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize Parameter}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
+\toprule
+\head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
+\midrule
+\textbf{id}      & & string & parameter unique identifier\\
+{[label]}         & & string & parameter name or link to \emph{ParameterDescription}\\
+\textbf{value}   & & (value dependent) & the value of the parameter\\
+\bottomrule
+\end{tabulary}
+\caption{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}.}
+\end{table}
+
+\begin{table}[ht]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize ParameterDescription}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
+\toprule
+\head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
+\midrule
+\textbf{id}  & & string & parameter unique identifier\\
+label         & & string & parameter name\\
+description & & string & additional free text description for the parameter\\
+datatype    & & string & datatype of the parameter \\
+unit           & & string & physical unit of the parameter\\
+ucd           & & string  & Unified Content Descriptor for the parameter, supplying a standardized classification of the physical quantity\\
+utype        & & string  & UType of the parameter, meant to express the role of the parameter in the context of an external data model \\
+\bottomrule
+\end{tabulary}
+\caption{Attributes of \class{ParameterDescription}.}
+\end{table}
+
+For example, observations generally require information on \emph{ambient conditions} as well as 
+\emph{instrument characteristics}. This information could be stored as different entities, but one could also list the instrument characteristics has a set of key-value parameters. In the case of a processing activity to clean an image with a sigma-clipping method, the input image would be an entity and the value of the number of sigma for sigma clipping could be a parameter instead of an entity. We may also want to define a 3-sigma clipping activity where this parameter is fixed to 3.
+
+
+%For example for observations, the \emph{ambient conditions} as well as 
+%\emph{instrument characteristics} need to be stored. But they can both be treated
+%as additional entities as well. 
+%Our model can then also take into account that a certain observation
+%method requires special ambient conditions, already defined via the 
+%ActivityDescription (e.g. radio observations rely on different ambient 
+%conditions than observations
+%of gamma rays), just following our data -- data description scheme.
+%Ambient conditions are recorded for a certain time (startTime, endTime) and are
+%usually only valid for a certain time interval. This time interval should be recorded
+%with a \emph{validity}-attribute for such entities.
+%
+%In contrast to ambient conditions, instrument characteristics do (usually) not
+%change from one observation to the other, so they are static, strictly related to
+%the instrument. 
+%All the characteristics could be described either as key-value pairs directly with the 
+%observation (as attributes) or just as datasets, using the \class{Entity} class. 
+%One would then 
+%link the instrument characteristics as a type of input (or output?) dataset to a certain 
+%observation activity. Thus we don't need a separate Instrument or Device class.
 
 %\note{One should also keep in mind that some instrument related parameters can change within time,
 %e.g. the CCD temperature. The instruments can also change within time because of aging.}
+
 
 
 \subsubsection{Agent}\label{sec:w3c-agent}
