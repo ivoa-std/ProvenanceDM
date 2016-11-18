@@ -381,12 +381,25 @@ Activities are marked by blue rectangles, entities by yellow ellipses.}
 %only in the view, i.e. on the implementation side?}
 
 
-In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
-provenance descriptions are called \class{Bundle}. However, we do not reuse these 
-terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
-with all the relations and properties that an \class{Activity} also has. 
+%In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
+%provenance descriptions are called \class{Bundle}. However, we do not reuse these 
+%terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
+%with all the relations and properties that an \class{Activity} also has. 
 
 
+We explored the different ways to describe a set of activities in the W3C 
+provenance model. This model uses \class{Bundle}, i.e. an entity with type ``Bundle'', 
+for wrapping a provenance description. Each part of a provenance description can be 
+put into a bundle, and the bundle can then be reused in other provenance descriptions. 
+W3C's \class{Plan} is an entity with type ``Plan'' and is used for describing a 
+set of actions or steps. Both, \class{Bundle} and \class{Plan}, are entities and 
+have the attributes and relations of this class (and thus one can define provenance of bundles and plans as well).
+
+But we would like to consider a set of activities as being an \class{Activity} itself, 
+with all the relations and properties that an activity also has. Therefore we do not reuse
+W3C's elements for describing workflows and plans, but added 
+the class \class{ActivityFlow} as an composed of activities. The composition is represented by 
+the ``hadStep'' relation, as is shown in Figure~\ref{fig:activity-details}.
 
 %while still making it obvious that this 
 %group contains activities, we introduce the class \class{ActivityFlow}.
