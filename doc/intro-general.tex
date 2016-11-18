@@ -1,13 +1,13 @@
 
-In this document, we discuss a draft for an IVOA standard data model for
+In this document, we discuss a draft of an IVOA standard data model for
 describing the provenance of astronomical data. 
 We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
-In astronomy, entities are generally datasets composed of VOTables, FITS files or database tables, or files containing logs, values (spectra, lightcurves), parameters... The activities correspond to an observation, a simulation, or processing steps (image stacking, object extraction, etc.). The people involved can be individual persons (observer, publisher...) or organisations.
+In astronomy, entities are generally datasets composed of VOTables, FITS files or database tables, or files containing logs, values (spectra, lightcurves), parameters, etc. The activities correspond to an observation, a simulation, or processing steps (image stacking, object extraction, etc.). The people involved can be individual persons (observer, publisher...), groups or organisations.
 
 We note that the provenance of simulated data is already described inside the Simulation Data Model
 \citep[SimDM,][]{std:SimDM}. However, the Provenance Data Model currently discussed is
-sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data. It could also be used to describe the flow of scientific proposals from application to acceptance or the publication of scientific articles based on astronomical data. 
+sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data. It could also be used to describe the workflow for observaton proposals or the publication of scientific articles based on (astronomical) data. 
 The links between the Provenance Data Model and other IVOA data models 
 will be discussed in Section~\ref{sec:dmlinks}.
 
@@ -23,23 +23,24 @@ will be discussed in Section~\ref{sec:dmlinks}.
 \subsection{Goal of the provenance model}\label{sec:goals}
 
 The goal of the provenance data model is to describe how provenance information
-can be modeled, stored and exchanged within the Virtual Observatory. Its scope
+can be modeled, stored and exchanged. Its scope
 is mainly modeling of the flow of data, of the relations between data,
 and of processing steps. 
 
 Characteristics of observations such as ambient conditions and instrument characteristics can be associated to provenance information.
 However, they will not be modeled here explicitly. 
-They can be included in form of additional data linked to observations, or as attributes of observation processes.
+They can be included in the form of additional data linked to observations, or as attributes of observation processes.
 
-In general, the model shall capture information that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
+In general, the model shall capture information in a machine-readable way that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
 This will help the scientist to decide if the dataset 
-is adequate for his research goal, judge its quality and get enough information
+is adequate for his/her research goal, assess its quality and get enough information
 to be able to trace back its history as far as possible. 
 
 Provenance information may be recorded in minute detail or by using coarser
 elements, depending on the intended usage and the desired level of detail
 for a specific project that records provenance. 
-This granularity depends on the needs of the project when implementing a system to track provenance information.
+This granularity depends on the needs of the project and the intended usage when implementing a system to track provenance information.
+% NOTE: maybe we need to define minimal requirements of what needs to be included as provenance information?
 
 The following list is a collection of tasks which the Provenance Data Model should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets (usually a scientist) and with [P] for tasks that are probably more important for data producers and publishers.
 More specific use cases in the astronomy domain for different types of datasets and workflows along with example implementations are given in Section \ref{sec:usecases-implementations}.
@@ -57,7 +58,7 @@ was used?
             \item Is the background noise of atmospheric muons still present in my neutrino data sample?  
         \end{itemize}
 
-        We do not go so far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
+        We do not go as far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
         major steps undertaken to create a piece of data should be recoverable.
 
 
@@ -68,7 +69,7 @@ was used?
         \noindent Examples: 
         \begin{itemize}
             \item I want to use an image for my own work -- who was involved in
-creating it? Who do I need to cite or who can I contact to get this information?  
+creating it? Who do I need to cite or who can I contact to get this information? Is a license attached to the data? 
             \item I have a question about column xxx in a data
 table. Who can I ask about that?  
             \item Who should be cited or acknowledged if I use this data in my work?
@@ -110,7 +111,7 @@ image.
             \item Give me more images that were produced using the same pipeline.  
             \item Give me an overview on all images reduced with the same calibration dataset.  
             \item Are there any more images attributed to this observer?  
-            \item Which images of the crab nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?
+            \item Which images of the Crab Nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?
             \item Find all datasets generated using this given algorithm for this given step of the data processing
           % add another specific use case for tracking scientific productivity?
         \end{itemize}

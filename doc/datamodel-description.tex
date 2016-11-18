@@ -24,7 +24,7 @@ Green classes are links to the IVOA Dataset Metadata Model.}
 
 Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
 Model.
-The core elements of the provenance data model are \class{Entity}, \class{Activity} and \class{Agent}. 
+The core elements of the Provenance Data Model are \class{Entity}, \class{Activity} and \class{Agent}. 
 We chose for these elements the same names as were used in the Provenance Data 
 Model of the World Wide Web Consortium (W3C, \citealt{std:W3CProvDM}), which defines 
 a very abstract pattern that can be reused here. Here are the core classes with 
@@ -77,8 +77,8 @@ Defining such descriptions allows them to be reused, which is very useful
 when performing a series of tasks of the same type, as is typically done in 
 astronomy. 
 
-A similar normalization of descriptions from the actual processes and datasets 
-can also be found in the IVOA Simulation Data Model SimDM \citep{std:SimDM}, 
+A similar normalization of descriptions of the actual processes and datasets 
+can also be found in the IVOA Simulation Data Model \citep[SimDM, ][]{std:SimDM}), 
 which describes simulation metadata. The SimDM classes \class{Experiment} and \class{Protocol} 
 correspond to the Provenance terms \class{Activity} and \class{ActivityDescription}.
 
@@ -166,7 +166,7 @@ Provenance Data Model, we also list its name in the second column.
 We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
 entity of the same content but different format (and thus size) as the same entity,
 unless they do not have the same provenance (e.g. when the ``transformation'' activity
-for converting one format into another shall be included in the provenance description).
+for converting one format into another is included in the provenance description).
 
 %\TODO{format and size may not be needed, if entities with the same content but different format and size are considered as the same entity.}
 
@@ -223,7 +223,7 @@ one entity was derived from another, i.e. it can be used to find one (or more) p
 of a dataset, without having to mention the activities in between. It can therefore serve as 
 a shortcut. The information this link provides is somewhat redundant, since progenitors for entities
 can be found through the links to activity and the corresponding descriptions.
-Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicite 
+Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicit 
 link between an entity and its progenitor is useful (e.g. for speeding up searches for 
 progenitors or if the activity in between is not important).
 
@@ -231,7 +231,7 @@ progenitors or if the activity in between is not important).
 
 \subsubsection{Collection}\label{sec:collection}
 Collections are entities that are grouped together and can be treated as one single entity. 
-In the provenance sense, they have to have the \emph{same origin}, i.e., they were 
+From the provenance point of view, they have to have the \emph{same origin}, i.e., they were 
 produced by the same activity (which could also be the activity of collecting
 data for a publication or similar). The term ``collection'' is 
 also used in the Dataset Metadata Model for grouping datasets.
@@ -253,9 +253,9 @@ The relation between entity and collection is also called ``HadMember'' in the W
 
 An additional class \class{CollectionDescription} is only 
 needed if it has different attributes than 
-the \class{EntityDescription}. This should therefore only be introduced if a use case requires it.
+the \class{EntityDescription}. This class should therefore only be introduced if a use case requires it.
 
-\paragraph{Advantages of collections:} Collections can be used to collect entities with the same provenance together, 
+\paragraph{Advantages of collections:} Collections can be used to collect entities with the same provenance information together, 
     in order to hide complexity where necessary. They can be used for defining 
     different levels of detail (granularity).
 
@@ -384,7 +384,7 @@ Activities are marked by blue rectangles, entities by yellow ellipses.}
 %In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
 %provenance descriptions are called \class{Bundle}. However, we do not reuse these 
 %terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
-%with all the relations and properties that an \class{Activity} also has. 
+%with all the relations and properties that belong to an \class{Activity}. 
 
 
 We explored the different ways to describe a set of activities in the W3C 
@@ -418,7 +418,7 @@ activities.
 %use the \emph{Derivation}-relation as suggested in the W3C Provenance Data Model
 %to link derived entities to their originals.
 Each entity is usually a result from an activity, expressed by a link from 
-the entity to its generation activity using the \class{WasGeneratedBy} relation,
+the entity to its generating activity using the \class{WasGeneratedBy} relation,
 and can be used as input for (many) other activities, expressed by the \class{Used} relation.
 Thus the information on whether data is used as input or was produced as output of 
 some activity is given by the \emph{relation-types} between activities and entities.
@@ -447,7 +447,7 @@ which one fulfills the role of dark frame.
 
 The role is in general NOT an attribute for \class{EntityDescription} or \class{Entity}, 
 since the same entity (e.g. a specific fits file containing an image) may play 
-different roles with different activities. Only if this is not the case, if the 
+different roles with different activities. If this is not the case, if the 
 image can only play the same role everywhere, only then it is an intrinsic 
 property of the entity and should be stored in the \class{EntityDescription}.
 
@@ -538,6 +538,7 @@ with a \emph{validity}-attribute for such entities.
 In contrast to ambient conditions, instrument characteristics do (usually) not
 change from one observation to the other, so they are static, strictly related to
 the instrument. 
+% at least the instrument characteristics change on a longer time scale
 All the characteristics could be described either as key-value pairs directly with the 
 observation (as attributes) or just as datasets, using the \class{Entity} class. 
 One would then 
@@ -583,7 +584,7 @@ Organization & Organization & Organization & a publishing house, institute or sc
 \end{center}
 \end{table}
 
-A definition of organisations in the sense of the VO is given in the 
+A definition of organizations is given in the 
 IVOA Recommendation on Resource Metadata \citep{std:ResourceMeta}, hereafter 
 refered to as RM: ``An organisation is [a] specific type of resource that 
 brings people together to pursue participation in VO applications.''
@@ -621,9 +622,9 @@ It is desired to have at least one agent given for each activity (and entity), b
 is not enforced.
 % , hence the multiplicity between \class{Entity}/\class{Activity} and the relations
 %to the \class{Agent} starts with 0.
-There can also be more than one agent for each activity/entity with different \emph{roles} 
+There also can be more than one agent for each activity/entity with different \emph{roles} 
 and one agent can be responsible for more than one activity or entity. This 
-many-to-many relationship is made explicite in our model by adding the two
+many-to-many relationship is made explicit in our model by adding the two
 following relation classes:
 
 \begin{itemize}

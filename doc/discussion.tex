@@ -42,14 +42,14 @@ IVOIDs and DOI's are potentially good candidates for unique identifiers.
 % -- partially covered already with ActivityFlow
 
 \subsection{Discussion of description side}
-This model was established with mainly having a database implementation in mind. 
+This model was established mainly having a database implementation in mind. 
 However, it may be better in the long run to store provenance with 
 the entities themselves, e.g. as an additional extension in fits-headers.
 
 A model using a description side for defining templates for activities and
-entities has the advantage of normalisation: the common processes could be 
-described once and for all at some place and then be reused when describing 
-the actual provenance of certain entities and activities. This \emph{some place} 
+entities has an advantage for normalization: the common processes could be 
+described once and for all at some place and then be reused when recording
+provenance information for certain entities and activities. This \emph{some place} 
 is actually the crucial point here.
 In an ideal world, ``some place'' could collect all the descriptions from all 
 the possible datasets and methods in astronomy, but building such a look-up place 
@@ -62,7 +62,7 @@ is quite the contrary of a closed system and we need to keep an eye on what is
 actually achievable.
 
 When writing down a simple serialisation of e.g. the provenance for a stacked 
-image with the protoype-model, it soon becomes quite cumbersome to define 
+image using the current model including the description classes, it soon becomes quite cumbersome to define 
 everything twice: first the descriptions, then the instances. This basically 
 doubles the number of entries to describe provenance (unless there is already 
 some place with all the descriptions to which we can refer).
@@ -70,12 +70,14 @@ some place with all the descriptions to which we can refer).
 Expressing provenance for a stacked image with this smaller set of classes may 
 be simpler, but on the other hand constructing a database schema becomes much 
 harder. 
-We could leave it to the implementors to choose what is more useful for them, 
-and when extracting provenance, serialising it, then the descriptions are 
-combined with the activity/entity for 
-the serialisation, thus probably producing some repetition, but avoiding too 
-many links between different items.
-
+We could leave it to the implementors to choose what is more useful for them.
+When extracting a serialisation of the provenance information from a provenance 
+service, the attributes of the description classes could be combined with 
+the corresponding activity/entity classes. This will produce some repetition
+(e.g. many entities may have the same descriptive attributes), but 
+avoid having too many classes and links between them.
+% Note: Harry Enke commented that this sentence is not understandable; 
+% we can remove this sentence later on when we have a proper implementation-note section.
 %\Note{Descriptions could be present in W3C-conform serialisations, if we 
 %put them into entities.}
 
@@ -86,7 +88,7 @@ many links between different items.
 By introducing the \class{ActivityFlow} class, one entity can now have many 
 wasGeneratedBy-links to activities. One of them would be the actual generation-activity, 
 the other activities can only be activityflows containing this generation-activity.
-This is not expressed explicitely in the current model. 
+This is not expressed explicitly in the current model. 
 
 We could introduce an additional abstract class, e.g. \class{AbstractActivity}, with \class{Activity} and 
 \class{ActivityFlow} being subclasses to this one. But this adds another layer of complexity 
@@ -95,12 +97,13 @@ that we may not want in this data model.
 Since we introduced \class{ActivityFlow} mainly for having different view levels, 
 we may want to add an attribute \emph{viewLevel} to descriptions of activityflows.
 
-We are planning to test how it all works in implementations and will then adjust the model 
+We are planning to test how it all works in implementations, which classes and attributes are 
+needed or not and will then adjust the model 
 accordingly.
 
 \subsection{VO-DML representation}
 We do not yet have a VO-DML compliant representation of the model. This is one 
-of the issues to be discussed for the next version of this model.
+of the issues to be clarified for the next version.
 
 \subsection{Links to other data models}
 Section~\ref{sec:dmlinks} still needs to be expanded further, especially making detailed links with the 
