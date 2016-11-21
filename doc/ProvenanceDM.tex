@@ -81,22 +81,11 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X} 
 
 \begin{abstract}
-\note{
-  This draft is still an internal working draft, any comments welcome! 
-  The urls above also won't work yet, because this draft is only circulated 
-  via the volute-repository for now.
-}
-
-%\warning{
-%    Everything described here is at a very 
-%    preliminary state and may change at any time!
-%}
-
 This document describes how provenance information for astronomical datasets 
 %(with the focus on observational data) 
 can be modeled, stored and exchanged within 
 the astronomical community in a standardized way.
-We follow the definition of provenance as proposed by the W3C (see \url{https://www.w3.org/TR/prov-overview/}), i.e. that provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.
+We follow the definition of provenance as proposed by the W3C\footnote{\url{https://www.w3.org/TR/prov-overview/}}, i.e. that provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.
 Such provenance information in astronomy is important to enable any scientist to trace back
 the origin of a dataset (e.g. an image, spectrum, catalog or single points in a 
 spectral energy distribution diagram or a light curve), learn about the people and 
@@ -206,12 +195,11 @@ versions of this working draft.
 \section{Accessing provenance information}
 \input{provaccess}
 
+\section{Discussion}
+\input{discussion}
 
 \section{Use cases and implementations}\label{sec:usecases-implementations}
 \input{usecases-implementations}
-
-
-\input{discussion}
 
 
 \appendix

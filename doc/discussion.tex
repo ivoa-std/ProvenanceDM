@@ -1,5 +1,3 @@
-\section{Discussion}
-
 \subsection{Links, ids}\label{sec:links_between_data}
 It would be convenient, if each data object or even each file 
 gets a unique id that can be referenced. The W3C provenance model requires ids
@@ -41,12 +39,12 @@ IVOIDs and DOI's are potentially good candidates for unique identifiers.
 %very interesting for workflow systems.
 % -- partially covered already with ActivityFlow
 
-\subsection{Discussion of description side}
+\subsection{Description classes}
 This model was established mainly having a database implementation in mind. 
 However, it may be better in the long run to store provenance with 
 the entities themselves, e.g. as an additional extension in fits-headers.
 
-A model using a description side for defining templates for activities and
+A model using description classes for defining templates for activities and
 entities has an advantage for normalization: the common processes could be 
 described once and for all at some place and then be reused when recording
 provenance information for certain entities and activities. This \emph{some place} 
@@ -84,7 +82,7 @@ avoid having too many classes and links between them.
 %\TODO{Check, if PROV-Templates from the W3C (inofficial note) could be used 
 %for ActivityDescriptions.}
 
-\subsection{Discussion of ActivityFlow}
+\subsection{ActivityFlow and implications for multiplicities}
 By introducing the \class{ActivityFlow} class, one entity can now have many 
 wasGeneratedBy-links to activities. One of them would be the actual generation-activity, 
 the other activities can only be activityflows containing this generation-activity.

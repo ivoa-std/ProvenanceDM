@@ -1,5 +1,5 @@
-In this section, we describe the currently discussed provenance data model. We 
-start with an UML class diagram and explainng the core elements and then give 
+In this section, we describe the currently discussed Provenance Data Model. We 
+start with an UML class diagram, explain the core elements and then give 
 in the following sections more details for each class and relation.
 
 \subsection{Overview: UML class diagram and introduction to core classes}
@@ -70,7 +70,7 @@ classes. The names were again chosen to match the W3C model names:
 
 In the domain of astronomy, certain processes and steps are repeated again and 
 again with different parameters. We therefore separate the descriptions of activities
-from the actual processes and introduce an additional \class{ActivityDescription} class.
+from the actual processes and introduce an additional \class{ActivityDescription} class (see Figure~\ref{fig:classdiagram}).
 Likewise, we also apply the same pattern for \class{Entity} and add an \class{EntityDescription}
 class.
 Defining such descriptions allows them to be reused, which is very useful 
@@ -160,9 +160,7 @@ access            & -- & string & access rights for the data, values: public, re
 
 For entities, we suggest the attributes given in Table 
 \ref{tab:entity-attributes}. If the attribute also exists in the W3C 
-Provenance Data Model, we also list its name in the second column.
-%We use the namespace ``prov'', if the attribute also appears in the W3C 
-%Provenance Data Model.
+Provenance Data Model, we list its name in the second column.
 We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
 entity of the same content but different format (and thus size) as the same entity,
 unless they do not have the same provenance (e.g. when the ``transformation'' activity
@@ -519,16 +517,18 @@ vocabulary list or thesaurus.
 
 
 
-\subsubsection{Parameters}
+\subsubsection{Parameters}\label{sec:parameters}
 
 The concept of activity configuration, generally a set of parameters that can be configured, is different to the concept of provenance information. However, it is tightly connected. We identify three different ways to link configuration information to an activity:
 \begin{itemize}
-\item Declare a parameter set (or each parameter) as an input entity that is used by the activity,
-\item Define families of activities, each one with fixed parameters,
+\item Declare a parameter set (or each parameter) as an input entity that is used by the activity. \\
+        This also allows tracking the provenance of the parameter further.
+\item Define families of activities, each one with fixed attributes.\\
+        I.e. use different subclasses for activities with different fixed attributes.
 \item Add activity attributes in the form of key-value parameters.
 \end{itemize}
 
-To enable the later solution, we add a \class{Parameter} class along with a \class{ParameterDescription} for describing additional properties of activities. In this solution, Parameters are directly connected to an Activity without complex Entity-Activity relations. Moreover, we can then describe each parameter in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTable}.
+To enable the latter solution, we add a \class{Parameter} class along with a \class{ParameterDescription} for describing additional properties of activities. In this solution, Parameters are directly connected to an Activity without complex Entity-Activity relations. Moreover, we can then describe each parameter in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTable}.
 
 
 \begin{table}[h]
@@ -568,7 +568,7 @@ utype        & & string  & UType of the parameter, meant to express the role of 
 \end{table}
 
 For example, observations generally require information on \emph{ambient conditions} as well as 
-\emph{instrument characteristics}. This information could be stored as different entities, but one could also list the instrument characteristics has a set of key-value parameters. In the case of a processing activity to clean an image with a sigma-clipping method, the input image would be an entity and the value of the number of sigma for sigma clipping could be a parameter instead of an entity. We may also want to define a 3-sigma clipping activity where this parameter is fixed to 3.
+\emph{instrument characteristics}. This information could be stored as different entities, but one could also list the instrument characteristics as a set of key-value parameters. In the case of a processing activity to clean an image with a sigma-clipping method, the input image would be an entity and the value of the number of sigma for sigma clipping could be a parameter instead of an entity. We may also want to define a 3-sigma clipping activity where this parameter is fixed to 3.
 
 
 %For example for observations, the \emph{ambient conditions} as well as 
@@ -698,30 +698,30 @@ owner, creator, publisher and contributor.
 \small
 \tymax	0.5\textwidth
 \begin{center}
-\begin{tabulary}{1.0\textwidth}{@{}llL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lp{3cm}L@{}}
 \multicolumn{3}{c}{\textbf{AgentRoles}}\\
 \toprule
 \head{prov:role} & \head{prov:type} & \head{Comment} \\
 \midrule
 author & prov:person & someone who wrote an article, software, proposal\\
 contributor & prov:person & someone who contributed to something (but not enough to gain authorship)\\
-curator & prov:person & someone who checked and corrected a dataset before publishing\\
 editor & prov:person & editor of e.g. an article, before publishing\\
-publisher & prov:organization & organization (publishing house, institute) that published something\\
+creator & prov:person & someone who created a dataset, creators of articles or software are rather called ``author''\\
+curator & prov:person & someone who checked and corrected a dataset before publishing\\
+publisher & prov:organization \mbox{(maybe also person?)}& organization (publishing house, institute) that published something\\
 observer & prov:person & observer at the telescope\\
-operator & prov:person & performing a given task (executor?)\\
+operator & prov:person & someone performing a given task (executor?)\\
 coordinator/PI & prov:person & someone coordinating/leading a project\\
 provider & prov:organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
-owner & ?? &  (does anyone own the data?)\\
-creator & ?? &  (about the same as author?)\\
+%(owner) & prov:person or prov:organization & Does anyone really own the data?\\
 \bottomrule
 \end{tabulary}
-\caption{Roles of agents}
+\caption{Examples for roles of agents and the typical type of that agent}
 \label{tab:agent-roles}
 \end{center}
 \end{table}
 
-\TODO{\textbf{Mireille + Francois}: Go through these roles, pick only the necessary ones, crosscheck with other data models.}
+%\TODO{\textbf{Mireille + Fran\c{c}ois}: Go through these roles, pick only the necessary ones, crosscheck with other data models.}
 
 This list is \emph{not} complete. We consider providing a vocabulary list for this 
 in a future version of this model, collected from (future) implementations of this model.
@@ -769,3 +769,6 @@ type & prov:type & string & type of the agent: either Individual (Person) or Org
 %if the intermediate entities don't play a major role or only exist temporarily, so that
 %their provenance information is not deemed to be important enough to be recorded.
 %``WasInformedBy'' relation (also called ``Communication'' relation, borrowed from W3C's model) 
+
+
+%\subsection{Implementation hints}

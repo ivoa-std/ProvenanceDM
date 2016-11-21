@@ -4,10 +4,22 @@ describing the provenance of astronomical data.
 We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
 In astronomy, entities are generally datasets composed of VOTables, FITS files or database tables, or files containing logs, values (spectra, lightcurves), parameters, etc. The activities correspond to an observation, a simulation, or processing steps (image stacking, object extraction, etc.). The people involved can be individual persons (observer, publisher...), groups or organisations.
+An example for activities, entities and agents as they can be discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{workflow-backwards.pdf}
+\caption{An example graph of provenance discovery. Starting with a released dataset (left), the involved activities (blue boxes), 
+progenitor entities (yellow rounded boxes) and responsible agents (orange pentagons) are 
+discovered.}
+\label{fig:example-workflow}
+\end{figure}
+
+
 
 We note that the provenance of simulated data is already described inside the Simulation Data Model
 \citep[SimDM,][]{std:SimDM}. However, the Provenance Data Model currently discussed is
-sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data. It could also be used to describe the workflow for observaton proposals or the publication of scientific articles based on (astronomical) data. 
+sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data. It could also be used to describe the workflow for observation proposals or the publication of scientific articles based on (astronomical) data. 
 The links between the Provenance Data Model and other IVOA data models 
 will be discussed in Section~\ref{sec:dmlinks}.
 
@@ -20,21 +32,25 @@ will be discussed in Section~\ref{sec:dmlinks}.
 %does not extend a certain period, etc... 
 
 
+% TODO: Include here somewhere in this section a simple workflow/provenance graph 
+% to illustrate the basic concepts
+
+
 \subsection{Goal of the provenance model}\label{sec:goals}
 
-The goal of the provenance data model is to describe how provenance information
+The goal of this Provenance Data Model is to describe how provenance information
 can be modeled, stored and exchanged. Its scope
 is mainly modeling of the flow of data, of the relations between data,
 and of processing steps. 
 
 Characteristics of observations such as ambient conditions and instrument characteristics can be associated to provenance information.
 However, they will not be modeled here explicitly. 
-They can be included in the form of additional data linked to observations, or as attributes of observation processes.
+They can be included in the form of additional data linked to observations, or as attributes of observation processes (see Section ~\ref{sec:parameters}.
 
 In general, the model shall capture information in a machine-readable way that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
 This will help the scientist to decide if the dataset 
-is adequate for his/her research goal, assess its quality and get enough information
-to be able to trace back its history as far as possible. 
+is adequate for her research goal, assess its quality and get enough information
+to be able to trace back its history as far as required or possible. 
 
 Provenance information may be recorded in minute detail or by using coarser
 elements, depending on the intended usage and the desired level of detail
@@ -76,7 +92,7 @@ table. Who can I ask about that?
         \end{itemize}
 
 
-\paragraphlb{C: Locate error sources. [S, P]}
+\paragraphlb{C: Locate error sources [S, P]}
         Find the location of possible error sources in the generation of a dataset.
 
         \noindent Examples:
