@@ -133,15 +133,30 @@ infrastructure that enable VO applications.
 
 %\section{Applying provenance -- Interactions with other Data models}\label{sec:dmlinks}
 \section{Links to other data models}\label{sec:dmlinks}
-In this section we discuss how the Provenance Data Model interacts with
-other VO data models (especially DatasetDM).
+%In this section we discuss how the Provenance Data Model interacts with
+%classes and attributes from other VO data models (especially DatasetDM).
 %(e.g. DatasetDM, SpectralDM (share some same classes), SimDM) 
 %and how provenance information can be stored.
+
+The Provenance Data Model can be applied without making links to any other 
+IVOA data model classes. For example when the data is not yet published, provenance information
+can be stored already, but a DatasetDM-description for the data may not yet exist.
+But if there are data models implemented for the datasets, then it is 
+very useful to connect the classes and attributes of the different models, 
+which we are going to discuss in this Section. These links help to avoid 
+unnecessary repetitions in the metadata of datsets, and also offer the possibility 
+to derive some basic provenance information from existing data model classes automatically.
+
+
 Entities and their descriptions in the Provenance Data Model 
 are tightly linked to the \class{DataSet}-class in the DatasetDM/ObsCore Data Model, as well as to 
 InputDataset and OutputDataSet in the Simulation Data Model \citep[SimDM,][]{std:SimDM}.
 Table \ref{tab:datasetmapping} maps classes and attributes from the Dataset Data Model 
 to concepts in the Provenance Data Model.
+
+Note that the Provenance Data Model can (and will) be applied to entities before 
+they are published, and if no Dataset-description exists, these links 
+
 
 %\begin{figure}[h]
 %\centering
