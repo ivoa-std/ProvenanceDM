@@ -150,8 +150,9 @@ to \class{Entity}/\class{EntityDescription} are given in Section \ref{sec:dmlink
 \textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
 label       & prov:label & string & a label (to be displayed by clients)\\
 type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
-{[description]}  & [prov:description] & string & link to text describing the entity in more detail or link (foreign key) to \class{EntityDescription}\\
-access            & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
+description\_link  & & foreign key/url & link to \class{EntityDescription}\\
+annotation  & prov:description & string & text describing the entity in more detail\\
+access      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of entities. Mandatory attributes are marked in bold.
@@ -198,8 +199,8 @@ and entities (see Section \ref{sec:entity-activity-relations}).
 \midrule
 \textbf{id} & & (qualified) string & a unique identifier for this description\\
 label       & & string & a name or label for the entity description\\
-description & & string & a decription for this kind of entity\\
-docuLink    & & url & link to more documentation\\
+annotation  & & string & a decription for this kind of entity\\
+docu\_link    & & url & link to more documentation\\
 dataproduct\_ type  & & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
 dataproduct\_ subtype & & string       & from ObsCore data model, more specific subtype\\
 level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
@@ -288,9 +289,8 @@ the \class{EntityDescription}. This class should therefore only be introduced if
 label        & prov:label  & string & a label (to be displayed by clients)\\
 \textbf{startTime} & prov:startTime & datetime & start of an activity\\
 \textbf{endTime} & prov:endTime  & datetime & end of an activity\\
-annotation        & --  & string & additional explanations for the specific activity instance\\
-{[description]}  & [prov:description] & string/url/ foreign key & a description for the activity, 
-                link to documentation or link to \class{ActivityDescription}\\
+annotation        & prov:description & string & additional explanations for the specific activity instance\\
+description\_link  &  & foreign key/url & link to \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
@@ -310,10 +310,10 @@ Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
 label        & & string & a label (to be displayed by clients)\\
 type         & & string & type of the activity, from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
 subtype      & & string & more specific subtype of the activity\\
-description  & & string & additional free text description for the activity\\
+annotation  & & string & additional free text description for the activity\\
 %code         & & string & the code used for this process\\
 %version      & & string & a version number for the code\\
-docuLink     & & url    & link to further documentation on this process, e.g. a 
+docu\_link     & & url    & link to further documentation on this process, e.g. a 
 paper, the source code in a version control system etc.\\
 \bottomrule
 \end{tabulary}
@@ -540,7 +540,8 @@ To enable the latter solution, we add a \class{Parameter} class along with a \cl
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id}      & & string & parameter unique identifier\\
-{[label]}         & & string & parameter name or link to \emph{ParameterDescription}\\
+description\_link   & & foreign key/url & link to \emph{ParameterDescription}\\
+label            & & string & parameter name, if no link to ParameterDescription is given\\
 \textbf{value}   & & (value dependent) & the value of the parameter\\
 \bottomrule
 \end{tabulary}
@@ -557,7 +558,7 @@ To enable the latter solution, we add a \class{Parameter} class along with a \cl
 \midrule
 \textbf{id}  & & string & parameter unique identifier\\
 label         & & string & parameter name\\
-description & & string & additional free text description for the parameter\\
+annotation & & string & additional free text description for the parameter\\
 datatype    & & string & datatype of the parameter \\
 unit           & & string & physical unit of the parameter\\
 ucd           & & string  & Unified Content Descriptor for the parameter, supplying a standardized classification of the physical quantity\\
@@ -741,7 +742,7 @@ in a future version of this model, collected from (future) implementations of th
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
 id & prov:id & (qualified) string & unique identifier for an agent\\
-name & prov:name & string & a common name for this agent; e.g. first name and last name; project name, ...\\
+label & prov:name & string & a common name for this agent; e.g. first name and last name; project name, ...\\
 type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
 \bottomrule
 \end{tabulary}

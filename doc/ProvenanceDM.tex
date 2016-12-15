@@ -23,6 +23,7 @@
 \editor{Mathieu Servillat}
 
 % \previousversion[????URL????]{????Funny Label????}
+\previousversion[http://www.ivoa.net/documents/ProvenanceDM/20161121/]{WD-ProvenanceDM-1.0-20161121.pdf}
 \previousversion[http://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/ProvDM-0.2-20160428.pdf]{ProvDM-0.2-20160428.pdf}
 \previousversion[http://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/ProvDM-0.1-20141008.pdf]{ProvDM-0.1-20141008.pdf}
 
@@ -151,6 +152,7 @@ unnecessary repetitions in the metadata of datsets, and also offer the possibili
 to derive some basic provenance information from existing data model classes automatically.
 
 
+\subsection{Links with Dataset/Obscore Model}
 Entities and their descriptions in the Provenance Data Model 
 are tightly linked to the \class{DataSet}-class in the DatasetDM/ObsCore Data Model, as well as to 
 InputDataset and OutputDataSet in the Simulation Data Model \citep[SimDM,][]{std:SimDM}.
@@ -198,11 +200,47 @@ ObsDataset.calibLevel       & EntityDescription.level & subclass to EntityDescri
 
 The \class{Agent} class, which is used for defining responsible persons and 
 organizations, is similar to the \class{Party} class in the Dataset Metadata Model and SimDM.
+
+\subsection{Links with Simulation Data Model}
 In SimDM one also encounters a normalization similar to our split-up of descriptions from 
 actual data instances and executions of processes: the SimDM class ``experiment'' 
 is a type of \class{Activity} and its general, reusable description is called a ``protocol'',
-which can be considered as a type of this model's \class{ActivityDescription}.
+which can be considered as a type of this model's \class{ActivityDescription}. More is given in Table~\ref{tab:simdmmapping}.
 
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\begin{tabulary}{1.0\textwidth}{@{}lLp{4cm}@{}}
+\toprule
+\head{Simulation DM} & \head{Provenance DM} & \head{Comment}\\
+\midrule
+Experiment      & Activity               & \\
+Experiment.name & Activity.label         & human readable name\\
+Experiment.executionTime  & Activity.endTime & end time of the execution of an activity \\
+Experiment.protocol & Activity.description\_link & reference to the protocol or description class \\
+Protocol        & ActivityDescription    & \\
+Protocol.name   & ActivityDescription.label  & human readable name\\
+Protocol.referenceURL & ActivityDescription.docu\_link & reference to a webpage describing it\\
+% add Protocol.code, Protocol.version?
+ParameterSetting     & Parameter              & \\
+InputParameter       & ParameterDescription              & \\
+Party           & Agent                 & \\
+Party.name      & Agent.label & name of the agent \\
+Contact         & WasAssociatedWith/WasAttributedTo & \\
+Contact.role    & WasAssociatedWith.role/WasAttributedTo.role & role which the agent/party had for a certain experiment/protocol or activity/entity\\
+Contact.party    & WasAssociatedWith.agent, WasAttributedTo.agent & reference to the agent/party \\
+
+
+\bottomrule
+\end{tabulary}
+\caption{Mapping between classes and attributes from SimDM to classes/attributes in ProvenanceDM.}
+\label{tab:simdmmapping}
+\end{table}
+
+
+
+
+\subsection{Further links to data models}
 More similarities and links to other data models will be detailed in future 
 versions of this working draft.
 
@@ -213,20 +251,38 @@ versions of this working draft.
 \section{Discussion}
 \input{discussion}
 
-\section{Use cases and implementations}\label{sec:usecases-implementations}
+\section{Implementations of the data model for specific use cases}\label{sec:usecases-implementations}
 \input{usecases-implementations}
 
 
 \appendix
 \section{Changes from Previous Versions}
-No official previous versions yet.
 % No previous versions yet.
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
+\subsection{Changes from WD-ProvenanceDM-1.0-20161121}
+\begin{itemize}
+\item More explanations on links to data models in Section~\ref{sec:dmlinks}.
+\item Introduced subsections for Section~\ref{sec:dmlinks}, added table with SimDM-links.
+\item Renamed \emph{docuLink} to \emph{docu\_link}
+\item Avoid double-meaning of \emph{description} by splitting it up into: 
+    \begin{itemize}
+    \item \emph{description\_link}: a foreign key to a description class 
+(which could be located at an url as well)
+    \item \emph{annotation}: free text description
+    \end{itemize}
+\item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
+\item Renamed \emph{Agent.name} to \emph{Agent.label}, so that each class has an id and a label.
+\item Renamed Section~\ref{sec:usecases-implementations} to stress that it deals with implementations
+
+
+\end{itemize}
+
 
 \section{Implementation details}\label{sec:implementation-details}
 In this section we will give more details on the classes and attributes which were used 
-in implementations for each use case.
+in implementations for each use case. This maybe needs to go into a different document, so it can 
+be updated without affecting this standard.
 
 TBD.
 
