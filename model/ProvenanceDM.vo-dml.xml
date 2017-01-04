@@ -1,0 +1,2517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1.0 http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vo-dml-v1.0.xsd">
+  <name>provenance</name>
+  <description>This document provides a data model describing the structure and content of generic Dataset metadata for the IVOA.  This is a high-level model which is to be referenced and extended by other models describing specific types of Datasets and Data products.  In this document, we specify the generic Dataset, as well as an ObservationDataset model which covers the class of Datasets which are derived from an Observation.  At the time of this writing, there is no formal Observation-Experiment model for the IVOA, so we include a hypothetical Observation-Experiment model to serve as a placeholder. 
+</description>
+  <title/>
+  <version>0.x</version>
+  <lastModified>2016-12-16T13:06:24</lastModified>
+  <import>
+    <name>ds</name>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/datasetModel_uml2p4p1.xmi</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/</documentationURL>
+  </import>
+
+  <package>
+    <vodml-id>ivoa</vodml-id>
+    <name>ivoa</name>
+    <description>Base Data Types V1.0 (2014)</description>
+    <primitiveType>
+      <vodml-id>ivoa.real</vodml-id>
+      <name>real</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.nonnegativeinteger</vodml-id>
+      <name>nonnegativeinteger</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.datetime</vodml-id>
+      <name>datetime</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.anyURI</vodml-id>
+      <name>anyURI</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <extends>
+        <vodml-ref/>
+      </extends>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.Unit</vodml-id>
+      <name>Unit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <extends>
+        <vodml-ref/>
+      </extends>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>string</vodml-id>
+      <name>string</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>boolean</vodml-id>
+      <name>boolean</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>complex</vodml-id>
+      <name>complex</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>rational</vodml-id>
+      <name>rational</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>integer</vodml-id>
+      <name>integer</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </primitiveType>
+
+    <dataType abstract="true">
+      <vodml-id>ivoa.Quantity</vodml-id>
+      <name>Quantity</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>ivoa.Quantity.unit</vodml-id>
+        <name>unit</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.Unit</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <dataType>
+      <vodml-id>ivoa.IntegerQuantity</vodml-id>
+      <name>IntegerQuantity</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <extends>
+        <vodml-ref>provenance:ivoa.Quantity</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>ivoa.IntegerQuantity.value</vodml-id>
+        <name>value</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <dataType>
+      <vodml-id>ivoa.RealQuantity</vodml-id>
+      <name>RealQuantity</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <extends>
+        <vodml-ref>provenance:ivoa.Quantity</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>ivoa.RealQuantity.value</vodml-id>
+        <name>value</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>char</vodml-id>
+    <name>char</name>
+    <description>Characterisation Model V1.13 (2008)</description>
+    <objectType>
+      <vodml-id>char.Char</vodml-id>
+      <name>Char</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </objectType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>stc</vodml-id>
+    <name>stc</name>
+    <description>Space-Time Coordinates (STC) Model protoype V2.0</description>
+    <dataType>
+      <vodml-id>stc.Position</vodml-id>
+      <name>Position</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </dataType>
+
+    <objectType>
+      <vodml-id>stc.AstroCoordSystem</vodml-id>
+      <name>AstroCoordSystem</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    </objectType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>experiment</vodml-id>
+    <name>experiment</name>
+    <description>The Observation Experiment model refers to several elements related to an Observation and its configuration.  As of the time of this writing, there is no IVOA recommendation for a general Observation data model.  The Provenance data model, in progress, will define the pattern for describing the relation between actions and results, and how to record these in datasets.  In lieu of these standards, this document defines a straw-man Observation model.  
+</description>
+    <objectType>
+      <vodml-id>experiment.Observation</vodml-id>
+      <name>Observation</name>
+      <description>Head class for an Observation Experiment.
+The Observation is modeled as a type of 'Experiment', with some basic structure defined to provide metadata about the observation target and configuration.  The product, or 'result' of the Observation is zero or more ObsDataset objects.  This pattern is inspired by, and compatible with the Simulation Data Model, where a 'Simulation' can be considered another form of 'Experiment' or perhaps even another form of 'Observation'.
+</description>
+      <attribute>
+        <vodml-id>experiment.Observation.observationID</vodml-id>
+        <name>observationID</name>
+        <description>Internal ID determined by the data provide to uniquely identify the observation within the institution or entity performing the observation.
+</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>experiment.Observation.obsConfig</vodml-id>
+        <name>obsConfig</name>
+        <description>Observation configuration metadata, provides information about who, where, and how the observation was conducted.
+</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.ObsConfig</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>experiment.Observation.result</vodml-id>
+        <name>result</name>
+        <description>The result of an observation is zero or more Observation Datasets.
+</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.ObsDataset</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>experiment.Observation.target</vodml-id>
+        <name>target</name>
+        <description>The target of the observation.  The content of this object may vary greatly depending on the goals and nature of the observation.  For example, the 'target' could be a galaxy, stellar object, planet, or calibratioin source.  As such, we allow the BaseTarget class here, and permit the users to define and use more content rich flavors according to their needs.</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.BaseTarget</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>experiment.Observation.proposal</vodml-id>
+        <name>proposal</name>
+        <description>Identifies any proposal related to the observation.  This field may be used to gather all observations and products related to a particular proposal.
+</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.Proposal</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.ObsConfig</vodml-id>
+      <name>ObsConfig</name>
+      <description>ObsConfig describes all Observation Configuration metadata.  We define a small set of configuration elements which are required as Provenance in the observation dataset.
+</description>
+      <attribute>
+        <vodml-id>experiment.ObsConfig.bandpass</vodml-id>
+        <name>bandpass</name>
+        <description>Describes the spectral domain of the observation in a very general sense.  
+  The value may be expressed in terms of general spectral bands, or specific bandpass names.  If multiple bands are covered, the value may be a comma delimited combination of appropriate bands.  If expressed as general bands, the value(s) must be selected from the enumerated set given by the SpectralBand type.  There is no controlled vocabulary for specific bandpass names as the list is too long to enumerate.  Effort should be made to use highly recognized bandpass names (eg: "U","V","B","R","I", "H-alpha").
+  This field corresponds to both the Coverage.Spectral and Coverage.Spectral.Bandpass fields of the Resource Metadata document.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.ObsConfig.datasource</vodml-id>
+        <name>datasource</name>
+        <description>Describes the original source of the data in a very general fashion.  In other words, "What sort of observation originally generated the data?"  Suggested values include:
+  + survey: Survey data typically covers some region of observational parameter space with as complete as possible coverage within that region.
+  + pointed:  Pointed data of a particular object or field.
+  + theory:  Theory data, generated based on a theoretical model.
+  + artificial:  Artificial, or simulated data.  Similar to 'theory', but not necessarily based on a theoretical model.
+  + custom:  Custom data, as part of a specific research project.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>experiment.ObsConfig.facility</vodml-id>
+        <name>facility</name>
+        <description>Metadata pertaining to the facility performing the observation.
+</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.Facility</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>experiment.ObsConfig.instrument</vodml-id>
+        <name>instrument</name>
+        <description>Metadata pertaining to the instrument used to create the data.</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.Instrument</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>experiment.BaseTarget</vodml-id>
+      <name>BaseTarget</name>
+      <description>Abstract base class for the Target object tree.  The target object provides identifying metadata related to the subject or goal of the experiment.  For an Observational experiment, this would typically be an astronomical object.  The BaseTarget class defines high-level identifying information, and must be extended for particular classes of Target which may define additional  characteristics.
+</description>
+      <attribute>
+        <vodml-id>experiment.BaseTarget.name</vodml-id>
+        <name>name</name>
+        <description>The target name.  The primary purpose of this field is to provide the user with a recognizable identity of the particular subject or goal.  However, since this may be a query-able field in data discovery protocols, care should be taken to use values which follow conventions for the domain appropriate for the data.  For an astronomical object, this may be a name suitable for use within a domain-specific resolution service.  Simulated data might also use this sort of name (if simulating a particular object), or a more generic term such as "G2V star". 
+</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.BaseTarget.description</vodml-id>
+        <name>description</name>
+        <description>Free form description of target.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.BaseTarget.position</vodml-id>
+        <name>position</name>
+        <description>This field provides the spatial location of the target.  The value is an STC Position object which supports all required dimensionality and coordinate frame specification needs.
+ </description>
+        <datatype>
+          <vodml-ref>provenance:stc.Position</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.Target</vodml-id>
+      <name>Target</name>
+      <description>General purpose Target object.</description>
+      <extends>
+        <vodml-ref>provenance:experiment.BaseTarget</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>experiment.Target.objectClass</vodml-id>
+        <name>objectClass</name>
+        <description>General classification or type of the target.  This field supports the discovery of data pertaining to a common class.  e.g. "Star", "Galaxy", "AGN".  At the time of this writing, there is no IVOA recommended vocabulary for this field.  The SIMBAD and NED databases use defined vocabularies for astronomical object classifications which may serve as the basis for such.</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.AstroTarget</vodml-id>
+      <name>AstroTarget</name>
+      <description>Extension of BaseTarget specialized for astronomical objects.  The AstroTarget defines additional astronomical properties of the target.</description>
+      <extends>
+        <vodml-ref>provenance:experiment.BaseTarget</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>experiment.AstroTarget.objectClass</vodml-id>
+        <name>objectClass</name>
+        <description>General classification or type of the target.  This field supports the discovery of data pertaining to a common class.  e.g. "Star", "Galaxy", "AGN".  At the time of this writing, there is no IVOA recommended vocabulary for this field.  The SIMBAD and NED databases use defined vocabularies for astronomical object classifications which may serve as the basis for such.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.AstroTarget.spectralClass</vodml-id>
+        <name>spectralClass</name>
+        <description>Spectral class of the object.  As with objectClass, there is no IVOA recommended vocabulary for specifying the spectral class of an object.  There is an IVOA Note on the subject entitled "An encoding system to represent stellar spectral classes in archival databases and catalogs", describing an encoding system which has been adopted by the MAST archive.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.AstroTarget.redshift</vodml-id>
+        <name>redshift</name>
+        <description>This field gives the canonical redshift of the astronomical object.  It is normally used to store the cosmological redshift of extragalactic objects, although it may also be used to store the observed redshift of Galactic sources if that information is felt by the data provider to be useful.
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.AstroTarget.varAmpl</vodml-id>
+        <name>varAmpl</name>
+        <description>Canonical variability amplitude attributed to the target.
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.Facility</vodml-id>
+      <name>Facility</name>
+      <description>Facility performing the observation.
+</description>
+      <extends>
+        <vodml-ref>provenance:party.Role</vodml-ref>
+      </extends>
+      <reference>
+        <vodml-id>experiment.Facility.party</vodml-id>
+        <name>party</name>
+        <description>Reference to the Party or Entity which is associated with this role.</description>
+        <datatype>
+          <vodml-ref>provenance:party.Organization</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.Instrument</vodml-id>
+      <name>Instrument</name>
+      <description>Identifies the instrument used to create the data.  This can be a specific instrument name, general type or something else, such as a program in the case of theoretical data.   (RM:Collection.Instrument) </description>
+      <attribute>
+        <vodml-id>experiment.Instrument.name</vodml-id>
+        <name>name</name>
+        <description>Name of the instrument.
+</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.Proposal</vodml-id>
+      <name>Proposal</name>
+      <description>Metadata related to the proposal or document which spawned the observation.
+</description>
+      <attribute>
+        <vodml-id>experiment.Proposal.identifier</vodml-id>
+        <name>identifier</name>
+        <description>Tag used to uniquely identify a particular proposal within the institution or entity.
+</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.Characterisation</vodml-id>
+      <name>Characterisation</name>
+      <description>This Characterisation object is a direct extension of the Characterisation object from the IVOA Characterisation Data Model Standard.  This provides a local object which may be contained in a 'composition' relation to other objects of this model (specifically ObsDataset).  This object may be extended and/or modified by specific Dataset models as needed.
+	Characterisation provides a broad scale description of the coordinate space occupied by the dataset in each of the axis domains.  This includes axes not directly represented in the dataset 'data', for example, the Time axis of a 2D special image.  As such, there is a strong correlation between Characterisation and Data objects.  In some cases, the values may be directly derived from the Data, in others, they provide supporting metadata about the broader domain.  For example, the Accuracy fields in Characterisation represent typical accuracy for the dataset, while those within Data provide per-data-point errors.   </description>
+      <extends>
+        <vodml-ref>provenance:char.Char</vodml-ref>
+      </extends>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.Derived</vodml-id>
+      <name>Derived</name>
+      <description>The Derived (short for Derived Data) object holds derived information obtained by evaluating or analyzing the contents of the dataset.  The specific content of this object is strongly dependent on the specific type of dataset, so we provide a generic model which may be specialized in other models to define elements appropriate for that type of dataset.
+
+The primary purpose of this object is to provide a common framework in which specific information may be placed to aid in discovery and filtering of datasets in various access protocols.
+ </description>
+      <collection>
+        <vodml-id>experiment.Derived.derivedElement</vodml-id>
+        <name>derivedElement</name>
+        <description>Collection of zero or more DerivedElement objects, each of which provides a specific quantity obtained by analyzing the dataset content.
+</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.DerivedElement</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>experiment.ObsDataset</vodml-id>
+      <name>ObsDataset</name>
+      <description>Abstract object extending Dataset with metadata relevant to datasets derived from Observations.
+</description>
+      <extends>
+        <vodml-ref>provenance:dataset.Dataset</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>experiment.ObsDataset.calibLevel</vodml-id>
+        <name>calibLevel</name>
+        <description>High level classification for the calibration level of the particular dataset as a whole.  The calibration level concept conveys to the user information on how much data reduction/processing has been applied to the data.  It is up to the data providers to consider how to map their own internal classification to the scale defined here.
+Scale:
+* 0 - Raw instrumental data, in a proprietary or internal data-provider defined format.
+* 1 - Instrumental data in a standard format (FITS, VOTable, etc )
+* 2 - Calibrated, science ready data with the instrument signature removed.
+* 3 - Enhanced data products like mosaics, resampled or drizzled images, or heavily processed survey fields.  Level 3 data products may represent the combination of data from multiple primary observations.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>experiment.ObsDataset.characterisation</vodml-id>
+        <name>characterisation</name>
+        <description>Characterisation provides a 'characteristic' view of the dataset coordinate space.  For each represented domain (spatial, spectral, temporal, etc), characterisation provides metadata summarizing the coverage, resolution, representative accuracies, etc. for the dataset asa a whole.</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.Characterisation</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>experiment.ObsDataset.derived</vodml-id>
+        <name>derived</name>
+        <description>Provides a high level summary of certain properties of the dataset.  Its primary purpose is to support high level filtering of datasets during data discovery.
+</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.Derived</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <reference>
+        <vodml-id>experiment.ObsDataset.coordSys</vodml-id>
+        <name>coordSys</name>
+        <description>Zero or more references to coordinate system defintions associated with the dataset.  Since multiple data products may contibute to the content of a dataset, this element provides convenient, high-level access to definitions which may be distributed among lower-level objects.  
+</description>
+        <datatype>
+          <vodml-ref>provenance:stc.AstroCoordSystem</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>experiment.ObsDataset.target</vodml-id>
+        <name>target</name>
+        <description>Reference to a BaseTarget object from Observation.  Provides metadata describing the target of the observation.</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.BaseTarget</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>experiment.ObsDataset.proposal</vodml-id>
+        <name>proposal</name>
+        <description>Reference to Proposal object from Observation.  This object provides metadata identifying any proposal related to the observation which produced the dataset.</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.Proposal</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>experiment.ObsDataset.obsConfig</vodml-id>
+        <name>obsConfig</name>
+        <description>Reference to ObsConfig object from Observation.  This object provides some high-level metadata related to the observation configuration.</description>
+        <datatype>
+          <vodml-ref>provenance:experiment.ObsConfig</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>experiment.DerivedElement</vodml-id>
+      <name>DerivedElement</name>
+      <description>Abstract base for defining derived data elements.  Typically, models for specific data products would extend this object to define various elements appropriate for that model.  For example, the Spectrum model could define signal-to-noise ratio (SNR), or TimeSeries could define period, or variability.  We put no restriction on the DerivedElement content since the result could be a simple value or a complex object.  However, it is recommended that extensions be simple and compact in keeping with the primary intent of use in data discovery.
+</description>
+    </objectType>
+
+    <objectType>
+      <vodml-id>experiment.DerivedScalar</vodml-id>
+      <name>DerivedScalar</name>
+      <description>Simple extension of DerivedElement class which can serve many use cases.  Usages of this object in other models to define specific elements should explicitly define the element name, and the process by which the value is determined.
+</description>
+      <extends>
+        <vodml-ref>provenance:experiment.DerivedElement</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>experiment.DerivedScalar.name</vodml-id>
+        <name>name</name>
+        <description>Name identifying the derived element.</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>experiment.DerivedScalar.value</vodml-id>
+        <name>value</name>
+        <description>Value of the derived element.
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.Quantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>dataset</vodml-id>
+    <name>dataset</name>
+    <description>Dataset Metadata package</description>
+    <enumeration>
+      <vodml-id>dataset.DataProductType</vodml-id>
+      <name>DataProductType</name>
+      <description>Enumeration identifying the high level classification of a data product.</description>
+      <literal>
+        <vodml-id>dataset.DataProductType.CUBE</vodml-id>
+        <name>CUBE</name>
+        <description>A multidimensional astronomical image of three (3) or more axes.
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.IMAGE</vodml-id>
+        <name>IMAGE</name>
+        <description>A two (2) dimensional astronomical image.</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.PHOTOMETRY</vodml-id>
+        <name>PHOTOMETRY</name>
+        <description>Dataset with spectral coverage with irregular gaps.
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.SPECTRUM</vodml-id>
+        <name>SPECTRUM</name>
+        <description>Dataset where spectral coverage is the primary attribute, in contiguous bins. e.g. a 1D spectrum or a long slit spectrum.
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.TIMESERIES</vodml-id>
+        <name>TIMESERIES</name>
+        <description>Dataset presenting some quantity varying as a function of time.  A light curve is a typical example of a timeseries dataset.</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.SED</vodml-id>
+        <name>SED</name>
+        <description>A spectral energy distribution, an advanced data product often produced by combining data from multiple observations.</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.VISIBILITY</vodml-id>
+        <name>VISIBILITY</name>
+        <description>A visibility (radio) dataset. Typically this is instrumental data, and is often a complex object containing multiple files or other substructures.  A visibility dataset may contain data with spatial, spectral, time, and polarization information for each measured visibility.</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.EVENT</vodml-id>
+        <name>EVENT</name>
+        <description>An event counting dataset (e.g. X-ray). An event dataset may contain data with spatial, spectral, and time information for each measured event. </description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.DataProductType.CATALOG</vodml-id>
+        <name>CATALOG</name>
+        <description>A catalog.
+</description>
+      </literal>
+    </enumeration>
+
+    <enumeration>
+      <vodml-id>dataset.CreationType</vodml-id>
+      <name>CreationType</name>
+      <description>Enumeration of dataset creation types.</description>
+      <literal>
+        <vodml-id>dataset.CreationType.ARCHIVAL</vodml-id>
+        <name>ARCHIVAL</name>
+        <description>Indicates that it is one of a collection of datasets generated in a systematic, homogeneous way and is stored statically (or at least versioned).  It will be possible to regenerate this dataset at a later date.  The remaining types imply on-the-fly manipulation.</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.CreationType.CUTOUT</vodml-id>
+        <name>CUTOUT</name>
+        <description>Indicates that the dataset was created "on-the-fly", by subsetting, but not by modifying values.
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.CreationType.FILTERED</vodml-id>
+        <name>FILTERED</name>
+        <description>May involve excluding data prior to binning into samples, also "on-the-fly"
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.CreationType.MOSAIC</vodml-id>
+        <name>MOSAIC</name>
+        <description>Combines multiple original datasets "on-the-fly"</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.CreationType.SPECTRAL_EXTRACTION</vodml-id>
+        <name>SPECTRAL_EXTRACTION</name>
+        <description>Has been extracted, for example, from a spectral data cube.
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.CreationType.CATALOG_EXTRACTION</vodml-id>
+        <name>CATALOG_EXTRACTION</name>
+        <description>Has been extracted from a catalog.</description>
+      </literal>
+    </enumeration>
+
+    <enumeration>
+      <vodml-id>dataset.RightsType</vodml-id>
+      <name>RightsType</name>
+      <description>Enumeration of access rights levels.
+</description>
+      <literal>
+        <vodml-id>dataset.RightsType.PUBLIC</vodml-id>
+        <name>PUBLIC</name>
+        <description>unrestricted, public access is allowed, without authentication.</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.RightsType.PROPRIETARY</vodml-id>
+        <name>PROPRIETARY</name>
+        <description>only proprietary access is allowed with authentication. 
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.RightsType.SECURE</vodml-id>
+        <name>SECURE</name>
+        <description>authenticated, public access is allowed.</description>
+      </literal>
+    </enumeration>
+
+    <enumeration>
+      <vodml-id>dataset.SpectralBandType</vodml-id>
+      <name>SpectralBandType</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.RADIO</vodml-id>
+        <name>RADIO</name>
+        <description>λ ≥ 10 mm; ν ≤ 30 GHz</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.MILLIMETER</vodml-id>
+        <name>MILLIMETER</name>
+        <description>0.1 mm ≤ λ ≤ 10 mm; 3000 GHz ≥ ν ≥ 30 GHz
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.INFRARED</vodml-id>
+        <name>INFRARED</name>
+        <description>1 μ ≤ λ ≤ 100 μ</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.OPTICAL</vodml-id>
+        <name>OPTICAL</name>
+        <description>0.3 μ ≤ λ ≤ 1 μ
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.ULTRAVIOLET</vodml-id>
+        <name>ULTRAVIOLET</name>
+        <description>100 Å ≤ λ ≤ 3000 Å; 1.2 eV ≤ E ≤ 120 eV
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.XRAY</vodml-id>
+        <name>XRAY</name>
+        <description>0.1 Å ≤ λ ≤ 100 Å; 0.12 keV ≤ E ≤ 120 keV
+</description>
+      </literal>
+      <literal>
+        <vodml-id>dataset.SpectralBandType.GAMMARAY</vodml-id>
+        <name>GAMMARAY</name>
+        <description>E ≥ 120keV</description>
+      </literal>
+    </enumeration>
+
+    <objectType>
+      <vodml-id>dataset.DataModel</vodml-id>
+      <name>DataModel</name>
+      <description>This object provides specific information regarding the data model and version thereof that a dataset represents.  This information is primarily an aide to (de)serialization of the dataset.  As such, it would better be defined by serialization conventions.  In lieu of such conventions, we include this object and representative serialization examples for the primary file formats VOTable and FITS.
+</description>
+      <attribute>
+        <vodml-id>dataset.DataModel.name</vodml-id>
+        <name>name</name>
+        <description>Formatted string providing the name and version of the model document.  The format speficication is "[name]-[version].[subversion]". Each derived model should specifically state the appropriate string for this field.
+</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataModel.prefix</vodml-id>
+        <name>prefix</name>
+        <description>Prefix string used in UType string for elements associated with the model.  For IVOA standard models, this will be a predetermined string (e.g. 'stc' or 'spec').  Extended, or user defined content can specify a unique prefix for their own content.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataModel.URL</vodml-id>
+        <name>URL</name>
+        <description>URL pointer to the XML schema associated with the model.
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>dataset.Dataset</vodml-id>
+      <name>Dataset</name>
+      <description>Abstract object for the generic IVOA Dataset.  It is intended to be useful for any type of data.  Specific dataset models should extend this object, providing detailed definitions and additional content as appropriate for that type of dataset.
+</description>
+      <attribute>
+        <vodml-id>dataset.Dataset.dataProductType</vodml-id>
+        <name>dataProductType</name>
+        <description>Describes the high level scientific classification of the data content.  Values are restricted to the DataProductType enumeration set and convey the general idea of the content and organization of
+a dataset.
+</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.DataProductType</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.Dataset.dataProductSubtype</vodml-id>
+        <name>dataProductSubtype</name>
+        <description>Secondary type classification for the dataset.  This field is intended to precisely specify the scientific nature of the data product, possibly in terms relevant only to a specific archive or data collection.  For example, dataProductType='image' could have associated dataProductSubtype="src.image", "bkg.image", "PixelMask", etc.  Values are unrestricted strings.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>dataset.Dataset.curation</vodml-id>
+        <name>curation</name>
+        <description>Provides metadata related to the entity responsible for the curation of the dataset.
+</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Curation</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>dataset.Dataset.dataID</vodml-id>
+        <name>dataID</name>
+        <description>DataID provides high level identification metadata for the dataset itself, and any associations with various collections.</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.DataID</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.DataID</vodml-id>
+      <name>DataID</name>
+      <description>The Data Identification object (DataID) stores the dataset identifiers and other metadata typically assigned by the dataset creator.
+	The Dataset IDs in this object must comply with the syntax for dataset identifiers defined in the "IVOA Identifiers" document, including the use of 'stop' characters to identify specific datasets that are not individually in the registry.   e.g., ivo://example.net/aservice?2013/5/2342.
+	Much of the content of this object is assembled from various definitions in the IVAO Resource Metadata document.  Here, we provide a brief description of each field for easy reference, along with a notation of its mapping to the Resource Metadata document (RM:field), where the reader may find more detailed information.
+</description>
+      <attribute>
+        <vodml-id>dataset.DataID.title</vodml-id>
+        <name>title</name>
+        <description>A free form string giving a title for the dataset.  (RM:Identity.Title)</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataID.datasetID</vodml-id>
+        <name>datasetID</name>
+        <description>If the dataset is registered with an external 'global index service' such as ADS, the publisher may include that identifier here.  This provides a common, persistent identifier for the dataset, and possible access point to follow for information on publications and other related datasets.  Note: the same dataset published at more than one location would have different Curation.publisherDID values, but the same DataID.datasetID.  eg: "ivo://ADS/Sa.CXO?obsid=1234", "ivo://ADS/sh.hut#ngc4151_141"
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataID.creatorDID</vodml-id>
+        <name>creatorDID</name>
+        <description>The dataset identifier assigned by the creator.  Here, the authority-id of the identifier must be that of the creator.  It is used to identify the original exposure of the dataset in an archive, and will remain static regardless of where the dataset is published.  The creator ID will not necessarily change even if the VO object in question is a cutout or is otherwise further processed.
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataID.version</vodml-id>
+        <name>version</name>
+        <description>Version assigned by the creator, reflecting the production version of the dataset.  This value should only be changed by the creator, upon the new release of a dataset.  There are no format restrictions or specifications on the versioning scheme.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataID.date</vodml-id>
+        <name>date</name>
+        <description>Data processing or creation date (RM:Curation.Date).</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.DataID.creationType</vodml-id>
+        <name>creationType</name>
+        <description>The dataset creation type describes the nature or genre of the content.  (RM:General.Type).
+Note: This field provides information about the process by which the dataset was created.  As the Observation/Experiment model matures, this may evolve into a provenance element on the Experiment type.</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.CreationType</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>dataset.DataID.creator</vodml-id>
+        <name>creator</name>
+        <description>The institution or entity which created the dataset.</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Creator</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>dataset.DataID.contributor</vodml-id>
+        <name>contributor</name>
+        <description>Persons or entities who contributed to the generation of the scientific content of the dataset.  Users of the dataset should include these in subsequent credits and acknowledgements. (RM:Curation.Contributor)</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Contributor</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>dataset.DataID.collection</vodml-id>
+        <name>collection</name>
+        <description>The dataset is associated with zero or more Collections (instrument name, survey name, etc.) .  Each instance identifies a tag indicating some degree of compatibility with other data sharing the same Collection properties.</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Collection</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Curation</vodml-id>
+      <name>Curation</name>
+      <description>The Curation object provides metadata assigned by the entity responsible for the support of the dataset content as well as identifying metadata about that entity.  It is assembled from definitions provided by the IVOA standard document, "Resource Metadata for the Virtual Observatory; Version 1.12"  (Resource Metadata).  Here, we provide a brief description of each field for easy reference, along with a notation of its mapping to the Resource Metadata document (RM:field), where the reader may find more detailed information.
+</description>
+      <attribute>
+        <vodml-id>dataset.Curation.publisherDID</vodml-id>
+        <name>publisherDID</name>
+        <description>IVOA dataset identifier assigned by the publisher to uniquely identify the dataset within its holdings.  Typically, the basis of this identifier will be the publisher ID.  However, if the publisherchooses to use a 'global index service' such as ADS to obtain persistent identifiers for their datasets, rather than generate their own, that identifier should be used both here and for DataID.datasetID.  Note: this model also defines a creator dataset ID (DataID.creatorDID), these will differ if the publishing entity is not the creator of the dataset.  Values are to be expressed as dataset identifiers using the syntax described in "IVOA Identifiers"</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.Curation.version</vodml-id>
+        <name>version</name>
+        <description>Version of the curated dataset, assigned by the publisher.  This is an independent versioning from DataID.version that allows the publisher to track changes to the high level dataset metadata (e.g. curation metadata, identifiers, etc.) without effecting the creator defined dataset version.  The value may be based on the DataID.version (e.g. by adding a sub-version extension), or an independent versioning.  There are no format restrictions on the value.  (RM:Curation.Version)
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.Curation.releaseDate</vodml-id>
+        <name>releaseDate</name>
+        <description>Date the curated dataset was last modified.  (RM:Curation.Date)</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>dataset.Curation.rights</vodml-id>
+        <name>rights</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:dataset.RightsType</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>dataset.Curation.publisher</vodml-id>
+        <name>publisher</name>
+        <description>The entity making the data available.  (RM:Curation.Publisher)</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Publisher</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>dataset.Curation.contact</vodml-id>
+        <name>contact</name>
+        <description>Contact information of the person/entity responsible for the content of the dataset.  We recommend using a generic 'helpdesk' type contact rather than individuals whose information may more easily become obsolete. (RM:Curation.Contact)</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Contact</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>dataset.Curation.reference</vodml-id>
+        <name>reference</name>
+        <description>Zero or more bibliographic or documentation references associated with the dataset.  Each instance provides a single forward link to a major publication which references the dataset.  (RM:General.Source)</description>
+        <datatype>
+          <vodml-ref>provenance:dataset.Publication</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Publisher</vodml-id>
+      <name>Publisher</name>
+      <description>Publisher is modeled as a Role played by the organization or entity making the Dataset available.</description>
+      <extends>
+        <vodml-ref>provenance:party.Role</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>dataset.Publisher.publisherID</vodml-id>
+        <name>publisherID</name>
+        <description>IVOA resource identifier associated with the publisher and registered with an IVOA compliant registry  (eg: ivo://mast.stsci.edu).  Values are to be expressed using the syntax described in "IVOA Identifiers".
+</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Contact</vodml-id>
+      <name>Contact</name>
+      <description>Contact information for a person or entity.
+
+Contact is modeled as a Role played by a particular person or entity (Party).  We subset the type of Party to include only Individuals.  This includes both a physical person, or proxy service such as a helpdesk.
+</description>
+      <extends>
+        <vodml-ref>provenance:party.Role</vodml-ref>
+      </extends>
+      <reference>
+        <vodml-id>dataset.Contact.party</vodml-id>
+        <name>party</name>
+        <description>Reference to the Individual associated with this role.</description>
+        <datatype>
+          <vodml-ref>provenance:party.Individual</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Creator</vodml-id>
+      <name>Creator</name>
+      <description>Creator is modeled as a Role played by the organization or entity which created the Dataset.
+</description>
+      <extends>
+        <vodml-ref>provenance:party.Role</vodml-ref>
+      </extends>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Contributor</vodml-id>
+      <name>Contributor</name>
+      <description>Contributor is modeled as a Role played by a Party or entity who participated in the generation of the Dataset.</description>
+      <extends>
+        <vodml-ref>provenance:party.Role</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>dataset.Contributor.acknowledgment</vodml-id>
+        <name>acknowledgment</name>
+        <description>Acknowledgment expression for the contributor.  Users of the dataset should include these in subsequent credits and acknowledgements.  The expression should be formatted as desired by the contributor.</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Publication</vodml-id>
+      <name>Publication</name>
+      <description>Any referenceable publication associated with a Dataset.</description>
+      <attribute>
+        <vodml-id>dataset.Publication.refCode</vodml-id>
+        <name>refCode</name>
+        <description>Reference code of the publication.  Values should be expressed as a URL, or bibcode (discernible as a 19 character string beginning with 4 digits).  Free text references are allowed, but discouraged.</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>dataset.Collection</vodml-id>
+      <name>Collection</name>
+      <description>A generic organizational construct which allows Datasets to be associated with each other by a set of Collection properties.  Datasets tagged with the same Collection properies can be assumed to have some degree of compatibility.</description>
+      <attribute>
+        <vodml-id>dataset.Collection.name</vodml-id>
+        <name>name</name>
+        <description>The values are generally defined by the creating entity.  Examples: "WFC", "Sloan", "BFS Spectrograph", "MSX Galactic Plane Survey".
+</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>party</vodml-id>
+    <name>party</name>
+    <description>We include a simple Party model for associating an Entity with a Role that Entity is playing.  For example, a particular Individual can be both a Contact and Publisher of a dataset.</description>
+    <objectType abstract="true">
+      <vodml-id>party.Party</vodml-id>
+      <name>Party</name>
+      <description>Abstract head of the set of classes describing various entities. </description>
+      <attribute>
+        <vodml-id>party.Party.name</vodml-id>
+        <name>name</name>
+        <description>Name of the Party or entity.  All entities are assumed to have a name.</description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>party.Role</vodml-id>
+      <name>Role</name>
+      <description>Abstract class for the entity role.  Models should extend this class to define local roles which are played by various entities/parties.</description>
+      <reference>
+        <vodml-id>party.Role.party</vodml-id>
+        <name>party</name>
+        <description>Reference to the Party or Entity which is associated with this role.</description>
+        <datatype>
+          <vodml-ref>provenance:party.Party</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>party.Individual</vodml-id>
+      <name>Individual</name>
+      <description>Abstract head of the sub-set of Parties which describe a single individual.</description>
+      <extends>
+        <vodml-ref>provenance:party.Party</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>party.Individual.address</vodml-id>
+        <name>address</name>
+        <description>Mailing address for the person.  The value is expressed as a single string containing all components of the address. </description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>party.Individual.phone</vodml-id>
+        <name>phone</name>
+        <description>Phone number associated with the person.  The value is expressed as a string according to the format appropriate for the locale.</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>party.Individual.email</vodml-id>
+        <name>email</name>
+        <description>E-mail address of the Individual</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>party.Organization</vodml-id>
+      <name>Organization</name>
+      <description>Extension of Party for any Organization or Institution.</description>
+      <extends>
+        <vodml-ref>provenance:party.Party</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>party.Organization.address</vodml-id>
+        <name>address</name>
+        <description>Mailing address.  The value is expressed as a single string containing all components of the address. 
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>party.Organization.phone</vodml-id>
+        <name>phone</name>
+        <description>Phone number.  The value is expressed as a string according to the format appropriate for the locale.</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>party.Organization.email</vodml-id>
+        <name>email</name>
+        <description>E-mail address of the Organization.
+</description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>party.Organization.logo</vodml-id>
+        <name>logo</name>
+        <description>URL pointer to a graphical logo associated with the Organization.</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>provenance</vodml-id>
+    <name>provenance</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <enumeration>
+      <vodml-id>provenance.AgentRole</vodml-id>
+      <name>AgentRole</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <literal>
+        <vodml-id>provenance.AgentRole.Observer</vodml-id>
+        <name>Observer</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Creator</vodml-id>
+        <name>Creator</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Author</vodml-id>
+        <name>Author</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Editor</vodml-id>
+        <name>Editor</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Publisher</vodml-id>
+        <name>Publisher</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Operator</vodml-id>
+        <name>Operator</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Coordinator</vodml-id>
+        <name>Coordinator</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Provider</vodml-id>
+        <name>Provider</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+    </enumeration>
+
+    <objectType>
+      <vodml-id>provenance.Activity</vodml-id>
+      <name>Activity</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.Activity.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.label</vodml-id>
+        <name>label</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.startTime</vodml-id>
+        <name>startTime</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.endTime</vodml-id>
+        <name>endTime</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.annotation</vodml-id>
+        <name>annotation</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>provenance.Activity.wasGeneratedBy</vodml-id>
+        <name>wasGeneratedBy</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedBy</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Activity.used</vodml-id>
+        <name>used</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Used</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Activity.wasAssociatedWith</vodml-id>
+        <name>wasAssociatedWith</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasAssociatedWith</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Activity.parameter</vodml-id>
+        <name>parameter</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Parameter</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <reference>
+        <vodml-id>provenance.Activity.activityDescription</vodml-id>
+        <name>activityDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Activity.activity</vodml-id>
+        <name>activity</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ActivityDescription</vodml-id>
+      <name>ActivityDescription</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.label</vodml-id>
+        <name>label</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.type</vodml-id>
+        <name>type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.subtype</vodml-id>
+        <name>subtype</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.description</vodml-id>
+        <name>description</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.docuLink</vodml-id>
+        <name>docuLink</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>provenance.ActivityDescription.usedDescription</vodml-id>
+        <name>usedDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.ActivityDescription.wasGeneratedByDescription</vodml-id>
+        <name>wasGeneratedByDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.ActivityDescription.parameterDescription</vodml-id>
+        <name>parameterDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Entity</vodml-id>
+      <name>Entity</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.Entity.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.label</vodml-id>
+        <name>label</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.type</vodml-id>
+        <name>type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.annotation</vodml-id>
+        <name>annotation</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.access</vodml-id>
+        <name>access</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>provenance.Entity.wasGeneratedBy</vodml-id>
+        <name>wasGeneratedBy</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedBy</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Entity.used</vodml-id>
+        <name>used</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Used</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Entity.wasAttributedTo</vodml-id>
+        <name>wasAttributedTo</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasAttributedTo</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <reference>
+        <vodml-id>provenance.Entity.entityDescription</vodml-id>
+        <name>entityDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Entity.progenitor</vodml-id>
+        <name>progenitor</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.EntityDescription</vodml-id>
+      <name>EntityDescription</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.label</vodml-id>
+        <name>label</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.annotation</vodml-id>
+        <name>annotation</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.dataproduct_type</vodml-id>
+        <name>dataproduct_type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.dataproduct_subtype</vodml-id>
+        <name>dataproduct_subtype</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.level</vodml-id>
+        <name>level</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.docu_link</vodml-id>
+        <name>docu_link</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>provenance.EntityDescription.wasGeneratedByDescription</vodml-id>
+        <name>wasGeneratedByDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.EntityDescription.usedDescription</vodml-id>
+        <name>usedDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.EntityDescription.dataset</vodml-id>
+        <name>dataset</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>Dataset Metadata:dataset</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Used</vodml-id>
+      <name>Used</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <reference>
+        <vodml-id>provenance.Used.usedDescription</vodml-id>
+        <name>usedDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasGeneratedBy</vodml-id>
+      <name>WasGeneratedBy</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <reference>
+        <vodml-id>provenance.WasGeneratedBy.wasGeneratedByDescription</vodml-id>
+        <name>wasGeneratedByDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasGeneratedByDescription</vodml-id>
+      <name>WasGeneratedByDescription</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.WasGeneratedByDescription.role</vodml-id>
+        <name>role</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Agent</vodml-id>
+      <name>Agent</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.Agent.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.name</vodml-id>
+        <name>name</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <collection>
+        <vodml-id>provenance.Agent.party</vodml-id>
+        <name>party</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:party.Party</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Agent.wasAttributedTo</vodml-id>
+        <name>wasAttributedTo</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasAttributedTo</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+      <collection>
+        <vodml-id>provenance.Agent.wasAssociatedWith</vodml-id>
+        <name>wasAssociatedWith</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasAssociatedWith</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasAssociatedWith</vodml-id>
+      <name>WasAssociatedWith</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.WasAssociatedWith.role</vodml-id>
+        <name>role</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasAttributedTo</vodml-id>
+      <name>WasAttributedTo</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.WasAttributedTo.role</vodml-id>
+        <name>role</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ActivityFlow</vodml-id>
+      <name>ActivityFlow</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <extends>
+        <vodml-ref>provenance:provenance.Activity</vodml-ref>
+      </extends>
+      <collection>
+        <vodml-id>provenance.ActivityFlow.hadStep</vodml-id>
+        <name>hadStep</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.HadStep</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Collection</vodml-id>
+      <name>Collection</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <extends>
+        <vodml-ref>provenance:provenance.Entity</vodml-ref>
+      </extends>
+      <collection>
+        <vodml-id>provenance.Collection.hadMember</vodml-id>
+        <name>hadMember</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.HadMember</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.HadStep</vodml-id>
+      <name>HadStep</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <collection>
+        <vodml-id>provenance.HadStep.activity</vodml-id>
+        <name>activity</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </collection>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.HadMember</vodml-id>
+      <name>HadMember</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <reference>
+        <vodml-id>provenance.HadMember.entity</vodml-id>
+        <name>entity</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Parameter</vodml-id>
+      <name>Parameter</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.Parameter.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Parameter.value</vodml-id>
+        <name>value</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.Parameter.parameterDescription</vodml-id>
+        <name>parameterDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ParameterDescription</vodml-id>
+      <name>ParameterDescription</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.id</vodml-id>
+        <name>id</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.label</vodml-id>
+        <name>label</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.annotation</vodml-id>
+        <name>annotation</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.datatype</vodml-id>
+        <name>datatype</name>
+        <description>&lt;Enter note text here&gt;</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.unit</vodml-id>
+        <name>unit</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.Unit</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.ucd</vodml-id>
+        <name>ucd</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.utype</vodml-id>
+        <name>utype</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.UsedDescription</vodml-id>
+      <name>UsedDescription</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <attribute>
+        <vodml-id>provenance.UsedDescription.role</vodml-id>
+        <name>role</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+  </package>
+
+</vo-dml:model>
