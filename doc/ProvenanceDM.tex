@@ -7,6 +7,9 @@
 % make the text in pdf properly searchable
 \usepackage{lmodern}
 
+% use listings for including text files and code snippets
+\usepackage{listings}
+
 \title{IVOA Provenance Data Model}
 
 \ivoagroup{DM}
@@ -188,12 +191,12 @@ Curation.Version       & Entity.version     & version of the dataset\\
 Curation.Rights        & Entity.access      & access rights to the dataset; one of [...]\\
 Curation.Reference     & Entity.link        & link to publication\\
 Curation.Contact       & Agent.Id or name? & link to Agent with role contact\\
-DataProductType  & EntityDescription.type & subclass to EntityDescription\\
-DataProductSubType & EntityDescription.subtype & subclass to EntityDescription\\
-ObsDataset.calibLevel       & EntityDescription.level & subclass to EntityDescription, calibration level\\\hline
+DataProductType  & EntityDescription.dataproduct\_type & type of a dataproduct/entity\\
+DataProductSubType & EntityDescription.dataproduct\_subtype & subtype of a dataproduct/entity\\
+ObsDataset.calibLevel  & EntityDescription.level & (output) calibration level, integer between 0 and 3\\\hline
 \bottomrule
 \end{tabulary}
-\caption{Mapping between attributes from \class{Dataset}-classes from DatasetDM to classes in ProvenanceDM.}
+\caption{Mapping between attributes from \class{Dataset}-classes from Dataset Metadata Model to classes in ProvenanceDM.}
 \label{tab:datasetmapping}
 \end{table}
 
@@ -205,7 +208,8 @@ organizations, is similar to the \class{Party} class in the Dataset Metadata Mod
 In SimDM one also encounters a normalization similar to our split-up of descriptions from 
 actual data instances and executions of processes: the SimDM class ``experiment'' 
 is a type of \class{Activity} and its general, reusable description is called a ``protocol'',
-which can be considered as a type of this model's \class{ActivityDescription}. More is given in Table~\ref{tab:simdmmapping}.
+which can be considered as a type of this model's \class{ActivityDescription}. 
+More direct mappings between classes and attributes of both models are given in Table~\ref{tab:simdmmapping}.
 
 \begin{table}[h]
 \small
@@ -217,7 +221,7 @@ which can be considered as a type of this model's \class{ActivityDescription}. M
 Experiment      & Activity               & \\
 Experiment.name & Activity.label         & human readable name\\
 Experiment.executionTime  & Activity.endTime & end time of the execution of an activity \\
-Experiment.protocol & Activity.description\_link & reference to the protocol or description class \\
+Experiment.protocol & Activity.description\_ref & reference to the protocol or description class \\
 Protocol        & ActivityDescription    & \\
 Protocol.name   & ActivityDescription.label  & human readable name\\
 Protocol.referenceURL & ActivityDescription.docu\_link & reference to a webpage describing it\\
@@ -227,7 +231,7 @@ InputParameter       & ParameterDescription              & \\
 Party           & Agent                 & \\
 Party.name      & Agent.label & name of the agent \\
 Contact         & WasAssociatedWith/WasAttributedTo & \\
-Contact.role    & WasAssociatedWith.role/WasAttributedTo.role & role which the agent/party had for a certain experiment/protocol or activity/entity\\
+Contact.role    & WasAssociatedWith.role/ WasAttributedTo.role & role which the agent/party had for a certain experiment/protocol or activity/entity\\
 Contact.party    & WasAssociatedWith.agent, WasAttributedTo.agent & reference to the agent/party \\
 
 
@@ -273,8 +277,9 @@ versions of this working draft.
     \end{itemize}
 \item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
 \item Renamed \emph{Agent.name} to \emph{Agent.label}, so that each class has an id and a label.
-\item Renamed Section~\ref{sec:usecases-implementations} to stress that it deals with implementations
-
+\item Renamed Section~\ref{sec:usecases-implementations} to stress that it deals with implementations.
+\item Added links to provn and votable-serialization for HiPS-use case, added first part of provn as example in the HiPS-use case section.
+\item Corrected attribute names in Table~\ref{tab:datasetmapping}.
 
 \end{itemize}
 

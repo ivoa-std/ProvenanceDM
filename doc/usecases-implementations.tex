@@ -80,9 +80,61 @@ In the processing chain, HiPS can be seen as a kind of ``legacy level'' for obse
 
 An HiPS dataset can be generated either by Aladin in ``hipsgen'' mode or by other softwares.  The processing distinguishes 3 main different methods for estimating cell values: FIRST or NEAREST neighbour, Mean or Median of the neigbouring pixels. Up to 50 parameters can help to tune the processing, among which can be found the higher resolution HealPix order, sky background value to be substracted, border width or mask to apply to original images to avoid including bad area in the computing, etc.
 
-We will give below an example of provenance metadata for an HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI (Observatoire de Paris) with the MAMA facility and serialized in PROV-N format.
+An example of provenance metadata for a HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI (Observatoire de Paris) with the MAMA facility and serialized in PROV-N format is given at 
+\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}, the corresponding votable-format is available at \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-vot.xml}.
 
-TBD: HiPS in PROV-N.
+Here is an extract of the PROV-N serialization:
+
+\begin{verbatim}
+Entity
+( ivo://CDS/P/MAMA/ESO-R, 
+[
+prov:label = "ESO-R MAMA HIPS at CDS",
+prov:annotation = "This is the HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
+hips:HiPS_properties = "http://cds.u-strasbg.fr/hips/p/mama/eso-r/properties.txt",
+voprov:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in obscore 
+voprov:doculink = "http://cds.u-strasbg.fr/hips/documentation.html#structure",
+voprov:dataproduct_type = "voprov:hips_pixels",
+voprov:level = 3
+]
+)
+
+// Relationship
+WasAttributedTo(ivo://CDS/P/MAMA/ESO-R, ivo://cds, prov:role = "voprov:creator")
+
+Agent
+(ivo://cds,
+[
+voprov:Name = "CDS",
+voprov:contact = "question@astro.unistra.fr",
+prov:type = "Organisation"
+]
+) 
+
+WasGeneratedBy(ivo://CDS/P/MAMA/ESO-R, EHG1, -)
+
+Activity
+(EHG1,
+[
+prov:label = "ESO HiPS generation 1",
+prov:startTime = "2016-07-18",
+prov:endTime = "2016-07-20",
+voprov:annotation = "This activity is final generation of HiPS for ESO Mama survey",
+voprov:activityDescription = "HipsgenM"
+]
+)
+
+ActivityDescription 
+(HipsgenM,
+[
+prov:label = "HiPS Generation MEAN",
+prov:type = "HiPSgen",
+voprov:subtype = "HiPSgen_MEAN",
+voprov:doculink = "http://cds.u-strasbg.fr/HiPSGEN-Documentation"
+]
+)
+\end{verbatim}
+
 
 \subsection{Lightcurves use case}
 TBD. See Provenance webpage in IVOA Twiki for now.
