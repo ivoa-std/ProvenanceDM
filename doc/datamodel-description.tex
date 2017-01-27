@@ -436,8 +436,14 @@ entity. However, we introduced in Section~\ref{sec:activityflow} the additional 
 a subclass to \class{Activity} for grouping activities together. Thus we need to 
 weaken the constraint and allow more than one wasGeneratedBy-activity per entity. 
 
+The \class{WasGeneratedBy}-relation can have the optional attribute \emph{time} -- this is the time, when 
+the generation of the entity is finished. This corresponds to e.g. \emph{DataID.date} in 
+Dataset Metadata DM.
+%It therefore corresponds to the \emph{created}-time used in 
+%the Simulation Data Model (SimDM). 
+
 Each activity requires specific roles for each input or output entity, thus 
-we store this information on the description side, in the role-attributes for 
+we store this information with description classes, in the role-attributes for 
 the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
 For example, an activity for darkframe-subtraction requires two input images. But it is 
 very important to know which of the images is the raw image and 

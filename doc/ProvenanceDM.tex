@@ -183,6 +183,7 @@ DataID.collection    & HadMember.collectionId  & link to the collection to which
 DataID.creator       & Agent.name          & name of agent\\ 
 DataID.creatorDID    & AlternateOf.entityId     & id for the dataset given by the creator\\
 DataID.ObservationID & WasGeneratedBy.activityId  & identifier to everything describing the observation; maybe it belongs to entity?\\
+DataID.date          & WasGeneratedBy.time & date and time when the dataset was completely created\\
 Curation.PublisherDID  & Entity.id      & unique identifier for the dataset assigned by the publisher\\
 Curation.PublisherID & Agent.id  & link to the publisher; role: publisher, type: organization/astronomer private collection)\\
 Curation.Publisher     & Agent.name & name of the publisher\\
@@ -219,12 +220,12 @@ More direct mappings between classes and attributes of both models are given in 
 \head{Simulation DM} & \head{Provenance DM} & \head{Comment}\\
 \midrule
 Experiment      & Activity               & \\
-Experiment.name & Activity.label         & human readable name\\
-Experiment.executionTime  & Activity.endTime & end time of the execution of an activity \\
+Experiment.name & Activity.label         & human readable name; name attribute in SimDM is inherited from Resource-class\\
+Experiment.executionTime  & Activity.endTime & end time of the execution of an experiment/activity \\
 Experiment.protocol & Activity.description\_ref & reference to the protocol or description class \\
 Protocol        & ActivityDescription    & \\
 Protocol.name   & ActivityDescription.label  & human readable name\\
-Protocol.referenceURL & ActivityDescription.docu\_link & reference to a webpage describing it\\
+Protocol.referenceURL & ActivityDescription.doculink & reference to a webpage describing it\\
 % add Protocol.code, Protocol.version?
 ParameterSetting     & Parameter              & \\
 InputParameter       & ParameterDescription              & \\
