@@ -231,10 +231,10 @@ ParameterSetting     & Parameter              & value of an (input) parameter\\
 InputParameter       & ParameterDescription              & description of an (input) parameter\\
 Party           & Agent                 & responsible person or organization\\
 Party.name      & Agent.label & name of the agent \\
-Contact         & WasAssociatedWith/WasAttributedTo & \\
-Contact.role    & WasAssociatedWith.role/ WasAttributedTo.role & role which the agent/party had for a certain experiment/protocol or activity/entity\\
-Contact.party    & WasAssociatedWith.agent, WasAttributedTo.agent & reference to the agent/party \\
-
+Contact         & WasAssociatedWith & \\
+Contact.role    & WasAssociatedWith.role & role which the agent/party had for a certain experiment (activity); SimDM roles contain: \texttt{owner}, \texttt{creator}, \texttt{publisher}, \texttt{contributor}\\
+Contact.party    & WasAssociatedWith.agent & reference to the agent/party \\
+DataObject     & Entity        & a dataset, which can be/refer to a collection\\
 
 \bottomrule
 \end{tabulary}
