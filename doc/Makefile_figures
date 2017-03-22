@@ -1,0 +1,6 @@
+figures: figures.tex
+        pdflatex -shell-escape figures.tex
+        pdf2ps workflow-backwards.pdf workflow-backwards.eps
+        cp workflow-backwards.eps  O10-4_f1.eps
+        cp classes-overview-simplified.eps  O10-4_f2.eps
+
