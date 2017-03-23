@@ -108,8 +108,10 @@ all these classes and relations are given in the following section.
 \subsubsection{Entity and EntityDescription}
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
 form of images, tables, numbers, etc. But they can also be observation or 
-simulation log files or, in a wider sense, also observation proposals, scientific 
-articles, or manuals and other documents. An entity is not restricted to being
+simulation log files, files containing system information, environment variables, names and versions of packages, ambient conditions or, in a wider sense, also observation proposals, scientific 
+articles, or manuals and other documents. 
+
+An entity is not restricted to being
 a file. 
 It can even be just a number in a table, depending on how fine-grained the 
 provenance shall be described.
@@ -150,7 +152,7 @@ to \class{Entity}/\class{EntityDescription} are given in Section \ref{sec:dmlink
 \textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
 label       & prov:label & string & a label (to be displayed by clients)\\
 type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
-description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
+%description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
 annotation  & prov:description & string & text describing the entity in more detail\\
 access      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
 \bottomrule
@@ -290,7 +292,7 @@ label        & prov:label  & string & a label (to be displayed by clients)\\
 \textbf{startTime} & prov:startTime & datetime & start of an activity\\
 \textbf{endTime} & prov:endTime  & datetime & end of an activity\\
 annotation        & prov:description & string & additional explanations for the specific activity instance\\
-description\_ref  &  & foreign key/url & link to \class{ActivityDescription}\\
+%description\_ref  &  & foreign key/url & link to \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
@@ -310,7 +312,7 @@ Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
 label        & & string & a label (to be displayed by clients)\\
 type         & & string & type of the activity, from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
 subtype      & & string & more specific subtype of the activity\\
-annotation  & & string & additional free text description for the activity\\
+annotation  & & string & addi onal free text description for the activity\\
 %code         & & string & the code used for this process\\
 %version      & & string & a version number for the code\\
 doculink     & & url    & link to further documentation on this process, e.g. a 
