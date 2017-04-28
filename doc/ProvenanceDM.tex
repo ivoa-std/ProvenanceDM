@@ -53,7 +53,7 @@
 
 \newcommand{\note}[1]{%
     \noindent%
-    \textcolor{darkgrey}{{\sffamily Note:} \emph{#1}}%    
+    \textcolor{darkgrey}{{\sffamily Note:} \emph{#1}}%
 }
 
 
@@ -82,10 +82,10 @@
 
 
 % define new command for classes, in case we decide later on for a different style
-\newcommand{\class}[1]{\emph{#1}} 
+\newcommand{\class}[1]{\emph{#1}}
 
 \begin{document}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X} 
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \begin{abstract}
 This document describes how provenance information for astronomical datasets 
@@ -134,129 +134,27 @@ infrastructure that enable VO applications.
 \input{intro-VOarchitecture}
 \input{intro-previousefforts}
 
+
 \section{The provenance data model}
 \input{datamodel-description}
 
 
 %\section{Applying provenance -- Interactions with other Data models}\label{sec:dmlinks}
-\section{Links to other data models}\label{sec:dmlinks}
-%In this section we discuss how the Provenance Data Model interacts with
-%classes and attributes from other VO data models (especially DatasetDM).
-%(e.g. DatasetDM, SpectralDM (share some same classes), SimDM) 
-%and how provenance information can be stored.
-
-The Provenance Data Model can be applied without making links to any other 
-IVOA data model classes. For example when the data is not yet published, provenance information
-can be stored already, but a DatasetDM-description for the data may not yet exist.
-But if there are data models implemented for the datasets, then it is 
-very useful to connect the classes and attributes of the different models, 
-which we are going to discuss in this Section. These links help to avoid 
-unnecessary repetitions in the metadata of datsets, and also offer the possibility 
-to derive some basic provenance information from existing data model classes automatically.
-
-
-\subsection{Links with Dataset/Obscore Model}
-Entities and their descriptions in the Provenance Data Model 
-are tightly linked to the \class{DataSet}-class in the DatasetDM/ObsCore Data Model, as well as to 
-InputDataset and OutputDataSet in the Simulation Data Model \citep[SimDM,][]{std:SimDM}.
-Table \ref{tab:datasetmapping} maps classes and attributes from the Dataset Data Model 
-to concepts in the Provenance Data Model.
-
-
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../datamodel-diagrams/classes-relations-dms}
-%\caption{Links between Agent and Party, Entity and Dataset.}
-%\label{fig:class-relations-dm}
-%\end{figure}
-% --> a similar figure is already given in the sections on entity and agent.
-
-\begin{table}[h]
-\small
-\tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}lLp{4cm}@{}}
-\toprule
-\head{Dataset DM} & \head{Provenance DM} & \head{Comment}\\
-\midrule
-DataID.title      & Entity.label               & title of the dataset\\
-DataID.collection    & HadMember.collectionId  & link to the collection to which the dataset belongs\\
-DataID.creator       & Agent.name          & name of agent\\ 
-DataID.creatorDID    & AlternateOf.entityId     & id for the dataset given by the creator\\
-DataID.ObservationID & WasGeneratedBy.activityId  & identifier to everything describing the observation; maybe it belongs to entity?\\
-DataID.date          & WasGeneratedBy.time & date and time when the dataset was completely created\\
-Curation.PublisherDID  & Entity.id      & unique identifier for the dataset assigned by the publisher\\
-Curation.PublisherID & Agent.id  & link to the publisher; role: publisher, type: organization/astronomer private collection)\\
-Curation.Publisher     & Agent.name & name of the publisher\\
-Curation.Date          & Entity.releaseDate & release date of the dataset\\
-Curation.Version       & Entity.version     & version of the dataset\\
-Curation.Rights        & Entity.access      & access rights to the dataset; one of [...]\\
-Curation.Reference     & Entity.link        & link to publication\\
-Curation.Contact       & Agent.Id or name? & link to Agent with role contact\\
-DataProductType  & EntityDescription.dataproduct\_type & type of a dataproduct/entity\\
-DataProductSubType & EntityDescription.dataproduct\_subtype & subtype of a dataproduct/entity\\
-ObsDataset.calibLevel  & EntityDescription.level & (output) calibration level, integer between 0 and 3\\\hline
-\bottomrule
-\end{tabulary}
-\caption{Mapping between attributes from \class{Dataset}-classes from Dataset Metadata Model to classes in ProvenanceDM.}
-\label{tab:datasetmapping}
-\end{table}
-
-
-The \class{Agent} class, which is used for defining responsible persons and 
-organizations, is similar to the \class{Party} class in the Dataset Metadata Model and SimDM.
-
-\subsection{Links with Simulation Data Model}
-In SimDM one also encounters a normalization similar to our split-up of descriptions from 
-actual data instances and executions of processes: the SimDM class ``experiment'' 
-is a type of \class{Activity} and its general, reusable description is called a ``protocol'',
-which can be considered as a type of this model's \class{ActivityDescription}. 
-More direct mappings between classes and attributes of both models are given in Table~\ref{tab:simdmmapping}.
-
-\begin{table}[h]
-\small
-\tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}lLp{4cm}@{}}
-\toprule
-\head{Simulation DM} & \head{Provenance DM} & \head{Comment}\\
-\midrule
-Experiment      & Activity               & \\
-Experiment.name & Activity.label         & human readable name; name attribute in SimDM is inherited from Resource-class\\
-Experiment.executionTime  & Activity.endTime & end time of the execution of an experiment/activity \\
-Experiment.protocol & Activity.description\_ref & reference to the protocol or description class \\
-Protocol        & ActivityDescription    & \\
-Protocol.name   & ActivityDescription.label  & human readable name\\
-Protocol.referenceURL & ActivityDescription.doculink & reference to a webpage describing it\\
-% add Protocol.code, Protocol.version?
-ParameterSetting     & Parameter              & value of an (input) parameter\\
-InputParameter       & ParameterDescription              & description of an (input) parameter\\
-Party           & Agent                 & responsible person or organization\\
-Party.name      & Agent.label & name of the agent \\
-Contact         & WasAssociatedWith & \\
-Contact.role    & WasAssociatedWith.role & role which the agent/party had for a certain experiment (activity); SimDM roles contain: \texttt{owner}, \texttt{creator}, \texttt{publisher}, \texttt{contributor}\\
-Contact.party    & WasAssociatedWith.agent & reference to the agent/party \\
-DataObject     & Entity        & a dataset, which can be/refer to a collection\\
-
-\bottomrule
-\end{tabulary}
-\caption{Mapping between classes and attributes from SimDM to classes/attributes in ProvenanceDM.}
-\label{tab:simdmmapping}
-\end{table}
-
-
-
-
-\subsection{Further links to data models}
-More similarities and links to other data models will be detailed in future 
-versions of this working draft.
+\section{Links to other data models}
+\label{sec:dmlinks}
+\input{datamodel-links}
 
 
 \section{Accessing provenance information}
 \input{provaccess}
 
+
 \section{Discussion}
 \input{discussion}
 
-\section{Implementations of the data model for specific use cases}\label{sec:usecases-implementations}
+
+\section{Implementations of the data model for specific use cases}
+\label{sec:usecases-implementations}
 \input{usecases-implementations}
 
 
@@ -267,6 +165,7 @@ versions of this working draft.
 % Use itemize environments.
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
 \begin{itemize}
+\item Moved detailed implementation section from appendix to a separate document (implementation note)
 \item Removed description\_ref as attribute, since it's expressed by the corresponding link in the model anyway.
 \item More explanations on links to data models in Section~\ref{sec:dmlinks}.
 \item Introduced subsections for Section~\ref{sec:dmlinks}, added table with SimDM-links.
@@ -286,12 +185,12 @@ versions of this working draft.
 \end{itemize}
 
 
-\section{Implementation details}\label{sec:implementation-details}
-In this section we will give more details on the classes and attributes which were used 
-in implementations for each use case. This maybe needs to go into a different document, so it can 
-be updated without affecting this standard.
+% \section{Implementation details}\label{sec:implementation-details}
+% In this section we will give more details on the classes and attributes which were used 
+% in implementations for each use case. This maybe needs to go into a different document, so it can 
+% be updated without affecting this standard.
 
-TBD.
+% TBD.
 
 
 \bibliography{ivoatex/ivoabib,prov-refs}
