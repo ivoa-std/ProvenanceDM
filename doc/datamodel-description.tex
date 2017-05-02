@@ -1,3 +1,6 @@
+% updates Mireille  2017 April/May 2nd 
+%roles for Agents -updates  + funder
+% 
 In this section, we describe the currently discussed Provenance Data Model. We 
 start with an UML class diagram, explain the core elements and then give 
 in the following sections more details for each class and relation.
@@ -154,7 +157,7 @@ label       & prov:label & string & a label (to be displayed by clients)\\
 type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
 %description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
 annotation  & prov:description & string & text describing the entity in more detail\\
-access      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
+rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of entities. Mandatory attributes are marked in bold.
@@ -260,10 +263,7 @@ the \class{EntityDescription}. This class should therefore only be introduced if
     in order to hide complexity where necessary. They can be used for defining 
     different levels of detail (granularity).
 
-
 %\TODO{Find a really strong use case for Collections to convince everyone that they are useful/needed.}
-
-
 
 \subsubsection{Activity and ActivityDescription}
 
@@ -274,8 +274,6 @@ the \class{EntityDescription}. This class should therefore only be introduced if
 }
 \label{fig:activity-details}
 \end{figure}
-
-
 
 \begin{table}[h]
 
@@ -481,18 +479,17 @@ image stacking process.
 \toprule
 \head{Name} \\%& \head{Description}\\
 \midrule
-parameter \\%& \\
-dark frame \\%& \\
-calibration image \\%& \\
-raw image \\%& \\
-science-ready image \\%& \\
+config parameter \\%& \\
+auxiliary input (calibration image, dark frame, etc) \\%& \\
+main input (raw image for instance or science-ready images) \\%& \\
+result (image, or cube or spectrum) \\%& \\
 \bottomrule
 \end{tabulary}
 \caption{Example values for the entity roles as attributes in the 
 \class{UsedDescription} and \class{WasGeneratedByDescription}.}
 \label{tab:entity-roles}
 \end{table}
-
+% here we cross some notions encountered in parameter descriptions and Activity descriptions while describing parameters 
 
 In order to facilitate interoperability, the possible 
 entity-roles could be defined and described for each activity by the IVOA community, in a 
@@ -634,6 +631,8 @@ Agent       & Agent  & Party & \\
 Individual  & Person & Individual & a person, specified by name, email, address, 
       (though all these parts may change in time)\\
 Organization & Organization & Organization & a publishing house, institute or scientific project\\
+
+ 
 \bottomrule
 \end{tabulary}
 \caption{Types of agents}
@@ -717,10 +716,12 @@ contributor & prov:person & someone who contributed to something (but not enough
 editor & prov:person & editor of e.g. an article, before publishing\\
 creator & prov:person & someone who created a dataset, creators of articles or software are rather called ``author''\\
 curator & prov:person & someone who checked and corrected a dataset before publishing\\
+ & prov:organization & \\
 publisher & prov:organization \mbox{(maybe also person?)}& organization (publishing house, institute) that published something\\
 observer & prov:person & observer at the telescope\\
-operator & prov:person & someone performing a given task (executor?)\\
-coordinator/PI & prov:person & someone coordinating/leading a project\\
+operator & prov:person & someone performing a given task \\ % removed executor: ambiguous
+coordinator/PI & prov:person & someone coordinating/leading a project\\ % we should choose one word : PI?
+funder & prov:organization & agency or sponsor for a project as in Prov-N\\
 provider & prov:organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
 %(owner) & prov:person or prov:organization & Does anyone really own the data?\\
 \bottomrule
@@ -750,8 +751,12 @@ in a future version of this model, collected from (future) implementations of th
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
 id & prov:id & (qualified) string & unique identifier for an agent\\
-label & prov:name & string & a common name for this agent; e.g. first name and last name; project name, ...\\
+label & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
 type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
+% insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
+address & prov:label & string & Address of the agent both for Individual (Person) and Organization\\
+phone & prov:label & string & Contact phone number of the agent both for Individual (Person) and Organization\\
+email & prov:label & string & Contact email of the agent both for Individual (Person) and Organization\\
 \bottomrule
 \end{tabulary}
 \caption{Agent attributes}
