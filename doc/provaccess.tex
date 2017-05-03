@@ -11,82 +11,98 @@ The following is an example of provenance metadata in this PROV-VOTABLE format. 
 \begin{verbatim}
 
 <?xml version="1.0" encoding="UTF-8"?>
-<VOTABLE version="1.2" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<VOTABLE version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.ivoa.net/xml/VOTable/v1.2"
-  xsi:schemaLocation=
-  "http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/v1.2">
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/v1.2">
 
-<RESOURCE name="Stage1">
 
-<TABLE name="activities" utype="prov:activity">
-  <FIELD name="name" utype="prov:activity.name" datatype="char" 
-          arraysize="*"/>
-  <FIELD name="start" utype="prov:activity.startTime" datatype="char" 
-          arraysize="*" xtype="ISO8601"/>
-  <FIELD name ="stop" utype="prov:activity.endTime"  datatype="char" 
-          arraysize="*" xtype="ISO8601"/>
-  <FIELD name="methodname" utype="voprov:activityDesc.method_name" 
-          dataype="char" arraysize="*"/>
-  <FIELD name="version" utype="voprov:activityDesc.method_version" 
-          datatype="char" arraysize="*"/>  
-  <DATA>
-    <TABLEDATA>
-      <TR><TD>cta:telescope_stage_520</TD>
-          <TD>2015-07-30T09:45:00</TD><TD>2015-07-30T10:00:00</TD>
-          <TD>Telescope_stage</TD><TD>1.0</TD></TR>
-    </TABLEDATA>
-  </DATA>      
+<RESOURCE name="HiPS">
+
+<TABLE name="activities" utype="prov:Activity" >
+
+     
+     <FIELD name="ident" ucd="meta.id" utype ="prov:Activity.id" datatype="char" arraysize="*"/>
+     <FIELD name="label"  ucd="meta.title" utype="prov:Activity.label"  datatype="char" arraysize="*"/>
+     <FIELD name="start"  ucd="time.start" utype="prov:Activity.startTime" datatype="char" arraysize="*" xtype="ISO8601" />
+     <FIELD name ="stop" ucd="time.end" utype="prov:Activity.endTime"  datatype="char" arraysize="*" xtype="ISO8601"  />
+     <FIELD name="annotation" ucd="meta.description" utype="voprov:Activity.annotation" datatype="char" arraysize="*"  />
+     <FIELD name="description" utype="voprov:Activity.ActivityDescRef" datatype="char" arraysize="*"  />  
+
+<DATA>
+<TABLEDATA>
+<TR><TD>AlaRGB1</TD><TD>Aladin RGB 1</TD><TD>2017-04-18T17:28:00</TD><TD>2017-04-19T17:29:00</TD><TD>Aladin RGB image generation for NGC 6946 </TD><TD>AlaRGB</TD></TR>
+</TABLEDATA>
+</DATA>      
 </TABLE>
 
-<TABLE name="entities" utype="prov:entity">
-  <FIELD name="name" utype="prov:entitity.name" datatype="char" 
-          arraysize="*"/>
-  <FIELD name="label" utype="prov:label" datatype="char" 
-          arraysize="*"/>
-  <FIELD name="type" utype="prov:type" datatype="char" 
-          arraysize="*"/>
-  <FIELD name="run" utype="cta:runNumber" 
-          datatype="int"/>
-  <FIELD name="tel" utype="cta:telescope" datatype="char" 
-          arraysize="*"/>
-  <DATA>
-    <TABLEDATA>
-      <TR><TD>cta:Stage1Config_520</TD><TD></TD><TD>file</TD>
-          <TD></TD><TD></TD></TR>
-      <TR><TD>cta:run1000_EVT1</TD><TD>EVT1 file</TD><TD>file</TD>
-          <TD>1000</TD><TD>MST21</TD></TR>
-      <TR><TD>cta:run13000_EVT0</TD><TD>EVT0 file</TD><TD>file</TD>
-          <TD>13000</TD><TD>MST21</TD></TR>
-    </TABLEDATA>
-  </DATA>
+<TABLE name="activity descriptions" utype="prov:ActivityDesc" >
+
+     
+     <FIELD name="ident" ucd="meta.id" utype="prov:ActivityDesc.id" datatype="char" arraysize="*"/>
+     <FIELD name="label" ucd="meta.title" utype="prov:ActivityDesc.label" datatype="char" arraysize="*"/>
+     <FIELD name="type" ucd="meta.code.class" utype="prov:ActivityDesc.type" datatype="char" arraysize="*" />
+     <FIELD name ="subtype" ucd="meta.code.class" utype="voprov:ActivityDesc.subtype"  datatype="char" arraysize="*"/>
+     <FIELD name="description_link" ucd="meta.ref.url" utype="voprov:ActivityDesc.doculink" datatype="char" arraysize="*"  />  
+<DATA>
+<TABLEDATA>
+<TR><TD>AlaRGB</TD><TD>Aladin RGB image generation algorithm</TD><TD>RGBencoding</TD><TD></TD><TD>http://cds.u-strasbg.fr/aladin.gml</TD></TR>
+</TABLEDATA>
+</DATA>      
 </TABLE>
 
-<TABLE name="usedRelationship" utype="voprov:used" >
-  <FIELD name="head" datatype="char" arraysize="*" />
-  <FIELD name="tail" datatype="char" arraysize="*" />
-  <DATA>
-    <TABLEDATA>
-      <TR><TD>cta:telescope_stage_520</TD>
-          <TD>cta:run13000_EVT0</TD></TR>
-      <TR><TD>cta:telescope_stage_520</TD>
-          <TD>cta:Stage1Config_5250</TD></TR>
-    </TABLEDATA>
-  </DATA>
+
+<TABLE name="entities" utype="prov:Entity" >
+       <FIELD name="ident" ucd="meta.id" utype="prov:Entitity.id" datatype = "char" arraysize="*" />
+      <FIELD name="label" ucd="meta.title" utype="prov:Entity.label" datatype="char" arraysize="*"  />
+
+      <FIELD name="type" ucd="meta.code.class" utype="prov:Entity.type" datatype="char" arraysize="*" />
+
+       <FIELD name="annotation" ucd="meta.description" utype="voprov:Entity.annotation" datatype="char" arraysize="*" />
+
+       <FIELD name="acref" ucd="meta.ref.url" utype="voprov:Entity.access_reference" datatype="char" arraysize="*" />
+       <FIELD name="description link" ucd="meta.ref.url"  utype="voprov:Entity.doculink" datatype="char"   />
+
+       <FIELD name="dataproduct type" ucd="meta.code.class"  utype="voprov:Entity.data_productype" datatype="char" arraysize="*"  />
+       <FIELD name="level" ucd="meta.code" utype="voprov:Entity.level" datatype="int"   />  
+ 
+<DATA>
+<TABLEDATA>
+<TR><TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD><TD>RGB DSS2 image for NGC 6946</TD><TD></TD><TD>This is a PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946</TD><TD>file://home/bonnarel/Aladin/RGB/RGB_NGC6946.png</TD><TD>http://cds.u-strasbg.fr/aladin.gml</TD><TD>image</TD><TD>3</TD></TR>
+<TR><TD>ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143</TD><TD>POSSII Blue Survey DSS2 NGC6946</TD><TD></TD><TD>This is the DSS2 digitazition of the Blue POSSII Schmidt survey around NGC 6946</TD><TD>file://home/bonnarel/Aladin/RGB/POSSII.J-DSS2.143.fits</TD><TD>http://cds.u-strasbg.fr/aladin.gml</TD><TD>image</TD><TD>2</TD></TR>
+<TR><TD>ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143</TD><TD>POSSII Red Survey DSS2 NGC6946</TD><TD></TD><TD>This is the DSS2 digitazition of the Red POSSII Schmidt survey around NGC 6946</TD><TD>file://home/bonnarel/Aladin/RGB/POSSII.F-DSS2.143.fits</TD><TD>http://cds.u-strasbg.fr/aladin.gml</TD><TD>image</TD><TD>2</TD></TR>
+<TR><TD>ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143</TD><TD>POSSII Infra Red Survey DSS2 NGC6946</TD><TD></TD><TD>This is the DSS2 digitazition of the Infra red POSSII Schmidt survey around  NGC 6946</TD><TD>file://home/bonnarel/Aladin/RGB/POSSII.N-DSS2.143.fits</TD><TD>http://cds.u-strasbg.fr/aladin.gml</TD><TD>image</TD><TD>2</TD></TR>
+</TABLEDATA>
+</DATA>
 </TABLE>
 
-<TABLE name="wasGeneratedByRelationship" utype="voprov:wasGeneratedBy" >
-  <FIELD name="head" datatype="char" arraysize="*" />
-  <FIELD name="tail" datatype="char" arraysize="*" />
-  <DATA>
-    <TABLEDATA>
-      <TR><TD>cta:run1000_EVT1</TD><TD>cta:telescope_stage_520</TD></TR>
-    </TABLEDATA>
-  </DATA>
+<TABLE name="usedRelationship" utype="voprov:Used" >
+      <FIELD name="head" datatype="char" arraysize="*" />
+      <FIELD name="tail" datatype="char" arraysize="*" />
+      <FIELD name="role" datatype="char" utype="Used.role" arraysize="*" />
+<DATA>
+<TABLEDATA>
+<TR><TD>AlaRGB1</TD><TD>ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143</TD><TD>voprov:input</TD></TR>
+<TR><TD>AlaRGB1</TD><TD>ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143</TD><TD>voprov:input</TD></TR>
+<TR><TD>AlaRGB1</TD><TD>ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143</TD><TD>voprov:input</TD></TR>
+</TABLEDATA>
+</DATA>
 </TABLE>
+
+<TABLE name="WasGeneratedByRelationship" utype="voprov:WasGeneratedBy" >
+      <FIELD name="head" datatype="char" arraysize="*" />
+      <FIELD name="tail" datatype="char" arraysize="*" />
+      <FIELD name="role" datatype="char" utype="WasGeneratedBy.role" arraysize="*" />
+<DATA>
+<TABLEDATA>
+<TR><TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD><TD>AlaRGB1</TD><TD></TD></TR>
+</TABLEDATA>
+</DATA>
+</TABLE>
+
 
 </RESOURCE>
 </VOTABLE>
+
 \end{verbatim}
   
   
