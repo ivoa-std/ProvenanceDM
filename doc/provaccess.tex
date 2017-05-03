@@ -114,8 +114,8 @@ We envision two possible access protocols:
 \begin{itemize}
 \item ProvDAL: retrieve provenance information based on given id of a data entity or activity
 
-ProvDAL is a service the interface of which is organized around one main PARAMETER, the ``ID'' of the entity (obs\_publisher\_did of an ObSDataSet for example). The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query. FORMAT allows to choose the output format. STEP allows to discriminate between STEP=LAST which gives the last step in the provenance chain and STEP=ALL which gives the whole chain.
-Multiple ID PARAMETER is allowed in order to retrieve several data set provenance details at the same time.
+ProvDAL is a service whose interface is organized around one main PARAMETER, the ``ID'' of the entity (obs\_publisher\_did of an ObSDataSet for example). The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query. FORMAT allows to choose the output format. STEP allows to discriminate between STEP=LAST, which gives the last step in the provenance chain, and STEP=ALL, which gives the whole chain.
+Multiple ID parameters are allowed in order to retrieve several data sets' provenance details at the same time.
 \item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on 
 e.g. code version.
 
