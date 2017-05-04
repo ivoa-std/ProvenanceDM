@@ -1,8 +1,8 @@
 \subsection{Provenance Data Model serialization}
-There are three possible families of ProvenanceDM metadata serializations, examples for these can be found in the implementation section (\ref{sec:usecases-implementations}) and the links therein.
+There are two possible families of ProvenanceDM metadata serializations, examples for these can be found in the implementation section (\ref{sec:usecases-implementations}) and the links therein.
 \begin{itemize}
  \item W3C serializations: PROV\-N, PROV\-JSON, PROV\-XML. These are serializations of the W3C provenance data model. They allow the possibility to add additional IVOA or ad hoc attributes to the basic ones in each class. This way the IVOA models can produce W3C compliant serializations.
- \item Mapping of ProvenanceDM classes onto tables with appropriate relationships. This can allow management by a TAP service (the model mapping is then described with the TAP schema). The serialization will result in a single table according to the query.
+% \item Mapping of ProvenanceDM classes onto tables with appropriate relationships. This can allow management by a TAP service (the model mapping is then described with the TAP schema). The serialization will result in a single table according to the query.
 
  %\TODO{TAP SCHEMA of the ProvenanceDM datamodel: Maybe Mathieu can provide us with a copy of the TAP schema he designed ?}
 
@@ -16,7 +16,7 @@ The following is an example of provenance metadata in this PROV-VOTABLE format. 
   xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/v1.2">
 
 
-<RESOURCE name="HiPS">
+<RESOURCE name="RGB">
 
 <TABLE name="activities" utype="prov:Activity" >
 
@@ -76,9 +76,9 @@ The following is an example of provenance metadata in this PROV-VOTABLE format. 
 </TABLE>
 
 <TABLE name="usedRelationship" utype="voprov:Used" >
-      <FIELD name="head" datatype="char" arraysize="*" />
-      <FIELD name="tail" datatype="char" arraysize="*" />
-      <FIELD name="role" datatype="char" utype="Used.role" arraysize="*" />
+      <FIELD name="activity" ucd="meta.id" utype="prov:Activity.id" datatype="char" arraysize="*" />
+      <FIELD name="entity" ucd="meta.id" utype="prov:Entity.id" datatype="char" arraysize="*" />
+      <FIELD name="role" datatype="char" utype="voprov:Used.role" arraysize="*" />
 <DATA>
 <TABLEDATA>
 <TR><TD>AlaRGB1</TD><TD>ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143</TD><TD>voprov:input</TD></TR>
@@ -89,9 +89,9 @@ The following is an example of provenance metadata in this PROV-VOTABLE format. 
 </TABLE>
 
 <TABLE name="WasGeneratedByRelationship" utype="voprov:WasGeneratedBy" >
-      <FIELD name="head" datatype="char" arraysize="*" />
-      <FIELD name="tail" datatype="char" arraysize="*" />
-      <FIELD name="role" datatype="char" utype="WasGeneratedBy.role" arraysize="*" />
+      <FIELD name="entity" ucd="meta.id" utype="prov:Entity.id" datatype="char" arraysize="*" />
+      <FIELD name="activity" ucd="meta.id" utype="prov:Activity.id"  datatype="char" arraysize="*" />
+      <FIELD name="role" datatype="char" utype="voprov:WasGeneratedBy.role" arraysize="*" />
 <DATA>
 <TABLEDATA>
 <TR><TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD><TD>AlaRGB1</TD><TD></TD></TR>
@@ -108,18 +108,22 @@ The following is an example of provenance metadata in this PROV-VOTABLE format. 
   
 \end{itemize}
 
+Such serializations can be retrieved through Access protocols (see \ref{AccessPro} ) or directly integrated in datasets headers or "associated metadata" in order to provide provenance metadata for these datasets. 
+
 
 \subsection{Access protocols}
+\label{AccessPro}
 We envision two possible access protocols:
 \begin{itemize}
 \item ProvDAL: retrieve provenance information based on given id of a data entity or activity
 
-ProvDAL is a service whose interface is organized around one main PARAMETER, the ``ID'' of the entity (obs\_publisher\_did of an ObSDataSet for example). The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query. FORMAT allows to choose the output format. STEP allows to discriminate between STEP=LAST, which gives the last step in the provenance chain, and STEP=ALL, which gives the whole chain.
-Multiple ID parameters are allowed in order to retrieve several data sets' provenance details at the same time.
+ProvDAL is a service the interface of which is organized around one main PARAMETER, the ``ID'' of the entity (obs\_publisher\_did of an ObSDataSet for example). The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query. FORMAT allows to choose the output format. STEP allows to discriminate between STEP=LAST which gives the last step in the provenance chain and STEP=ALL which gives the whole chain.
+Multiple ID PARAMETER is allowed in order to retrieve several data set provenance details at the same time.
 \item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on 
 e.g. code version.
 
-ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema (see above). The result of any query is a single table joining information coming from one or several ``provenance'' tables available in the database. 
+ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema. The mapping of ProvenanceDM classes and attributes onto tables and colomns of the schema with the appropriate relationships, datatypes, units, utypes and ucds is done similarly to the PROV-VOTABLE serialization. The query response will result in a single table according to the query.
+ This  single table is joining information coming from one or several ``provenance'' tables available in the database. 
 
 A special case is considered where ProvenanceDM and ObsCore are both implemented in the same TAP service and queried together. The TAP response is then providing an Obscore table with a ProvenanceDM extension. We can imagine that in the future this could be hard-coded and registered as an ObsTapProv service. 
 
