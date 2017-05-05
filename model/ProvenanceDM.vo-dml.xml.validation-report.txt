@@ -1,0 +1,258 @@
+
+-------
+error:
+-------provenance:provenance.WasGeneratedBy is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.Used is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasAssociatedWith is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.UsedDescription is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasGeneratedByDescription is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasGeneratedBy is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.Used is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasAttributedTo is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasGeneratedByDescription is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.UsedDescription is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasAttributedTo is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------provenance:provenance.WasAssociatedWith is used more than once, namely 2 times as target of composition relation.
+ (this message will repeat itself 2 times!)
+    
+-------
+error:
+-------
+datatype  of ivoa.IntegerQuantity.value is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.Observation.observationID is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.ObsConfig.bandpass is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.ObsConfig.datasource is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.BaseTarget.name is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.BaseTarget.description is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.Target.objectClass is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.AstroTarget.objectClass is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.AstroTarget.spectralClass is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.Instrument.name is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.Proposal.identifier is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.ObsDataset.calibLevel is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of experiment.DerivedScalar.name is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.DataModel.name is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.DataModel.prefix is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.Dataset.dataProductSubtype is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.DataID.title is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.DataID.version is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.Curation.version is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.Contributor.acknowledgment is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.Publication.refCode is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of dataset.Collection.name is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Party.name is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Individual.address is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Individual.phone is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Individual.email is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Organization.address is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Organization.phone is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of party.Organization.email is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype Dataset Metadata:dataset of collection provenance.EntityDescription.dataset is not an object type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of provenance.Parameter.id is not a value type but a 'ERROR'
+    
+-------
+error:
+-------
+datatype  of provenance.Parameter.value is not a value type but a 'ERROR'
+    [schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:52:21: cvc-pattern-valid: Value '' is not facet-valid with respect to pattern '[\w_\-]+:[\w\-/\._]+' for type 'VODMLREF'.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:52:21: cvc-type.3.1.3: The value '' of element 'vodml-ref' is not valid.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:63:21: cvc-pattern-valid: Value '' is not facet-valid with respect to pattern '[\w_\-]+:[\w\-/\._]+' for type 'VODMLREF'.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:63:21: cvc-type.3.1.3: The value '' of element 'vodml-ref' is not valid.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:144:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:236:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:306:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:321:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:363:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:373:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:404:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:423:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:433:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:497:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:514:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:571:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:671:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:873:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:883:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:927:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:970:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1006:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1096:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1232:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1247:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1263:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1286:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1322:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1331:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1340:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1359:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1368:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:1378:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:2054:58: cvc-pattern-valid: Value 'Dataset Metadata:dataset' is not facet-valid with respect to pattern '[\w_\-]+:[\w\-/\._]+' for type 'VODMLREF'.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:2054:58: cvc-type.3.1.3: The value 'Dataset Metadata:dataset' of element 'vodml-ref' is not valid.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:2357:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml:2368:23: cvc-complex-type.2.4.a: Invalid content was found starting with element 'multiplicity'. One of '{datatype}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM.vo-dml.xml is not a valid XML document
