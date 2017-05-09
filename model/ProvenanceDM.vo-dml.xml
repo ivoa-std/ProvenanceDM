@@ -3,11 +3,10 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1.0 http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vo-dml-v1.0.xsd">
   <name>provenance</name>
-  <description>This document provides a data model describing the structure and content of generic Dataset metadata for the IVOA.  This is a high-level model which is to be referenced and extended by other models describing specific types of Datasets and Data products.  In this document, we specify the generic Dataset, as well as an ObservationDataset model which covers the class of Datasets which are derived from an Observation.  At the time of this writing, there is no formal Observation-Experiment model for the IVOA, so we include a hypothetical Observation-Experiment model to serve as a placeholder. 
-</description>
+  <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-05-09T14:30:03</lastModified>
+  <lastModified>2017-05-09T14:48:57</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -136,6 +135,9 @@
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
+        <datatype>
+          <vodml-ref>provenance:integer</vodml-ref>
+        </datatype>
         <multiplicity>
           <minOccurs>1</minOccurs>
           <maxOccurs>1</maxOccurs>
@@ -788,20 +790,6 @@
       <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
-      <attribute>
-        <vodml-id>provenance.Used.role</vodml-id>
-        <name>role</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <datatype>
-          <vodml-ref>provenance:string</vodml-ref>
-        </datatype>
-        <multiplicity>
-          <minOccurs>1</minOccurs>
-          <maxOccurs>1</maxOccurs>
-        </multiplicity>
-      </attribute>
       <reference>
         <vodml-id>provenance.Used.usedDescription</vodml-id>
         <name>usedDescription</name>
@@ -824,20 +812,6 @@
       <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
-      <attribute>
-        <vodml-id>provenance.WasGeneratedBy.role</vodml-id>
-        <name>role</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <datatype>
-          <vodml-ref>provenance:string</vodml-ref>
-        </datatype>
-        <multiplicity>
-          <minOccurs>1</minOccurs>
-          <maxOccurs>1</maxOccurs>
-        </multiplicity>
-      </attribute>
       <reference>
         <vodml-id>provenance.WasGeneratedBy.wasGeneratedByDescription</vodml-id>
         <name>wasGeneratedByDescription</name>
@@ -1090,6 +1064,9 @@
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
         <multiplicity>
           <minOccurs>1</minOccurs>
           <maxOccurs>1</maxOccurs>
@@ -1101,6 +1078,9 @@
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
         <multiplicity>
           <minOccurs>1</minOccurs>
           <maxOccurs>1</maxOccurs>
