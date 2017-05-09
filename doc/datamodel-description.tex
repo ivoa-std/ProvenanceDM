@@ -153,7 +153,7 @@ to \class{Entity}/\class{EntityDescription} are given in Section \ref{sec:dmlink
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
-label       & prov:label & string & a label (to be displayed by clients)\\
+name       & prov:label & string & a human-readable name for the entity (to be displayed by clients)\\
 type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
 %description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
 annotation  & prov:description & string & text describing the entity in more detail\\
@@ -203,12 +203,13 @@ and entities (see Section \ref{sec:entity-activity-relations}).
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id} & & (qualified) string & a unique identifier for this description\\
-label       & & string & a name or label for the entity description\\
-annotation  & & string & a decription for this kind of entity\\
+name       & & string & a human-readable name for the entity description\\
+annotation  & & string & a decriptive text for this kind of entity\\
 doculink    & & url & link to more documentation\\
-dataproduct\_ type  & & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
-dataproduct\_ subtype & & string       & from ObsCore data model, more specific subtype\\
-level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
+% removed the obscore attributes, since specific for observations only, not applicable to configuration entities etc.
+% dataproduct\_ type  & & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
+% dataproduct\_ subtype & & string       & from ObsCore data model, more specific subtype\\
+% level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{EntityDescription}. For simple use cases, 
@@ -286,7 +287,7 @@ the \class{EntityDescription}. This class should therefore only be introduced if
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id} & prov:id  & (qualified) string & a unique id for this activity (unique in its realm)\\
-label        & prov:label  & string & a label (to be displayed by clients)\\
+name        & prov:label  & string & a human-readable name (to be displayed by clients)\\
 \textbf{startTime} & prov:startTime & datetime & start of an activity\\
 \textbf{endTime} & prov:endTime  & datetime & end of an activity\\
 annotation        & prov:description & string & additional explanations for the specific activity instance\\
@@ -307,10 +308,10 @@ Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id}  & & string & a unique id for this activity description (unique in its realm)\\
-label        & & string & a label (to be displayed by clients)\\
+name         & & string & a human-readable name (to be displayed by clients)\\
 type         & & string & type of the activity, from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
 subtype      & & string & more specific subtype of the activity\\
-annotation  & & string & addi onal free text description for the activity\\
+annotation  & & string & additional free text description for the activity\\
 %code         & & string & the code used for this process\\
 %version      & & string & a version number for the code\\
 doculink     & & url    & link to further documentation on this process, e.g. a 
@@ -367,7 +368,7 @@ and using the ActivityFlow (right side).
 \includegraphics[width=1\textwidth]{../datamodel-diagrams/images/provgraph-activityflow}
 \caption{An example provenance graph. The detailed version is shown on the left side. It also shows
 the shortcut \class{WasInformedBy} to connect two activities, which could be used if the entity e2 
-would not be needed anywhere else. 
+would not be needed anywhere else.
 An ActivityFlow can be used to ``hide'' a part of the provenance graph as is shown on the right side.
 Activities are marked by blue rectangles, entities by yellow ellipses.}
 \label{fig:provgraph-activityflow}
@@ -475,17 +476,19 @@ image stacking process.
 
 \begin{table}[h]
 \small
-\begin{tabulary}{1.0\textwidth}{@{}L@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lL@{}}
 \toprule
-\head{Name} \\%& \head{Description}\\
+\head{Role} & \head{Example entities}\\
 \midrule
-config parameter \\%& \\
-auxiliary input (calibration image, dark frame, etc) \\%& \\
-main input (raw image for instance or science-ready images) \\%& \\
-result (image, or cube or spectrum) \\%& \\
+configuration & configuration file \\ %& used for entities that contain configuration details for an activity\\
+auxiliary input & calibration image, dark frame, etc. \\%& \\
+main input & raw image, science-ready images \\%& used for entities that are the main input for an activity\\
+main result & image, cube or spectrum \\%& used for entities that are the main result of an activity\\
+log & logging output file \\%& used for logging output \\
+red & image used for red channel of a composite activity\\%& used for images that will be used as the red channel of a composite activity\\
 \bottomrule
 \end{tabulary}
-\caption{Example values for the entity roles as attributes in the 
+\caption{Examples for entity roles as attributes in the 
 \class{UsedDescription} and \class{WasGeneratedByDescription}.}
 \label{tab:entity-roles}
 \end{table}
@@ -545,8 +548,8 @@ To enable the latter solution, we add a \class{Parameter} class along with a \cl
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id}      & & string & parameter unique identifier\\
-description\_ref   & & foreign key/url & link to \emph{ParameterDescription}\\
-label            & & string & parameter name, if no link to ParameterDescription is given\\
+%description\_ref   & & foreign key/url & link to \emph{ParameterDescription}\\
+%name            & & string & parameter name, if no link to ParameterDescription is given\\
 \textbf{value}   & & (value dependent) & the value of the parameter\\
 \bottomrule
 \end{tabulary}
@@ -562,7 +565,7 @@ label            & & string & parameter name, if no link to ParameterDescription
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id}  & & string & parameter unique identifier\\
-label         & & string & parameter name\\
+\textbf{name} & & string & parameter name\\
 annotation & & string & additional free text description for the parameter\\
 datatype    & & string & datatype of the parameter \\
 unit           & & string & physical unit of the parameter\\
@@ -625,17 +628,17 @@ our use cases.
 \begin{tabulary}{1.0\textwidth}{@{}lllL@{}}
 \multicolumn{4}{c}{\textbf{AgentType}}\\
 \toprule
-\head{Class} & \head{W3C ProvDM} & \head{DatasetDM} &\head{Comment} \\
+\head{Class or type} & \head{W3C ProvDM} & \head{DatasetDM} &\head{Comment} \\
 \midrule
 Agent       & Agent  & Party & \\
 Individual  & Person & Individual & a person, specified by name, email, address, 
       (though all these parts may change in time)\\
 Organization & Organization & Organization & a publishing house, institute or scientific project\\
 
- 
+
 \bottomrule
 \end{tabulary}
-\caption{Types of agents}
+\caption{Agent class and types of agents/subclasses in this data model, compared to W3C ProvDM and DatasetDM.}
 \label{tab:agent-types}
 \end{center}
 \end{table}
@@ -690,15 +693,14 @@ following relation classes:
 
 We adopted here the same naming scheme as was used in W3C ProvDM.
 Note that the attributed-to-agent for a dataset may be different from the 
-agent that is associated with the activity that created an entity. 
+agent that is associated with the activity that created an entity.
 Someone who is performing a task is not necessarily given full attribution, 
 especially if he acts on behalf of someone else (the project, university, ...).
 
 In order to make it clearer what an agent is useful for, we suggest the
 possible roles an agent can have (along with descriptions partially taken from RM)
-in Table~\ref{tab:agent-roles}. 
-For comparison, SimDM contains following roles 
-for their \emph{Contact} class: 
+in Table~\ref{tab:agent-roles}.
+For comparison, SimDM contains following roles for their \emph{Contact} class:
 owner, creator, publisher and contributor.
 
 
@@ -709,21 +711,21 @@ owner, creator, publisher and contributor.
 \begin{tabulary}{1.0\textwidth}{@{}lp{3cm}L@{}}
 \multicolumn{3}{c}{\textbf{AgentRoles}}\\
 \toprule
-\head{prov:role} & \head{prov:type} & \head{Comment} \\
+\head{vorpov:role} & \head{voprov:type} & \head{Comment} \\
 \midrule
-author & prov:person & someone who wrote an article, software, proposal\\
-contributor & prov:person & someone who contributed to something (but not enough to gain authorship)\\
-editor & prov:person & editor of e.g. an article, before publishing\\
-creator & prov:person & someone who created a dataset, creators of articles or software are rather called ``author''\\
-curator & prov:person & someone who checked and corrected a dataset before publishing\\
- & prov:organization & \\
-publisher & prov:organization \mbox{(maybe also person?)}& organization (publishing house, institute) that published something\\
-observer & prov:person & observer at the telescope\\
-operator & prov:person & someone performing a given task \\ % removed executor: ambiguous
-coordinator/PI & prov:person & someone coordinating/leading a project\\ % we should choose one word : PI?
-funder & prov:organization & agency or sponsor for a project as in Prov-N\\
-provider & prov:organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
-%(owner) & prov:person or prov:organization & Does anyone really own the data?\\
+author & voprov:Individual & someone who wrote an article, software, proposal\\
+contributor & voprov:Individual & someone who contributed to something (but not enough to gain authorship)\\
+editor & voprov:Individual & editor of e.g. an article, before publishing\\
+creator & voprov:Individual & someone who created a dataset, creators of articles or software are rather called ``author''\\
+curator & voprov:Individual & someone who checked and corrected a dataset before publishing\\
+ & voprov:Organization & \\
+publisher & voprov:Organization {(maybe also Individual?)}& organization (publishing house, institute) that published something\\
+observer & voprov:Individual & observer at the telescope\\
+operator & voprov:Individual & someone performing a given task \\ % removed executor: ambiguous
+coordinator/PI & voprov:Individual & someone coordinating/leading a project\\ % we should choose one word : PI?
+funder & voprov:Organization & agency or sponsor for a project as in Prov-N\\
+provider & voprov:Organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
+%(owner) & voprov:Individual or voprov:Organization & Does anyone really own the data?\\
 \bottomrule
 \end{tabulary}
 \caption{Examples for roles of agents and the typical type of that agent}
@@ -750,13 +752,13 @@ in a future version of this model, collected from (future) implementations of th
 \toprule
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
-id & prov:id & (qualified) string & unique identifier for an agent\\
-label & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
+\textbf{id} & prov:id & (qualified) string & unique identifier for an agent\\
+\textbf{name} & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
 type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
 % insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
-address & prov:label & string & Address of the agent both for Individual (Person) and Organization\\
-phone & prov:label & string & Contact phone number of the agent both for Individual (Person) and Organization\\
-email & prov:label & string & Contact email of the agent both for Individual (Person) and Organization\\
+address &  & string & Address of the agent both for Individual (Person) and Organization\\
+phone &  & string & Contact phone number of the agent both for Individual (Person) and Organization\\
+email & & string & Contact email of the agent both for Individual (Person) and Organization\\
 \bottomrule
 \end{tabulary}
 \caption{Agent attributes}

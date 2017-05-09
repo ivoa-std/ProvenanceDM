@@ -160,18 +160,17 @@ infrastructure that enable VO applications.
 
 \appendix
 \section{Changes from Previous Versions}
-\subsection{Changes from WD-ProvenanceDM-1.0-20161121}
-\begin{itemize}
-\item rights instead of access in Entity class 
-\item parameter example tables 
-\item pollux figure size . not yet changed  
-\end{itemize}
 % No previous versions yet.
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
 \begin{itemize}
-\item Moved detailed implementation section from appendix to a separate document (implementation note)
+\item Use voprov:type and vorpov:role in table with example agent roles, \ref{tab:agent-roles}, i.e. replace prov:person by voprov:Individual.
+\item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
+\item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
+\item Extended the entity role examples in table \ref{tab:entity-roles}.
+\item Renamed attribute \emph{Entity.access} to \emph{Entity.rights} for more consistency with DatasetDM etc.
+\item Moved detailed implementation section from appendix to a separate document (implementation note).
 \item Removed description\_ref as attribute, since it's expressed by the corresponding link in the model anyway.
 \item More explanations on links to data models in Section~\ref{sec:dmlinks}.
 \item Introduced subsections for Section~\ref{sec:dmlinks}, added table with SimDM-links.
