@@ -740,20 +740,20 @@ owner, creator, publisher and contributor.
 \begin{tabulary}{1.0\textwidth}{@{}lp{3cm}L@{}}
 \multicolumn{3}{c}{\textbf{AgentRoles}}\\
 \toprule
-\head{vorpov:role} & \head{voprov:type} & \head{Comment} \\
+\head{role} & \head{type or sub class} & \head{Comment} \\
 \midrule
-author & voprov:Individual & someone who wrote an article, software, proposal\\
-contributor & voprov:Individual & someone who contributed to something (but not enough to gain authorship)\\
-editor & voprov:Individual & editor of e.g. an article, before publishing\\
-creator & voprov:Individual & someone who created a dataset, creators of articles or software are rather called ``author''\\
-curator & voprov:Individual & someone who checked and corrected a dataset before publishing\\
+author & Individual & someone who wrote an article, software, proposal\\
+contributor & Individual & someone who contributed to something (but not enough to gain authorship)\\
+editor & Individual & editor of e.g. an article, before publishing\\
+creator & Individual & someone who created a dataset, creators of articles or software are rather called ``author''\\
+curator & Individual & someone who checked and corrected a dataset before publishing\\
  & voprov:Organization & \\
-publisher & voprov:Organization {(maybe also Individual?)}& organization (publishing house, institute) that published something\\
-observer & voprov:Individual & observer at the telescope\\
-operator & voprov:Individual & someone performing a given task \\ % removed executor: ambiguous
-coordinator/PI & voprov:Individual & someone coordinating/leading a project\\ % we should choose one word : PI?
-funder & voprov:Organization & agency or sponsor for a project as in Prov-N\\
-provider & voprov:Organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
+publisher & Organization {(maybe also Individual?)}& organization (publishing house, institute) that published something\\
+observer & Individual & observer at the telescope\\
+operator & Individual & someone performing a given task \\ % removed executor: ambiguous
+coordinator/PI & Individual & someone coordinating/leading a project\\ % we should choose one word : PI?
+funder & Organization & agency or sponsor for a project as in Prov-N\\
+provider & Organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
 %(owner) & voprov:Individual or voprov:Organization & Does anyone really own the data?\\
 \bottomrule
 \end{tabulary}
