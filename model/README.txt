@@ -16,7 +16,7 @@ For recreating the vodml-xml, html documentation etc., do the following (usual) 
 * create the provenancedm.vo-dml.xml file:
   ant run_xmi2vo-dml
 
-  - if error: No uml:Model found, edit the xmi-file directly and patch the xmi namespace:
+  - if error: No uml:Model found, edit the provenance.xmi-file directly and patch the xmi namespace:
     xmlns:uml="http://www.omg.org/spec/UML/20100901/"
 
 * create the html documentation:

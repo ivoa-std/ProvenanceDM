@@ -7,7 +7,7 @@
 </description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-05-05T14:57:41</lastModified>
+  <lastModified>2017-05-09T14:30:03</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -44,7 +44,7 @@
           TODO : Missing description : please, update your UML model asap.
         </description>
       <extends>
-        <vodml-ref/>
+        <vodml-ref>provenance:string</vodml-ref>
       </extends>
     </primitiveType>
 
@@ -55,7 +55,7 @@
           TODO : Missing description : please, update your UML model asap.
         </description>
       <extends>
-        <vodml-ref/>
+        <vodml-ref>provenance:string</vodml-ref>
       </extends>
     </primitiveType>
 
@@ -459,8 +459,8 @@
         </multiplicity>
       </attribute>
       <attribute>
-        <vodml-id>provenance.ActivityDescription.description</vodml-id>
-        <name>description</name>
+        <vodml-id>provenance.ActivityDescription.annotation</vodml-id>
+        <name>annotation</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
@@ -661,8 +661,8 @@
         </multiplicity>
       </reference>
       <reference>
-        <vodml-id>provenance.Entity.progenitor</vodml-id>
-        <name>progenitor</name>
+        <vodml-id>provenance.Entity.usedEntity</vodml-id>
+        <name>usedEntity</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
