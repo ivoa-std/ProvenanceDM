@@ -67,7 +67,7 @@ classes. The names were again chosen to match the W3C model names:
 \item \class{WasAssociatedWith:} agents have responsibility for an activity\\
         (agent ``observer Max Smith'' wasAssociatedWith activity ``observation'')
 \item \class{WasAttributedTo:} an entity can be attributed to an agent\\
-		(entity ``image m31.fits'' wasAttributedTo ``M31 observation campaign'')
+        (entity ``image m31.fits'' wasAttributedTo ``M31 observation campaign'')
 \end{itemize}
 
 
@@ -122,10 +122,8 @@ provenance shall be described.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{../datamodel-diagrams/images/entity-details}
-\caption{The relation between Entity, Dataset and Collection (see Section~\ref{sec:collection}). 
-The Dataset class as well as the classes with green boxes belong to
-the IVOA Dataset Metadata Model. Some attributes of Dataset actually link to Entity-attributes, 
-see Section~\ref{sec:dmlinks} for more details.}
+\caption{The relation between Entity, EntityDescription and Collection (see Section~\ref{sec:collection}). 
+Links to the Dataset class from the Dataset Metadata Model are described in Section~\ref{sec:dmlinks}.}
 \label{fig:entity-details}
 \end{figure}
 
@@ -133,19 +131,14 @@ Entities in the VO are often called ``dataset'', which could mean a single
 table, an image or a collection of them. The Dataset Metadata Model 
 \citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
 are considered to be a single deliverable''. 
-Most parts of the \class{Dataset} class can be mapped
-directly to the \class{Entity} class, as indicated in Figure \ref{fig:entity-details}.
-If no \class{EntityDescription} is used, then most parts of the \class{Dataset} class can be mapped
-directly to the \class{Entity} class or its description class \class{EntityDescription},
-as indicated in Figure \ref{fig:entity-details}.
-The detailed mapping of classes and attributes from the Dataset Metadata Model 
-to \class{Entity}/\class{EntityDescription} are given in Section \ref{sec:dmlinks}. 
+Most attributes of the \class{Dataset} class can be mapped
+directly to attributes of the \class{Entity} and EntityDescription class, see the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
 
 \begin{table}[h]
 
 \small
-\tymax	0.5\textwidth
+\tymax  0.5\textwidth
 
 \textbf{\normalsize Entity}\vspace{0.25em}\\
 \begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}p{2cm}L@{}}
@@ -154,7 +147,7 @@ to \class{Entity}/\class{EntityDescription} are given in Section \ref{sec:dmlink
 \midrule
 \textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
 name       & prov:label & string & a human-readable name for the entity (to be displayed by clients)\\
-type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, not needed for a simple entity\\
+type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, prov:entity; not needed for a simple entity\\
 %description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
 annotation  & prov:description & string & text describing the entity in more detail\\
 rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/DatasetDM\\
@@ -196,7 +189,7 @@ and entities (see Section \ref{sec:entity-activity-relations}).
 
 \begin{table}[h]
 \small
-\tymax	0.5\textwidth
+\tymax  0.5\textwidth
 \textbf{\normalsize EntityDescription}\vspace{0.25em}\\
 \begin{tabulary}{\textwidth}{@{}p{2.75cm}p{0cm}p{2cm}L@{}}
 \toprule
@@ -220,17 +213,51 @@ the description classes may be ignored and its attributes may be used for
 }\label{tab:entitydescription-attributes}
 \end{table}
 
+
+\begin{table}[h]
+
+\small
+\tymax  0.5\textwidth
+
+\textbf{\normalsize WasDerivedFrom}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}lp{3cm}L@{}}
+\toprule
+\head{Attribute} & \head{Data type}   & \head{Description}\\
+\midrule
+id               & string              & a unique id for this entity (unique in its realm)\\
+\textbf{generatedEntity} & string      & foreign key to the entity\\
+\textbf{usedEntity}      & string      & foreign key to the progenitor, from which the generatedEntity was derived\\
+activity         & string              & foreign key to the generation activity\\
+generation       & string              & foreign key to the wasGeneratedBy relation\\
+usage            & string              & foreign key to the used relation\\
+\bottomrule
+\end{tabulary}
+\caption{Attributes of the WasDerivedFrom relation. This is the same as used in W3C's ProvDM. Mandatory attributes are marked in bold.
+}\label{tab:wasderivedfrom-attributes}
+\end{table}
+
+
 \paragraph{WasDerivedFrom.}
 In Figure~\ref{fig:entity-details} there is one more relation that we have not mentioned yet: 
 the \class{WasDerivedFrom}-relation which links two entities together, borrowed from the W3C model. 
 Is is used to express that 
 one entity was derived from another, i.e. it can be used to find one (or more) progenitor(s) 
-of a dataset, without having to mention the activities in between. It can therefore serve as 
-a shortcut. The information this link provides is somewhat redundant, since progenitors for entities
+of a dataset, without having to look for the activities in between. It can therefore serve as 
+a shortcut. But it should not be used alone; the longer provenance track via an activity in between should
+always exist.
+
+The information this relation provides is somewhat redundant, since progenitors for entities
 can be found through the links to activity and the corresponding descriptions.
 Nevertheless, we include \class{WasDerivedFrom} for those cases where an explicit 
 link between an entity and its progenitor is useful (e.g. for speeding up searches for 
 progenitors or if the activity in between is not important).
+
+Note that the \class{WasDerivedFrom} relation
+cannot always automatically be infered from following \class{WasGeneratedBy} and \class{Used} relations alone:
+If there is more than one input and more than one output of an activity, it is not clear (without 
+consulting the activityDescription and entity roles in the relation-descriptions) which entity was derived from which.
+Only by specifying the descriptions and roles accordingly or by adding the a \class{WasDerivedFrom} relation,
+this becomes clear.
 
 
 
@@ -735,7 +762,7 @@ owner, creator, publisher and contributor.
 
 \begin{table}[h]
 \small
-\tymax	0.5\textwidth
+\tymax  0.5\textwidth
 \begin{center}
 \begin{tabulary}{1.0\textwidth}{@{}lp{3cm}L@{}}
 \multicolumn{3}{c}{\textbf{AgentRoles}}\\

@@ -36,26 +36,26 @@ to concepts in the Provenance Data Model.
 \toprule
 \head{Dataset DM} & \head{Provenance DM} & \head{Comment}\\
 \midrule
-DataID.title      & Entity.label               & title of the dataset\\
-DataID.collection    & HadMember.collectionId  & link to the collection to which the dataset belongs\\
-DataID.creator       & Agent.name          & name of agent\\ 
-DataID.creatorDID    & AlternateOf.entityId     & id for the dataset given by the creator\\
-DataID.ObservationID & WasGeneratedBy.activityId  & identifier to everything describing the observation; maybe it belongs to entity?\\
-DataID.date          & WasGeneratedBy.time & date and time when the dataset was completely created\\
-Curation.PublisherDID  & Entity.id      & unique identifier for the dataset assigned by the publisher\\
-Curation.PublisherID & Agent.id  & link to the publisher; role: publisher, type: organization/astronomer private collection)\\
-Curation.Publisher     & Agent.name & name of the publisher\\
-Curation.Date          & Entity.releaseDate & release date of the dataset\\
-Curation.Version       & Entity.version     & version of the dataset\\
-Curation.Rights        & Entity.access      & access rights to the dataset; one of [...]\\
-Curation.Reference     & Entity.link        & link to publication\\
+DataID.title      	 & Entity.name                & title of the dataset\\
+DataID.collection    & HadMember.collectionId     & link to the collection to which the dataset belongs\\
+DataID.creator       & Agent.name                 & name of agent\\
+DataID.creatorDID    & alternative to Entity.id   & id for the dataset given by the creator, could be used if no PublisherDID exists (yet)\\
+DataID.ObservationID & WasGeneratedBy.activityId  & identifier to everything describing the observation\\
+DataID.date          & WasGeneratedBy.time        & date and time when the dataset was completely created\\
+Curation.PublisherDID  & Entity.id                & unique identifier for the dataset assigned by the publisher\\
+Curation.PublisherID   & Agent.id                 & link to the publisher, i.e. to an Agent with role=``publisher''\\
+Curation.Publisher     & Agent.name               & name of the publisher\\
+Curation.Date          & Entity.releaseDate       & release date of the dataset\\
+Curation.Version       & Entity.version           & version of the dataset\\
+Curation.Rights        & Entity.rights            & access rights to the dataset; one of [...]\\
+Curation.Reference     & Entity.link              & link to publication\\
 Curation.Contact       & Agent.Id or name? & link to Agent with role contact\\
 DataProductType  & EntityDescription.dataproduct\_type & type of a dataproduct/entity\\
 DataProductSubType & EntityDescription.dataproduct\_subtype & subtype of a dataproduct/entity\\
 ObsDataset.calibLevel  & EntityDescription.level & (output) calibration level, integer between 0 and 3\\\hline
 \bottomrule
 \end{tabulary}
-\caption{Mapping between attributes from \class{Dataset}-classes from Dataset Metadata Model to classes in ProvenanceDM.}
+\caption{Mapping between attributes from classes of the Dataset Metadata Model to classes in ProvenanceDM.}
 \label{tab:datasetmapping}
 \end{table}
 
