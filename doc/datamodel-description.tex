@@ -654,7 +654,35 @@ agency. At a finer level, it could be a specific scientific project, space missi
 or individual researcher. A provider is an organisation that makes data and/or services
 available to users over the network.''
 
-For each agent a \emph{name} should be specified.
+
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\begin{center}
+\begin{tabulary}{1.0\textwidth}{@{}llp{2cm}L@{}}
+\multicolumn{4}{c}{\textbf{Agent}}\\
+\toprule
+\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
+\midrule
+\textbf{id} & prov:id & (qualified) string & unique identifier for an agent\\
+\textbf{name} & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
+type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
+% insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
+\hline
+\multicolumn{4}{l}{Additional attributes from Dataset.Party subclasses:}\\
+\hline
+address &  & string & Address of the agent both for Individual (Person) and Organization\\
+phone &  & string & Contact phone number of the agent both for Individual (Person) and Organization\\
+email & & string & Contact email of the agent both for Individual (Person) and Organization\\
+\bottomrule
+\end{tabulary}
+\caption{Agent attributes}
+\label{tab:agent-attributes}
+\end{center}
+\end{table}
+
+
+For each agent a \emph{name} should be specified, a summary of the main common attributes for Agents is given in Table~\ref{tab:agent-attributes}.
 It would also increase the value of the given
 information if the (current) affiliation of the agent (and a project leader/group
 leader) were specified in order to maximize the chance of finding any contact 
@@ -673,9 +701,9 @@ people/projects.
 \label{fig:agent-relations}
 \end{figure}
 
-
 The relations between \class{Agent} and other classes from the Provenance Data Model and
-the IVOA Dataset Metadata Model are detailed in Figure \ref{fig:agent-relations}.
+the IVOA Dataset Metadata Model are detailed in Figure \ref{fig:agent-relations}. In DatasetDM, the \class{Party} class corresponds to our Agent class. The main difference is that Individual and Person are subclasses in DatasetDM, whereas we just use the same class \emph{Agent} for both and distinguish between them using the \emph{Agent.type} attribute (which can have the value ``Individual'' or ``Organization''.
+
 
 It is desired to have at least one agent given for each activity (and entity), but it
 is not enforced.
@@ -696,6 +724,7 @@ Note that the attributed-to-agent for a dataset may be different from the
 agent that is associated with the activity that created an entity.
 Someone who is performing a task is not necessarily given full attribution, 
 especially if he acts on behalf of someone else (the project, university, ...).
+
 
 In order to make it clearer what an agent is useful for, we suggest the
 possible roles an agent can have (along with descriptions partially taken from RM)
@@ -742,30 +771,6 @@ in a future version of this model, collected from (future) implementations of th
 %going to search for specific roles in the Provenance meta-data?
 %Or shall we leave it open, which roles can be defined and just give examples here?}
 % ... Yes, just give examples here. Should have a vocabulary list somewhere ...
-
-\begin{table}[h]
-\small
-\tymax  0.5\textwidth
-\begin{center}
-\begin{tabulary}{1.0\textwidth}{@{}llp{2cm}L@{}}
-\multicolumn{4}{c}{\textbf{Agent}}\\
-\toprule
-\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
-\midrule
-\textbf{id} & prov:id & (qualified) string & unique identifier for an agent\\
-\textbf{name} & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
-type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
-% insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
-address &  & string & Address of the agent both for Individual (Person) and Organization\\
-phone &  & string & Contact phone number of the agent both for Individual (Person) and Organization\\
-email & & string & Contact email of the agent both for Individual (Person) and Organization\\
-\bottomrule
-\end{tabulary}
-\caption{Agent attributes}
-\label{tab:agent-attributes}
-\end{center}
-\end{table}
-
 
 %\subsubsection{Shortcuts: WasDerivedFrom and WasInformedBy}\label{sec:shortcuts}
 %The classes \class{WasDerivedFrom} and \class{WasInformedBy} can be used as ``shortcuts'' and 
