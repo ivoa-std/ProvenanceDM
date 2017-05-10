@@ -1,0 +1,8 @@
+
+-------
+error:
+-------
+datatype Dataset Metadata:party.Party of reference provenance.Agent.party is not an object type but a 'ERROR'
+    [schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM_vodml.vo-dml.xml:885:62: cvc-pattern-valid: Value 'Dataset Metadata:party.Party' is not facet-valid with respect to pattern '[a-zA-Z][a-zA-Z0-9\._\-]+:[a-zA-Z][a-zA-Z0-9\._]*' for type 'VODMLREF'.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM_vodml.vo-dml.xml:885:62: cvc-type.3.1.3: The value 'Dataset Metadata:party.Party' of element 'vodml-ref' is not valid.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/vo-dml/models/provenancedm/ProvenanceDM_vodml.vo-dml.xml is not a valid XML document
