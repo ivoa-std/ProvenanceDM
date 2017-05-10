@@ -6,7 +6,12 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-05-09T14:48:57</lastModified>
+  <lastModified>2017-05-10T23:42:00</lastModified>
+  <import>
+    <name>ds</name>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/datasetModel_uml2p4p1.xmi</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.html</documentationURL>
+  </import>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -314,7 +319,7 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
-      <collection>
+      <composition>
         <vodml-id>provenance.Activity.wasGeneratedBy</vodml-id>
         <name>wasGeneratedBy</name>
         <description>
@@ -327,8 +332,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.Activity.used</vodml-id>
         <name>used</name>
         <description>
@@ -341,8 +346,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.Activity.wasAssociatedWith</vodml-id>
         <name>wasAssociatedWith</name>
         <description>
@@ -355,8 +360,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.Activity.parameter</vodml-id>
         <name>parameter</name>
         <description>
@@ -369,7 +374,7 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
       <reference>
         <vodml-id>provenance.Activity.activityDescription</vodml-id>
         <name>activityDescription</name>
@@ -488,7 +493,7 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
-      <collection>
+      <composition>
         <vodml-id>provenance.ActivityDescription.usedDescription</vodml-id>
         <name>usedDescription</name>
         <description>
@@ -501,8 +506,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.ActivityDescription.wasGeneratedByDescription</vodml-id>
         <name>wasGeneratedByDescription</name>
         <description>
@@ -515,8 +520,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.ActivityDescription.parameterDescription</vodml-id>
         <name>parameterDescription</name>
         <description>
@@ -529,7 +534,7 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
     </objectType>
 
     <objectType>
@@ -606,7 +611,7 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
-      <collection>
+      <composition>
         <vodml-id>provenance.Entity.wasGeneratedBy</vodml-id>
         <name>wasGeneratedBy</name>
         <description>
@@ -619,8 +624,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.Entity.used</vodml-id>
         <name>used</name>
         <description>
@@ -633,8 +638,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.Entity.wasAttributedTo</vodml-id>
         <name>wasAttributedTo</name>
         <description>
@@ -647,7 +652,7 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
       <reference>
         <vodml-id>provenance.Entity.entityDescription</vodml-id>
         <name>entityDescription</name>
@@ -754,7 +759,7 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
-      <collection>
+      <composition>
         <vodml-id>provenance.EntityDescription.wasGeneratedByDescription</vodml-id>
         <name>wasGeneratedByDescription</name>
         <description>
@@ -767,8 +772,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.EntityDescription.usedDescription</vodml-id>
         <name>usedDescription</name>
         <description>
@@ -781,7 +786,7 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
     </objectType>
 
     <objectType>
@@ -884,7 +889,7 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
-      <collection>
+      <composition>
         <vodml-id>provenance.Agent.wasAttributedTo</vodml-id>
         <name>wasAttributedTo</name>
         <description>
@@ -897,8 +902,8 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
-      <collection>
+      </composition>
+      <composition>
         <vodml-id>provenance.Agent.wasAssociatedWith</vodml-id>
         <name>wasAssociatedWith</name>
         <description>
@@ -911,7 +916,21 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
+      <reference>
+        <vodml-id>provenance.Agent.party</vodml-id>
+        <name>party</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>Dataset Metadata:party.Party</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
     </objectType>
 
     <objectType>
@@ -967,7 +986,7 @@
       <extends>
         <vodml-ref>provenance:provenance.Activity</vodml-ref>
       </extends>
-      <collection>
+      <composition>
         <vodml-id>provenance.ActivityFlow.hadStep</vodml-id>
         <name>hadStep</name>
         <description>
@@ -980,7 +999,7 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
     </objectType>
 
     <objectType>
@@ -992,7 +1011,7 @@
       <extends>
         <vodml-ref>provenance:provenance.Entity</vodml-ref>
       </extends>
-      <collection>
+      <composition>
         <vodml-id>provenance.Collection.hadMember</vodml-id>
         <name>hadMember</name>
         <description>
@@ -1005,7 +1024,7 @@
           <minOccurs>0</minOccurs>
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
-      </collection>
+      </composition>
     </objectType>
 
     <objectType>
