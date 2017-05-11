@@ -15,7 +15,7 @@ DOCTYPE = WD
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
-SOURCES = $(DOCNAME).tex
+SOURCES = $(DOCNAME).tex 
 
 # List of pixel image files to be included in submitted package 
 FIGURES = VOArchitecture-Prov2016.png CTA_DM_high_level.png CTA_prov.png usecase_Pollux_example1.png
