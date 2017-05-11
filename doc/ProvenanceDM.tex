@@ -139,12 +139,18 @@ infrastructure that enable VO applications.
 \input{datamodel-description}
 
 
+% make sure that images/tables of the previous section are printed
+% before starting the new section
+\clearpage
 %\section{Applying provenance -- Interactions with other Data models}\label{sec:dmlinks}
 \section{Links to other data models}
 \label{sec:dmlinks}
 \input{datamodel-links}
 
 
+% make sure that images/tables of the previous section are printed
+% before starting the new section
+\clearpage
 \section{Accessing provenance information}
 \input{provaccess}
 
@@ -165,6 +171,8 @@ infrastructure that enable VO applications.
 % Use itemize environments.
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
 \begin{itemize}
+\item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
+\item Added implementation and serialisation examples to Section~\ref{sec:serialisations}.
 \item Use voprov:type and voprov:role in table with example agent roles, \ref{tab:agent-roles}, i.e. replaced prov:person by Individual and prov:organization by Organization.
 \item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
 \item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).

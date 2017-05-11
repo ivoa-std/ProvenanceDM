@@ -1,4 +1,4 @@
-\subsection{Provenance Data Model serialization}
+\subsection{Provenance Data Model serialization}\label{sec:serialisations}
 There are two possible families of ProvenanceDM metadata serializations, examples for these can be found in the implementation section (\ref{sec:usecases-implementations}) and the links therein.
 \begin{itemize}
  \item W3C serializations: PROV\-N, PROV\-JSON, PROV\-XML. These are serializations of the W3C provenance data model. They allow the possibility to add additional IVOA or ad hoc attributes to the basic ones in each class. This way the IVOA models can produce W3C compliant serializations.
@@ -7,7 +7,7 @@ There are two possible families of ProvenanceDM metadata serializations, example
  %\TODO{TAP SCHEMA of the ProvenanceDM datamodel: Maybe Mathieu can provide us with a copy of the TAP schema he designed ?}
 
  \item Direct VOTABLE mapping by using some ad hoc mapping based on transcription of PROV-N format: this is called PROV-VOTABLE. Moreover in the future we could also define a VO-DML \citep{std:VODML} version of the mapping.
-%The following is an example of provenance metadata in this PROV-VOTABLE format. Objects become tables, their classes are rendered by a utype. Attributes and relationships become FIELDS or PARAMS. The model attribute names also become VOTABLE utypes.  
+%The following is an example of provenance metadata in this PROV-VOTABLE format. Objects become tables, their classes are rendered by a utype. Attributes and relationships become FIELDS or PARAMS. The model attribute names also become VOTABLE utypes.
 
 \end{itemize}
 
@@ -261,10 +261,10 @@ This is the VOTABLE serialization:
 
 \end{verbatim}
   
-Such serializations can be retrieved through Access protocols (see \ref{AccessPro} ) or directly integrated in datasets headers or "associated metadata" in order to provide provenance metadata for these datasets. 
+Such serializations can be retrieved through Access protocols (see \ref{sec:access_protocols} ) or directly integrated in datasets headers or ``associated metadata'' in order to provide provenance metadata for these datasets. 
 
 \subsection{Graphic formats}
-\label{Graphics}
+\label{sec:graphic_formats}
 The voprov python module can also provide provenance information in graphic formats: PNG, SVG and PDF.
 In the above example, you have to add the following instructions in your python program:
 
@@ -284,7 +284,7 @@ In the above example, you have to add the following instructions in your python 
 
 
 \subsection{Access protocols}
-\label{AccessPro}
+\label{sec:access_protocols}
 We envision two possible access protocols:
 \begin{itemize}
 \item ProvDAL: retrieve provenance information based on given id of a data entity or activity

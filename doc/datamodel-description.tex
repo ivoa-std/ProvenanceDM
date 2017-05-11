@@ -641,10 +641,10 @@ ran a script, performed the observation or published a dataset.
 The agent can be a single person, a group of persons (e.g. MUSE WISE Team), a 
 project (RAVE) or an institute. 
 This is also reflected in the IVOA Dataset Metadata Model, where \class{Party} 
-represents an agent, and it has two subtypes: \class{Individual} and \class{Organization},
-which are explained in more detail in Table \ref{tab:agent-types}.
-Both types are also used for agent types in the W3C Provenance Data Model, though 
-\class{Individual} is called \class{Person} there. 
+represents an agent, and it has two types: \class{Individual} and \class{Organization},
+which are explained in more detail in Table \ref{tab:agent-types} (also see Section~\ref{sec:dmlinks} for comparison between \class{Agent} and \class{Party}).
+Both agent types are also used in the W3C Provenance Data Model, though 
+\class{Individual} is called \class{Person} there.
 We do not include the type \class{SoftwareAgent} from W3C, since it is not required for 
 our use cases.
 
@@ -670,18 +670,6 @@ Organization & Organization & Organization & a publishing house, institute or sc
 \end{center}
 \end{table}
 
-A definition of organizations is given in the 
-IVOA Recommendation on Resource Metadata \citep{std:ResourceMeta}, hereafter 
-refered to as RM: ``An organisation is [a] specific type of resource that 
-brings people together to pursue participation in VO applications.''
-It also specifies further that scientific projects can be considered 
-as organisations on a finer level:
-``At a high level, an organisation could be a university, observatory, or government
-agency. At a finer level, it could be a specific scientific project, space mission,
-or individual researcher. A provider is an organisation that makes data and/or services
-available to users over the network.''
-
-
 \begin{table}[h]
 \small
 \tymax  0.5\textwidth
@@ -695,12 +683,12 @@ available to users over the network.''
 \textbf{name} & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
 type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
 % insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
-\hline
-\multicolumn{4}{l}{Additional attributes from Dataset.Party subclasses:}\\
-\hline
-address &  & string & Address of the agent both for Individual (Person) and Organization\\
-phone &  & string & Contact phone number of the agent both for Individual (Person) and Organization\\
-email & & string & Contact email of the agent both for Individual (Person) and Organization\\
+% \hline
+% \multicolumn{4}{l}{Additional optional attributes from Dataset.Party subclasses:}\\
+% \hline
+% address &  & string & Address of the agent both for Individual (Person) and Organization\\
+% phone   &  & string & Contact phone number of the agent both for Individual (Person) and Organization\\
+% email   &  & string & Contact email of the agent both for Individual (Person) and Organization\\
 \bottomrule
 \end{tabulary}
 \caption{Agent attributes}
@@ -709,7 +697,22 @@ email & & string & Contact email of the agent both for Individual (Person) and O
 \end{table}
 
 
-For each agent a \emph{name} should be specified, a summary of the main common attributes for Agents is given in Table~\ref{tab:agent-attributes}.
+
+A definition of organizations is given in the 
+IVOA Recommendation on Resource Metadata \citep{std:ResourceMeta}, hereafter 
+refered to as RM: ``An organisation is [a] specific type of resource that 
+brings people together to pursue participation in VO applications.''
+It also specifies further that scientific projects can be considered 
+as organisations on a finer level:
+``At a high level, an organisation could be a university, observatory, or government
+agency. At a finer level, it could be a specific scientific project, space mission,
+or individual researcher. A provider is an organisation that makes data and/or services
+available to users over the network.''
+
+
+
+For each agent a \emph{name} should be specified, a summary of the attributes for \class{Agent} is given in Table~\ref{tab:agent-attributes}.
+One could also add the optional attributes \emph{address}, \emph{phone} and \emph{email} (compare with subclasses of \emph{Party} in Section~\ref{sec:dmlinks}). However, we skip them here in this main class, since an advanced system may use permanent identifiers (e.g. ORCIDs) to identify agents and retrieve their properties from an external system.
 It would also increase the value of the given
 information if the (current) affiliation of the agent (and a project leader/group
 leader) were specified in order to maximize the chance of finding any contact 
@@ -718,25 +721,15 @@ The contact information is needed in case more information about a certain step 
 but also in order
 to know who was involved and to fulfill our ``Attribution'' requirement 
 (Section~\ref{sec:requirements}), so that proper credits are given to the right 
-people/projects.
+people/projects. 
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.7]{../datamodel-diagrams/images/agent-relations.pdf}
-\caption{The relations between the \class{Agent} class within the Provenance Data Model 
-(grey and yellow classes) with classes from the Dataset Metadata Model (green).}
-\label{fig:agent-relations}
-\end{figure}
-
-The relations between \class{Agent} and other classes from the Provenance Data Model and
-the IVOA Dataset Metadata Model are detailed in Figure \ref{fig:agent-relations}. In DatasetDM, the \class{Party} class corresponds to our Agent class. The main difference is that Individual and Person are subclasses in DatasetDM, whereas we just use the same class \emph{Agent} for both and distinguish between them using the \emph{Agent.type} attribute (which can have the value ``Individual'' or ``Organization''.
 
 
 It is desired to have at least one agent given for each activity (and entity), but it
 is not enforced.
 % , hence the multiplicity between \class{Entity}/\class{Activity} and the relations
 %to the \class{Agent} starts with 0.
-There also can be more than one agent for each activity/entity with different \emph{roles} 
+There can also be more than one agent for each activity/entity with different \emph{roles} 
 and one agent can be responsible for more than one activity or entity. This 
 many-to-many relationship is made explicit in our model by adding the two
 following relation classes:
@@ -756,8 +749,8 @@ especially if he acts on behalf of someone else (the project, university, ...).
 In order to make it clearer what an agent is useful for, we suggest the
 possible roles an agent can have (along with descriptions partially taken from RM)
 in Table~\ref{tab:agent-roles}.
-For comparison, SimDM contains following roles for their \emph{Contact} class:
-owner, creator, publisher and contributor.
+For comparison, SimDM contains following roles for their contacts:
+owner, creator, publisher and contributor. Note that the \emph{Party} class in Dataset and SimDM are very similar to the \emph{Agent} class, which is explained in more detail in Section~\ref{sec:dmlinks}.
 
 
 \begin{table}[h]
@@ -774,7 +767,6 @@ contributor & Individual & someone who contributed to something (but not enough 
 editor & Individual & editor of e.g. an article, before publishing\\
 creator & Individual & someone who created a dataset, creators of articles or software are rather called ``author''\\
 curator & Individual & someone who checked and corrected a dataset before publishing\\
- & voprov:Organization & \\
 publisher & Organization {(maybe also Individual?)}& organization (publishing house, institute) that published something\\
 observer & Individual & observer at the telescope\\
 operator & Individual & someone performing a given task \\ % removed executor: ambiguous
