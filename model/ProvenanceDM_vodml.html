@@ -159,16 +159,6 @@
           <td>
             &nbsp;&nbsp;&nbsp;&nbsp;<a href="#vodml-ids">vodml-id-s</a></td>
         </tr>
-        <tr>
-          <td>4.</td>
-          <td>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#modelimports">Imported Models</a></td>
-        </tr>
-        <tr>
-          <td>4.1</td>
-          <td>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#ds">ds</a></td>
-        </tr>
       </table>
     </div>
     <hr>
@@ -182,7 +172,7 @@
       <tr>
         <td align="right"><b>Date</b></td>
         <td> : </td>
-        <td>2017-05-10T23:32:50</td>
+        <td>2017-05-12T09:48:56</td>
       </tr>
       <tr>
         <td align="right"><b>Version</b></td>
@@ -228,14 +218,14 @@
 <area shape="rect" id="node21" href="#provenance.Used" title="{provenance/Used}" alt="" coords="2155,523,2251,572"/>
 <area shape="rect" id="node25" href="#provenance.WasAssociatedWith" title="{provenance/WasAssociatedWith|+role : provenance:provenance.AgentRole\l}" alt="" coords="1518,523,1722,572"/>
 <area shape="rect" id="node31" href="#provenance.Parameter" title="{provenance/Parameter|+id : provenance:string\l+value : provenance:string\l}" alt="" coords="1747,518,1883,577"/>
-<area shape="rect" id="node32" href="#provenance.ParameterDescription" title="{provenance/ParameterDescription|+id : provenance:string\l+name : provenance:string\l+annotation : provenance:string\l+datatype : provenance:string\l+unit : provenance:ivoa.Unit\l+ucd : provenance:string\l+utype : provenance:string\l}" alt="" coords="1693,663,1862,782"/>
+<area shape="rect" id="node32" href="#provenance.ParameterDescription" title="{provenance/ParameterDescription|+id : provenance:string\l+name : provenance:string\l+datatype : provenance:string\l+unit : provenance:ivoa.Unit\l+ucd : provenance:string\l+utype : provenance:string\l+annotation : provenance:string\l}" alt="" coords="1693,663,1862,782"/>
 <area shape="rect" id="node33" href="#provenance.UsedDescription" title="{provenance/UsedDescription|+role : provenance:string\l}" alt="" coords="2129,698,2276,747"/>
 <area shape="rect" id="node19" href="#provenance.Entity" title="{provenance/Entity|+id : provenance:string\l+name : provenance:string\l+type : provenance:string\l+annotation : provenance:string\l+rights : provenance:string\l}" alt="" coords="2319,675,2476,770"/>
 <area shape="rect" id="node20" href="#provenance.EntityDescription" title="{provenance/EntityDescription|+id : provenance:string\l+name : provenance:string\l+annotation : provenance:string\l+category : provenance:string\l+doculink : provenance:ivoa.anyURI\l}" alt="" coords="2210,845,2390,939"/>
 <area shape="rect" id="node22" href="#provenance.WasGeneratedBy" title="{provenance/WasGeneratedBy}" alt="" coords="2418,867,2569,917"/>
 <area shape="rect" id="node26" href="#provenance.WasAttributedTo" title="{provenance/WasAttributedTo|+role : provenance:provenance.AgentRole\l}" alt="" coords="1978,867,2182,917"/>
-<area shape="rect" id="node23" href="#provenance.WasGeneratedByDescription" title="{provenance/WasGeneratedByDescription|+role : provenance:string\l}" alt="" coords="2200,1007,2400,1056"/>
-<area shape="rect" id="node24" href="#provenance.Agent" title="{provenance/Agent|+id : provenance:string\l+name : provenance:string\l}" alt="" coords="1613,1002,1749,1061"/>
+<area shape="rect" id="node23" href="#provenance.WasGeneratedByDescription" title="{provenance/WasGeneratedByDescription|+role : provenance:string\l}" alt="" coords="2200,1013,2400,1062"/>
+<area shape="rect" id="node24" href="#provenance.Agent" title="{provenance/Agent|+id : provenance:string\l+name : provenance:string\l+type : provenance:string\l}" alt="" coords="1613,1002,1749,1073"/>
 <area shape="rect" id="node27" href="#provenance.ActivityFlow" title="{provenance/ActivityFlow}" alt="" coords="1933,57,2064,106"/>
 <area shape="rect" id="node29" href="#provenance.HadStep" title="{provenance/HadStep}" alt="" coords="2002,220,2113,269"/>
 <area shape="rect" id="node28" href="#provenance.Collection" title="{provenance/Collection}" alt="" coords="2461,359,2579,409"/>
@@ -1325,21 +1315,13 @@
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="3" class="info-title">references</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading" width="20%">name</td>
-                      <td class="feature-heading" width="10%">feature</td>
-                      <td class="feature-heading" width="70%">value</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.Agent.party"></a><b>party</b></td>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.Agent.type"></a><b>type</b></td>
                       <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#Dataset Metadata">Dataset Metadata</a>:<a href="#party.Party">party.Party</a></td>
+                      <td class="feature-detail"><a href="#string">string [provenance:string]</a></td>
                     </tr>
                     <tr>
                       <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">provenance.Agent.party</td>
+                      <td class="feature-detail">provenance.Agent.type</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
@@ -1691,7 +1673,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -1877,7 +1859,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -1897,7 +1879,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -1917,7 +1899,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -2292,26 +2274,6 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.ParameterDescription.annotation"></a><b>annotation</b></td>
-                      <td class="feature-heading">type</td>
-                      <td class="feature-detail"><a href="#string">string [provenance:string]</a></td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">vodml-id</td>
-                      <td class="feature-detail">provenance.ParameterDescription.annotation</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
-                    </tr>
-                    <tr>
-                      <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
-                    </tr>
-                    <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.ParameterDescription.datatype"></a><b>datatype</b></td>
                       <td class="feature-heading">type</td>
                       <td class="feature-detail"><a href="#string">string [provenance:string]</a></td>
@@ -2339,14 +2301,11 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
+                      <td class="feature-detail">&lt;Enter note text here&gt;</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.ParameterDescription.ucd"></a><b>ucd</b></td>
@@ -2359,7 +2318,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -2379,7 +2338,27 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">description</td>
+                      <td class="feature-detail">
+                        TODO : Missing description : please, update your UML model asap.
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.ParameterDescription.annotation"></a><b>annotation</b></td>
+                      <td class="feature-heading">type</td>
+                      <td class="feature-detail"><a href="#string">string [provenance:string]</a></td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">vodml-id</td>
+                      <td class="feature-detail">provenance.ParameterDescription.annotation</td>
+                    </tr>
+                    <tr>
+                      <td class="feature-heading">multiplicity</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -2524,7 +2503,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -2873,7 +2852,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -3265,8 +3244,8 @@
         </td>
       </tr>
       <tr>
-        <td class="feature-detail"><a href="#provenance.Agent.party">provenance.Agent.party</a></td>
-        <td class="feature-detail">reference</td>
+        <td class="feature-detail"><a href="#provenance.Agent.type">provenance.Agent.type</a></td>
+        <td class="feature-detail">attribute</td>
         <td class="feature-detail">
           TODO : Missing description : please, update your UML model asap.
           
@@ -3605,10 +3584,7 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.ParameterDescription.unit">provenance.ParameterDescription.unit</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">
-          TODO : Missing description : please, update your UML model asap.
-          
-        </td>
+        <td class="feature-detail">&lt;Enter note text here&gt;</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.ParameterDescription.utype">provenance.ParameterDescription.utype</a></td>
@@ -3761,28 +3737,6 @@
           TODO : Missing description : please, update your UML model asap.
           
         </td>
-      </tr>
-    </table>
-    <hr>
-    <h1>4.<a name="modelimports">Imported Models</a></h1>
-    <p>This section lists the external models imported by the current data model.
-      For each imported model we list URLs to the VO-DML and HTML representations and the prefix used for vodml-ids from inside
-      the model.
-    </p>
-    <h2><a name="ds"></a>4.1 ds
-    </h2>
-    <table border="1" cellspacing="2" width="100%">
-      <tr>
-        <td class="objecttype-title" width="20%">Model vodml-id</td>
-        <td class="objecttype-name">ds</td>
-      </tr>
-      <tr>
-        <td width="30%" class="info-title">url</td>
-        <td><a href="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/datasetModel_uml2p4p1.xmi">https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/datasetModel_uml2p4p1.xmi</a></td>
-      </tr>
-      <tr>
-        <td width="30%" class="info-title">documentation url</td>
-        <td><a href="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.html">https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.html</a></td>
       </tr>
     </table>
   </body>

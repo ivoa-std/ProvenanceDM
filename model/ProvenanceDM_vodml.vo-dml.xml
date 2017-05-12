@@ -6,12 +6,7 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-05-10T23:32:50</lastModified>
-  <import>
-    <name>ds</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/datasetModel_uml2p4p1.xmi</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.html</documentationURL>
-  </import>
+  <lastModified>2017-05-12T09:48:56</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -579,7 +574,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -671,7 +666,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -685,7 +680,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -699,7 +694,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -821,7 +816,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -875,20 +870,20 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
-      <reference>
-        <vodml-id>provenance.Agent.party</vodml-id>
-        <name>party</name>
+      <attribute>
+        <vodml-id>provenance.Agent.type</vodml-id>
+        <name>type</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
         <datatype>
-          <vodml-ref>Dataset Metadata:party.Party</vodml-ref>
+          <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
-      </reference>
+      </attribute>
     </objectType>
 
     <objectType>
@@ -1142,20 +1137,6 @@
         </multiplicity>
       </attribute>
       <attribute>
-        <vodml-id>provenance.ParameterDescription.annotation</vodml-id>
-        <name>annotation</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <datatype>
-          <vodml-ref>provenance:string</vodml-ref>
-        </datatype>
-        <multiplicity>
-          <minOccurs>1</minOccurs>
-          <maxOccurs>1</maxOccurs>
-        </multiplicity>
-      </attribute>
-      <attribute>
         <vodml-id>provenance.ParameterDescription.datatype</vodml-id>
         <name>datatype</name>
         <description>&lt;Enter note text here&gt;</description>
@@ -1170,14 +1151,12 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.unit</vodml-id>
         <name>unit</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>&lt;Enter note text here&gt;</description>
         <datatype>
           <vodml-ref>provenance:ivoa.Unit</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -1191,7 +1170,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -1205,7 +1184,21 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.annotation</vodml-id>
+        <name>annotation</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -1227,7 +1220,7 @@
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
