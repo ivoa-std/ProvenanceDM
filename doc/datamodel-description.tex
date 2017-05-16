@@ -5,19 +5,19 @@ In this section, we describe the currently discussed Provenance Data Model. We
 start with an UML class diagram, explain the core elements and then give 
 in the following sections more details for each class and relation.
 
-\subsection{Overview: UML class diagram and introduction to core classes}
- %We give in this section an overview on the main classes. More details about 
+\subsection{Overview: Conceptional UML class diagram and introduction to core classes}
+%We give in this section an overview on the main classes. More details about 
 %each class and their relations will be explained in the following sections.
 %Its core elements are colored in blue. These core elements can also be found in the W3C Provenance Data
 %Model. The pattern defined by these classes is very general and can be reused everywhere where provenance is needed. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/classes-overview.pdf}
-\caption{Overview of the classes for the Provenance Data Model in a class diagram. The blue classes are core elements.
+\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/domain-classdiagram.pdf}
+\caption{Overview of the classes for the Provenance Data Model in a conceptual class diagram. The blue classes are core elements. There appear a number of many-to-many relationships with attached association classes (grey) which can contain additional attributes.}
 %Objects in the blue box also appear in the W3C Provenance Data Model. 
-Green classes are links to the IVOA Dataset Metadata Model.}
-\label{fig:classdiagram}
+%Green classes are links to the IVOA Dataset Metadata Model.}
+\label{fig:classdiagram-conceptional}
 \end{figure}
 
 
@@ -25,7 +25,7 @@ Green classes are links to the IVOA Dataset Metadata Model.}
 % Some examples for different use cases are given in Section \ref{sec:usecases-implementations}.
 % The elements of a provenance model can be expressed as a directed graph to capture the causal dependencies. 
 
-Figure~\ref{fig:classdiagram} shows the UML diagram for an IVOA Provenance Data
+Figure~\ref{fig:classdiagram-conceptional} shows the conceptional UML diagram for an IVOA Provenance Data
 Model.
 The core elements of the Provenance Data Model are \class{Entity}, \class{Activity} and \class{Agent}. 
 We chose for these elements the same names as were used in the Provenance Data 
@@ -108,6 +108,22 @@ all these classes and relations are given in the following section.
 
 
 \subsection{Model description}
+
+\subsubsection{Class diagram and VO-DML compatibility}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/classes-overview.pdf}
+\caption{More detailed overview of the classes for the Provenance Data Model. Note that this UML class diagram is more compatible with VO-DML.}
+\label{fig:classdiagram}
+\end{figure}
+
+Figure~\ref{fig:classdiagram} shows the full class diagram with the association classes modeled more directly as linking classes. The documentation of these classes and an automatically generated figure based on the UML underneath is available in the Volute repository at \url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM.html}.
+
+\TODO{This version of the UML diagram is not yet fully VO-DML compliant. The many-to-many-relationships are modelled here by compositions, which has the effect that the relationship classes (Used, WasGeneratedBy etc.) are becoming part of two compositions. This is not allowed in VO-DML. In order to avoid that and to be fully VO-DML compliant, one could replace one of the compositions with a reference. Such a fully VO-DML compliant version is available at \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/datamodel-diagrams/images/classes-overview-vodml.pdf}
+along with a fully compliant documentation at 
+\url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM_vodml.html}.
+}
+
 \subsubsection{Entity and EntityDescription}
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
 form of images, tables, numbers, etc. But they can also be observation or 

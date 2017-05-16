@@ -28,35 +28,30 @@ try:
 
     provdoc.entity('ivo://CDS/P/DSS2color#RGB_NGC6946',\
         {'voprov:name':'RGB DSS2 image for NGC 6946', \
-         'voprov:annotation':'This is a PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946', \
-         'voprov:doculink':'http://cds.u-strasbg.fr/aladin.gml'})
+         'voprov:annotation':'PNG RGB image for galaxy NGC 6946'})
 
     provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143',\
         {'voprov:name':'POSSII Blue Survey DSS2 NGC6946', \
-         'voprov:annotation':'This is the DSS2 digitazition of the Blue POSSII Schmidt survey around  NGC 6946', \
-         'voprov:doculink':'http://cds.u-strasbg.fr/aladin.gm'})
+         'voprov:annotation':'Blue POSSII Schmidt survey around NGC 6946'})
 
     provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143',\
         {'voprov:name':'POSSII Red Survey DSS2 NGC6946', \
-         'voprov:annotation':'This is the DSS2 digitazition of the Red POSSII Schmidt survey around NGC 6946', \
-         'voprov:doculink':'http://cds.u-strasbg.fr/aladin.gml'})
+         'voprov:annotation':'Red POSSII Schmidt survey around NGC 6946'})
 
     provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143',\
         {'voprov:name':'POSSII Infra Red Survey DSS2 NGC6946', \
-         'voprov:annotation':'This is the DSS2 digitazition of the Infra red POSSII Schmidt survey around  NGC 6946', \
-         'voprov:doculink':'http://cds.u-strasbg.fr/aladin.gm'})
+         'voprov:annotation':'Infrared POSSII Schmidt survey around NGC 6946'})
 
     provdoc.activity('hips:AlaRGB1', '2017-04-18T17:28:00', '2017-04-19T17:29:00', \
           {'voprov:name':'Aladin RGB 1',\
            'voprov:annotation': 'Aladin RGB image generation for NGC 6946',\
-           'voprov:desc_id': 'AlaRGB', \
            'voprov:desc_name': 'Aladin RGB image generation algorithm', \
            'voprov:desc_type': 'RGBencoding', \
-           'voprov:desc_doculink':'http://cds.u-strasbg.fr/aladin.gml'})
+           'voprov:desc_doculink':'http://aladin.u-strasbg.fr/aladin.gml'})
 
     provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143')
     provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143')
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143')
+    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143')
 
     provdoc.wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', 'hips:AlaRGB1', '')
 
