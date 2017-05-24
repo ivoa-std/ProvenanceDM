@@ -73,7 +73,7 @@ classes. The names were again chosen to match the W3C model names:
 
 In the domain of astronomy, certain processes and steps are repeated again and 
 again with different parameters. We therefore separate the descriptions of activities
-from the actual processes and introduce an additional \class{ActivityDescription} class (see Figure~\ref{fig:classdiagram}).
+from the actual processes and introduce an additional \class{ActivityDescription} class (see Figure~\ref{fig:classdiagram-conceptional}).
 Likewise, we also apply the same pattern for \class{Entity} and add an \class{EntityDescription}
 class.
 Defining such descriptions allows them to be reused, which is very useful 
@@ -117,12 +117,11 @@ all these classes and relations are given in the following section.
 \label{fig:classdiagram}
 \end{figure}
 
-Figure~\ref{fig:classdiagram} shows the full class diagram with the association classes modeled more directly as linking classes. The documentation of these classes and an automatically generated figure based on the UML underneath is available in the Volute repository at \url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM.html}.
+Figure~\ref{fig:classdiagram} shows the full class diagram with the association classes for the many-to-many relations modeled more directly as mapping classes. When implementing the model in a relational database, these classes would be represented as individual tables for mapping the relation. We model one of the associations of the many-to-many relationships as composition (full diamond), if the mapping class belongs more strongly to one of its linked classes, e.g. the \emph{Used} relations are strongly dependent on the corresponding \emph{Activities}. The documentation of all classes and an automatically generated figure based on the underlying xmi-description behind this UML diagram is available in the Volute repository at \url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM.html}.
 
-\TODO{This version of the UML diagram is not yet fully VO-DML compliant. The many-to-many-relationships are modelled here by compositions, which has the effect that the relationship classes (Used, WasGeneratedBy etc.) are becoming part of two compositions. This is not allowed in VO-DML. In order to avoid that and to be fully VO-DML compliant, one could replace one of the compositions with a reference. Such a fully VO-DML compliant version is available at \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/datamodel-diagrams/images/classes-overview-vodml.pdf}
-along with a fully compliant documentation at 
-\url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM_vodml.html}.
-}
+This version of the UML diagram is fully VO-DML compliant, i.e. we just used the restricted subset of UML to model
+Provenance and reused the IVOA datatypes.
+
 
 \subsubsection{Entity and EntityDescription}
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
@@ -400,7 +399,7 @@ next section \ref{sec:activityflow}.
 \subsubsection{ActivityFlow}\label{sec:activityflow}
 For facilitating grouping of activities (and their related entities etc.)
 we introduce the class \class{ActivityFlow}.
-It can be used for hiding a part of the workflow or provenance 
+It can be used for hiding a part of the workflow/pipeline or provenance 
 description, if different levels of granularity are needed. Figure \ref{fig:provgraph-activityflow}
 illustrates an example provenance graph in a detailed level (left side) 
 and using the ActivityFlow (right side).
@@ -417,19 +416,7 @@ Activities are marked by blue rectangles, entities by yellow ellipses.}
 \label{fig:provgraph-activityflow}
 \end{figure}
 
-%\TODO{BEWARE: Allowing this means that there can be 2 or more wasGeneratedBy-relations
-%per entity!! This is currently NOT allowed in our model (multiplicity 0..1)! Or shall we 
-%allow the encapsulating parts of a provenance graph 
-%only in the view, i.e. on the implementation side?}
-
-
-%In the W3C provenance model, the entity type \class{Plan} is used for workflows and 
-%provenance descriptions are called \class{Bundle}. However, we do not reuse these 
-%terms here, since we want to use the class \class{ActivityFlow} as a kind of \class{Activity}
-%with all the relations and properties that belong to an \class{Activity}. 
-
-
-We explored the different ways to describe a set of activities in the W3C 
+We also explored the different ways to describe a set of activities in the W3C 
 provenance model. This model uses \class{Bundle}, i.e. an entity with type ``Bundle'', 
 for wrapping a provenance description. Each part of a provenance description can be 
 put into a bundle, and the bundle can then be reused in other provenance descriptions. 
@@ -449,6 +436,15 @@ the ``hadStep'' relation, as is shown in Figure~\ref{fig:activity-details}.
 %
 %We also allow ActivityCollections to consist of a whole provenance graph of 
 %activities and entities being linked together.
+
+
+%We could introduce an additional abstract class, e.g. \class{AbstractActivity}, with \class{Activity} and 
+%\class{ActivityFlow} being subclasses to this one. But this adds another layer of complexity 
+%that we may not want in this data model.
+
+%Since we introduced \class{ActivityFlow} mainly for having different view levels, 
+%we may want to add an attribute \emph{viewLevel} to descriptions of activityflows.
+% But where to set the 0 point for viewLevel???
 
 
 
@@ -475,17 +471,35 @@ can be different.
 %multiplicities explicitely: an entity always has only one (or none) 
 %\class{WasGeneratedBy} relation, but may be \class{Used} many times as input for 
 %different activities.
-In previous versions of this model we only allowed one wasGeneratedBy-activity per 
-entity. However, we introduced in Section~\ref{sec:activityflow} the additional \class{ActivityFlow} as 
-a subclass to \class{Activity} for grouping activities together. Thus we need to 
-weaken the constraint and allow more than one wasGeneratedBy-activity per entity. 
 
 The \class{WasGeneratedBy}-relation can have the optional attribute \emph{time} -- this is the time, when 
 the generation of the entity is finished. This corresponds to e.g. \emph{DataID.date} in 
-Dataset Metadata DM.
+Dataset Metadata DM and is expected to be the equal or later than the endTime of the corresponding generation activity.
 %It therefore corresponds to the \emph{created}-time used in 
 %the Simulation Data Model (SimDM). 
 
+\paragraph{Compositions and multiplicities}
+In principle, one or more entities are produced by just one activity. 
+However, by introducing the \class{ActivityFlow} class for grouping activities together, 
+one entity can now have many wasGeneratedBy-links to activities. One of them would 
+be the actual generation activity, the other activities can only be activityFlows 
+containing this generation-activity. This restriction is not expressed explicitly in the current model.
+
+
+The \emph{Used} relation is closely coupled to the \emph{Activity}, so we use a composition here, indicated
+in Figure~\ref{fig:classdiagram} by a filled diamond: 
+if an activity is deleted, then the corresponding used relations need to be removed as well. 
+The entities that were used still remain, since they may have been used for other activities as well.
+We need a multiplicity * between \emph{Used} and \emph{Entity}, because an entity can be used more than once
+(by different activities).
+
+Similarly, the \emph{WasGeneratedBy} relation is closely coupled with the \emph{Entity} via a composition,
+since a wasGeneratedBy relation makes no sense without its entity. So if an entity is deleted, 
+then its wasGeneratedBy relation must be deleted as well. There is a multiplicity * between \emph{Activity}
+and \emph{WasGeneratedBy}, because an activity can generate many entities.
+
+
+\paragraph{Entity roles}
 Each activity requires specific roles for each input or output entity, thus 
 we store this information with description classes, in the role-attributes for 
 the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.

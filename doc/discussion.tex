@@ -82,27 +82,14 @@ avoid having too many classes and links between them.
 %\TODO{Check, if PROV-Templates from the W3C (inofficial note) could be used 
 %for ActivityDescriptions.}
 
-\subsection{ActivityFlow and implications for multiplicities}
-By introducing the \class{ActivityFlow} class, one entity can now have many 
-wasGeneratedBy-links to activities. One of them would be the actual generation-activity, 
-the other activities can only be activityflows containing this generation-activity.
-This is not expressed explicitly in the current model. 
-
-We could introduce an additional abstract class, e.g. \class{AbstractActivity}, with \class{Activity} and 
-\class{ActivityFlow} being subclasses to this one. But this adds another layer of complexity 
-that we may not want in this data model.
-
+\subsection{ActivityFlow and viewLevel}
 Since we introduced \class{ActivityFlow} mainly for having different view levels, 
-we may want to add an attribute \emph{viewLevel} to descriptions of activityflows.
+we may want to add an attribute \emph{viewLevel} to the class \class{ActivityFlow}.
+However, it is not clear, if viewLevel=0 describes the coarsest or most detailed view.
+It may happen, when recording provenance information, that first a pipeline activity 
+is defined and only later the detailed steps are described and the pipeline activity is flagged as
+an activityFlow with certain steps. Also, when having a detailed description of each activity step, 
+one may later decide to group activities together and define an activityFlow. Therefore, it is not
+that straightforward to define absolute viewLevel-values. Probably this has to be customized for
+each project itself.
 
-We are planning to test how it all works in implementations, which classes and attributes are 
-needed or not and will then adjust the model 
-accordingly.
-
-\subsection{VO-DML representation}
-We do not yet have a VO-DML compliant representation of the model. This is one 
-of the issues to be clarified for the next version.
-
-\subsection{Links to other data models}
-Section~\ref{sec:dmlinks} still needs to be expanded further, especially making detailed links with the 
-Simulation Data Model will be very useful.
