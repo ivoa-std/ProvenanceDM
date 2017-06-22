@@ -14,18 +14,20 @@ data was coming from and which steps were involved in processing the data, can h
 to understand the data and their restrictions and judge their quality.
 It would also be useful to be able to compare if, how and why the derived data 
 for some stars have changed between different releases.
-Provenance information for the major steps of RAVE DR4 was recorded in W3C-compatible 
-PROV-N notation and uploaded to the provenance store at 
+Provenance information for some major steps of RAVE DR4 was loaded in 
+W3C-compatible PROV-N notation and uploaded to the provenance store at 
 https://provenance.ecs.soton.ac.uk/store/documents/84064/. This allows to view 
 graphs of the workflow by visualising only the main entities, activities and agents 
 with their relations. It shows that the provenance concepts explained in this draft 
 can be applied directly to data obtained from astronomical observations.
+
 We also tested a Django implementation of the classes in this document along with provenance data 
 stored in an SQLite database. This allows to quickly setup a provenance web service
 which gives the possibility to view all instances of a class or details for a single object, 
 extract provenance information for single entities (backwards in time) and 
-visualise the provenance information using for example d3.js (see https://escience.aip.de/prov/graphs/example.html for an example).
-A preliminary version of the Django webapp is available at https://github.com/kristinriebe/provenance-website.
+visualise the provenance information. 
+More details about this are available in the implementation notes \citep{std:ProvenanceImplementationNote}.
+
 
 
 
