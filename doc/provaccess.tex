@@ -11,68 +11,8 @@ There are two possible families of ProvenanceDM metadata serializations, example
 
 \end{itemize}
 
-This can be done using the voprov \footnote{\url{https://github.com/sanguillon/voprov}} python module.
-The following is an example of a python program which describes the provenance and generates the different formats of serialization.
-\begin{verbatim}
-import sys
-from prov.model import ProvDocument
-from prov.dot import prov_to_dot
-import pdb
-
-try:
-    provdoc = ProvDocument()
-    provdoc.add_namespace('prov', 'http://www.w3.org/ns/prov#')
-    provdoc.add_namespace('voprov', 'http://www.ivoa.net/documents/dm/provdm/voprov/')
-    provdoc.add_namespace('ivo', 'http://www.ivoa.net/documents/rer/ivo/')
-    provdoc.add_namespace('hips', 'http://cds.u-strasbg.fr/data/')
-
-    provdoc.entity('ivo://CDS/P/DSS2color#RGB_NGC6946',\
-        {'voprov:name':'RGB DSS2 image for NGC 6946', \
-         'voprov:annotation':'PNG RGB image for galaxy NGC 6946'})
-
-    provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143',\
-        {'voprov:name':'POSSII Blue Survey DSS2 NGC6946', \
-         'voprov:annotation':'Blue POSSII Schmidt survey around NGC 6946'})
-
-    provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143',\
-        {'voprov:name':'POSSII Red Survey DSS2 NGC6946', \
-         'voprov:annotation':'Red POSSII Schmidt survey around NGC 6946'})
-
-    provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143',\
-        {'voprov:name':'POSSII Infra Red Survey DSS2 NGC6946', \
-         'voprov:annotation':'Infrared POSSII Schmidt survey around NGC 6946'})
-
-    provdoc.activity('hips:AlaRGB1', '2017-04-18T17:28:00', '2017-04-19T17:29:00', \
-          {'voprov:name':'Aladin RGB 1',\
-           'voprov:annotation': 'Aladin RGB image generation for NGC 6946',\
-           'voprov:desc_name': 'Aladin RGB image generation algorithm', \
-           'voprov:desc_type': 'RGBencoding', \
-           'voprov:desc_doculink':'http://aladin.u-strasbg.fr/aladin.gml'})
-
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143')
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143')
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143')
-
-    provdoc.wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', 'hips:AlaRGB1', '')
-
-    f_out = open('ex1.json','w')
-    f_out.write(provdoc.serialize(indent=2))
-    f_out.close()
-    f_out = open('ex1.provn','w')
-    f_out.write(provdoc.get_provn())
-    f_out.close()
-    provdoc.serialize(format='xml', destination='ex1.xml')
-    f_out = open('ex1.votable','w')
-    f_out.write(provdoc.serialize(format='votable',indent=2))
-    f_out.close()
-
-except Exception, e:
-        print("Error while writing the file : %s !" %str(e))
-        sys.exit(1)
-
-\end{verbatim}
-
-This is the PROV-N serialization:
+This can be done using the voprov \footnote{\url{https://github.com/sanguillon/voprov}} python module, also see Section~\ref{sec:implementation_voprov}.
+Here is an example serialization for the process of creating a composite image from three images, in PROV-N format:
 
 \begin{verbatim}
 
@@ -94,10 +34,9 @@ endDocument
 
 \end{verbatim}
 
-This is the json serialization:
+This is the corresponding PROV-JSON serialization:
 
 \begin{verbatim}
-
 {
   "prefix": {
     "ivo": "http://www.ivoa.net/documents/rer/ivo/",
@@ -160,7 +99,6 @@ This is the json serialization:
     }
   }
 }
-
 \end{verbatim}
 
 This is the VOTABLE serialization:
@@ -255,27 +193,11 @@ This is the VOTABLE serialization:
 </VOTABLE>
 
 \end{verbatim}
-  
+
 Such serializations can be retrieved through Access protocols (see \ref{sec:access_protocols} ) or directly integrated in datasets headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. a provenance block could be added to fits files that contains provenance descriptions of the workflow that generated the fits-file in one of the serialisation formats.
 
-\subsection{Graphic formats}
-\label{sec:graphic_formats}
-The voprov python module can also provide provenance information in graphic formats: PNG, SVG and PDF.
-In the above example, you have to add the following instructions in your python program:
-
-\begin{verbatim}
-    dot = prov_to_dot(provdoc, use_labels=True)
-    dot.write_png('ex1.png')
-    dot.write_svg('ex1.svg')
-    dot.write_pdf('ex1.pdf')
-\end{verbatim}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{access_ex1.png}
-\caption{Example: png format@}
-\label{fig:example}
-\end{figure}
+% \subsection{Graphic formats} --> moved to implementation section. But may want to
+% include a more general section here, mentioning different ways to serialize
 
 
 \subsection{Access protocols}
@@ -315,9 +237,9 @@ FORMAT & optional & PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE & serialisation fo
 
 \subsubsection{ProvTAP}
 ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema. The mapping of ProvenanceDM classes and attributes onto tables and columns of the schema with the appropriate relationships, datatypes, units, utypes and ucds is done similarly to the PROV-VOTABLE serialization. The query response will result in a single table according to the query.
-This single table is joining information coming from one or several ``provenance'' tables available in the database. 
+This single table is joining information coming from one or several ``provenance'' tables available in the database.
 
-A special case is considered where ProvenanceDM and ObsCore are both implemented in the same TAP service and queried together. The TAP response is then providing an Obscore table with a ProvenanceDM extension. We can imagine that in the future this could be hard-coded and registered as an ObsTapProv service. 
+A special case is considered where ProvenanceDM and ObsCore are both implemented in the same TAP service and queried together. The TAP response is then providing an Obscore table with a ProvenanceDM extension. We can imagine that in the future this could be hard-coded and registered as an ObsTapProv service.
 
 
 %\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
