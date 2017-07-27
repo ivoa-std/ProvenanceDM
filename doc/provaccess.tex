@@ -209,25 +209,30 @@ We envision two possible access protocols:
 \end{itemize}
 
 \subsubsection{ProvDAL}
-ProvDAL is a service the interface of which is organized around one main parameter, the ``ID'' of an entity (obs\_publisher\_did of an ObsDataSet for example) or activity. The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query. FORMAT allows to choose the output format. STEP allows to discriminate between STEP=LAST which gives the last step in the provenance chain and STEP=ALL which gives the whole chain.
+ProvDAL is a service the interface of which is organized around one main parameter, the ``ID'' of an entity (obs\_publisher\_did of an ObsDataSet for example) or activity. The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query: FORMAT allows to choose the output format. BACKWARD gives the number of relations that shall be tracked in backward direction. Its value is either a positive integer or ALL. If this parameter is omitted, the default is ALL, wich returs the complete provenance history.
+FORWARD defines the number of forward relations; it's also either a positive integer or ALL, but default is 0. That means if neither FORWARD nor BACKWARD are specified, then the complete provenance history is returned.
+
+A ProvDAL service MUST implement the parameters ID, BACKWARD and FORMAT; FORWARD is optional. If a service does not implement FORWARD, but the FORWARD is provided in the request, then it should return with an error.
+
 The ID parameter is allowed more than once in order to retrieve several data set provenance details at the same time. An example request could look like this:
 
 \begin{verbatim}
-{provdal-base-url}?ID=rave:dr4&STEP=LAST&FORMAT=PROV-JSON
+{provdal-base-url}?ID=rave:dr4&BACKWARD=1&FORMAT=PROV-JSON
 \end{verbatim}
 
 Table~\ref{tab:provdal-parameters} summarizes the parameters for such a ProvDAL service interface.
 
 \begin{table}[h]
 \small
-\begin{tabulary}{1.0\textwidth}{@{}lLp{0.2\textwidth}p{0.3\textwidth}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lLp{0.2\textwidth}p{0.2\textwidth}p{0.3\textwidth}@{}}
 %{llp{0.2\textwidth}p{0.3\textwidth}}
 \toprule
-\head{Parameter} & \head{Requirement} & \head{Value/options} & \head{Description}\\\hline
+\head{Parameter} & \head{Requirement} & \head{Value/options} & \head{Default} & \head{Description}\\\hline
 \midrule
-ID & required & qualified ID & a valid qualified identifier for an entity or activity (can occur multiple times)\\
-STEP & optional & LAST, ALL & \texttt{LAST} for retrieving only the last provenance step or \texttt{ALL} for everything\\
-FORMAT & optional & PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE & serialisation format of the response\\
+ID & required & qualified ID & -- & a valid qualified identifier for an entity or activity (can occur multiple times)\\
+BACKWARD & optional & 0,1,2,..., ALL & ALL & number of relations to be followed backwards or \texttt{ALL} for everything\\
+FORWARD & optional & 0,1,2,..., ALL & 0 & number of relations to be followed forward or \texttt{ALL} for everything\\
+FORMAT & optional & PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE & ? & serialisation format of the response\\
 \bottomrule
 \end{tabulary}
 \caption{ProvDAL request parameters}

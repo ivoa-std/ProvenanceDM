@@ -171,10 +171,11 @@ infrastructure that enable VO applications.
 % Use itemize environments.
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
 \begin{itemize}
+\item Use parameters \texttt{BACKWARD} and \texttt{FORWARD} instead of \texttt{STEP} in ProvDAL, Section~\ref{sec:access_protocols}.
 \item Expanded Section~\ref{sec:access_protocols} on access protocols, especially ProvDAL part.
 \item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
 \item Added serialisation examples to Section~\ref{sec:serialisations}, voprov-implementation example to Section~\ref{sec:usecases-implementations}.
-\item Use voprov:type and voprov:role in table with example agent roles, \ref{tab:agent-roles}, i.e. replaced prov:person by Individual and prov:organization by Organization.
+\item Use voprov:type and voprov:role in Table~\ref{tab:agent-roles} with example agent roles, i.e. replaced prov:person by Individual and prov:organization by Organization.
 \item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
 \item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
 \item Extended the entity role examples in table \ref{tab:entity-roles}.
@@ -191,7 +192,6 @@ infrastructure that enable VO applications.
     \item \emph{annotation}: free text description
     \end{itemize}
 \item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
-\item Renamed \emph{Agent.name} to \emph{Agent.label}, so that each class has an id and a label.
 \item Renamed Section~\ref{sec:usecases-implementations} to stress that it deals with implementations.
 \item Added links to provn and votable-serialization for HiPS-use case, added first part of provn as example in the HiPS-use case section.
 \item Corrected attribute names in Table~\ref{tab:datasetmapping}.
