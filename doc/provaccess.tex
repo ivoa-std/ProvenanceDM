@@ -194,7 +194,9 @@ This is the VOTABLE serialization:
 
 \end{verbatim}
 
-Such serializations can be retrieved through access protocols (see \ref{sec:access_protocols} ) or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file in one of the serialisation formats.\TODO{Check that this keyword is not already taken.}
+Such serializations can be retrieved through access protocols (see \ref{sec:access_protocols} ) or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file in one of the serialisation formats.
+
+\TODO{Check that this keyword is not already taken.}
 
 % \subsection{Graphic formats} --> moved to implementation section. But may want to
 % include a more general section here, mentioning different ways to serialize
@@ -209,10 +211,9 @@ We envision two possible access protocols:
 \end{itemize}
 
 \subsubsection{ProvDAL}
-ProvDAL is a service the interface of which is organized around one main parameter, the ``ID'' of an entity (obs\_publisher\_did of an ObsDataSet for example) or activity. The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query: FORMAT allows to choose the output format. BACKWARD gives the number of relations that shall be tracked in backward direction. Its value is either a positive integer or ALL. If this parameter is omitted, the default is ALL, wich returs the complete provenance history.
-FORWARD defines the number of forward relations; it's also either a positive integer or ALL, but default is 0. That means if neither FORWARD nor BACKWARD are specified, then the complete provenance history is returned.
+ProvDAL is a service the interface of which is organized around one main parameter, the ``ID'' of an entity (obs\_publisher\_did of an ObsDataSet for example) or activity. The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query: FORMAT allows to choose the output format. BACKWARD gives the number of relations that shall be tracked in backward direction, i.e. along the provenance history. Its value is either a positive integer or ALL. If this parameter is omitted, the default is ALL, wich returs the complete provenance history.
+The optional parameter FORWARD defines the number of forward relations; it's also either a positive integer or ALL, but default is 0. That means if neither FORWARD nor BACKWARD are specified, then the complete provenance history is returned.
 
-A ProvDAL service MUST implement the parameters ID, BACKWARD and FORMAT; FORWARD is optional. If a service does not implement FORWARD, but the FORWARD is provided in the request, then it should return with an error.
 
 The ID parameter is allowed more than once in order to retrieve several data set provenance details at the same time. An example request could look like this:
 
@@ -220,26 +221,38 @@ The ID parameter is allowed more than once in order to retrieve several data set
 {provdal-base-url}?ID=rave:dr4&BACKWARD=1&FORMAT=PROV-JSON
 \end{verbatim}
 
+Each of the provenance relation has a direction, BACKWARD follows these directions whereas FORWARD follows the relations in reverse direction, independent of the relation type. This is easier to implement, but has the (for a user unexpected) side effect that e.g. agent relations are only retrieved when using BACKWARD, but never with FORWARD. Similarly for membership (hadStep, hadMember) relations: members of a collection or activityFlow are retrieved only in BACKWARD direction, and collections or activityFlows that contain an entity or activity are only found in FORWARD direction. In order to provide a more user-friendly interface with less surprising behaviour, we define three more request parameters: EXPAND\_AGENT, EXPAND\_COLLECTION and EXPAND\_ACTIVITYFLOW. They take TRUE or FALSE as arguments. If they are set to TRUE, the relations with agents, collections and activityFlows will be included in any case, independent of the direction in which the provenance graph is retrieved.
+\TODO{Draw a provenance graph picture here with different relation types and arrows for direction.}
+\TODO{Implementations need to show if this is really the best way.}
+
+A ProvDAL service MUST implement the parameters ID, BACKWARD and FORMAT; the remaining parameters are optional.
+ If a service does not implement the optional parameters, but they appear in the request, then the service should return with an error.
+
 Table~\ref{tab:provdal-parameters} summarizes the parameters for such a ProvDAL service interface.
 
 \begin{table}[h]
 \small
-\begin{tabulary}{1.0\textwidth}{@{}lLp{0.2\textwidth}p{0.2\textwidth}p{0.3\textwidth}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}p{0.17\textwidth}Lp{0.2\textwidth}p{0.10\textwidth}p{0.3\textwidth}@{}}
 %{llp{0.2\textwidth}p{0.3\textwidth}}
 \toprule
 \head{Parameter} & \head{Requirement} & \head{Value/options} & \head{Default} & \head{Description}\\\hline
 \midrule
 ID & required & qualified ID & -- & a valid qualified identifier for an entity or activity (can occur multiple times)\\
-BACKWARD & optional & 0,1,2,..., ALL & ALL & number of relations to be followed backwards or \texttt{ALL} for everything\\
+BACKWARD & required & 0,1,2,..., ALL & ALL & number of relations to be followed backwards or \texttt{ALL} for everything\\
 FORWARD & optional & 0,1,2,..., ALL & 0 & number of relations to be followed forward or \texttt{ALL} for everything\\
-FORMAT & optional & PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE & ? & serialisation format of the response\\
+FORMAT & required & PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE & ? & serialisation format of the response\\
+EXPAND\_ AGENT & optional & TRUE or FALSE & TRUE & include agent relations in any case\\
+EXPAND\_ COLLECTION & optional & TRUE or FALSE & TRUE & include relations with collections in any case\\
+EXPAND\_ ACTIVITYFLOW & optional & TRUE or FALSE & TRUE & include relations with activityFlows in any case\\
 \bottomrule
 \end{tabulary}
 \caption{ProvDAL request parameters}
 \label{tab:provdal-parameters}
 \end{table}
 
+\TODO{If EXPAND\_AGENT=TRUE: include all agent relations, but if EXPAND\_AGENT=FALSE, then use default behaviour? Or do not include any of the agent relations? Which one would it be?}
 
+\clearpage
 \subsubsection{ProvTAP}
 ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema. The mapping of ProvenanceDM classes and attributes onto tables and columns of the schema with the appropriate relationships, datatypes, units, utypes and ucds is done similarly to the PROV-VOTABLE serialization. The query response will result in a single table according to the query.
 This single table is joining information coming from one or several ``provenance'' tables available in the database.
