@@ -92,17 +92,17 @@ More direct mappings between classes and attributes of both models are given in 
 \head{Simulation DM} & \head{Provenance DM} & \head{Comment}\\
 \midrule
 Experiment      & Activity               & \\
-Experiment.name & Activity.label         & human readable name; name attribute in SimDM is inherited from Resource-class\\
+Experiment.name & Activity.name         & human readable name; name attribute in SimDM is inherited from Resource-class\\
 Experiment.executionTime  & Activity.endTime & end time of the execution of an experiment/activity \\
-Experiment.protocol & Activity.description\_ref & reference to the protocol or description class \\
+Experiment.protocol & Activity.activityDescription & reference to the protocol or description class \\
 Protocol        & ActivityDescription    & \\
-Protocol.name   & ActivityDescription.label  & human readable name\\
+Protocol.name   & ActivityDescription.name  & human readable name\\
 Protocol.referenceURL & ActivityDescription.doculink & reference to a webpage describing it\\
 % add Protocol.code, Protocol.version?
 ParameterSetting     & Parameter              & value of an (input) parameter\\
 InputParameter       & ParameterDescription              & description of an (input) parameter\\
 Party           & Agent                 & responsible person or organization\\
-Party.name      & Agent.label & name of the agent \\
+Party.name      & Agent.name & name of the agent \\
 Contact         & WasAssociatedWith & \\
 Contact.role    & WasAssociatedWith.role & role which the agent/party had for a certain experiment (activity); SimDM roles contain: \texttt{owner}, \texttt{creator}, \texttt{publisher}, \texttt{contributor}\\
 Contact.party    & WasAssociatedWith.agent & reference to the agent/party \\
