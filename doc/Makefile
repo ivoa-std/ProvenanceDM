@@ -29,3 +29,7 @@ VECTORFIGURES = workflow-backwards.pdf
 AUX_FILES = 
 
 include ivoatex/Makefile
+
+
+provdal: provdal.tex
+		pdflatex provdal.tex

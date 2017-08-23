@@ -1,0 +1,85 @@
+\documentclass[11pt,a4paper]{ivoa}
+\input tthdefs
+
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs, tabulary}    % for nicer tables
+
+% make the text in pdf properly searchable
+\usepackage{lmodern}
+
+% use listings for including text files and code snippets
+\usepackage{listings}
+
+
+% own definitions
+\definecolor{todocolor}{rgb}{1,1,0.8}
+\definecolor{darkred}{rgb}{0.6,0,0}
+\definecolor{rose}{rgb}{1.0,0.88,0.88}
+\definecolor{darkgrey}{rgb}{0.35,0.35,0.35}
+%\newcommand{\TODO}[1]{%
+%    \noindent%
+%    \textcolor{todocolor}{\sffamily [\textbf{TODO:} #1]}%
+%}
+
+\newcommand{\TODO}[1]{%
+    \noindent%
+    \colorbox{todocolor}{%
+            \parbox{0.85\linewidth}{\sffamily \textbf{TODO:}\\
+            #1}
+    }%
+    \vspace{2pt}
+
+}
+
+\newcommand{\note}[1]{%
+    \noindent%
+    \textcolor{darkgrey}{{\sffamily Note:} \emph{#1}}%
+}
+
+\newcommand{\comment}[1]{%
+    \noindent%
+    \textcolor{red}{{\sffamily Comment:} \emph{#1}}%
+}
+
+
+\newcommand{\paragraphlb}[1]{\paragraph{#1}\mbox{}\\} % paragraph with line break
+
+\setlength{\fboxsep}{5pt}
+%\setlength{\fboxrule}{1.5pt}
+\newcommand{\warning}[1]{%
+    \vspace{\baselineskip}
+    \noindent
+    \parbox{\linewidth}{%
+        \colorbox{darkred}{%
+            \parbox{0.7\linewidth}{\large \sffamily \textcolor{white}{Warning}}%
+        }\\[-1pt]
+        \noindent%
+        \fcolorbox{darkred}{rose}{%
+            \parbox{0.7\linewidth-2\fboxrule}{#1}%
+        }%
+    }%
+    \vspace{\baselineskip}
+}%
+
+% for nicer tables:
+\renewcommand{\arraystretch}{1.3}
+\newcommand{\head}[1]{\textbf{#1}}
+
+
+% define new command for classes, in case we decide later on for a different style
+\newcommand{\class}[1]{\emph{#1}}
+
+\newcommand{\urlparam}[1]{{\scriptsize{#1}}}
+
+
+\begin{document}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\section{Accessing provenance information}
+\subsection{State of ProvDAL at Paris meeting, July 2017}
+\input{provdal-paris}
+\clearpage
+\subsection{New proposal after Paris meeting, after first implementation}
+\input{provdal-afterparis}
+
+\end{document}
