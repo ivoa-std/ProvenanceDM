@@ -25,7 +25,7 @@ For services which allow tracking the provenance information forward, e.g. in or
 The provenance data model defines also the hierarchical relations \emph{hadMember} for entity collections and \emph{hadStep} for activityFlows. If a node belongs to a collection or activityFlow, these relations shall be returned as well, independent of the specified tracking direction.
 If one is interested in more details and wants to follow the \emph{members} of an entity collection or the \emph{steps} of an activityFlow, these can be included by setting the optional parameter \urlparam{\bf MEMBERS} or \urlparam{\bf STEPS} to \urlparam{TRUE}, respectively. The default is \urlparam{FALSE}.
 
-By default, it is recommended to stop any further tracking at an agent node, unless an additional optional parameter \urlparam{\bf AGENT} is set to \urlparam{TRUE}. Note that this means that the request for any agent will always return just the agent node itself and nothing else, unless \urlparam{AGENT=TRUE} is used. Thus, if one wants to know which entities and activities an agent has influenced, the request may look like this:
+By default, it is recommended to stop any further tracking at an agent node, unless an additional optional parameter \urlparam{\bf AGENT} is set to \urlparam{TRUE}. Note that this means that the request for any agent will always return just the agent node itself and nothing else, unless \urlparam{AGENT=TRUE} is used. Thus, if one wants to know which entities and activities an agent has influenced, the request looks like this:
 
 \begin{verbatim}
 {provdal-base-url}?ID=org:rave&AGENT=TRUE&DEPTH=1
@@ -37,7 +37,13 @@ By default, it is recommended to stop any further tracking at an agent node, unl
 %\comment{Maybe it's better to use DEPTH and DIRECTION instead of FORWARD and BACKWARD. Reason: if a service just implements the backward direction, then it's weird to call something ``backward'' if there is no ``forward'' as well. DEPTH is also a commonly used word when refering to graphs and numbers of relations.}
 
 
-\TODO{Draw a provenance graph picture here with different relation types and arrows for direction.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{provenance-graph-example-depth2.pdf}
+\caption{An example provenance graph, highlighting the objects and relations returned from a ProvDAL service with ID=E6 and \urlparam{DEPTH}=2. The \urlparam{BACK} and \urlparam{FORTH} values for \urlparam{DIRECTION} are only important for the processing relations (solid lines). Hierarchial (dashed) and responsibility relations (dotted) are only followed ``upwards'' and towards agents by default. If they should also be followed in the other direction, then the additional optional parameters \urlparam{MEMBERS}, \urlparam{STEPS} and \urlparam{AGENT} need to be set to \urlparam{TRUE}.}
+\label{fig:provenance-graph-example}
+\end{figure}
+
 
 A ProvDAL service MUST implement the parameters \urlparam{ID}, \urlparam{DEPTH} and \urlparam{FORMAT}; the remaining parameters are optional.
 If a service does not implement the optional parameters, but they appear in the request, then the service should return with an error.
