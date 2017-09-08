@@ -1,4 +1,3 @@
-\subsubsection{ProvDAL}
 ProvDAL is a service the interface of which is organized around one main parameter, the ``ID'' of an entity (obs\_publisher\_did of an ObsDataSet for example) or activity. The response is given in one of the following formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE. Additional parameters can complete ID to refine the query: FORMAT allows to choose the output format. BACKWARD gives the number of relations that shall be tracked in backward direction, i.e. along the provenance history. Its value is either 0, a positive integer or ALL. If this parameter is omitted, the default is ALL, wich returns the complete provenance history.
 The optional parameter FORWARD defines the number of forward relations; it's also either a positive integer or ALL, but default is 0. That means if neither FORWARD nor BACKWARD are specified, then the complete provenance history is returned.
 

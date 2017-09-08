@@ -1,14 +1,13 @@
-\subsubsection{ProvDAL}
 ProvDAL is a simple data access layer interface \citep[see DALI specification of the VO, ][]{std:DALI} that can be implemented by a web service to serve provenance information to a client.
 %It follows the basic DALI principles of the VO as detailed in \citep[see][]{std:DALI}.
-It is organized around one main parameter, {\bf ID}, the (unique, qualified) identifier of an entity (obs\_publisher\_did of an ObsDataSet for example), activity or an agent. This parameter can occur more than once in a request in order to retrieve provenance details for several activities or datasets at the same time. Here are two simple example requests:
+The client sends GET request to the basic URL endpoint (\texttt{\{provdal-base-url\}}) of a ProvDAL service, providing at least the main parameter {\bf ID}, the (unique, qualified) identifier of an entity (obs\_publisher\_did of an ObsDataSet for example), activity or an agent. This parameter can occur more than once in a request in order to retrieve provenance details for several activities, datasets or agents at the same time. Here are two simple example requests:
 
 \begin{verbatim}
 {provdal-base-url}?ID=rave:dr4
 {provdal-base-url}?ID=rave:dr4&ID=rave:act_irafReduction
 \end{verbatim}
 \noindent
-where \texttt{provdal-base-url} is the base URL of a ProvDAL service. Additional parameters can complete the request to refine the query. They are described in the next paragraphs and summarized in Table~\ref{tab:provdal-parameters}.
+Additional parameters can complete the request to refine the query. They are described in the next paragraphs and summarized in Table~\ref{tab:provdal-parameters}.
 
 \begin{table}[h]
 \small
@@ -26,7 +25,7 @@ where \texttt{provdal-base-url} is the base URL of a ProvDAL service. Additional
 \urlparam{AGENT} & \urlparam{true} or \urlparam{\underline{false}} & if \urlparam{true}, explore all relations for agents, i.e. find out what an agent is responsible for\\
 \bottomrule
 \end{tabulary}
-\caption{ProvDAL request parameters. Options that are \textbf{required} to be implemented by ProvDAL services are marked with bold face. \underline{Default} values are underlined.}
+\caption{ProvDAL request parameters. Options that are \textbf{required} to be implemented by ProvDAL services are marked with bold face. \underline{Default} values are underlined. The parameter names are case-insensitive, but the parameter values are not.}
 \label{tab:provdal-parameters}
 \end{table}
 
@@ -54,9 +53,13 @@ the server allows.}
 Note that the relations \emph{wasDerivedFrom} and \emph{wasInformedBy} are ``short-cuts''
 in a provenance graph. Thus for e.g. \texttt{DEPTH=2} more progenitors of an entity may
 be reached via \emph{wasDerivedFrom} relations than via the ``long path'' along the
-corresponding \emph{used} and \emph{wasGeneratedBy} relations (see progenitor entity E1 in
+corresponding \emph{used} and \emph{wasGeneratedBy} relations (see e.g. progenitor entity E1 in
 Figure~\ref{fig:provenance-graph-example}).
-
+%Whenever DEPTH is not ALL, the client has to accept that
+%the returned part of a provenance graph may not be complete and that nodes may be returned
+%which are related to each other but the relations are not shown (yet).
+%(because they would only appear if DEPTH is increased.)
+(A better solution for the future may be to use 1/2*DEPTH for walking along these short-cut relations, but we don't want to make ProvDAL more complex for now.)
 
 % \noindent
 % The format can also be specified via the HTTP accept header, e.g.
@@ -97,12 +100,12 @@ By default, it is recommended to stop any further tracking at an agent node, unl
 
 A ProvDAL service MUST implement the parameters ID, DEPTH and FORMAT; the remaining parameters are optional.
 If a service does not implement the optional parameters, but they appear in the request, then the service should return with an error.
+Please note that according to the DALI specification \citep{std:DALI}, the parameter names are case-insensitive, but the parameter values are not. E.g. \texttt{direcion=FORTH} is allowed, but \texttt{DIRECTION=forth} may not work.
 
 
-\subsubsection{ProvDAL use cases}
-
-\TODO{Add here a few simple use cases for which ProvDAL serves it's purpose.}
-A ProvDAL endpoint can be used e.g. for following use cases:
+\subsubsection{ProvDAL example use cases}
+We provide here a few example use cases for ProvDAL in order to show its usefulness in exploring the provenance
+of astronomical datasets, processes or the people and projects involved in producing/performing them.
 
 \begin{itemize}
 \item The RAVE DR4 release contains a main table with stellar properties for each observation of a star. Given the RAVE observation ID, retrieve the processing steps
@@ -114,22 +117,34 @@ for this specific observation result:
 
 The result will not only contain the processing steps (activities), but also entities and agents. The important information can be filtered out by a client application (e.g. use voprov Python package). If a W3C tool shall be used, one needs to transform the response into a W3C compliant serialisation (e.g. for loading the result to ProvStore\footnote{https://provenance.ecs.soton.ac.uk/store/} for further processing).
 
+\item Get the direct progenitor of an entity:
+	\begin{verbatim}
+	{provdal-base-url}?ID=rave:20121220_0752m38_089&DEPTH=1
+	\end{verbatim}
+	If this request only returns a collection and not any ``backwards'' information about progenitors, then
+	one needs to track the collection further, i.e. repeat the request for the collection entity.
+
 \item Get all datasets that were derived from a specific data file in the CTA pipeline:
 	\begin{verbatim}
-	{provdal-base-url}?ID=cta:df1&DEPTH=ALL&DIRECTION=FORTH&
-	MEMBERS=true
+	{provdal-base-url}?ID=cta:df1&DEPTH=ALL&DIRECTION=FORTH
 	\end{verbatim}
-	By using \texttt{DIRECTION=FORTH} we can track the dataset and where it was used forward. We also set \texttt{MEMBERS=true} in order to additionally retrieve all members of a collection that may have been derived from the given data file.
+	By using \texttt{DIRECTION=FORTH} we can track the dataset and where it was used forward.
 
 \item Find all people that were involved in processing a dataset along with their contact data (if available), so that one can ask them for further information.
 	\begin{verbatim}
 	{provdal-base-url}?ID=ex:e1&DEPTH=ALL
 	\end{verbatim}
- 	The ProvDAL request is basically the same as the first example. From the results the agents need to be filtered.
- 	Since the response contains the nodes and relations including all their properties, the contact details for the agent are included as well (if they are stored with the service).
+ 	The ProvDAL request is basically the same as in the first example. From the results the agents need to be filtered.
+ 	Since the response contains the nodes and relations including all their properties, the contact details for the agents are included as well (if they are stored with the service).
+
+\item Retrieve a VOTABLE serialisation of the provenance for an image from a data collection.
+	\begin{verbatim}
+	{provdal-base-url}?ID=myproject:img1&DEPTH=ALL&FORMAT=PROV-VOTABLE
+	\end{verbatim}
+	We use the FORMAT keyword here to retrieve a VOTABLE.
 \end{itemize}
 
-ProvDAL is meant to be used to retrieve parts of a provenance graph from a provenance web service. It cannot be used to retrieve information based on properties of e.g. an entity, such as creationTime or file format etc. For such cases, a ProvTAP service can be used (see next section).
+ProvDAL is meant to be used to retrieve parts of a provenance graph from a provenance web service. It cannot be used to retrieve information based on specific properties, e.g. the creationTime of an entity or a parameter value for an activity. For such cases, a ProvTAP service can be used (see next section).
 
 
-\TODO{Add paragraph on VOSI-endpoints? (DALI service)}
+\TODO{Add paragraph on VOSI-endpoints? (DALI service!)}
