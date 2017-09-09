@@ -207,13 +207,13 @@ Such serializations can be retrieved through access protocols (see \ref{sec:acce
 \label{sec:access_protocols}
 We envision two possible access protocols:
 \begin{itemize}
-\item ProvDAL: retrieve provenance information based on given ID of a data entity, activity or agent.
+\item ProvDAL: retrieve provenance information based on given ID of a data entity or activity.
 \item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on e.g. code version.
 \end{itemize}
 
 \subsubsection{ProvDAL}
-%\input{provdal-beforeparis}
 \input{provdal-afterparis}
+
 
 \subsubsection{ProvTAP}
 ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema. The mapping of ProvenanceDM classes and attributes onto tables and columns of the schema with the appropriate relationships, datatypes, units, utypes and ucds is done similarly to the PROV-VOTABLE serialization. The query response will result in a single table according to the query.
@@ -226,3 +226,14 @@ A special case is considered where ProvenanceDM and ObsCore are both implemented
 
 
 %\TODO{Also look at PROV-AQ from the W3C.}
+
+\subsubsection{VOSI availability and capabilities}
+\TODO{Still needs to be discussed!}
+According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL and/or ProvTAP must provide a VOSI availability interface as well as an entry for ProvDAL and/or ProvTAP in its capabilities interface. The \texttt{standardId}s for these provenance interfaces are:
+
+\begin{verbatim}
+ivo://ivoa.net/std/ProvenanceDM#ProvDAL
+ivo://ivoa.net/std/ProvenanceDM#ProvTAP
+\end{verbatim}
+
+For ProvTAP, the VOSI tables interface also needs to be provided.

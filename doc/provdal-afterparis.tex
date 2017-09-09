@@ -11,14 +11,14 @@ Additional parameters can complete the request to refine the query. They are des
 
 \begin{table}[h]
 \small
-\begin{tabulary}{1.0\textwidth}{@{}p{0.17\textwidth}p{0.22\textwidth}p{0.53\textwidth}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}p{0.25\textwidth}p{0.15\textwidth}p{0.53\textwidth}@{}}
 %{llp{0.2\textwidth}p{0.3\textwidth}}
 \toprule
 \head{Parameter} & \head{Values} & \head{Description}\\\hline
 \midrule
 \textbf{\urlparam{ID}} & qualified \urlparam{ID} & a valid qualified identifier for an entity, activity or agent (can occur multiple times)\\
 \textbf{\urlparam{DEPTH}} & 0,\underline{1},2,..., \urlparam{ALL} &  number of relations to be followed or \texttt{ALL} for everything, independent of the relation type\\
-\textbf{\urlparam{FORMAT}} & \urlparam{PROV-N}, \newline\urlparam{\underline{PROV-JSON}}, \newline\urlparam{PROV-XML}, \newline\urlparam{PROV-VOTABLE} & serialisation format of the response\\\hline
+\textbf{\urlparam{RESPONSEFORMAT}} & \urlparam{PROV-N}, \newline\urlparam{\underline{PROV-JSON}}, \newline\urlparam{PROV-XML}, \newline\urlparam{PROV-VOTABLE} & serialisation format of the response\\\hline
 \urlparam{DIRECTION} & \urlparam{\underline{BACK}}, \urlparam{FORTH} & \urlparam{BACK} = track the provenance history, \newline\urlparam{FORTH} = explore the results of activities and where entities have been used\\
 \urlparam{MEMBERS} & \urlparam{true} or \urlparam{\underline{false}} & if \urlparam{true}, retrieve and track members of collections\\
 \urlparam{STEPS} & \urlparam{true} or \urlparam{\underline{false}} & if \urlparam{true}, retrieve and track steps of activityFlows\\
@@ -30,10 +30,8 @@ Additional parameters can complete the request to refine the query. They are des
 \end{table}
 
 
-\paragraph{Response format}
-The format of the response can be defined using the FORMAT parameter. Its value is one of the provenance serialization formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE.
-
-\TODO{Rename FORMAT to RESPONSEFORMAT as in DALI, Section 3.4.3?}
+\paragraph{RESPONSEFORMAT}
+The format of the response can be defined using the RESPONSEFORMAT parameter. Its value is one of the provenance serialization formats: PROV-N, PROV-JSON, PROV-XML, PROV-VOTABLE.
 
 \paragraph{{DEPTH}}
 The DEPTH parameter gives the number of relations that shall be tracked along
@@ -42,9 +40,9 @@ either 0, a positive integer or ALL. If this parameter is omitted,
 the default is 1, which returns all relations and nodes that can be reached
 by following 1 relation. If \texttt{DEPTH=ALL} is requested, the server should
 return the complete provenance history that the service has stored for the
-given entity, activity or agent. 
+given entity, activity or agent.
 
-\TODO{KR: add here: 
+\TODO{KR: I suggest to add here:\\
 Services may restrict the returned data by
 redirecting \texttt{DEPTH=ALL} to e.g. \texttt{DEPTH=\{maxdepth\}}, where
 \texttt{\{maxdepth\}} is an integer defining the maximum depth number that
@@ -88,10 +86,11 @@ Figure~\ref{fig:provenance-graph-example} shows an example provenance graph with
 
 \paragraph{MEMBERS, STEPS}
 The provenance data model defines the hierarchical relations \emph{hadMember} for entity collections and \emph{hadStep} for activityFlows. If a node belongs to a collection or activityFlow, these relations shall be returned as well, independent of the specified tracking direction.
-If someone is interested in more details and wants to follow the \emph{members} of an entity collection or the \emph{steps} of an activityFlow, these can be included by setting the optional parameter MEMBERS or STEPS to true, respectively. The default is false. As detailed in DALI, the values 1 and 0 are equivalent to true and false.
+If someone is interested in more details and wants to follow the \emph{members} of an entity collection or the \emph{steps} of an activityFlow, these can be included by setting the optional parameter MEMBERS or STEPS to true, respectively. The default is false. As detailed in DALI \citep{std:DALI}, the values 1 and 0 are equivalent to true and false.
 
 \paragraph{AGENT}
-By default, it is recommended to stop any further tracking at an agent node, unless an additional optional parameter AGENT is set to true. Note that this means that the request for any agent will always return just the agent node itself and nothing else, unless AGENT=true is used. An example request if one wants to know which entities and activities an agent has influenced could look like this:\\\texttt{\{provdal-base-url\}?ID=org:rave\&AGENT=true\&DEPTH=1}.\\
+By default, it is recommended to stop any further tracking at an agent node, unless an additional optional parameter AGENT is set to true. Note that this means that the request for any agent will always return just the agent node itself and nothing else, unless AGENT=true is used. An example request if one wants to know which entities and activities an agent has influenced could look like this:\\
+\texttt{\{provdal-base-url\}?ID=org:rave\&AGENT=true\&DEPTH=1}.\\
 \texttt{DEPTH=1} is used here in order to avoid following the found entities and activities any further (can be omitted, since this is the default for DEPTH).
 \newline
 %\comment{Maybe it's better to use DEPTH and DIRECTION instead of FORWARD and BACKWARD. Reason: if a service just implements the backward direction, then it's weird to call something ``backward'' if there is no ``forward'' as well. DEPTH is also a commonly used word when refering to graphs and numbers of relations.}
@@ -101,7 +100,6 @@ By default, it is recommended to stop any further tracking at an agent node, unl
 A ProvDAL service MUST implement the parameters ID, DEPTH and FORMAT; the remaining parameters are optional.
 If a service does not implement the optional parameters, but they appear in the request, then the service should return with an error.
 Please note that according to the DALI specification \citep{std:DALI}, the parameter names are case-insensitive, but the parameter values are not. E.g. \texttt{direcion=FORTH} is allowed, but \texttt{DIRECTION=forth} may not work.
-
 
 \subsubsection{ProvDAL example use cases}
 We provide here a few example use cases for ProvDAL in order to show its usefulness in exploring the provenance
@@ -147,4 +145,3 @@ The result will not only contain the processing steps (activities), but also ent
 ProvDAL is meant to be used to retrieve parts of a provenance graph from a provenance web service. It cannot be used to retrieve information based on specific properties, e.g. the creationTime of an entity or a parameter value for an activity. For such cases, a ProvTAP service can be used (see next section).
 
 
-\TODO{Add paragraph on VOSI-endpoints? (DALI service!)}
