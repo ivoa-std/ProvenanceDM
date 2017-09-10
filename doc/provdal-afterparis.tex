@@ -97,7 +97,7 @@ By default, it is recommended to stop any further tracking at an agent node, unl
 
 
 
-A ProvDAL service MUST implement the parameters ID, DEPTH and FORMAT; the remaining parameters are optional.
+A ProvDAL service MUST implement the parameters ID, DEPTH and RESPONSEFORMAT; the remaining parameters are optional.
 If a service does not implement the optional parameters, but they appear in the request, then the service should return with an error.
 Please note that according to the DALI specification \citep{std:DALI}, the parameter names are case-insensitive, but the parameter values are not. E.g. \texttt{direcion=FORTH} is allowed, but \texttt{DIRECTION=forth} may not work.
 
@@ -137,9 +137,10 @@ The result will not only contain the processing steps (activities), but also ent
 
 \item Retrieve a VOTABLE serialisation of the provenance for an image from a data collection.
 	\begin{verbatim}
-	{provdal-base-url}?ID=myproject:img1&DEPTH=ALL&FORMAT=PROV-VOTABLE
+	{provdal-base-url}?ID=myproject:img1&DEPTH=ALL\
+	&RESPONSEFORMAT=PROV-VOTABLE
 	\end{verbatim}
-	We use the FORMAT keyword here to retrieve a VOTABLE.
+	We use the RESPONSEFORMAT keyword here to retrieve a VOTABLE.
 \end{itemize}
 
 ProvDAL is meant to be used to retrieve parts of a provenance graph from a provenance web service. It cannot be used to retrieve information based on specific properties, e.g. the creationTime of an entity or a parameter value for an activity. For such cases, a ProvTAP service can be used (see next section).
