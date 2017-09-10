@@ -11,7 +11,7 @@ Additional parameters can complete the request to refine the query. They are des
 
 \begin{table}[h]
 \small
-\begin{tabulary}{1.0\textwidth}{@{}p{0.25\textwidth}p{0.15\textwidth}p{0.53\textwidth}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}p{0.25\textwidth}p{0.23\textwidth}p{0.45\textwidth}@{}}
 %{llp{0.2\textwidth}p{0.3\textwidth}}
 \toprule
 \head{Parameter} & \head{Values} & \head{Description}\\\hline
@@ -20,9 +20,9 @@ Additional parameters can complete the request to refine the query. They are des
 \textbf{\urlparam{DEPTH}} & 0,\underline{1},2,..., \urlparam{ALL} &  number of relations to be followed or \texttt{ALL} for everything, independent of the relation type\\
 \textbf{\urlparam{RESPONSEFORMAT}} & \urlparam{PROV-N}, \newline\urlparam{\underline{PROV-JSON}}, \newline\urlparam{PROV-XML}, \newline\urlparam{PROV-VOTABLE} & serialisation format of the response\\\hline
 \urlparam{DIRECTION} & \urlparam{\underline{BACK}}, \urlparam{FORTH} & \urlparam{BACK} = track the provenance history, \newline\urlparam{FORTH} = explore the results of activities and where entities have been used\\
-\urlparam{MEMBERS} & \urlparam{true} or \urlparam{\underline{false}} & if \urlparam{true}, retrieve and track members of collections\\
-\urlparam{STEPS} & \urlparam{true} or \urlparam{\underline{false}} & if \urlparam{true}, retrieve and track steps of activityFlows\\
-\urlparam{AGENT} & \urlparam{true} or \urlparam{\underline{false}} & if \urlparam{true}, explore all relations for agents, i.e. find out what an agent is responsible for\\
+\urlparam{MEMBERS} & \urlparam{true} (1) or \urlparam{\underline{false}} (0) & if \urlparam{true}/1, retrieve and track members of collections\\
+\urlparam{STEPS} & \urlparam{true} (1) or \urlparam{\underline{false}} (0) & if \urlparam{true}/1, retrieve and track steps of activityFlows\\
+\urlparam{AGENT} & \urlparam{true} (1) or \urlparam{\underline{false}} (0) & if \urlparam{true}/1, explore all relations for agents, i.e. find out what an agent is responsible for\\
 \bottomrule
 \end{tabulary}
 \caption{ProvDAL request parameters. Options that are \textbf{required} to be implemented by ProvDAL services are marked with bold face. \underline{Default} values are underlined. The parameter names are case-insensitive, but the parameter values are not.}
