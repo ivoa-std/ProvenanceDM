@@ -1,3 +1,5 @@
+\TODO{KR: This section is actually about 10 pages long (incl. about 4 pages of examples), and it's going to be longer when ProvTAP is properly described. We may consider moving this to a separate document (though I'd like to keep it here).}
+
 \subsection{Provenance Data Model serialization}\label{sec:serialisations}
 
 
@@ -261,6 +263,8 @@ This single table is joining information coming from one or several ``provenance
 A special case is considered where ProvenanceDM and ObsCore are both implemented in the same TAP service and queried together. The TAP response is then providing an Obscore table with a ProvenanceDM extension. We can imagine that in the future this could be hard-coded and registered as an ObsProvTAP service.
 
 
+\TODO{We need more details here! Output of TAP service is NOT a PROV-VOTABLE by default!}
+
 %\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
 
 
@@ -276,3 +280,4 @@ ivo://ivoa.net/std/ProvenanceDM#ProvTAP
 \end{verbatim}
 
 For ProvTAP, the VOSI tables interface also needs to be provided.
+

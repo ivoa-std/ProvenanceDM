@@ -72,6 +72,8 @@ Figure~\ref{fig:provenance-graph-example}).
 \paragraph{DIRECTION}
 For services which allow tracking the provenance information forward, e.g. in order to check for which activities an entity was used, the optional parameter DIRECTION can be set to FORTH. Its default value is BACK. This only influences the direction in which the used, wasGeneratedBy, wasDerivedFrom and wasInfluencedBy relations are followed. Any other relations are tracked according to the behaviour specified below, independent of the DIRECTION value.
 
+\TODO{What about adding the MODEL-parameter (values: IVOA/W3C)?}
+
 Figure~\ref{fig:provenance-graph-example} shows an example provenance graph with different relations and nodes. Only the relations marked by solid lines are influenced by the DIRECTION parameter. A ProvDAL GET request with \texttt{ID=E6} and \texttt{DEPTH=2} returns only the highlighted nodes and relations (thick lines) by default.
 
 \begin{figure}[h]
@@ -102,6 +104,7 @@ If a service does not implement the optional parameters, but they appear in the 
 Please note that according to the DALI specification \citep{std:DALI}, the parameter names are case-insensitive, but the parameter values are not. E.g. \texttt{direcion=FORTH} is allowed, but \texttt{DIRECTION=forth} may not work.
 
 \subsubsection{ProvDAL example use cases}
+\TODO{This is a new section.}
 We provide here a few example use cases for ProvDAL in order to show its usefulness in exploring the provenance
 of astronomical datasets, processes or the people and projects involved in producing/performing them.
 
