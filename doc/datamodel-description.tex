@@ -13,7 +13,7 @@ in the following sections more details for each class and relation.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/domain-classdiagram.pdf}
+\includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/domain-classdiagram-v2.pdf}
 \caption{Overview of the classes for the Provenance Data Model in a conceptual class diagram. The blue classes are core elements. There appear a number of many-to-many relationships with attached association classes (grey) which can contain additional attributes.}
 %Objects in the blue box also appear in the W3C Provenance Data Model. 
 %Green classes are links to the IVOA Dataset Metadata Model.}
@@ -119,7 +119,9 @@ all these classes and relations are given in the following section.
 \label{fig:classdiagram}
 \end{figure}
 
-Figure~\ref{fig:classdiagram} shows the full class diagram with the association classes for the many-to-many relations modeled more directly as mapping classes. When implementing the model in a relational database, these classes can be represented as individual tables for mapping the relation. We model one of the associations of the many-to-many relationships as composition (full diamond), if the mapping class belongs more strongly to one of its linked classes, e.g. the \emph{Used} relations are strongly dependent on the corresponding \emph{Activities}. The documentation of all classes and an automatically generated figure based on the underlying xmi-description behind this UML diagram is available in the Volute repository at \url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM.html}.
+Figure~\ref{fig:classdiagram} shows the full class diagram with the association classes for the many-to-many relations modeled more directly as mapping classes. When implementing the model in a relational database, these classes can be represented as individual tables for mapping the relation. We model one of the associations of the many-to-many relationships as composition (full diamond), if the mapping class belongs more strongly to one of its linked classes, e.g. the \emph{Used} relations are strongly dependent on the corresponding \emph{Activities}. The documentation of all classes and an automatically generated figure based on the underlying xmi-description behind this UML diagram is available in the Volute repository at
+%\url{vo-dmlhttps://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/ProvenanceDM.html}.
+\url{https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/provenancedm/vo-dml/ProvenanceDM.html}.
 
 This version of the UML diagram is fully VO-DML compliant, i.e. we just used the restricted subset of UML to model
 Provenance and reused the IVOA datatypes.
@@ -138,7 +140,7 @@ provenance shall be described.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-details.pdf}
+\includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-details-v2.pdf}
 \caption{The relation between Entity, EntityDescription and Collection (see Section~\ref{sec:collection}). 
 Links to the Dataset class from the Dataset Metadata Model are described in Section~\ref{sec:dmlinks}.}
 \label{fig:entity-details}
@@ -297,7 +299,7 @@ with the name `RAVE survey' could consist of a number of database tables and spe
 The Entity-Collection relation can be modeled using the \emph{Composite} design pattern: 
 Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
-In order to be compliant to VODML, we model the membership-relation explicitly 
+In order to be compliant to VO-DML, we model the membership-relation explicitly 
 by including a \class{HadMember} class in our model, which is connected to the
 \emph{Collection} class via a composition. It may contain an additional role attribute.
 
@@ -610,7 +612,7 @@ The concept of activity configuration, generally a set of parameters that can be
 \item Add activity attributes in the form of key-value parameters.
 \end{itemize}
 
-To enable the latter solution, we add a \class{Parameter} class along with a \class{ParameterDescription} for describing additional properties of activities. In this solution, Parameters are directly connected to an Activity without complex Entity-Activity relations. Moreover, we can then describe each parameter in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTable}.
+To enable the latter solution, we add a \class{Parameter} class along with a \class{ParameterDescription} for describing additional properties of activities. In this solution, Parameters are directly connected to an Activity without complex Entity-Activity relations. Moreover, we can then describe each parameter in the same way as in FIELD and PARAM elements in VOTABLE \citep{std:VOTABLE}.
 
 
 \begin{table}[h]

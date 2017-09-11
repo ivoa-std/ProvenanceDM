@@ -3,116 +3,92 @@
 
 \subsubsection{Serialization of provenance information}
 
-There are two possible families of ProvenanceDM metadata serializations, examples for these can be found in the implementation section (\ref{sec:usecases-implementations}) and the links therein.
+There are two possible families of ProvenanceDM metadata serializations, examples for these can be found here, in the use cases section (\ref{sec:usecases-implementations}), the implementation note \citep[]{std:ProvenanceImplementationNote} and the links therein.
 
 \begin{itemize}
 
-\item W3C serializations: PROV\-N, PROV\-JSON, PROV\-XML. These are serializations of the W3C provenance data model. They allow the possibility to add additional IVOA or ad hoc attributes to the basic ones in each class. This way the IVOA models can produce W3C compliant serializations.
+\item PROV-N, PROV-JSON, PROV-XML.
+These serialization formats are defined by W3C accompanying their provenance data model. They can be used for the IVOA Provenance Data Model as well.
+\begin{itemize}
+\item IVOA version: directly serialize all the classes and attributes; pull the description-class attributes into the corresponding main classes or treat them separately (see Section \ref{sec:description-serialization}).
+\item W3C compliant versions: Since the W3C model includes the possibility to add additional IVOA or ad hoc attributes to the basic ones in each class, it is possible to produce fully W3C compliant serializations from the IVOA Provenance Data Model. However, a few attributes and class names need to be renamed and ActivityFlow/HadStep need to be reorganized.
+\TODO{KR: I guess we need to expand on this?}
+\end{itemize}
+% They allow the possibility to add additional IVOA or ad hoc attributes to the basic ones in each class. This way the IVOA models can produce W3C compliant serializations. 
 % \item Mapping of ProvenanceDM classes onto tables with appropriate relationships. This can allow management by a TAP service (the model mapping is then described with the TAP schema). The serialization will result in a single table according to the query.
 
  %\TODO{TAP SCHEMA of the ProvenanceDM datamodel: Maybe Mathieu can provide us with a copy of the TAP schema he designed ?}
 
-\item Direct VOTABLE mapping by using some ad hoc mapping based on transcription of PROV-N format: this is called PROV-VOTABLE. Moreover in the future we could also define a VO-DML \citep{std:VODML} version of the mapping.
+\item Direct VOTABLE mapping by using an ad hoc mapping based on transcription of PROV-N format: this is called PROV-VOTABLE. Moreover in the future we could also define a VO-DML \citep{std:VODML} version of the mapping.
 %The following is an example of provenance metadata in this PROV-VOTABLE format. Objects become tables, their classes are rendered by a utype. Attributes and relationships become FIELDS or PARAMS. The model attribute names also become VOTABLE utypes.
 
 \end{itemize}
 
-This can be done using the voprov \footnote{\url{https://github.com/sanguillon/voprov}} python module, also see Section~\ref{sec:implementation_voprov}.
-Here is an example serialization for the process of creating a composite image from three images, in PROV-N format:
+These serializations can be produced using the voprov \footnote{\url{https://github.com/sanguillon/voprov}} python module, also see Section~\ref{sec:implementation_voprov}.
+Here is an example serialization for an entity being processed by an activity, in PROV-N format:
 
-\begin{verbatim}
+\begin{verbnobox}[\scriptsize]
 
 document
   prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
-  prefix hips <http://cds.u-strasbg.fr/data/>
+  prefix ex <http://www.example.com/provenance/>
   prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
 
-  entity(ivo://CDS/P/DSS2color#RGB_NGC6946, [voprov:annotation="This is a PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="RGB DSS2 image for NGC 6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, [voprov:annotation="This is the DSS2 digitazition of the Blue POSSII Schmidt survey around  NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Blue Survey DSS2 NGC6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, [voprov:annotation="This is the DSS2 digitazition of the Red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="POSSII Red Survey DSS2 NGC6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, [voprov:annotation="This is the DSS2 digitazition of the Infra red POSSII Schmidt survey around  NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Infra Red Survey DSS2 NGC6946"])
-  activity(hips:AlaRGB1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [voprov:desc_id="AlaRGB", voprov:desc_type="RGBencoding", voprov:annotation="Aladin RGB image generation for NGC 6946", voprov:desc_name="Aladin RGB image generation algorithm", voprov:name="Aladin RGB 1", voprov:desc_doculink="http://cds.u-strasbg.fr/aladin.gml"])
-  used(hips:AlaRGB1, ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, -)
-  used(hips:AlaRGB1, ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, -)
-  used(hips:AlaRGB1, ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, -)
-  wasGeneratedBy(ivo://CDS/P/DSS2color#RGB_NGC6946, hips:AlaRGB1, 2017-05-05T00:00:00)
+  entity(ivo://example#Public_NGC6946, [voprov:name="Processed image of NGC 6946"])
+  entity(ivo://example#DSS2.143, [voprov:name="Unprocessed image of NGC 6946"])
+  activity(ex:Process1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [voprov:name="Process 1"])
+  used(ex:Process1, ivo://example#DSS2.143, -)
+  wasGeneratedBy(ivo://example#Public_NGC6946, ex:Process1, 2017-05-05T00:00:00)
 endDocument
 
-\end{verbatim}
+\end{verbnobox}
 
 This is the corresponding PROV-JSON serialization:
 
-\begin{verbatim}
+\begin{verbnobox}[\scriptsize]
 {
   "prefix": {
     "ivo": "http://www.ivoa.net/documents/rer/ivo/",
     "voprov": "http://www.ivoa.net/documents/dm/provdm/voprov/",
-    "hips": "http://cds.u-strasbg.fr/data/"
+    "ex": "http://www.example.com/provenance/"
   },
   "activity": {
-    "hips:AlaRGB1": {
-      "voprov:desc_doculink": "http://cds.u-strasbg.fr/aladin.gml",
-      "voprov:desc_id": "AlaRGB",
+    "ex:Process1": {
       "prov:startTime": "2017-04-18T17:28:00",
-      "voprov:annotation": "Aladin RGB image generation for NGC 6946",
-      "voprov:desc_type": "RGBencoding",
-      "voprov:desc_name": "Aladin RGB image generation algorithm",
       "prov:endTime": "2017-04-19T17:29:00",
-      "voprov:name": "Aladin RGB 1"
+      "voprov:name": "Process 1"
     }
   },
   "wasGeneratedBy": {
     "_:id4": {
       "prov:time": "2017-05-05T00:00:00",
-      "prov:entity": "ivo://CDS/P/DSS2color#RGB_NGC6946",
-      "prov:activity": "hips:AlaRGB1"
+      "prov:entity": "ivo://example#Public_NGC6946",
+      "prov:activity": "ex:Process1"
     }
   },
   "used": {
     "_:id1": {
       "prov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143",
       "prov:activity": "hips:AlaRGB1"
-    },
-    "_:id3": {
-      "prov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143",
-      "prov:activity": "hips:AlaRGB1"
-    },
-    "_:id2": {
-      "prov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143",
-      "prov:activity": "hips:AlaRGB1"
     }
-  },
+  }
   "entity": {
-    "ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143": {
-      "voprov:name": "POSSII Blue Survey DSS2 NGC6946",
-      "voprov:annotation": "This is the DSS2 digitazition of the Blue POSSII Schmidt survey around  NGC 6946",
-      "voprov:doculink": "http://cds.u-strasbg.fr/aladin.gm"
+    "ivo://example#DSS2.143": {
+      "voprov:name": "Unprocessed image of NGC6946"
     },
-    "ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143": {
-      "voprov:name": "POSSII Red Survey DSS2 NGC6946",
-      "voprov:annotation": "This is the DSS2 digitazition of the Red POSSII Schmidt survey around NGC 6946",
-      "voprov:doculink": "http://cds.u-strasbg.fr/aladin.gml"
-    },
-    "ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143": {
-      "voprov:name": "POSSII Infra Red Survey DSS2 NGC6946",
-      "voprov:annotation": "This is the DSS2 digitazition of the Infra red POSSII Schmidt survey around  NGC 6946",
-      "voprov:doculink": "http://cds.u-strasbg.fr/aladin.gm"
-    },
-    "ivo://CDS/P/DSS2color#RGB_NGC6946": {
-      "voprov:name": "RGB DSS2 image for NGC 6946",
-      "voprov:annotation": "This is a PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946",
-      "voprov:doculink": "http://cds.u-strasbg.fr/aladin.gml"
+    "ivo://example#Public_NGC6946": {
+      "voprov:name": "Processed image of NGC 6946"
     }
   }
 }
-\end{verbatim}
+\end{verbnobox}
 
-This is the VOTABLE serialization:
+This is the VOTable serialization:
 
-\begin{verbatim}
+\begin{verbnobox}[\scriptsize]
 
 <?xml version="1.0" encoding="UTF-8"?>
-<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" xmlns:hips="http://cds.u-strasbg.fr/data/" xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
+<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" xmlns:ex="http://www.example.com/provenance" xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
   <RESOURCE type="provenance">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
     <TABLE name="Usage" utype="voprov:used">
@@ -121,8 +97,8 @@ This is the VOTABLE serialization:
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>hips:AlaRGB1</TD>
-            <TD>ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143</TD>
+            <TD>ex:Process1</TD>
+            <TD>ivo://example#DSS2.143</TD>
           </TR>
         </TABLEDATA>
       </DATA>
@@ -133,8 +109,8 @@ This is the VOTABLE serialization:
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD>
-            <TD>hips:AlaRGB1</TD>
+            <TD>ivo://example#Public_NGC6946</TD>
+            <TD>ex:Process1</TD>
           </TR>
         </TABLEDATA>
       </DATA>
@@ -144,23 +120,13 @@ This is the VOTABLE serialization:
       <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Activity.name"/>
       <FIELD arraysize="*" datatype="char" name="start" ucd="" utype="voprov:Activity.startTime"/>
       <FIELD arraysize="*" datatype="char" name="stop" ucd="" utype="voprov:Activity.endTime"/>
-      <FIELD arraysize="*" datatype="char" name="annotation" ucd="meta.description" utype="voprov:Activity.annotation"/>
-      <FIELD arraysize="*" datatype="char" name="desc_id" ucd="" utype="voprov:ActivityDescription.id"/>
-      <FIELD arraysize="*" datatype="char" name="desc_name" ucd="" utype="voprov:ActivityDescription.name"/>
-      <FIELD arraysize="*" datatype="char" name="desc_type" ucd="meta.code.class" utype="voprov:ActivityDescription.type"/>
-      <FIELD arraysize="*" datatype="char" name="desc_doculink" ucd="meta.ref.url" utype="voprov:ActivityDescription.doculink"/>
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>hips:AlaRGB1</TD>
-            <TD>Aladin RGB 1</TD>
+            <TD>ex:Process1</TD>
+            <TD>Process 1</TD>
             <TD>2017-04-18 17:28:00</TD>
             <TD>2017-04-19 17:29:00</TD>
-            <TD>Aladin RGB image generation for NGC 6946</TD>
-            <TD>AlaRGB</TD>
-            <TD>Aladin RGB image generation algorithm</TD>
-            <TD>RGBencoding</TD>
-            <TD>http://cds.u-strasbg.fr/aladin.gml</TD>
           </TR>
         </TABLEDATA>
       </DATA>
@@ -168,28 +134,15 @@ This is the VOTABLE serialization:
     <TABLE name="Entity" utype="voprov:Entity">
       <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Entity.id"/>
       <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Entity.name"/>
-      <FIELD arraysize="*" datatype="char" name="annotation" ucd="meta.description" utype="voprov:Entity.annotation"/>
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143</TD>
-            <TD>POSSII Blue Survey DSS2 NGC6946</TD>
-            <TD>This is the DSS2 digitazition of the Blue POSSII Schmidt survey around  NGC 6946</TD>
+            <TD>ivo://example#DSS2.143</TD>
+            <TD>Unprocessed image of NGC6946</TD>
           </TR>
           <TR>
-            <TD>ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143</TD>
-            <TD>POSSII Red Survey DSS2 NGC6946</TD>
-            <TD>This is the DSS2 digitazition of the Red POSSII Schmidt survey around NGC 6946</TD>
-          </TR>
-          <TR>
-            <TD>ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143</TD>
-            <TD>POSSII Infra Red Survey DSS2 NGC6946</TD>
-            <TD>This is the DSS2 digitazition of the Infra red POSSII Schmidt survey around  NGC 6946</TD>
-          </TR>
-          <TR>
-            <TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD>
-            <TD>RGB DSS2 image for NGC 6946</TD>
-            <TD>This is a PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946</TD>
+            <TD>ivo://example#Public_NGC6946</TD>
+            <TD>Processed image of NGC 6946</TD>
           </TR>
         </TABLEDATA>
       </DATA>
@@ -198,30 +151,31 @@ This is the VOTABLE serialization:
   </RESOURCE>
 </VOTABLE>
 
-\end{verbatim}
+\end{verbnobox}
 
 Such serializations can be retrieved through access protocols (see \ref{sec:access_protocols} ) or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file in one of the serialisation formats.
 
-\TODO{Check that this keyword is not already taken.}
+%\TODO{Check that this keyword is not already taken.}
 
 
 % \subsection{Graphic formats} --> moved to implementation section. But may want to
 % include a more general section here, mentioning different ways to serialize
 
 
-\subsubsection{Serialization of description classes}
+\subsubsection{Serialization of description classes}\label{sec:description-serialization}
 
 The ProvenanceDM includes description classes that can exist before any provenance information is recorded. First, the ActivityDescription class gives information on the activity (name, description, doculink...) and the parameters expected as an input. In addition, UsedDescription and WasGeneratedByDescription classes indicate the expected roles of the input and output entities respectively. Finally, The activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as EntityDescription records.
 
 The serialization of an ActivityDescription, that includes all those description classes, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:Datalink}, and can thus be stored as a VOTable  \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that probably executes an activity using the given input parameters, some of which probably point to entities. One can thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa. 
 
-The VOTable contains one resource with attributes type=”meta” and utype=”voprov:ActivityDescription”. This resource contains PARAM elements to describe the activity and GROUP elements with additional PARAM elements to describe the input parameters (group name="InputParams"), the input entities (group name="Used") and the output entities (group name="Generated"). 
+The VOTable contains one resource with attributes type=``meta'' and utype=``voprov:ActivityDescription''. This resource contains PARAM elements to describe the activity and GROUP elements with additional PARAM elements to describe the input parameters (group name=``InputParams''), the input entities (group name=``Used'') and the output entities (group name=``Generated''). 
 
-The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. For the input parameters, each ParameterDescription element is mapped to a PARAM element. The mapping is direct as ParameterDescription is based on PARAM. For the input and output entity groups, each related entity is described with a PARAM block where the name is the role of the entity in the scope of the activity, and the expected value is the entity identifier (utype="voprov:Entity.id"). It is possible to reference an input parameter using the ref attribute of PARAM, if an input entity is given as an input parameter to the activity (e.g. the name of a file). The xtype attribute of PARAM can be used to provide the content type (MIME type) of the entity.
+The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. For the input parameters, each ParameterDescription element is mapped to a PARAM element. The mapping is direct as ParameterDescription is based on PARAM. For the input and output entity groups, each related entity is described with a PARAM block where the name is the role of the entity in the scope of the activity, and the expected value is the entity identifier (utype=``voprov:Entity.id''). It is possible to reference an input parameter using the ref attribute of PARAM, if an input entity is given as an input parameter to the activity (e.g. the name of a file). The xtype attribute of PARAM can be used to provide the content type (MIME type) of the entity.
 
 Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
 
-\begin{verbatim}
+
+\begin{verbnobox}[\scriptsize]
 
 <VOTABLE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xmlns="http://www.ivoa.net/xml/VOTable/v1.3" version="1.3" 
@@ -284,7 +238,7 @@ Here is an example of an ActivityDescription VOTable that describes an activity 
   </RESOURCE>
 </VOTABLE>
 
-\end{verbatim}
+\end{verbnobox}
 
 
 
@@ -314,7 +268,7 @@ A special case is considered where ProvenanceDM and ObsCore are both implemented
 
 \subsubsection{VOSI availability and capabilities}
 \TODO{Still needs to be discussed!}
-According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL and/or ProvTAP must provide a VOSI availability interface as well as an entry for ProvDAL and/or ProvTAP in its capabilities interface. The \texttt{standardId}s for these provenance interfaces are:
+According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL and/or ProvTAP must provide a VOSI availability interface as well as a capabilities interface with entries for ProvDAL and/or ProvTAP. The \texttt{standardId}s for these provenance interfaces are:
 
 \begin{verbatim}
 ivo://ivoa.net/std/ProvenanceDM#ProvDAL

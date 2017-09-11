@@ -4,70 +4,30 @@
 %See \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-incl-prototypes.txt}
 %and \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-w3c.txt}
 
-This section presents some specific use cases for which implementing or applying the  provenance data model helps to solve certain tasks. Details on implementing the provenance data model are provided in a separate document, the ProvenanceDM Implementation Note \citep{std:ProvenanceImplementationNote}.
+This section presents some general guidelines for applying the data model and
+%This section presents some 
+specific use cases for which the provenance data model helps to solve certain tasks. Details on specific implementions of the provenance data model are provided in a separate document, the ProvenanceDM Implementation Note \citep{std:ProvenanceImplementationNote}.
+
+
+\subsection{How to use the data model}
+\begin{itemize}
+\item identify entities in your project, i.e. the things you deal with
+\item identify activities (processes) in your project
+\item identify reponsible agents (persons and organizations)
+\item find the relations between them
+\item possibly disentangle entity properties and entityDescription properties: everything that you may know about an entity before its creation, belongs to the entityDescription; e.g. file format, dataProduct\_type, what kind of entity it is going to be (category)
+\item ...
+\end{itemize}
 
 \subsection{voprov Python package}\label{sec:implementation_voprov}
-The following is an example of a python program which describes the provenance and generates the different formats of serialization.
-\begin{verbatim}
-import sys
-from prov.model import ProvDocument
-from prov.dot import prov_to_dot
-import pdb
+The voprov Python package is derived from the voprov-package. It can load
+data and serialize it. The voprov-package supports following features:
+...
+\TODO{Michele: Please add more explanations!}
+%This code writes the serialisation examples which are given in Section~\ref{sec:serialisations}.
 
-try:
-    provdoc = ProvDocument()
-    provdoc.add_namespace('prov', 'http://www.w3.org/ns/prov#')
-    provdoc.add_namespace('voprov', 'http://www.ivoa.net/documents/dm/provdm/voprov/')
-    provdoc.add_namespace('ivo', 'http://www.ivoa.net/documents/rer/ivo/')
-    provdoc.add_namespace('hips', 'http://cds.u-strasbg.fr/data/')
+Example code and serializations are given in the Implementation Note \citep{std:ProvenanceImplementationNote}.
 
-    provdoc.entity('ivo://CDS/P/DSS2color#RGB_NGC6946',\
-        {'voprov:name':'RGB DSS2 image for NGC 6946', \
-         'voprov:annotation':'PNG RGB image for galaxy NGC 6946'})
-
-    provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143',\
-        {'voprov:name':'POSSII Blue Survey DSS2 NGC6946', \
-         'voprov:annotation':'Blue POSSII Schmidt survey around NGC 6946'})
-
-    provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143',\
-        {'voprov:name':'POSSII Red Survey DSS2 NGC6946', \
-         'voprov:annotation':'Red POSSII Schmidt survey around NGC 6946'})
-
-    provdoc.entity('ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143',\
-        {'voprov:name':'POSSII Infra Red Survey DSS2 NGC6946', \
-         'voprov:annotation':'Infrared POSSII Schmidt survey around NGC 6946'})
-
-    provdoc.activity('hips:AlaRGB1', '2017-04-18T17:28:00', '2017-04-19T17:29:00', \
-          {'voprov:name':'Aladin RGB 1',\
-           'voprov:annotation': 'Aladin RGB image generation for NGC 6946',\
-           'voprov:desc_name': 'Aladin RGB image generation algorithm', \
-           'voprov:desc_type': 'RGBencoding', \
-           'voprov:desc_doculink':'http://aladin.u-strasbg.fr/aladin.gml'})
-
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143')
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143')
-    provdoc.used('hips:AlaRGB1', 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143')
-
-    provdoc.wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', 'hips:AlaRGB1', '')
-
-    f_out = open('ex1.json','w')
-    f_out.write(provdoc.serialize(indent=2))
-    f_out.close()
-    f_out = open('ex1.provn','w')
-    f_out.write(provdoc.get_provn())
-    f_out.close()
-    provdoc.serialize(format='xml', destination='ex1.xml')
-    f_out = open('ex1.votable','w')
-    f_out.write(provdoc.serialize(format='votable',indent=2))
-    f_out.close()
-
-except Exception, e:
-        print("Error while writing the file : %s !" %str(e))
-        sys.exit(1)
-
-\end{verbatim}
-
-This code writes the serialisation examples which are given in Section~\ref{sec:serialisations}.
 
 \subsubsection{Graphic formats}
 \label{sec:graphic_formats}
@@ -195,31 +155,32 @@ voprov:Name = "CDS",
 voprov:contact = "question@astro.unistra.fr",
 prov:type = "Organisation"
 ]
-) 
-
-WasGeneratedBy(ivo://CDS/P/MAMA/ESO-R, EHG1, -)
-
-Activity
-(EHG1,
-[
-prov:label = "ESO HiPS generation 1",
-prov:startTime = "2016-07-18",
-prov:endTime = "2016-07-20",
-voprov:annotation = "This activity is final generation of HiPS for ESO Mama survey",
-voprov:activityDescription = "HipsgenM"
-]
-)
-
-ActivityDescription 
-(HipsgenM,
-[
-prov:label = "HiPS Generation MEAN",
-prov:type = "HiPSgen",
-voprov:subtype = "HiPSgen_MEAN",
-voprov:doculink = "http://cds.u-strasbg.fr/HiPSGEN-Documentation"
-]
 )
 \end{verbatim}
+
+% WasGeneratedBy(ivo://CDS/P/MAMA/ESO-R, EHG1, -)
+
+% Activity
+% (EHG1,
+% [
+% prov:label = "ESO HiPS generation 1",
+% prov:startTime = "2016-07-18",
+% prov:endTime = "2016-07-20",
+% voprov:annotation = "This activity is final generation of HiPS for ESO Mama survey",
+% voprov:activityDescription = "HipsgenM"
+% ]
+% )
+
+% ActivityDescription 
+% (HipsgenM,
+% [
+% prov:label = "HiPS Generation MEAN",
+% prov:type = "HiPSgen",
+% voprov:subtype = "HiPSgen_MEAN",
+% voprov:doculink = "http://cds.u-strasbg.fr/HiPSGEN-Documentation"
+% ]
+% )
+%\end{verbatim}
 
 
 \subsection{Lightcurves use case}

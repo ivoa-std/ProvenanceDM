@@ -72,7 +72,8 @@ organizations in ProvenanceDM, is very similar to the \class{Party} class in the
 The main difference between \class{Agent} and \class{Party} is that \class{Individual} and \class{Person} are subclasses in DatasetDM, whereas we just use the same class \emph{Agent} for both and distinguish between them using the \emph{Agent.type} attribute (which can have the value ``Individual'' or ``Organization'').
 
 
-We imagine that services implementing both data models, \class{Dataset} and \class{ProvenanceDM} may use just \emph{one} class: either \class{Agent} or \class{Party}, enriched with all the necessary (project-specific) attributes. Note that for Provenance queries using a ProvTAP service and for W3C compatible serializations, the name \class{Agent} for the responsible individuals/organizations is required.
+We imagine that services implementing both data models, \class{Dataset} and \class{ProvenanceDM} may just use \emph{one} class: either \class{Agent} or \class{Party}, enriched with all the necessary (project-specific) attributes. When delivering the data on request, the serialised versions can be adjusted to the corresponding notation.
+Note that for Provenance queries using a ProvTAP service or for W3C compatible serializations, the name \class{Agent} for the responsible individuals/organizations is required.
 
 
 
