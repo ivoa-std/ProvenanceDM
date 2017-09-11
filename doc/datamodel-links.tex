@@ -31,33 +31,32 @@ to concepts in the Provenance Data Model.
 \begin{table}[h]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}lLp{4cm}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}Llp{4cm}@{}}
 \toprule
-\head{Dataset DM} & \head{Provenance DM} & \head{Comment}\\
+\head{Provenance DM} & \head{Dataset DM} & \head{Comment}\\
 \midrule
-DataID.title         & Entity.name                & title of the dataset\\
-DataID.collection    & HadMember.collectionId     & link to the collection to which the dataset belongs\\
-DataID.creator       & Agent.name                 & name of agent\\
-DataID.creatorDID    & alternative to Entity.id   & id for the dataset given by the creator, could be used if no PublisherDID exists (yet)\\
-DataID.ObservationID & WasGeneratedBy.activityId  & identifier to everything describing the observation\\
-DataID.date          & WasGeneratedBy.time        & date and time when the dataset was completely created\\
-Curation.PublisherDID  & Entity.id                & unique identifier for the dataset assigned by the publisher\\
-Curation.PublisherID   & Agent.id                 & link to the publisher, i.e. to an Agent with role=``publisher''\\
-Curation.Publisher     & Agent.name               & name of the publisher\\
-Curation.Date          & Entity.releaseDate       & release date of the dataset\\
-Curation.Version       & Entity.version           & version of the dataset\\
-Curation.Rights        & Entity.rights            & access rights to the dataset; one of [...]\\
-Curation.Reference     & Entity.link              & link to publication\\
-Curation.Contact       & Agent                    & link to Agent with role contact\\
-DataProductType  & EntityDescription.dataproduct\_type & type of a dataproduct/entity\\
-DataProductSubType & EntityDescription.dataproduct\_subtype & subtype of a dataproduct/entity\\
-ObsDataset.calibLevel  & EntityDescription.level & (output) calibration level, integer between 0 and 3\\\hline
+Entity.name                & DataID.title         & title of the dataset\\
+HadMember.collectionId     & DataID.collection    & link to the collection to which the dataset belongs\\
+Agent.name                 & DataID.creator       & name of agent\\
+Entity.id                  & DataID.creatorDID    &  alternative id for the dataset given by the creator, could be used as Entity.id if no PublisherDID exists (yet)\\
+WasGeneratedBy.activityId  & DataID.ObservationID & identifier to everything describing the observation\\
+WasGeneratedBy.time        & DataID.date          & date and time when the dataset was completely created\\
+Entity.id                & Curation.PublisherDID  & unique identifier for the dataset assigned by the publisher\\
+Agent.id                 & Curation.PublisherID   & link to the publisher, i.e. to an Agent with role=``publisher''\\
+Agent.name               & Curation.Publisher     & name of the publisher\\
+Entity.releaseDate       & Curation.Date          & release date of the dataset\\
+Entity.version           & Curation.Version       & version of the dataset\\
+Entity.rights            & Curation.Rights        & access rights to the dataset; one of [...]\\
+Entity.link              & Curation.Reference     & link to publication\\
+Agent                    & Curation.Contact       & link to Agent with role contact\\
+EntityDescription.dataproduct\_type & DataProductType  & the type of a dataproduct from Dataset Metadata Model can be used as attribute to entity\\
+EntityDescription.dataproduct\_subtype & DataProductSubType & subtype of a \mbox{dataproduct}/entity\\
+EntityDescription.level & ObsDataset.calibLevel  & (output) calibration level, integer between 0 and 3\\\hline
 \bottomrule
 \end{tabulary}
-\caption{Mapping between attributes from classes of the Dataset Metadata Model to classes in ProvenanceDM.}
+\caption{Mapping between attributes from Dataset Metadata Model classes to classes in ProvenanceDM}
 \label{tab:datasetmapping}
 \end{table}
-
 
 
 \begin{figure}[h]
@@ -87,36 +86,36 @@ More direct mappings between classes and attributes of both models are given in 
 \begin{table}[h]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}lLp{4cm}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}Llp{4cm}@{}}
 \toprule
-\head{Simulation DM} & \head{Provenance DM} & \head{Comment}\\
+\head{Provenance DM} & \head{Simulation DM} & \head{Comment}\\
 \midrule
-Experiment      & Activity               & \\
-Experiment.name & Activity.name         & human readable name; name attribute in SimDM is inherited from Resource-class\\
-Experiment.executionTime  & Activity.endTime & end time of the execution of an experiment/activity \\
-Experiment.protocol & Activity.activityDescription & reference to the protocol or description class \\
-Protocol        & ActivityDescription    & \\
-Protocol.name   & ActivityDescription.name  & human readable name\\
-Protocol.referenceURL & ActivityDescription.doculink & reference to a webpage describing it\\
+Activity               & Experiment      &  \\
+Activity.name         & Experiment.name & human readable name; name attribute in SimDM is inherited from Resource-class\\
+Activity.endTime & Experiment.executionTime  & end time of the execution of an experiment/activity \\
+Activity.activityDescription & Experiment.protocol & reference to the protocol or description class \\
+ActivityDescription    & Protocol        & \\
+ActivityDescription.name  & Protocol.name   & human readable name\\
+ActivityDescription.doculink & Protocol.referenceURL & reference to a webpage describing it\\
 % add Protocol.code, Protocol.version?
-ParameterSetting     & Parameter              & value of an (input) parameter\\
-InputParameter       & ParameterDescription              & description of an (input) parameter\\
-Party           & Agent                 & responsible person or organization\\
-Party.name      & Agent.name & name of the agent \\
-Contact         & WasAssociatedWith & \\
-Contact.role    & WasAssociatedWith.role & role which the agent/party had for a certain experiment (activity); SimDM roles contain: \texttt{owner}, \texttt{creator}, \texttt{publisher}, \texttt{contributor}\\
-Contact.party    & WasAssociatedWith.agent & reference to the agent/party \\
-DataObject     & Entity        & a dataset, which can be/refer to a collection\\
+Parameter              & ParameterSetting     & value of an (input) parameter\\
+ParameterDescription   & InputParameter       & description of an (input) parameter\\
+Agent           & Party           & responsible person or organization\\
+Agent.name      & Party.name      & name of the agent \\
+WasAssociatedWith & Contact         & \\
+WasAssociatedWith.role & Contact.role    & role which the agent/party had for a certain experiment (activity); SimDM roles contain: \texttt{owner}, \texttt{creator}, \texttt{publisher}, \texttt{contributor}\\
+WasAssociatedWith.agent & Contact.party    & reference to the agent/party \\
+Entity        & DataObject     & a dataset, which can be/refer to a collection\\
 
 \bottomrule
 \end{tabulary}
-\caption{Mapping between classes and attributes from SimDM to classes/attributes in ProvenanceDM.}
+\caption{Mapping between classes and attributes from ProvenanceDM to classes/attributes in SimDM.}
 \label{tab:simdmmapping}
 \end{table}
 
 
 
-
-\subsection{Further links to data models}
-More similarities and links to other data models will be detailed in future 
-versions of this working draft.
+% Remove this, because no further links to other data models are currently planned.
+%\subsection{Further links to data models}
+%More similarities and links to other data models will be detailed in future
+%versions of this working draft.
