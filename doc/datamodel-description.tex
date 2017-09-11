@@ -126,13 +126,13 @@ Provenance and reused the IVOA datatypes.
 
 
 \subsubsection{Entity and EntityDescription}
+
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
 form of images, tables, numbers, etc. But they can also be observation or 
 simulation log files, files containing system information, environment variables, names and versions of packages, ambient conditions or, in a wider sense, also observation proposals, scientific 
 articles, or manuals and other documents. 
 
-An entity is not restricted to being
-a file. 
+An entity is not restricted to being a file. 
 It can even be just a number in a table, depending on how fine-grained the 
 provenance shall be described.
 
@@ -144,7 +144,7 @@ Links to the Dataset class from the Dataset Metadata Model are described in Sect
 \label{fig:entity-details}
 \end{figure}
 
-Entities in the VO are often called ``dataset'', which could mean a single 
+The VO concept closest to Entity is the notion of ``Dataset'', which could mean a single 
 table, an image or a collection of them. The Dataset Metadata Model 
 \citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
 are considered to be a single deliverable''. 
@@ -178,10 +178,11 @@ creationTime  & -- & datetime & date and time at which the entity was created (e
 For entities, we suggest the attributes given in Table 
 \ref{tab:entity-attributes}. If the attribute also exists in the W3C 
 Provenance Data Model, we list its name in the second column.
-We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
-entity of the same content but different format (and thus size) as the same entity,
-unless they do not have the same provenance (e.g. when the ``transformation'' activity
-for converting one format into another is included in the provenance description).
+
+%We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
+%entity of the same content but different format (and thus size) as the same entity,
+%unless they do not have the same provenance (e.g. when the ``transformation'' activity
+%for converting one format into another is included in the provenance description).
 
 %\TODO{format and size may not be needed, if entities with the same content but different format and size are considered as the same entity.}
 
@@ -190,19 +191,21 @@ becomes clear by specifying the relations between the data and activities produc
 More details on this will follow in Section \ref{sec:entity-activity-relations}.
 
 \paragraph{EntityDescription.}
-As already mentioned before, the types of entities or datasets in astronomy 
-can be predefined using a description
-class \class{EntityDescription}.
-This class stores entity-related 
-attributes, describing the content of the data, which can mainly be derived from 
-the Dataset Metadata Model, the general model for observational data.
-The description attributes are summarized in Table 
-\ref{tab:entitydescription-attributes}.
+%The Entity class can have an EntityDescription class attached. 
+The types of entities, or datasets in astronomy, can be predefined using a description class \class{EntityDescription}.
+This class is meant to store information about an Entity that are known before the Entity instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory format for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final size of the image  that will be created. Therefore, ``format'' would be an EntityDescription attribute , while ``size'' would be an attribute of the Entity instance. 
+
+%This class thus stores entity-related 
+Some of the attributes that describe the content of the data could be derived from 
+the Dataset Metadata Model.
 
 The \class{EntityDescription} does NOT contain any information about the usage 
 of the data, it tells nothing about them being used as input or output. This is 
 defined only by the relations (and the relation descriptions) between activities
 and entities (see Section \ref{sec:entity-activity-relations}).
+
+The EntityDescription general attributes are summarized in Table 
+\ref{tab:entitydescription-attributes}.
 
 
 \begin{table}[h]
@@ -518,7 +521,7 @@ we store this information with description classes, in the role-attributes for
 the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
 For example, an activity for darkframe-subtraction requires two input images. But it is 
 very important to know which of the images is the raw image and 
-which one fulfills the role of dark frame.
+which one fulfils the role of dark frame.
 
 The role is in general NOT an attribute for \class{EntityDescription} or \class{Entity}, 
 since the same entity (e.g. a specific FITS file containing an image) may play 
@@ -636,11 +639,14 @@ To enable the latter solution, we add a \class{Parameter} class along with a \cl
 \midrule
 \textbf{id}  & & string & parameter unique identifier\\
 \textbf{name} & & string & parameter name\\
-annotation & & string & additional free text description for the parameter\\
-datatype    & & string & datatype of the parameter \\
-unit           & & string & physical unit of the parameter\\
-ucd           & & string  & Unified Content Descriptor for the parameter, supplying a standardized classification of the physical quantity\\
-utype        & & string  & UType of the parameter, meant to express the role of the parameter in the context of an external data model \\
+annotation & & string & additional free text description\\
+datatype    & & string & datatype \\
+unit           & & string & physical unit \\
+ucd           & & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity\\
+utype        & & string  & UType, meant to express the role of the parameter in the context of an external data model \\
+min           & & number & minimum value \\
+max           & & number & maximum value\\
+options           & & list & list of accepted values\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{ParameterDescription}.}
