@@ -357,7 +357,7 @@
         </multiplicity>
       </composition>
       <reference>
-        <vodml-id>provenance.Activity.activityDescription</vodml-id>
+        <vodml-id>provenance.Activity.description</vodml-id>
         <name>activityDescription</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
@@ -607,7 +607,7 @@
         </multiplicity>
       </composition>
       <reference>
-        <vodml-id>provenance.Entity.entityDescription</vodml-id>
+        <vodml-id>provenance.Entity.description</vodml-id>
         <name>entityDescription</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
