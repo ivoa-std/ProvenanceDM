@@ -1,0 +1,155 @@
+
+The provenance information as represented in the data model is split in three main concepts that can be searched following many different relations involved between the main 3 classes. 
+The selection of the relations to expose when distributing the provenance information depends on the usage and will be described more extensively in the Use-case sections (\ref{sec:usecases-implementations}) , the implementation note \citep[]{std:ProvenanceImplementationNote} and the links therein.
+
+The serialization documents build up the main components of the client/server dialogs. 
+
+To give a very simple example, suppose a client asks for the context of execution for one specified Activity, which computes a simple RGB color composition. 
+
+On the server side, exposing the Provenance information for this Activity of name or for an Entity is just exposing the structure of the classes and relation tables and feed them with the related t-upples in the database.
+On the client side, the content of a VO-Provenance serialisation document can then be explored and represented using graphical interfaces, as inspired by the Provenance Southampton suite or by customized visualization tools.
+ 
+In the W3C Provenance framework, three descriptions formats are proposed to serialize the Provenance metadata : {PROV-N}, {PROV-JSON}, {PROV-XML}. These are serializations of the W3C provenance data model, a larger set of classes and relations compared to this model but sharing the same core structure. They allow the possibility to add IVOA or \textit{ad hoc} attributes to the basic ones in each class. This way the IVOA models can produce W3C compliant serializations and take benefit of visualizing tools.
+
+%example KR provn 
+Here is an example serialization for an entity being processed by an activity, in PROV-N format:
+
+\begin{verbnobox}[\scriptsize]
+
+document
+  prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
+  prefix ex <http://www.example.com/provenance/>
+  prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
+
+  entity(ivo://example#Public_NGC6946, [voprov:name="Processed image of NGC 6946"])
+  entity(ivo://example#DSS2.143, [voprov:name="Unprocessed image of NGC 6946"])
+  activity(ex:Process1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [voprov:name="Process 1"])
+  used(ex:Process1, ivo://example#DSS2.143, -)
+  wasGeneratedBy(ivo://example#Public_NGC6946, ex:Process1, 2017-05-05T00:00:00)
+endDocument
+
+\end{verbnobox}
+
+%example KR projjson 
+
+\begin{verbnobox}[\scriptsize]
+{
+  "prefix": {
+    "ivo": "http://www.ivoa.net/documents/rer/ivo/",
+    "voprov": "http://www.ivoa.net/documents/dm/provdm/voprov/",
+    "ex": "http://www.example.com/provenance/"
+  },
+  "activity": {
+    "ex:Process1": {
+      "prov:startTime": "2017-04-18T17:28:00",
+      "prov:endTime": "2017-04-19T17:29:00",
+      "voprov:name": "Process 1"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:id4": {
+      "prov:time": "2017-05-05T00:00:00",
+      "prov:entity": "ivo://example#Public_NGC6946",
+      "prov:activity": "ex:Process1"
+    }
+  },
+  "used": {
+    "_:id1": {
+      "prov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143",
+      "prov:activity": "hips:AlaRGB1"
+    }
+  }
+  "entity": {
+    "ivo://example#DSS2.143": {
+      "voprov:name": "Unprocessed image of NGC6946"
+    },
+    "ivo://example#Public_NGC6946": {
+      "voprov:name": "Processed image of NGC 6946"
+    }
+  }
+}
+\end{verbnobox}
+To emphasize the compatibility to the IVOA framework, where the XML VOTable format is a reference to circulate metadata, we define a PROV-VOTABLE master document where all classes' declarations and relations described in PROV\-N are translated as separated tables.
+
+These VOTable serialisations can be produced  using  the VOPROV Python module  \footnote{\url{https://github.com/sanguillon/voprov}} python module, available to the community. See also Section~\ref{sec:implementation_voprov} and the IVOA Prov-DM Implementation Note \citep[]{std:ProvenanceImplementationNote}. 
+
+%example KR prov VOTABLE .
+This is the VOTable serialization:
+
+\begin{verbnobox}[\scriptsize]
+
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" xmlns:ex="http://www.example.com/provenance" xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
+  <RESOURCE type="provenance">
+    <DESCRIPTION>Provenance VOTable</DESCRIPTION>
+    <TABLE name="Usage" utype="voprov:used">
+      <FIELD arraysize="*" datatype="char" name="activity" ucd="meta.id" utype="voprov:Usage.activity"/>
+      <FIELD arraysize="*" datatype="char" name="entity" ucd="meta.id" utype="voprov:Usage.entity"/>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>ex:Process1</TD>
+            <TD>ivo://example#DSS2.143</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <TABLE name="Generation" utype="voprov:wasGeneratedBy">
+      <FIELD arraysize="*" datatype="char" name="entity" ucd="meta.id" utype="voprov:Generation.entity"/>
+      <FIELD arraysize="*" datatype="char" name="activity" ucd="meta.id" utype="voprov:Generation.activity"/>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>ivo://example#Public_NGC6946</TD>
+            <TD>ex:Process1</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <TABLE name="Activity" utype="voprov:Activity">
+      <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Activity.id"/>
+      <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Activity.name"/>
+      <FIELD arraysize="*" datatype="char" name="start" ucd="" utype="voprov:Activity.startTime"/>
+      <FIELD arraysize="*" datatype="char" name="stop" ucd="" utype="voprov:Activity.endTime"/>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>ex:Process1</TD>
+            <TD>Process 1</TD>
+            <TD>2017-04-18 17:28:00</TD>
+            <TD>2017-04-19 17:29:00</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <TABLE name="Entity" utype="voprov:Entity">
+      <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Entity.id"/>
+      <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Entity.name"/>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>ivo://example#DSS2.143</TD>
+            <TD>Unprocessed image of NGC6946</TD>
+          </TR>
+          <TR>
+            <TD>ivo://example#Public_NGC6946</TD>
+            <TD>Processed image of NGC 6946</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <INFO name="QUERY_STATUS" value="OK"/>
+  </RESOURCE>
+</VOTABLE>
+
+\end{verbnobox}
+
+This VOTABLE serialisation can be considered as a flat view on the various tables stored in a database implementing the datamodel structure explained in section \ref{sec:datamodel} 
+More examples of serialisation documents are provided in Appendix A \ref{{sec:appendixA}}. 
+ 
+%\lstinputlisting[language=Json]{RGB.json}
+
+Such serializations can be retrieved through access protocols (see \ref{sec:access_protocols} ) or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file in one of the serialization formats.
+
+\TODO{SVOM strategy to incorporate provenance as an extension in FITS ? still valid ?}
+\TODO{Check that this keyword is not already taken.}

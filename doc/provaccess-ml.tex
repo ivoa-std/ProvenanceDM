@@ -1,0 +1,135 @@
+
+%\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+%\TODO{ML: here I suggest to split the serialisation description from the Access part in two different sections and not subsections  }
+
+\section{Provenance Data Model serialization}
+\label{sec:serialisations}
+\subsection{Serializing of the datamodel core}
+\label{sec:intro-serialization}
+\input{serialisation-intro}
+
+\subsection{Serialization of description classes}
+\label{sec:description-serialization}
+%{updated by Mathieu} 
+The ProvenanceDM includes description classes that can exist before any provenance information is recorded. First, the ActivityDescription class gives information on the activity (name, description, doculink...) and the parameters expected as an input. In addition, UsedDescription and WasGeneratedByDescription classes indicate the expected roles of the input and output entities respectively. Finally, The activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as EntityDescription records.
+
+The serialization of an ActivityDescription, that includes all those description classes, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:Datalink}, and can thus be stored as a VOTable  \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that probably executes an activity using the given input parameters, some of which probably point to entities. One can thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa. 
+
+The VOTable contains one resource with attributes type=``meta'' and utype=``voprov:ActivityDescription''. This resource contains PARAM elements to describe the activity and GROUP elements with additional PARAM elements to describe the input parameters (group name=``InputParams''), the input entities (group name=``Used'') and the output entities (group name=``Generated''). 
+
+The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. For the input parameters, each ParameterDescription element is mapped to a PARAM element. The mapping is direct as ParameterDescription is based on PARAM. For the input and output entity groups, each related entity is described with a PARAM block where the name is the role of the entity in the scope of the activity, and the expected value is the entity identifier (utype=``voprov:Entity.id''). It is possible to reference an input parameter using the ref attribute of PARAM, if an input entity is given as an input parameter to the activity (e.g. the name of a file). The xtype attribute of PARAM can be used to provide the content type (MIME type) of the entity.
+
+Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
+
+
+\begin{verbnobox}[\scriptsize]
+
+<VOTABLE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.ivoa.net/xml/VOTable/v1.3" version="1.3" 
+    xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 
+    http://www.ivoa.net/xml/VOTable/v1.3">
+  <RESOURCE ID="make_RGB_image" name="make_RGB_image" 
+      type="meta" utype="voprov:ActivityDescription">
+    <DESCRIPTION>Create an RGB image from 3 images</DESCRIPTION>
+    <LINK content-role="doc" href="..."/>
+    <PARAM name="label" datatype="char" arraysize="*" 
+        value="make_RGB_image" utype="voprov:ActivityDescription.label"/>
+    <PARAM name="type" datatype="char" arraysize="*" 
+        value="None" utype="voprov:ActivityDescription.type"/>
+    <PARAM name="subtype" datatype="char" arraysize="*" 
+        value="None" utype="voprov:ActivityDescription.subtype"/>
+    <PARAM name="version" datatype="float" 
+        value="None" utype="voprov:ActivityDescription.version"/>
+    <PARAM name="contact_name" datatype="char" arraysize="*" 
+        value="..." utype="voprov:Agent.name"/>
+    <PARAM name="contact_email" datatype="char" arraysize="*" 
+        value="...@..." utype="voprov:Agent.email"/>
+    <GROUP name="InputParams" utype="voprov:Parameter">
+      <PARAM ID="RGB" arraysize="*" datatype="char" name="RGB" 
+          type="no_query" value="RGB.jpg">
+        <DESCRIPTION>RGB image name</DESCRIPTION>
+      </PARAM>
+      <PARAM ID="order" arraysize="*" datatype="char" name="order" 
+          type="no_query" value="RGB">
+        <DESCRIPTION>order of the channels</DESCRIPTION>
+        <VALUES>
+          <OPTION value="RGB"/>
+          <OPTION value="RBG"/>
+          <OPTION value="GBR"/>
+          <OPTION value="GRB"/>
+          <OPTION value="BRG"/>
+          <OPTION value="BGR"/>
+        </VALUES>
+      </PARAM>
+    </GROUP>
+    <GROUP name="Used" utype="voprov:Used">
+      <PARAM arraysize="*" datatype="char" name="R" 
+          value="R.jpg" utype="voprov:Entity.id" xtype="image/jpeg">
+        <DESCRIPTION>Image for red channel</DESCRIPTION>
+      </PARAM>
+      <PARAM arraysize="*" datatype="char" name="G" 
+          value="G.jpg" utype="voprov:Entity.id" xtype="image/jpeg">
+        <DESCRIPTION>Image for green channel</DESCRIPTION>
+      </PARAM>
+      <PARAM arraysize="*" datatype="char" name="B"
+          value="B.jpg" utype="voprov:Entity.id" xtype="image/jpeg">
+        <DESCRIPTION>Image for blue channel</DESCRIPTION>
+      </PARAM>
+    </GROUP>
+    <GROUP name="Generated" utype="voprov:WasGeneratedBy">
+      <PARAM arraysize="*" datatype="char" name="RGB" ref="RGB"
+          value="RGB.jpg" utype="voprov:Entity.id"  xtype="image/jpeg">
+        <DESCRIPTION>RGB image name</DESCRIPTION>
+      </PARAM>
+    </GROUP>
+  </RESOURCE>
+</VOTABLE>
+
+\end{verbnobox}
+
+\section{Accessing provenance information}
+\subsection{Access protocols}
+\label{sec:access_protocols}
+We envision two possible access protocols:
+\begin{itemize}
+\item ProvDAL: retrieve provenance information based on given ID of a data entity or activity.
+\item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on e.g. code version.
+\end{itemize}
+
+\subsection{ProvDAL}
+\input{provdal-afterparis}
+
+\subsection{ProvTAP}   //currently updated ...
+ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema. The mapping of ProvenanceDM classes and attributes onto tables and columns of the schema with the appropriate relationships, datatypes, units, utypes and ucds is done similarly to the PROV-VOTABLE serialization. The query response will result in a single table according to the query.
+This single table is joining information coming from one or several ``provenance'' tables available in the database.
+
+A special case is considered where ProvenanceDM and ObsCore are both implemented in the same TAP service and queried together. The TAP response is then providing an Obscore table with a ProvenanceDM extension. We can imagine that in the future this could be hard-coded and registered as an ObsProvTAP service.
+
+
+\TODO{We need more details here! Output of TAP service is NOT a PROV-VOTABLE by default!}
+
+%\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
+
+
+%\TODO{Also look at PROV-AQ from the W3C.}
+
+
+\subsection{VOSI availability and capabilities}
+\TODO{Still needs to be discussed!}
+According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL and/or ProvTAP must provide a VOSI availability interface as well as a capabilities interface with entries for ProvDAL and/or ProvTAP. The \texttt{standardId}s for these provenance interfaces are:
+
+\begin{verbatim}
+ivo://ivoa.net/std/ProvenanceDM#ProvDAL
+ivo://ivoa.net/std/ProvenanceDM#ProvTAP
+\end{verbatim}
+
+The capability for a TAP service to support the Provenance DM is expressed by the 
+dataModel element as :
+\begin{verbatim}
+<dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM#core-1.0">ProvenanceDM-1.0</dataModel>
+\end{verbatim}
+
+ For ProvTAP, the VOSI tables interface 
+also needs to be provided.
+
