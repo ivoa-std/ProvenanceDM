@@ -1,0 +1,1051 @@
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1.0 http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vo-dml-v1.0.xsd">
+  <name>provenance</name>
+  <description>&lt;Enter note text here&gt;</description>
+  <title/>
+  <version>0.x</version>
+  <lastModified>2017-09-12T20:36:56</lastModified>
+
+  <package>
+    <vodml-id>ivoa</vodml-id>
+    <name>ivoa</name>
+    <description>&lt;Enter note text here&gt;</description>
+    <primitiveType>
+      <vodml-id>ivoa.real</vodml-id>
+      <name>real</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.nonnegativeinteger</vodml-id>
+      <name>nonnegativeinteger</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.datetime</vodml-id>
+      <name>datetime</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.anyURI</vodml-id>
+      <name>anyURI</name>
+      <description>Base Data Types V1.0 (2014)</description>
+      <extends>
+        <vodml-ref>provenance:string</vodml-ref>
+      </extends>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.Unit</vodml-id>
+      <name>Unit</name>
+      <description>Base Data Types V1.0 (2014)</description>
+      <extends>
+        <vodml-ref>provenance:string</vodml-ref>
+      </extends>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>string</vodml-id>
+      <name>string</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>boolean</vodml-id>
+      <name>boolean</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>complex</vodml-id>
+      <name>complex</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>rational</vodml-id>
+      <name>rational</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>integer</vodml-id>
+      <name>integer</name>
+      <description>Base Data Types V1.0 (2014)</description>
+    </primitiveType>
+
+    <dataType abstract="true">
+      <vodml-id>ivoa.Quantity</vodml-id>
+      <name>Quantity</name>
+      <description>Base Data Types V1.0 (2014)</description>
+      <attribute>
+        <vodml-id>ivoa.Quantity.unit</vodml-id>
+        <name>unit</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.Unit</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <dataType>
+      <vodml-id>ivoa.IntegerQuantity</vodml-id>
+      <name>IntegerQuantity</name>
+      <description>Base Data Types V1.0 (2014)</description>
+      <extends>
+        <vodml-ref>provenance:ivoa.Quantity</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>ivoa.IntegerQuantity.value</vodml-id>
+        <name>value</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <dataType>
+      <vodml-id>ivoa.RealQuantity</vodml-id>
+      <name>RealQuantity</name>
+      <description>Base Data Types V1.0 (2014)</description>
+      <extends>
+        <vodml-ref>provenance:ivoa.Quantity</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>ivoa.RealQuantity.value</vodml-id>
+        <name>value</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>provenance</vodml-id>
+    <name>provenance</name>
+    <description>Provenance package - provides a data model for describing provenance</description>
+    <enumeration>
+      <vodml-id>provenance.AgentRole</vodml-id>
+      <name>AgentRole</name>
+      <description>Enumeration of possible agent roles.
+This is extendible.</description>
+      <literal>
+        <vodml-id>provenance.AgentRole.Observer</vodml-id>
+        <name>Observer</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Creator</vodml-id>
+        <name>Creator</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Author</vodml-id>
+        <name>Author</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Editor</vodml-id>
+        <name>Editor</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Publisher</vodml-id>
+        <name>Publisher</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Operator</vodml-id>
+        <name>Operator</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Coordinator</vodml-id>
+        <name>Coordinator</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentRole.Provider</vodml-id>
+        <name>Provider</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+      </literal>
+    </enumeration>
+
+    <objectType>
+      <vodml-id>provenance.Activity</vodml-id>
+      <name>Activity</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.Activity.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.name</vodml-id>
+        <name>name</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.startTime</vodml-id>
+        <name>startTime</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.endTime</vodml-id>
+        <name>endTime</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.annotation</vodml-id>
+        <name>annotation</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.Activity.used</vodml-id>
+        <name>used</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Used</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.Activity.wasAssociatedWith</vodml-id>
+        <name>wasAssociatedWith</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasAssociatedWith</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.Activity.parameter</vodml-id>
+        <name>parameter</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Parameter</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <reference>
+        <vodml-id>provenance.Activity.description</vodml-id>
+        <name>activityDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Activity.activity</vodml-id>
+        <name>activity</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ActivityDescription</vodml-id>
+      <name>ActivityDescription</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.name</vodml-id>
+        <name>name</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.type</vodml-id>
+        <name>type</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.subtype</vodml-id>
+        <name>subtype</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.annotation</vodml-id>
+        <name>annotation</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.doculink</vodml-id>
+        <name>doculink</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.ActivityDescription.usedDescription</vodml-id>
+        <name>usedDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.ActivityDescription.parameterDescription</vodml-id>
+        <name>parameterDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Entity</vodml-id>
+      <name>Entity</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.Entity.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.name</vodml-id>
+        <name>name</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.type</vodml-id>
+        <name>type</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.annotation</vodml-id>
+        <name>annotation</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.rights</vodml-id>
+        <name>rights</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.Entity.wasGeneratedBy</vodml-id>
+        <name>wasGeneratedBy</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedBy</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.Entity.wasAttributedTo</vodml-id>
+        <name>wasAttributedTo</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasAttributedTo</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <reference>
+        <vodml-id>provenance.Entity.description</vodml-id>
+        <name>entityDescription</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Entity.usedEntity</vodml-id>
+        <name>usedEntity</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.EntityDescription</vodml-id>
+      <name>EntityDescription</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.name</vodml-id>
+        <name>name</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.annotation</vodml-id>
+        <name>annotation</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.category</vodml-id>
+        <name>category</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.doculink</vodml-id>
+        <name>doculink</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.EntityDescription.wasGeneratedByDescription</vodml-id>
+        <name>wasGeneratedByDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Used</vodml-id>
+      <name>Used</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <reference>
+        <vodml-id>provenance.Used.usedDescription</vodml-id>
+        <name>usedDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Used.used</vodml-id>
+        <name>used</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasGeneratedBy</vodml-id>
+      <name>WasGeneratedBy</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <reference>
+        <vodml-id>provenance.WasGeneratedBy.wasGeneratedByDescription</vodml-id>
+        <name>wasGeneratedByDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.WasGeneratedBy.wasGeneratedBy</vodml-id>
+        <name>wasGeneratedBy</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasGeneratedByDescription</vodml-id>
+      <name>WasGeneratedByDescription</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.WasGeneratedByDescription.role</vodml-id>
+        <name>role</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.WasGeneratedByDescription.wasGeneratedByDescription</vodml-id>
+        <name>wasGeneratedByDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Agent</vodml-id>
+      <name>Agent</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.Agent.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.name</vodml-id>
+        <name>name</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.type</vodml-id>
+        <name>type</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasAssociatedWith</vodml-id>
+      <name>WasAssociatedWith</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.WasAssociatedWith.role</vodml-id>
+        <name>role</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.WasAssociatedWith.wasAssociatedWith</vodml-id>
+        <name>wasAssociatedWith</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Agent</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasAttributedTo</vodml-id>
+      <name>WasAttributedTo</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.WasAttributedTo.role</vodml-id>
+        <name>role</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.WasAttributedTo.wasAttributedTo</vodml-id>
+        <name>wasAttributedTo</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Agent</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ActivityFlow</vodml-id>
+      <name>ActivityFlow</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <extends>
+        <vodml-ref>provenance:provenance.Activity</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>provenance.ActivityFlow.hadStep</vodml-id>
+        <name>hadStep</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.HadStep</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Collection</vodml-id>
+      <name>Collection</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <extends>
+        <vodml-ref>provenance:provenance.Entity</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>provenance.Collection.hadMember</vodml-id>
+        <name>hadMember</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.HadMember</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.HadStep</vodml-id>
+      <name>HadStep</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <reference>
+        <vodml-id>provenance.HadStep.activity</vodml-id>
+        <name>activity</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.HadMember</vodml-id>
+      <name>HadMember</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <reference>
+        <vodml-id>provenance.HadMember.entity</vodml-id>
+        <name>entity</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Parameter</vodml-id>
+      <name>Parameter</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.Parameter.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Parameter.value</vodml-id>
+        <name>value</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.Parameter.parameterDescription</vodml-id>
+        <name>parameterDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ParameterDescription</vodml-id>
+      <name>ParameterDescription</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.id</vodml-id>
+        <name>id</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.name</vodml-id>
+        <name>name</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.datatype</vodml-id>
+        <name>datatype</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.unit</vodml-id>
+        <name>unit</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.Unit</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.ucd</vodml-id>
+        <name>ucd</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.utype</vodml-id>
+        <name>utype</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.annotation</vodml-id>
+        <name>annotation</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.UsedDescription</vodml-id>
+      <name>UsedDescription</name>
+      <description>This document provides a data model for describing provenance.</description>
+      <attribute>
+        <vodml-id>provenance.UsedDescription.role</vodml-id>
+        <name>role</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.UsedDescription.usedDescription</vodml-id>
+        <name>usedDescription</name>
+        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+  </package>
+
+</vo-dml:model>

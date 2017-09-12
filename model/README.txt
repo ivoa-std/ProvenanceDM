@@ -7,12 +7,15 @@ For recreating the vodml-xml, html documentation etc., do the following (usual) 
 * copy latest xmi version to this directory:
   cp ../datamodel-diagrams/provenance.xmi .
 
-* adjust build.properties in vo-dml's base directory:
+* switch to the vo-dml directory, tools/
+  cd ../../vo-dml/tools/
+
+* adjust build.properties:
   vi build.properties
 
-  -> set here "models=./models/provenancedm"
+  -> set here "models=../../provenance/vo-dml"
 
-* create the provenancedm.vo-dml.xml file:
+* create the provenancedm.vo-dml.xml file by running from the tools-directory::
   ant run_xmi2vo-dml
 
   - if error: No uml:Model found, edit the provenance.xmi-file directly and patch the xmi namespace:
