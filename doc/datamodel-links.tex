@@ -31,7 +31,7 @@ to concepts in the Provenance Data Model.
 \begin{table}[h]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}Llp{4cm}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
 \toprule
 \head{Provenance DM} & \head{Dataset DM} & \head{Comment}\\
 \midrule
@@ -68,7 +68,7 @@ EntityDescription.level & ObsDataset.calibLevel  & (output) calibration level, i
 \end{figure}
 
 The \class{Agent} class, which is used for defining responsible persons and 
-organizations in ProvenanceDM, is very similar to the \class{Party} class in the Dataset Metadata Model (and in SimDM). Its details are depicted in Figure~\ref{fig:agent-relations}.
+organizations in ProvenanceDM, is very similar to the \class{Party} class in DatasetDM (and in SimDM). Its details are depicted in Figure~\ref{fig:agent-relations}.
 The main difference between \class{Agent} and \class{Party} is that \class{Individual} and \class{Person} are subclasses in DatasetDM, whereas we just use the same class \emph{Agent} for both and distinguish between them using the \emph{Agent.type} attribute (which can have the value ``Individual'' or ``Organization'').
 
 
@@ -87,14 +87,14 @@ More direct mappings between classes and attributes of both models are given in 
 \begin{table}[h]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}Llp{4cm}@{}}
+\begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
 \toprule
 \head{Provenance DM} & \head{Simulation DM} & \head{Comment}\\
 \midrule
 Activity               & Experiment      &  \\
-Activity.name         & Experiment.name & human readable name; name attribute in SimDM is inherited from Resource-class\\
+Activity.name          & Experiment.name & human readable name; name attribute in SimDM is inherited from Resource-class\\
 Activity.endTime & Experiment.executionTime  & end time of the execution of an experiment/activity \\
-Activity.activityDescription & Experiment.protocol & reference to the protocol or description class \\
+Activity.description & Experiment.protocol & reference to the protocol or ActivityDescription class \\
 ActivityDescription    & Protocol        & \\
 ActivityDescription.name  & Protocol.name   & human readable name\\
 ActivityDescription.doculink & Protocol.referenceURL & reference to a webpage describing it\\
@@ -103,7 +103,7 @@ Parameter              & ParameterSetting     & value of an (input) parameter\\
 ParameterDescription   & InputParameter       & description of an (input) parameter\\
 Agent           & Party           & responsible person or organization\\
 Agent.name      & Party.name      & name of the agent \\
-WasAssociatedWith & Contact         & \\
+WasAssociatedWith & Contact         & classes for linking to agent/party\\
 WasAssociatedWith.role & Contact.role    & role which the agent/party had for a certain experiment (activity); SimDM roles contain: \texttt{owner}, \texttt{creator}, \texttt{publisher}, \texttt{contributor}\\
 WasAssociatedWith.agent & Contact.party    & reference to the agent/party \\
 Entity        & DataObject     & a dataset, which can be/refer to a collection\\
