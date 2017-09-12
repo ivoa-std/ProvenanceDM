@@ -6,7 +6,7 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-05-24T09:47:14</lastModified>
+  <lastModified>2017-09-12T15:50:04</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -357,7 +357,7 @@
         </multiplicity>
       </composition>
       <reference>
-        <vodml-id>provenance.Activity.description</vodml-id>
+        <vodml-id>provenance.Activity.activityDescription</vodml-id>
         <name>activityDescription</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
@@ -607,7 +607,7 @@
         </multiplicity>
       </composition>
       <reference>
-        <vodml-id>provenance.Entity.description</vodml-id>
+        <vodml-id>provenance.Entity.entityDescription</vodml-id>
         <name>entityDescription</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
