@@ -23,4 +23,20 @@ For recreating the vodml-xml, html documentation etc., do the following (usual) 
 
 * create the html documentation:
   ant run_vo-dml2html
+ 
+- if there are a lot of TODO-strings, the descriptions for each class/attribute are not stored in Modelio
+  and thus not in the xmi-file.
+- just add them to the vo-dml.xml file like this:
+	- extract descriptions for each element using extract_descriptions.py
+	- edit the created Provenance.descriptions file
+	- add the descriptions from this file back into ProvenanceDM.vo-dml.xml:
+
+	python add_descriptions.py xml/ProvenanceDM.vo-dml.xml ProvenanceDM.descriptions
+        mv xml/ProvenanceDM-new.vo-dml.xml xml/ProvenanceDM.vo-dml.xml
+- regenerate html docu:
+  ant run_vo-dml2html
+
+Now the descriptions are included!
+
+
 

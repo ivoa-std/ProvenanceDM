@@ -8,7 +8,7 @@
   <package>
     <vodml-id>ivoa</vodml-id>
     <name>ivoa</name>
-    <description>&lt;Enter note text here&gt;</description>
+    <description>The IVOA package</description>
     <primitiveType>
       <vodml-id>ivoa.real</vodml-id>
       <name>real</name>
@@ -82,7 +82,7 @@
       <attribute>
         <vodml-id>ivoa.Quantity.unit</vodml-id>
         <name>unit</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unit of a quantity</description>
         <datatype>
           <vodml-ref>provenance:ivoa.Unit</vodml-ref>
         </datatype>
@@ -103,7 +103,7 @@
       <attribute>
         <vodml-id>ivoa.IntegerQuantity.value</vodml-id>
         <name>value</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Integer value of a quantity</description>
         <datatype>
           <vodml-ref>provenance:integer</vodml-ref>
         </datatype>
@@ -124,7 +124,7 @@
       <attribute>
         <vodml-id>ivoa.RealQuantity.value</vodml-id>
         <name>value</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Real value of a quantity</description>
         <datatype>
           <vodml-ref>provenance:ivoa.real</vodml-ref>
         </datatype>
@@ -142,62 +142,61 @@
   <package>
     <vodml-id>provenance</vodml-id>
     <name>provenance</name>
-    <description>Provenance package - provides a data model for describing provenance</description>
+    <description>The provenance package for describing provenance.</description>
     <enumeration>
       <vodml-id>provenance.AgentRole</vodml-id>
       <name>AgentRole</name>
-      <description>Enumeration of possible agent roles.
-This is extendible.</description>
+      <description>The role that an agent takes while being responsible for something; e.g. observer, developer, operator etc.</description>
       <literal>
         <vodml-id>provenance.AgentRole.Observer</vodml-id>
         <name>Observer</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, observer at the telescope</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Creator</vodml-id>
         <name>Creator</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, someone who created a dataset</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Author</vodml-id>
         <name>Author</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, someone who wrote and article, software, proposal, ...</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Editor</vodml-id>
         <name>Editor</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, editor of e.g. an article, before publishing</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Publisher</vodml-id>
         <name>Publisher</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, organization (publishing house, institution) that published something</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Operator</vodml-id>
         <name>Operator</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, somone performing a given task</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Coordinator</vodml-id>
         <name>Coordinator</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, someone coordinating/leading a project</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Provider</vodml-id>
         <name>Provider</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Example role for an agent, an organization that makes data and/or services available to users over the network</description>
       </literal>
     </enumeration>
 
     <objectType>
       <vodml-id>provenance.Activity</vodml-id>
       <name>Activity</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>A process or task, e.g. observation, calibration of images, stacking of images, calculation of a property, simulation of a spectrum</description>
       <attribute>
         <vodml-id>provenance.Activity.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A unique (qualified) identifier for the activity (unique in its realm)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -209,7 +208,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Activity.name</vodml-id>
         <name>name</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A human-readable name (to be displayed by clients)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -221,7 +220,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Activity.startTime</vodml-id>
         <name>startTime</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Datetime at which the activity was started</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -233,7 +232,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Activity.endTime</vodml-id>
         <name>endTime</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Datetime at which the activity ended</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -245,7 +244,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Activity.annotation</vodml-id>
         <name>annotation</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Additional explanations for the specific activity instance</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -257,7 +256,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.Activity.used</vodml-id>
         <name>used</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to used entity; there can be many used-links, one for each used entity.</description>
         <datatype>
           <vodml-ref>provenance:provenance.Used</vodml-ref>
         </datatype>
@@ -269,7 +268,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.Activity.wasAssociatedWith</vodml-id>
         <name>wasAssociatedWith</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to agent that was responsible for this activity (the role he/she/it performs may be given as additional attribute in wasAssociatedWith)</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasAssociatedWith</vodml-ref>
         </datatype>
@@ -281,7 +280,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.Activity.parameter</vodml-id>
         <name>parameter</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to a parameter of this activity</description>
         <datatype>
           <vodml-ref>provenance:provenance.Parameter</vodml-ref>
         </datatype>
@@ -293,9 +292,7 @@ This is extendible.</description>
       <reference>
         <vodml-id>provenance.Activity.description</vodml-id>
         <name>activityDescription</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Link to the activityDescription of this activity (if existing)</description>
         <datatype>
           <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
         </datatype>
@@ -307,7 +304,7 @@ This is extendible.</description>
       <reference>
         <vodml-id>provenance.Activity.activity</vodml-id>
         <name>activity</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>TODO: ??</description>
         <datatype>
           <vodml-ref>provenance:provenance.Activity</vodml-ref>
         </datatype>
@@ -321,11 +318,11 @@ This is extendible.</description>
     <objectType>
       <vodml-id>provenance.ActivityDescription</vodml-id>
       <name>ActivityDescription</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>A class for describing the general method underlying an activity.</description>
       <attribute>
         <vodml-id>provenance.ActivityDescription.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unique identifier for this activityDescription (unique in its realm)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -337,7 +334,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.ActivityDescription.name</vodml-id>
         <name>name</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A human-readable name (to be displayed by clients)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -349,7 +346,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.ActivityDescription.type</vodml-id>
         <name>type</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A general type of the method for this activity, e.g. calibration, pipeline, ...</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -361,7 +358,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.ActivityDescription.subtype</vodml-id>
         <name>subtype</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A subtype describing the general method of the activity further</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -373,7 +370,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.ActivityDescription.annotation</vodml-id>
         <name>annotation</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Additional description text, comments, remarks, ...</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -385,7 +382,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.ActivityDescription.doculink</vodml-id>
         <name>doculink</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to documentation for this activityDescription</description>
         <datatype>
           <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
         </datatype>
@@ -397,7 +394,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.ActivityDescription.usedDescription</vodml-id>
         <name>usedDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to entityDescriptions, describing which kind of entity can be used with this activity-type</description>
         <datatype>
           <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
         </datatype>
@@ -409,7 +406,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.ActivityDescription.parameterDescription</vodml-id>
         <name>parameterDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to parameterDescription, describing which kind of parameter can be used with this activity-type</description>
         <datatype>
           <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
         </datatype>
@@ -423,11 +420,11 @@ This is extendible.</description>
     <objectType>
       <vodml-id>provenance.Entity</vodml-id>
       <name>Entity</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>A thing at a certain state, in astronomy typcially data products like images, spectra, catalogs, log files, weather reports, ...</description>
       <attribute>
         <vodml-id>provenance.Entity.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unique identifier for this entity (unique in its realm)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -439,7 +436,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Entity.name</vodml-id>
         <name>name</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A human-readable name for this entity</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -451,7 +448,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Entity.type</vodml-id>
         <name>type</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A provenance type (from W3C), i.e. one of: prov:collection, prov:bundle, prov:plan, prov:entity; not needed for a simple entity</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -463,7 +460,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Entity.annotation</vodml-id>
         <name>annotation</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Text describing the entity in more detail</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -475,7 +472,7 @@ This is extendible.</description>
       <attribute>
         <vodml-id>provenance.Entity.rights</vodml-id>
         <name>rights</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -487,7 +484,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.Entity.wasGeneratedBy</vodml-id>
         <name>wasGeneratedBy</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the activity (or activityFlow) generating this entity; if no activityFlow, there must be only generating activity</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasGeneratedBy</vodml-ref>
         </datatype>
@@ -499,7 +496,7 @@ This is extendible.</description>
       <composition>
         <vodml-id>provenance.Entity.wasAttributedTo</vodml-id>
         <name>wasAttributedTo</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to an agent that was responsible and gets attribution for this entity</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasAttributedTo</vodml-ref>
         </datatype>
@@ -511,9 +508,7 @@ This is extendible.</description>
       <reference>
         <vodml-id>provenance.Entity.description</vodml-id>
         <name>entityDescription</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Link to the entityDescription for this entity</description>
         <datatype>
           <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>
         </datatype>
@@ -525,7 +520,7 @@ This is extendible.</description>
       <reference>
         <vodml-id>provenance.Entity.usedEntity</vodml-id>
         <name>usedEntity</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>TODO: ??</description>
         <datatype>
           <vodml-ref>provenance:provenance.Entity</vodml-ref>
         </datatype>
