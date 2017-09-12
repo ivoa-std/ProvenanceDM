@@ -151,8 +151,8 @@ infrastructure that enable VO applications.
 
 
 % make sure that images/tables of the previous section are printed
-% before starting the new section
-\clearpage
+% before starting the new section -- comment out, if not needed
+% \clearpage
 %\section{Applying provenance -- Interactions with other Data models}\label{sec:dmlinks}
 \section{Links to other data models}
 \label{sec:dmlinks}
@@ -186,27 +186,30 @@ infrastructure that enable VO applications.
 \item Moved discussion section to appendix, cut code and serialization examples, partially moved to Implementation Note \citep{std:ProvenanceImplementationNote}.
 \item Added paragraph on VOSI interface
 \item Added a proposed serialization of description classes
-\item Added optional attributes \emph{Parameter.min},  \emph{Parameter.max},  \emph{Parameter.option}
 \item Modified text on the content of EntityDescription, now seen as Entity attributes known before the Entity instance exists.
+\item Renamed Section~\ref{sec:usecases-implementations} to stress that it explains applications of the model (use cases); implementation details can be found in Implementation Note \citep{std:ProvenanceImplementationNote}.
+\item Complete rewrite of the ProvDAL section in Section~\ref{sec:access_protocols}; new parameters, new figure and examples added.
 \item Added additional figure for entity-activity relations.
-\item Added optional attributes \emph{Entity.creationTime} and \emph{EntityDescription.category}
-\item Rewrite of the ProvDAL section in Section~\ref{sec:access_protocols}.
 \item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
 \item Added serialisation examples to Section~\ref{sec:serialisations}, voprov-implementation example to Section~\ref{sec:usecases-implementations}.
-\item Use voprov:type and voprov:role in Table~\ref{tab:agent-roles} with example agent roles, i.e. replaced prov:person by Individual and prov:organization by Organization.
-\item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
-\item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
 \item Extended the entity role examples in table \ref{tab:entity-roles}.
-\item Renamed attribute \emph{Entity.access} to \emph{Entity.rights} for more consistency with DatasetDM etc.
-\item Moved detailed implementation section from appendix to a separate document (implementation note), shortened the use cases \& implementation section.
-\item More explanations on links to data models in Section~\ref{sec:dmlinks}.
-\item Introduced subsections for Section~\ref{sec:dmlinks}, added table with SimDM-links.
-\item Renamed \emph{docuLink} to \emph{doculink}
-\item Avoid double-meaning of \emph{description} (as reference and free-text description) by renaming the free-text description to \emph{annotation}. No need for an additional description-attribute for reference to the corresponding description class, since it's expressed by the corresponding link in the model anyway.
-\item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
-\item Renamed Section~\ref{sec:usecases-implementations} to stress that it deals with implementations.
 \item Added links to provn and votable-serialization for HiPS-use case, added first part of provn as example in the HiPS-use case section.
-\item Corrected attribute names in Table~\ref{tab:datasetmapping}.
+\item More explanations on links to data models in Section~\ref{sec:dmlinks}, introduced subsections, added table with SimDM-mapping.
+\item Moved detailed implementation section from appendix to a separate document (implementation note), shortened the use cases \& implementation section.
+\item Attribute/class updates:
+\begin{itemize}
+    \item Added optional attributes \emph{Entity.creationTime} and \emph{EntityDescription.category}
+    \item Added optional attributes \emph{Parameter.min},  \emph{Parameter.max},  \emph{Parameter.option}
+    \item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
+    \item Use voprov:type and voprov:role in Table~\ref{tab:agent-roles} with example agent roles, i.e. replaced prov:person by Individual and prov:organization by Organization.
+    \item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
+    \item Renamed attribute \emph{Entity.access} to \emph{Entity.rights} for more consistency with DatasetDM etc.
+    \item Avoid double-meaning of \emph{description} (as reference and free-text description) by renaming the free-text description to \emph{annotation}. No need for an additional description-attribute for reference to the corresponding description class, since it's expressed by the corresponding link in the model anyway.
+    \item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
+    \item Renamed \emph{docuLink} to \emph{doculink}
+    \item Corrected attribute names in Table~\ref{tab:datasetmapping}.
+\end{itemize}
+
 
 \end{itemize}
 

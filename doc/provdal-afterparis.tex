@@ -41,12 +41,14 @@ the default is 1, which returns all relations and nodes that can be reached
 by following 1 relation. If \texttt{DEPTH=ALL} is requested, the server should
 return the complete provenance history that the service has stored for the
 given entity, activity or agent.
-
-\TODO{KR: I suggest to add here:\\
 Services may restrict the returned data by
-redirecting \texttt{DEPTH=ALL} to e.g. \texttt{DEPTH=\{maxdepth\}}, where
+redirecting \texttt{DEPTH=ALL} to \texttt{DEPTH=\{maxdepth\}}, where
 \texttt{\{maxdepth\}} is an integer defining the maximum depth number that
-the server allows.}
+the server allows.
+
+If description classes (EntityDescription etc.) are used, we expect that the descriptions are retrieved together with each corresponding main class. For example, for each entity node also return the entityDescription -- either by adding the description attributes to the entity in the serialized response, by adding a link to a URL with entityDescription information or by returning a
+direct serialization of the description class along with a link from the entity to the entityDescription.
+
 
 Note that the relations \emph{wasDerivedFrom} and \emph{wasInformedBy} are ``short-cuts''
 in a provenance graph. Thus for e.g. \texttt{DEPTH=2} more progenitors of an entity may
@@ -104,7 +106,7 @@ If a service does not implement the optional parameters, but they appear in the 
 Please note that according to the DALI specification \citep{std:DALI}, the parameter names are case-insensitive, but the parameter values are not. E.g. \texttt{direcion=FORTH} is allowed, but \texttt{DIRECTION=forth} may not work.
 
 \subsubsection{ProvDAL example use cases}
-\TODO{This is a new section.}
+\TODO{This is a new section - do we want to keep it? Shorten/expand it?}
 We provide here a few example use cases for ProvDAL in order to show its usefulness in exploring the provenance
 of astronomical datasets, processes or the people and projects involved in producing/performing them.
 
@@ -146,6 +148,6 @@ The result will not only contain the processing steps (activities), but also ent
 	We use the RESPONSEFORMAT keyword here to retrieve a VOTABLE.
 \end{itemize}
 
-ProvDAL is meant to be used to retrieve parts of a provenance graph from a provenance web service. It cannot be used to retrieve information based on specific properties, e.g. the creationTime of an entity or a parameter value for an activity. For such cases, a ProvTAP service can be used (see next section).
+ProvDAL is meant to be used to just retrieve parts of a provenance graph from a provenance web service. It cannot be used to explore the provenance graphs and filter the information based on specific properties, e.g. the creationTime of an entity or a parameter value for an activity. For such cases, a ProvTAP service can be used -- which is described in the next section.
 
 
