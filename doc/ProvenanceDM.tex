@@ -3,6 +3,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs, tabulary}    % for nicer tables
+\usepackage[titletoc,toc,title]{appendix}
 
 % make the text in pdf properly searchable
 \usepackage{lmodern}
@@ -147,6 +148,7 @@ infrastructure that enable VO applications.
 
 
 \section{The provenance data model}
+\label{sec:datamodel}
 \input{datamodel-description}
 
 
@@ -162,6 +164,12 @@ infrastructure that enable VO applications.
 % make sure that images/tables of the previous section are printed
 % before starting the new section
 \clearpage
+\section{Serialization of the provenance data model}
+\label{sec:serialisations}
+\input{serializations}
+%\subsection{Serializing of the datamodel core}
+%\label{sec:intro-serialization}
+%\input{serialisation-intro}
 \section{Accessing provenance information}
 \input{provaccess}
 
@@ -171,8 +179,11 @@ infrastructure that enable VO applications.
 \label{sec:usecases-implementations}
 \input{usecases-implementations}
 
-
-\appendix
+\begin{appendices}
+%\appendix
+\section{Serialization Examples}
+\label{sec:appendix-serialization-examples}
+\input{AppendixA-ML}
 
 \section{Discussion}
 \input{discussion}
@@ -213,11 +224,10 @@ infrastructure that enable VO applications.
 
 \end{itemize}
 
-
+\end{appendices}
 
 
 \bibliography{ivoatex/ivoabib,prov-refs}
-
 
 
 \end{document}
