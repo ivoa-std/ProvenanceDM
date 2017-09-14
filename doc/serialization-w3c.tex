@@ -1,0 +1,22 @@
+\subsection{W3C PROV-DM compatible serializations}
+According to our minimum requirements (see Section~\ref{sec:requirements}), it must be possible to
+serialize the provenance metadata into the W3C compatible formats, so that it can be exchanged within a wider context and can processed by already existing tools.
+In our data model we have defined additional classes and attributes that are not W3C conform and thus need to be
+serialized with different names/structures. Using ``voprov'' as the namespace prefix for our model and ``prov'' for W3C PROV-DM, the necessary changes for mapping from ProvenanceDM to W3C PROV-DM are:
+
+\begin{itemize}
+\item namespace \texttt{voprov} $\rightarrow$ \texttt{prov} for those attributes that are the same in W3C (e.g. ID, role, startTime, endTime)
+\item attribute \texttt{voprov:name} $\rightarrow$ \texttt{prov:label}
+\item attribute \texttt{voprov:annotation} $\rightarrow$ \texttt{prov:description}
+\item attribute \texttt{prov:role} is not allowed in W3C's \emph{wasAttributedTo}, thus use \texttt{voprov:role}
+\item \emph{hadMember} has no ID and no optional attributes in W3C
+\item \emph{Collection} $\rightarrow$ \emph{Entity} with \texttt{prov:type = prov:collection}
+\item restructure \emph{ActivityFlow}:
+	\begin{itemize}
+	\item \emph{ActivityFlow} $\rightarrow$ \emph{Activity} with additional attribute \texttt{voprov:votype = 'voprov:activityFlow'}
+	\item replace \emph{hadStep} relation by W3C's general \emph{wasInfluencedBy} relation with additional attribute \texttt{voprov:votype = 'voprov:hadStep'}
+	\end{itemize}
+
+\end{itemize}
+
+This way, one can produce W3C compatible serializations of our model with minimum information loss.
