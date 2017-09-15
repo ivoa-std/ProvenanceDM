@@ -172,7 +172,9 @@ annotation  & prov:description & string & text describing the entity in more det
 rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model\\
 creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
 \midrule
-\multicolumn{4}{l}{Further project specific attributes (e.g. size) can be added}\\
+\multicolumn{4}{l}{\head{Additional attributes}} \\
+\midrule
+\multicolumn{4}{l}{Further project specific attributes (e.g. size, content\_type) can be added (see Section \ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of entities. Mandatory attributes are marked in bold.
@@ -197,11 +199,11 @@ More details on this will follow in Section \ref{sec:entity-activity-relations}.
 \paragraph{EntityDescription.}
 %The Entity class can have an EntityDescription class attached. 
 The types of entities, or datasets in astronomy, can be predefined using a description class \class{EntityDescription}.
-This class is meant to store information about an Entity that are known before the Entity instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory format for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final size of the image  that will be created. Therefore, ``format'' would be an EntityDescription attribute , while ``size'' would be an attribute of the Entity instance. 
+This class is meant to store descriptive informations about an Entity that are known before the Entity instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory ``format'' for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final ``size'' of the image  that will be created. Therefore, ``format'' would be an EntityDescription attribute , while ``size'' would be an attribute of the Entity instance. 
 
 %This class thus stores entity-related 
-Some of the attributes that describe the content of the data could be derived from 
-the Dataset Metadata Model.
+Additional attributes that describe the content of the data could be derived from 
+the Dataset Metadata Model (see Section \ref{sec:dataset-obscore})
 
 The \class{EntityDescription} does NOT contain any information about the usage 
 of the data, it tells nothing about them being used as input or output. This is 
@@ -230,8 +232,10 @@ doculink    & & url & link to more documentation\\
 % dataproduct\_ subtype & & string       & from ObsCore data model, more specific subtype\\
 % level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \midrule
-\multicolumn{4}{l}{\emph{Further project specific attributes (e.g.} format\emph{,} dataproduct\_type \emph{and} -subtype, version, }\\
-\multicolumn{4}{l}{calibLevel) \emph{can be added}}\\
+\multicolumn{4}{l}{\head{Additional attributes}} \\
+\midrule
+\multicolumn{4}{l}{\emph{Further project specific attributes (e.g.} format\emph{,} dataproduct\_type \emph{and} \_subtype, version, }\\
+\multicolumn{4}{l}{calibLevel) \emph{can be added, maybe related to the Dataset DM (Section \ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{EntityDescription}. For simple use cases, 
