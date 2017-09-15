@@ -24,13 +24,13 @@ For the input parameters, each ParameterDescription attribute is mapped to a PAR
 
 For the input and output entity groups, each related entity is described with a GROUP block that contains several PARAM elements with those names:
 \begin{itemize}
- \item[name="id"] for the default identifier of the entity (e.g. a file name),
- \item[name="role"] that gives the role of the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
- \item[name="content\_type"] for the expected MIME type expected by the activity for the input or output entity,
+ \item name="id" for the default identifier of the entity (e.g. a file name),
+ \item name="role" that gives the role of the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
+ \item name="content\_type" for the expected MIME type expected by the activity for the input or output entity,
  \item other additional PARAM elements corresponding to the EntityDescription attributes.
  \end{itemize} 
 
-It is possible to reference an input parameter using the \emph{ref} attribute of PARAM, if an input entity is also given as an input parameter to the activity (e.g. the name of a file). In the following example the output file name "RGB.jpg" is given as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").
+It is possible to reference an input parameter using the \emph{ref} attribute of PARAM, if an input or output entity is referenced as an input parameter to the activity (e.g. the name of an input file). In the following example the output file name "RGB.jpg" is expected as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").
 
 Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
 
