@@ -22,8 +22,8 @@ def main():
     else:
         descriptionfilename = vodmlfilename.replace('.vo-dml.xml', '.descriptions')
 
+    # read the xml file
     f = open(vodmlfilename, 'r')
-
     tree = etree.parse(f)
     f.close()
 
@@ -36,11 +36,12 @@ def main():
     for e in root.xpath("//vodml-id"):
 
         vodml_id = e.text
-        desc =  e.getparent().getparent().find("description")
+        #desc = e.getparent().getparent().find("description")
+        desc = e.getparent().find("description")
         desc = desc.text.strip()
 
-        #print("'vodml-id': '%s'" % vodml_id)
-        #print("'description': '%s'" % desc)
+        print("'vodml-id': '%s'" % vodml_id)
+        print("'description': '%s'" % desc)
 
         # replace each \n by \n and 4 whitespaces, because need to get
         # indentation right for yaml multiline string

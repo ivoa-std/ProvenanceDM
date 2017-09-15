@@ -3,7 +3,7 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-09-12T20:36:56</lastModified>
+  <lastModified>2017-09-14T11:54:57</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -175,7 +175,7 @@
       <literal>
         <vodml-id>provenance.AgentRole.Operator</vodml-id>
         <name>Operator</name>
-        <description>Example role for an agent, somone performing a given task</description>
+        <description>Example role for an agent, someone performing a given task</description>
       </literal>
       <literal>
         <vodml-id>provenance.AgentRole.Coordinator</vodml-id>
@@ -256,7 +256,7 @@
       <composition>
         <vodml-id>provenance.Activity.used</vodml-id>
         <name>used</name>
-        <description>Link to used entity; there can be many used-links, one for each used entity.</description>
+        <description>Link to Used class linking to the used entities; there can be many used-links, one for each used entity.</description>
         <datatype>
           <vodml-ref>provenance:provenance.Used</vodml-ref>
         </datatype>
@@ -268,7 +268,7 @@
       <composition>
         <vodml-id>provenance.Activity.wasAssociatedWith</vodml-id>
         <name>wasAssociatedWith</name>
-        <description>Link to agent that was responsible for this activity (the role he/she/it performs may be given as additional attribute in wasAssociatedWith)</description>
+        <description>Link to a class linking to an agent that was responsible for this activity (the role he/she/it performs may be given as additional attribute in wasAssociatedWith)</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasAssociatedWith</vodml-ref>
         </datatype>
@@ -291,7 +291,7 @@
       </composition>
       <reference>
         <vodml-id>provenance.Activity.description</vodml-id>
-        <name>activityDescription</name>
+        <name>description</name>
         <description>Link to the activityDescription of this activity (if existing)</description>
         <datatype>
           <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
@@ -481,10 +481,22 @@
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.creationTime</vodml-id>
+        <name>creationTime</name>
+        <description>Datetime at which the entity was created</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
       <composition>
         <vodml-id>provenance.Entity.wasGeneratedBy</vodml-id>
         <name>wasGeneratedBy</name>
-        <description>Link to the activity (or activityFlow) generating this entity; if no activityFlow, there must be only generating activity</description>
+        <description>Link to the WasGeneratedBy class linking to an activity (or activityFlow) generating this entity; if no activityFlow, there must be only one wasGeneratedBy-relation to only one generating activity</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasGeneratedBy</vodml-ref>
         </datatype>
@@ -496,7 +508,7 @@
       <composition>
         <vodml-id>provenance.Entity.wasAttributedTo</vodml-id>
         <name>wasAttributedTo</name>
-        <description>Link to an agent that was responsible and gets attribution for this entity</description>
+        <description>Link to the class that links to an agent who was responsible and gets attribution for this entity</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasAttributedTo</vodml-ref>
         </datatype>
@@ -507,7 +519,7 @@
       </composition>
       <reference>
         <vodml-id>provenance.Entity.description</vodml-id>
-        <name>entityDescription</name>
+        <name>description</name>
         <description>Link to the entityDescription for this entity</description>
         <datatype>
           <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>
@@ -520,7 +532,7 @@
       <reference>
         <vodml-id>provenance.Entity.usedEntity</vodml-id>
         <name>usedEntity</name>
-        <description>TODO: ??</description>
+        <description>Link to the entity that was used in a wasDerivedFrom-relation.</description>
         <datatype>
           <vodml-ref>provenance:provenance.Entity</vodml-ref>
         </datatype>
@@ -529,16 +541,28 @@
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
       </reference>
+      <reference>
+        <vodml-id>provenance.Entity.generatedEntity</vodml-id>
+        <name>generatedEntity</name>
+        <description>Link to the entity that was generated (wasDerivedFrom relation)</description>
+        <datatype>
+          <vodml-ref>provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
     </objectType>
 
     <objectType>
       <vodml-id>provenance.EntityDescription</vodml-id>
       <name>EntityDescription</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for general descriptions of entities, contains properties that are known before an entity is created.</description>
       <attribute>
         <vodml-id>provenance.EntityDescription.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unique identitfier for this entityDescription</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -550,7 +574,7 @@
       <attribute>
         <vodml-id>provenance.EntityDescription.name</vodml-id>
         <name>name</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Human-readable name for the entityDescription</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -562,7 +586,7 @@
       <attribute>
         <vodml-id>provenance.EntityDescription.annotation</vodml-id>
         <name>annotation</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Descriptive text for this kind of entity</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -574,7 +598,7 @@
       <attribute>
         <vodml-id>provenance.EntityDescription.category</vodml-id>
         <name>category</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Specifies if entities linked to this description contain information on logging, system (environment), calibration, simulation, observation, configuration, ...</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -586,7 +610,7 @@
       <attribute>
         <vodml-id>provenance.EntityDescription.doculink</vodml-id>
         <name>doculink</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to more documentation</description>
         <datatype>
           <vodml-ref>provenance:ivoa.anyURI</vodml-ref>
         </datatype>
@@ -598,7 +622,7 @@
       <composition>
         <vodml-id>provenance.EntityDescription.wasGeneratedByDescription</vodml-id>
         <name>wasGeneratedByDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the wasGeneratedBy class linking to the ActivityDescription for activities that generate this type of entities</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
         </datatype>
@@ -612,11 +636,11 @@
     <objectType>
       <vodml-id>provenance.Used</vodml-id>
       <name>Used</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for linking activities with the input entities</description>
       <reference>
-        <vodml-id>provenance.Used.usedDescription</vodml-id>
-        <name>usedDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <vodml-id>provenance.Used.description</vodml-id>
+        <name>description</name>
+        <description>Link to corresponding UsedDescription class (where the "role" of an entity may be stored)</description>
         <datatype>
           <vodml-ref>provenance:provenance.UsedDescription</vodml-ref>
         </datatype>
@@ -626,9 +650,9 @@
         </multiplicity>
       </reference>
       <reference>
-        <vodml-id>provenance.Used.used</vodml-id>
-        <name>used</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <vodml-id>provenance.Used.entity</vodml-id>
+        <name>entity</name>
+        <description>Link to an entity that is being used for some activity</description>
         <datatype>
           <vodml-ref>provenance:provenance.Entity</vodml-ref>
         </datatype>
@@ -642,11 +666,11 @@
     <objectType>
       <vodml-id>provenance.WasGeneratedBy</vodml-id>
       <name>WasGeneratedBy</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for linking entities to their generating activities</description>
       <reference>
-        <vodml-id>provenance.WasGeneratedBy.wasGeneratedByDescription</vodml-id>
-        <name>wasGeneratedByDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <vodml-id>provenance.WasGeneratedBy.description</vodml-id>
+        <name>description</name>
+        <description>Link to corresonding wasGeneratedByDescription (which may contain further attributes like "role")</description>
         <datatype>
           <vodml-ref>provenance:provenance.WasGeneratedByDescription</vodml-ref>
         </datatype>
@@ -656,9 +680,9 @@
         </multiplicity>
       </reference>
       <reference>
-        <vodml-id>provenance.WasGeneratedBy.wasGeneratedBy</vodml-id>
-        <name>wasGeneratedBy</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <vodml-id>provenance.WasGeneratedBy.activity</vodml-id>
+        <name>activity</name>
+        <description>Link to the activity that generated an entity</description>
         <datatype>
           <vodml-ref>provenance:provenance.Activity</vodml-ref>
         </datatype>
@@ -672,11 +696,11 @@
     <objectType>
       <vodml-id>provenance.WasGeneratedByDescription</vodml-id>
       <name>WasGeneratedByDescription</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for specifying the expected WasGeneratedBy relations for EntityDescriptions</description>
       <attribute>
         <vodml-id>provenance.WasGeneratedByDescription.role</vodml-id>
         <name>role</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Role that an entity has when being generated, e.g. "log file", "statistics file", "main result"</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -686,9 +710,9 @@
         </multiplicity>
       </attribute>
       <reference>
-        <vodml-id>provenance.WasGeneratedByDescription.wasGeneratedByDescription</vodml-id>
-        <name>wasGeneratedByDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <vodml-id>provenance.WasGeneratedByDescription.activityDescription</vodml-id>
+        <name>activityDescription</name>
+        <description>Link to the activitzDescription</description>
         <datatype>
           <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
         </datatype>
@@ -702,11 +726,11 @@
     <objectType>
       <vodml-id>provenance.Agent</vodml-id>
       <name>Agent</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for individuals and organizations who/that are responsible for entities or activities</description>
       <attribute>
         <vodml-id>provenance.Agent.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unique identifier for an agent (unique in its realm)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -718,7 +742,7 @@
       <attribute>
         <vodml-id>provenance.Agent.name</vodml-id>
         <name>name</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>A common name for this agent; e.g. first name and last name; project name, agency name, ...</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -730,7 +754,7 @@
       <attribute>
         <vodml-id>provenance.Agent.type</vodml-id>
         <name>type</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>type of the agent: either Individual or Organization</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -758,8 +782,8 @@
         </multiplicity>
       </attribute>
       <reference>
-        <vodml-id>provenance.WasAssociatedWith.wasAssociatedWith</vodml-id>
-        <name>wasAssociatedWith</name>
+        <vodml-id>provenance.WasAssociatedWith.agent</vodml-id>
+        <name>agent</name>
         <description>TODO : Missing description : please, update your UML model asap.</description>
         <datatype>
           <vodml-ref>provenance:provenance.Agent</vodml-ref>
@@ -788,8 +812,8 @@
         </multiplicity>
       </attribute>
       <reference>
-        <vodml-id>provenance.WasAttributedTo.wasAttributedTo</vodml-id>
-        <name>wasAttributedTo</name>
+        <vodml-id>provenance.WasAttributedTo.agent</vodml-id>
+        <name>agent</name>
         <description>TODO : Missing description : please, update your UML model asap.</description>
         <datatype>
           <vodml-ref>provenance:provenance.Agent</vodml-ref>
@@ -908,8 +932,8 @@
         </multiplicity>
       </attribute>
       <reference>
-        <vodml-id>provenance.Parameter.parameterDescription</vodml-id>
-        <name>parameterDescription</name>
+        <vodml-id>provenance.Parameter.description</vodml-id>
+        <name>description</name>
         <description>TODO : Missing description : please, update your UML model asap.</description>
         <datatype>
           <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
@@ -1028,8 +1052,8 @@
         </multiplicity>
       </attribute>
       <reference>
-        <vodml-id>provenance.UsedDescription.usedDescription</vodml-id>
-        <name>usedDescription</name>
+        <vodml-id>provenance.UsedDescription.entityDescription</vodml-id>
+        <name>entityDescription</name>
         <description>TODO : Missing description : please, update your UML model asap.</description>
         <datatype>
           <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>

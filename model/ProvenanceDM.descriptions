@@ -47,7 +47,7 @@ provenance.AgentRole.Editor: |
 provenance.AgentRole.Publisher: |
     Example role for an agent, organization (publishing house, institution) that published something
 provenance.AgentRole.Operator: |
-    Example role for an agent, somone performing a given task
+    Example role for an agent, someone performing a given task
 provenance.AgentRole.Coordinator: |
     Example role for an agent, someone coordinating/leading a project
 provenance.AgentRole.Provider: |
@@ -65,9 +65,9 @@ provenance.Activity.endTime: |
 provenance.Activity.annotation: |
     Additional explanations for the specific activity instance
 provenance.Activity.used: |
-    Link to used entity; there can be many used-links, one for each used entity.
+    Link to Used class linking to the used entities; there can be many used-links, one for each used entity.
 provenance.Activity.wasAssociatedWith: |
-    Link to agent that was responsible for this activity (the role he/she/it performs may be given as additional attribute in wasAssociatedWith)
+    Link to a class linking to an agent that was responsible for this activity (the role he/she/it performs may be given as additional attribute in wasAssociatedWith)
 provenance.Activity.parameter: |
     Link to a parameter of this activity
 provenance.Activity.description: |
@@ -104,65 +104,69 @@ provenance.Entity.annotation: |
     Text describing the entity in more detail
 provenance.Entity.rights: |
     Access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model
+provenance.Entity.creationTime: |
+    Datetime at which the entity was created
 provenance.Entity.wasGeneratedBy: |
-    Link to the activity (or activityFlow) generating this entity; if no activityFlow, there must be only generating activity
+    Link to the WasGeneratedBy class linking to an activity (or activityFlow) generating this entity; if no activityFlow, there must be only one wasGeneratedBy-relation to only one generating activity
 provenance.Entity.wasAttributedTo: |
-    Link to an agent that was responsible and gets attribution for this entity
+    Link to the class that links to an agent who was responsible and gets attribution for this entity
 provenance.Entity.description: |
     Link to the entityDescription for this entity
 provenance.Entity.usedEntity: |
-    TODO: ??
+    Link to the entity that was used in a wasDerivedFrom-relation.
+provenance.Entity.generatedEntity: |
+    Link to the entity that was generated (wasDerivedFrom relation)
 provenance.EntityDescription: |
-    This document provides a data model for describing provenance.
+    Class for general descriptions of entities, contains properties that are known before an entity is created.
 provenance.EntityDescription.id: |
-    TODO : Missing description : please, update your UML model asap.
+    Unique identitfier for this entityDescription
 provenance.EntityDescription.name: |
-    TODO : Missing description : please, update your UML model asap.
+    Human-readable name for the entityDescription
 provenance.EntityDescription.annotation: |
-    TODO : Missing description : please, update your UML model asap.
+    Descriptive text for this kind of entity
 provenance.EntityDescription.category: |
-    TODO : Missing description : please, update your UML model asap.
+    Specifies if entities linked to this description contain information on logging, system (environment), calibration, simulation, observation, configuration, ...
 provenance.EntityDescription.doculink: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to more documentation
 provenance.EntityDescription.wasGeneratedByDescription: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the wasGeneratedBy class linking to the ActivityDescription for activities that generate this type of entities
 provenance.Used: |
-    This document provides a data model for describing provenance.
-provenance.Used.usedDescription: |
-    TODO : Missing description : please, update your UML model asap.
-provenance.Used.used: |
-    TODO : Missing description : please, update your UML model asap.
+    Class for linking activities with the input entities
+provenance.Used.description: |
+    Link to corresponding UsedDescription class (where the "role" of an entity may be stored)
+provenance.Used.entity: |
+    Link to an entity that is being used for some activity
 provenance.WasGeneratedBy: |
-    This document provides a data model for describing provenance.
-provenance.WasGeneratedBy.wasGeneratedByDescription: |
-    TODO : Missing description : please, update your UML model asap.
-provenance.WasGeneratedBy.wasGeneratedBy: |
-    TODO : Missing description : please, update your UML model asap.
+    Class for linking entities to their generating activities
+provenance.WasGeneratedBy.description: |
+    Link to corresonding wasGeneratedByDescription (which may contain further attributes like "role")
+provenance.WasGeneratedBy.activity: |
+    Link to the activity that generated an entity
 provenance.WasGeneratedByDescription: |
-    This document provides a data model for describing provenance.
+    Class for specifying the expected WasGeneratedBy relations for EntityDescriptions
 provenance.WasGeneratedByDescription.role: |
-    TODO : Missing description : please, update your UML model asap.
-provenance.WasGeneratedByDescription.wasGeneratedByDescription: |
-    TODO : Missing description : please, update your UML model asap.
+    Role that an entity has when being generated, e.g. "log file", "statistics file", "main result"
+provenance.WasGeneratedByDescription.activityDescription: |
+    Link to the activitzDescription
 provenance.Agent: |
-    This document provides a data model for describing provenance.
+    Class for individuals and organizations who/that are responsible for entities or activities
 provenance.Agent.id: |
-    TODO : Missing description : please, update your UML model asap.
+    Unique identifier for an agent (unique in its realm)
 provenance.Agent.name: |
-    TODO : Missing description : please, update your UML model asap.
+    A common name for this agent; e.g. first name and last name; project name, agency name, ...
 provenance.Agent.type: |
-    TODO : Missing description : please, update your UML model asap.
+    type of the agent: either Individual or Organization
 provenance.WasAssociatedWith: |
     This document provides a data model for describing provenance.
 provenance.WasAssociatedWith.role: |
     TODO : Missing description : please, update your UML model asap.
-provenance.WasAssociatedWith.wasAssociatedWith: |
+provenance.WasAssociatedWith.agent: |
     TODO : Missing description : please, update your UML model asap.
 provenance.WasAttributedTo: |
     This document provides a data model for describing provenance.
 provenance.WasAttributedTo.role: |
     TODO : Missing description : please, update your UML model asap.
-provenance.WasAttributedTo.wasAttributedTo: |
+provenance.WasAttributedTo.agent: |
     TODO : Missing description : please, update your UML model asap.
 provenance.ActivityFlow: |
     This document provides a data model for describing provenance.
@@ -186,7 +190,7 @@ provenance.Parameter.id: |
     TODO : Missing description : please, update your UML model asap.
 provenance.Parameter.value: |
     TODO : Missing description : please, update your UML model asap.
-provenance.Parameter.parameterDescription: |
+provenance.Parameter.description: |
     TODO : Missing description : please, update your UML model asap.
 provenance.ParameterDescription: |
     This document provides a data model for describing provenance.
@@ -208,5 +212,5 @@ provenance.UsedDescription: |
     This document provides a data model for describing provenance.
 provenance.UsedDescription.role: |
     TODO : Missing description : please, update your UML model asap.
-provenance.UsedDescription.usedDescription: |
+provenance.UsedDescription.entityDescription: |
     TODO : Missing description : please, update your UML model asap.

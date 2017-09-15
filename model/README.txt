@@ -18,8 +18,10 @@ For recreating the vodml-xml, html documentation etc., do the following (usual) 
 * create the provenancedm.vo-dml.xml file by running from the tools-directory::
   ant run_xmi2vo-dml
 
-  - if error: No uml:Model found, edit the provenance.xmi-file directly and patch the xmi namespace:
+  - if error: No uml:Model found or namespace problems, edit the provenance.xmi-file directly and patch the xmi namespace:
     xmlns:uml="http://www.omg.org/spec/UML/20100901/"
+  (or use "bash repair_namespace.sh  provenance.xmi" within the provenance/vo-dml directory)
+  - retry: ant run_xmi2vo-dml
 
 * create the html documentation:
   ant run_vo-dml2html
@@ -38,5 +40,24 @@ For recreating the vodml-xml, html documentation etc., do the following (usual) 
 
 Now the descriptions are included!
 
+Thus, if a *new* version of the model was exported from Modelio, run the following steps:
+* in provenance/vo-dml/
+	- bash repair_namespace.sh  provenance.xmi
+* in vo-dml/tools/
+	- adjust build.properties
+	- ant run_xmi2vo-dml
+* in provenance/vo-dml/
+	- python add_descriptions.py xml/ProvenanceDM.vo-dml.xml ProvenanceDM.descriptions
+	- mv xml/ProvenanceDM-new.vo-dml.xml xml/ProvenanceDM.vo-dml.xml
+	
+	# export again and edit descriptions, if new classes/attributes had been added
+	- python extract_descriptions.py xml/ProvenanceDM.vo-dml.xml --output ProvenanceDM.descriptions_new
+	- edit the now combined descriptions as desired
+	# add combined descriptions again
+	- python add_descriptions.py xml/ProvenanceDM.vo-dml.xml ProvenanceDM.descriptions_new
+	- mv xml/ProvenanceDM-new.vo-dml.xml xml/ProvenanceDM.vo-dml.xml
+
+* in vo-dml/tools/
+	- ant run_vo-dml2html
 
 
