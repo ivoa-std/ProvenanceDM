@@ -11,11 +11,13 @@ We envision two possible access protocols:
 
 
 \subsection{ProvTAP}
-ProvTAP is a TAP service implementing the ProvenanceDM data model. The data model mapping is included in the TAP schema. The mapping of ProvenanceDM classes and attributes onto tables and columns of the schema with the appropriate relationships, datatypes, units, utypes and ucds is done similarly to the PROV-VOTABLE serialization. The query response will result in a single table according to the query.
-This single table is joining information coming from one or several ``provenance'' tables available in the database.
+% update from François / 2017 15/09
+ProvTAP is a TAP service specialisation for delivering IVOA Provenance metadata. As any TAP service (reference to TAP) it is providing ADQL "query responses" made of a single table gathering columns selected from the various tables defined in the service TAP schema. By default this table is formatted as a VOTABLE. Other formats (json, tsv, etc...) could be added optionnaly.
 
-A special case is considered where ProvenanceDM and ObsCore are both implemented in the same TAP service and queried together. The TAP response is then providing an Obscore table with a ProvenanceDM extension. We can imagine that in the future this could be hard-coded and registered as an ObsProvTAP service.
+The table and column definitions with their metadata (unit, ucd, utype, datatype, description) available in the TAP schema are exactly the ones defined in the PROV-VOTABLE mapping of the IVOA provenance data model (see table and column definition  and metadata in the Appendix). This is totally similar to what has been done in the RegTAP specification (référence) for mapping the VOresource datamodel.
 
+Example of ADQL queries for ProvTAP are also given in the appendix
+%end of update 
 
 \TODO{We need more details here! Output of TAP service is NOT a PROV-VOTABLE by default!}
 
