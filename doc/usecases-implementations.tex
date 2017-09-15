@@ -20,6 +20,22 @@ specific use cases for which the provenance data model helps to solve certain ta
 \item ...
 \end{itemize}
 
+The IVOA Provenance data model has been developed along with its implementations into different projects. We gather here some tips to apply the model to a specific project.
+
+\paragraph{Before using the model}. We noticed that the simple knowledge of what is provenance information is important for the development of all projects. Before using or not the Provenance data model and associated services, it is good practice to locate and collect information on activities, entities and agents, and be sure that this information is not lost along the way. For example, a script may use intermediate files (such as calibration files for observations) that may not be tracked by the system.
+
+
+\paragraph{Use of the description side}. 
+One may only use the core data model without the description classes if they are not needed for the project. In that case, it is recommended to include the attributes of the description classes into the main classes (Entity/Activity/Agent, and if needed Parameter). In the same way, when serializing the provenance information, the description classes can be merged to the main classes, which is needed to produce W3C compliant provenance files.
+
+\paragraph{Identify entities, activities and agents}.
+If inside the project, the different entities are already identified, as well as the activities producing them, then the description classes are probably of interest and will help to reduce the redundancy in the provenance information stored.
+
+\paragraph{add project specific attributes to entities, activities and agents}.
+We proposed generic attribute for the different classes, but there are probably project specific attributes that need to be added. What is important to define the project activities ? 
+
+
+
 \subsection{voprov Python package}\label{sec:implementation_voprov}
 The voprov Python package is derived from the voprov-package. It can load
 data and serialize it. The voprov-package supports following features:
