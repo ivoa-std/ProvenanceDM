@@ -7,7 +7,8 @@
 
 %{updated by Mathieu} 
 %The ProvenanceDM includes description classes that can exist before any provenance information is recorded. 
-Description classes in the Provenance DM gather informations on the data processing which can preexist to the processing itself.
+Description classes in the Provenance DM gather information
+ on the data processing which can preexist to the processing itself.
 First, the ActivityDescription class gives generic information on the activity (name, description, doculink...) and the parameters expected as an input. In addition, UsedDescription and WasGeneratedByDescription classes indicate the expected roles of the input and output entities respectively. Finally, The activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as EntityDescription records.
 
 The serialization of an ActivityDescription, that includes all those description classes, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:Datalink}, and can thus be stored as a VOTable  \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that probably executes an activity using the given input parameters, some of which probably point to entities. One can thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa. 
@@ -18,22 +19,32 @@ The VOTable contains one resource with attributes type=``meta'' and utype=``vopr
  \item the input entities (group name=``Used''),
  \item the output entities (group name=``Generated''). 
  \end{itemize} 
- 
+% comment Mireille: 
+% what if an activity computes a number , a boolean as a result and produces an output parameter instead of an output entity: e.g compare 2 sets of dataproducts : false/True correlate two datasets : correlation value, etc ...  
+% --> add output parameters  ?
+
 The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. The utype attribute is used to connect the attribute to its location in the Provenance DM.
 For the input parameters, each ParameterDescription attribute is mapped to a PARAM attribute (both have the same structure, see Section \ref{sec:parameters}).
+% suggestion Mireille 
+% change ``attribute'' to ``element'' to be compliant to the Votable definitions : PARAM, FIELDS are XML elements in the VOtble schema , utype, datatype , etc ... are XML attribute  
+% suggestion below 
+% ++ The utype attribute in VOTable is used to connect the VOTable element ( PARAM or FIELD) to its location in the Provenance DM.
+%++ For the input parameters, each ParameterDescription attribute in the model is mapped to a PARAM element in the VOTable (both have the same structure, see Section \ref{sec:parameters}).
 
+%
 For the input and output entity groups, each related entity is described with a GROUP block that contains several PARAM elements with those names:
 \begin{itemize}
  \item name="id" for the default identifier of the entity (e.g. a file name),
- \item name="role" that gives the role of the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
- \item name="content\_type" for the expected MIME type expected by the activity for the input or output entity,
+ \item name="role" that gives the role of the entity with respect to the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
+ \item name="content\_type" for the MIME type expected by the activity for the input or output entity,
  \item other additional PARAM elements corresponding to the EntityDescription attributes.
  \end{itemize} 
-
+% mireille suppressed one 'expected'in sentence above
 It is possible to reference an input parameter using the \emph{ref} attribute of PARAM, if an input or output entity is referenced as an input parameter to the activity (e.g. the name of an input file). In the following example the output file name "RGB.jpg" is expected as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").
 
 Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
-
+%++ suggestion mireille : 
+%Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three input images mapped to the red, green, blue image planes in the composition. 
 
 \begin{verbnobox}[\scriptsize]
 
@@ -78,7 +89,9 @@ Here is an example of an ActivityDescription VOTable that describes an activity 
         </VALUES>
       </PARAM>
     </GROUP>
-    
+    %mir question : why do we need the order description here?once we know each role , there will be only one color composition the R.jpg will enter the red channel. the association is made at the level of entity--> entity.desc mapping ? 
+		% not sure I get it right here , sorry.
+		
     <GROUP name="Used" utype="voprov:Used">
       <GROUP name="R" utype="voprov:Entity">
         <DESCRIPTION>Image for red channel</DESCRIPTION>
