@@ -171,6 +171,7 @@ infrastructure that enable VO applications.
 %\label{sec:intro-serialization}
 %\input{serialisation-intro}
 \section{Accessing provenance information}
+\label{sec:provaccess}
 \input{provaccess}
 
 
@@ -185,8 +186,8 @@ infrastructure that enable VO applications.
 \label{sec:appendix-serialization-examples}
 \input{AppendixA-ML}
 
-\section{Discussion}
-\input{discussion}
+%\section{Discussion}
+%\input{discussion}
 
 \section{Changes from Previous Versions}
 % No previous versions yet.
@@ -194,15 +195,19 @@ infrastructure that enable VO applications.
 % Use itemize environments.
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
 \begin{itemize}
-\item Moved discussion section to appendix, cut code and serialization examples, partially moved to Implementation Note \citep{std:ProvenanceImplementationNote}.
-\item Added paragraph on VOSI interface
-\item Added a proposed serialization of description classes
+%\item New appendix sections for ProvTAP added
+\item Corrected and extended attribute tables and mapping tables for links with DatasetDM and SimDM.
+\item Restructured Accessing provenance section by splitting it in two: Section~\ref{sec:serialisations} for explaining the different serialization formats and differences to W3C serializations, Section~\ref{sec:provaccess} for describing the access protocols ProvDAL and ProvTAP.
+\item Removed discussion section, since now all the topics are addressed in the main text.
+\item Added paragraph on how to use the model in Section~\ref{sec:usecases-implementations}.
+\item Shortened serialization examples, partially moved them to appendix.
+\item Added paragraph on VOSI interface.
+\item Added a proposed serialization of description classes.
 \item Modified text on the content of EntityDescription, now seen as Entity attributes known before the Entity instance exists.
-\item Renamed Section~\ref{sec:usecases-implementations} to stress that it explains applications of the model (use cases); implementation details can be found in Implementation Note \citep{std:ProvenanceImplementationNote}.
+\item Renamed Section~\ref{sec:usecases-implementations} to stress that it explains applications of the model (use cases); implementation details and code examples can be found in Implementation Note \citep{std:ProvenanceImplementationNote}.
 \item Complete rewrite of the ProvDAL section in Section~\ref{sec:access_protocols}; new parameters, new figure and examples added.
 \item Added additional figure for entity-activity relations.
 \item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
-\item Added serialisation examples to Section~\ref{sec:serialisations}, voprov-implementation example to Section~\ref{sec:usecases-implementations}.
 \item Extended the entity role examples in table \ref{tab:entity-roles}.
 \item Added links to provn and votable-serialization for HiPS-use case, added first part of provn as example in the HiPS-use case section.
 \item More explanations on links to data models in Section~\ref{sec:dmlinks}, introduced subsections, added table with SimDM-mapping.
