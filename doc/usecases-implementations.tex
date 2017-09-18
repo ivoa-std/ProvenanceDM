@@ -178,6 +178,10 @@ An example of provenance metadata for a HiPS collection generated from a collect
 Here is an excerpt of the corresponding PROV-N serialization:
 
 \begin{verbnobox}[\scriptsize]
+prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
+  prefix ex <http://www.example.com/provenance/>
+  prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
+\\
 Entity
 ( ivo://CDS/P/MAMA/ESO-R, 
 [ voprov:name = "ESO-R MAMA HIPS at CDS",
@@ -188,14 +192,14 @@ voprov:doculink = "http://cds.u-strasbg.fr/hips/documentation.html#structure",
 voprov:level = 3,
 hips:dataproduct_type = "voprov:hips_pixels",
 hips:HiPS_properties = "http://cds.u-strasbg.fr/hips/p/mama/eso-r/properties.txt"] )
-
+\\
 // Relationship
 WasAttributedTo(ivo://CDS/P/MAMA/ESO-R,  ivo://cds, prov:role= "voprov:creator")
 
 Agent
 (ivo://cds,
-[ voprov:Name= "CDS",
-voprov:contact = "question@astro.unistra.fr",
+[ voprov:name= "CDS",
+voprov:email = "question@astro.unistra.fr",
 voprov:type = "Organisation" ]) 
 
 WasGeneratedBy  (ivo://CDS/P/MAMA/ESO-R, EHG1, -) 
