@@ -1,0 +1,240 @@
+
+
+
+\section{PROV-VOTable serialisation and ProvTAP TAP schema}
+
+\subsection{Introduction}
+PROV-VOTable is a serialisation format mapping the Provenance datamodel into VOTABLE. This format is usefull  to provide  full serialisation of Provenance metadata for an archive or data reduction workflow in VOTable. It can also be used to build the TAP schema of a PROVTAP service.   
+
+
+\subsection{Tables in the PROV-VOTable serialisation}
+
+The following table gives the full list of Tables necessary to map the IVOA provenance datamodel. The normative feature is the utype of each table.   
+
+\begin{table}[!mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name}&\textbf{utype}&\textbf{Description} \cr
+\sptablerule
+Entity&voprov:entity&instances of entity class \cr
+EntityDescription&voprov:entityDescription&instances of entityDescription class \cr
+Activity&voprov:activity&instances of actvity class \cr
+ActivityDesc&voprov:activityDescription& instances of Activity descriptions\cr
+Agent&voprov:Agent&instances of Agents class& \cr
+Parameter&voprov:Parameter&instances of parameter class& \cr
+ParameterDesc&voprov:ParameterDesc&instances of Parameter descriptions& \cr
+Used&voprov:used&instances of Used relationships& \cr
+GeneratedBy&voprov:wasGeneratedBy&instances of wasGeneratedBy relationships& \cr
+AssociatedWith&voprov:wasAssociatedWith&instances of wasAssociatedWith relationships& \cr
+AttributedTo&voprov:wasAttributedTo&instances of wasAttributedTo relationships & \cr
+
+\sptablerule
+\end{tabular}
+\caption{List of Tables in the PROV-VOTABLE serialisation}
+\label{table:standardpars}
+\end{table}
+
+\subsection{Tables detailed description}
+
+Table 16 to 26 provide full description of the FIELDS of  each of the mapping tables. In each of these tables the ucd, utype and datatype columns are normative. The name column is not normative.
+
+
+\begin{table}[!mht]
+\begin{tabular}{l l l l}
+\sptablerule
+
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+ent\_id&meta.id& voprov:entity.id&char \cr
+ent\_name&meta.title& voprov:entity.name&char \cr
+??? ent\_doculink&meta.ref.url& voprov:entity.doculink & char ??? \cr
+ent\_type&meta.code.class&voprov:entity.type&char \cr
+ent\_rights&meta.code.class&voprov:entity.rights&char \cr
+ent\_annotation&meta.description&voprov:entity.annotation& char \cr
+\sptablerule
+references&& \cr
+\sptablerule
+ent\_collection\_ref&meta.code.member&voprov:entity.collection&char \cr
+\sptablerule
+\end{tabular}
+\caption{column description for entity table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[!mht]
+\begin{tabular}{l l l l}
+\sptablerule
+
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+entDesc\_id&meta.id& voprov:entityDescription.id&char \cr
+entDesc\_name&meta.title& voprov:entityDescription.name&char \cr
+entDesc\_doculink&meta.ref.url& voprov:entityDescription.doculink & char\cr
+entDesc\_category&meta.code.class&voprov:entityDescription.category& char \cr
+entDesc\_annotation&meta.description&voprov:entityDescription.annotation& char \cr
+\sptablerule
+\end{tabular}
+\caption{column description for entityDescription table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+act\_id&meta.id& voprov:activity.identifier&char \cr
+act\_name&meta.title& voprov:activity.name&char \cr
+
+act\_startTime&time.start&voprov:activity.startTime& char\cr
+act\_stopTime&time.stop&voprov:activity.stopTime& char\cr
+act\_annotation&meta.description&voprov:activity.annotation& char \cr
+\sptablerule
+references& \cr
+\sptablerule  
+act\_param\_ref&meta.id&voprov:activity.parameter& char \cr
+act\_desc\_ref&meta.id& voprov:activity.activityDescription & char\cr
+
+\sptablerule
+\end{tabular}
+\caption{column description for activity table }
+\label{table:entityTab}
+\end{table}
+
+
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+actDesc\_id&meta.id& voprov:activityDescription.id&char \cr
+actDesc\_name&meta.title& voprov:activityDescription.name&char \cr
+actDesc\_type&meta.code.class&voprov:activityDescription.type&char \cr
+actDesc\_subtype&meta.code.class&voprov:activityDescription.subtype&char \cr
+actDesc\_annotation&meta.description&voprov:activityDescription.annotation& char \cr
+actDesc\_doculink&meta.ref.url&voprov:activityDescription.doculink& char\cr
+\sptablerule
+references& \cr
+\sptablerule
+actDesc\_param\_ref&meta.id&voprov:activityDescription.parameter& char \cr
+
+\sptablerule
+\end{tabular}
+\caption{column description for activityDescription table }
+\label{table:entityTab}
+\end{table}
+
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+agt\_id&meta.id& voprov:agent.id&char \cr
+agt\_name&meta.title& voprov:agent.name&char \cr
+agt\_type&meta.code.class&voprov:agent.type&char OPTIONS \cr
+\sptablerule
+agt\_email&meta.email&voprov:agent.party.email&char \cr
+agt\_phonel&meta&voprov:agent.party.phone&char \cr
+
+\sptablerule
+\end{tabular}
+\caption{column description for agent table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+par\_id&meta.id& voprov:parameter.id&char \cr
+par\_value&stat.value& voprov:parameter.value& param dependant \cr
+
+
+\sptablerule
+\end{tabular}
+\caption{column description for parameter table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+parDesc\_id&meta.id& voprov:parameterDescription.id&char \cr
+parDesc\_name&meta.title& voprov:parameterDescription.name& param dependant \cr
+parDesc\_annotation&meta.description&voprov:parameterDescription.annotation& char \cr
+parDesc\_datatype&meta&voprov:parameterDescription.datatype& char \cr
+parDesc\_unit&meta.unit&voprov:parameterDescription.unit& char \cr
+parDesc\_ucd&meta.ucd&voprov:parameterDescription.ucd& char \cr
+parDesc\_utype&meta&voprov:parameterDescription.utype& char \cr
+parDesc\_min&stat.min&voprov:parameterDescription.min& param dependant \cr
+parDesc\_max&stat.max&voprov:parameterDescription.max& param dependant \cr
+parDesc\_options&meta&voprov:parameterDescription.options& param dependant \cr
+\sptablerule
+\end{tabular}
+\caption{column description for parameterDescription table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+used\_ent\_id&meta.id&voprov:used.Entity&char \cr
+used\_act\_id&meta.id&voprov:used.Activity& char \cr
+used\_ent\_role&meta.code.class&voprov:used.entityRole& char OPTIONS \cr
+\sptablerule
+\end{tabular}
+\caption{column description for used relationship table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+wgb\_ent\_id&meta.id&voprov:wasGeneratedBy.Entity&char \cr
+wgb\_act\_id&meta.id&voprov:wasGeneratedBy.Activity& char \cr
+wgb\_ent\_role&meta.code.class&voprov:wasGeneratedBy.entityRole& char OPTIONS \cr
+\sptablerule
+\end{tabular}
+\caption{column description for wasGeneratedBy relationship table }
+\label{table:entityTab}
+\end{table}
+
+
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+waw\_agt\_id&meta.id&voprov:wasAssociatedWith.Agent&char \cr
+waw\_act\_id&meta.id&voprov:wasAssociatedWith.Activity& char \cr
+waw\_agt\_role&meta.code.class&voprov:wasAssociatedWith.agentRole& char OPTIONS \cr
+\sptablerule
+\end{tabular}
+\caption{column description for wasAssociatedWith relationship table }
+\label{table:entityTab}
+\end{table}
+
+\begin{table}[mht]
+\begin{tabular}{l l l l}
+\sptablerule
+\textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
+\sptablerule
+wat\_ent\_id&meta.id&voprov:wasAttributedTo.Entity&char \cr
+wat\_agt\_id&meta.id&voprov:wasAttributedTo.Agent& char \cr
+wat\_agt\_role&meta.code.class&voprov:wasAttributedTo.agentRole& char OPTIONS \cr
+\sptablerule
+\end{tabular}
+\caption{column description for wasAttributedTo relationship table }
+\label{table:entityTab}
+\end{table}
+\clearpage
