@@ -1,8 +1,9 @@
-\subsection{W3C PROV-DM compatible serializations}
+\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}
 According to our minimum requirements (see Section~\ref{sec:requirements}), it must be possible to
-serialize the provenance metadata into the W3C compatible formats, so that it can be exchanged within a wider context and can processed by already existing tools.
-In our data model we have defined additional classes and attributes that are not W3C conform and thus need to be
-serialized with different names/structures. Using ``voprov'' as the namespace prefix for our model and ``prov'' for W3C PROV-DM, the necessary changes for mapping from ProvenanceDM to W3C PROV-DM are:
+serialize the provenance metadata into a format compatatible with the W3C Provenance Data Model (W3C PROV-DM), so that it can be exchanged within a wider context and can be processed by already existing tools, e.g. for visualizing provenance.
+W3C PROV-DM is a larger set of classes and relations compared to this model, but sharing the same core structure. It allows the possibility to add IVOA or \textit{ad hoc} attributes to the basic ones in each class. Thus we can add our additional attributes without problems and still be W3C conform. However, we also definved a few additional classes and relations that are not W3C conform and thus need to be restructured.
+% In our data model we have defined additional classes and attributes that are not W3C conform and thus need to be serialized with different names/structures.
+Using ``voprov'' as the namespace prefix for our model and ``prov'' for W3C PROV-DM, the necessary changes for mapping from ProvenanceDM to W3C PROV-DM are:
 
 \begin{itemize}
 \item namespace \texttt{voprov} $\rightarrow$ \texttt{prov} for those attributes that are the same in W3C (e.g. ID, role, startTime, endTime)
@@ -16,7 +17,12 @@ serialized with different names/structures. Using ``voprov'' as the namespace pr
 	\item \emph{ActivityFlow} $\rightarrow$ \emph{Activity} with additional attribute \texttt{voprov:votype = 'voprov:activityFlow'}
 	\item replace \emph{hadStep} relation by W3C's general \emph{wasInfluencedBy} relation with additional attribute \texttt{voprov:votype = 'voprov:hadStep'}
 	\end{itemize}
+\item restructure \emph{*Description} classes: add their attributes to the linked core classes, using a ``desc\_'' prefix, e.g. Entity.desc\_category.
 
 \end{itemize}
 
-This way, one can produce W3C compatible serializations of our model with minimum information loss.
+This way, it is possible to produce W3C compatible serializations of our model with minimum information loss. W3C tools would ignore the voprov-attributes, whereas VO clients could make sense of this additional information and could even uncover the original structure or convert it to a VO serialization.
+
+
+
+

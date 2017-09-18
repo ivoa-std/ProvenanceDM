@@ -127,6 +127,34 @@ This version of the UML diagram is fully VO-DML compliant, i.e. we just used the
 Provenance and reused the IVOA datatypes.
 
 
+\begin{table}[h]
+
+\small
+\tymax  0.5\textwidth
+
+\textbf{\normalsize Entity}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}p{2cm}L@{}}
+\toprule
+\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
+\midrule
+\textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
+name       & prov:label & string & a human-readable name for the entity (to be displayed by clients)\\
+type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, prov:entity; not needed for a simple entity\\
+%description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
+annotation  & prov:description & string & text describing the entity in more detail\\
+rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model\\
+creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
+\midrule
+\multicolumn{4}{l}{\textbf{Additional attributes:}} \\
+\multicolumn{4}{l}{Further project specific attributes (e.g. size, path, url, \dots) can be added }\\
+\multicolumn{4}{l}{(see Section \ref{sec:dataset-obscore})}\\
+\bottomrule
+\end{tabulary}
+\caption{Attributes of entities. Mandatory attributes are marked in bold. Attributes from \class{EntityDescription} (see next section) may appear here as well.
+}\label{tab:entity-attributes}
+\end{table}
+
+
 \subsubsection{Entity and EntityDescription}
 
 Entities in astronomy are usually astronomical or astrophysical datasets in the 
@@ -154,33 +182,6 @@ Most attributes of the \class{Dataset} class can be mapped
 directly to attributes of the \class{Entity} and EntityDescription class, see the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
 
-\begin{table}[h]
-
-\small
-\tymax  0.5\textwidth
-
-\textbf{\normalsize Entity}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}p{2cm}L@{}}
-\toprule
-\head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
-\midrule
-\textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
-name       & prov:label & string & a human-readable name for the entity (to be displayed by clients)\\
-type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, prov:entity; not needed for a simple entity\\
-%description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
-annotation  & prov:description & string & text describing the entity in more detail\\
-rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model\\
-creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
-\midrule
-\multicolumn{4}{l}{\textbf{Additional attributes:}} \\
-\multicolumn{4}{l}{Further project specific attributes (e.g. size, path, url, \dots) can be added }\\
-\multicolumn{4}{l}{(see Section \ref{sec:dataset-obscore})}\\
-\bottomrule
-\end{tabulary}
-\caption{Attributes of entities. Mandatory attributes are marked in bold.
-}\label{tab:entity-attributes}
-\end{table}
-
 For entities, we suggest the attributes given in Table 
 \ref{tab:entity-attributes}. If the attribute also exists in the W3C 
 Provenance Data Model, we list its name in the second column.
@@ -195,23 +196,6 @@ Provenance Data Model, we list its name in the second column.
 The difference between entities that are used as input data or output data 
 becomes clear by specifying the relations between the data and activities producing or using these data.
 More details on this will follow in Section \ref{sec:entity-activity-relations}.
-
-\paragraph{EntityDescription.}
-%The Entity class can have an EntityDescription class attached. 
-The types of entities, or datasets in astronomy, can be predefined using a description class \class{EntityDescription}.
-This class is meant to store descriptive informations about an Entity that are known before the Entity instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory ``format'' for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final ``size'' of the image  that will be created. Therefore, ``format'' would be an EntityDescription attribute , while ``size'' would be an attribute of the Entity instance. 
-
-%This class thus stores entity-related 
-Additional attributes that describe the content of the data could be derived from 
-the Dataset Metadata Model (see Section \ref{sec:dataset-obscore})
-
-The \class{EntityDescription} does NOT contain any information about the usage 
-of the data, it tells nothing about them being used as input or output. This is 
-defined only by the relations (and the relation descriptions) between activities
-and entities (see Section \ref{sec:entity-activity-relations}).
-
-The EntityDescription general attributes are summarized in Table 
-\ref{tab:entitydescription-attributes}.
 
 
 \begin{table}[h]
@@ -233,9 +217,9 @@ doculink    & & url & link to more documentation\\
 % level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \midrule
 \multicolumn{4}{l}{\textbf{Additional attributes:}} \\
-\multicolumn{4}{l}{\emph{Further project specific attributes (e.g.} format, content\_type, dataproduct\_type \emph{and} }\\
-\multicolumn{4}{l}{\_subtype, version, calibLevel, \dots) \emph{can be added, maybe related to the DatasetDM }}\\
-\multicolumn{4}{l}{(Section \ref{sec:dataset-obscore})}\\
+\multicolumn{4}{l}{Further project specific attributes (e.g. format, content\_type) and/or attributes}\\
+\multicolumn{4}{l}{from other data models (e.g. dataproduct\_type and -\_subtype, version, calibLevel}\\
+\multicolumn{4}{l}{from DatasetDM) can be added (Section~\ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{EntityDescription}. For simple use cases, 
@@ -245,6 +229,25 @@ this description class may be ignored and its attributes may be used for
 %would point to utypes of SimDM.
 }\label{tab:entitydescription-attributes}
 \end{table}
+
+
+\paragraph{EntityDescription.}
+%The Entity class can have an EntityDescription class attached. 
+The types of entities, or datasets in astronomy, can be predefined using a description class \class{EntityDescription}.
+This class is meant to store descriptive informations about an Entity that are known before the Entity instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory ``format'' for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final ``size'' of the image  that will be created. Therefore, ``format'' would be an EntityDescription attribute , while ``size'' would be an attribute of the Entity instance. 
+
+%This class thus stores entity-related 
+Additional attributes that describe the content of the data could be derived from 
+the Dataset Metadata Model (see Section \ref{sec:dataset-obscore})
+
+The \class{EntityDescription} does NOT contain any information about the usage 
+of the data, it tells nothing about them being used as input or output. This is 
+defined only by the relations (and the relation descriptions) between activities
+and entities (see Section \ref{sec:entity-activity-relations}).
+
+The EntityDescription general attributes are summarized in Table 
+\ref{tab:entitydescription-attributes}.
+
 
 
 \begin{table}[h]
@@ -638,7 +641,7 @@ To enable the latter solution, we add a \class{Parameter} class along with a \cl
 \textbf{value}   & & (value dependent) & the value of the parameter\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}.}
+\caption{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}. Attributes of \class{ParameterDescription} can be added here as well, if that class is not used.}
 \end{table}
 
 \begin{table}[ht]
