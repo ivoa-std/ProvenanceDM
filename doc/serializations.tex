@@ -7,11 +7,10 @@
 
 %{updated by Mathieu} 
 %The ProvenanceDM includes description classes that can exist before any provenance information is recorded. 
-Description classes in the Provenance DM gather information
- on the data processing which can preexist to the processing itself.
+Description classes in the Provenance DM gather information on the data processing which can preexist to the processing itself.
 First, the ActivityDescription class gives generic information on the activity (name, description, doculink...) and the parameters expected as an input. In addition, UsedDescription and WasGeneratedByDescription classes indicate the expected roles of the input and output entities respectively. Finally, The activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as EntityDescription records.
 
-The serialization of an ActivityDescription, that includes all those description classes, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:Datalink}, and can thus be stored as a VOTable  \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that probably executes an activity using the given input parameters, some of which probably point to entities. One can thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa. 
+The serialization of an ActivityDescription, that includes all those description classes, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:Datalink}, and can thus be stored as a VOTable \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that may execute an activity using the given input parameters, some of which probably point to entities. One may thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa.
 
 The VOTable contains one resource with attributes type=``meta'' and utype=``voprov:ActivityDescription''. This resource contains PARAM elements to describe the activity and then GROUP elements gathering additional PARAM elements to describe:
 \begin{itemize}
@@ -38,7 +37,7 @@ The "type" attribute of the PARAM element can be set to "no\_query" to indicate 
 
 For the input and output entity groups, each entity is described with a GROUP block that contains PARAM elements with e.g. the following names (all attributes describing the entity are optional):
 \begin{itemize}
- \item name="default" for the default identifier of the entity (e.g. a file name) or its default value (if the entity has a value),
+ \item name="default" for the default identifier of the entity (e.g. a file name) or its default value (if the entity is a value),
  \item name="role" that gives the role of the entity with respect to the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
  \item name="content\_type" for the MIME type expected by the activity for the input or output entity,
  \item other additional PARAM elements corresponding to attributes of EntityDescription, UsedDescription, WasGeneratedByDescription or possibly Agent.
