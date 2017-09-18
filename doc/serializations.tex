@@ -18,33 +18,37 @@ The VOTable contains one resource with attributes type=``meta'' and utype=``vopr
  \item the input parameters (group name=``InputParams''),
  \item the input entities (group name=``Used''),
  \item the output entities (group name=``Generated''). 
- \end{itemize} 
+ \end{itemize}
+ 
 % comment Mireille: 
 % what if an activity computes a number , a boolean as a result and produces an output parameter instead of an output entity: e.g compare 2 sets of dataproducts : false/True correlate two datasets : correlation value, etc ...  
 % --> add output parameters  ?
 
-The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. The utype attribute is used to connect the attribute to its location in the Provenance DM.
-For the input parameters, each ParameterDescription attribute is mapped to a PARAM attribute (both have the same structure, see Section \ref{sec:parameters}).
+The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. Only one agent can be given, corresponding to the main contact for this activity ("contact\_name" and "contact\_email"). 
+The "utype" attribute is used to connect the PARAM element to its location in the Provenance DM, so that other optional elements can be added.
+
+For the input parameters, each attribute located in the ParameterDescription class in the model (e.g. units, ucd, utype, \dots) is mapped to an attribute of a PARAM element in the VOTable (both have the same structure, see Section \ref{sec:parameters}).
+The "type" attribute of the PARAM element can be set to "no\_query" to indicate that the parameter is optional for the activity (i.e. a default value will be used).
+
 % suggestion Mireille 
 % change ``attribute'' to ``element'' to be compliant to the Votable definitions : PARAM, FIELDS are XML elements in the VOtble schema , utype, datatype , etc ... are XML attribute  
 % suggestion below 
 % ++ The utype attribute in VOTable is used to connect the VOTable element ( PARAM or FIELD) to its location in the Provenance DM.
 %++ For the input parameters, each ParameterDescription attribute in the model is mapped to a PARAM element in the VOTable (both have the same structure, see Section \ref{sec:parameters}).
 
-%
-For the input and output entity groups, each related entity is described with a GROUP block that contains several PARAM elements with those names:
+For the input and output entity groups, each entity is described with a GROUP block that contains PARAM elements with e.g. the following names (all attributes describing the entity are optional):
 \begin{itemize}
- \item name="id" for the default identifier of the entity (e.g. a file name),
+ \item name="default" for the default identifier of the entity (e.g. a file name) or its default value (if the entity has a value),
  \item name="role" that gives the role of the entity with respect to the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
  \item name="content\_type" for the MIME type expected by the activity for the input or output entity,
- \item other additional PARAM elements corresponding to the EntityDescription attributes.
+ \item other additional PARAM elements corresponding to attributes of EntityDescription, UsedDescription, WasGeneratedByDescription or possibly Agent.
  \end{itemize} 
 % mireille suppressed one 'expected'in sentence above
 It is possible to reference an input parameter using the \emph{ref} attribute of PARAM, if an input or output entity is referenced as an input parameter to the activity (e.g. the name of an input file). In the following example the output file name "RGB.jpg" is expected as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").
 
-Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
+%Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
 %++ suggestion mireille : 
-%Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three input images mapped to the red, green, blue image planes in the composition. 
+Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three input images mapped to the red, green, blue image planes in the composition. 
 
 \begin{verbnobox}[\scriptsize]
 
@@ -61,64 +65,57 @@ Here is an example of an ActivityDescription VOTable that describes an activity 
     <PARAM name="name" datatype="char" arraysize="*" 
         value="make_RGB_image" utype="voprov:ActivityDescription.label" />
     <PARAM name="type" datatype="char" arraysize="*" 
-        value="None" utype="voprov:ActivityDescription.type"/>
+        value="..." utype="voprov:ActivityDescription.type"/>
     <PARAM name="subtype" datatype="char" arraysize="*" 
-        value="None" utype="voprov:ActivityDescription.subtype" />
+        value="..." utype="voprov:ActivityDescription.subtype" />
     <PARAM name="version" datatype="float" 
-        value="None" utype="voprov:ActivityDescription.version" />
+        value="..." utype="voprov:ActivityDescription.version" />
     <PARAM name="contact_name" datatype="char" arraysize="*" 
         value="..." utype="voprov:Agent.name" />
     <PARAM name="contact_email" datatype="char" arraysize="*" 
         value="...@..." utype="voprov:Agent.email" />
         
-    <GROUP name="InputParams" utype="voprov:Parameter">
+    <GROUP name="InputParams" utype="voprov:ParameterDescription">
       <PARAM ID="RGB" arraysize="*" datatype="char" name="RGB" 
           type="no_query" value="RGB.jpg">
         <DESCRIPTION>RGB image name</DESCRIPTION>
       </PARAM>
-      <PARAM ID="order" arraysize="*" datatype="char" name="order" 
-          type="no_query" value="RGB">
-        <DESCRIPTION>order of the channels</DESCRIPTION>
-        <VALUES>
-          <OPTION value="RGB"/>
-          <OPTION value="RBG"/>
-          <OPTION value="GBR"/>
-          <OPTION value="GRB"/>
-          <OPTION value="BRG"/>
-          <OPTION value="BGR"/>
-        </VALUES>
-      </PARAM>
     </GROUP>
-    %mir question : why do we need the order description here?once we know each role , there will be only one color composition the R.jpg will enter the red channel. the association is made at the level of entity--> entity.desc mapping ? 
-		% not sure I get it right here , sorry.
 		
-    <GROUP name="Used" utype="voprov:Used">
-      <GROUP name="R" utype="voprov:Entity">
+    <GROUP name="Used" utype="voprov:UsedDescription">
+      <GROUP name="R" utype="voprov:EntityDescription">
         <DESCRIPTION>Image for red channel</DESCRIPTION>
-        <PARAM arraysize="*" datatype="char" name="id" value="R.jpg" utype="voprov:Entity.id" />
-        <PARAM arraysize="*" datatype="char" name="role" value="red" utype="voprov:Used.role" />
-        <PARAM arraysize="*" datatype="char" name="content_type" value="image/jpeg" utype="voprov:EntityDescription.content_type" />
+        <PARAM name="default" value="R.jpg" arraysize="*" datatype="char" utype="voprov:Entity.id" />
+        <PARAM name="role" value="red" arraysize="*" datatype="char" 
+            utype="voprov:UsedDescription.role" />
+        <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
+            utype="voprov:EntityDescription.content_type" />
       </GROUP>
-      <GROUP name="G" utype="voprov:Entity">
+      <GROUP name="G" utype="voprov:EntityDescription">
         <DESCRIPTION>Image for green channel</DESCRIPTION>
-        <PARAM arraysize="*" datatype="char" name="id" value="G.jpg" utype="voprov:Entity.id" />
-        <PARAM arraysize="*" datatype="char" name="role" value="green" utype="voprov:Used.role" />
-        <PARAM arraysize="*" datatype="char" name="content_type" value="image/jpeg" utype="voprov:EntityDescription.content_type" />
+        <PARAM name="default" value="G.jpg" arraysize="*" datatype="char" utype="voprov:Entity.id" />
+        <PARAM name="role" value="green" arraysize="*" datatype="char" 
+            utype="voprov:UsedDescription.role" />
+        <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
+           utype="voprov:EntityDescription.content_type" />
       </GROUP>
-      <GROUP name="B" utype="voprov:Entity">
+      <GROUP name="B" utype="voprov:EntityDescription">
         <DESCRIPTION>Image for blue channel</DESCRIPTION>
-        <PARAM arraysize="*" datatype="char" name="id" value="B.jpg" utype="voprov:Entity.id" />
-        <PARAM arraysize="*" datatype="char" name="role" value="blue" utype="voprov:Used.role" />
-        <PARAM arraysize="*" datatype="char" name="content_type" value="image/jpeg" utype="voprov:EntityDescription.content_type" />
+        <PARAM name="default" value="B.jpg" arraysize="*" datatype="char" utype="voprov:Entity.id" />
+        <PARAM name="role" value="blue" arraysize="*" datatype="char" 
+            utype="voprov:UsedDescription.role" />
+        <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
+            utype="voprov:EntityDescription.content_type" />
       </GROUP>
     </GROUP>
     
-    <GROUP name="Generated" utype="voprov:WasGeneratedBy">
-      <GROUP name="RGB" utype="voprov:Entity">
+    <GROUP name="Generated" utype="voprov:WasGeneratedByDescription">
+      <GROUP name="RGB" utype="voprov:EntityDescription">
         <DESCRIPTION>RGB image generated</DESCRIPTION>
-        <PARAM arraysize="*" datatype="char" name="id" value="RGB.jpg" ref="RGB" utype="voprov:Entity.id" />
-        <PARAM arraysize="*" datatype="char" name="role" value="RGB" utype="voprov:WasGenereratedBy.role" />
-        <PARAM arraysize="*" datatype="char" name="content_type" value="image/jpeg" utype="voprov:EntityDescription.content_type" />
+        <PARAM name="role" value="RGB" arraysize="*" datatype="char" 
+            utype="voprov:WasGenereratedByDescription.role" />
+        <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
+            utype="voprov:EntityDescription.content_type" />
       </GROUP>
       </PARAM>
     </GROUP>
