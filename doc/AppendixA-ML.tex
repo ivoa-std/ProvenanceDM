@@ -1,23 +1,23 @@
 
 Here is a a simple example of serialisation of Provenance DM metadata for describing an Activity of color composition and the entity used as input as well as the resulting RGB image. 
 
-The Prov-N format \cite{std:PROV-N} as proposed by the W3C is a text format which allows the description of instances of the main 3 classes, as well as the various relations between each instance involved.
+The Prov-N format \ref{} as proposed by the W3C is a text format which allows the description of instances of the main 3 classes, as well as the various relations between each instance involved.
 
-\begin{lstlisting}[language=XML, caption= PROV-N serialisation example for a Color composition Activity]
+\begin{lstlisting}[language=C, style=customc,caption= PROV-N serialisation example for a Color composition Activity]
 document
   prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
   prefix hips <http://cds.u-strasbg.fr/data/>
   prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
 
   entity(ivo://CDS/P/DSS2color#RGB_NGC6946, [voprov:annotation="PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="RGB DSS2 image for NGC 6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, [voprov:annotation=" DSS2 digitization of the Blue POSSII Schmidt survey around  NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Blue Survey DSS2 NGC6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, [voprov:annotation=" DSS2 digitization of the Red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="POSSII Red Survey DSS2 NGC6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, [voprov:annotation=" DSS2 digitization of the Infra red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Infra Red Survey DSS2 NGC6946"])
+  entity(ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, [voprov:annotation="DSS2 digitization of the Blue POSSII Schmidt survey around  NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Blue Survey DSS2 NGC6946"])
+  entity(ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, [voprov:annotation="DSS2 digitization of the Red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="POSSII Red Survey DSS2 NGC6946"])
+  entity(ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, [voprov:annotation="DSS2 digitization of the Infra red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Infra Red Survey DSS2 NGC6946"])
   activity(hips:AlaRGB1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [voprov:desc_id="AlaRGB", voprov:desc_type="RGBencoding", voprov:annotation="Aladin RGB image generation for NGC 6946", voprov:desc_name="Aladin RGB image generation algorithm", voprov:name="Aladin RGB 1", voprov:desc_doculink="http://cds.u-strasbg.fr/aladin.gml"])
-  used(hips:AlaRGB1, ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, -)
-  used(hips:AlaRGB1, ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, -)
-  used(hips:AlaRGB1, ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, -)
-  wasGeneratedBy(ivo://CDS/P/DSS2color#RGB_NGC6946, hips:AlaRGB1, 2017-05-05T00:00:00)
+  used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143', -)
+  used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143', -)
+  used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143', -)
+  wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', hips:AlaRGB1, 2017-05-05T00:00:00)
 endDocument
 \end{lstlisting}
 \newpage
@@ -25,7 +25,7 @@ endDocument
 Here is the transcription of the same metadata in the PROV-Json format. 
 Each class and relation of the provenance model lists its corresponding database tables t-upples grouped by nameof the table. 
 
-\begin{lstlisting}[language=C, caption= JSON serialisation example for a Color composition Activity]]
+\begin{lstlisting}[language=C, style=customc, caption=JSON serialisation example for a Color composition Activity]
 {
   "prefix": {
     "ivo": "http://www.ivoa.net/documents/rer/ivo/",
@@ -94,7 +94,12 @@ Here is the mapping obtained for the same data description with the PROV-VOTABLE
 
 \begin{lstlisting}[language=XML, caption= PROV-VOTABLE serialisation example for a Color composition Activity]
 <?xml version="1.0" encoding="UTF-8"?>
-<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" xmlns:hips="http://cds.u-strasbg.fr/data/" xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
+<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
+xmlns:hips="http://cds.u-strasbg.fr/data/" 
+xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" 
+xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
   <RESOURCE type="provenance">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
     <TABLE name="Usage" utype="voprov:used">
@@ -156,17 +161,17 @@ Here is the mapping obtained for the same data description with the PROV-VOTABLE
           <TR>
             <TD>ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143</TD>
             <TD>POSSII Blue Survey DSS2 NGC6946</TD>
-            <TD> DSS2 digitization of the Blue POSSII Schmidt survey around  NGC 6946</TD>
+            <TD>DSS2 digitization of the Blue POSSII Schmidt survey around  NGC 6946</TD>
           </TR>
           <TR>
             <TD>ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143</TD>
             <TD>POSSII Red Survey DSS2 NGC6946</TD>
-            <TD> DSS2 digitization of the Red POSSII Schmidt survey around NGC 6946</TD>
+            <TD>DSS2 digitization of the Red POSSII Schmidt survey around NGC 6946</TD>
           </TR>
           <TR>
             <TD>ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143</TD>
             <TD>POSSII Infra Red Survey DSS2 NGC6946</TD>
-            <TD> DSS2 digitization of the Infra red POSSII Schmidt survey around  NGC 6946</TD>
+            <TD>DSS2 digitization of the Infra red POSSII Schmidt survey around  NGC 6946</TD>
           </TR>
           <TR>
             <TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD>

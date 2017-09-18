@@ -172,8 +172,9 @@ In the processing chain, HiPS can be seen as a kind of ``legacy level'' for obse
 An HiPS dataset can be generated either by Aladin in ``hipsgen'' mode or by other softwares \cite{if others}.  The processing distinguishes 3 main different methods for estimating cell values with parameters: FIRST(nearest neighbour), MEAN and MEDIAN of the neighboring pixels. Up to 50 parameters can help to tune the processing, among which the higher resolution HealPix order, the sky background value to be substracted, the border width or the mask to apply to original images to avoid including bad area in the computing, etc.
 
 
-An example of provenance metadata for a HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the MAMA facility and serialized in PROV-N format is given at 
-\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}, the corresponding votable-format is available at \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-vot.xml}.
+An example of provenance metadata for a HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the MAMA facility and serialized in PROV-N format is given at \\\footnotesize
+\footnotesize{\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}}, the corresponding VOTable-format is available at \\
+\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-vot.xml}.
 
 Here is an excerpt of the corresponding PROV-N serialization:
 
@@ -181,20 +182,20 @@ Here is an excerpt of the corresponding PROV-N serialization:
 prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
   prefix ex <http://www.example.com/provenance/>
   prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
-\\
+
 Entity
 ( ivo://CDS/P/MAMA/ESO-R, 
 [ voprov:name = "ESO-R MAMA HIPS at CDS",
-voprov:annotation = "This is the HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
+voprov:annotation = "HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
 voprov:type= "voprov:entity",
 voprov:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in obscore 
 voprov:doculink = "http://cds.u-strasbg.fr/hips/documentation.html#structure",
 voprov:level = 3,
 hips:dataproduct_type = "voprov:hips_pixels",
 hips:HiPS_properties = "http://cds.u-strasbg.fr/hips/p/mama/eso-r/properties.txt"] )
-\\
+
 // Relationship
-WasAttributedTo(ivo://CDS/P/MAMA/ESO-R,  ivo://cds, prov:role= "voprov:creator")
+WasAttributedTo(ivo://CDS/P/MAMA/ESO-R, ivo://cds, prov:role= "voprov:creator")
 
 Agent
 (ivo://cds,
@@ -209,14 +210,14 @@ Activity
 [ voprov:name = "ESO HiPS generation 1",
 voprov:startTime = "2016-07-18", 
 voprov:endTime = "2016-07-20",
-voprov:annotation = "This activity is final generation of HiPS for ESO Mama survey",
+voprov:annotation = "Final generation activity of HiPS for ESO Mama survey",
 voprov:activityDescription = "HipsgenM"] )
  
 ActivityDescription 
 (HipsgenM,
 [ voprov:name = "HiPSgen_Mean",
 voprov:type = "data encoding",
-voprov:subtype= "HiPSgen_MEAN",
+voprov:subtype= "HiPSgen",
 voprov:doculink = "http://cds.u-strasbg.fr/HiPSGEN-Documentation"])
 
 WasAssociatedWith( EHG1, Buga, voprov:role="voprov:operator")
