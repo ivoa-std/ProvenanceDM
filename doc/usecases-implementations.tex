@@ -20,32 +20,33 @@ specific use cases for which the provenance data model helps to solve certain ta
 %\item ...
 %\end{itemize}
 
-The IVOA Provenance data model has been developed along with its implementations into different projects. We gather here some tips to apply the model to a specific project.
+The IVOA Provenance data model has been developed along with its implementations from different projects. We gather here some tips to implement and use the model for a specific project.
 
 \paragraph{Before using the model}
-We noticed that the simple knowledge of what is provenance information is important for the development of all projects. Before using or not the Provenance data model and associated services, it is good practice to locate and collect information on activities, entities and agents, and be sure that this information is not lost along the way. For example, a script may use intermediate files (such as calibration files for observations) that may not be tracked by the system.
+We noticed that the simple knowledge of what is provenance information is important for the conception of all projects. Before using or not the Provenance data model and associated services, it is good practice to locate and collect information on the activities, entities and agents that will be manipulated, and be sure that this information is not lost along the way. For example, a script may use intermediate files (such as calibration files for observations) that may not be tracked by the system.
 
 \paragraph{Define unique identifiers}
-It would be convenient, if each data object or even each file 
+It would be convenient if each data object or even each file 
 gets a unique id that can be referenced. The W3C provenance model requires ids
 for entities, activities and agents, and they have to be qualified strings, 
 i.e. containing a namespace. For example, an activity in the RAVE-pipeline could 
-have the id `\texttt{rave:radialvelocity\_pipeline\_20160901}'. Using a namespace for each 
+have the id `\texttt{rave:radialvelocity\_pipeline\_20160901}'. 
+Using a namespace for each 
 project for these ids will help to make them unique. 
 IVOIDs, DOI's or ORCIDs are potentially good candidates for unique identifiers.
 
 \paragraph{Use of the description classes} 
-One may only use the core data model without the description classes if they are not needed for the project. In that case, it is recommended to include the attributes of the description classes into the main classes (Entity/Activity/Agent, and if needed Parameter). In the same way, when serializing the provenance information, the description classes can be merged to the main classes, which is needed to produce W3C compliant provenance files.
-
-\paragraph{Identify entities, activities and agents}
-If inside the project, the different entities are already identified, as well as the activities producing them, then the description classes are probably of interest and will help to reduce the redundancy in the provenance information stored.
+One may only use the core data model without the description classes if they are not needed for the project. In that case, it is recommended to merge the attributes of the description classes into the main classes (Entity/Activity/Agent, and if needed Parameter). In the same way, when serializing the provenance information, the description classes can be merged to the main classes, which is needed to produce W3C compliant provenance files.
 
 \paragraph{Add project specific attributes to entities, activities and agents}
-We proposed generic attribute for the different classes, but there are probably project specific attributes that need to be added. 
-It is also required at this level to disentangle entity properties and entityDescription properties: everything that you may know about an entity before its creation, belongs to the entityDescription (e.g. file format, dataProduct\_type, category).
+We proposed generic attributes for the different classes, but there are probably project specific attributes that need to be added. 
+It is also required at this level to disentangle Entity properties and EntityDescription properties: everything that you may know about an entity before its creation, belongs to the EntityDescription (e.g. file format, content\_type, dataproduct\_type, category, \dots).
+
+\paragraph{Identify entities, activities and agents}
+If inside the project, the different entities that will be manipulated are already defined precisely, as well as the activities producing them, then the description classes are probably of interest and will help reduce the redundancy in the provenance information stored. 
 
 \paragraph{Create ActivityDescription files}
-A model using description classes for defining templates for activities and
+A model using description classes to define templates for activities and
 entities has an advantage for normalization: the common processes could be
 described once and for all at some place and then be reused when recording
 provenance information for certain entities and activities.
@@ -53,7 +54,7 @@ If description classes are relevant for a projet, it may be sufficient to store 
 Those can be created and centralized before implementing a provenance database or service.
 
 \paragraph{Link to an Authentication System}
-We proposed to add optional attributes to tha Agent class (email, phone, address). However, a project may already include an authentication system with a user directory. In that case the Agent identifiers should be the ones used in the authentication system.
+We proposed to add optional attributes to tha Agent class (email, phone, address). Some projects may include an authentication system with a user directory. In that case a link should be kept between the Agent identifiers and the ones used in the authentication system when it is relevant, and information should be synchronized. However, there may be some agents that are not defined in the authentication system, so the information may not be easy to merge.
 
 \paragraph{Adding additional metadata to an existing Entity}
 It could happen that after creating entities and storing their provenance, additional metadata is needed for those entities. For example, an ObsCore description may have to be added to some entities when they are made available to the public. In that case, the entity will receive an external identifier (e.g. a publisher\_did), which should thus be associated to the entity provenance identifier (Entity.id) in a relation table.
@@ -180,8 +181,8 @@ Here is an excerpt of the corresponding PROV-N serialization:
 
 \begin{verbnobox}[\scriptsize]
 prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
-  prefix ex <http://www.example.com/provenance/>
-  prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
+prefix ex <http://www.example.com/provenance/>
+prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
 
 Entity
 ( ivo://CDS/P/MAMA/ESO-R, 
