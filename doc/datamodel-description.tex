@@ -366,7 +366,7 @@ Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize ActivityDescription}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
 \toprule
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
@@ -375,8 +375,8 @@ name         & & string & a human-readable name (to be displayed by clients)\\
 type         & & string & type of the activity, from a vocabulary or list, e.g. data acquisition (observation or simulation), reduction, calibration, publication\\
 subtype      & & string & more specific subtype of the activity\\
 annotation  & & string & additional free text description for the activity\\
-%code         & & string & the code used for this process\\
-%version      & & string & a version number for the code\\
+code         & & string & the code (software) used for this process, if applicable\\
+version      & & string & a version number, if applicable (e.g. for the code)\\
 doculink     & & url    & link to further documentation on this process, e.g. a 
 paper, the source code in a version control system etc.\\
 \bottomrule
@@ -504,8 +504,9 @@ can be different.
 %different activities.
 
 The \class{WasGeneratedBy}-relation can have the optional attribute \emph{time} -- this is the time, when 
-the generation of the entity is finished. This generation time corresponds to e.g. \emph{DataID.date} in 
-Dataset Metadata DM.
+the generation of the entity is finished.
+%This generation time corresponds to e.g. \emph{DataID.date} in 
+%Dataset Metadata DM.
 %It therefore corresponds to the \emph{created}-time used in 
 %the Simulation Data Model (SimDM). 
 
@@ -517,17 +518,17 @@ be the actual generation activity, the other activities can only be activityFlow
 containing this generation-activity. This restriction of having only one ``true'' generation activity is not explicitly expressed in the current model\footnote{The reason for this is that we want to keep the model simple and avoid introducing even more classes.}.
 
 
-The \emph{Used} relation is closely coupled to the \emph{Activity}, so we use a composition here, indicated
+The \class{Used} relation is closely coupled to the \class{Activity}, so we use a composition here, indicated
 in Figure~\ref{fig:classdiagram} by a filled diamond: 
 if an activity is deleted, then the corresponding used relations need to be removed as well. 
 The entities that were used still remain, since they may have been used for other activities as well.
-We need a multiplicity * between \emph{Used} and \emph{Entity}, because an entity can be used more than once
+We need a multiplicity * between \class{Used} and \class{Entity}, because an entity can be used more than once
 (by different activities).
 
-Similarly, the \emph{WasGeneratedBy} relation is closely coupled with the \emph{Entity} via a composition,
+Similarly, the \class{WasGeneratedBy} relation is closely coupled with the \class{Entity} via a composition,
 since a wasGeneratedBy relation makes no sense without its entity. So if an entity is deleted, 
-then its wasGeneratedBy relation must be deleted as well. There is a multiplicity * between \emph{Activity}
-and \emph{WasGeneratedBy}, because an activity can generate many entities.
+then its wasGeneratedBy relation must be deleted as well. There is a multiplicity * between \class{Activity}
+and \class{WasGeneratedBy}, because an activity can generate many entities.
 
 
 \paragraph{Entity roles}\label{sec:entity-roles}
