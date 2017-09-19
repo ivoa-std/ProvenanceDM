@@ -495,8 +495,8 @@ time & prov:time & datetime & time at which the usage of an entity started\\
 \midrule
 %\multicolumn{4}{@{}l}{References}\\
 %\midrule
-$\rightarrow$ \textbf{activity} & prov:activity & link & link to an activity\\
-$\rightarrow$ entity & prov:entity & link & link to an entity\\
+$\rightarrow$ \textbf{activity} & prov:activity & link & link to an \class{Activity}\\
+$\rightarrow$ entity & prov:entity & link & link to an \class{Entity}\\
 $\rightarrow$ description  &  & link & link to the corresponding \class{UsedDescription}, if existing\\
 \bottomrule
 \end{tabulary}
@@ -519,8 +519,8 @@ time & prov:time & datetime & time at which the generation of an entity is finis
 \midrule
 %\multicolumn{4}{@{}l}{References}\\
 %\midrule
-$\rightarrow$ \textbf{entity} & prov:entity & link & link to an entity\\
-$\rightarrow$ activity & prov:activity & link & link to an activity\\
+$\rightarrow$ \textbf{entity} & prov:entity & link & link to an \class{Entity}\\
+$\rightarrow$ activity & prov:activity & link & link to an \class{Activity}\\
 $\rightarrow$ description  &  & link & link to the corresponding \class{WasGeneratedByDescription}, if existing\\
 \bottomrule
 \end{tabulary}
@@ -550,7 +550,7 @@ can be different.
 %\class{WasGeneratedBy} relation, but may be \class{Used} many times as input for 
 %different activities.
 
-The \class{Used} and \class{WasGeneratedBy}-relation can have the optional attribute \emph{time} -- this is the time, when usage of an entity started or the generation of an entity is finished.
+The \class{Used} and \class{WasGeneratedBy}-relation can have the optional attribute \attribute{time} -- this is the time, when usage of an entity started or the generation of an entity is finished.
 %This generation time corresponds to e.g. \emph{DataID.date} in 
 %Dataset Metadata DM.
 %It therefore corresponds to the \emph{created}-time used in 
@@ -576,11 +576,49 @@ since a wasGeneratedBy relation makes no sense without its entity. So if an enti
 then its wasGeneratedBy relation must be deleted as well. There is a multiplicity * between \class{Activity}
 and \class{WasGeneratedBy}, because an activity can generate many entities.
 
+\begin{table}[ht]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize UsedDescription}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}lp{2cm}L@{}}
+\toprule
+\head{Attribute} &  \head{Data type} & \head{Description}\\
+\midrule
+id & string & identifier\\
+role & string   & entity role; defines the role of an entityDescription, as what it is used for the linked type of activityDescription\\
+\midrule
+$\rightarrow$ \textbf{activityDescription} & link & link to \class{ActivityDescription}\\
+$\rightarrow$ entityDescription & link & link to \class{EntityDescription}\\
+\bottomrule
+\end{tabulary}
+\caption{Attributes and references of \class{UsedDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\label{tab:usedDescription}
+\end{table}
+
+
+\begin{table}[ht]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize WasGeneratedByDescription}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}lp{2.5cm}L@{}}
+\toprule
+\head{Attribute} & \head{Data type} & \head{Description}\\
+\midrule
+id & string & identifier\\
+role & string & entity role; defines the role of an entityDescription, which kind of output it is\\
+\midrule
+$\rightarrow$ \textbf{entityDescription} & link & link to \class{EntityDescription}\\
+$\rightarrow$ activityDescription & link & link to an \class{ActivityDescription}\\
+\bottomrule
+\end{tabulary}
+\caption{Attributes and references of \class{WasGeneratedByDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). }
+\label{tab:wasGeneratedByDescription}
+\end{table}
 
 \paragraph{Entity roles}\label{sec:entity-roles}
 Each activity requires specific roles for each input or output entity, thus 
 we store this information with description classes, in the role-attributes for 
-the \class{UsedDescription} and \class{WasGeneratedByDescription} relation.
+the \class{UsedDescription} and \class{WasGeneratedByDescription} relation (see Tables~\ref{tab:usedDescription} and \ref{tab:wasGeneratedByDescription}).
 For example, an activity for darkframe-subtraction requires two input images. But it is 
 very important to know which of the images is the raw image and 
 which one fulfils the role of dark frame.
@@ -682,7 +720,7 @@ in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize Parameter}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
 \toprule
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
@@ -690,9 +728,11 @@ in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 %description\_ref   & & foreign key/url & link to \emph{ParameterDescription}\\
 %name            & & string & parameter name, if no link to ParameterDescription is given\\
 \textbf{value}   & & (value dependent) & the value of the parameter\\
+\midrule
+$\rightarrow$ description & & link & link to \class{ParameterDescription}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}. Attributes of \class{ParameterDescription} can be added here as well, if that class is not used.}
+\caption{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). Attributes of \class{ParameterDescription} can be added here as well, if that class is not used.}
 \end{table}
 
 \begin{table}[ht]
