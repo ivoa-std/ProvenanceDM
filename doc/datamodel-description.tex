@@ -145,12 +145,15 @@ annotation  & prov:description & string & text describing the entity in more det
 rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model\\
 creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
 \midrule
-\multicolumn{4}{l}{\textbf{Additional attributes:}} \\
-\multicolumn{4}{l}{Further project specific attributes (e.g. size, path, url, \dots) can be added }\\
-\multicolumn{4}{l}{(see Section \ref{sec:dataset-obscore})}\\
+$\rightarrow$ description &  & link & link to \class{EntityDescription}\\
+$\rightarrow$ wasAttributedTo & prov:wasAttributedTo & link & link to \class{WasAttributedTo} for linking with a responsible \class{Agent}\\
+\midrule
+\multicolumn{4}{@{}l}{\textbf{Additional attributes:}} \\
+\multicolumn{4}{@{}l}{Further project specific attributes (e.g. size, path, url, \dots) can be added }\\
+\multicolumn{4}{@{}l}{(see Section \ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of entities. Mandatory attributes are marked in bold. Attributes from \class{EntityDescription} (see next section) may appear here as well.
+\caption{Attributes of entities. Mandatory attributes are marked in \textbf{bold}, references are indicated with an arrow ($\rightarrow$). Attributes from \class{EntityDescription} (see next section) may appear here as well.
 }\label{tab:entity-attributes}
 \end{table}
 
@@ -216,10 +219,10 @@ doculink    & & url & link to more documentation\\
 % dataproduct\_ subtype & & string       & from ObsCore data model, more specific subtype\\
 % level       & & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \midrule
-\multicolumn{4}{l}{\textbf{Additional attributes:}} \\
-\multicolumn{4}{l}{Further project specific attributes (e.g. format, content\_type) and/or attributes}\\
-\multicolumn{4}{l}{from other data models (e.g. dataproduct\_type and -\_subtype, version, calibLevel}\\
-\multicolumn{4}{l}{from DatasetDM) can be added (Section~\ref{sec:dataset-obscore})}\\
+\multicolumn{4}{@{}l}{\textbf{Additional attributes:}} \\
+\multicolumn{4}{@{}l}{Further project specific attributes (e.g. format, content\_type) and/or attributes}\\
+\multicolumn{4}{@{}l}{from other data models (e.g. dataproduct\_type and -\_subtype, version, calibLevel}\\
+\multicolumn{4}{@{}l}{from DatasetDM) can be added (Section~\ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{EntityDescription}. For simple use cases, 
@@ -260,15 +263,15 @@ The EntityDescription general attributes are summarized in Table
 \toprule
 \head{Attribute} & \head{Data type}   & \head{Description}\\
 \midrule
-id               & string              & a unique id for this entity (unique in its realm)\\
-\textbf{generatedEntity} & string      & foreign key to the entity\\
-\textbf{usedEntity}      & string      & foreign key to the progenitor, from which the generatedEntity was derived\\
-activity         & string              & foreign key to the generation activity\\
-generation       & string              & foreign key to the wasGeneratedBy relation\\
-usage            & string              & foreign key to the used relation\\
+id               & string            & a unique id for this entity (unique in its realm)\\
+$\rightarrow$ \textbf{generatedEntity} & link      & link to the \class{Entity}\\
+$\rightarrow$ \textbf{usedEntity}      & link      & link to the progenitor \class{Entity}, from which the generatedEntity was derived\\
+activity         & string            & id of the generation \class{Activity}\\
+generation       & string            & id of the \class{WasGeneratedBy} relation\\
+usage            & string            & id of the \class{Used} relation\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of the WasDerivedFrom relation. This is the same as used in W3C's ProvDM. Mandatory attributes are marked in bold.
+\caption{Attributes of the WasDerivedFrom relation. This is the same as used in W3C's ProvDM. \textbf{Mandatory} attributes are marked in bold, references in the data model are indicated with an arrow ($\rightarrow$). The W3C model contains additional optional links to the related \class{Activity}, \class{WasGeneratedBy} and \class{Used} relation, which we include here for completeness.
 }\label{tab:wasderivedfrom-attributes}
 \end{table}
 
@@ -345,7 +348,7 @@ the \class{EntityDescription}. This class should therefore only be introduced if
 \tymax  0.5\textwidth
 
 \textbf{\normalsize Activity}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}lp{2.5cm}p{2cm}L@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lp{3.5cm}p{2cm}L@{}}
 \toprule
 \head{Attribute} & \head{W3C ProvDM} & \head{Data type} & \head{Description}\\
 \midrule
@@ -354,11 +357,13 @@ name        & prov:label  & string & a human-readable name (to be displayed by c
 \textbf{startTime} & prov:startTime & datetime & start of an activity\\
 \textbf{endTime} & prov:endTime  & datetime & end of an activity\\
 annotation        & prov:description & string & additional explanations for the specific activity instance\\
-%description\_ref  &  & foreign key/url & link to \class{ActivityDescription}\\
+\midrule
+$\rightarrow$ description &  & link & link to \class{ActivityDescription}\\
+$\rightarrow$ wasAssociatedWith & prov:wasAssociatedWith  & link & link to \class{WasAssociatedWith} for linking with a responsible \class{Agent}\\
 \bottomrule
 \end{tabulary}
 \caption{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
-Data Model, if existing. Attributes in bold are \textbf{mandatory}.}
+Data Model, if existing. Attributes in bold are \textbf{mandatory}, references are indicated with an arrow ($\rightarrow$). If no \class{ActivityDescription} class is used, those attributes can be used here as well.}
 \end{table}
 
 
@@ -474,7 +479,7 @@ the ``hadStep'' relation, as is shown in Figure~\ref{fig:activity-details}.
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-activity-relations.pdf}
 \hspace{0.15\textwidth}
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-activity-relations-nodesc.pdf}
-\caption{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. In the left image, the \emph{role} that an entity which was used or generated by an activity played is recorded with the corresponding \emph{UsedDescription} and \emph{WasGeneratedByDescription}, also see Section~\ref{sec:entity-roles}. If these description classes are not used, the \emph{role} can be used directly as an attribute within the \emph{Used} and \emph{WasGeneratedBy} classes (right image).}
+\caption{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. In the left image, the \emph{role} that an entity played when being used or generated by an activity is recorded with the corresponding \emph{UsedDescription} and \emph{WasGeneratedByDescription}, also see Section~\ref{sec:entity-roles}. If these description classes are not used, the \emph{role} can be used directly as an attribute within the \emph{Used} and \emph{WasGeneratedBy} classes (right image).}
 \label{fig:entity-activity-relations}
 \end{figure}
 
