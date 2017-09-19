@@ -16,11 +16,11 @@ ProvTAP is a TAP service specialisation for delivering IVOA Provenance metadata.
 As for any TAP service \citep{std:TAP}, it is providing ADQL query responses
 consisting of a single table each, gathering columns selected from various
 tables defined in the service's TAP schema. By default, this table is formatted
-as a VOTABLE. Other formats (json, tsv, etc...) could be added optionally.
+as a VOTable. Other formats (json, tsv, etc...) could be added optionally.
 
 The table and column definitions available in the TAP schema, including their
 metadata (unit, ucd, utype, datatype, description), are exactly the ones defined
-in the PROV-VOTABLE mapping of the IVOA provenance data model (see table and
+in the PROV-VOTable mapping of the IVOA provenance data model (see table and
 column definitions and metadata in Appendix~\ref{sec:appendix-prov-votable}).
 This is corresponds to what has been done in the RegTAP specification
 \citep{std:RegTAP} for mapping the VOResource data model.
@@ -29,7 +29,7 @@ Examples of ADQL queries for ProvTAP are given in
 Appendix~\ref{sec:appendix-prov-votable}.
 %end of update 
 
-%\TODO{We need more details here! Output of TAP service is NOT a PROV-VOTABLE by default!}
+%\TODO{We need more details here! Output of TAP service is NOT a PROV-VOTable by default!}
 
 %\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
 

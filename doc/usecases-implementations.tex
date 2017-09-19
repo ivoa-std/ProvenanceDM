@@ -62,17 +62,33 @@ It could happen that after creating entities and storing their provenance, addit
 
 
 \subsection{voprov Python package}\label{sec:implementation_voprov}
-The voprov package is an open source python library derived from the prov python library (MIT license) developed by Trung Dong Huynh (University of Southampton). 
+The voprov package is an open source python library derived from the prov python
+library (MIT license) developed by Trung Dong Huynh (University of
+Southampton). 
 
-The prov package implements the W3C Provenance Data Model.  It offers to describe the provenance in different format: PROV-N, JSON, XML, etc. and provides different output formats of the serialized data: PROV-N, JSON, and graphic formats: PDF, PNG, SVG.
+The prov package implements the W3C Provenance Data Model.  It offers to
+describe the provenance in different format: PROV-N, JSON, XML, etc. and
+provides different output formats of the serialized data: PROV-N, JSON, and
+graphic formats: PDF, PNG, SVG.
 
-The voprov library allows users to describe the provenance of their data according to the IVOA Provenance Data Model. It allows the description of flows of activities (pipelines) with eventually the composition of the different steps. It provides the VOTABLE serialization. 
+The voprov library allows users to describe the provenance of their data
+according to the IVOA Provenance Data Model. It allows the description of flows
+of activities (pipelines) with eventually the composition of the different
+steps. It provides the VOTable serialization.
 
-This library is currently used in the context of the Pollux database which hosts synthetic stellar spectra. The provenance files are created from the non normalized information found in the Pollux header files. The serialization is proposed in 3 detail levels and in different formats: on one one hand in PROV-N, JSON, XML and VOTABLE formats and on the other hand in PDF, PNG and SVG graphic formats. The VO user or the VO tool is informed of the existence of the provenance in a DataLink section of the SSA response which gives information on how to retrieve a given provenance file.
+This library is currently used in the context of the Pollux database which hosts
+synthetic stellar spectra. The provenance files are created from the non
+normalized information found in the Pollux header files. The serialization is
+proposed in 3 detail levels and in different formats: on one one hand in PROV-N,
+JSON, XML and VOTable formats and on the other hand in PDF, PNG and SVG graphic
+formats. The VO user or the VO tool is informed of the existence of the
+provenance in a DataLink section of the SSA response which gives information on
+how to retrieve a given provenance file.
 
 %This code writes the serialisation examples which are given in Section~\ref{sec:serialisations}.
 
-Example code and serializations are given in the Implementation Note \citep{std:ProvenanceImplementationNote}.
+Example code and serializations are given in the Implementation Note
+\citep{std:ProvenanceImplementationNote}.
 
 
 \subsubsection{Graphic formats}

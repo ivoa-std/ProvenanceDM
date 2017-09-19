@@ -74,9 +74,14 @@ endDocument
 \end{verbnobox}
 
 \subsection{PROV-VOTable format} 
-To emphasize the compatibility to the IVOA framework, where the VOTable-XML format is a reference to circulate metadata, we define a PROV-VOTABLE mapping specification. All classes' declarations and relations described in PROV-N are translated into separated tables, one for each class of the model, see Appendix~\ref{sec:appendix-prov-votable}.
-All attributes of these classes are translated to columns, i.e. VOTable FIELDS.
-In addition, the specification defines the VOTable values of the FIELD and PARAM attributes \texttt{ucd}, \texttt{datatype}, \texttt{utype}, \texttt{unit}, \texttt{description}, etc. 
+To emphasize the compatibility to the IVOA framework, where the VOTable-XML
+format is a reference to circulate metadata, we define a PROV-VOTable mapping
+specification. All classes' declarations and relations described in PROV-N are
+translated into separated tables, one for each class of the model, see
+Appendix~\ref{sec:appendix-prov-votable}. All attributes of these classes are
+translated to columns, i.e. VOTable FIELDS. In addition, the specification
+defines the VOTable values of the FIELD and PARAM attributes \texttt{ucd},
+\texttt{datatype}, \texttt{utype}, \texttt{unit}, \texttt{description}, etc. 
 
 This can be appropriately used for two goals:
 \begin{itemize}
@@ -86,7 +91,7 @@ This can be appropriately used for two goals:
 
 These VOTable serializations can be produced using the voprov\footnote{\url{https://github.com/sanguillon/voprov}} python module, available to the community, see also Section~\ref{sec:implementation_voprov} and the IVOA ProvenanceDM Implementation Note \citep[]{std:ProvenanceImplementationNote}. 
 
-%example KR prov VOTABLE .
+%example KR prov VOTable .
 Here is a VOTable document transcription of the serialization example given above in PROV-N and PROV-JSON:
 
 \begin{verbnobox}[\scriptsize]
