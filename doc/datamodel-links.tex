@@ -7,9 +7,9 @@ The Provenance Data Model can be applied without making any links to other
 IVOA data model classes. For example, when the data is not yet published, provenance information
 can be stored already, but a DatasetDM-description for the data may not yet exist.
 However, if there are data models implemented for the datasets, then it is 
-very useful to connect the classes and attributes of the other data models with Provenance classes and attributes (if applicable), which we are going to discuss in this Section. These links help to avoid 
+very useful to connect the classes and attributes of the other data models with provenance classes and attributes (if applicable), which we are going to discuss in this Section. These links help to avoid 
 unnecessary repetitions in the metadata of datasets, and also offer the possibility 
-to derive some basic provenance information from existing data model classes automatically.
+to derive some basic provenance information from existing data model classes automatically, e.g. for creating provenance serializations from DatasetDM or SimDM metadata.
 
 
 \subsection{Links with Dataset/Obscore Model}
@@ -18,8 +18,9 @@ to derive some basic provenance information from existing data model classes aut
 Entities and their descriptions in the Provenance Data Model 
 are tightly linked to the \class{DataSet}-class in the DatasetDM/ObsCore Data Model, as well as to 
 InputDataset and OutputDataSet in the Simulation Data Model \citep[SimDM,][]{std:SimDM}.
-Table \ref{tab:datasetmapping} maps classes and attributes from DatasetDM
-to concepts in the Provenance Data Model.
+Tables~\ref{tab:datasetmapping} and \ref{tab:datasetmapping2} map classes and attributes from DatasetDM
+to concepts in the Provenance Data Model. 
+%If the DatasetDM attributes are used in the serialization of an entity, they have the corresponding DatasetDM namespace.
 
 
 %\begin{figure}[h]
@@ -35,7 +36,7 @@ to concepts in the Provenance Data Model.
 \tymax  0.5\textwidth
 \begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
 \toprule
-\head{ProvenanceDM} & \head{DatasetDM} & \head{Comment}\\
+\head{ProvenanceDM attribute} & \head{DatasetDM attribute} & \head{Comment}\\
 \midrule
 Entity.id                & Curation.PublisherDID  & unique identifier for the dataset assigned by the publisher\\
 Entity.id                & DataID.creatorDID      &  alternative id for the dataset given by the creator, could be used as Entity.id if no PublisherDID exists (yet)\\
@@ -48,19 +49,31 @@ Agent                    & Curation.Contact       & link to Agent with role cont
 Agent.id                 & Curation.PublisherID   & link to the publisher, i.e. to an Agent with role=``publisher''\\
 Agent.name, \newline wasAttributedTo.role=\newline Creator               & DataID.creator         & name of agent creating the dataset\\
 Agent.name, \newline wasAttributedTo.role=\newline Publisher               & Curation.Publisher     & name of the publisher\\
-\midrule
-\multicolumn{3}{c}{\bf Attributes specific to dataset entities}\\
-\midrule
-Entity.releaseDate       & Curation.Date          & release date of the dataset\\
-Entity.version           & Curation.Version       & version of the dataset\\
-Entity.reference         & Curation.Reference     & link to publication\\
-EntityDescription.dataproduct\_type & DataProductType & the type of a dataproduct from DatasetDM can be used as attribute to EntityDescription\\
-EntityDescription.dataproduct\_subtype & DataProductSubType & subtype of a \mbox{dataproduct}/entity\\
-EntityDescription.calibLevel & ObsDataset.calibLevel & (output) calibration level, integer between 0 and 3\\
 \bottomrule
 \end{tabulary}
-\caption{Mapping attributes from DatasetDM classes to (optional) attributes in ProvenanceDM. Attributes like \emph{EntityDescription.calibLevel} are very specific to entities described with DatasetDM and thus are not included in Table~\ref{tab:entitydescription-attributes} for \emph{EntityDescription}. }
+\caption{Mapping attributes from DatasetDM classes to (optional) attributes in ProvenanceDM. This list is not complete.}
 \label{tab:datasetmapping}
+\end{table}
+
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
+\toprule
+\head{ProvenanceDM class} & \head{DatasetDM attribute} & \head{Comment}\\
+%\midrule
+%\multicolumn{3}{c}{\bf Attributes specific to dataset entities}\\
+\midrule
+Entity           & Curation.Date          & release date of the dataset\\
+Entity           & Curation.Version       & version of the dataset\\
+Entity           & Curation.Reference     & link to publication\\
+EntityDescription & DataProductType & the type of a dataproduct from DatasetDM can be used as attribute to EntityDescription\\
+EntityDescription & DataProductSubType    & subtype of a \mbox{dataproduct}/entity\\
+EntityDescription & ObsDataset.calibLevel & (output) calibration level, integer between 0 and 3\\
+\bottomrule
+\end{tabulary}
+\caption{Mapping attributes from DatasetDM classes to the ProvenanceDM classes to which they could be added. Attributes like \attribute{EntityDescription.calibLevel} are very specific to entities described with DatasetDM and thus are not included in this ProvenanceDM directly. This list is not complete.}
+\label{tab:datasetmapping2}
 \end{table}
 
 
@@ -80,7 +93,6 @@ The main difference between \class{Agent} and \class{Party} is that \class{Indiv
 
 We imagine that services implementing both data models, \class{Dataset} and \class{ProvenanceDM} may just use \emph{one} class: either \class{Agent} or \class{Party}, enriched with all the necessary (project-specific) attributes. When delivering the data on request, the serialised versions can be adjusted to the corresponding notation.
 Note that for Provenance queries using a ProvTAP service or for W3C compatible serializations, the name \class{Agent} for the responsible individuals/organizations is required.
-
 
 
 \subsection{Links with Simulation Data Model}
