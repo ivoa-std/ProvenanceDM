@@ -74,7 +74,7 @@ It could happen that after creating entities and storing their provenance, addit
 % This allows to match existing Ids between different data models metadata descriptions as highlighted in the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
 \subsection{\texttt{voprov} Python package}\label{sec:implementation_voprov}
-The \texttt{voprov} package is an open source Python library derived from the \texttt{prov} Python
+The \texttt{voprov}\footnote{\url{https://github.com/sanguillon/voprov}} package is an open source Python library derived from the \texttt{prov} Python
 library (MIT license) developed by Trung Dong Huynh (University of
 Southampton). 
 
@@ -96,8 +96,7 @@ formats. The VO user or the VO tool is informed of the existence of the
 provenance in a DataLink entry of the Simple Spectral Access protocol (SSAP) response which gives information on
 how to retrieve a given provenance file.
 
-Code, serializations and graphic format conversions examples are given in the Implementation Note
-\citep{std:ProvenanceImplementationNote}.
+Code, serializations and graphic format conversions examples are given in the Implementation Note \citep{std:ProvenanceImplementationNote}.
 
 % 2017-09-20 mireille's suggestion :this could be shifted and detailed in the Implementation note as I mention above
 %\subsubsection{Graphic formats}
@@ -119,30 +118,21 @@ Code, serializations and graphic format conversions examples are given in the Im
 %\label{fig:example}
 %\end{figure}
 
-\subsection{Provenance of RAVE database tables (DR4)}
-The RAVE survey (Radial Velocity Experiment) recorded spectra for about half a 
+\subsection{Provenance of RAVE database tables}
+The RAVE\footnote{\url{http://www.rave-survey.org survey}} (Radial Velocity Experiment) recorded spectra for about half a 
 million stars. These spectra are processed in a number of steps until the 
-derived properties are published in the RAVE data releases at http://www.rave-survey.org.
-Providing provenance information for the data, from which spectrum and fibre the
+derived properties are published in RAVE data releases.
+Providing provenance information, from which spectrum and fibre the
 data was coming from and which steps were involved in processing the data, can help scientists
 to understand the data and their restrictions and judge their quality.
-It would also be useful to be able to compare if, how and why the derived data 
-for some stars have changed between different releases.
-Provenance information for some major steps of RAVE DR4 was loaded in 
-W3C-compatible PROV-N notation and uploaded to the provenance store at 
-\footnotesize{\url{https://provenance.ecs.soton.ac.uk/store/documents/84064/}}. This allows to view 
-graphs of the workflow by visualising only the main entities, activities and agents 
-with their relations. It shows that the provenance concepts explained in this draft 
-can be applied directly to data obtained from astronomical observations.
+It would also be useful to be able to compare if, how and why the derived data for some stars have changed between different releases.
 
-We also tested a Django implementation of the classes in this document along with provenance data stored in an SQLite database. This allows to quickly setup a provenance web service
-which gives the possibility to view all instances of a class or details for a single object, 
-extract provenance information for single entities (backwards in time) and 
-visualise the provenance information. 
-More details about this are available in the implementation notes \citep{std:ProvenanceImplementationNote}.
+We put together some major steps of the RAVE pipeline in W3C-compatible PROV-N notation
+and uploaded the file to the Provenance Store\footnote{\url{https://provenance.ecs.soton.ac.uk/store/}}. This allows to view graphs of the workflow by visualizing only the main entities or activities and restricting the displayed relations. It shows that the provenance concepts explained in this draft can be applied directly to data obtained from astronomical observations.
+
+We also tested a Django implementation of the classes in this document along with provenance metadata from the RAVE project stored in an SQLite database. This allows to quickly setup a provenance web service with interfaces to view all instances of a class or details for a single object (REST API), extract provenance information for single entities and visualizing the provenance information using Javascript. More details about this web application are available in the Implementation Note \citep{std:ProvenanceImplementationNote}.
 
 \subsection{Provenance for CTA}
-
 The Cherenkov Telescope Array (CTA) is the next generation ground-based very high energy gamma-ray instrument. It will provide a deep insight into the non-thermal high-energy universe. Contrary to previous Cherenkov experiments, it will serve as an open observatory providing data to a wide astrophysics community, with the requirement to propose self-described data products to users that may be unaware of the Cherenkov astronomy specificities. The proposed structure of the metadata is presented in Figure~\ref{fig:cta_dm}.
 
 \begin{figure}
@@ -191,8 +181,7 @@ The implementation of the provenance concepts in a standardized format allows us
 \end{figure}
 
 \subsection{Provenance of HiPS datasets}
-HiPS \cite{std:HiPs} is a new hierarchical organization of pixel data allowing smooth browsing of all sky data collections in astronomy. It is based on HealPix tesselation of the sky on equal area cells (pixels) for a given HealPix order gathered in tiles. Adaptative resolution is achieved by a hierarchy of tiles at increasing order. Sorting and organization is based on a tree of including directories each of those associated with a tile. HiPS specification has entered the IVOA recommendation process and is becoming an interoperability standard.
-In the processing chain, HiPS can be seen as a kind of ``legacy level'' for observational data.
+HiPS \citep{std:HiPs} is an IVOA recommendation for a new hierarchical organization of pixel data allowing smooth browsing of all sky data collections in astronomy. It is based on HealPix tesselation of the sky on equal area cells (pixels) for a given HealPix order gathered in tiles. Adaptative resolution is achieved by a hierarchy of tiles at increasing order. Sorting and organization is based on a tree of including directories each of those associated with a tile. In the processing chain, HiPS can be seen as a kind of ``legacy level'' for observational data.
 
 
 An HiPS dataset can be generated either by Aladin in ``hipsgen'' mode or by other softwares.
@@ -200,8 +189,8 @@ An HiPS dataset can be generated either by Aladin in ``hipsgen'' mode or by othe
 The processing distinguishes 3 main different methods for estimating cell values with parameters: FIRST(nearest neighbour), MEAN and MEDIAN of the neighboring pixels. Up to 50 parameters can help to tune the processing, among which the higher resolution HealPix order, the sky background value to be substracted, the border width or the mask to apply to original images to avoid including bad area in the computing, etc.
 
 
-An example of provenance metadata for a HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the MAMA facility and serialized in PROV-N format is given at \\\footnotesize
-\footnotesize{\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}}, the corresponding VOTable-format is available at \\
+An example of provenance metadata for a HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the MAMA facility and serialized in PROV-N format is given at \\
+\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}, the corresponding VOTable-format is available at \\
 \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-vot.xml}.
 
 Here is an excerpt of the corresponding PROV-N serialization:
@@ -216,14 +205,14 @@ Entity
 [ voprov:name = "ESO-R MAMA HIPS at CDS",
 voprov:annotation = "HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
 voprov:type= "voprov:entity",
-voprov:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in obscore 
+ds:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in obscore 
 voprov:doculink = "http://cds.u-strasbg.fr/hips/documentation.html#structure",
-voprov:level = 3,
+ds:calibLlevel = 3,
 hips:dataproduct_type = "voprov:hips_pixels",
 hips:HiPS_properties = "http://cds.u-strasbg.fr/hips/p/mama/eso-r/properties.txt"] )
 
 // Relationship
-WasAttributedTo(ivo://CDS/P/MAMA/ESO-R, ivo://cds, prov:role= "voprov:creator")
+WasAttributedTo(ivo://CDS/P/MAMA/ESO-R, ivo://cds, voprov:role= "voprov:creator")
 
 Agent
 (ivo://cds,
@@ -249,6 +238,6 @@ voprov:subtype= "HiPSgen",
 voprov:doculink = "http://cds.u-strasbg.fr/HiPSGEN-Documentation"])
 
 WasAssociatedWith( EHG1, Buga, voprov:role="voprov:operator")
-WasAssociatedWith(EHG1, ivo://CDS, prov:role="voprov:creator")
-WasAttributedTo(( ivo://CDS/P/MAMA/ESO-R, buga, prov:role= "voprov:operator")
+WasAssociatedWith(EHG1, ivo://CDS, voprov:role="voprov:creator")
+WasAttributedTo(( ivo://CDS/P/MAMA/ESO-R, buga, voprov:role= "voprov:operator")
 \end{verbnobox}

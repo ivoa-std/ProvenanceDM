@@ -21,28 +21,24 @@ The table and column definitions available in the TAP schema, including their
 metadata (\attribute unit, \attribute ucd, \attribute utype, \attribute datatype, description), are exactly the ones defined
 in the PROV-VOTable mapping of the IVOA Provenance data model (see table and
 column definitions and metadata in Appendix~\ref{sec:appendix-prov-votable}).
-This is corresponds to what has been done in the RegTAP specification
+This corresponds to what has been done in the RegTAP specification
 \citep{std:RegTAP} for mapping the VOResource data model.
 
-Examples of ADQL queries for ProvTAP are given below:
+Here are a few examples of ADQL queries for ProvTAP:
 \begin{itemize}
-\item To retrieve all entity metadata for entities sharing the same activity description: \\  
-\texttt{SELECT * FROM  Entity WHERE e\_ed\_ref = 'hispgen\_id'}
+\item To retrieve all entity metadata for entities sharing the same entity description: \\
+\texttt{SELECT * FROM  Entity WHERE e\_description = 'hispgen\_id'}
 \item To retrieve all activities associated with agent \texttt{obspm}: \\
-\texttt{SELECT WasAssociatedWith.as\_a\_id, Activity.a\_name, \\}
+\texttt{SELECT WasAssociatedWith.as\_agent\_id, Activity.a\_name, \\}
 \verb!       !\texttt{Activity.a\_annotation FROM WasAssociatedWith \\
-INNER JOIN Activity ON \\ WasAssociatedWith.as\_a\_id = Activity.a\_id 
-\\ WHERE  WasAssociatedWith.as\_ag\_id = 'obspm'}
+INNER JOIN Activity ON \\ WasAssociatedWith.as\_agent\_id = Activity.a\_id 
+\\ WHERE  WasAssociatedWith.as\_agent\_id = 'obspm'}
 \item To retrieve all \texttt{curator} agents: \\
-\texttt{SELECT  WasAttributedTo.at\_e\_id FROM WasAttributedTo \\
- WHERE WasAttributedTo.at\_ag\_role = 'curator'}
+\texttt{SELECT  WasAttributedTo.at\_entity\_id FROM WasAttributedTo \\
+ WHERE WasAttributedTo.at\_role = 'curator'}
 \end{itemize}
 
-
-%\TODO{We need more details here! Output of TAP service is NOT a PROV-VOTable by default!}
-
 %\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
-
 
 %\TODO{Also look at PROV-AQ from the W3C.}
 
@@ -57,8 +53,10 @@ ivo://ivoa.net/std/ProvenanceDM#ProvTAP-1.0
 The capability for a TAP service to support the Provenance DM is expressed by
 the dataModel element as:
 \begin{verbatim}
-<dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM-1.0">ProvenanceDM-1.0</dataModel>
+<dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM-1.0">
+  ProvenanceDM-1.0
+</dataModel>
 \end{verbatim}
 
-For ProvTAP, the VOSI tables interface also needs to be provided.
+For ProvTAP, the VOSI tables interface must also be provided.
 

@@ -15,7 +15,7 @@ They can be reused here as well for serializations of our data model. For produc
 % NOTE: we actually never use PROV-XML here!!
 
 %example KR provn 
-Here is an example serialization instance document for an entity being processed by an activity, in PROV-N format:
+Here is an example serialization instance document for an entity being processed by an activity, in PROV-N notation:
 
 \begin{verbnobox}[\scriptsize]
 
@@ -33,8 +33,8 @@ endDocument
 
 \end{verbnobox}
 
-%example KR provjson (entity, agent and activity)
-
+\noindent
+Here is the same example in PROV-JSON format:
 \begin{verbnobox}[\scriptsize]
 {
   "prefix": {
@@ -72,16 +72,17 @@ endDocument
   }
 }
 \end{verbnobox}
+\noindent
+PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the prov or voprov python package (see Section~\ref{sec:implementation_voprov}).
 
 \subsection{PROV-VOTable format} 
 To emphasize the compatibility to the IVOA framework, where the VOTable-XML
 format is a reference to circulate metadata, we define a PROV-VOTable mapping
-specification. All classes' declarations and relations described in PROV-N are
-translated into separated tables, one for each class of the model, see
+specification. All classes' declarations and relations described for this data model are translated into separated tables, one for each class of the model, see
 Appendix~\ref{sec:appendix-prov-votable}. All attributes of these classes are
 translated to columns, i.e. VOTable FIELDS. In addition, the specification
 defines the VOTable values of the FIELD and PARAM attributes \texttt{ucd},
-\texttt{datatype}, \texttt{utype}, \texttt{unit}, \texttt{description}, etc. 
+\texttt{datatype}, \texttt{utype}, \texttt{unit}, \texttt{description}, etc.
 
 This can be appropriately used for two goals:
 \begin{itemize}
@@ -89,14 +90,18 @@ This can be appropriately used for two goals:
 	\item Providing the backbone for the TAP schema describing IVOA provenance metadata which isused for ProvTAP 
 \end{itemize}
 
-These VOTable serializations can be produced using the voprov\footnote{\url{https://github.com/sanguillon/voprov}} python module, available to the community, see also Section~\ref{sec:implementation_voprov} and the IVOA ProvenanceDM Implementation Note \citep[]{std:ProvenanceImplementationNote}. 
+These VOTable serializations can be produced using the voprov python module, available to the community, see also Section~\ref{sec:implementation_voprov} and the IVOA ProvenanceDM Implementation Note \citep[]{std:ProvenanceImplementationNote}. 
 
-%example KR prov VOTable .
 Here is a VOTable document transcription of the serialization example given above in PROV-N and PROV-JSON:
 
 \begin{verbnobox}[\scriptsize]
 <?xml version="1.0" encoding="UTF-8"?>
-<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" xmlns:ex="http://www.example.com/provenance" xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
+<VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
+  xmlns:ex="http://www.example.com/provenance" 
+  xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/"
+  xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
   <RESOURCE type="provenance">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
     <TABLE name="Usage" utype="voprov:used">
@@ -168,4 +173,4 @@ More examples of serialization documents are provided in Appendix \ref{sec:appen
 Such serializations can be retrieved through access protocols (see \ref{sec:access_protocols} ) or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file in one of the serialization formats.
 
 % I believe the PROV-keyword was already used in FITS, but not PROVENANCE.
-\TODO{SVOM strategy to incorporate provenance as an extension in FITS ? still valid ?}
+%\TODO{SVOM strategy to incorporate provenance as an extension in FITS ? still valid ?}
