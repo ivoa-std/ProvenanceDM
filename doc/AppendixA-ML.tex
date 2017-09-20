@@ -9,14 +9,38 @@ document
   prefix hips <http://cds.u-strasbg.fr/data/>
   prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
 
-  entity(ivo://CDS/P/DSS2color#RGB_NGC6946, [voprov:annotation="PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="RGB DSS2 image for NGC 6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, [voprov:annotation="DSS2 digitization of the Blue POSSII Schmidt survey around  NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Blue Survey DSS2 NGC6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, [voprov:annotation="DSS2 digitization of the Red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", voprov:name="POSSII Red Survey DSS2 NGC6946"])
-  entity(ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, [voprov:annotation="DSS2 digitization of the Infra red POSSII Schmidt survey around NGC 6946", voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", voprov:name="POSSII Infra Red Survey DSS2 NGC6946"])
-  activity(hips:AlaRGB1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [voprov:desc_id="AlaRGB", voprov:desc_type="RGBencoding", voprov:annotation="Aladin RGB image generation for NGC 6946", voprov:desc_name="Aladin RGB image generation algorithm", voprov:name="Aladin RGB 1", voprov:desc_doculink="http://cds.u-strasbg.fr/aladin.gml"])
+  entity(ivo://CDS/P/DSS2color#RGB_NGC6946, 
+	[voprov:annotation="PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946", 
+	voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", 
+	voprov:name="RGB DSS2 image for NGC 6946"])
+	
+  entity(ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143, 
+	[voprov:annotation="DSS2 digitization of the Blue POSSII Schmidt survey around  NGC 6946",
+	voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", 
+	voprov:name="POSSII Blue Survey DSS2 NGC6946"])
+	
+  entity(ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143, 
+	[voprov:annotation="DSS2 digitization of the Red POSSII Schmidt survey around NGC 6946",
+	voprov:doculink="http://cds.u-strasbg.fr/aladin.gml", 
+	voprov:name="POSSII Red Survey DSS2 NGC6946"])
+	
+  entity(ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143, 
+	[voprov:annotation="DSS2 digitization of the Infra red POSSII Schmidt survey around NGC 6946",
+	voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", 
+	voprov:name="POSSII Infra Red Survey DSS2 NGC6946"])
+	
+  activity(hips:AlaRGB1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [
+	voprov:name="Aladin RGB 1", 
+	voprov:annotation="Aladin RGB image generation for NGC 6946",
+	voprov:desc_id="AlaRGB",
+	voprov:desc_type="RGBencoding", 
+	voprov:desc_name="Aladin RGB image generation algorithm", 	
+	voprov:desc_doculink="http://cds.u-strasbg.fr/aladin.gml"])
+	
   used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143', -)
   used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143', -)
   used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143', -)
+	
   wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', hips:AlaRGB1, 2017-05-05T00:00:00)
 endDocument
 \end{lstlisting}
@@ -34,14 +58,14 @@ Each class and relation of the provenance model lists its corresponding database
   },
   "activity": {
     "hips:AlaRGB1": {
-      "voprov:desc_doculink": "http://cds.u-strasbg.fr/aladin.gml",
-      "voprov:desc_id": "AlaRGB",
+      "voprov:name": "Aladin RGB 1",
       "voprov:startTime": "2017-04-18T17:28:00",
+			"voprov:endTime": "2017-04-19T17:29:00",
       "voprov:annotation": "Aladin RGB image generation for NGC 6946",
       "voprov:desc_type": "RGBencoding",
       "voprov:desc_name": "Aladin RGB image generation algorithm",
-      "voprov:endTime": "2017-04-19T17:29:00",
-      "voprov:name": "Aladin RGB 1"
+      "voprov:desc_doculink": "http://cds.u-strasbg.fr/aladin.gml",
+      "voprov:desc_id": "AlaRGB"
     }
   },
   "wasGeneratedBy": {
@@ -103,8 +127,8 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
   <RESOURCE type="provenance">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
     <TABLE name="Usage" utype="voprov:used">
-      <FIELD arraysize="*" datatype="char" name="activity" ucd="meta.id" utype="voprov:Usage.activity"/>
-      <FIELD arraysize="*" datatype="char" name="entity" ucd="meta.id" utype="voprov:Usage.entity"/>
+      <FIELD name="activity" ucd="meta.id" utype="voprov:Using.Activity"arraysize="*" datatype="char" />
+      <FIELD name="entity" utype="voprov:used.Entity arraysize="*" datatype="char"  ucd="meta.id" "/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -115,8 +139,8 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
       </DATA>
     </TABLE>
     <TABLE name="Generation" utype="voprov:wasGeneratedBy">
-      <FIELD arraysize="*" datatype="char" name="entity" ucd="meta.id" utype="voprov:Generation.entity"/>
-      <FIELD arraysize="*" datatype="char" name="activity" ucd="meta.id" utype="voprov:Generation.activity"/>
+      <FIELD name="entity" utype="voprov:wasGeneratedBy.Entity" arraysize="*" datatype="char"  ucd="meta.id"/>
+      <FIELD name="activity" utype="voprov:wasGeneratedBy.activity"  arraysize="*" datatype="char"  ucd="meta.id"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -127,15 +151,15 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
       </DATA>
     </TABLE>
     <TABLE name="Activity" utype="voprov:Activity">
-      <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Activity.id"/>
-      <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Activity.name"/>
-      <FIELD arraysize="*" datatype="char" name="start" ucd="" utype="voprov:Activity.startTime"/>
-      <FIELD arraysize="*" datatype="char" name="stop" ucd="" utype="voprov:Activity.endTime"/>
-      <FIELD arraysize="*" datatype="char" name="annotation" ucd="meta.description" utype="voprov:Activity.annotation"/>
-      <FIELD arraysize="*" datatype="char" name="desc_id" ucd="" utype="voprov:ActivityDescription.id"/>
-      <FIELD arraysize="*" datatype="char" name="desc_name" ucd="" utype="voprov:ActivityDescription.name"/>
-      <FIELD arraysize="*" datatype="char" name="desc_type" ucd="meta.code.class" utype="voprov:ActivityDescription.type"/>
-      <FIELD arraysize="*" datatype="char" name="desc_doculink" ucd="meta.ref.url" utype="voprov:ActivityDescription.doculink"/>
+      <FIELD name="id"  utype="voprov:Activity.id" ucd="meta.id" arraysize="*" datatype="char" />
+      <FIELD name="name" utype="voprov:Activity.name" ucd="meta.title" arraysize="*" datatype="char" />
+      <FIELD name="start" utype="voprov:Activity.startTime" ucd="time.start" arraysize="*" datatype="char" />
+      <FIELD name="stop" utype="voprov:Activity.endTime" ucd=""time.end" arraysize="*" datatype="char"  "/>
+      <FIELD name="annotation" utype="voprov:Activity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
+      <FIELD name="desc_id" utype="voprov:ActivityDescription.id" ucd="meta.id" arraysize="*" datatype="char" />
+      <FIELD name="desc_name" utype="voprov:ActivityDescription.name" ucd="meta.title" arraysize="*" datatype="char" />
+      <FIELD name="desc_type" utype="voprov:ActivityDescription.type" ucd="meta.code.class" arraysize="*" datatype="char" />
+      <FIELD name="desc_doculink" utype="voprov:ActivityDescription.doculink" ucd="meta.ref.url" arraysize="*" datatype="char" />
       <DATA>
         <TABLEDATA>
           <TR>
@@ -153,9 +177,9 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
       </DATA>
     </TABLE>
     <TABLE name="Entity" utype="voprov:Entity">
-      <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Entity.id"/>
-      <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Entity.name"/>
-      <FIELD arraysize="*" datatype="char" name="annotation" ucd="meta.description" utype="voprov:Entity.annotation"/>
+      <FIELD name="id" utype="voprov:Entity.id" ucd="meta.id"  arraysize="*" datatype="char" />
+      <FIELD name="name" utype="voprov:Entity.name" ucd="meta.title" arraysize="*" datatype="char" />
+      <FIELD name="annotation" utype="voprov:Entity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
       <DATA>
         <TABLEDATA>
           <TR>
