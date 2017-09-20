@@ -15,7 +15,7 @@ An auto-generated documentation of all classes (VO-DML compliant) is available i
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/domain-classdiagram-v2.pdf}
-\caption{Overview of the classes for the Provenance Data Model in a conceptual class diagram. The blue classes are core elements. There appear a number of many-to-many relationships with attached association classes (grey) which can contain additional attributes.}
+\caption[Overview: conceptual class diagram of the Provenance Data Model]{Overview of the classes for the Provenance Data Model in a conceptual class diagram. The blue classes are core elements. There appear a number of many-to-many relationships with attached association classes (grey) which can contain additional attributes.}
 %Objects in the blue box also appear in the W3C Provenance Data Model. 
 %Green classes are links to the IVOA Dataset Metadata Model.}
 \label{fig:classdiagram-conceptional}
@@ -53,7 +53,7 @@ a short description and some examples:
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/classes-core-w3c.pdf}
-\caption{The main core classes and relations of the Provenance Data Model, which also occur in the W3C model.}
+\caption[Core classes and relations of the Provenance Data Model]{The main core classes and relations of the Provenance Data Model, which also occur in the W3C model.}
 \label{fig:coreclasses}
 \end{figure}
 
@@ -116,7 +116,7 @@ all these classes and relations are given in the following section.
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/classes-overview.pdf}
-\caption{More detailed overview of the classes for the Provenance Data Model. Note that this UML class diagram is more compatible with VO-DML.}
+\caption[Detailed UML class diagramm, compatible with VO-DML]{More detailed overview of the classes for the Provenance Data Model. Note that this UML class diagram is more compatible with VO-DML.}
 \label{fig:classdiagram}
 \end{figure}
 
@@ -153,7 +153,7 @@ $\rightarrow$ wasAttributedTo & prov:wasAttributedTo & link & link to \class{Was
 \multicolumn{4}{@{}l}{(see Section \ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of entities. Mandatory attributes are marked in \textbf{bold}, references are indicated with an arrow ($\rightarrow$). Attributes from \class{EntityDescription} (see next section) may appear here as well.
+\caption[Attributes of \class{Entities}]{Attributes of \class{Entities}. Mandatory attributes are marked in \textbf{bold}, references are indicated with an arrow ($\rightarrow$). Attributes from \class{EntityDescription} (see next section) may appear here as well.
 }\label{tab:entity-attributes}
 \end{table}
 
@@ -172,7 +172,7 @@ provenance shall be described.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-details-v2.pdf}
-\caption{The relation between Entity, EntityDescription and Collection (see Section~\ref{sec:collection}). 
+\caption[Relations between Entity, EntityDescription and Collection]{The relations between Entity, EntityDescription and Collection (see Section~\ref{sec:collection}). 
 Links to the Dataset class from the Dataset Metadata Model are described in Section~\ref{sec:dmlinks}.}
 \label{fig:entity-details}
 \end{figure}
@@ -225,7 +225,7 @@ doculink    & & url & link to more documentation\\
 \multicolumn{4}{@{}l}{from DatasetDM) can be added (Section~\ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{EntityDescription}. For simple use cases, 
+\caption[Attributes of \class{EntityDescription}]{Attributes of \class{EntityDescription}. For simple use cases, 
 this description class may be ignored and its attributes may be used for 
 \class{Entity} instead.
 %The utypes may vary depending on the data model, e.g. for simulation data they 
@@ -271,7 +271,7 @@ generation       & string            & id of the \class{WasGeneratedBy} relation
 usage            & string            & id of the \class{Used} relation\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of the WasDerivedFrom relation. This is the same as used in W3C's ProvDM. \textbf{Mandatory} attributes are marked in bold, references in the data model are indicated with an arrow ($\rightarrow$). The W3C model contains additional optional links to the related \class{Activity}, \class{WasGeneratedBy} and \class{Used} relation, which we include here for completeness.
+\caption[Attributes of the \class{WasDerivedFrom} relation]{Attributes of the \class{WasDerivedFrom} relation. This is the same as used in W3C's ProvDM. \textbf{Mandatory} attributes are marked in bold, references in the data model are indicated with an arrow ($\rightarrow$). The W3C model contains additional optional links to the related \class{Activity}, \class{WasGeneratedBy} and \class{Used} relation, which we include here for completeness.
 }\label{tab:wasderivedfrom-attributes}
 \end{table}
 
@@ -337,7 +337,7 @@ the \class{EntityDescription}. This class should therefore only be introduced if
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{../datamodel-diagrams/images/activity-details.pdf}
-\caption{Details for Activity, ActivityDescription and ActivityFlow (see Section~\ref{sec:activityflow}). 
+\caption[Details for Activity, ActivityDescription and ActivityFlow]{Details for Activity, ActivityDescription and ActivityFlow (Sections~\ref{sec:activity} and \ref{sec:activityflow}).
 }
 \label{fig:activity-details}
 \end{figure}
@@ -362,7 +362,7 @@ $\rightarrow$ description &  & link & link to \class{ActivityDescription}\\
 $\rightarrow$ wasAssociatedWith & prov:wasAssociatedWith  & link & link to \class{WasAssociatedWith} for linking with a responsible \class{Agent}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
+\caption[Attributes of \class{Activity}.]{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
 Data Model, if existing. Attributes in bold are \textbf{mandatory}, references are indicated with an arrow ($\rightarrow$). If no \class{ActivityDescription} class is used, those attributes can be used here as well.}
 \end{table}
 
@@ -386,7 +386,7 @@ doculink     & & url    & link to further documentation on this process, e.g. a
 paper, the source code in a version control system etc.\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{ActivityDescription}.}
+\caption[Attributes of \class{ActivityDescription}]{Attributes of \class{ActivityDescription}.}
 \end{table}
 
 
@@ -436,7 +436,7 @@ and using the ActivityFlow (right side).
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{../datamodel-diagrams/images/provgraph-activityflow}
-\caption{An example provenance graph. The detailed version is shown on the left side. It also shows
+\caption[Example provenance graph with \class{ActivityFlow}]{An example provenance graph. The detailed version is shown on the left side. It also shows
 the shortcut \class{WasInformedBy} to connect two activities, which could be used if the entity e2 
 would not be needed anywhere else.
 An ActivityFlow can be used to ``hide'' a part of the provenance graph as is shown on the right side.
@@ -479,7 +479,7 @@ the ``hadStep'' relation, as is shown in Figure~\ref{fig:activity-details}.
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-activity-relations.pdf}
 \hspace{0.15\textwidth}
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-activity-relations-nodesc.pdf}
-\caption{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. In the left image, the \emph{role} that an entity played when being used or generated by an activity is recorded with the corresponding \emph{UsedDescription} and \emph{WasGeneratedByDescription}, also see Section~\ref{sec:entity-roles}. If these description classes are not used, the \emph{role} can be used directly as an attribute within the \emph{Used} and \emph{WasGeneratedBy} classes (right image).}
+\caption[\class{Entity}-\class{Activity} relations]{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. In the left image, the \emph{role} that an entity played when being used or generated by an activity is recorded with the corresponding \emph{UsedDescription} and \emph{WasGeneratedByDescription}, also see Section~\ref{sec:entity-roles}. If these description classes are not used, the \emph{role} can be used directly as an attribute within the \emph{Used} and \emph{WasGeneratedBy} classes (right image).}
 \label{fig:entity-activity-relations}
 \end{figure}
 
@@ -505,7 +505,7 @@ $\rightarrow$ entity & prov:entity & link & link to an \class{Entity}\\
 $\rightarrow$ description  &  & link & link to the corresponding \class{UsedDescription}, if existing\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes and references of \class{Used} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). The \attribute{role} attribute can also be defined in the \class{UsedDescription} class instead.}
+\caption[Attributes and references of \class{Used} relation class]{Attributes and references of \class{Used} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). The \attribute{role} attribute can also be defined in the \class{UsedDescription} class instead.}
 \label{tab:used}
 \end{table}
 
@@ -529,7 +529,7 @@ $\rightarrow$ activity & prov:activity & link & link to an \class{Activity}\\
 $\rightarrow$ description  &  & link & link to the corresponding \class{WasGeneratedByDescription}, if existing\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes and references of \class{WasGeneratedBy} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). The \attribute{role} attribute can also be defined in the \class{WasGeneratedByDescription} class instead.}
+\caption[Attributes and references of \class{WasGeneratedBy} relation class]{Attributes and references of \class{WasGeneratedBy} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). The \attribute{role} attribute can also be defined in the \class{WasGeneratedByDescription} class instead.}
 \label{tab:wasGeneratedBy}
 \end{table}
 
@@ -596,7 +596,7 @@ $\rightarrow$ \textbf{activityDescription} & link & link to \class{ActivityDescr
 $\rightarrow$ entityDescription & link & link to \class{EntityDescription}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes and references of \class{UsedDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes and references of \class{UsedDescription} class]{Attributes and references of \class{UsedDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
 \label{tab:usedDescription}
 \end{table}
 
@@ -616,7 +616,7 @@ $\rightarrow$ \textbf{entityDescription} & link & link to \class{EntityDescripti
 $\rightarrow$ activityDescription & link & link to an \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes and references of \class{WasGeneratedByDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). }
+\caption[Attributes and references of \class{WasGeneratedByDescription} class]{Attributes and references of \class{WasGeneratedByDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). }
 \label{tab:wasGeneratedByDescription}
 \end{table}
 
@@ -666,7 +666,7 @@ log & logging output file \\%& used for logging output \\
 red & image used for red channel of a composite activity\\%& used for images that will be used as the red channel of a composite activity\\
 \bottomrule
 \end{tabulary}
-\caption{Examples for entity roles as attributes in the 
+\caption[Examples for entity roles]{Examples for entity roles as attributes in the 
 \class{UsedDescription} and \class{WasGeneratedByDescription}.}
 \label{tab:entity-roles}
 \end{table}
@@ -737,7 +737,7 @@ in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 $\rightarrow$ description & & link & link to \class{ParameterDescription}\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). Attributes of \class{ParameterDescription} can be added here as well, if that class is not used.}
+\caption[Attributes of \class{Parameter}]{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). Attributes of \class{ParameterDescription} can be added here as well, if that class is not used.}
 \end{table}
 
 \begin{table}[ht]
@@ -760,7 +760,7 @@ max           & & number & maximum value\\
 options           & & list & list of accepted values\\
 \bottomrule
 \end{tabulary}
-\caption{Attributes of \class{ParameterDescription}.}
+\caption[Attributes of \class{ParameterDescription}]{Attributes of \class{ParameterDescription}.}
 \end{table}
 
 For example, observations generally require information on \emph{ambient conditions} as well as 
@@ -823,7 +823,7 @@ Organization & Organization & Organization & a publishing house, institute or sc
 
 \bottomrule
 \end{tabulary}
-\caption{Agent class and types of agents/subclasses in this data model, compared to W3C ProvDM and DatasetDM.}
+\caption[Agent class and types of agents/subclasses]{Agent class and types of agents/subclasses in this data model, compared to W3C ProvDM and DatasetDM.}
 \label{tab:agent-types}
 \end{table}
 
@@ -847,7 +847,7 @@ type & prov:type & string & type of the agent: either Individual (Person) or Org
 % email   &  & string & Contact email of the agent both for Individual (Person) and Organization\\
 \bottomrule
 \end{tabulary}
-\caption{Agent attributes}
+\caption[Agent attributes]{Agent attributes}
 \label{tab:agent-attributes}
 \end{table}
 
@@ -923,7 +923,7 @@ provider & Organization & ``an organization that makes data and/or services avai
 %(owner) & voprov:Individual or voprov:Organization & Does anyone really own the data?\\
 \bottomrule
 \end{tabulary}
-\caption{Examples for roles of agents and the typical type of that agent}
+\caption[Examples for roles of agents]{Examples for roles of agents and the typical type of that agent}
 \label{tab:agent-roles}
 \end{table}
 

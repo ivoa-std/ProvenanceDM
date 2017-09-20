@@ -26,7 +26,7 @@ Additional parameters can complete the request to refine the query. They are des
 \urlparam{MODEL} & \urlparam{\underline{IVOA}} or \urlparam{W3C} & compatibility of the serialization to the IVOA or W3C provenance data model\\
 \bottomrule
 \end{tabulary}
-\caption{ProvDAL request parameters. Options that are \textbf{required} to be implemented by ProvDAL services are marked with bold face. \underline{Default} values are underlined. The parameter names are case-insensitive, but the parameter values are not.}
+\caption[ProvDAL request parameters]{ProvDAL request parameters. Options that are \textbf{required} to be implemented by ProvDAL services are marked with bold face. \underline{Default} values are underlined. The parameter names are case-insensitive, but the parameter values are not.}
 \label{tab:provdal-parameters}
 \end{table}
 
@@ -81,7 +81,7 @@ Figure~\ref{fig:provenance-graph-example} shows an example provenance graph with
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{provenance-graph-example-depth2.pdf}
-\caption{An example provenance graph, highlighting the objects and relations returned from a ProvDAL service with \texttt{ID=E6} and \texttt{DEPTH=2}. The BACK and FORTH values for DIRECTION are only important for the processing relations (solid lines). Hierarchial (dashed) and responsibility (dotted) relations are only followed ``upwards'' (to collection/activityFlow) and towards agents by default (unless the optional parameters MEMBERS, STEPS and/or AGENT are set to true.}
+\caption[Example provenance graph for ProvDAL]{An example provenance graph, highlighting the objects and relations returned from a ProvDAL service with \texttt{ID=E6} and \texttt{DEPTH=2}. The BACK and FORTH values for DIRECTION are only important for the processing relations (solid lines). Hierarchial (dashed) and responsibility (dotted) relations are only followed ``upwards'' (to collection/activityFlow) and towards agents by default (unless the optional parameters MEMBERS, STEPS and/or AGENT are set to true.}
 \label{fig:provenance-graph-example}
 \end{figure}
 
