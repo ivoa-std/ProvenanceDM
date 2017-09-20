@@ -11,7 +11,6 @@ We envision two possible access protocols:
 
 
 \subsection{ProvTAP}
-% update from François / 2017 15/09
 ProvTAP is a TAP service specialization for delivering IVOA Provenance metadata.
 As for any TAP service \citep{std:TAP}, it is providing ADQL query responses
 consisting of a single table each, gathering columns selected from various
@@ -19,7 +18,7 @@ tables defined in the service's TAP schema. By default, this table is formatted
 as a VOTable. Other formats (JSON, tsv, etc.) could be added optionally.
 
 The table and column definitions available in the TAP schema, including their
-metadata (unit, ucd, utype, datatype, description), are exactly the ones defined
+metadata (\attribute unit, \attribute ucd, \attribute utype, \attribute datatype, description), are exactly the ones defined
 in the PROV-VOTable mapping of the IVOA Provenance data model (see table and
 column definitions and metadata in Appendix~\ref{sec:appendix-prov-votable}).
 This is corresponds to what has been done in the RegTAP specification
@@ -28,14 +27,17 @@ This is corresponds to what has been done in the RegTAP specification
 Examples of ADQL queries for ProvTAP are given below:
 \begin{itemize}
 \item To retrieve all entity metadata for entities sharing the same activity description: \\  
-"SELECT * FROM  Entity WHERE e\_ed\_ref = 'hispgen\_id""
-\item To retrieve all activities associated with agent "obspm": \\
-"SELECT WasAssociatedWith.as\_a\_id, Activity.a\_name, Activity.a\_annotation FROM WasAssociatedWith INNER JOIN Activity ON WasAssociatedWith.as\_a\_id = Activity.a\_id WHERE  WasAssociatedWith.as\_ag\_id = 'obspm'"
-\item To retrieve all "curator" agents: \\
-"SELECT  WasAttributedTo.at\_e\_id FROM WasAttributedTo WHERE WasAttributedTo.at\_ag\_role = 'curator'"
+\texttt{SELECT * FROM  Entity WHERE e\_ed\_ref = 'hispgen\_id'}
+\item To retrieve all activities associated with agent \texttt{obspm}: \\
+\texttt{SELECT WasAssociatedWith.as\_a\_id, Activity.a\_name, \\}
+\verb!       !\texttt{Activity.a\_annotation FROM WasAssociatedWith \\
+INNER JOIN Activity ON \\ WasAssociatedWith.as\_a\_id = Activity.a\_id 
+\\ WHERE  WasAssociatedWith.as\_ag\_id = 'obspm'}
+\item To retrieve all \texttt{curator} agents: \\
+\texttt{SELECT  WasAttributedTo.at\_e\_id FROM WasAttributedTo \\
+ WHERE WasAttributedTo.at\_ag\_role = 'curator'}
 \end{itemize}
 
-%end of update 
 
 %\TODO{We need more details here! Output of TAP service is NOT a PROV-VOTable by default!}
 
@@ -52,7 +54,8 @@ ivo://ivoa.net/std/ProvenanceDM#ProvDAL-1.0
 ivo://ivoa.net/std/ProvenanceDM#ProvTAP-1.0
 \end{verbatim}
 
-The capability for a TAP service to support the Provenance DM is expressed by the dataModel element as :
+The capability for a TAP service to support the Provenance DM is expressed by
+the dataModel element as:
 \begin{verbatim}
 <dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM-1.0">ProvenanceDM-1.0</dataModel>
 \end{verbatim}
