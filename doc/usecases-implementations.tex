@@ -5,12 +5,11 @@
 %and \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/prov-example-w3c.txt}
 
 This section presents some general guidelines for applying the data model and
-%This section presents some 
 specific use cases for which the provenance data model helps to solve certain tasks. Details on specific implementions of the provenance data model are provided in a separate document, the ProvenanceDM Implementation Note \citep{std:ProvenanceImplementationNote}.
 
 
 \subsection{How to use the data model}
-%\TODO{KR: I think this is a good place for this section. Do we still want to have this section or is everything covered with the new section on entitydescription-serialisation?}
+%\TODO{KR: I think this is a good place for this section. Do we still want to have this section or is everything covered with the new section on entitydescription-serialization?}
 %\begin{itemize}
 %\item identify entities in your project, i.e. the things you deal with
 %\item identify activities (processes) in your project
@@ -23,9 +22,12 @@ specific use cases for which the provenance data model helps to solve certain ta
 The IVOA Provenance data model has been developed along with its implementations from different projects. 
 We gather here some tips to implement and use the model for a specific project.
 
+% 2017-09-20 mireille's suggestion : classify the various paragraphs under main ideas in subsubsections 
+%\subsubsection{Before using the model}
 \paragraph{Before using the model}
 We noticed that the simple knowledge of what is provenance information is important for the conception of all projects. Before using or not the Provenance data model and associated services, it is good practice to locate and collect information on the activities, entities and agents that will be manipulated, and be sure that this information is not lost along the way. For example, a script may use intermediate files (such as calibration files for observations) that may not be tracked by the system.
 
+%% 2017-09-20 mireille's suggestion :\subsubsection{Define unique identifiers}
 \paragraph{Define unique identifiers}
 It would be convenient if each data object or even each file 
 gets a unique id that can be referenced. The W3C provenance model requires ids
@@ -36,6 +38,8 @@ Using a namespace for each
 project for these ids will help to make them unique. 
 IVOIDs, DOI's or ORCIDs are potentially good candidates for unique identifiers.
 
+%% 2017-09-20 mireille's suggestion : \subsubsection{Benefits of using description classes}
+%% 2017-09-20 mireille's suggestion : %\paragraph{Use of the description classes} 
 \paragraph{Use of the description classes} 
 One may only use the core data model without the description classes if they are not needed for the project. In that case, it is recommended to merge the attributes of the description classes into the main classes (Entity/Activity/Agent, and if needed Parameter). In the same way, when serializing the provenance information, the description classes can be merged to the main classes, which is needed to produce W3C compliant provenance files.
 
@@ -43,8 +47,13 @@ One may only use the core data model without the description classes if they are
 We proposed generic attributes for the different classes, but there are probably project specific attributes that need to be added. 
 It is also required at this level to disentangle Entity properties and EntityDescription properties: everything that you may know about an entity before its creation, belongs to the EntityDescription (e.g. file format, content\_type, dataproduct\_type, category, \dots).
 
+% 2017-09-20 mireille's suggestion :\paragraph{Group common features for entities and /or activities}
+% may be a better title ...not so sure
+% I think we do not have description for Agent classes
 \paragraph{Identify entities, activities and agents}
-If inside the project, the different entities that will be manipulated are already defined precisely, as well as the activities producing them, then the description classes are probably of interest and will help reduce the redundancy in the provenance information stored. 
+If inside the project, the different entities that will be manipulated are already defined precisely, as well as the activities producing them, then the description classes are probably of interest and will help reduce
+%2017-09-20 mireille's suggestion : help reducing
+ the redundancy in the provenance information stored. 
 
 \paragraph{Create ActivityDescription files}
 A model using description classes to define templates for activities and
@@ -54,63 +63,61 @@ provenance information for certain entities and activities.
 If description classes are relevant for a projet, it may be sufficient to store the descriptions directly as ActivityDescription files (see Section \ref{sec:description-serialization}). 
 Those can be created and centralized before implementing a provenance database or service.
 
+% 2017-09-20 mireille's suggestion :\subsubsection{Link to an Authentication System}
 \paragraph{Link to an Authentication System}
 We proposed to add optional attributes to tha Agent class (email, phone, address). Some projects may include an authentication system with a user directory. In that case a link should be kept between the Agent identifiers and the ones used in the authentication system when it is relevant, and information should be synchronized. However, there may be some agents that are not defined in the authentication system, so the information may not be easy to merge.
 
+% 2017-09-20 mireille's suggestion :\subsubsection{Adding additional metadata to an existing Entity}
 \paragraph{Adding additional metadata to an existing Entity}
 It could happen that after creating entities and storing their provenance, additional metadata is needed for those entities. For example, an ObsCore description may have to be added to some entities when they are made available to the public. In that case, the entity will receive an external identifier (e.g. a publisher\_did), which should thus be associated to the entity provenance identifier (Entity.id) in a relation table.
+% 2017-09-20 mireille's suggestion : add this sentence
+% This allows to match existing Ids between different data models metadata descriptions as highlighted in the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
-
-\subsection{voprov Python package}\label{sec:implementation_voprov}
-The voprov package is an open source python library derived from the prov python
+\subsection{\texttt{voprov} Python package}\label{sec:implementation_voprov}
+The \texttt{voprov} package is an open source Python library derived from the \texttt{prov} Python
 library (MIT license) developed by Trung Dong Huynh (University of
 Southampton). 
 
-The prov package implements the W3C Provenance Data Model.  It offers to
-describe the provenance in different format: PROV-N, JSON, XML, etc. and
-provides different output formats of the serialized data: PROV-N, JSON, and
-graphic formats: PDF, PNG, SVG.
+% 2017-09-20 mireille's suggestion :rewording and homgeneize the formats names
+The \texttt{prov} package implements the W3C Provenance Data Model.  It offers to
+describe the provenance and provides different output formats of the serialized data: PROV-N, PROV-JSON, PROV-XML and to build diagrams in the following graphic formats: PDF, PNG, SVG.
 
-The voprov library allows users to describe the provenance of their data
+The \texttt{voprov} library allows users to describe the provenance of their data
 according to the IVOA Provenance Data Model. It allows the description of flows
 of activities (pipelines) with eventually the composition of the different
-steps. It provides the VOTable serialization.
+steps. It provides the VOTable serialization in PROV-VOTable format.
 
-This library is currently used in the context of the Pollux database which hosts
+This library is currently used in the context of the POLLUX database which hosts
 synthetic stellar spectra. The provenance files are created from the non
 normalized information found in the Pollux header files. The serialization is
-proposed in 3 detail levels and in different formats: on one one hand in PROV-N,
-JSON, XML and VOTable formats and on the other hand in PDF, PNG and SVG graphic
+proposed in three levels of detail and in different formats: on one hand in PROV-N,
+PROV-JSON, PROV-XML and PROV-VOTable formats and on the other hand in PDF, PNG and SVG graphic
 formats. The VO user or the VO tool is informed of the existence of the
-provenance in a DataLink section of the SSA response which gives information on
+provenance in a DataLink entry of the Simple Spectral Access protocol (SSAP) response which gives information on
 how to retrieve a given provenance file.
 
-%This code writes the serialisation examples which are given in Section~\ref{sec:serialisations}.
-
-Example code and serializations are given in the Implementation Note
+Code, serializations and graphic format conversions examples are given in the Implementation Note
 \citep{std:ProvenanceImplementationNote}.
 
-
-\subsubsection{Graphic formats}
-\label{sec:graphic_formats}
-The voprov python module can also provide provenance information in graphic formats: PNG, SVG and PDF.
-In the above example, you have to add the following instructions in your python program:
-
-\begin{verbatim}
-    dot = prov_to_dot(provdoc, use_labels=True)
-    dot.write_png('ex1.png')
-    dot.write_svg('ex1.svg')
-    dot.write_pdf('ex1.pdf')
-\end{verbatim}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{access_ex1.png}
-\caption{Example: png format@}
-\label{fig:example}
-\end{figure}
-
-
+% 2017-09-20 mireille's suggestion :this could be shifted and detailed in the Implementation note as I mention above
+%\subsubsection{Graphic formats}
+%\label{sec:graphic_formats}
+%The \texttt{voprov} Python module can also provide provenance information in graphic formats: PNG, SVG and PDF.
+%In the above example, you have to add the following instructions in your Python program:
+%
+%\begin{verbatim}
+    %dot = prov_to_dot(provdoc, use_labels=True)
+    %dot.write_png('ex1.png')
+    %dot.write_svg('ex1.svg')
+    %dot.write_pdf('ex1.pdf')
+%\end{verbatim}
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{access_ex1.png}
+%\caption{Example: png format@}
+%\label{fig:example}
+%\end{figure}
 
 \subsection{Provenance of RAVE database tables (DR4)}
 The RAVE survey (Radial Velocity Experiment) recorded spectra for about half a 
@@ -123,7 +130,7 @@ It would also be useful to be able to compare if, how and why the derived data
 for some stars have changed between different releases.
 Provenance information for some major steps of RAVE DR4 was loaded in 
 W3C-compatible PROV-N notation and uploaded to the provenance store at 
-https://provenance.ecs.soton.ac.uk/store/documents/84064/. This allows to view 
+\footnotesize{\url{https://provenance.ecs.soton.ac.uk/store/documents/84064/}}. This allows to view 
 graphs of the workflow by visualising only the main entities, activities and agents 
 with their relations. It shows that the provenance concepts explained in this draft 
 can be applied directly to data obtained from astronomical observations.
@@ -133,9 +140,6 @@ which gives the possibility to view all instances of a class or details for a si
 extract provenance information for single entities (backwards in time) and 
 visualise the provenance information. 
 More details about this are available in the implementation notes \citep{std:ProvenanceImplementationNote}.
-
-
-
 
 \subsection{Provenance for CTA}
 
@@ -157,7 +161,7 @@ Provenance concepts are relevant for different aspects of CTA :
 \item Instrument Configuration: the characteristics of the instrument at a given time have to be available and traceable (hardware changes, measurements of e.g. a reflectivity curve of a mirror, ...)
 \end{itemize}
 
-We tested the tracking of Provenance information during the data analysis using the Python prov package inside OPUS\footnote{\url{https://github.com/ParisAstronomicalDataCentre/OPUS}} (Observatoire de Paris UWS System), a job control system developed at PADC (Paris Astronomical Data Centre). This system has been used to run CTA analysis tools and provides a description of the Provenance in the PROV-XML or PROV-JSON serialisations, as well as a graph visualization (see Figure~\ref{fig:cta_prov}).
+We tested the tracking of Provenance information during the data analysis using the Python \texttt{prov} package inside OPUS\footnote{\url{https://github.com/ParisAstronomicalDataCentre/OPUS}} (Observatoire de Paris UWS System), a job control system developed at PADC (Paris Astronomical Data Centre). This system has been used to run CTA analysis tools and provides a description of the Provenance in the PROV-XML or PROV-JSON serializations, as well as a graph visualization (see Figure~\ref{fig:cta_prov}).
 
 \begin{figure}
 \centering
@@ -166,18 +170,18 @@ We tested the tracking of Provenance information during the data analysis using 
 \label{fig:cta_prov}
 \end{figure}
 
-The CTA Pipeline contains a specific Provenance class dedicated to the collection of provenance information after each processing step. This informations is returned as an output file for now.
+The CTA Pipeline contains a specific Provenance class dedicated to the collection of provenance information after each processing step. This information is returned as an output file for now.
 
 More details about the related implementations are available in the implementation notes \citep{std:ProvenanceImplementationNote}.
 
 
 \subsection{Provenance for the POLLUX database}
 
-POLLUX is a stellar spectra database proposing access to high resolution synthetic spectra computed using the best available models of atmosphere (CMFGEN, ATLAS and MARCS), performant spectral synthesis codes (CMF\_FLUX,SYNSPEC and TURBOSPECTRUM) and atomic linelists from VALD database and specific molecular linelists for cool stars. 
+POLLUX is a stellar spectra database proposing access to high resolution synthetic spectra computed using the best available models of atmosphere (CMFGEN, ATLAS and MARCS), performant spectral synthesis codes (CMF\_FLUX, SYNSPEC and TURBOSPECTRUM ) and atomic line lists from VALD database and specific molecular line lists for cool stars. 
 
-Currently the provenance information is given to the astronomer in the header of the spectra files (depending on the format: FITS, ascii, xml, votables, ...) but in a non normalized description format. 
+Currently the provenance information is given to the astronomer in the header of the spectra files (depending on the format: FITS, ASCII, XML, VOTable, ...) but in a non-normalized description format. 
 
-The implementation of the provenance concepts in a standardized format allows users on one hand to benefit from tools to create, visualize and transform in another format the description of the provenance of these spectra and on a second hand to select data depending on provenance criteria. An example visualization of (W3C compatible) provenance metadata for a POLLUX spectrum is given in Figure~\ref{fig:pollux}.
+The implementation of the provenance concepts in a standardized format allows users on one hand to benefit from tools to create, visualize and transform to another format the description of the provenance of these spectra and on a second hand to select data depending on provenance criteria. An example visualization of (W3C compatible) provenance metadata for a POLLUX spectrum is given in Figure~\ref{fig:pollux}.
 
 \begin{figure}
 \centering
@@ -187,7 +191,7 @@ The implementation of the provenance concepts in a standardized format allows us
 \end{figure}
 
 \subsection{Provenance of HiPS datasets}
-HiPS is a new all sky organization of pixel data. It is based on HealPix tesselation of the sky on equal area cells (pixels) for a given HealPix order gathered in tiles. Adaptative resolution is achieved by a hierarchy of tiles at increasing order. Sorting and organization is based on a tree of including directories each of those associated with a tile. HiPS specification has entered the IVOA recommendation process and is becoming an interoperability standard.
+HiPS \cite{std:HiPs} is a new hierarchical organization of pixel data allowing smooth browsing of all sky data collections in astronomy. It is based on HealPix tesselation of the sky on equal area cells (pixels) for a given HealPix order gathered in tiles. Adaptative resolution is achieved by a hierarchy of tiles at increasing order. Sorting and organization is based on a tree of including directories each of those associated with a tile. HiPS specification has entered the IVOA recommendation process and is becoming an interoperability standard.
 In the processing chain, HiPS can be seen as a kind of ``legacy level'' for observational data.
 
 
