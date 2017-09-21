@@ -12,14 +12,14 @@ unnecessary repetitions in the metadata of datasets, and also offer the possibil
 to derive some basic provenance information from existing data model classes automatically, e.g. for creating provenance serializations from DatasetDM or SimDM metadata.
 
 
-\subsection{Links with Dataset/Obscore Model}
+\subsection{Links with Dataset/ObsCore Model}
 \label{sec:dataset-obscore}
 
-Entities and their descriptions in the Provenance Data Model 
-are tightly linked to the \class{DataSet}-class in the DatasetDM/ObsCore Data Model, as well as to 
-InputDataset and OutputDataSet in the Simulation Data Model \citep[SimDM,][]{std:SimDM}.
+\class{Entity} and \class{EntityDescription} in ProvenanceDM 
+are tightly linked to the \class{DataSet}-class in DatasetDM/ObsCoreDM, as well as to 
+\class{InputDataset} and \class{OutputDataSet} in the SimulationDM \citep{std:SimDM}.
 Tables~\ref{tab:datasetmapping} and \ref{tab:datasetmapping2} map classes and attributes from DatasetDM
-to concepts in the Provenance Data Model. 
+to concepts in ProvenanceDM. 
 %If the DatasetDM attributes are used in the serialization of an entity, they have the corresponding DatasetDM namespace.
 
 
