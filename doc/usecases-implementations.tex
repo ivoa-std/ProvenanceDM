@@ -181,15 +181,30 @@ The implementation of the provenance concepts in a standardized format allows us
 \end{figure}
 
 \subsection{Provenance of HiPS datasets}
-HiPS \citep{std:HiPs} is an IVOA recommendation for a new hierarchical organization of pixel data allowing smooth browsing of all sky data collections in astronomy. It is based on HealPix tesselation of the sky on equal area cells (pixels) for a given HealPix order gathered in tiles. Adaptative resolution is achieved by a hierarchy of tiles at increasing order. Sorting and organization is based on a tree of including directories each of those associated with a tile. In the processing chain, HiPS can be seen as a kind of ``legacy level'' for observational data.
+HiPS \citep{std:HiPs} is an IVOA recommendation for a new hierarchical
+organization of pixel data, allowing smooth browsing of all-sky data collections
+in astronomy. It is based on the HEALPix tesselation of the sky into equal-area
+cells for a given HEALPix order, where each cell is given an image tile.
+Adaptative resolution is achieved by a hierarchy of tiles at increasing
+order. Sorting and organization is based on a tree of nested directories, each
+of which is associated with a tile. In the processing chain, HiPS can be seen
+as a kind of ``legacy level'' for observational data.
 
 
-An HiPS dataset can be generated either by Aladin in ``hipsgen'' mode or by other softwares.
+A HiPS dataset can be generated either by Aladin in ``hipsgen'' mode or by other
+software.
 %\cite{if others}.  
-The processing distinguishes 3 main different methods for estimating cell values with parameters: FIRST(nearest neighbour), MEAN and MEDIAN of the neighboring pixels. Up to 50 parameters can help to tune the processing, among which the higher resolution HealPix order, the sky background value to be substracted, the border width or the mask to apply to original images to avoid including bad area in the computing, etc.
+The processing distinguishes 3 main different methods for estimating cell values
+with parameters: FIRST (nearest neighbour), MEAN, and MEDIAN of the neighbouring
+pixels. Up to 50 parameters can help to tune the processing, among them the
+highest resolution's HEALPix order, the sky background value to be substracted,
+the border width or the mask to apply to original images in order to avoid
+including bad areas, etc.
 
 
-An example of provenance metadata for a HiPS collection generated from a collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the MAMA facility and serialized in PROV-N format is given at \\
+An example of provenance metadata for a HiPS collection generated from a
+collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the
+MAMA facility and serialized in PROV-N format is given at \\
 \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}, the corresponding VOTable-format is available at \\
 \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-vot.xml}.
 
