@@ -229,12 +229,10 @@ infrastructure that enable VO applications.
 \input{PROV-VOTABLE}
 
 \section{Changes from Previous Versions}
-% No previous versions yet.
 % these would be subsections "Changes from v. WD-..."
-% Use itemize environments.
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
 \begin{itemize}
-%\item New appendix sections for ProvTAP added
+\item New appendix for PROV-VOTable/TAP SCHEMA tables added
 \item Corrected and extended attribute tables and mapping tables for links with DatasetDM and SimDM.
 \item Restructured Accessing provenance section by splitting it in two: Section~\ref{sec:serialisations} for explaining the different serialization formats and differences to W3C serializations, Section~\ref{sec:provaccess} for describing the access protocols ProvDAL and ProvTAP.
 \item Removed discussion section, since now all the topics are addressed in the main text.
@@ -253,13 +251,15 @@ infrastructure that enable VO applications.
 \item Moved detailed implementation section from appendix to a separate document (implementation note), shortened the use cases \& implementation section.
 \item Attribute/class updates:
 \begin{itemize}
+    \item Added attribute \emph{votype} to \class{Activity}, can be used for ActivityFlows
+    \item Added attribute \emph{time} to \class{Used} and \class{WasGeneratedBy}
     \item Added optional attributes \emph{Entity.creationTime} and \emph{EntityDescription.category}
-    \item Added optional attributes \emph{Parameter.min},  \emph{Parameter.max},  \emph{Parameter.option}
+    \item Added optional attributes \emph{Parameter.min},  \emph{Parameter.max},  \emph{Parameter.options}
     \item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
     \item Use voprov:type and voprov:role in Table~\ref{tab:agent-roles} with example agent roles, i.e. replaced prov:person by Individual and prov:organization by Organization.
     \item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
     \item Renamed attribute \emph{Entity.access} to \emph{Entity.rights} for more consistency with DatasetDM etc.
-    \item Avoid double-meaning of \emph{description} (as reference and free-text description) by renaming the free-text description to \emph{annotation}. No need for an additional description-attribute for reference to the corresponding description class, since it's expressed by the corresponding link in the model anyway.
+    \item Avoid double-meaning of \emph{description} (as reference and free-text description) by renaming the free-text description to \emph{annotation}. Mark description-references with arrows in attribute tables.
     \item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
     \item Renamed \emph{docuLink} to \emph{doculink}
     \item Corrected attribute names in Table~\ref{tab:datasetmapping}.
