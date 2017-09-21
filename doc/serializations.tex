@@ -7,8 +7,8 @@
 
 %{updated by Mathieu} 
 %The ProvenanceDM includes description classes that can exist before any provenance information is recorded. 
-Description classes in the Provenance DM gather information on the data processing which can preexist to the processing itself.
-First, the ActivityDescription class gives generic information on the activity (name, description, doculink...) and the parameters expected as an input. In addition, UsedDescription and WasGeneratedByDescription classes indicate the expected roles of the input and output entities respectively. Finally, The activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as EntityDescription records.
+Description classes in ProvenanceDM gather information on the data processing which can preexist to the processing itself.
+First, the \class{ActivityDescription} class gives generic information on the activity (\attribute{name}, \attribute{description}, \attribute{doculink}...) and the parameters expected as an input. In addition, \class{UsedDescription} and \class{WasGeneratedByDescription} classes indicate the expected roles of the input and output entities respectively. Finally, The activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as \class{EntityDescription} records.
 
 The serialization of an ActivityDescription, that includes all those description classes, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:Datalink}, and can thus be stored as a VOTable \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that may execute an activity using the given input parameters, some of which probably point to entities. One may thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa.
 
@@ -23,11 +23,11 @@ The VOTable contains one resource with attributes type=``meta'' and utype=``vopr
 % what if an activity computes a number , a boolean as a result and produces an output parameter instead of an output entity: e.g compare 2 sets of dataproducts : false/True correlate two datasets : correlation value, etc ...  
 % --> add output parameters  ?
 
-The standard PARAM elements for an activity resource correspond to the attributes of the ActivityDescription class (see Section~\ref{sec:activity}) and may include an Agent name and email. Only one agent can be given, corresponding to the main contact for this activity ("contact\_name" and "contact\_email"). 
-The "utype" attribute is used to connect the PARAM element to its location in the Provenance DM, so that other optional elements can be added.
+The standard PARAM elements for an activity resource correspond to the attributes of the \class{ActivityDescription} class (see Section~\ref{sec:activity}) and may include an Agent name and email. Only one agent can be given, corresponding to the main contact for this activity ("contact\_name" and "contact\_email"). 
+The \attribute{utype} attribute is used to connect the PARAM element to its location in the ProvenanceDM, so that other optional elements can be added.
 
-For the input parameters, each attribute located in the ParameterDescription class in the model (e.g. units, ucd, utype, \dots) is mapped to an attribute of a PARAM element in the VOTable (both have the same structure, see Section \ref{sec:parameters}).
-The "type" attribute of the PARAM element can be set to "no\_query" to indicate that the parameter is optional for the activity (i.e. a default value will be used).
+For the input parameters, each attribute located in the \class{ParameterDescription} class in the model (e.g. \attribute{units}, \attribute{ucd}, \attribute{utype}, \attribute{min}, \dots) is mapped to an attribute of a PARAM element in the VOTable (both have the same structure, see Section \ref{sec:parameters}).
+The \attribute{type} attribute of the PARAM element can be set to "no\_query" to indicate that the parameter is optional for the activity (i.e. a default value will be used).
 
 % suggestion Mireille 
 % change ``attribute'' to ``element'' to be compliant to the Votable definitions : PARAM, FIELDS are XML elements in the VOtble schema , utype, datatype , etc ... are XML attribute  
@@ -40,14 +40,14 @@ For the input and output entity groups, each entity is described with a GROUP bl
  \item name="default" for the default identifier of the entity (e.g. a file name) or its default value (if the entity is a value),
  \item name="role" that gives the role of the entity with respect to the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
  \item name="content\_type" for the MIME type expected by the activity for the input or output entity,
- \item other additional PARAM elements corresponding to attributes of EntityDescription, UsedDescription, WasGeneratedByDescription or possibly Agent.
+ \item other additional PARAM elements corresponding to attributes of \class{EntityDescription}, \class{UsedDescription}, \class{WasGeneratedByDescription} or possibly \class{Agent}.
  \end{itemize} 
 % mireille suppressed one 'expected'in sentence above
-It is possible to reference an input parameter using the \emph{ref} attribute of PARAM, if an input or output entity is referenced as an input parameter to the activity (e.g. the name of an input file). In the following example the output file name "RGB.jpg" is expected as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").
+It is possible to reference an input parameter using the \attribute{ref} attribute of PARAM, if an input or output entity is referenced as an input parameter to the activity (e.g. the name of an input file). In the following example the output file name "RGB.jpg" is expected as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").
 
 %Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three red, green, blue images:
 %++ suggestion mireille : 
-Here is an example of an ActivityDescription VOTable that describes an activity to create an RGB image from three input images mapped to the red, green, blue image planes in the composition. 
+Here is an example of an \class{ActivityDescription} VOTable that describes an activity to create an RGB image from three input images mapped to the red, green, blue image planes in the composition. 
 
 \begin{verbnobox}[\scriptsize]
 
@@ -84,7 +84,8 @@ Here is an example of an ActivityDescription VOTable that describes an activity 
     <GROUP name="Used" utype="voprov:UsedDescription">
       <GROUP name="R" utype="voprov:EntityDescription">
         <DESCRIPTION>Image for red channel</DESCRIPTION>
-        <PARAM name="default" value="R.jpg" arraysize="*" datatype="char" utype="voprov:Entity.id" />
+        <PARAM name="default" value="R.jpg" arraysize="*" datatype="char" 
+            utype="voprov:Entity.id" />
         <PARAM name="role" value="red" arraysize="*" datatype="char" 
             utype="voprov:UsedDescription.role" />
         <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
@@ -92,7 +93,8 @@ Here is an example of an ActivityDescription VOTable that describes an activity 
       </GROUP>
       <GROUP name="G" utype="voprov:EntityDescription">
         <DESCRIPTION>Image for green channel</DESCRIPTION>
-        <PARAM name="default" value="G.jpg" arraysize="*" datatype="char" utype="voprov:Entity.id" />
+        <PARAM name="default" value="G.jpg" arraysize="*" datatype="char" 
+            utype="voprov:Entity.id" />
         <PARAM name="role" value="green" arraysize="*" datatype="char" 
             utype="voprov:UsedDescription.role" />
         <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
@@ -100,7 +102,8 @@ Here is an example of an ActivityDescription VOTable that describes an activity 
       </GROUP>
       <GROUP name="B" utype="voprov:EntityDescription">
         <DESCRIPTION>Image for blue channel</DESCRIPTION>
-        <PARAM name="default" value="B.jpg" arraysize="*" datatype="char" utype="voprov:Entity.id" />
+        <PARAM name="default" value="B.jpg" arraysize="*" datatype="char" 
+            utype="voprov:Entity.id" />
         <PARAM name="role" value="blue" arraysize="*" datatype="char" 
             utype="voprov:UsedDescription.role" />
         <PARAM name="content_type" value="image/jpeg" arraysize="*" datatype="char" 
