@@ -9,15 +9,17 @@ Using ``voprov'' as the namespace prefix for our model and ``prov'' for W3C PROV
 \item namespace \texttt{voprov} $\rightarrow$ \texttt{prov} for those attributes that are the same in W3C (e.g. ID, role, startTime, endTime)
 \item attribute \texttt{voprov:name} $\rightarrow$ \texttt{prov:label}
 \item attribute \texttt{voprov:annotation} $\rightarrow$ \texttt{prov:description}
-\item attribute \texttt{prov:role} is not allowed in W3C's \emph{wasAttributedTo}, thus use \texttt{voprov:role}
-\item \emph{hadMember} has no ID and no optional attributes in W3C
-\item \emph{Collection} $\rightarrow$ \emph{Entity} with \texttt{prov:type = prov:collection}
-\item restructure \emph{ActivityFlow}:
+\item attribute \texttt{prov:role} is not allowed in W3C's \class{WasAttributedTo}, thus use \texttt{voprov:role}
+\item \class{hadMember} has no ID and no optional attributes in W3C
+\item \class{Collection} $\rightarrow$ \class{Entity} with \texttt{prov:type = prov:collection}
+\item restructure \class{ActivityFlow}:
 	\begin{itemize}
-	\item \emph{ActivityFlow} $\rightarrow$ \emph{Activity} with additional attribute \texttt{voprov:votype = 'voprov:activityFlow'}
-	\item replace \emph{hadStep} relation by W3C's general \emph{wasInfluencedBy} relation with additional attribute \texttt{voprov:votype = 'voprov:hadStep'}
+	\item \class{ActivityFlow} $\rightarrow$ \class{Activity} with additional attribute \texttt{voprov:votype = 'voprov:activityFlow'}
+	\item replace \class{HadStep} relation by W3C's general \class{WasInfluencedBy} relation with additional attribute \texttt{voprov:votype = 'voprov:hadStep'} or just use \attribute{voprov:hadStep} as attribute in activities of type activityFlow
 	\end{itemize}
-\item restructure \emph{*Description} classes: add their attributes to the linked core classes, using a ``desc\_'' prefix, e.g. Entity.desc\_category.
+\item restructure \class{*Description} classes: add their attributes to the linked core classes, using a ``desc\_'' prefix, e.g. Entity.desc\_category.
+\item restructure \class{Parameter} and \class{ParameterDescription}:
+merge them into one parameter class, model it as an entity
 
 \end{itemize}
 
