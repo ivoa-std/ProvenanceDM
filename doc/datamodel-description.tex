@@ -2,9 +2,11 @@
 %roles for Agents -updates  + funder
 % 
 In this section, we describe the currently discussed Provenance Data Model. We 
-start with an UML class diagram, explain the core elements and then give 
-in the following sections more details for each class and relation.
-An auto-generated documentation of all classes (VO-DML compliant) is available in the Volute repository at \url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/vo-dml/ProvenanceDM.html}.
+start with an UML class diagram, explain the core elements, and then,
+in the following sections, we give more details for each class and relation.
+An auto-generated documentation of all classes (VO-DML compliant) is available
+in the Volute repository at
+\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/vo-dml/ProvenanceDM.html}.
 
 \subsection{Overview: Conceptional UML class diagram and introduction to core classes}
 %We give in this section an overview on the main classes. More details about 
@@ -15,7 +17,11 @@ An auto-generated documentation of all classes (VO-DML compliant) is available i
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{../datamodel-diagrams/images/domain-classdiagram-v2.pdf}
-\caption[Overview: conceptual class diagram of the Provenance Data Model]{Overview of the classes for the Provenance Data Model in a conceptual class diagram. The blue classes are core elements. There appear a number of many-to-many relationships with attached association classes (grey) which can contain additional attributes.}
+\caption[Overview: conceptual class diagram of the Provenance Data
+Model]{Overview of the classes for the Provenance Data Model in a conceptual
+class diagram. The blue classes are core elements. There are a number of
+many-to-many relationships with attached association classes (grey) that may
+contain additional attributes.}
 %Objects in the blue box also appear in the W3C Provenance Data Model. 
 %Green classes are links to the IVOA Dataset Metadata Model.}
 \label{fig:classdiagram-conceptional}
@@ -28,18 +34,23 @@ An auto-generated documentation of all classes (VO-DML compliant) is available i
 
 Figure~\ref{fig:classdiagram-conceptional} shows the conceptional UML diagram for an IVOA Provenance Data
 Model.
-The core elements of the Provenance Data Model are \class{Entity}, \class{Activity} and \class{Agent}. 
-We chose for these elements the same names as were used in the Provenance Data 
-Model of the World Wide Web Consortium (W3C, \citealt{std:W3CProvDM}), which defines 
-a very abstract pattern that can be reused here. Here are the core classes with 
-a short description and some examples:
+The core elements of the Provenance Data Model are \class{Entity},
+\class{Activity} and \class{Agent}. For these elements we chose the same names
+that were used in the Provenance Data Model of the World Wide Web Consortium
+(W3C, \citealt{std:W3CProvDM}), which defines a very abstract pattern that can
+be reused here. Here are the core classes with short descriptions and some
+examples:
 
 \begin{itemize}
-\item \class{Entity:} a thing at a certain state\\
-    examples: data products like images, catalogs, parameter files, calibration data, instrument characteristics
+\item \class{Entity:} a thing in a certain state\\
+    examples: data products such as images, catalogs, parameter files,
+calibration data, instrument characteristics
 
-\item \class{Activity:} an action/process or a series of actions, occurs over a period of time, performed on or caused by entities, usually results in new entities\\
-    examples: data acquisition like observation, simulation; regridding, fusion, calibration steps, reconstruction
+\item \class{Activity:} an action\slash{}process or a series of actions,
+    occurring over a period of time, performed on or caused by entities,
+    usually resulting in new entities\\ examples: data acquisition like
+    observation, simulation; regridding, fusion, calibration steps,
+    reconstruction
 
 \item \class{Agent:} executes/controls an activity, is responsible for an activity or an entity\\
     examples: telescope astronomer, pipeline operator, principal investigator, software engineer, project helpdesk
