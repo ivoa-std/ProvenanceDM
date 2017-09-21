@@ -9,23 +9,14 @@ specific use cases for which the provenance data model helps to solve certain ta
 
 
 \subsection{How to use the data model}
-%\TODO{KR: I think this is a good place for this section. Do we still want to have this section or is everything covered with the new section on entitydescription-serialization?}
-%\begin{itemize}
-%\item identify entities in your project, i.e. the things you deal with
-%\item identify activities (processes) in your project
-%\item identify reponsible agents (persons and organizations)
-%\item find the relations between them
-%\item possibly disentangle entity properties and entityDescription properties: everything that you may know about an entity before its creation, belongs to the entityDescription; e.g. file format, dataProduct\_type, what kind of entity it is going to be (category)
-%\item ...
-%\end{itemize}
 
-The IVOA Provenance data model has been developed along with its implementations from different projects. 
+The IVOA Provenance Data Model has been developed along with its implementations from different projects. 
 We gather here some tips to implement and use the model for a specific project.
 
 % 2017-09-20 mireille's suggestion : classify the various paragraphs under main ideas in subsubsections 
 %\subsubsection{Before using the model}
 \paragraph{Before using the model}
-We noticed that the simple knowledge of what is provenance information is important for the conception of all projects. Before using or not the Provenance data model and associated services, it is good practice to locate and collect information on the activities, entities and agents that will be manipulated, and be sure that this information is not lost along the way. For example, a script may use intermediate files (such as calibration files for observations) that may not be tracked by the system.
+We noticed that the simple knowledge of what is provenance information is important for the conception of all projects. Before using or not ProvenanceDM and associated services, it is good practice to locate and collect information on the activities, entities and agents that will be manipulated, and be sure that this information is not lost along the way. For example, a script may use intermediate files (such as calibration files for observations) that may not be tracked by the system.
 
 %% 2017-09-20 mireille's suggestion :\subsubsection{Define unique identifiers}
 \paragraph{Define unique identifiers}
@@ -41,16 +32,13 @@ IVOIDs, DOI's or ORCIDs are potentially good candidates for unique identifiers.
 %% 2017-09-20 mireille's suggestion : \subsubsection{Benefits of using description classes}
 %% 2017-09-20 mireille's suggestion : %\paragraph{Use of the description classes} 
 \paragraph{Use of the description classes} 
-One may only use the core data model without the description classes if they are not needed for the project. In that case, it is recommended to merge the attributes of the description classes into the main classes (Entity/Activity/Agent, and if needed Parameter). In the same way, when serializing the provenance information, the description classes can be merged to the main classes, which is needed to produce W3C compliant provenance files.
+One may only use the core data model without the description classes if they are not needed for the project. In that case, it is recommended to merge the attributes of the description classes into the main classes (\class{Entity}/\class{Activity}/\class{Agent}, and if needed \class{Parameter}). In the same way, when serializing the provenance information, the description classes can be merged to the main classes, which is needed to produce W3C compliant provenance files.
 
-\paragraph{Add project specific attributes to entities, activities and agents}
+\paragraph{Add project specific attributes to your entities, activities and agents}
 We proposed generic attributes for the different classes, but there are probably project specific attributes that need to be added. 
-It is also required at this level to disentangle Entity properties and EntityDescription properties: everything that you may know about an entity before its creation, belongs to the EntityDescription (e.g. file format, content\_type, dataproduct\_type, category, \dots).
+It is also required at this level to disentangle \class{Entity} properties and \class{EntityDescription} properties: everything that you may know about an entity before its creation, belongs to the \class{EntityDescription} (e.g. file \attribute{format}, \attribute{content\_type}, \attribute{dataproduct\_type}, \attribute{category}, \dots).
 
-% 2017-09-20 mireille's suggestion :\paragraph{Group common features for entities and /or activities}
-% may be a better title ...not so sure
-% I think we do not have description for Agent classes
-\paragraph{Identify entities, activities and agents}
+\paragraph{Group common features for entities and/or activities}
 If inside the project, the different entities that will be manipulated are already defined precisely, as well as the activities producing them, then the description classes are probably of interest and will help reduce
 %2017-09-20 mireille's suggestion : help reducing
  the redundancy in the provenance information stored. 
@@ -60,18 +48,18 @@ A model using description classes to define templates for activities and
 entities has an advantage for normalization: the common processes could be
 described once and for all at some place and then be reused when recording
 provenance information for certain entities and activities.
-If description classes are relevant for a projet, it may be sufficient to store the descriptions directly as ActivityDescription files (see Section \ref{sec:description-serialization}). 
+If description classes are relevant for a project, it may be sufficient to store the descriptions directly as \class{ActivityDescription} files (see Section \ref{sec:description-serialization}). 
 Those can be created and centralized before implementing a provenance database or service.
 
 % 2017-09-20 mireille's suggestion :\subsubsection{Link to an Authentication System}
 \paragraph{Link to an Authentication System}
-We proposed to add optional attributes to tha Agent class (email, phone, address). Some projects may include an authentication system with a user directory. In that case a link should be kept between the Agent identifiers and the ones used in the authentication system when it is relevant, and information should be synchronized. However, there may be some agents that are not defined in the authentication system, so the information may not be easy to merge.
+We proposed to add optional attributes to the \class{Agent} class (email, phone, address). Some projects may include an authentication system with a user directory. In that case a link should be kept between the \class{Agent} identifiers and the ones used in the authentication system when it is relevant, and information should be synchronized. However, there may be some agents that are not defined in the authentication system, so the information may not be easy to merge.
 
 % 2017-09-20 mireille's suggestion :\subsubsection{Adding additional metadata to an existing Entity}
 \paragraph{Adding additional metadata to an existing Entity}
-It could happen that after creating entities and storing their provenance, additional metadata is needed for those entities. For example, an ObsCore description may have to be added to some entities when they are made available to the public. In that case, the entity will receive an external identifier (e.g. a publisher\_did), which should thus be associated to the entity provenance identifier (Entity.id) in a relation table.
+It could happen that after creating entities and storing their provenance, additional metadata is needed for those entities. For example, an ObsCoreDM description may have to be added to some entities when they are made available to the public. In that case, the entity will receive an external identifier (e.g. a \attribute{publisher\_did}), which should thus be associated to the entity provenance identifier (Entity.id) in a relation table.
 % 2017-09-20 mireille's suggestion : add this sentence
-% This allows to match existing Ids between different data models metadata descriptions as highlighted in the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
+This allows to match existing Ids between different data models metadata descriptions as highlighted in the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
 \subsection{\texttt{voprov} Python package}\label{sec:implementation_voprov}
 The \texttt{voprov}\footnote{\url{https://github.com/sanguillon/voprov}} package is an open source Python library derived from the \texttt{prov} Python
