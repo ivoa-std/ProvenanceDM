@@ -26,18 +26,18 @@ This corresponds to what has been done in the RegTAP specification
 
 Here are a few examples of ADQL queries for ProvTAP:
 \begin{itemize}
-\item To retrieve all entity metadata for entities sharing the same entity description: \\
-\texttt{SELECT * FROM  Entity WHERE e\_description = 'hipsgen\_id'}
+\item To retrieve all activity metadata for activies sharing the same activity description: \\
+\texttt{SELECT * FROM  Activity WHERE \\
+  Activity.a\_description = 'hipsgend\_mean'}
 \item To retrieve all activities associated with agent \texttt{obspm}: \\
-\texttt{SELECT WasAssociatedWith.as\_agent\_id, Activity.a\_name, \\}
+\texttt{SELECT WasAssociatedWith.waw\_activity\_id, Activity.a\_name, \\}
 \verb!       !\texttt{Activity.a\_annotation FROM WasAssociatedWith \\
-INNER JOIN Activity ON \\ WasAssociatedWith.as\_agent\_id = Activity.a\_id 
-\\ WHERE  WasAssociatedWith.as\_agent\_id = 'obspm'}
-\item To retrieve all \texttt{curator} agents: \\
-\texttt{SELECT  WasAttributedTo.at\_entity\_id FROM WasAttributedTo \\
- WHERE WasAttributedTo.at\_role = 'curator'}
+INNER JOIN Activity ON \\ WasAssociatedWith.waw\_activity\_id = Activity.a\_id
+\\ WHERE  WasAssociatedWith.waw\_agent\_id = 'obspm'}
+\item To retrieve all entities attributed to \texttt{curator} agents: \\
+\texttt{SELECT  WasAttributedTo.wat\_entity\_id FROM WasAttributedTo \\
+ WHERE WasAttributedTo.wat\_role = 'curator'}
 \end{itemize}
-
 %\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
 
 %\TODO{Also look at PROV-AQ from the W3C.}
