@@ -39,7 +39,7 @@ We proposed generic attributes for the different classes, but there are probably
 It is also required at this level to disentangle \class{Entity} properties and \class{EntityDescription} properties: everything that you may know about an entity before its creation, belongs to the \class{EntityDescription} (e.g. file \attribute{format}, \attribute{content\_type}, \attribute{dataproduct\_type}, \attribute{category}, \dots).
 
 \paragraph{Group common features for entities and/or activities}
-If inside the project, the different entities that will be manipulated are already defined precisely, as well as the activities producing them, then the description classes are probably of interest and will help reduce
+If inside the project, the different entities that will be manipulated are already defined precisely, as well as the activities producing them, then the description classes are probably of interest and will help reducing
 %2017-09-20 mireille's suggestion : help reducing
  the redundancy in the provenance information stored. 
 
@@ -155,7 +155,7 @@ More details about the related implementations are available in the implementati
 
 \subsection{Provenance for the POLLUX database}
 
-POLLUX is a stellar spectra database proposing access to high resolution synthetic spectra computed using the best available models of atmosphere (CMFGEN, ATLAS and MARCS), performant spectral synthesis codes (CMF\_FLUX, SYNSPEC and TURBOSPECTRUM ) and atomic line lists from VALD database and specific molecular line lists for cool stars. 
+POLLUX is a stellar spectra database proposing access to high resolution synthetic spectra computed using the best available models of atmosphere (CMFGEN, ATLAS and MARCS), performant spectral synthesis codes (CMF\_FLUX, SYNSPEC and TURBOSPECTRUM) and atomic line lists from VALD database and specific molecular line lists for cool stars. 
 
 Currently the provenance information is given to the astronomer in the header of the spectra files (depending on the format: FITS, ASCII, XML, VOTable, ...) but in a non-normalized description format. 
 

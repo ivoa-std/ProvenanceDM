@@ -174,11 +174,10 @@ rights      & -- & string & access rights for the data, values: public, restrict
 creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
 \midrule
 $\rightarrow$ description &  & link & link to \class{EntityDescription}\\
-$\rightarrow$ wasAttributedTo & prov:wasAttributedTo & link & link to \class{WasAttributedTo} for linking with a responsible \class{Agent}\\
+%$\rightarrow$ wasAttributedTo & prov:wasAttributedTo & link & link to \class{WasAttributedTo} for linking with a responsible \class{Agent}\\
 \midrule
 \multicolumn{4}{@{}l}{\textbf{Additional attributes:}} \\
-\multicolumn{4}{@{}l}{Further project-specific attributes (e.g. size, path, url, \dots) can be added.}\\
-\multicolumn{4}{@{}l}{(see Section \ref{sec:dataset-obscore})}\\
+\multicolumn{4}{@{}l}{Further project-specific attributes (e.g. size, path, url, \dots) can be added (see Section~\ref{sec:dataset-obscore})}\\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of \class{Entities}]{Attributes of \class{Entities}. Mandatory attributes are marked in \textbf{bold}, references are indicated with an arrow ($\rightarrow$). Attributes from \class{EntityDescription} (see next section) may appear here as well.
@@ -304,12 +303,12 @@ The \class{EntityDescription} general attributes are summarized in Table
 \toprule
 \head{Attribute} & \head{Data type}   & \head{Description}\\
 \midrule
-id               & string            & a unique id for this entity (unique in its realm)\\
+%id               & string            & a unique id\\
 $\rightarrow$ \textbf{generatedEntity} & link      & link to the \class{Entity}\\
 $\rightarrow$ \textbf{usedEntity}      & link      & link to the progenitor \class{Entity}, from which the generatedEntity was derived\\
-activity         & string            & id of the generation \class{Activity}\\
-generation       & string            & id of the \class{WasGeneratedBy} relation\\
-usage            & string            & id of the \class{Used} relation\\
+%activity         & string            & id of the generation \class{Activity}\\
+%generation       & string            & id of the \class{WasGeneratedBy} relation\\
+%usage            & string            & id of the \class{Used} relation\\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of the \class{WasDerivedFrom} relation]{Attributes of the
@@ -317,8 +316,7 @@ usage            & string            & id of the \class{Used} relation\\
 ProvDM. \textbf{Mandatory} attributes are marked in bold, references in the data
 model are indicated with an arrow ($\rightarrow$). The W3C model contains
 additional optional links to the related \class{Activity},
-\class{WasGeneratedBy} and \class{Used} relations, which we include here for
-completeness.
+\class{WasGeneratedBy} and \class{Used} relations, which we do not include here for simplicity.
 }\label{tab:wasderivedfrom-attributes}
 \end{table}
 
@@ -385,7 +383,7 @@ the \class{EntityDescription}. This class should therefore only be introduced if
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{../datamodel-diagrams/images/activity-details.pdf}
+\includegraphics[scale=0.7]{../datamodel-diagrams/images/activity-details.pdf}
 \caption[Details for Activity, ActivityDescription and ActivityFlow]{Details for Activity, ActivityDescription and ActivityFlow (Sections~\ref{sec:activity} and \ref{sec:activityflow}).
 }
 \label{fig:activity-details}
@@ -406,9 +404,11 @@ name        & prov:label  & string & a human-readable name (to be displayed by c
 \textbf{startTime} & prov:startTime & datetime & start of an activity\\
 \textbf{endTime} & prov:endTime  & datetime & end of an activity\\
 annotation        & prov:description & string & additional explanations for the specific activity instance\\
+votype & & string & can be either ``activity'' or ``activityFlow''\\
+%, used to differentiate between these two class types, if ``activityFlow'' is not implemented as an extra class (and in W3C compatible serializations)\\
 \midrule
 $\rightarrow$ description &  & link & link to \class{ActivityDescription}\\
-$\rightarrow$ wasAssociatedWith & prov:wasAssociatedWith  & link & link to \class{WasAssociatedWith} for linking with a responsible \class{Agent}\\
+%$\rightarrow$ wasAssociatedWith & prov:wasAssociatedWith  & link & link to \class{WasAssociatedWith} for linking with a responsible \class{Agent}\\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of \class{Activity}.]{Attributes of \class{Activity}, their data types and equivalents in the W3C Provenance 
@@ -464,6 +464,26 @@ of the description class may be assigned to the activity in order to produce
 a W3C compliant serialization, which is the same procedure as with
  Entity\slash{}EntityDescription).
 
+\begin{table}[h]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize WasInformedBy}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{@{}lp{3cm}L@{}}
+\toprule
+\head{Attribute} & \head{Data type}   & \head{Description}\\
+\midrule
+%id               & string            & a unique id\\
+$\rightarrow$ \textbf{informed} & link      & link to the \class{Activity} being informed by another (``second'' activity)\\
+$\rightarrow$ \textbf{informant}      & link      & link to the informing \class{Activity} (``first'' activity)\\
+%activity         & string            & id of the generation \class{Activity}\\
+%generation       & string            & id of the \class{WasGeneratedBy} relation\\
+%usage            & string            & id of the \class{Used} relation\\
+\bottomrule
+\end{tabulary}
+\caption[Attributes of the \class{WasInformedBy} relation]{Attributes of the
+\class{WasInformedBy} relation. We just use this class to link chained activities together. The attribute names correspond to the W3C PROV-DM names.
+}\label{tab:wasinformedby-attributes}
+\end{table}
 
 \paragraph{WasInformedBy.}
 The individual steps of a pipeline can be chained together directly, without
@@ -509,10 +529,10 @@ as well).
 But we would like to consider a set of activities as being an \class{Activity}
 itself,  with all the relations and properties that characterize activities.
 Therefore, we do not reuse W3C's classes for describing workflows and plans, but
-add  the class \class{ActivityFlow} as an activity composed of activities. The
+add  the class \class{ActivityFlow} as an activity composed of other activities. The
 composition is represented by  the \class{HadStep} relation, as is shown in
-Figure~\ref{fig:activity-details}.
-
+Figure~\ref{fig:activity-details}. In implementations, \class{ActivityFlow}
+can either be represented as an extra class or as \class{Activity} with attribute \attribute{votype="ActivityFlow"}.
 %while still making it obvious that this 
 %group contains activities, we introduce the class \class{ActivityFlow}.
 %This can be used for describing workflows or pipelines, or for 
@@ -896,6 +916,7 @@ Organization & Organization & Organization & a publishing house, institute or sc
 \textbf{name} & prov:name & string & a common name for this agent; e.g. first name and last name; project name, agency name...\\
 type & prov:type & string & type of the agent: either Individual (Person) or Organization\\
 email   &  & string & Contact email of the agent\\
+address &  & string & Address of the agent\\
 % insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
 % \hline
 % \multicolumn{4}{l}{Additional optional attributes from Dataset.Party subclasses:}\\
@@ -922,10 +943,9 @@ agency. At a finer level, it could be a specific scientific project, space missi
 or individual researcher. A provider is an organisation that makes data and/or services
 available to users over the network.''
 
-
-
-For each agent a \emph{name} should be specified, a summary of the attributes for \class{Agent} is given in Table~\ref{tab:agent-attributes}.
-One could also add the optional attributes \emph{address}, \emph{phone} and \emph{email} (compare with subclasses of \emph{Party} in Section~\ref{sec:dmlinks}). However, we skip them here in this main class, since an advanced system may use permanent identifiers (e.g. ORCIDs) to identify agents and retrieve their properties from an external system.
+For each agent a \attribute{name} should be specified, a summary of the attributes for \class{Agent} is given in Table~\ref{tab:agent-attributes}.
+We added the optional attributes \attribute{address} and \attribute{email}, since they appeared in our use cases and are quite commonly used.
+Not every project will need them; e.g. an advanced system may use permanent identifiers (e.g. ORCIDs) to identify agents and retrieve their properties from an external system instead.
 It would also increase the value of the given
 information if the (current) affiliation of the agent (and a project leader/group
 leader) were specified in order to maximize the chance of finding any contact 
@@ -933,8 +953,8 @@ person later on.
 The contact information is needed in case more information about a certain step in the past of a dataset is required,
 but also in order
 to know who was involved and to fulfill our ``Attribution'' requirement 
-(Section~\ref{sec:requirements}), so that proper credits are given to the right 
-people/projects. 
+(Section~\ref{sec:requirements}), so that proper credits are given to the 
+right people/projects. 
 
 
 
@@ -942,7 +962,7 @@ It is desired to have at least one agent given for each activity (and entity), b
 is not enforced.
 % , hence the multiplicity between \class{Entity}/\class{Activity} and the relations
 %to the \class{Agent} starts with 0.
-There can also be more than one agent for each activity/entity with different \emph{roles} 
+There can also be more than one agent for each activity/entity with different \attribute{roles} 
 and one agent can be responsible for more than one activity or entity. This 
 many-to-many relationship is made explicit in our model by adding the two
 following relation classes:
@@ -972,7 +992,7 @@ contributor & Individual & someone who contributed to something (but not enough 
 editor & Individual & editor of e.g. an article, before publishing\\
 creator & Individual & someone who created a dataset, creators of articles or software are rather called ``author''\\
 curator & Individual & someone who checked and corrected a dataset before publishing\\
-publisher & Organization {(maybe also Individual?)}& organization (publishing house, institute) that published something\\
+publisher & Organization & organization (publishing house, institute) that published something\\
 observer & Individual & observer at the telescope\\
 operator & Individual & someone performing a given task \\ % removed executor: ambiguous
 coordinator/PI & Individual & someone coordinating/leading a project\\ % we should choose one word : PI?
@@ -994,7 +1014,6 @@ possible roles an agent can have (along with descriptions partially taken from R
 in Table~\ref{tab:agent-roles}.
 For comparison, SimDM contains following roles for their contacts:
 owner, creator, publisher and contributor. Note that the \emph{Party} class in Dataset and SimDM are very similar to the \emph{Agent} class, which is explained in more detail in Section~\ref{sec:dmlinks}.
-
 
 
 This list is \emph{not} complete. We consider providing a vocabulary list for this 

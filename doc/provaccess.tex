@@ -18,7 +18,7 @@ tables defined in the service's TAP schema. By default, this table is formatted
 as a VOTable. Other formats (JSON, tsv, etc.) could be added optionally.
 
 The table and column definitions available in the TAP schema, including their
-metadata (\attribute unit, \attribute ucd, \attribute utype, \attribute datatype, description), are exactly the ones defined
+metadata (\attribute{unit}, \attribute{ucd}, \attribute{utype}, \attribute{datatype}, \attribute{description}), are exactly the ones defined
 in the PROV-VOTable mapping of the IVOA Provenance data model (see table and
 column definitions and metadata in Appendix~\ref{sec:appendix-prov-votable}).
 This corresponds to what has been done in the RegTAP specification
@@ -26,7 +26,7 @@ This corresponds to what has been done in the RegTAP specification
 
 Here are a few examples of ADQL queries for ProvTAP:
 \begin{itemize}
-\item To retrieve all activity metadata for activies sharing the same activity description: \\
+\item To retrieve all activity metadata for activies sharing the same activityDescription: \\
 \texttt{SELECT * FROM  Activity WHERE \\
   Activity.a\_description = 'hipsgend\_mean'}
 \item To retrieve all activities associated with agent \texttt{obspm}: \\
@@ -35,7 +35,7 @@ Here are a few examples of ADQL queries for ProvTAP:
 INNER JOIN Activity ON \\ WasAssociatedWith.waw\_activity\_id = Activity.a\_id
 \\ WHERE  WasAssociatedWith.waw\_agent\_id = 'obspm'}
 \item To retrieve all entities attributed to \texttt{curator} agents: \\
-\texttt{SELECT  WasAttributedTo.wat\_entity\_id FROM WasAttributedTo \\
+\texttt{SELECT WasAttributedTo.wat\_entity\_id FROM WasAttributedTo \\
  WHERE WasAttributedTo.wat\_role = 'curator'}
 \end{itemize}
 %\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}

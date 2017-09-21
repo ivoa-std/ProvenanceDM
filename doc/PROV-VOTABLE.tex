@@ -45,6 +45,8 @@ Tables~\ref{tab:TAP_entity} to \ref{tab:TAP_wasattributedto} provide
 full descriptions of the FIELDS of each of the mapping tables.
 The contents of all these tables' columns are normative.
 For convenience, in all these tables an arrow ($\rightarrow$) indicates columns that contain references (foreign keys) to other tables.
+The column names are prefixed by a short-cut for the table name in order to 
+ensure unique column names in queries with table joins for ProvTAP.
 
 \begin{table}[!ht]
 \scriptsize
@@ -63,6 +65,8 @@ e\_annotation&meta.description&voprov:Entity.annotation& char \cr
 %\sptablerule
 $\rightarrow$ e\_hadMember&meta.code.member&voprov:Entity.hadMember&char \cr
 $\rightarrow$ e\_description&meta.id& voprov:entity.description & char\cr
+%$\rightarrow$ e\_generatedEntity&meta.id& voprov:entity.wasDerivedFrom.generatedEntity & char\cr
+$\rightarrow$ e\_usedEntity&meta.id& voprov:entity.wasDerivedFrom.usedEntity & char\cr
 \sptablerule
 \end{tabular}
 \caption{Column description for entity table }
@@ -98,12 +102,14 @@ a\_name&meta.title& voprov:Activity.name&char \cr
 a\_startTime&time.start&voprov:Activity.startTime& char\cr
 a\_stopTime&time.stop&voprov:Activity.stopTime& char\cr
 a\_annotation&meta.description&voprov:Activity.annotation& char \cr
+a\_votype&meta.code.class&voprov:Activity.votype& char\cr
 %\sptablerule
 %references& \cr
 %\sptablerule
+$\rightarrow$ a\_hadStep&meta.code.member&voprov:Activity.hadStep&char \cr
 $\rightarrow$ a\_description&meta.id& voprov:Activity.description & char\cr
 $\rightarrow$ a\_parameter&meta.id&voprov:Activity.parameter& char \cr
-
+$\rightarrow$ a\_informant&meta.id& voprov:Activity.wasInformedBy.informant & char\cr
 \sptablerule
 \end{tabular}
 \caption{Column description for activity table }
@@ -127,11 +133,11 @@ ad\_doculink&meta.ref.url&voprov:ActivityDescription.doculink& char\cr
 %\sptablerule
 %references& \cr
 %\sptablerule
-$\rightarrow$ ad\_param\_ref&meta.id&voprov:ActivityDescription.parameter& char \cr
+$\rightarrow$ ad\_param&meta.id&voprov:ActivityDescription.parameter& char \cr
 
 \sptablerule
 \end{tabular}
-\caption{Column description for ActivityDescription table }
+\caption{Column description for activityDescription table }
 \label{tab:TAP_activitydesc}
 \end{table}
 
@@ -145,9 +151,9 @@ $\rightarrow$ ad\_param\_ref&meta.id&voprov:ActivityDescription.parameter& char 
 ag\_id&meta.id& voprov:Agent.id&char \cr
 ag\_name&meta.title& voprov:Agent.name&char \cr
 ag\_type&meta.code.class&voprov:Agent.type&char OPTIONS \cr
-\sptablerule
+%\sptablerule
+ag\_address&meta.address&voprov:Agent.address&char \cr
 ag\_email&meta.email&voprov:Agent.email&char \cr
-%ag\_phone&meta&voprov:agent.party.phone&char \cr
 
 \sptablerule
 \end{tabular}
@@ -162,7 +168,7 @@ ag\_email&meta.email&voprov:Agent.email&char \cr
 \textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
 \sptablerule
 p\_id&meta.id& voprov:Parameter.id&char \cr
-p\_value&stat.value& voprov:Parameter.value& param dependant \cr
+p\_value&stat.value& voprov:Parameter.value& param dependent \cr
 $\rightarrow$ p\_description&mata.id&voprov:Parameter.descripton& reference to parameter description \cr
 
 \sptablerule
@@ -178,15 +184,15 @@ $\rightarrow$ p\_description&mata.id&voprov:Parameter.descripton& reference to p
 \textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
 \sptablerule
 pd\_id&meta.id& voprov:ParameterDescription.id&char \cr
-pd\_name&meta.title& voprov:ParameterDescription.name& param dependant \cr
+pd\_name&meta.title& voprov:ParameterDescription.name& param dependent \cr
 pd\_annotation&meta.description&voprov:ParameterDescription.annotation& char \cr
 pd\_datatype&meta&voprov:ParameterDescription.datatype& char \cr
 pd\_unit&meta.unit&voprov:ParameterDescription.unit& char \cr
 pd\_ucd&meta.ucd&voprov:ParameterDescription.ucd& char \cr
 pd\_utype&meta&voprov:ParameterDescription.utype& char \cr
-pd\_min&stat.min&voprov:ParameterDescription.min& param dependant \cr
-pd\_max&stat.max&voprov:ParameterDescription.max& param dependant \cr
-pd\_options&meta&voprov:ParameterDescription.options& param dependant \cr
+pd\_min&stat.min&voprov:ParameterDescription.min& param dependent \cr
+pd\_max&stat.max&voprov:ParameterDescription.max& param dependent \cr
+pd\_options&meta&voprov:ParameterDescription.options& param dependent \cr
 \sptablerule
 \end{tabular}
 \caption{Column description for parameterDescription table }
@@ -202,6 +208,8 @@ pd\_options&meta&voprov:ParameterDescription.options& param dependant \cr
 $\rightarrow$ u\_entity\_id&meta.id&voprov:Used.entity&char \cr
 $\rightarrow$ u\_activity\_id&meta.id&voprov:Used.activity& char \cr
 $\rightarrow$ u\_usedDescription\_id&meta.id&voprov:Used.usedDescription& char \cr
+u\_role&meta.code.class&voprov:Used.role& char OPTION \cr
+u\_time&time.start&voprov:Used.time& char\cr
 \sptablerule
 \end{tabular}
 \caption{Column description for used relationship table}
@@ -219,7 +227,7 @@ $\rightarrow$ ud\_activityDescription\_id&meta.id&voprov:UsedDescription.\newlin
 ud\_role&meta.code.class&voprov:UsedDescription.role& char OPTION \cr
 \sptablerule
 \end{tabular}
-\caption[Column description for usedDescription relationship table]{Column description for usedDescription relationship table. The value of a role string belongs to a set of possible literal values given for instance using the VOTable OPTION element }
+\caption[Column description for usedDescription relationship table]{Column description for usedDescription relationship table. The value of a role string belongs to a set of possible literal values given for instance using the VOTable OPTION element. }
 \label{tab:TAP_useddesc}
 \end{table}
 
@@ -232,6 +240,7 @@ ud\_role&meta.code.class&voprov:UsedDescription.role& char OPTION \cr
 $\rightarrow$ wgb\_entity\_id&meta.id&voprov:WasGeneratedBy.entity&char \cr
 $\rightarrow$ wgb\_activity\_id&meta.id&voprov:WasGeneratedBy.activity& char \cr
 wgb\_role&meta.code.class&voprov:WasGeneratedBy.role& char OPTION \cr
+wgb\_time&time.stop&voprov:WasGeneratedBy.time& char\cr
 \sptablerule
 \end{tabular}
 \caption{Column description for wasGeneratedBy relationship table }
@@ -260,9 +269,9 @@ wgbd\_role&meta.code.class&voprov:WasGeneratedByDescription.role& char OPTION \c
 \sptablerule
 \textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
 \sptablerule
-$\rightarrow$ waw\_agent\_id&meta.id&voprov:wasAssociatedWith.Agent&char \cr
-$\rightarrow$ waw\_activity\_id&meta.id&voprov:wasAssoatciatedWith.Activity& char \cr
-waw\_role&meta.code.class&voprov:wasAssociatedWith.agentRole& char OPTION \cr
+$\rightarrow$ waw\_agent\_id&meta.id&voprov:WasAssociatedWith.Agent&char \cr
+$\rightarrow$ waw\_activity\_id&meta.id&voprov:WasAssoatciatedWith.Activity& char \cr
+waw\_role&meta.code.class&voprov:WasAssociatedWith.agentRole& char OPTION \cr
 \sptablerule
 \end{tabular}
 \caption{Column description for wasAssociatedWith relationship table }
@@ -275,9 +284,9 @@ waw\_role&meta.code.class&voprov:wasAssociatedWith.agentRole& char OPTION \cr
 \sptablerule
 \textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
 \sptablerule
-$\rightarrow$ wat\_entity\_id&meta.id&voprov:wasAttributedTo.Entity&char \cr
-$\rightarrow$ wat\_agent\_id&meta.id&voprov:wasAttributedTo.Agent& char \cr
-wat\_role&meta.code.class&voprov:wasAttributedTo.agentRole& char OPTION \cr
+$\rightarrow$ wat\_entity\_id&meta.id&voprov:WasAttributedTo.Entity&char \cr
+$\rightarrow$ wat\_agent\_id&meta.id&voprov:WasAttributedTo.Agent& char \cr
+wat\_role&meta.code.class&voprov:WasAttributedTo.agentRole& char OPTION \cr
 \sptablerule
 \end{tabular}
 \caption{Column description for wasAttributedTo relationship table }
