@@ -3,8 +3,13 @@ In this document, we discuss a draft of an IVOA standard data model for
 describing the provenance of astronomical data. 
 We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
-In astronomy, such entities are generally datasets composed of VOTables, FITS files, database tables or files containing values (spectra, lightcurves), logs, parameters, etc. The activities correspond to processes like an observation, a simulation, or processing steps (image stacking, object extraction, etc.). The people involved can be individual persons (observer, publisher...), groups or organisations.
-An example for activities, entities and agents as they can be discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
+In astronomy, such entities are generally datasets composed of VOTables, FITS
+files, database tables or files containing values (spectra, light curves), logs,
+parameters, etc. The activities correspond to processes like an observation, a
+simulation, or processing steps (image stacking, object extraction, etc.). The
+people involved can be individual persons (observer, publisher, \ldots), groups
+or organisations. An example for activities, entities and agents as they can be
+discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
 
 \begin{figure}[h]
 \centering
@@ -38,7 +43,14 @@ can be modeled, stored and exchanged. Its scope
 is mainly modeling of the flow of data, of the relations between data,
 and of processing steps. 
 
-Characteristics of observation activities such as ambient conditions and instrument characteristics can be associated to provenance information.  during the execution of processing activities (computer structure, nodes, operating system used\dots) can also be connected to provenance information. However, they will not be modeled here explicitly. This additional information can be included in the form of data or entities linked to those activities, or as attributes of activities (see also Section ~\ref{sec:parameters} for parameters of activities).
+Characteristics of observation activities such as ambient conditions and
+instrument characteristics can be associated to provenance information.  during
+the execution of processing activities (computer structure, nodes, operating
+system used, \dots) can also be connected to provenance information. However,
+they will not be modeled here explicitly. This additional information can be
+included in the form of data or entities linked to those activities, or as
+attributes of activities (see also Section~\ref{sec:parameters} for parameters
+of activities).
 
 In general, the model shall capture information in a machine-readable way that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
 This will help the scientist to decide if the dataset 
