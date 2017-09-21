@@ -177,12 +177,12 @@ Links to the Dataset class from the Dataset Metadata Model are described in Sect
 \label{fig:entity-details}
 \end{figure}
 
-The VO concept closest to Entity is the notion of ``Dataset'', which could mean a single 
+The VO concept closest to \class{Entity} is the notion of \class{Dataset}, which could mean a single 
 table, an image or a collection of them. The Dataset Metadata Model 
-\citep{std:DatasetDM} specifies an ``IVOA Dataset'' as ``a file or files which 
+\citep{std:DatasetDM} specifies an \class{Dataset} as ``a file or files which 
 are considered to be a single deliverable''. 
 Most attributes of the \class{Dataset} class can be mapped
-directly to attributes of the \class{Entity} and EntityDescription class, see the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
+directly to attributes of the \class{Entity} and \class{EntityDescription} class, see the mapping table \ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
 
 For entities, we suggest the attributes given in Table 
@@ -237,7 +237,7 @@ this description class may be ignored and its attributes may be used for
 \paragraph{EntityDescription.}
 %The Entity class can have an EntityDescription class attached. 
 The types of entities, or datasets in astronomy, can be predefined using a description class \class{EntityDescription}.
-This class is meant to store descriptive informations about an Entity that are known before the Entity instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory ``format'' for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final ``size'' of the image  that will be created. Therefore, ``format'' would be an EntityDescription attribute , while ``size'' would be an attribute of the Entity instance. 
+This class is meant to store descriptive informations about an entity that are known before the \class{Entity} instance is created. For example, if we run an activity to create a RGB image from three grey images, we may have a mandatory \attribute{format} for the input and output images before the execution (JPG, PNG, FITS\dots), but we probably cannot know the final \attribute{size} of the image  that will be created. Therefore, \attribute{format}' would be an EntityDescription attribute , while  \attribute{size} would be an attribute of the \class{Entity} instance. 
 
 %This class thus stores entity-related 
 Additional attributes that describe the content of the data could be derived from 
@@ -248,7 +248,7 @@ of the data, it tells nothing about them being used as input or output. This is
 defined only by the relations (and the relation descriptions) between activities
 and entities (see Section \ref{sec:entity-activity-relations}).
 
-The EntityDescription general attributes are summarized in Table 
+The \class{EntityDescription} general attributes are summarized in Table 
 \ref{tab:entitydescription-attributes}.
 
 
@@ -311,15 +311,15 @@ with the name `RAVE survey' could consist of a number of database tables and spe
 
 %\TODO{Do we allow empty collections? Or should collections always contain at least 1 member? (otherwise they are just prov:entities?)}
 
-The Entity-Collection relation can be modeled using the \emph{Composite} design pattern: 
-Collection is a subclass of Entity, but also an aggregation of 1 to many entities, 
+The \class{Entity}-\class{Collection} relation can be modeled using the \emph{Composite} design pattern: 
+\class{Collection} is a subclass of \class{Entity}, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
 In order to be compliant to VO-DML, we model the membership-relation explicitly 
 by including a \class{HadMember} class in our model, which is connected to the
-\emph{Collection} class via a composition. It may contain an additional role attribute.
+\class{Collection} class via a composition. It may contain an additional role attribute.
 
 Collections are also known in the W3C model, in the same sense as used here.
-The relation between entity and collection is also called ``HadMember'' in the W3C model.
+The relation between entity and collection is also called \class{HadMember} in the W3C model.
 
 An additional class \class{CollectionDescription} is only 
 needed if it has different attributes than 
@@ -430,7 +430,7 @@ It can be used for hiding and grouping a part of the workflow/pipeline
 or provenance 
 description, if different levels of granularity are needed. Such pipelines and workflows are very common in astronomical data production and processing. Figure \ref{fig:provgraph-activityflow}
 illustrates an example provenance graph in a detailed level (left side) 
-and using the ActivityFlow (right side).
+and using the \class{ActivityFlow} (right side).
 
 
 \begin{figure}[h]
@@ -456,7 +456,7 @@ But we would like to consider a set of activities as being an \class{Activity} i
 with all the relations and properties that an activity also has. Therefore we do not reuse
 W3C's classes for describing workflows and plans, but added 
 the class \class{ActivityFlow} as an activity composed of activities. The composition is represented by 
-the ``hadStep'' relation, as is shown in Figure~\ref{fig:activity-details}.
+the \class{HadStep} relation, as is shown in Figure~\ref{fig:activity-details}.
 
 %while still making it obvious that this 
 %group contains activities, we introduce the class \class{ActivityFlow}.
@@ -479,7 +479,7 @@ the ``hadStep'' relation, as is shown in Figure~\ref{fig:activity-details}.
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-activity-relations.pdf}
 \hspace{0.15\textwidth}
 \includegraphics[scale=0.6]{../datamodel-diagrams/images/entity-activity-relations-nodesc.pdf}
-\caption[\class{Entity}-\class{Activity} relations]{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. In the left image, the \emph{role} that an entity played when being used or generated by an activity is recorded with the corresponding \emph{UsedDescription} and \emph{WasGeneratedByDescription}, also see Section~\ref{sec:entity-roles}. If these description classes are not used, the \emph{role} can be used directly as an attribute within the \emph{Used} and \emph{WasGeneratedBy} classes (right image).}
+\caption[\class{Entity}-\class{Activity} relations]{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. In the left image, the \attribute{role} that an entity played when being used or generated by an activity is recorded with the corresponding \emph{UsedDescription} and \emph{WasGeneratedByDescription}, also see Section~\ref{sec:entity-roles}. If these description classes are not used, the \emph{role} can be used directly as an attribute within the \class{Used} and \class{WasGeneratedBy} classes (right image).}
 \label{fig:entity-activity-relations}
 \end{figure}
 
@@ -716,8 +716,8 @@ The concept of activity configuration, generally a set of parameters that can be
 
 To enable the latter solution, we add a \class{Parameter} class along with a
 \class{ParameterDescription} for describing additional properties of activities.
-In this solution, Parameters are directly connected to an Activity without
-complex Entity-Activity relations. Moreover, we can then describe each parameter
+In this solution, parameters are directly connected to an activity without
+complex \class{Entity}-\class{Activity} relations. Moreover, we can then describe each parameter
 in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 
 
