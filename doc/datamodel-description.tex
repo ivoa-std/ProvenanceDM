@@ -363,7 +363,7 @@ with the name `RAVE survey' could consist of a number of database tables and spe
 The \class{Entity}-\class{Collection} relation can be modeled using the \emph{Composite} design pattern: 
 \class{Collection} is a subclass of \class{Entity}, but also an aggregation of 1 to many entities, 
 which could be collections themselves. 
-In order to be compliant to VO-DML, we model the membership-relation explicitly 
+In order to be compliant to VO-DML, we model the membership relation explicitly 
 by including a \class{HadMember} class in our model, which is connected to the
 \class{Collection} class via a composition. It may contain an additional role attribute.
 
@@ -439,10 +439,11 @@ paper, the source code in a version control system etc.\\
 \end{table}
 
 
-Activities in astronomy include all steps from obtaining data to the reduction of 
-images and production of new datasets, like image calibration, bias subtraction, image stacking; 
-light curve generation from a number of observations, radial velocity 
-determination from spectra, post-processing steps of simulations etc.
+Activities in astronomy include all steps from obtaining data to the reduction
+of  images and production of new datasets, such as image calibration, bias
+subtraction, image stacking, light curve generation from a number of
+observations, radial velocity determination from spectra, post-processing steps
+of simulations, etc.
 
 \paragraph{ActivityDescription.}
 The method underlying an activity can be specified by a corresponding 
@@ -450,36 +451,38 @@ The method underlying an activity can be specified by a corresponding
 to the \class{Protocol} class in SimDM). This could be, 
 for instance, the name of the code used to perform an activity or a more general 
 description of the underlying algorithm or process. An activity is then a 
-concrete case (instance) of using such a method, with a startTime and endTime, 
-and it refers to a corresponding description for further information.
+concrete case (instance) of using such a method, with a startTime and an
+endTime, and it refers to a corresponding description for further information.
 
 There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a 
 pipeline shall be grouped together, one needs to create a proper 
 \class{ActivityDescription} for describing all the steps at once. This method can then 
-be refered to by the pipeline-activity. 
+be refered to by the pipeline activity. 
 
 When serializing the data model, the attributes
 of the description class may be assigned to the activity in order to produce 
-a W3C compliant serialization (same as with Entity/EntityDescription).
+a W3C compliant serialization, which is the same procedure as with
+ Entity\slash{}EntityDescription).
 
 
 \paragraph{WasInformedBy.}
-The individual steps of a pipeline can be chained
-together directly, without mentioning the intermediate datasets, using the \class{WasInformedBy}-relation.
-This relation can be used as a short-cut, if the exchanged datasets are deemed to be not important
-enough to be recorded. For grouping activities, also see the 
-next section \ref{sec:activityflow}.
+The individual steps of a pipeline can be chained together directly, without
+mentioning the intermediate datasets, using the \class{WasInformedBy} relation.
+This relation can be used as a shortcut if the skipped datasets are deemed
+to be not important enough to be recorded. For grouping activities, also see
+the next Section~\ref{sec:activityflow}.
 
 
 \subsubsection{ActivityFlow}\label{sec:activityflow}
 %\TODO{Link to D-PROV!}
-For facilitating grouping of activities (and their related entities etc.)
-we introduce the class \class{ActivityFlow}.
-It can be used for hiding and grouping a part of the workflow/pipeline 
-or provenance 
-description, if different levels of granularity are needed. Such pipelines and workflows are very common in astronomical data production and processing. Figure \ref{fig:provgraph-activityflow}
-illustrates an example provenance graph in a detailed level (left side) 
-and using the \class{ActivityFlow} (right side).
+For facilitating grouping of activities (and their related entities, etc.) we
+introduce the class \class{ActivityFlow}. It can be used for hiding and grouping
+a part of the workflow/pipeline  or provenance  description, if different levels
+of granularity are required. Such pipelines and workflows are very common in
+astronomical data production and processing. Figure
+\ref{fig:provgraph-activityflow} illustrates an example provenance graph at a
+detailed level (left side), and also using an \class{ActivityFlow} (right
+side).
 
 
 \begin{figure}[h]
@@ -493,19 +496,22 @@ Activities are marked by blue rectangles, entities by yellow ellipses.}
 \label{fig:provgraph-activityflow}
 \end{figure}
 
-We also explored the different ways to describe a set of activities in the W3C 
-provenance model. This model uses \class{Bundle}, i.e. an entity with type ``Bundle'', 
-for wrapping a provenance description. Each part of a provenance description can be 
-put into a bundle, and the bundle can then be reused in other provenance descriptions. 
-W3C's \class{Plan} is an entity with type ``Plan'' and is used for describing a 
-set of actions or steps. Both, \class{Bundle} and \class{Plan}, are entities and 
-have the attributes and relations of this class (and thus one can define provenance of bundles and plans as well).
+We also explored the different ways to describe a set of activities within the
+W3C provenance model. This model uses \class{Bundle}, i.e. an entity with type
+``Bundle'',  for wrapping a provenance description. Each part of a provenance
+description can be  put into a bundle, and the bundle can then be reused in
+other provenance descriptions.  W3C's \class{Plan} is an entity with type
+``Plan'' and is used for describing a  set of actions or steps. Both,
+\class{Bundle} and \class{Plan}, are entities and  have the attributes and
+relations of this class (and thus one can define provenance of bundles and plans
+as well).
 
-But we would like to consider a set of activities as being an \class{Activity} itself, 
-with all the relations and properties that an activity also has. Therefore we do not reuse
-W3C's classes for describing workflows and plans, but added 
-the class \class{ActivityFlow} as an activity composed of activities. The composition is represented by 
-the \class{HadStep} relation, as is shown in Figure~\ref{fig:activity-details}.
+But we would like to consider a set of activities as being an \class{Activity}
+itself,  with all the relations and properties that characterize activities.
+Therefore, we do not reuse W3C's classes for describing workflows and plans, but
+add  the class \class{ActivityFlow} as an activity composed of activities. The
+composition is represented by  the \class{HadStep} relation, as is shown in
+Figure~\ref{fig:activity-details}.
 
 %while still making it obvious that this 
 %group contains activities, we introduce the class \class{ActivityFlow}.
@@ -604,7 +610,9 @@ can be different.
 %\class{WasGeneratedBy} relation, but may be \class{Used} many times as input for 
 %different activities.
 
-The \class{Used} and \class{WasGeneratedBy}-relation can have the optional attribute \attribute{time} -- this is the time, when usage of an entity started or the generation of an entity is finished.
+The \class{Used} and \class{WasGeneratedBy}-relation can have the optional
+attribute \attribute{time} -- this is the time when usage of an entity started
+or the generation of an entity is finished.
 %This generation time corresponds to e.g. \emph{DataID.date} in 
 %Dataset Metadata DM.
 %It therefore corresponds to the \emph{created}-time used in 
@@ -673,7 +681,7 @@ $\rightarrow$ activityDescription & link & link to an \class{ActivityDescription
 Each activity requires specific roles for each input or output entity, thus 
 we store this information with description classes, in the role-attributes for 
 the \class{UsedDescription} and \class{WasGeneratedByDescription} relation (see Tables~\ref{tab:usedDescription} and \ref{tab:wasGeneratedByDescription}).
-For example, an activity for darkframe-subtraction requires two input images. But it is 
+For example, an activity for darkframe subtraction requires two input images. But it is 
 very important to know which of the images is the raw image and 
 which one fulfils the role of dark frame.
 
@@ -944,7 +952,7 @@ following relation classes:
 \item wasAttributedTo: relates an \emph{entity} to an agent
 \end{itemize}
 
-We adopted here the same naming scheme as was used in W3C ProvDM.
+We adopted here the same naming scheme that was used in the W3C ProvDM.
 Note that the attributed-to-agent for a dataset may be different from the 
 agent that is associated with the activity that created an entity.
 Someone who is performing a task is not necessarily given full attribution, 
