@@ -202,16 +202,18 @@ Here is an excerpt of the corresponding PROV-N serialization:
 prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
 prefix ex <http://www.example.com/provenance/>
 prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
+prefix ds <http://www.ivoa.net/documents/dm/datasetdm/>
+prefix hips <http://www.ivoa.net/documents/apps/hips/>
 
 Entity
 ( ivo://CDS/P/MAMA/ESO-R, 
 [ voprov:name = "ESO-R MAMA HIPS at CDS",
 voprov:annotation = "HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
 voprov:type= "voprov:entity",
-ds:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in obscore 
 voprov:doculink = "http://cds.u-strasbg.fr/hips/documentation.html#structure",
+ds:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in ObsCore and Dataset DM
 ds:calibLlevel = 3,
-hips:dataproduct_type = "voprov:hips_pixels",
+ds:dataproduct_type = "voprov:hips_pixels",
 hips:HiPS_properties = "http://cds.u-strasbg.fr/hips/p/mama/eso-r/properties.txt"] )
 
 // Relationship
