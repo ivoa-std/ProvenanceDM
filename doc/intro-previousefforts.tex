@@ -1,16 +1,50 @@
 \subsection{Previous efforts}
-The provenance concept was early introduced by the IVOA within the scope of the Observation Data Model \citep[see IVOA note by ][]{note:observationdm} as a class describing where the data is coming from. A full observation data model dedicated to the specific spectral data was then designed \citep[Spectral Data Model,][]{std:SpectralDM} as well as a fully generic characterisation data model of the measurement axes of the data \citep[Characterisation Data Model,][]{std:CharacterisationDM} while the progress on the provenance data model was slowing down.
+The provenance concept was early introduced by the IVOA within the scope of the
+Observation Data Model \citep[see IVOA note by ][]{note:observationdm}, as a
+class describing where the data is coming from. A full observation data model
+specifically dedicated to spectral data was then designed \citep[Spectral Data
+Model,][]{std:SpectralDM}, as well as a fully generic characterisation
+data model of the measurement axes of data \citep[Characterisation Data
+Model,][]{std:CharacterisationDM}, while the progress on the provenance data
+model was slowing down.
 
-The IVOA Data Model Working Group first gathered various use cases coming from different communities of observational astronomy (optical, radio, X-ray, interferometry). Common motivations for a provenance tracing of the history included: quality assessment, discovery of dataset progenitors and access to metadata necessary for reprocessing. The provenance data model was then designed as the combination of \emph{Data processing}, \emph{Observing configuration} and \emph{Observation ambient conditions} data model classes. 
-The \emph{Processing class} was embedding a sequence of processing stages which were hooking specific ad hoc details and links to input and output datasets, as well as processing step description. 
-Despite the attempts of UML description of the model and writing of xml serialization examples the IVOA effort failed to provide a workable solution: the scope was probably too ambitious and the technical background too unstable. A compilation of these early developments can be found on the IVOA site \citep{std:previousefforts}. From 2013 onwards IVOA concentrated on use cases related to processing description and decided to design the model by extending the basic W3C provenance structure, as described in the current specification. 
+The IVOA Data Model Working Group first gathered various use cases coming from
+different communities of observational astronomy (optical, radio, X-ray,
+interferometry). Common motivations for a provenance tracing of their history
+included: quality assessment, discovery of dataset progenitors, and access to
+metadata necessary for reprocessing. The provenance data model was then designed
+as the combination of \emph{Data processing}, \emph{Observing configuration},
+and \emph{Observation ambient conditions} data model classes.
+The \emph{Processing class} was embedding a sequence of processing stages which
+were hooking specific ad hoc details and links to input and output datasets,
+as well as processing step descriptions. Despite the attempts at
+an UML description of the model and writing XML serialization examples, the IVOA
+efforts failed to provide a workable solution: the scope was probably too
+ambitious and the technical background too unstable. A compilation of these
+early developments can be found on the IVOA site \citep{std:previousefforts}.
+From 2013 onwards, the IVOA concentrated on use cases related to processing
+description and decided to design the model by extending the basic W3C
+provenance structure, as described in the current specification. 
 
-Outside of the astronomical community, the Provenance Challenge series (2006 -- 2010), a community effort to achieve inter-operability between different representations of provenance in scientific workflows, resulted in the Open Provenance Model \citep{moreau2010}. 
-Later, the W3C Provenance Working Group was founded and released the W3C Provenance Data Model as Recommendation in 2013 \citep{std:W3CProvDM}. 
-OPM was designed to be applicable to anything, scientific data as well as cars or immaterial things like decisions. With the W3C model, this becomes more focused on the web. Nevertheless, the core concepts are still in principle the same in both models and very general, so they can be applied to astronomical datasets and workflows as well. 
-The W3C model was taken up by a larger number of applications and tools than OPM, we are therefore basing our modeling efforts on the W3C Provenance data model, making it less abstract and more specific, or extending it where necessary. 
+Outside of the astronomical community, the Provenance Challenge series (2006 --
+2010), a community effort to achieve inter-operability between different
+representations of provenance in scientific workflows, resulted in the Open
+Provenance Model (OPM) \citep{moreau2010}. Later, the W3C Provenance Working
+Group was founded and released the W3C Provenance Data Model as Recommendation
+in 2013 \citep{std:W3CProvDM}.  OPM was designed to be applicable to anything,
+scientific data as well as cars or immaterial things like decisions. With the
+W3C model, this becomes more focused on the web. Nevertheless, the core concepts
+are still in principle the same in both models and are very general, so they
+can be applied to astronomical datasets and workflows as well. The W3C model was
+taken up by a larger number of applications and tools than OPM, we are therefore
+basing our modeling efforts on the W3C Provenance Data Model, making it less
+abstract and more specific, or extending it where necessary. 
 
 
-The W3C model even already specifies PROV-DM Extensibility points (section 6 in \citealt{std:W3CProvDM}) for extending the core model. This allows one to specify additional roles and types to each entity, agent or relation using the attributes \texttt{prov:type} and \texttt{prov:role}.
-By specifying the allowed values for the IVOA model, we can adjust the model to our needs while still being compliant to W3C.
+The W3C model even already specifies PROV-DM Extensibility Points (section 6 in
+\citealt{std:W3CProvDM}) for extending the core model. This allows one to
+specify additional roles and types for each entity, agent or relation using the
+attributes \texttt{prov:type} and \texttt{prov:role}. By specifying well-defined
+values for the IVOA model, we can adjust the model to our needs while still
+being compliant with W3C.
 
