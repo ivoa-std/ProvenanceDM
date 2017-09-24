@@ -3,7 +3,7 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-09-22T14:20:40</lastModified>
+  <lastModified>2017-09-24T22:34:55</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -256,9 +256,7 @@
       <attribute>
         <vodml-id>provenance.Activity.votype</vodml-id>
         <name>votype</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Used to distinguish between a simple "activity" or an "activityFlow"</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -318,7 +316,7 @@
       <reference>
         <vodml-id>provenance.Activity.activity</vodml-id>
         <name>activity</name>
-        <description>TODO: ??</description>
+        <description>Link from an (informed) activity to a preceding activity (informant); wasInformedBy relationship</description>
         <datatype>
           <vodml-ref>provenance:provenance.Activity</vodml-ref>
         </datatype>
@@ -654,9 +652,7 @@
       <attribute>
         <vodml-id>provenance.Used.role</vodml-id>
         <name>role</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Role that an entity had when being used by an activity; usually only needed if no UseDescription.role is used</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -698,9 +694,7 @@
       <attribute>
         <vodml-id>provenance.WasGeneratedBy.role</vodml-id>
         <name>role</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"; usually needed only if no WasGeneratedByDescription.role is used</description>
         <multiplicity>
           <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
@@ -805,9 +799,7 @@
       <attribute>
         <vodml-id>provenance.Agent.email</vodml-id>
         <name>email</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Contact email of the agent</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -819,9 +811,7 @@
       <attribute>
         <vodml-id>provenance.Agent.address</vodml-id>
         <name>address</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>Address of the agent</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -1109,7 +1099,7 @@
       <attribute>
         <vodml-id>provenance.UsedDescription.role</vodml-id>
         <name>role</name>
-        <description>Role that an entity had when being used</description>
+        <description>Role that an entity had when being used by an activity</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>

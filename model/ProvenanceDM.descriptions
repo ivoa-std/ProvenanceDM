@@ -64,6 +64,8 @@ provenance.Activity.endTime: |
     Datetime at which the activity ended
 provenance.Activity.annotation: |
     Additional explanations for the specific activity instance
+provenance.Activity.votype: |
+    Used to distinguish between a simple "activity" or an "activityFlow"
 provenance.Activity.used: |
     Link to Used class linking to the used entities; there can be many used-links, one for each used entity.
 provenance.Activity.wasAssociatedWith: |
@@ -73,7 +75,7 @@ provenance.Activity.parameter: |
 provenance.Activity.description: |
     Link to the activityDescription of this activity (if existing)
 provenance.Activity.activity: |
-    TODO: ??
+    Link from an (informed) activity to a preceding activity (informant); wasInformedBy relationship
 provenance.ActivityDescription: |
     A class for describing the general method underlying an activity.
 provenance.ActivityDescription.id: |
@@ -132,12 +134,16 @@ provenance.EntityDescription.wasGeneratedByDescription: |
     Link to the wasGeneratedBy class linking to the ActivityDescription for activities that generate this type of entities
 provenance.Used: |
     Class for linking activities with the input entities
+provenance.Used.role: |
+    Role that an entity had when being used by an activity; usually only needed if no UseDescription.role is used
 provenance.Used.description: |
     Link to corresponding UsedDescription class (where the "role" of an entity may be stored)
 provenance.Used.entity: |
     Link to an entity that is being used for some activity
 provenance.WasGeneratedBy: |
     Class for linking entities to their generating activities
+provenance.WasGeneratedBy.role: |
+    Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"; usually needed only if no WasGeneratedByDescription.role is used
 provenance.WasGeneratedBy.description: |
     Link to corresonding wasGeneratedByDescription (which may contain further attributes like "role")
 provenance.WasGeneratedBy.activity: |
@@ -156,6 +162,10 @@ provenance.Agent.name: |
     A common name for this agent; e.g. first name and last name; project name, agency name, ...
 provenance.Agent.type: |
     Type of the agent: either Individual or Organization
+provenance.Agent.email: |
+    Contact email of the agent
+provenance.Agent.address: |
+    Address of the agent
 provenance.WasAssociatedWith: |
     Class for linking an activity with a responsible agent
 provenance.WasAssociatedWith.role: |
@@ -211,6 +221,6 @@ provenance.ParameterDescription.annotation: |
 provenance.UsedDescription: |
     Class for specifying the expected Used relations for ActivityDescriptions
 provenance.UsedDescription.role: |
-    Role that an entity had when being used
+    Role that an entity had when being used by an activity
 provenance.UsedDescription.entityDescription: |
     Link to the corresponding entityDescription

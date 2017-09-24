@@ -172,7 +172,7 @@
       <tr>
         <td align="right"><b>Date</b></td>
         <td> : </td>
-        <td>2017-09-22T14:20:40</td>
+        <td>2017-09-24T22:34:55</td>
       </tr>
       <tr>
         <td align="right"><b>Version</b></td>
@@ -772,10 +772,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
+                      <td class="feature-detail">Used to distinguish between a simple "activity" or an "activityFlow"</td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -800,7 +797,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">TODO: ??</td>
+                      <td class="feature-detail">Link from an (informed) activity to a preceding activity (informant); wasInformedBy relationship</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.Activity.description"></a><b>description</b></td>
@@ -1256,10 +1253,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
+                      <td class="feature-detail">Contact email of the agent</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="provenance.Agent.address"></a><b>address</b></td>
@@ -1276,10 +1270,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
+                      <td class="feature-detail">Address of the agent</td>
                     </tr>
                   </table>
                 </td>
@@ -2285,10 +2276,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
-                      </td>
+                      <td class="feature-detail">Role that an entity had when being used by an activity; usually only needed if no UseDescription.role is used</td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -2389,7 +2377,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Role that an entity had when being used</td>
+                      <td class="feature-detail">Role that an entity had when being used by an activity</td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -2626,9 +2614,8 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">
-                        TODO : Missing description : please, update your UML model asap.
-                        
+                      <td class="feature-detail">Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"; usually needed only if no
+                        WasGeneratedByDescription.role is used
                       </td>
                     </tr>
                     <tr>
@@ -2882,7 +2869,7 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.Activity.activity">provenance.Activity.activity</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">TODO: ??</td>
+        <td class="feature-detail">Link from an (informed) activity to a preceding activity (informant); wasInformedBy relationship</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.Activity.annotation">provenance.Activity.annotation</a></td>
@@ -2927,10 +2914,7 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.Activity.votype">provenance.Activity.votype</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">
-          TODO : Missing description : please, update your UML model asap.
-          
-        </td>
+        <td class="feature-detail">Used to distinguish between a simple "activity" or an "activityFlow"</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.Activity.wasAssociatedWith">provenance.Activity.wasAssociatedWith</a></td>
@@ -3002,18 +2986,12 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.Agent.address">provenance.Agent.address</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">
-          TODO : Missing description : please, update your UML model asap.
-          
-        </td>
+        <td class="feature-detail">Address of the agent</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.Agent.email">provenance.Agent.email</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">
-          TODO : Missing description : please, update your UML model asap.
-          
-        </td>
+        <td class="feature-detail">Contact email of the agent</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.Agent.id">provenance.Agent.id</a></td>
@@ -3286,10 +3264,7 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.Used.role">provenance.Used.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">
-          TODO : Missing description : please, update your UML model asap.
-          
-        </td>
+        <td class="feature-detail">Role that an entity had when being used by an activity; usually only needed if no UseDescription.role is used</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.UsedDescription">provenance.UsedDescription</a></td>
@@ -3304,7 +3279,7 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.UsedDescription.role">provenance.UsedDescription.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Role that an entity had when being used</td>
+        <td class="feature-detail">Role that an entity had when being used by an activity</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#provenance.WasAssociatedWith">provenance.WasAssociatedWith</a></td>
@@ -3354,9 +3329,8 @@
       <tr>
         <td class="feature-detail"><a href="#provenance.WasGeneratedBy.role">provenance.WasGeneratedBy.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">
-          TODO : Missing description : please, update your UML model asap.
-          
+        <td class="feature-detail">Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"; usually needed only if no
+          WasGeneratedByDescription.role is used
         </td>
       </tr>
       <tr>
