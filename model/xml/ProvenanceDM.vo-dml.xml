@@ -3,7 +3,7 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-09-14T11:54:57</lastModified>
+  <lastModified>2017-09-22T14:20:40</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -245,6 +245,20 @@
         <vodml-id>provenance.Activity.annotation</vodml-id>
         <name>annotation</name>
         <description>Additional explanations for the specific activity instance</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.votype</vodml-id>
+        <name>votype</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -637,6 +651,20 @@
       <vodml-id>provenance.Used</vodml-id>
       <name>Used</name>
       <description>Class for linking activities with the input entities</description>
+      <attribute>
+        <vodml-id>provenance.Used.role</vodml-id>
+        <name>role</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
       <reference>
         <vodml-id>provenance.Used.description</vodml-id>
         <name>description</name>
@@ -667,6 +695,17 @@
       <vodml-id>provenance.WasGeneratedBy</vodml-id>
       <name>WasGeneratedBy</name>
       <description>Class for linking entities to their generating activities</description>
+      <attribute>
+        <vodml-id>provenance.WasGeneratedBy.role</vodml-id>
+        <name>role</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
       <reference>
         <vodml-id>provenance.WasGeneratedBy.description</vodml-id>
         <name>description</name>
@@ -700,7 +739,7 @@
       <attribute>
         <vodml-id>provenance.WasGeneratedByDescription.role</vodml-id>
         <name>role</name>
-        <description>Role that an entity has when being generated, e.g. "log file", "statistics file", "main result"</description>
+        <description>Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -712,7 +751,7 @@
       <reference>
         <vodml-id>provenance.WasGeneratedByDescription.activityDescription</vodml-id>
         <name>activityDescription</name>
-        <description>Link to the activitzDescription</description>
+        <description>Link to the activityDescription</description>
         <datatype>
           <vodml-ref>provenance:provenance.ActivityDescription</vodml-ref>
         </datatype>
@@ -754,7 +793,35 @@
       <attribute>
         <vodml-id>provenance.Agent.type</vodml-id>
         <name>type</name>
-        <description>type of the agent: either Individual or Organization</description>
+        <description>Type of the agent: either Individual or Organization</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.email</vodml-id>
+        <name>email</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.address</vodml-id>
+        <name>address</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -768,11 +835,11 @@
     <objectType>
       <vodml-id>provenance.WasAssociatedWith</vodml-id>
       <name>WasAssociatedWith</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for linking an activity with a responsible agent</description>
       <attribute>
         <vodml-id>provenance.WasAssociatedWith.role</vodml-id>
         <name>role</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Role that an agent had, e.g. operator, observers, software developer</description>
         <datatype>
           <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
         </datatype>
@@ -784,7 +851,7 @@
       <reference>
         <vodml-id>provenance.WasAssociatedWith.agent</vodml-id>
         <name>agent</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the agent associated with an activity</description>
         <datatype>
           <vodml-ref>provenance:provenance.Agent</vodml-ref>
         </datatype>
@@ -798,11 +865,11 @@
     <objectType>
       <vodml-id>provenance.WasAttributedTo</vodml-id>
       <name>WasAttributedTo</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for linking an entity with a responsible agent</description>
       <attribute>
         <vodml-id>provenance.WasAttributedTo.role</vodml-id>
         <name>role</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Role that an agent had, e.g. publisher</description>
         <datatype>
           <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
         </datatype>
@@ -814,7 +881,7 @@
       <reference>
         <vodml-id>provenance.WasAttributedTo.agent</vodml-id>
         <name>agent</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the agent who gets attribution for an entity</description>
         <datatype>
           <vodml-ref>provenance:provenance.Agent</vodml-ref>
         </datatype>
@@ -828,14 +895,14 @@
     <objectType>
       <vodml-id>provenance.ActivityFlow</vodml-id>
       <name>ActivityFlow</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for a group of activities, it's an activity itself</description>
       <extends>
         <vodml-ref>provenance:provenance.Activity</vodml-ref>
       </extends>
       <composition>
         <vodml-id>provenance.ActivityFlow.hadStep</vodml-id>
         <name>hadStep</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the class that links the activityFlow with its sub-activities</description>
         <datatype>
           <vodml-ref>provenance:provenance.HadStep</vodml-ref>
         </datatype>
@@ -849,14 +916,14 @@
     <objectType>
       <vodml-id>provenance.Collection</vodml-id>
       <name>Collection</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for a group of entities, it's an entity itself</description>
       <extends>
         <vodml-ref>provenance:provenance.Entity</vodml-ref>
       </extends>
       <composition>
         <vodml-id>provenance.Collection.hadMember</vodml-id>
         <name>hadMember</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the class that links the collection with its member entities</description>
         <datatype>
           <vodml-ref>provenance:provenance.HadMember</vodml-ref>
         </datatype>
@@ -870,11 +937,11 @@
     <objectType>
       <vodml-id>provenance.HadStep</vodml-id>
       <name>HadStep</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for linking activityFlows with their sub-processes</description>
       <reference>
         <vodml-id>provenance.HadStep.activity</vodml-id>
         <name>activity</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>The sub-activity of an activityFlow</description>
         <datatype>
           <vodml-ref>provenance:provenance.Activity</vodml-ref>
         </datatype>
@@ -888,11 +955,11 @@
     <objectType>
       <vodml-id>provenance.HadMember</vodml-id>
       <name>HadMember</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for linking collections with their member entities</description>
       <reference>
         <vodml-id>provenance.HadMember.entity</vodml-id>
         <name>entity</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Entity that belongs to a collection</description>
         <datatype>
           <vodml-ref>provenance:provenance.Entity</vodml-ref>
         </datatype>
@@ -906,11 +973,11 @@
     <objectType>
       <vodml-id>provenance.Parameter</vodml-id>
       <name>Parameter</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for the parameters of an activity</description>
       <attribute>
         <vodml-id>provenance.Parameter.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unique identifier of a parameter</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -922,7 +989,7 @@
       <attribute>
         <vodml-id>provenance.Parameter.value</vodml-id>
         <name>value</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Value of the parameter</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -934,7 +1001,7 @@
       <reference>
         <vodml-id>provenance.Parameter.description</vodml-id>
         <name>description</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the corresponding parameterDescription</description>
         <datatype>
           <vodml-ref>provenance:provenance.ParameterDescription</vodml-ref>
         </datatype>
@@ -948,11 +1015,11 @@
     <objectType>
       <vodml-id>provenance.ParameterDescription</vodml-id>
       <name>ParameterDescription</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for describing parameters; contains everything except the actual value</description>
       <attribute>
         <vodml-id>provenance.ParameterDescription.id</vodml-id>
         <name>id</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unique identifier for this parameterDescription</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -964,7 +1031,7 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.name</vodml-id>
         <name>name</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Name of this parameter</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -976,7 +1043,7 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.datatype</vodml-id>
         <name>datatype</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Datatype</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -988,7 +1055,7 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.unit</vodml-id>
         <name>unit</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Physical unit</description>
         <datatype>
           <vodml-ref>provenance:ivoa.Unit</vodml-ref>
         </datatype>
@@ -1000,7 +1067,7 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.ucd</vodml-id>
         <name>ucd</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Unified Content Descriptor, supplying a standardized classification of the physical quantity</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -1012,7 +1079,7 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.utype</vodml-id>
         <name>utype</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>UType, meant to express the role of the parameter in the context of an external data model</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -1024,7 +1091,7 @@
       <attribute>
         <vodml-id>provenance.ParameterDescription.annotation</vodml-id>
         <name>annotation</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Additional free text description</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -1038,11 +1105,11 @@
     <objectType>
       <vodml-id>provenance.UsedDescription</vodml-id>
       <name>UsedDescription</name>
-      <description>This document provides a data model for describing provenance.</description>
+      <description>Class for specifying the expected Used relations for ActivityDescriptions</description>
       <attribute>
         <vodml-id>provenance.UsedDescription.role</vodml-id>
         <name>role</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Role that an entity had when being used</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -1054,7 +1121,7 @@
       <reference>
         <vodml-id>provenance.UsedDescription.entityDescription</vodml-id>
         <name>entityDescription</name>
-        <description>TODO : Missing description : please, update your UML model asap.</description>
+        <description>Link to the corresponding entityDescription</description>
         <datatype>
           <vodml-ref>provenance:provenance.EntityDescription</vodml-ref>
         </datatype>

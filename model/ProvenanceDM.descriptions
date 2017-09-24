@@ -145,9 +145,9 @@ provenance.WasGeneratedBy.activity: |
 provenance.WasGeneratedByDescription: |
     Class for specifying the expected WasGeneratedBy relations for EntityDescriptions
 provenance.WasGeneratedByDescription.role: |
-    Role that an entity has when being generated, e.g. "log file", "statistics file", "main result"
+    Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"
 provenance.WasGeneratedByDescription.activityDescription: |
-    Link to the activitzDescription
+    Link to the activityDescription
 provenance.Agent: |
     Class for individuals and organizations who/that are responsible for entities or activities
 provenance.Agent.id: |
@@ -155,62 +155,62 @@ provenance.Agent.id: |
 provenance.Agent.name: |
     A common name for this agent; e.g. first name and last name; project name, agency name, ...
 provenance.Agent.type: |
-    type of the agent: either Individual or Organization
+    Type of the agent: either Individual or Organization
 provenance.WasAssociatedWith: |
-    This document provides a data model for describing provenance.
+    Class for linking an activity with a responsible agent
 provenance.WasAssociatedWith.role: |
-    TODO : Missing description : please, update your UML model asap.
+    Role that an agent had, e.g. operator, observers, software developer
 provenance.WasAssociatedWith.agent: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the agent associated with an activity
 provenance.WasAttributedTo: |
-    This document provides a data model for describing provenance.
+    Class for linking an entity with a responsible agent
 provenance.WasAttributedTo.role: |
-    TODO : Missing description : please, update your UML model asap.
+    Role that an agent had, e.g. publisher
 provenance.WasAttributedTo.agent: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the agent who gets attribution for an entity
 provenance.ActivityFlow: |
-    This document provides a data model for describing provenance.
+    Class for a group of activities, it's an activity itself
 provenance.ActivityFlow.hadStep: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the class that links the activityFlow with its sub-activities
 provenance.Collection: |
-    This document provides a data model for describing provenance.
+    Class for a group of entities, it's an entity itself
 provenance.Collection.hadMember: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the class that links the collection with its member entities
 provenance.HadStep: |
-    This document provides a data model for describing provenance.
+    Class for linking activityFlows with their sub-processes
 provenance.HadStep.activity: |
-    TODO : Missing description : please, update your UML model asap.
+    The sub-activity of an activityFlow
 provenance.HadMember: |
-    This document provides a data model for describing provenance.
+    Class for linking collections with their member entities
 provenance.HadMember.entity: |
-    TODO : Missing description : please, update your UML model asap.
+    Entity that belongs to a collection
 provenance.Parameter: |
-    This document provides a data model for describing provenance.
+    Class for the parameters of an activity
 provenance.Parameter.id: |
-    TODO : Missing description : please, update your UML model asap.
+    Unique identifier of a parameter
 provenance.Parameter.value: |
-    TODO : Missing description : please, update your UML model asap.
+    Value of the parameter
 provenance.Parameter.description: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the corresponding parameterDescription
 provenance.ParameterDescription: |
-    This document provides a data model for describing provenance.
+    Class for describing parameters; contains everything except the actual value
 provenance.ParameterDescription.id: |
-    TODO : Missing description : please, update your UML model asap.
+    Unique identifier for this parameterDescription
 provenance.ParameterDescription.name: |
-    TODO : Missing description : please, update your UML model asap.
+    Name of this parameter
 provenance.ParameterDescription.datatype: |
-    TODO : Missing description : please, update your UML model asap.
+    Datatype
 provenance.ParameterDescription.unit: |
-    TODO : Missing description : please, update your UML model asap.
+    Physical unit
 provenance.ParameterDescription.ucd: |
-    TODO : Missing description : please, update your UML model asap.
+    Unified Content Descriptor, supplying a standardized classification of the physical quantity
 provenance.ParameterDescription.utype: |
-    TODO : Missing description : please, update your UML model asap.
+    UType, meant to express the role of the parameter in the context of an external data model
 provenance.ParameterDescription.annotation: |
-    TODO : Missing description : please, update your UML model asap.
+    Additional free text description
 provenance.UsedDescription: |
-    This document provides a data model for describing provenance.
+    Class for specifying the expected Used relations for ActivityDescriptions
 provenance.UsedDescription.role: |
-    TODO : Missing description : please, update your UML model asap.
+    Role that an entity had when being used
 provenance.UsedDescription.entityDescription: |
-    TODO : Missing description : please, update your UML model asap.
+    Link to the corresponding entityDescription
