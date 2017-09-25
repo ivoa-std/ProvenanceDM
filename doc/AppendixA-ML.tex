@@ -114,9 +114,9 @@ Each class and relation of the provenance model lists its corresponding database
 }
 \end{lstlisting}
 
-Here is the mapping obtained for the same data description with the PROV-VOTABLE serialisation format.
+Here is the mapping obtained for the same data description with the PROV-VOTable serialisation format.
 
-\begin{lstlisting}[language=XML, caption= PROV-VOTABLE serialisation example for a color composition activity]
+\begin{lstlisting}[language=XML, caption= PROV-VOTable serialisation example for a color composition activity]
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
 xmlns:hips="http://cds.u-strasbg.fr/data/" 
@@ -126,9 +126,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
   <RESOURCE type="provenance">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
-    <TABLE name="Usage" utype="voprov:used">
-      <FIELD name="activity" ucd="meta.id" utype="voprov:Using.Activity"arraysize="*" datatype="char" />
-      <FIELD name="entity" utype="voprov:used.Entity arraysize="*" datatype="char"  ucd="meta.id" "/>
+    <TABLE name="Used" utype="voprov:Used">
+      <FIELD name="activity_id" utype="voprov:Used.activity"arraysize="*" ucd="meta.id" datatype="char" />
+      <FIELD name="entity_id" utype="voprov:Used.entity" arraysize="*" ucd="meta.id" datatype="char" />
       <DATA>
         <TABLEDATA>
           <TR>
@@ -138,9 +138,9 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
         </TABLEDATA>
       </DATA>
     </TABLE>
-    <TABLE name="Generation" utype="voprov:wasGeneratedBy">
-      <FIELD name="entity" utype="voprov:wasGeneratedBy.Entity" arraysize="*" datatype="char"  ucd="meta.id"/>
-      <FIELD name="activity" utype="voprov:wasGeneratedBy.activity"  arraysize="*" datatype="char"  ucd="meta.id"/>
+    <TABLE name="WasGeneratedBy" utype="voprov:WasGeneratedBy">
+      <FIELD name="entity" utype="voprov:wasGeneratedBy.entity" arraysize="*" datatype="char"  ucd="meta.id"/>
+      <FIELD name="activity" utype="voprov:wasGeneratedBy.activity" arraysize="*" datatype="char" ucd="meta.id"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -154,7 +154,7 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
       <FIELD name="id"  utype="voprov:Activity.id" ucd="meta.id" arraysize="*" datatype="char" />
       <FIELD name="name" utype="voprov:Activity.name" ucd="meta.title" arraysize="*" datatype="char" />
       <FIELD name="start" utype="voprov:Activity.startTime" ucd="time.start" arraysize="*" datatype="char" />
-      <FIELD name="stop" utype="voprov:Activity.endTime" ucd=""time.end" arraysize="*" datatype="char"  "/>
+      <FIELD name="end" utype="voprov:Activity.endTime" ucd=""time.end" arraysize="*" datatype="char"  "/>
       <FIELD name="annotation" utype="voprov:Activity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
       <FIELD name="desc_id" utype="voprov:ActivityDescription.id" ucd="meta.id" arraysize="*" datatype="char" />
       <FIELD name="desc_name" utype="voprov:ActivityDescription.name" ucd="meta.title" arraysize="*" datatype="char" />
