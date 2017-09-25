@@ -64,9 +64,9 @@ e\_annotation&meta.description&voprov:Entity.annotation& char \cr
 %references&& \cr
 %\sptablerule
 $\rightarrow$ e\_hadMember&meta.code.member&voprov:Entity.hadMember&char \cr
-$\rightarrow$ e\_description&meta.id& voprov:entity.description & char\cr
-%$\rightarrow$ e\_generatedEntity&meta.id& voprov:entity.wasDerivedFrom.generatedEntity & char\cr
-$\rightarrow$ e\_usedEntity&meta.id& voprov:entity.wasDerivedFrom.usedEntity & char\cr
+$\rightarrow$ e\_description&meta.id& voprov:Entity.description & char\cr
+%$\rightarrow$ e\_generatedEntity&meta.id& voprov:Entity.wasDerivedFrom.generatedEntity & char\cr
+$\rightarrow$ e\_usedEntity&meta.id& voprov:Entity.wasDerivedFrom.usedEntity & char\cr
 \sptablerule
 \end{tabular}
 \caption{Column description for entity table }
@@ -82,12 +82,12 @@ $\rightarrow$ e\_usedEntity&meta.id& voprov:entity.wasDerivedFrom.usedEntity & c
 \sptablerule
 ed\_id&meta.id& voprov:EntityDescription.id&char \cr
 ed\_name&meta.title& voprov:EntityDescription.name&char \cr
-ed\_doculink&meta.ref.url& voprov:EntityDescription.doculink & char\cr
-ed\_category&meta.code.class&voprov:EntityDescription.category& char \cr
 ed\_annotation&meta.description&voprov:EntityDescription.annotation& char \cr
+ed\_category&meta.code.class&voprov:EntityDescription.category& char \cr
+ed\_doculink&meta.ref.url& voprov:EntityDescription.doculink & char\cr
 \sptablerule
 \end{tabular}
-\caption{Column description for entityDescription table }
+\caption{Column description for EntityDescription table }
 \label{tab:TAP_entitydesc}
 \end{table}
 
@@ -100,7 +100,7 @@ ed\_annotation&meta.description&voprov:EntityDescription.annotation& char \cr
 a\_id&meta.id& voprov:Activity.id&char \cr
 a\_name&meta.title& voprov:Activity.name&char \cr
 a\_startTime&time.start&voprov:Activity.startTime& char\cr
-a\_stopTime&time.stop&voprov:Activity.stopTime& char\cr
+a\_endTime&time.stop&voprov:Activity.endTime& char\cr
 a\_annotation&meta.description&voprov:Activity.annotation& char \cr
 a\_votype&meta.code.class&voprov:Activity.votype& char\cr
 %\sptablerule
@@ -112,7 +112,7 @@ $\rightarrow$ a\_parameter&meta.id&voprov:Activity.parameter& char \cr
 $\rightarrow$ a\_informant&meta.id& voprov:Activity.wasInformedBy.informant & char\cr
 \sptablerule
 \end{tabular}
-\caption{Column description for activity table }
+\caption{Column description for Activity table }
 \label{tab:TAP_activity}
 \end{table}
 
@@ -137,7 +137,7 @@ $\rightarrow$ ad\_param&meta.id&voprov:ActivityDescription.parameter& char \cr
 
 \sptablerule
 \end{tabular}
-\caption{Column description for activityDescription table }
+\caption{Column description for ActivityDescription table }
 \label{tab:TAP_activitydesc}
 \end{table}
 
@@ -169,7 +169,7 @@ ag\_email&meta.email&voprov:Agent.email&char \cr
 \sptablerule
 p\_id&meta.id& voprov:Parameter.id&char \cr
 p\_value&stat.value& voprov:Parameter.value& param dependent \cr
-$\rightarrow$ p\_description&mata.id&voprov:Parameter.descripton& reference to parameter description \cr
+$\rightarrow$ p\_description&meta.id&voprov:ParameterDescription& reference to parameter description \cr
 
 \sptablerule
 \end{tabular}
@@ -195,7 +195,7 @@ pd\_max&stat.max&voprov:ParameterDescription.max& param dependent \cr
 pd\_options&meta&voprov:ParameterDescription.options& param dependent \cr
 \sptablerule
 \end{tabular}
-\caption{Column description for parameterDescription table }
+\caption{Column description for ParameterDescription table }
 \label{tab:TAP_parameterdesc}
 \end{table}
 
@@ -212,7 +212,7 @@ u\_role&meta.code.class&voprov:Used.role& char OPTION \cr
 u\_time&time.start&voprov:Used.time& char\cr
 \sptablerule
 \end{tabular}
-\caption{Column description for used relationship table}
+\caption{Column description for Used relationship table}
 \label{tab:TAP_used}
 \end{table}
 
@@ -227,7 +227,7 @@ $\rightarrow$ ud\_activityDescription\_id&meta.id&voprov:UsedDescription.\newlin
 ud\_role&meta.code.class&voprov:UsedDescription.role& char OPTION \cr
 \sptablerule
 \end{tabular}
-\caption[Column description for usedDescription relationship table]{Column description for usedDescription relationship table. The value of a role string belongs to a set of possible literal values given for instance using the VOTable OPTION element. }
+\caption[Column description for UsedDescription relationship table]{Column description for usedDescription relationship table. The value of a role string belongs to a set of possible literal values given for instance using the VOTable OPTION element. }
 \label{tab:TAP_useddesc}
 \end{table}
 
@@ -243,7 +243,7 @@ wgb\_role&meta.code.class&voprov:WasGeneratedBy.role& char OPTION \cr
 wgb\_time&time.stop&voprov:WasGeneratedBy.time& char\cr
 \sptablerule
 \end{tabular}
-\caption{Column description for wasGeneratedBy relationship table }
+\caption{Column description for WasGeneratedBy relationship table }
 \label{tab:TAP_wasgeneratedby}
 \end{table}
 
@@ -258,7 +258,7 @@ $\rightarrow$ wgbd\_activityDescription\_id&meta.id&voprov:WasGeneratedByDescrip
 wgbd\_role&meta.code.class&voprov:WasGeneratedByDescription.role& char OPTION \cr
 \sptablerule
 \end{tabular}
-\caption{Column description for wasGeneratedByDescription relationship table }
+\caption{Column description for WasGeneratedByDescription relationship table }
 \label{tab:TAP_wasgeneratedbydesc}
 \end{table}
 
@@ -269,12 +269,12 @@ wgbd\_role&meta.code.class&voprov:WasGeneratedByDescription.role& char OPTION \c
 \sptablerule
 \textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
 \sptablerule
-$\rightarrow$ waw\_agent\_id&meta.id&voprov:WasAssociatedWith.Agent&char \cr
-$\rightarrow$ waw\_activity\_id&meta.id&voprov:WasAssoatciatedWith.Activity& char \cr
+$\rightarrow$ waw\_agent\_id&meta.id&voprov:WasAssociatedWith.agent&char \cr
+$\rightarrow$ waw\_activity\_id&meta.id&voprov:WasAssoatciatedWith.activity& char \cr
 waw\_role&meta.code.class&voprov:WasAssociatedWith.agentRole& char OPTION \cr
 \sptablerule
 \end{tabular}
-\caption{Column description for wasAssociatedWith relationship table }
+\caption{Column description for WasAssociatedWith relationship table }
 \label{tab:TAP_wasassociatedwith}
 \end{table}
 
@@ -284,12 +284,12 @@ waw\_role&meta.code.class&voprov:WasAssociatedWith.agentRole& char OPTION \cr
 \sptablerule
 \textbf{Name  }&\textbf{ucd }&\textbf{utype  }&\textbf{datatype } \cr
 \sptablerule
-$\rightarrow$ wat\_entity\_id&meta.id&voprov:WasAttributedTo.Entity&char \cr
-$\rightarrow$ wat\_agent\_id&meta.id&voprov:WasAttributedTo.Agent& char \cr
+$\rightarrow$ wat\_entity\_id&meta.id&voprov:WasAttributedTo.entity&char \cr
+$\rightarrow$ wat\_agent\_id&meta.id&voprov:WasAttributedTo.agent& char \cr
 wat\_role&meta.code.class&voprov:WasAttributedTo.agentRole& char OPTION \cr
 \sptablerule
 \end{tabular}
-\caption{Column description for wasAttributedTo relationship table }
+\caption{Column description for WasAttributedTo relationship table }
 \label{tab:TAP_wasattributedto}
 \end{table}
 \clearpage
