@@ -193,8 +193,8 @@ including bad areas, etc.
 An example of provenance metadata for a HiPS collection generated from a
 collection of SERC Schmidt plates scanned by CAI-Observatoire de Paris with the
 MAMA facility and serialized in PROV-N format is given at \\
-\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-provn.txt}, the corresponding VOTable-format is available at \\
-\url{https://volute.g-vo.org/svn/trunk/projects/dm/provenance/example/HiPS-prov-vot.xml}.
+\url{http://wiki.ivoa.net/twiki/bin/view/IVOA/ProvSerialisationExample/HiPS-prov-provn.txt}, the corresponding VOTable-format is available at \\
+\url{http://wiki.ivoa.net/twiki/bin/view/IVOA/ProvSerialisationExample/HiPS-prov-vot.xml}.
 
 Here is an excerpt of the corresponding PROV-N serialization:
 
@@ -208,12 +208,12 @@ prefix hips <http://www.ivoa.net/documents/apps/hips/>
 Entity
 ( ivo://CDS/P/MAMA/ESO-R, 
 [ voprov:name = "ESO-R MAMA HIPS at CDS",
-voprov:annotation = "HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
 voprov:type= "voprov:entity",
+voprov:annotation = "HiPS version of ESO Schmidt survey digitized by Mama and processed by CDS",
 voprov:doculink = "http://cds.u-strasbg.fr/hips/documentation.html#structure",
-ds:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in ObsCore and Dataset DM
 ds:calibLlevel = 3,
 ds:dataproduct_type = "voprov:hips_pixels",
+ds:access_reference = "http://CDS/P/MAMA/ESO-R", // as defined in ObsCore and Dataset DM
 hips:HiPS_properties = "http://cds.u-strasbg.fr/hips/p/mama/eso-r/properties.txt"] )
 
 // Relationship
