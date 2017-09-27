@@ -69,7 +69,7 @@ $\rightarrow$ e\_description&meta.id& voprov:Entity.description & char\cr
 $\rightarrow$ e\_usedEntity&meta.id& voprov:Entity.wasDerivedFrom.usedEntity & char\cr
 \sptablerule
 \end{tabular}
-\caption{Column description for entity table }
+\caption{Column description for Entity table }
 \label{tab:TAP_entity}
 \end{table}
 
@@ -169,11 +169,11 @@ ag\_email&meta.email&voprov:Agent.email&char \cr
 \sptablerule
 p\_id&meta.id& voprov:Parameter.id&char \cr
 p\_value&stat.value& voprov:Parameter.value& param dependent \cr
-$\rightarrow$ p\_description&meta.id&voprov:ParameterDescription& reference to parameter description \cr
+$\rightarrow$ p\_description&meta.id&voprov:Parameter.description& reference to parameter description \cr
 
 \sptablerule
 \end{tabular}
-\caption{Column description for parameter table }
+\caption{Column description for Parameter table }
 \label{tab:TAP_parameter}
 \end{table}
 
@@ -227,7 +227,7 @@ $\rightarrow$ ud\_activityDescription\_id&meta.id&voprov:UsedDescription.\newlin
 ud\_role&meta.code.class&voprov:UsedDescription.role& char OPTION \cr
 \sptablerule
 \end{tabular}
-\caption[Column description for UsedDescription relationship table]{Column description for usedDescription relationship table. The value of a role string belongs to a set of possible literal values given for instance using the VOTable OPTION element. }
+\caption[Column description for UsedDescription relationship table]{Column description for UsedDescription relationship table. The value of a role string belongs to a set of possible literal values given for instance using the VOTable OPTION element. }
 \label{tab:TAP_useddesc}
 \end{table}
 
