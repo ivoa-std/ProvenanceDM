@@ -3,7 +3,7 @@
   <description>&lt;Enter note text here&gt;</description>
   <title/>
   <version>0.x</version>
-  <lastModified>2017-09-24T22:34:55</lastModified>
+  <lastModified>2017-10-03T23:55:08</lastModified>
 
   <package>
     <vodml-id>ivoa</vodml-id>
@@ -314,8 +314,8 @@
         </multiplicity>
       </reference>
       <reference>
-        <vodml-id>provenance.Activity.activity</vodml-id>
-        <name>activity</name>
+        <vodml-id>provenance.Activity.informant</vodml-id>
+        <name>informant</name>
         <description>Link from an (informed) activity to a preceding activity (informant); wasInformedBy relationship</description>
         <datatype>
           <vodml-ref>provenance:provenance.Activity</vodml-ref>
@@ -383,6 +383,30 @@
         <vodml-id>provenance.ActivityDescription.annotation</vodml-id>
         <name>annotation</name>
         <description>Additional description text, comments, remarks, ...</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.code</vodml-id>
+        <name>code</name>
+        <description>The code (software) used for this process, if applicable</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.version</vodml-id>
+        <name>version</name>
+        <description>A version number, if applicable (e.g. for the code)</description>
         <datatype>
           <vodml-ref>provenance:string</vodml-ref>
         </datatype>
@@ -553,18 +577,6 @@
           <maxOccurs>-1</maxOccurs>
         </multiplicity>
       </reference>
-      <reference>
-        <vodml-id>provenance.Entity.generatedEntity</vodml-id>
-        <name>generatedEntity</name>
-        <description>Link to the entity that was generated (wasDerivedFrom relation)</description>
-        <datatype>
-          <vodml-ref>provenance:provenance.Entity</vodml-ref>
-        </datatype>
-        <multiplicity>
-          <minOccurs>1</minOccurs>
-          <maxOccurs>1</maxOccurs>
-        </multiplicity>
-      </reference>
     </objectType>
 
     <objectType>
@@ -695,6 +707,9 @@
         <vodml-id>provenance.WasGeneratedBy.role</vodml-id>
         <name>role</name>
         <description>Role that an entity had when being generated, e.g. "log file", "statistics file", "main result"; usually needed only if no WasGeneratedByDescription.role is used</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
@@ -834,7 +849,7 @@
           <vodml-ref>provenance:provenance.AgentRole</vodml-ref>
         </datatype>
         <multiplicity>
-          <minOccurs>1</minOccurs>
+          <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
         </multiplicity>
       </attribute>
@@ -1088,6 +1103,42 @@
         <multiplicity>
           <minOccurs>0</minOccurs>
           <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.min</vodml-id>
+        <name>min</name>
+        <description>Minimum value</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.max</vodml-id>
+        <name>max</name>
+        <description>Maximum value</description>
+        <datatype>
+          <vodml-ref>provenance:ivoa.real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ParameterDescription.options</vodml-id>
+        <name>options</name>
+        <description>List of accepted values</description>
+        <datatype>
+          <vodml-ref>provenance:string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
         </multiplicity>
       </attribute>
     </objectType>

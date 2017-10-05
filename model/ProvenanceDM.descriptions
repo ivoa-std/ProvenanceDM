@@ -74,7 +74,7 @@ provenance.Activity.parameter: |
     Link to a parameter of this activity
 provenance.Activity.description: |
     Link to the activityDescription of this activity (if existing)
-provenance.Activity.activity: |
+provenance.Activity.informant: |
     Link from an (informed) activity to a preceding activity (informant); wasInformedBy relationship
 provenance.ActivityDescription: |
     A class for describing the general method underlying an activity.
@@ -88,6 +88,10 @@ provenance.ActivityDescription.subtype: |
     A subtype describing the general method of the activity further
 provenance.ActivityDescription.annotation: |
     Additional description text, comments, remarks, ...
+provenance.ActivityDescription.code: |
+    The code (software) used for this process, if applicable
+provenance.ActivityDescription.version: |
+    A version number, if applicable (e.g. for the code)
 provenance.ActivityDescription.doculink: |
     Link to documentation for this activityDescription
 provenance.ActivityDescription.usedDescription: |
@@ -116,8 +120,6 @@ provenance.Entity.description: |
     Link to the entityDescription for this entity
 provenance.Entity.usedEntity: |
     Link to the entity that was used in a wasDerivedFrom-relation.
-provenance.Entity.generatedEntity: |
-    Link to the entity that was generated (wasDerivedFrom relation)
 provenance.EntityDescription: |
     Class for general descriptions of entities, contains properties that are known before an entity is created.
 provenance.EntityDescription.id: |
@@ -218,6 +220,12 @@ provenance.ParameterDescription.utype: |
     UType, meant to express the role of the parameter in the context of an external data model
 provenance.ParameterDescription.annotation: |
     Additional free text description
+provenance.ParameterDescription.min: |
+    Minimum value
+provenance.ParameterDescription.max: |
+    Maximum value
+provenance.ParameterDescription.options: |
+    List of accepted values
 provenance.UsedDescription: |
     Class for specifying the expected Used relations for ActivityDescriptions
 provenance.UsedDescription.role: |
