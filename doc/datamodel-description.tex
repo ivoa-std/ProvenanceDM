@@ -170,7 +170,7 @@ name       & prov:label & string & a human-readable name for the entity (to be d
 type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, prov:entity; not needed for a simple entity\\
 %description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
 annotation  & prov:description & string & text describing the entity in more detail\\
-rights      & -- & string & access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model\\
+rights      & -- & string & access rights for the data, values: public, secure or proprietary; see Curation.Rights, RightsType in DatasetDM\\
 creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
 \midrule
 $\rightarrow$ description &  & link & link to \class{EntityDescription}\\
@@ -215,8 +215,8 @@ the \class{Dataset} class can be mapped directly to attributes of the
 Table~\ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
 
 
-For entities, we suggest the attributes given in Table 
-\ref{tab:entity-attributes}. If the attribute also exists in the W3C 
+Entities have the attributes given in Table 
+\ref{tab:entity-attributes}. If an attribute also exists in the W3C 
 Provenance Data Model, we list its name in the second column.
 
 %We discussed further attributes like \emph{size} and \emph{format}, but we decided to treat an
@@ -282,7 +282,7 @@ while \attribute{size} would be an attribute of the \class{Entity} instance.
 Additional attributes that describe the content of the data could be derived from 
 the Dataset Metadata Model (see Section \ref{sec:dataset-obscore})
 
-The \class{EntityDescription} class does NOT contain any information about the
+The \class{EntityDescription} class does \emph{not} contain any information about the
 usage of the data, in particular, it tells nothing about them being used as
 input or as output. This kind of information is exclusively provided by the
 relations (and their relation descriptions) between activities and entities
@@ -809,7 +809,7 @@ in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 \textbf{id}      & & string & parameter unique identifier\\
 %description\_ref   & & foreign key/url & link to \emph{ParameterDescription}\\
 %name            & & string & parameter name, if no link to ParameterDescription is given\\
-\textbf{value}   & & (value dependent) & the value of the parameter\\
+\textbf{value}   & & (value dependent) & the value of the parameter, type depends on ParameterDescription.datatype and xtype; follows same rules as VOTable TABLEDATA and DALI\\ % TODO: check and put proper reference somewhere!
 \midrule
 $\rightarrow$ description & & link & link to \class{ParameterDescription}\\
 \bottomrule
@@ -832,6 +832,8 @@ datatype    & & string & datatype \\
 unit           & & string & physical unit \\
 ucd           & & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity\\
 utype        & & string  & UType, meant to express the role of the parameter in the context of an external data model \\
+xtype         & & string & extended datatype as in VOTable 1.2 and above\\
+arraysize     & & number & number of values of specified datatype, if there is more than one\\
 min           & & number & minimum value \\
 max           & & number & maximum value\\
 options           & & list & list of accepted values\\
@@ -995,7 +997,7 @@ curator & Individual & someone who checked and corrected a dataset before publis
 publisher & Organization & organization (publishing house, institute) that published something\\
 observer & Individual & observer at the telescope\\
 operator & Individual & someone performing a given task \\ % removed executor: ambiguous
-coordinator/PI & Individual & someone coordinating/leading a project\\ % we should choose one word : PI?
+coordinator & Individual & someone coordinating/leading a project\\ % we should choose one word : PI?
 funder & Organization & agency or sponsor for a project as in Prov-N\\
 provider & Organization & ``an organization that makes data and/or services available to users over the network'' (definition from RM)\\
 %(owner) & voprov:Individual or voprov:Organization & Does anyone really own the data?\\
