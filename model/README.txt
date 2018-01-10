@@ -49,7 +49,7 @@ Thus, if a *new* version of the model was exported from Modelio, run the followi
 * in provenance/vo-dml/
 	- python add_descriptions.py xml/ProvenanceDM.vo-dml.xml ProvenanceDM.descriptions
 	- mv xml/ProvenanceDM-new.vo-dml.xml xml/ProvenanceDM.vo-dml.xml
-	
+
 	# export again and edit descriptions, if new classes/attributes had been added
 	- python extract_descriptions.py xml/ProvenanceDM.vo-dml.xml --output ProvenanceDM.descriptions_new
 	- edit the now combined descriptions as desired

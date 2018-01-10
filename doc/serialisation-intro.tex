@@ -1,6 +1,6 @@
 Serialization files constitute the building blocks of the client/server and client/client dialogs.
 The provenance information as represented in the data model is split in three main concepts that can be searched following many different relations between the main 3 classes, \class{Activity}, \class{Entity} and \class{Agent}.
-The selection of the relations to expose when distributing the provenance information depends on the usage and will be described more extensively in the use cases in Section~\ref{sec:usecases-implementations}, the Implementation Note \citep{std:ProvenanceImplementationNote} and the links therein.
+The selection of the relations to expose when distributing the provenance information depends on the usage and will be described more extensively in the Implementation Note \citep{std:ProvenanceImplementationNote} and the links therein.
 
 To give a very simple example, suppose a client asks for the context of execution for one specified activity, which computes a simple RGB color composition. 
 On the server side, exposing the provenance information for this activity or for an entity, corresponding to a monocolor or RGB image, means to just expose the structure of the classes and relation tables and feed them with the related tuples in the database.
@@ -73,7 +73,7 @@ Here is the same example in PROV-JSON format:
 }
 \end{verbnobox}
 \noindent
-PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the prov or voprov python package (see Section~\ref{sec:implementation_voprov}).
+PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the prov or voprov python package (see Section ``voprov'' in Implementation Note \citep{std:ProvenanceImplementationNote}).
 
 \subsection{PROV-VOTable format} 
 To emphasize the compatibility to the IVOA framework, where the VOTable-XML
@@ -90,7 +90,7 @@ This can be appropriately used for two goals:
 	\item Providing the backbone for the TAP schema describing IVOA provenance metadata which isused for ProvTAP 
 \end{itemize}
 
-These VOTable serializations can be produced using the voprov python module, available to the community, see also Section~\ref{sec:implementation_voprov} and the IVOA ProvenanceDM Implementation Note \citep[]{std:ProvenanceImplementationNote}. 
+These VOTable serializations can be produced using the voprov python module, available to the community, see also Section ``voprov'' in Implementation Note \citep[]{std:ProvenanceImplementationNote}.
 
 Here is a VOTable document transcription of the serialization example given above in PROV-N and PROV-JSON:
 

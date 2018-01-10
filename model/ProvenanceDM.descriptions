@@ -109,7 +109,7 @@ provenance.Entity.type: |
 provenance.Entity.annotation: |
     Text describing the entity in more detail
 provenance.Entity.rights: |
-    Access rights for the data, values: public, restricted or internal; can be linked to Curation.Rights from ObsCore/Dataset Metadata Model
+    Access rights for the data, values: public, secure, proprietary; see Curation.Rights, RightsType in DatasetDM
 provenance.Entity.creationTime: |
     Datetime at which the entity was created
 provenance.Entity.wasGeneratedBy: |

@@ -19,7 +19,8 @@ DOCTYPE = WD
 SOURCES = $(DOCNAME).tex 
 
 # List of pixel image files to be included in submitted package 
-FIGURES = VOArchitecture-Prov2016.png CTA_DM_high_level.png CTA_prov.png usecase_Pollux_example1.png
+FIGURES = VOArchitecture-Prov2016.png 
+#CTA_DM_high_level.png CTA_prov.png usecase_Pollux_example1.png
 #updated the architecture diag . Mireille
 
 # List of PDF figures (for vector graphics)
