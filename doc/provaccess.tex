@@ -3,54 +3,20 @@
 We envision two possible access protocols:
 \begin{itemize}
 \item ProvDAL: retrieve provenance information based on given ID of a data entity or activity.
-\item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on e.g. code version.
+\item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on e.g. code version. ProvTAP will be desribed in a separate standard document.
 \end{itemize}
 
 \subsection{ProvDAL}
 \input{provdal-afterparis}
 
-
-\subsection{ProvTAP}
-ProvTAP is a TAP service specialization for delivering IVOA Provenance metadata.
-As for any TAP service \citep{std:TAP}, it is providing ADQL query responses
-consisting of a single table each, gathering columns selected from various
-tables defined in the service's TAP schema. By default, this table is formatted
-as a VOTable. Other formats (JSON, tsv, etc.) could be added optionally.
-
-The table and column definitions available in the TAP schema, including their
-metadata (\attribute{unit}, \attribute{ucd}, \attribute{utype}, \attribute{datatype}, \attribute{description}), are exactly the ones defined
-in the PROV-VOTable mapping of the IVOA Provenance data model (see table and
-column definitions and metadata in Appendix~\ref{sec:appendix-prov-votable}).
-This corresponds to what has been done in the RegTAP specification
-\citep{std:RegTAP} for mapping the VOResource data model.
-
-Here are a few examples of ADQL queries for ProvTAP:
-\begin{itemize}
-\item To retrieve all activity metadata for activies sharing the same activityDescription: \\
-\texttt{SELECT * FROM  Activity WHERE \\
-  Activity.a\_description = 'hipsgend\_mean'}
-\item To retrieve all activities associated with agent \texttt{obspm}: \\
-\texttt{SELECT WasAssociatedWith.waw\_activity\_id, Activity.a\_name, \\}
-\verb!       !\texttt{Activity.a\_annotation FROM WasAssociatedWith \\
-INNER JOIN Activity ON \\ WasAssociatedWith.waw\_activity\_id = Activity.a\_id
-\\ WHERE  WasAssociatedWith.waw\_agent\_id = 'obspm'}
-\item To retrieve all entities attributed to \texttt{curator} agents: \\
-\texttt{SELECT WasAttributedTo.wat\_entity\_id FROM WasAttributedTo \\
- WHERE WasAttributedTo.wat\_role = 'curator'}
-\end{itemize}
-%\TODO{Do we need combined query possibilities, i.e. ask for ObsCore-fields and Provenance fields in one query? Or rather use a 2-step-process, decoupling them from each other?}
-
-%\TODO{Also look at PROV-AQ from the W3C.}
-
 \subsection{VOSI availability and capabilities}
-According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL and/or ProvTAP must provide a VOSI availability interface as well as a capabilities interface with entries for ProvDAL and/or ProvTAP. The \texttt{standardId}s for these provenance interfaces are:
+According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL must provide a VOSI availability interface as well as a capabilities interface with entries for ProvDAL. The \texttt{standardId}s for these provenance interfaces are:
 
 \begin{verbatim}
 ivo://ivoa.net/std/ProvenanceDM#ProvDAL-1.0
-ivo://ivoa.net/std/ProvenanceDM#ProvTAP-1.0
 \end{verbatim}
 
-The capability for a TAP service to support the Provenance DM is expressed by
+The capability for a service to support the ProvenanceDM is expressed by
 the dataModel element as:
 \begin{verbatim}
 <dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM-1.0">
@@ -58,5 +24,4 @@ the dataModel element as:
 </dataModel>
 \end{verbatim}
 
-For ProvTAP, the VOSI tables interface must also be provided.
 

@@ -223,8 +223,9 @@ infrastructure that enable VO applications.
 
 
 \section{PROV-VOTable serialisation and ProvTAP TAP schema}
-\label{sec:appendix-prov-votable}
-\input{PROV-VOTABLE}
+Moved to separate document.
+%\label{sec:appendix-prov-votable}
+%\input{PROV-VOTABLE}
 
 \section{Links to other data models}
 \label{sec:dmlinks}
@@ -233,12 +234,14 @@ infrastructure that enable VO applications.
 \section{Changes from Previous Versions}
 \subsection{Changes from WD-ProvenanceDM-1.0-20170921}
 \begin{itemize}
+\item Moved ProvTAP section and PROV-VOTable serialisation to separate ProvTAP document.
 \item Moved chapter 6 with use cases and ``How to use the data model'' to  separate Implementation Note \citep{std:ProvenanceImplementationNote}.
 \item Moved section on links to other data model into appendix.
 \item ParameterDescription: Added attributes \attribute{xtype} and \attribute{arraysize}.
 \item Agent.roles: Removed ``PI'' alternative to ``coordinator''.
 \item Use values of RightsType of DatasetDM, public, secure, proprietary, for \attribute{Entity.rights}.
-\item Minor corrections in HiPS use case, Appendix~\ref{sec:appendix-serialization-examples} and tables in Appendix~\ref{sec:appendix-prov-votable} (TAP SCHEMA).
+\item Minor corrections in HiPS use case, Appendix~\ref{sec:appendix-serialization-examples} and tables in TAP schema.
+% and Appendix~\ref{sec:appendix-prov-votable} (TAP SCHEMA).
 \item Minor correction in role names in Figure~\ref{fig:classdiagram-conceptional} for hadStep/hadMember relationship.
 \end{itemize}
 
@@ -285,7 +288,7 @@ to stress that it explains applications of the model (use cases); implementation
 \end{appendices}
 
 \listoffigures
- 
+
 \listoftables
 
 \bibliography{ivoatex/ivoabib,prov-refs}
