@@ -204,12 +204,17 @@ infrastructure that enable VO applications.
 %\subsection{Serializing of the data model core}
 %\label{sec:intro-serialization}
 %\input{serialisation-intro}
-\section{Accessing provenance information}
-\label{sec:provaccess}
-\input{provaccess}
+
+
+
+%\section{Accessing provenance information}
+% --> Moved to ProvDAL document or Provenance Access
+%\label{sec:provaccess}
+%\input{provaccess}
 
 
 %\section{Use cases -- applying the data model}
+% --> moved to Implementation Note
 %Implementations of the data model for specific use cases}
 %\label{sec:usecases-implementations}
 %\input{usecases-implementations}
@@ -249,7 +254,8 @@ Moved to separate document.
 \begin{itemize}
 \item New appendix for PROV-VOTable/TAP SCHEMA tables added
 \item Corrected and extended attribute tables and mapping tables for links with DatasetDM and SimDM.
-\item Restructured Accessing provenance section by splitting it in two: Section~\ref{sec:serialisations} for explaining the different serialization formats and differences to W3C serializations, Section~\ref{sec:provaccess} for describing the access protocols ProvDAL and ProvTAP.
+\item Restructured Accessing provenance section by splitting it in two: Section~\ref{sec:serialisations} for explaining the different serialization formats and differences to W3C serializations, Section ``Accessing provenance information''%~\ref{sec:provaccess} 
+for describing the access protocols ProvDAL and ProvTAP.
 \item Removed discussion section, since now all the topics are addressed in the main text.
 \item Added paragraph on how to use the model in Section 6. %~\ref{sec:usecases-implementations}.
 \item Shortened serialization examples, partially moved them to appendix.
@@ -259,7 +265,8 @@ Moved to separate document.
 \item Renamed Section 6
 %~\ref{sec:usecases-implementations} 
 to stress that it explains applications of the model (use cases); implementation details and code examples can be found in Implementation Note \citep{std:ProvenanceImplementationNote}.
-\item Complete rewrite of the ProvDAL section in Section~\ref{sec:access_protocols}; new parameters, new figure and examples added.
+\item Complete rewrite of the ProvDAL section in Section ``Accessing provenance information'';%~\ref{sec:access_protocols};
+new parameters, new figure and examples added.
 \item Added additional figure for entity-activity relations.
 \item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
 \item Extended the entity role examples in table \ref{tab:entity-roles}.

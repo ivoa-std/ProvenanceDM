@@ -171,8 +171,11 @@ Here is a VOTable document transcription of the serialization example given abov
 This VOTable serialization can be considered as a flat view on the various tables stored in a database implementing the datamodel structure explained in Section~\ref{sec:datamodel}.
 More examples of serialization documents are provided in Appendix \ref{sec:appendix-serialization-examples}.
 
+\TODO{add reference!}
+Such serializations can be retrieved through access protocols (see separate document(s))%\ref{sec:access_protocols})
+ or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
 
-Such serializations can be retrieved through access protocols (see \ref{sec:access_protocols} ) or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
+\TODO{Add reference(s) to access protocols!}
 
 % I believe the PROV-keyword was already used in FITS, but not PROVENANCE.
 %\TODO{SVOM strategy to incorporate provenance as an extension in FITS ? still valid ?}
