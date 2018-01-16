@@ -76,6 +76,7 @@ Here is the same example in PROV-JSON format:
 PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the prov or voprov python package (see Section ``voprov'' in Implementation Note \citep{std:ProvenanceImplementationNote}).
 
 \subsection{VOTable format for Provenance metadata} 
+\TODO{Move this section to ProvTAP document?}
 To emphasize the compatibility to the IVOA framework, where the VOTable-XML
 format is a reference to circulate metadata, we define a VOTable mapping
 specification. All classes' declarations and relations described for this data model are translated into separated tables, one for each class of the model.
@@ -171,7 +172,6 @@ Here is a VOTable document transcription of the serialization example given abov
 This VOTable serialization can be considered as a flat view on the various tables stored in a database implementing the datamodel structure explained in Section~\ref{sec:datamodel}.
 More examples of serialization documents are provided in Appendix \ref{sec:appendix-serialization-examples}.
 
-\TODO{add reference!}
 Such serializations can be retrieved through access protocols (see separate document(s))%\ref{sec:access_protocols})
  or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
 
