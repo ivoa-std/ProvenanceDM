@@ -1,0 +1,7 @@
+
+-------
+warning:
+------- 
+Attribute provenance.ParameterDescription.options has multiplicity 0..-1 which is STRONLY DISCOURAGED.
+  [schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/provenance/vo-dml/xml/ProvenanceDM.vo-dml.xml:4:11: cvc-complex-type.2.4.a: Invalid content was found starting with element 'title'. One of '{identifier, uri}' is expected.
+[schemavalidate] /home/kristin/E-Science/GAVO/ProvenanceDataModel/svn/provenance/vo-dml/xml/ProvenanceDM.vo-dml.xml is not a valid XML document
