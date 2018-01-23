@@ -1,4 +1,3 @@
-\subsection{Access protocols}
 \label{sec:access_protocols}
 We envision two possible access protocols:
 \begin{itemize}
@@ -6,22 +5,23 @@ We envision two possible access protocols:
 \item ProvTAP: allows detailed queries for provenance information, discovery of datasets based on e.g. code version. ProvTAP will be desribed in a separate standard document.
 \end{itemize}
 
-\subsection{ProvDAL}
-\input{provdal-afterparis}
+Both protocols will be specified in separate documents.
 
-\subsection{VOSI availability and capabilities}
-According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL must provide a VOSI availability interface as well as a capabilities interface with entries for ProvDAL. The \texttt{standardId}s for these provenance interfaces are:
+%\subsection{ProvDAL}
+%\input{provdal-afterparis}
 
-\begin{verbatim}
-ivo://ivoa.net/std/ProvenanceDM#ProvDAL-1.0
-\end{verbatim}
+% \subsection{VOSI availability and capabilities}
+% According to the DALI specification for VO services \citep{std:DALI}, a provenance service implementing ProvDAL must provide a VOSI availability interface as well as a capabilities interface with entries for ProvDAL. The \texttt{standardId}s for these provenance interfaces are:
 
-The capability for a service to support the ProvenanceDM is expressed by
-the dataModel element as:
-\begin{verbatim}
-<dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM-1.0">
-  ProvenanceDM-1.0
-</dataModel>
-\end{verbatim}
+% \begin{verbatim}
+% ivo://ivoa.net/std/ProvenanceDM#ProvDAL-1.0
+% \end{verbatim}
 
+% The capability for a service to support the ProvenanceDM is expressed by
+% the dataModel element as:
+% \begin{verbatim}
+% <dataModel ivoid="ivo://ivoa.net/std/ProvenanceDM-1.0">
+%   ProvenanceDM-1.0
+% </dataModel>
+% \end{verbatim}
 
