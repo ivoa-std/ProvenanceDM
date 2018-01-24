@@ -811,6 +811,7 @@ in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 %name            & & string & parameter name, if no link to ParameterDescription is given\\
 \textbf{value}   & & (value dependent) & the value of the parameter, type depends on ParameterDescription.datatype and xtype; follows same rules as VOTable TABLEDATA and DALI\\ % TODO: check and put proper reference somewhere!
 \midrule
+$\rightarrow$ activity & & link & link to \class{Activity}\\
 $\rightarrow$ description & & link & link to \class{ParameterDescription}\\
 \bottomrule
 \end{tabulary}
@@ -821,7 +822,8 @@ $\rightarrow$ description & & link & link to \class{ParameterDescription}\\
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize ParameterDescription}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{@{}p{0cm}p{2.5cm}lL@{}}
+%\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{@{}lp{0cm}p{2.cm}L@{}}
 \toprule
 \head{Attribute} & \head{} & \head{Data type} & \head{Description}\\
 \midrule
@@ -837,6 +839,8 @@ arraysize     & & number & number of values of specified datatype, if there is m
 min           & & number & minimum value \\
 max           & & number & maximum value\\
 options           & & list & list of accepted values\\
+\midrule
+$\rightarrow$ activityDescription & & link & link to \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of \class{ParameterDescription}]{Attributes of \class{ParameterDescription}.}
