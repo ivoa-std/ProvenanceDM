@@ -110,9 +110,10 @@ correspond to the Provenance terms \class{Activity} and \class{ActivityDescripti
 
 This separation into two classes may not be needed for each and every project,
 and everyone is free to choose which classes make sense for his\slash{}her use
-case. When serializing provenance, one can integrate the description side into
-the  other classes, thus producing a W3C compliant provenance description. More
-details about  all these classes and relations are given in the following
+case. Also, when serializing provenance, one can integrate the description side into
+the other classes.
+%, thus producing a W3C compliant provenance description. 
+More details about all these classes and relations are given in the following
 section.
 
 
@@ -167,9 +168,11 @@ Provenance and reused the IVOA datatypes.
 \midrule
 \textbf{id} & prov:id & (qualified) string & a unique id for this entity (unique in its realm)\\
 name       & prov:label & string & a human-readable name for the entity (to be displayed by clients)\\
+location    & prov:location & string & a path or a geographical location\\
 type        & prov:type  & string & a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan, prov:entity; not needed for a simple entity\\
 %description\_ref  & & foreign key/url & link to \class{EntityDescription}\\
 annotation  & prov:description & string & text describing the entity in more detail\\
+value       & prov:value &  & provides a value that is a direct representation of an entity \\
 rights      & -- & string & access rights for the data, values: public, secure or proprietary; see Curation.Rights, RightsType in DatasetDM\\
 creationTime  & -- & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
 \midrule
@@ -197,6 +200,7 @@ documents.
 An entity is not restricted to being a file. 
 It can even be just a number in a table, depending on how fine-grained the 
 provenance shall be described.
+An entity can also carry its value directly in its value attribute.
 
 \begin{figure}[h]
 \centering
@@ -275,7 +279,7 @@ For example, if we run an activity to create an RGB image from three greyscale
 images, we may know a mandatory \attribute{format} for the input and output
 images before the activity's execution (JPG, PNG, FITS, \ldots), but we probably
 cannot know the final \attribute{size} of the image  that will be created.
-Therefore, \attribute{format} would be an \class{EntityDescription} attribute,
+In this example, \attribute{format} would be an \class{EntityDescription} attribute,
 while \attribute{size} would be an attribute of the \class{Entity} instance. 
 
 %This class thus stores entity-related 
@@ -460,9 +464,9 @@ pipeline shall be grouped together, one needs to create a proper
 be referred to by the pipeline activity. 
 
 When serializing the data model, the attributes
-of the description class may be assigned to the activity in order to produce 
-a W3C compliant serialization, which is the same procedure as with
- Entity\slash{}EntityDescription).
+of the description class may be assigned to the activity for simplification.
+% in order to produce  a W3C compliant serialization, which is the same procedure as with
+% Entity\slash{}EntityDescription).
 
 \begin{table}[h]
 \small
@@ -782,21 +786,23 @@ vocabulary list or thesaurus.
 
 \subsubsection{Parameters}\label{sec:parameters}
 
-The concept of activity configuration, generally a set of parameters that can be configured, is different to the concept of provenance information. However, it is tightly connected. We identify three different ways to link configuration information to an activity:
-\begin{itemize}
-\item Declare a parameter set (or each parameter) as an input entity that is used by the activity. \\
-        This also allows tracking the provenance of the parameter further.
-\item Define families of activities, each one with fixed attributes.\\
-        I.e. use different subclasses for activities with different fixed attributes.
-\item Add activity attributes in the form of key-value parameters.
-\end{itemize}
+The concept of activity configuration, generally a set of parameters that can be configured, is tightly linked to the concept of provenance, even though it is not core provenance information.
 
-To enable the latter solution, we add a \class{Parameter} class along with a
-\class{ParameterDescription} for describing additional properties of activities.
-In this solution, parameters are directly connected to an activity without
-complex \class{Entity}-\class{Activity} relations. Moreover, we can then describe each parameter
-in the same way as in FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
+Activity configuration typically implies a set of parameters attached to the activity before execution. The concept of parameter is very general, and it exist in the VO context, for example as PARAM elements in VOTable \citep{std:VOTABLE}, as uws:param elements in the UWS pattern \citep{std:UWS}, or as POST/GET parameters for web services \citep{see for example}{std:SODA}. 
 
+%We identify three different ways to link configuration information to an activity:
+%\begin{itemize}
+%\item Declare a parameter set (or each parameter) as an input entity that is used by the activity. \\
+%        This also allows tracking the provenance of the parameter further.
+%\item Define families of activities, each one with fixed attributes.\\
+%        I.e. use different subclasses for activities with different fixed attributes.
+%\item Add activity attributes in the form of key-value parameters.
+%\end{itemize}
+
+In order to provide a link between configuration and provenance information, we add a \class{Parameter} class along with a \class{ParameterDescription}, so that configuration information is structured and stored with the provenance information (and can thus be queried simultaneously). 
+
+The \class{Parameter} class is directly connected to an activity without complex \class{Entity}-\class{Activity} relations. 
+The optional attributes of \class{ParameterDescription} are taken from the FIELD and PARAM elements in VOTable \citep{std:VOTABLE}.
 
 \begin{table}[h]
 \small
@@ -831,11 +837,11 @@ $\rightarrow$ description & & link & link to \class{ParameterDescription}\\
 \textbf{name} & & string & parameter name\\
 annotation & & string & additional free text description\\
 datatype    & & string & datatype \\
+arraysize     & & number & number of values of specified datatype, if there is more than one\\
 unit           & & string & physical unit \\
 ucd           & & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity\\
 utype        & & string  & UType, meant to express the role of the parameter in the context of an external data model \\
 xtype         & & string & extended datatype as in VOTable 1.2 and above\\
-arraysize     & & number & number of values of specified datatype, if there is more than one\\
 min           & & number & minimum value \\
 max           & & number & maximum value\\
 options           & & list & list of accepted values\\
@@ -846,8 +852,14 @@ $\rightarrow$ activityDescription & & link & link to \class{ActivityDescription}
 \caption[Attributes of \class{ParameterDescription}]{Attributes of \class{ParameterDescription}.}
 \end{table}
 
-For example, observations generally require information on \emph{ambient conditions} as well as 
-\emph{instrument characteristics}. This contextual data associated with an observation is not directly modelled in the ProvenanceDM. However, this information can be stored as different entities. Alternatively, one could list the instrument characteristics as a set of key-value parameters using the \class{Parameter} class, so that this information is structured and stored with the provenance information (and can thus be queried simultaneously). In the case of a processing activity that cleans an image with a sigma-clipping method, the input and output images would be entities and the value of the number of sigma for sigma-clipping could be a parameter instead of an entity. We may also want to define a 3-sigma-clipping activity where this parameter is fixed to 3.
+We note that a parameter can be seen as a simplified entity, though it can only be used by an activity and it has no provenance. In some cases, it may be relevant to define a specific parameter as an entity if its provenance should be traced.
+
+%For example, observations generally require information on \emph{ambient conditions} as well as 
+%\emph{instrument characteristics}. This contextual data associated with an observation is not directly modelled in the ProvenanceDM. However, this information can be stored as different entities. 
+%Alternatively, one could list the instrument characteristics as a set of key-value parameters using the \class{Parameter} class, so that this information is structured and stored with the provenance information (and can thus be queried simultaneously). 
+
+For example, in the case of a processing activity that cleans an image with a sigma-clipping method, the input and output images would be entities and the value of the number of sigma for sigma-clipping could be a parameter instead of an entity. 
+We may also want to define a 3-sigma-clipping activity where this parameter is fixed to 3.
 
 
 %For example for observations, the \emph{ambient conditions} as well as 
