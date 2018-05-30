@@ -13,19 +13,20 @@ Using ``voprov'' as the namespace prefix for our model and ``prov'' for W3C PROV
 \item attribute \texttt{voprov:annotation} $\rightarrow$ \texttt{prov:description}
 \item attribute \texttt{prov:role} is not allowed in W3C's \class{WasAttributedTo}, thus use \texttt{voprov:role}
 \item \class{hadMember} has no ID and no optional attributes in W3C
-\item \class{Collection} $\rightarrow$ \class{Entity} with \texttt{prov:type = prov:collection}
+\item \class{Collection} $\rightarrow$ \class{Entity} with \texttt{prov:type = 'prov:collection'}
 \end{itemize}
 
 \paragraph{Description classes}
 %\item restructure \class{*Description} classes: add their attributes to the linked core classes, using a ``desc\_'' prefix, e.g. Entity.desc\_category.
 \begin{itemize}
-\item \class{ActivityDescription} becomes an Entity with prov:type = voprov:ActivityDescription. It is close to the Plan concept in W3C PROV, and it could have in addition prov:type = prov:plan (note that W3C PROV accepts several types). This class is used by the Activity class with prov:role = voprov:ActivityDescription.
-\item EntityDescription becomes an Entity of type prov:type = voprov:EntityDescription. It is then linked to an Entity with the sepcializationOf relation.
-\item UsedDescription and WasGeneratedBy description also become entities.
+\item \class{ActivityDescription} becomes an Entity with \texttt{prov:type = 'voprov:ActivityDescription'}. It is close to the Plan concept in W3C PROV, and it could have in addition \texttt{prov:type = 'prov:plan'} (note that W3C PROV accepts several types). This class is used by the Activity class with \texttt{prov:role = 'voprov:ActivityDescription'}.
+\item \class{EntityDescription} becomes an Entity of type \texttt{prov:type = 'voprov:EntityDescription'}. It is then linked to an Entity with the specializationOf relation.
+\item \class{UsedDescription} and \class{WasGeneratedByDescription} also become entities.
 \end{itemize}
-We also envision to group all description classes into a prov:Bundle that is then connected to the Activity with the Used relation and prov:role = voprov:ActivityDescription.
+We also envision to group all description classes into a prov:Bundle that is then connected to the Activity with the Used relation and \texttt{prov:role = 'voprov:ActivityDescription'}.
 
 \paragraph{Parameter class}
+
 %\item restructure \class{Parameter} and \class{ParameterDescription}:
 %merge them into one parameter class, model it as an entity
 A parameter can be seen as a simplified entity and should thus be serialized in the same way as an entity, with prov:type = voprov:Parameter. The ParameterDescription becomes an Entity with prov:type = voprov:ParameterDescription and a specializationOf relation to the parameter entity.
@@ -33,7 +34,7 @@ A parameter can be seen as a simplified entity and should thus be serialized in 
 \paragraph{ActivityFlow class}
 \begin{itemize}
 	\item \class{ActivityFlow} $\rightarrow$ \class{Activity} with additional attribute \texttt{voprov:votype = 'voprov:activityFlow'}
-	\item replace \class{HadStep} relation by W3C's general \class{WasInfluencedBy} relation with additional attribute \texttt{voprov:votype = 'voprov:hadStep'} or just use \attribute{voprov:hadStep} as attribute in activities of type activityFlow
+	\item replace \class{HadStep} relation by W3C's general \class{WasInfluencedBy} relation with additional attribute \texttt{voprov:votype = 'voprov:hadStep'} or just use \attribute{voprov:hadStep} as attribute in activities of type activityFlow.
 \end{itemize}
 
 This way, it is possible to produce W3C compatible serializations of our model with minimum information loss. W3C tools would ignore the voprov-attributes, whereas VO clients could make sense of this additional information and could even uncover the original structure or convert it to a VO serialization.
