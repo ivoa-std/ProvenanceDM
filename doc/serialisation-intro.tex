@@ -1,83 +1,121 @@
-Serialization files constitute the building blocks of the client/server and client/client dialogs.
+
+Serialization files constitute the building blocks of the client/server dialogs.
 The provenance information as represented in the data model is split in three main concepts that can be searched following many different relations between the main 3 classes, \class{Activity}, \class{Entity} and \class{Agent}.
 The selection of the relations to expose when distributing the provenance information depends on the usage and will be described more extensively in the Implementation Note \citep{std:ProvenanceImplementationNote} and the links therein.
 
 To give a very simple example, suppose a client asks for the context of execution for one specified activity, which computes a simple RGB color composition. 
 On the server side, exposing the provenance information for this activity or for an entity, corresponding to a monocolor or RGB image, means to just expose the structure of the classes and relation tables and feed them with the related tuples in the database.
-On the client side, the content of a VO-Provenance serialization document can then be explored and represented using graphical interfaces, as inspired by the Provenance Southampton suite or by customized visualization tools.
+On the client side, the content of a VO-Provenance serialization document can then be explored and represented using graphical interfaces, as inspired by the Provenance Southampton suite or by customized visualisation tools.
 
-\subsection{Serialization formats: PROV-N, PROV-JSON and PROV-XML} % from W3C reused and extended
-The serialization formats {PROV-N}, {PROV-JSON} and {PROV-XML} are proposed 
-in the W3C Provenance framework for storing and exchanging the provenance metadata: {PROV-N}, {PROV-JSON} and {PROV-XML}, defined in \cite{std:PROV-N}, \cite{std:PROV-JSON} and \cite{std:PROV-XML}, respectively. 
+\subsection{W3C serialization formats: PROV-N, PROV-JSON and PROV-XML}
+% from W3C reused and extended
+
+Serialization formats are proposed in the W3C PROV framework for storing and exchanging the provenance metadata: {PROV-N}, {PROV-JSON},{PROV-XML} and PROV-RDF, that are defined in \cite{std:PROV-N}, \cite{std:PROV-JSON}, \cite{std:PROV-XML},and \cite{std:PROV-O} respectively. 
 %These are serializations of the W3C provenance data model, a larger set of classes and relations compared to this model but sharing the same core structure. 
-They can be reused here as well for serializations of our data model. For producing fully W3C compatible serializations, see Section~\ref{sec:w3cserialization}.
+They can be reused here as well for serializations of our data model. 
+
+For producing fully W3C compatible serializations, the attributes that must be used are the W3C PROV-DM attributes when they exist. Those are preceded by the \texttt{prov} namespace, as given in Tables~\ref{tab:entity}, \ref{tab:wasderivedfrom}, \ref{tab:activity}, \ref{tab:wasinformedby}, \ref{tab:used} and \ref{tab:wasgeneratedby}. The other attributes should be qualified names and thus have a namespace. For attributes described in the IVOA Provenance DM, this namespace should be \texttt{voprov}. This leads to the following rules:
+
+\begin{itemize}
+\item use namespace \texttt{prov} for the attributes that are the same in W3C PROV (e.g. id, role, startTime, endTime)
+\item attribute \texttt{name} $\rightarrow$ \texttt{prov:label}
+\item attribute \texttt{annotation} $\rightarrow$ \texttt{prov:description}
+\item attribute \texttt{prov:role} is not allowed in W3C's \class{wasAttributedTo}, thus use \texttt{voprov:role}
+%\item \class{hadMember} has no id and no optional attributes in W3C
+\item \class{Collection} $\rightarrow$ \class{Entity} with \texttt{prov:type = 'prov:Collection'}
+\end{itemize}
+
+The specialized entities defined in Section~\ref{sec:spec_entities} should be written in the Entity block with the attribute \attribute{prov:type} set to the category of the specialized entity e.g. \attribute{voprov:Data}, \attribute{voprov:Parameter}, \attribute{voprov:ActivityDescription} (as it is done for \class{Collection} in W3C PROV-DM).
+
+The specialized relations defined in Section~\ref{sec:spec_relations} should be written as a W3C relation (e.g. used or wasInfluencedBy) with the attribute \attribute{prov:type} set to the name of the specialized relation e.g. \attribute{voprov:hadDescription}, \attribute{voprov:hadConfiguration}, \attribute{voprov:hadContext}, \attribute{voprov:hasConfiguration}.
+In the case of the \class{hadDescription} relation to \class{ActivityDescription}, it should be written as a \class{wasAssociatedWith} relation between the corresponding activity and the activityDescription (seen as a prov:Plan), specifying or not the involved agent.This leads to the following rules:
+
+\begin{itemize}
+\item Specialized entities: add \texttt{prov:type = 'voprov:...'}
+\item Specialized relations: add \texttt{prov:type = 'voprov:...'}
+\item \class{ActivityDescription}: also add \texttt{prov:type = 'prov:Plan'}
+\item \class{hadDescription}: replace by \class{wasAssociatedWith} with the \class{ActivityDescription} given as a plan
+\end{itemize}
+
+
+%see Section~\ref{sec:w3cserialization}.
 
 % NOTE: we actually never use PROV-XML here!!
 
 %example KR provn 
-Here is an example serialization instance document for an entity being processed by an activity, in PROV-N notation:
+Here is an example of a serialization instance document for an entity being processed by an activity, in PROV-N notation:
 
-\begin{verbnobox}[\scriptsize]
-
+%\begin{verbnobox}[\scriptsize]
+%\begin{lstlisting}[language=sh, frame=single, escapeinside={}{}, caption= example of a PROV-N serialisation]
+\begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{sh}
 document
   prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
-  prefix ex <http://www.example.com/provenance/>
   prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
+  prefix prov <http://www.w3.org/ns/prov#>
+  prefix ex <http://www.example.com/provenance/>
 
-  entity(ivo://example#Public_NGC6946, [voprov:name="Processed image of NGC 6946"])
-  entity(ivo://example#DSS2.143, [voprov:name="Unprocessed image of NGC 6946"])
-  activity(ex:Process1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [voprov:name="Process 1"])
+  entity(ivo://example#Public_NGC6946, [prov:label="Processed image of NGC 6946", prov:type="voprov:Data"])
+  entity(ivo://example#DSS2.143, [prov:label="Unprocessed image of NGC 6946", prov:type="voprov:Data"])
+  activity(ex:Process1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [prov:label="Process 1"])
   used(ex:Process1, ivo://example#DSS2.143, -)
   wasGeneratedBy(ivo://example#Public_NGC6946, ex:Process1, 2017-05-05T00:00:00)
 endDocument
-
-\end{verbnobox}
+\end{minted}
 
 \noindent
 Here is the same example in PROV-JSON format:
-\begin{verbnobox}[\scriptsize]
+
+%\begin{verbnobox}[\scriptsize]
+%\begin{lstlisting}[language=java, frame=single, caption= example of a PROV-JSON serialisation]
+\begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{json}
 {
   "prefix": {
     "ivo": "http://www.ivoa.net/documents/rer/ivo/",
     "voprov": "http://www.ivoa.net/documents/dm/provdm/voprov/",
+    "prov": "http://www.w3.org/ns/prov#",
     "ex": "http://www.example.com/provenance/"
   },
   "activity": {
     "ex:Process1": {
-      "voprov:startTime": "2017-04-18T17:28:00",
-      "voprov:endTime": "2017-04-19T17:29:00",
-      "voprov:name": "Process 1"
+      "prov:startTime": "2017-04-18T17:28:00",
+      "prov:endTime": "2017-04-19T17:29:00",
+      "prov:label": "Process 1"
     }
   },
   "wasGeneratedBy": {
     "_:id4": {
-      "voprov:time": "2017-05-05T00:00:00",
-      "voprov:entity": "ivo://example#Public_NGC6946",
-      "voprov:activity": "ex:Process1"
+      "prov:time": "2017-05-05T00:00:00",
+      "prov:entity": "ivo://example#Public_NGC6946",
+      "prov:activity": "ex:Process1"
     }
   },
   "used": {
     "_:id1": {
-      "voprov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143",
-      "voprov:activity": "hips:AlaRGB1"
+      "prov:entity": "ivo://example#DSS2.143",
+      "prov:activity": "hips:AlaRGB1"
     }
-  }
+  },
   "entity": {
     "ivo://example#DSS2.143": {
-      "voprov:name": "Unprocessed image of NGC6946"
+      "prov:label": "Unprocessed image of NGC6946",
+      "prov:type": "voprov:Data"
     },
     "ivo://example#Public_NGC6946": {
-      "voprov:name": "Processed image of NGC 6946"
+      "prov:label": "Processed image of NGC 6946",
+      "prov:type": "voprov:Data"
     }
   }
 }
-\end{verbnobox}
+\end{minted}
+
 \noindent
-PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the prov or voprov python package (see Section ``voprov'' in Implementation Note \citep{std:ProvenanceImplementationNote}).
+PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the \texttt{prov} or \texttt{voprov} python package (see Section ``voprov'' in Implementation Note \citep{std:ProvenanceImplementationNote}).
 
 \subsection{VOTable format for Provenance metadata} 
-\TODO{Move this section to ProvTAP document?}
-To emphasize the compatibility to the IVOA framework, where the VOTable-XML
+
+%\TODO{Move this section to ProvTAP document?}
+
+To emphasize the compatibility to the IVOA framework, where the XML-based VOTable
 format is a reference to circulate metadata, we define a VOTable mapping
 specification. All classes' declarations and relations described for this data model are translated into separated tables, one for each class of the model.
 % , also see the ProvTAP document.
@@ -90,14 +128,16 @@ defines the VOTable values of the FIELD and PARAM attributes \texttt{ucd},
 This can be appropriately used for two goals:
 \begin{itemize}
 	\item Publishing full provenance metadata for data collections in VOTable format. This can be produced by data processing workflows or as output of databases containing provenance metadata.
-	\item Providing the backbone for the TAP schema describing IVOA provenance metadata which isused for ProvTAP 
+	\item Providing the backbone for the TAP schema describing IVOA provenance metadata which is used for ProvTAP 
 \end{itemize}
 
-These VOTable serializations can be produced using the voprov python module, available to the community, see also Section ``voprov'' in Implementation Note \citep[]{std:ProvenanceImplementationNote}.
+These VOTable serializations can be produced using the \texttt{voprov} python module, available to the community, as mentionned in see also in Implementation Note \citep[]{std:ProvenanceImplementationNote}.
 
 Here is a VOTable document transcription of the serialization example given above in PROV-N and PROV-JSON:
 
-\begin{verbnobox}[\scriptsize]
+%\begin{verbnobox}[\scriptsize]
+%\begin{lstlisting}[language=XML, frame=single, caption= example of a VOTable serialisation]
+\begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{xml}
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
   xmlns:ex="http://www.example.com/provenance" 
@@ -134,8 +174,8 @@ Here is a VOTable document transcription of the serialization example given abov
     <TABLE name="Activity" utype="voprov:Activity">
       <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Activity.id"/>
       <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Activity.name"/>
-      <FIELD arraysize="*" datatype="char" name="start" ucd="" utype="voprov:Activity.startTime"/>
-      <FIELD arraysize="*" datatype="char" name="stop" ucd="" utype="voprov:Activity.endTime"/>
+      <FIELD arraysize="*" datatype="char" name="startTime" ucd="time.start" utype="voprov:Activity.startTime"/>
+      <FIELD arraysize="*" datatype="char" name="endTime" ucd="time.end" utype="voprov:Activity.endTime"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -150,15 +190,18 @@ Here is a VOTable document transcription of the serialization example given abov
     <TABLE name="Entity" utype="voprov:Entity">
       <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Entity.id"/>
       <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Entity.name"/>
+      <FIELD arraysize="*" datatype="char" name="type" ucd="meta.main" utype="voprov:Entity.type"/>
       <DATA>
         <TABLEDATA>
           <TR>
             <TD>ivo://example#DSS2.143</TD>
             <TD>Unprocessed image of NGC6946</TD>
+            <TD>Data</TD>
           </TR>
           <TR>
             <TD>ivo://example#Public_NGC6946</TD>
             <TD>Processed image of NGC 6946</TD>
+            <TD>Data</TD>
           </TR>
         </TABLEDATA>
       </DATA>
@@ -166,16 +209,18 @@ Here is a VOTable document transcription of the serialization example given abov
     <INFO name="QUERY_STATUS" value="OK"/>
   </RESOURCE>
 </VOTABLE>
+\end{minted}
 
-\end{verbnobox}
-
-This VOTable serialization can be considered as a flat view on the various tables stored in a database implementing the datamodel structure explained in Section~\ref{sec:datamodel}.
+This VOTable serialization can be considered as a flat view on the various tables stored in a database implementing the data model structure explained in Section~\ref{sec:datamodel}.
 More examples of serialization documents are provided in Appendix \ref{sec:appendix-serialization-examples}.
+It is possible to create separate tables for each specialized entity, providing that the TABLE tag has the name of this specialized entity, and \attribute{utype=voprov:Entity}.
 
-Such serializations can be retrieved through access protocols (see separate document(s))%\ref{sec:access_protocols})
- or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. E.g. for FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the workflow that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
+Such serializations can be retrieved through IVOA access protocols (see Section~\ref{sec:access_protocols}), %\ref{sec:access_protocols})
+or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. 
 
-\TODO{Add reference(s) to access protocols!}
+For FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the activities that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
+
+%\TODO{Add reference(s) to access protocols!}
 
 % I believe the PROV-keyword was already used in FITS, but not PROVENANCE.
 %\TODO{SVOM strategy to incorporate provenance as an extension in FITS ? still valid ?}

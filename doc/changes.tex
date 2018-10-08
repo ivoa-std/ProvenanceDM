@@ -1,4 +1,16 @@
+
+\subsection{Changes from WD-ProvenanceDM-1.0-20180530}
+
+\begin{itemize}
+\item Separate core model (W3C only) and extended model (IVOA Provenance DM).
+\item Add definitions for specialised entities, including all the description classes and parameters.
+\item Add definitions for specialised relations.
+\item Updated serialization of the description classes for web services.
+\end{itemize}
+
+
 \subsection{Changes from WD-ProvenanceDM-1.0-20170921}
+
 \begin{itemize}
 \item Moved ProvDAL to separate document.
 \item Moved ProvTAP section and full definition of VOTable serialisation to separate ProvTAP document.
@@ -9,14 +21,16 @@
 \item Use values of RightsType of DatasetDM, public, secure, proprietary, for \attribute{Entity.rights}.
 \item Minor corrections in HiPS use case, Appendix~\ref{sec:appendix-serialization-examples} and tables in TAP schema.
 % and Appendix~\ref{sec:appendix-prov-votable} (TAP SCHEMA).
-\item Minor correction in role names in Figure~\ref{fig:classdiagram-conceptional} for hadStep/hadMember relationship.
+\item Minor correction in role names for hadStep/hadMember relationship.
 \item Modified text on Parameters
 \item Rename 3.4 section to Serialization of description classes for web services
 \item Modified text on W3C serialization
 \item add \attribute{location} and \attribute{value} attributes to \class{Entity}
 \end{itemize}
 
+
 \subsection{Changes from WD-ProvenanceDM-1.0-20161121}
+
 \begin{itemize}
 \item New appendix for PROV-VOTable/TAP SCHEMA tables added
 \item Corrected and extended attribute tables and mapping tables for links with DatasetDM and SimDM.
@@ -35,7 +49,7 @@ to stress that it explains applications of the model (use cases); implementation
 new parameters, new figure and examples added.
 \item Added additional figure for entity-activity relations.
 \item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
-\item Extended the entity role examples in table \ref{tab:entity-roles}.
+\item Extended the entity role examples in table \texttt{tab:entity-roles}.
 \item Added links to provn and votable-serialization for HiPS-use case, added first part of provn as example in the HiPS-use case section.
 \item More explanations on links to data models in Section~\ref{sec:dmlinks}, introduced subsections, added table with SimDM-mapping.
 \item Moved detailed implementation section from appendix to a separate document (implementation note), shortened the use cases \& implementation section.

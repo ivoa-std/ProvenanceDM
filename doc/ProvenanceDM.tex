@@ -10,7 +10,9 @@
 
 % use listings for including text files and code snippets
 \usepackage{listings}
+\usepackage{minted}
 \usepackage{color}
+\usepackage{multirow}
 \usepackage[nottoc]{tocbibind}
 
 \graphicspath{{figures/}}
@@ -151,8 +153,8 @@ This document has been developed in part with support from the German
 Astrophysical Virtual Observatory, funded by BMBF Bewilligungsnummer 05A14BAD and 05A08VHA.
 The Provenance Working Group acknowledges support from the Astronomy ESFRI and Research Infrastructure Cluster – ASTERICS project, funded by the European Commission under the Horizon 2020 Programme (GA 653477).
 
-Thanks for fruitful discussions to: Catherine Boisson, Karl Kosak and Jose Enrique Ruiz for the
-binding to the Cerenkov Telescope Array (CTA) project, Gerard
+Thanks for fruitful discussions to: Catherine Boisson, Karl Kosak and Jose Enrique Ruiz 
+for the binding to the Cerenkov Telescope Array (CTA) project, Gerard
 Lemson and Laurent Michel for the VODML expression of the data model, Markus Demleitner,
 Harry Enke, Jochen Klar and Adrian Partl
 for fruitful discussions, remarks and comments during the different stages of this
@@ -192,8 +194,8 @@ infrastructure that enable VO applications.
 \subsection{Serialization of description classes for web services}
 \label{sec:description-serialization}
 \input{serialization-descriptions}
-\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}
-\input{serialization-w3c}
+%\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}
+%\input{serialization-w3c}
 
 \section{Accessing provenance information}
 \label{sec:provaccess}

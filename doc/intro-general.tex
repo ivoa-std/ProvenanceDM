@@ -12,6 +12,8 @@ The people involved can be for example individual persons (observer, publisher, 
 
 The links between the Provenance DM and other IVOA data models will be discussed in Section~\ref{sec:dmlinks}. We note here that the provenance of simulated data is included in the Simulation DM \citep[SimDM,][]{std:SimDM}. Therefore we also give a mapping between SimDM and the Provenance DM in Section~\ref{sec:dmlinks}.
 
+We also introduce a few constructs from the ProvONE data model \citep{ProvONE}, that proposes extensions to W3C PROV for scientific workflow provenance. We discuss the mapping between ProvONE and the Provenance DM in Appendix~\ref{sec:dmlinks}.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{workflow-backwards.pdf}
@@ -20,8 +22,6 @@ progenitor entities (yellow rounded boxes) and responsible agents (orange pentag
 discovered.}
 \label{fig:example-workflow}
 \end{figure}
-
-
 
 
 %including extraction of data from 
@@ -33,7 +33,8 @@ discovered.}
 %does not extend a certain period, etc... 
 
 
-\subsection{Goal of the provenance model}\label{sec:goals}
+\subsection{Goal of the provenance model}
+\label{sec:goals}
 
 The goal of this Provenance DM is to describe how provenance information
 can be modelled, stored and exchanged. Its scope

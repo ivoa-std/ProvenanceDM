@@ -2,7 +2,8 @@ Here is a a simple example of serialization of ProvenanceDM metadata for describ
 
 The PROV-N format \cite{std:PROV-N} as proposed by the W3C is a text format which allows the description of instances of the 3 main classes, as well as the various relations between each instance involved.
 
-\begin{lstlisting}[language=C, style=customc,caption= PROV-N serialisation example for a color composition activity]
+%\begin{lstlisting}[language=C, style=customc,caption= PROV-N serialisation example for a color composition activity]
+\begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{sh}
 document
   prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
   prefix hips <http://cds.u-strasbg.fr/data/>
@@ -42,13 +43,14 @@ document
 	
   wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', hips:AlaRGB1, 2017-05-05T00:00:00)
 endDocument
-\end{lstlisting}
+\end{minted}
 %\newpage
 
 Here is the transcription of the same metadata in the PROV-JSON format \citep{std:PROV-JSON}. 
 Each class and relation of the provenance model lists its corresponding database table tuples grouped by the name of the table.
 
-\begin{lstlisting}[language=C, style=customc, caption=JSON serialization example for a color composition activity]
+%\begin{lstlisting}[language=C, style=customc, caption=JSON serialization example for a color composition activity]
+\begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{json}
 {
   "prefix": {
     "ivo": "http://www.ivoa.net/documents/rer/ivo/",
@@ -111,11 +113,12 @@ Each class and relation of the provenance model lists its corresponding database
     }
   }
 }
-\end{lstlisting}
+\end{minted}
 
 Here is the mapping obtained for the same data description with a serialization in VOTable  format.
 
-\begin{lstlisting}[language=XML, caption= VOTable serialization example for a color composition activity]
+%\begin{lstlisting}[language=XML, caption= VOTable serialization example for a color composition activity]
+\begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{xml}
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
 xmlns:hips="http://cds.u-strasbg.fr/data/" 
@@ -207,4 +210,4 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
     <INFO name="QUERY_STATUS" value="OK"/>
   </RESOURCE>
 </VOTABLE>
-\end{lstlisting}
+\end{minted}

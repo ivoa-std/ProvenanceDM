@@ -34,7 +34,7 @@ to concepts in ProvenanceDM.
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
+\begin{tabulary}{1.0\textwidth}{LlL}
 \toprule
 \head{ProvenanceDM attribute} & \head{DatasetDM attribute} & \head{Comment}\\
 \midrule
@@ -58,7 +58,7 @@ Agent.name, \newline wasAttributedTo.role=\newline Publisher               & Cur
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
+\begin{tabulary}{1.0\textwidth}{llL}
 \toprule
 \head{ProvenanceDM class} & \head{DatasetDM attribute} & \head{Comment}\\
 %\midrule
@@ -91,21 +91,22 @@ The main difference between \class{Agent} and \class{Party} is that \class{Indiv
 % Which is closer to W3C ProvDM!
 
 
-We imagine that services implementing both data models, \class{Dataset} and \class{ProvenanceDM} may just use \emph{one} class: either \class{Agent} or \class{Party}, enriched with all the necessary (project-specific) attributes. When delivering the data on request, the serialised versions can be adjusted to the corresponding notation.
+We imagine that services implementing both data models, \class{Dataset} and \class{ProvenanceDM} may just use \emph{one} class: either \class{Agent} or \class{Party}, enriched with all the necessary (project-specific) attributes. When delivering the data on request, the serialized versions can be adjusted to the corresponding notation.
 Note that for Provenance queries using a ProvTAP service or for W3C compatible serializations, the name \class{Agent} for the responsible individuals/organizations is required.
 
 
 \subsection{Links with Simulation Data Model}
+
 In SimDM one also encounters a normalization similar to our separation of descriptions from 
-actual data instances and executions of processes: the SimDM class ``experiment'' 
-is a type of \class{Activity} and its general, reusable description is called a ``protocol'',
+actual data instances and executions of processes: the SimDM class \class{Experiment}
+is a type of \class{Activity} and its general, reusable description is called a \class{Protocol},
 which can be considered as a type of this model's \class{ActivityDescription}. 
 More direct mappings between classes and attributes of both models are given in Table~\ref{tab:simdmmapping}.
 
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{@{}Llp{5cm}@{}}
+\begin{tabulary}{1.0\textwidth}{LLp{5cm}}
 \toprule
 \head{ProvenanceDM} & \head{SimDM} & \head{Comment}\\
 \midrule
@@ -133,11 +134,36 @@ Entity        & DataObject     & a dataset, which can be/refer to a collection\\
 \end{table}
 
 If simulations are already described with SimDM, this table can be used
-to map from SimDM properties to ProvenanceDM, e.g. when serving serialized provenance
-metadata via an additional ProvDAL interface or for storing provenance
-metadata together with each released simulation dataset (e.g. in a VOTable).
+to map from SimDM properties to ProvenanceDM, e.g. when serving serialized provenance metadata via an additional ProvSAP interface or for storing provenance metadata together with each released simulation dataset (e.g. in a VOTable).
 
 % Remove this, because no further links to other data models are currently planned.
 %\subsection{Further links to data models}
 %More similarities and links to other data models will be detailed in future
 %versions of this working draft.
+
+
+\subsection{Links with ProvONE data model}
+
+The IVOA Provenance DM includes several concepts that can be the starting point to define and execute scientific workflow-based computational experiments. In this context, the provenance information could be translated and further developed following the ProvONE ontology and data model \citep{ProvONE}. A general mapping is presented in Table~\ref{tab:provonemapping}.
+
+ProvONE extends W3C PROV with classes and relation that could also be used to extend the IVOA Provenance DM. For example, the relation \class{wasPartOf} between a parent and a child entity can be used to describe the structure of \class{Execution} instances in that a parent \class{Execution} (associated with a \class{Workflow}) has child \class{Executions} (associated with \class{Programs} and subworkflows). In the same way, the \class{hasSubProgram} relation specifies the recursive composition of \class{Programs}, a parent \class{Program} includes a child \class{Program} as part of its specification.
+
+\begin{table}[ht]
+\centering
+\small
+\tymax  0.5\textwidth
+\begin{tabulary}{1.0\textwidth}{LL}
+\toprule
+\head{Provenance DM} & \head{ProvONE DM} \\
+\midrule
+Activity               & Execution       \\
+ActivityDescription    & Program          \\
+ActivityDescription    & Workflow         \\
+UsedDescription           & Port         \\
+WasGeneratedByDescription & Port         \\
+\bottomrule
+\end{tabulary}
+\caption[Mapping between classes from ProvONE DM to classes in ProvenanceDM]{Mapping between classes from ProvONE DM to classes in ProvenanceDM. This list is not complete.}
+\label{tab:provonemapping}
+\end{table}
+
