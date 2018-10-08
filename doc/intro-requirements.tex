@@ -4,6 +4,7 @@ We derived from our goals and use cases the following minimum requirements for t
 
 \begin{itemize}
 
+
 % == other models / serialisation
 
 \item Provenance information must be stored in a standard model, with standard serialization formats.
@@ -21,11 +22,11 @@ We derived from our goals and use cases the following minimum requirements for t
 %All produced entities must contain information to find its immediate progenitor(s).
 
 
-\item An entity must point to the activity that generated it (if the activity is recorded).
+\item An entity must be linked to the activity that generated it (if the activity is recorded).
 %Provenance metadata must contain information to find the activity that generated a given entity.
 %* All produced entities must contain information to find the activity that generated it
 
-\item Activities must point to input entities (if applicable).
+\item Activities must be linked to input entities (if applicable).
 
 \item Activities may point to output entities.
 
@@ -45,14 +46,15 @@ We derived from our goals and use cases the following minimum requirements for t
 \begin{itemize}
 
 % Released entities must have a unique, persistent identifier (DOI, obs_publisher_did, ...), at least in their domain.
-\item Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
+\item Entities, Activities and Agents must be uniquely identifiable within a domain and should have persistent identifiers.
+% Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
 % comment: (DOI, obs_publisher_did, ...)
 % Thus entities have to have a unique, persistent identifier.
 % (to avoid ambiguities).
 
 \item Released entities should have a main contact.
 
-\item It is recommended that all activities and entities have contact information and contain a (short) description or link to a description.
+\item All activities and entities should have contact information and contain a (short) description or link to a description.
 % could also be the documentation.
 
 \end{itemize}

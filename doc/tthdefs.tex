@@ -1,0 +1,159 @@
+\newif\iftth
+\iftth
+\input ivoatexmeta
+\input tthntbib.sty
+
+\begin{html}
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+\end{html}
+
+
+\definecolor{ivoacolor}{rgb}{0.0,0.318,0.612}
+
+%%%%%%%%%%%%%%%%%%% ivoatex features
+
+\renewcommand{\author}[2][0]{\def\@tmp{#1}
+  \if 0\@tmp
+	{\begin{html}<li class="author">\end{html}#2\begin{html}</li>\end{html}}\else
+	{\begin{html}<li class="author"><a href="#1">\end{html}#2\begin{html}</a></li>\end{html}}\fi}
+\renewcommand{\previousversion}[2][0]{\def\@tmp{#1}
+  \if 0\@tmp
+	{\begin{html}<li class="previousversion">#2</li>\end{html}}\else
+	{\begin{html}<li class="previousversion">
+	  <a href="#1">#2</a></li>\end{html}}\fi}
+\renewcommand{\ivoagroup}[1]
+  {\begin{html}<dd id="ivoagroup">#1</dd>\end{html}}
+\renewcommand{\editor}[2][0]{\def\@tmp{#1}
+  \if 0\@tmp
+        {\begin{html}<li class="editor">\end{html}#2\begin{html}</li>\end{html}}\else
+        {\begin{html}<li class="editor"><a href="#1">\end{html}#2\begin{html}</a></li>\end{html}}\fi}
+
+\newcommand{\includeMeta}{%
+   \special{html:<span id='version'>}\ivoaDocversion\special{html:</span>
+   <span id='doctype'>}\ivoaDoctype\special{html:</span>
+   <span id='docname'>}\ivoaDocname\special{html:</span>
+   <span id='docdate'>}\ivoaDocdate\special{html:</span>}}
+
+\def\SVN$#1: #2 ${%
+	\special{html:<span id='vcs#1'>}#2\special{html:</span>}}
+
+\newenvironment{abstract}{%
+  \includeMeta
+  \begin{html}
+    </div> <!-- titlepage -->
+    <div id="abstract"><h2>Abstract</h2>
+  \end{html}
+  }{%
+    \special{html:</div> <!-- abstract -->
+      <h2>Status of this Document</h2>
+      <div id='statusOfThisDocument'>}\ivoaDoctype\special{html:</div>}
+    \tableofcontents
+  }
+   
+\newenvironment{generated}{%
+  \begin{html}
+    <div class="generated">
+  \end{html}
+  }{%
+    \begin{html}
+      </div> <!-- generated -->
+    \end{html}
+  }
+
+\newenvironment{admonition}[1]{%
+  \begin{html}
+    <div class="admonition">
+      <p class="admonition-type">#1</p>
+  \end{html}
+  }{%
+    \begin{html}
+      </div> <!-- admonition -->
+    \end{html}
+  }
+
+\newcommand{\lstinputlisting}[2][plain]{
+  \special{html:<div keyvals="#1">}
+  \verbatiminput{#2}
+  \special{html:</div>}
+}
+\newcommand{\lstloadlanguages}[1]{}
+\newcommand{\lstset}[1]{}
+
+\newenvironment{lstlisting}[1][plain]
+  {\special{html:<div keyvals="#1">}\tthverbatim{lstlisting}}
+  {\special{html:</div>}}
+
+\newcommand{\nolinkurl}[1]{
+	\special{html:<span class='nolinkurl'>}#1\special{html:</span>}}
+
+\newenvironment{bigdescription}{%
+    \begin{html}<div class="bigdescription">\end{html}
+    \begin{description}\let\term\item
+  }{\end{description}\begin{html}</div>\end{html}}
+\newenvironment{longtermsdescription}{%
+    \begin{html}<div class="longtermsdescription">\end{html}
+    \begin{description}
+  }{\end{description}\begin{html}</div>\end{html}}
+
+% declare additional css to be included; only effective in the preamble
+\renewcommand{\customcss}[1]{%
+  \begin{html}<span class="customcss" ref="#1"/>\end{html}}
+
+\newcommand{\specialterm}[2]{%
+  \begin{html}<span class="#1">\end{html}#2\begin{html}</span>\end{html}}
+\newcommand{\xmlel}[1]{\specialterm{xmlel}{#1}}
+\newcommand{\vorent}[1]{\specialterm{vorent}{#1}}
+
+%don't do table rules, these come in through CSS
+\newcommand{\sptablerule}{}
+
+\def\dquote{"}
+
+\newcommand{\todo}[2][None]{%
+  \begin{html}<span class="redaction">#2</span>\end{html}}
+
+\newcommand{\ivoatex}{%
+  \special{html:<span class="ivoatex">IVOAT<sub>E</sub>X</span>}}
+
+\newcommand{\auxiliaryurl}[1]{%
+  \href{http://www.ivoa.net/documents/\ivoaDocname/\ivoaDocdatecode/#1}
+  {http://www.ivoa.net/documents/\ivoaDocname/\ivoaDocdatecode/#1}}
+
+\newenvironment{inlinetable}{}{}
+
+% TODO: support some common styles
+\newenvironment{compactenum}[1][None]
+  {\begin{html}<div class="compact">\end{html}\begin{enumerate}}
+  {\end{enumerate}\begin{html}</div>\end{html}}
+
+\newenvironment{compactitem}[1][None]
+  {\begin{html}<div class="compact">\end{html}\begin{itemize}}
+  {\end{itemize}\begin{html}</div>\end{html}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Simplified support for Harvard citation style
+
+\newcommand{\harvarditem}[4][0]{%
+  \special{html:<a name='#4'/>}
+  \if 0#1 \item[#2 (#3)]
+  \else \item[#1 (#3)]\fi}
+\newcommand{\harvardurl}[1]{\url{#1}}
+\newcommand{\harvardand}{\&}
+\newcommand{\harvardyearleft}{(}
+\newcommand{\harvardyearright}{)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Hacks
+% shut up harmless error due to some package we're actually using
+\def\AtBeginDocument#1{\relax}
+\def\pgfsyspdfmark#1#2#3{\relax}
+\def\spacefactor{\relax}
+\newbox\voidb@x
+\def\@m{\relax}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Now open up titlepage metadata
+\begin{html}
+  <div id="titlepage">
+\end{html}
+
+\fi

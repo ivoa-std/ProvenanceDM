@@ -5,13 +5,14 @@ We follow the definition of provenance as proposed by the W3C \citep{std:W3CProv
 
 In astronomy, such entities are generally datasets composed of VOTables, FITS
 files, database tables or files containing values (spectra, light curves), logs,
-parameters, etc. The activities correspond to processes like an observation, a
-simulation, or processing steps (image stacking, object extraction, etc.). The
-people involved can be individual persons (observer, publisher, \ldots), groups
-or organisations. An example for activities, entities and agents as they can be
-discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
+parameters.
+The activities correspond to processes like an observation, a
+simulation, processing steps (image stacking, object extraction, etc.), execution of data analysis code, publication, etc.
+The people involved can be for example individual persons (observer, publisher, etc.), groups or organisations. An example for activities, entities and agents as they can be discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
 
-\begin{figure}[h]
+The links between the Provenance DM and other IVOA data models will be discussed in Section~\ref{sec:dmlinks}. We note here that the provenance of simulated data is included in the Simulation DM \citep[SimDM,][]{std:SimDM}. Therefore we also give a mapping between SimDM and the Provenance DM in Section~\ref{sec:dmlinks}.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{workflow-backwards.pdf}
 \caption[Example graph of provenance discovery]{An example graph of provenance discovery. Starting with a released dataset (left), the involved activities (blue boxes), 
@@ -21,10 +22,6 @@ discovered.}
 \end{figure}
 
 
-The currently discussed Provenance Data Model is sufficiently abstract that its core pattern could be applied to any kind of process using either observation or simulation data.
-It could also be used to describe the workflow for observation proposals or the publication of scientific articles based on (astronomical) data. However, here we focus on astronomical data. The links between the Provenance Data Model and other IVOA data models 
-will be discussed in Section~\ref{sec:dmlinks}. We note here that the provenance of simulated data is already covered by the Simulation Data Model
-\citep[SimDM,][]{std:SimDM}. Therefore we also give a mapping between SimDM and the Provenance Data Model in Section~\ref{sec:dmlinks}.
 
 
 %including extraction of data from 
@@ -38,18 +35,17 @@ will be discussed in Section~\ref{sec:dmlinks}. We note here that the provenance
 
 \subsection{Goal of the provenance model}\label{sec:goals}
 
-The goal of this Provenance Data Model is to describe how provenance information
-can be modeled, stored and exchanged. Its scope
-is mainly modeling of the flow of data, of the relations between data,
-and of processing steps. 
+The goal of this Provenance DM is to describe how provenance information
+can be modelled, stored and exchanged. Its scope
+is mainly modelling of the flow of data, of the relations between data,
+and of processing steps. The currently discussed Provenance DM is sufficiently abstract that its core pattern (see Section~\ref{sec:core_model}) could be applied to any kind of process using either observation or simulation data.
+It could also be used to describe the workflow for observation proposals or the publication of scientific articles based on (astronomical) data.
 
 Characteristics of observation activities such as ambient conditions and
-instrument characteristics can be associated to provenance information. 
+instrument characteristics provide useful information to asses the quality and reliability of the generated entities. 
 Experimental configuration or contextual information during
 the execution of processing activities (computer structure, nodes, operating
-system used, \dots) can also be connected to provenance information. However,
-they will not be modeled here explicitly. This additional information can be
-included in the form of metadata or entities linked to those activities.
+system used, etc) can also be relevant for the description of the main entities generated. This complementary information should be included in the form of metadata or additional entities and connected to an activity (see Section~\ref{sec:extended_model}). However, the precise structure and modelling of those characteristics is out of the scope of this document. 
 
 In general, the model shall capture information in a machine-readable way that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
 This will help the scientist to decide if the dataset 
@@ -62,7 +58,7 @@ for a specific project that records provenance.
 This granularity depends on the needs of the project and the intended usage when implementing a system to track provenance information.
 % NOTE: maybe we need to define minimal requirements of what needs to be included as provenance information?
 
-The following list is a collection of tasks which the Provenance Data Model should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets (usually a scientist) and with [P] for tasks that are probably more important for data producers and publishers.
+The following list is a collection of tasks which the Provenance DM should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets (usually a scientist) and with [P] for tasks that are probably more important for data producers and publishers.
 More specific use cases in the astronomy domain for different types of datasets and workflows along with example implementations are given in the Implementation Note \citep{std:ProvenanceImplementationNote}.
 
 

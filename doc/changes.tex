@@ -1,0 +1,57 @@
+\subsection{Changes from WD-ProvenanceDM-1.0-20170921}
+\begin{itemize}
+\item Moved ProvDAL to separate document.
+\item Moved ProvTAP section and full definition of VOTable serialisation to separate ProvTAP document.
+\item Moved chapter 6 with use cases and ``How to use the data model'' to  separate Implementation Note \citep{std:ProvenanceImplementationNote}.
+\item Moved section on links to other data model into appendix.
+\item ParameterDescription: Added attributes \attribute{xtype} and \attribute{arraysize}.
+\item Agent.roles: Removed ``PI'' alternative to ``coordinator''.
+\item Use values of RightsType of DatasetDM, public, secure, proprietary, for \attribute{Entity.rights}.
+\item Minor corrections in HiPS use case, Appendix~\ref{sec:appendix-serialization-examples} and tables in TAP schema.
+% and Appendix~\ref{sec:appendix-prov-votable} (TAP SCHEMA).
+\item Minor correction in role names in Figure~\ref{fig:classdiagram-conceptional} for hadStep/hadMember relationship.
+\item Modified text on Parameters
+\item Rename 3.4 section to Serialization of description classes for web services
+\item Modified text on W3C serialization
+\item add \attribute{location} and \attribute{value} attributes to \class{Entity}
+\end{itemize}
+
+\subsection{Changes from WD-ProvenanceDM-1.0-20161121}
+\begin{itemize}
+\item New appendix for PROV-VOTable/TAP SCHEMA tables added
+\item Corrected and extended attribute tables and mapping tables for links with DatasetDM and SimDM.
+\item Restructured Accessing provenance section by splitting it in two: Section~\ref{sec:serialisations} for explaining the different serialization formats and differences to W3C serializations, Section ``Accessing provenance information''%~\ref{sec:provaccess} 
+for describing the access protocols ProvDAL and ProvTAP.
+\item Removed discussion section, since now all the topics are addressed in the main text.
+\item Added paragraph on how to use the model in Section 6. %~\ref{sec:usecases-implementations}.
+\item Shortened serialization examples, partially moved them to appendix.
+\item Added paragraph on VOSI interface.
+\item Added a proposed serialization of description classes.
+\item Modified text on the content of EntityDescription, now seen as Entity attributes known before the Entity instance exists.
+\item Renamed Section 6
+%~\ref{sec:usecases-implementations} 
+to stress that it explains applications of the model (use cases); implementation details and code examples can be found in Implementation Note \citep{std:ProvenanceImplementationNote}.
+\item Complete rewrite of the ProvDAL section in Section ``Accessing provenance information'';%~\ref{sec:access_protocols};
+new parameters, new figure and examples added.
+\item Added additional figure for entity-activity relations.
+\item Moved the figure showing relations between Provenance.Agent and Dataset.Party into Section~\ref{sec:dmlinks}.
+\item Extended the entity role examples in table \ref{tab:entity-roles}.
+\item Added links to provn and votable-serialization for HiPS-use case, added first part of provn as example in the HiPS-use case section.
+\item More explanations on links to data models in Section~\ref{sec:dmlinks}, introduced subsections, added table with SimDM-mapping.
+\item Moved detailed implementation section from appendix to a separate document (implementation note), shortened the use cases \& implementation section.
+\item Attribute/class updates:
+\begin{itemize}
+    \item Added attribute \emph{votype} to \class{Activity}, can be used for ActivityFlows
+    \item Added attribute \emph{time} to \class{Used} and \class{WasGeneratedBy}
+    \item Added optional attributes \emph{Entity.creationTime} and \emph{EntityDescription.category}
+    \item Added optional attributes \emph{Parameter.min},  \emph{Parameter.max},  \emph{Parameter.options}
+    \item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
+    \item Use voprov:type and voprov:role in Table~\ref{tab:agent-roles} with example agent roles, i.e. replaced prov:person by Individual and prov:organization by Organization.
+    \item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
+    \item Renamed attribute \emph{Entity.access} to \emph{Entity.rights} for more consistency with DatasetDM etc.
+    \item Avoid double-meaning of \emph{description} (as reference and free-text description) by renaming the free-text description to \emph{annotation}. Mark description-references with arrows in attribute tables.
+    \item Applied similar naming scheme to \emph{Parameter} and \emph{ParameterDescription}-classes
+    \item Renamed \emph{docuLink} to \emph{doculink}
+    \item Corrected attribute names in Table~\ref{tab:datasetmapping}.
+\end{itemize}
+\end{itemize}

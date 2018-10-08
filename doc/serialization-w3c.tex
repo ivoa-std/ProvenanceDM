@@ -1,5 +1,3 @@
-\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}
-
 According to our minimum requirements (see Section~\ref{sec:requirements}), it must be possible to
 serialize the provenance metadata into a format compatatible with the W3C Provenance Data Model (W3C PROV-DM), so that it can be exchanged within a wider context and can be processed by already existing tools, e.g. for visualizing provenance.
 W3C PROV-DM is a larger set of classes and relations compared to this model, but sharing the same core structure. It allows the possibility to add IVOA or \textit{ad hoc} attributes to the basic ones in each class. Thus we can add our additional attributes without problems and still be W3C conform. However, we also defined a few additional classes and relations that are not W3C conform and thus need to be restructured.
