@@ -6,7 +6,7 @@ The PROV-N format \cite{std:PROV-N} as proposed by the W3C is a text format whic
 \begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{sh}
 document
   prefix ivo <http://www.ivoa.net/documents/rer/ivo/>
-  prefix hips <http://cds.u-strasbg.fr/data/>
+  prefix cds <http://cds.u-strasbg.fr/data/>
   prefix voprov <http://www.ivoa.net/documents/dm/provdm/voprov/>
 
   entity(ivo://CDS/P/DSS2color#RGB_NGC6946, 
@@ -29,19 +29,24 @@ document
 	voprov:doculink="http://cds.u-strasbg.fr/aladin.gm", 
 	voprov:name="POSSII Infra Red Survey DSS2 NGC6946"])
 	
-  activity(hips:AlaRGB1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [
+  activity(cds:AlaRGB1, 2017-04-18T17:28:00, 2017-04-19T17:29:00, [
 	voprov:name="Aladin RGB 1", 
 	voprov:annotation="Aladin RGB image generation for NGC 6946",
-	voprov:desc_id="AlaRGB",
-	voprov:desc_type="RGBencoding", 
-	voprov:desc_name="Aladin RGB image generation algorithm", 	
-	voprov:desc_doculink="http://cds.u-strasbg.fr/aladin.gml"])
+	voprov:description="cds:AlaRGB"])
 	
-  used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143', -)
-  used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143', -)
-  used(hips:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143', -)
+  entity(cds:AlaRGB, [
+	prov:type="voprov:ActivityDescription"
+	voprov:annotation="Aladin RGB image generation",
+	voprov:group="RGBencoding", 
+	voprov:name="Aladin RGB image generation algorithm", 	
+	voprov:doculink="http://cds.u-strasbg.fr/aladin.gml"])
 	
-  wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', hips:AlaRGB1, 2017-05-05T00:00:00)
+  used(cds:AlaRGB1, 'cds:AlaRGB', - , prov:type="hadDescription")	
+  used(cds:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143', -)
+  used(cds:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143', -)
+  used(cds:AlaRGB1, 'ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143', -)
+	
+  wasGeneratedBy('ivo://CDS/P/DSS2color#RGB_NGC6946', cds:AlaRGB1, 2017-05-05T00:00:00)
 endDocument
 \end{minted}
 %\newpage
@@ -55,39 +60,41 @@ Each class and relation of the provenance model lists its corresponding database
   "prefix": {
     "ivo": "http://www.ivoa.net/documents/rer/ivo/",
     "voprov": "http://www.ivoa.net/documents/dm/provdm/voprov/",
-    "hips": "http://cds.u-strasbg.fr/data/"
+    "cds": "http://cds.u-strasbg.fr/data/"
   },
   "activity": {
-    "hips:AlaRGB1": {
+    "cds:AlaRGB1": {
       "voprov:name": "Aladin RGB 1",
       "voprov:startTime": "2017-04-18T17:28:00",
-			"voprov:endTime": "2017-04-19T17:29:00",
+	  "voprov:endTime": "2017-04-19T17:29:00",
       "voprov:annotation": "Aladin RGB image generation for NGC 6946",
-      "voprov:desc_type": "RGBencoding",
-      "voprov:desc_name": "Aladin RGB image generation algorithm",
-      "voprov:desc_doculink": "http://cds.u-strasbg.fr/aladin.gml",
-      "voprov:desc_id": "AlaRGB"
+      "voprov:description": "cds:AlaRGB"
     }
   },
   "wasGeneratedBy": {
     "_:id4": {
       "voprov:time": "2017-05-05T00:00:00",
       "voprov:entity": "ivo://CDS/P/DSS2color#RGB_NGC6946",
-      "voprov:activity": "hips:AlaRGB1"
+      "voprov:activity": "cds:AlaRGB1"
     }
   },
   "used": {
     "_:id1": {
       "voprov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.J-DSS2.143",
-      "voprov:activity": "hips:AlaRGB1"
+      "voprov:activity": "cds:AlaRGB1"
     },
     "_:id3": {
       "voprov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143",
-      "voprov:activity": "hips:AlaRGB1"
+      "voprov:activity": "cds:AlaRGB1"
     },
     "_:id2": {
       "voprov:entity": "ivo://CDS/P/DSS2/POSSII#POSSII.F-DSS2.143",
-      "voprov:activity": "hips:AlaRGB1"
+      "voprov:activity": "cds:AlaRGB1"
+    },
+    "_:id5": {
+    "voprov:entity": "cds:AlaRGB",
+    "voprov:activity": "cds:AlaRGB1",
+    "prov:type" "voprov:ActivityDescription" 
     }
   },
   "entity": {
@@ -111,17 +118,23 @@ Each class and relation of the provenance model lists its corresponding database
       "voprov:annotation": "PNG RGB image built from DSS2 with Aladin for galaxy NGC 6946",
       "voprov:doculink": "http://cds.u-strasbg.fr/aladin.gml"
     }
+     "cds:AlaRGB": {
+      "prov:type": "voprov:ActivityDescription",
+      "voprov:group": "RGBencoding",
+      "voprov:name": "Aladin RGB image generation algorithm",
+      "voprov:doculink": "http://cds.u-strasbg.fr/aladin.gml"
+    }
   }
 }
 \end{minted}
 
-Here is the mapping obtained for the same data description with a serialization in VOTable  format.
+Here is the mapping obtained for the same data description with a serialization in VOTable format.
 
 %\begin{lstlisting}[language=XML, caption= VOTable serialization example for a color composition activity]
 \begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{xml}
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
-xmlns:hips="http://cds.u-strasbg.fr/data/" 
+xmlns:cds="http://cds.u-strasbg.fr/data/" 
 xmlns:ivo="http://www.ivoa.net/documents/rer/ivo/" 
 xmlns:voprov="http://www.ivoa.net/documents/dm/provdm/voprov/" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -129,47 +142,57 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
   <RESOURCE type="results">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
     <TABLE name="Used" utype="voprov:Used">
-      <FIELD name="activity_id" utype="voprov:Used.activity"arraysize="*" ucd="meta.id" datatype="char" />
-      <FIELD name="entity_id" utype="voprov:Used.entity" arraysize="*" ucd="meta.id" datatype="char" />
+      <FIELD name="u_activity_id" utype="voprov:Used.activity" arraysize="*" ucd="meta.id" datatype="char" />
+      <FIELD name="u_activity_id" utype="voprov:Used.entity" arraysize="*" ucd="meta.id" datatype="char" />
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>hips:AlaRGB1</TD>
+            <TD>cds:AlaRGB1</TD>
             <TD>ivo://CDS/P/DSS2/POSSII#POSSII.N-DSS2.143</TD>
           </TR>
         </TABLEDATA>
       </DATA>
     </TABLE>
     <TABLE name="WasGeneratedBy" utype="voprov:WasGeneratedBy">
-      <FIELD name="entity" utype="voprov:wasGeneratedBy.entity" arraysize="*" datatype="char"  ucd="meta.id"/>
-      <FIELD name="activity" utype="voprov:wasGeneratedBy.activity" arraysize="*" datatype="char" ucd="meta.id"/>
+      <FIELD name="wgb_entity_id" utype="voprov:wasGeneratedBy.entity" arraysize="*" datatype="char"  ucd="meta.id"/>
+      <FIELD name="wgb_activity_id" utype="voprov:wasGeneratedBy.activity" arraysize="*" datatype="char" ucd="meta.id"/>
       <DATA>
         <TABLEDATA>
           <TR>
             <TD>ivo://CDS/P/DSS2color#RGB_NGC6946</TD>
-            <TD>hips:AlaRGB1</TD>
+            <TD>cds:AlaRGB1</TD>
           </TR>
         </TABLEDATA>
       </DATA>
     </TABLE>
     <TABLE name="Activity" utype="voprov:Activity">
-      <FIELD name="id"  utype="voprov:Activity.id" ucd="meta.id" arraysize="*" datatype="char" />
-      <FIELD name="name" utype="voprov:Activity.name" ucd="meta.title" arraysize="*" datatype="char" />
-      <FIELD name="start" utype="voprov:Activity.startTime" ucd="time.start" arraysize="*" datatype="char" />
-      <FIELD name="end" utype="voprov:Activity.endTime" ucd=""time.end" arraysize="*" datatype="char"  "/>
-      <FIELD name="annotation" utype="voprov:Activity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
-      <FIELD name="desc_id" utype="voprov:ActivityDescription.id" ucd="meta.id" arraysize="*" datatype="char" />
-      <FIELD name="desc_name" utype="voprov:ActivityDescription.name" ucd="meta.title" arraysize="*" datatype="char" />
-      <FIELD name="desc_type" utype="voprov:ActivityDescription.type" ucd="meta.code.class" arraysize="*" datatype="char" />
-      <FIELD name="desc_doculink" utype="voprov:ActivityDescription.doculink" ucd="meta.ref.url" arraysize="*" datatype="char" />
+      <FIELD name="a_id"  utype="voprov:Activity.id" ucd="meta.id" arraysize="*" datatype="char" />
+      <FIELD name="a_name" utype="voprov:Activity.name" ucd="meta.title" arraysize="*" datatype="char" />
+      <FIELD name="a_starttime" utype="voprov:Activity.startTime" ucd="time.start" arraysize="*" datatype="char" />
+      <FIELD name="a_endtime" utype="voprov:Activity.endTime" ucd=""time.end" arraysize="*" datatype="char"  "/>
+      <FIELD name="a_annotation" utype="voprov:Activity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
+      <FIELD name="a_description" utype="voprov:Activity.description" ucd="meta.id" arraysize="*" datatype="char" />
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>hips:AlaRGB1</TD>
+            <TD>cds:AlaRGB1</TD>
             <TD>Aladin RGB 1</TD>
             <TD>2017-04-18 17:28:00</TD>
             <TD>2017-04-19 17:29:00</TD>
             <TD>Aladin RGB image generation for NGC 6946</TD>
+            <TD>AlaRGB</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <TABLE name="ActivityDescription" utype="voprov:ActivityDescription">
+      <FIELD name="ad_id" utype="voprov:ActivityDescription.id" ucd="meta.id" arraysize="*" datatype="char" />
+      <FIELD name="ad_name" utype="voprov:ActivityDescription.name" ucd="meta.title" arraysize="*" datatype="char" />
+      <FIELD name="ad_group" utype="voprov:ActivityDescription.group" ucd="meta.code.class" arraysize="*" datatype="char" />
+      <FIELD name="ad_doculink" utype="voprov:ActivityDescription.doculink" ucd="meta.ref.url" arraysize="*" datatype="char" />
+      <DATA>
+        <TABLEDATA>
+          <TR>
             <TD>AlaRGB</TD>
             <TD>Aladin RGB image generation algorithm</TD>
             <TD>RGB encoding</TD>
@@ -179,9 +202,9 @@ xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml
       </DATA>
     </TABLE>
     <TABLE name="Entity" utype="voprov:Entity">
-      <FIELD name="id" utype="voprov:Entity.id" ucd="meta.id"  arraysize="*" datatype="char" />
-      <FIELD name="name" utype="voprov:Entity.name" ucd="meta.title" arraysize="*" datatype="char" />
-      <FIELD name="annotation" utype="voprov:Entity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
+      <FIELD name="e_id" utype="voprov:Entity.id" ucd="meta.id"  arraysize="*" datatype="char" />
+      <FIELD name="e_name" utype="voprov:Entity.name" ucd="meta.title" arraysize="*" datatype="char" />
+      <FIELD name="e_annotation" utype="voprov:Entity.annotation" ucd="meta.description" arraysize="*" datatype="char" />
       <DATA>
         <TABLEDATA>
           <TR>

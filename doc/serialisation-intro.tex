@@ -4,7 +4,9 @@ The provenance information as represented in the data model is split in three ma
 The selection of the relations to expose when distributing the provenance information depends on the usage and will be described more extensively in the Implementation Note \citep{std:ProvenanceImplementationNote} and the links therein.
 
 To give a very simple example, suppose a client asks for the context of execution for one specified activity, which computes a simple RGB color composition. 
-On the server side, exposing the provenance information for this activity or for an entity, corresponding to a monocolor or RGB image, means to just expose the structure of the classes and relation tables and feed them with the related tuples in the database.
+On the server side, exposing the provenance information for this activity or for an entity, corresponding to a monocolor or RGB image, 
+means expose only the structure of the classes
+and relation tables and feed them with the related tuples in the database.
 On the client side, the content of a VO-Provenance serialization document can then be explored and represented using graphical interfaces, as inspired by the Provenance Southampton suite or by customized visualisation tools.
 
 \subsection{W3C serialization formats: PROV-N, PROV-JSON and PROV-XML}
@@ -14,28 +16,26 @@ Serialization formats are proposed in the W3C PROV framework for storing and exc
 %These are serializations of the W3C provenance data model, a larger set of classes and relations compared to this model but sharing the same core structure. 
 They can be reused here as well for serializations of our data model. 
 
-For producing fully W3C compatible serializations, the attributes that must be used are the W3C PROV-DM attributes when they exist. Those are preceded by the \texttt{prov} namespace, as given in Tables~\ref{tab:entity}, \ref{tab:wasderivedfrom}, \ref{tab:activity}, \ref{tab:wasinformedby}, \ref{tab:used} and \ref{tab:wasgeneratedby}. The other attributes should be qualified names and thus have a namespace. For attributes described in the IVOA Provenance DM, this namespace should be \texttt{voprov}. This leads to the following rules:
+In order to produce W3C compatible serializations, the classes and attributes defined in the IVOA Provenance DM model must be qualified names with the namespace \texttt{voprov}, except when they exist in the W3C PROV namespace \texttt{prov} (e.g. \texttt{prov:id}, \texttt{prov:type} and \texttt{prov:startTime}). A mapping is given in e.g. Tables~\ref{tab:entity}, \ref{tab:wasderivedfrom}, \ref{tab:activity}, \ref{tab:wasinformedby}, \ref{tab:used} and \ref{tab:wasgeneratedby}. 
+
+The specialized entities defined in Section~\ref{sec:spec_entities} should be written as Entity instances and the attribute \attribute{prov:type} must be set to the category of the specialized entity e.g. \attribute{voprov:Data}, \attribute{voprov:Parameter}, \attribute{voprov:ActivityDescription}. This is also the rule for \class{Collection}, as done in W3C PROV-DM. We note here that several \attribute{prov:type} can be provided.
+
+The specialized relations defined in Section~\ref{sec:spec_relations} should be written as a W3C relation (e.g. used relation between an Activity and and Entity, or the more general wasInfluencedBy relation between all classes). The attribute \attribute{prov:type} must be set to the name of the specialized relation, e.g. \attribute{voprov:hadDescription} or  \attribute{voprov:hasConfiguration}.
+
+To further export some concepts of the IVOA model to equivalent concepts in the W3C model, the following rules may be respected:
 
 \begin{itemize}
-\item use namespace \texttt{prov} for the attributes that are the same in W3C PROV (e.g. id, role, startTime, endTime)
-\item attribute \texttt{name} $\rightarrow$ \texttt{prov:label}
-\item attribute \texttt{annotation} $\rightarrow$ \texttt{prov:description}
-\item attribute \texttt{prov:role} is not allowed in W3C's \class{wasAttributedTo}, thus use \texttt{voprov:role}
+\item attribute \texttt{voprov:name} $\rightarrow$ \texttt{prov:label}
+\item attribute \texttt{voprov:annotation} $\rightarrow$ \texttt{prov:description}
+%\item attribute \texttt{prov:role} is not allowed in W3C's \class{wasAttributedTo}, thus use \texttt{voprov:role}
 %\item \class{hadMember} has no id and no optional attributes in W3C
-\item \class{Collection} $\rightarrow$ \class{Entity} with \texttt{prov:type = 'prov:Collection'}
+%\item Specialized entities: add \texttt{prov:type = 'voprov:...'}
+%\item Specialized relations: add \texttt{prov:type = 'voprov:...'}
+\item \class{voprov:ActivityDescription}: also add \texttt{prov:type = 'prov:Plan'}
+\item \class{voprov:hadDescription}: replace by \class{prov:wasAssociatedWith} with the activityDescription given as the plan through the \class{prov:hadPlan} relation
 \end{itemize}
 
-The specialized entities defined in Section~\ref{sec:spec_entities} should be written in the Entity block with the attribute \attribute{prov:type} set to the category of the specialized entity e.g. \attribute{voprov:Data}, \attribute{voprov:Parameter}, \attribute{voprov:ActivityDescription} (as it is done for \class{Collection} in W3C PROV-DM).
-
-The specialized relations defined in Section~\ref{sec:spec_relations} should be written as a W3C relation (e.g. used or wasInfluencedBy) with the attribute \attribute{prov:type} set to the name of the specialized relation e.g. \attribute{voprov:hadDescription}, \attribute{voprov:hadConfiguration}, \attribute{voprov:hadContext}, \attribute{voprov:hasConfiguration}.
-In the case of the \class{hadDescription} relation to \class{ActivityDescription}, it should be written as a \class{wasAssociatedWith} relation between the corresponding activity and the activityDescription (seen as a prov:Plan), specifying or not the involved agent.This leads to the following rules:
-
-\begin{itemize}
-\item Specialized entities: add \texttt{prov:type = 'voprov:...'}
-\item Specialized relations: add \texttt{prov:type = 'voprov:...'}
-\item \class{ActivityDescription}: also add \texttt{prov:type = 'prov:Plan'}
-\item \class{hadDescription}: replace by \class{wasAssociatedWith} with the \class{ActivityDescription} given as a plan
-\end{itemize}
+%In the case of the \class{hadDescription} relation to \class{ActivityDescription}, it may be written as a \class{wasAssociatedWith} relation between the corresponding activity and the activityDescription (seen as a prov:Plan), specifying or not the involved agent.
 
 
 %see Section~\ref{sec:w3cserialization}.
@@ -137,7 +137,11 @@ Here is a VOTable document transcription of the serialization example given abov
 
 %\begin{verbnobox}[\scriptsize]
 %\begin{lstlisting}[language=XML, frame=single, caption= example of a VOTable serialisation]
+
+%\listingcaption{Prov-N example 1 }
+
 \begin{minted}[breaklines,breakanywhere,frame=single,fontsize=\footnotesize]{xml}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE version="1.2" xmlns="http://www.ivoa.net/xml/VOTable/v1.2" 
   xmlns:ex="http://www.example.com/provenance" 
@@ -147,9 +151,9 @@ Here is a VOTable document transcription of the serialization example given abov
   xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd">
   <RESOURCE type="provenance">
     <DESCRIPTION>Provenance VOTable</DESCRIPTION>
-    <TABLE name="Usage" utype="voprov:used">
-      <FIELD arraysize="*" datatype="char" name="activity" ucd="meta.id" utype="voprov:Usage.activity"/>
-      <FIELD arraysize="*" datatype="char" name="entity" ucd="meta.id" utype="voprov:Usage.entity"/>
+    <TABLE name="Used" utype="voprov:Used">
+      <FIELD arraysize="*" datatype="char" name="u_activity_id" ucd="meta.id" utype="voprov:Used.activity"/>
+      <FIELD arraysize="*" datatype="char" name="u_entity_id" ucd="meta.id" utype="voprov:Used.entity"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -159,9 +163,9 @@ Here is a VOTable document transcription of the serialization example given abov
         </TABLEDATA>
       </DATA>
     </TABLE>
-    <TABLE name="Generation" utype="voprov:wasGeneratedBy">
-      <FIELD arraysize="*" datatype="char" name="entity" ucd="meta.id" utype="voprov:Generation.entity"/>
-      <FIELD arraysize="*" datatype="char" name="activity" ucd="meta.id" utype="voprov:Generation.activity"/>
+    <TABLE name="WasGeneratedBy" utype="voprov:wasGeneratedBy">
+      <FIELD arraysize="*" datatype="char" name="wgb_entity_id" ucd="meta.id" utype="voprov:WasGeneratedBy.entity"/>
+      <FIELD arraysize="*" datatype="char" name="wgb_activity_id" ucd="meta.id" utype="voprov:WasGeneratedBy.activity"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -172,10 +176,10 @@ Here is a VOTable document transcription of the serialization example given abov
       </DATA>
     </TABLE>
     <TABLE name="Activity" utype="voprov:Activity">
-      <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Activity.id"/>
-      <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Activity.name"/>
-      <FIELD arraysize="*" datatype="char" name="startTime" ucd="time.start" utype="voprov:Activity.startTime"/>
-      <FIELD arraysize="*" datatype="char" name="endTime" ucd="time.end" utype="voprov:Activity.endTime"/>
+      <FIELD arraysize="*" datatype="char" name="a_id" ucd="meta.id" utype="voprov:Activity.id"/>
+      <FIELD arraysize="*" datatype="char" name="a_name" ucd="meta.title" utype="voprov:Activity.name"/>
+      <FIELD arraysize="*" datatype="char" name="a_startTime" ucd="time.start" utype="voprov:Activity.startTime"/>
+      <FIELD arraysize="*" datatype="char" name="a_endTime" ucd="time.end" utype="voprov:Activity.endTime"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -188,9 +192,9 @@ Here is a VOTable document transcription of the serialization example given abov
       </DATA>
     </TABLE>
     <TABLE name="Entity" utype="voprov:Entity">
-      <FIELD arraysize="*" datatype="char" name="id" ucd="meta.id" utype="voprov:Entity.id"/>
-      <FIELD arraysize="*" datatype="char" name="name" ucd="meta.title" utype="voprov:Entity.name"/>
-      <FIELD arraysize="*" datatype="char" name="type" ucd="meta.main" utype="voprov:Entity.type"/>
+      <FIELD arraysize="*" datatype="char" name="e_id" ucd="meta.id" utype="voprov:Entity.id"/>
+      <FIELD arraysize="*" datatype="char" name="e_name" ucd="meta.title" utype="voprov:Entity.name"/>
+      <FIELD arraysize="*" datatype="char" name="e_type" ucd="meta.main" utype="voprov:Entity.type"/>
       <DATA>
         <TABLEDATA>
           <TR>

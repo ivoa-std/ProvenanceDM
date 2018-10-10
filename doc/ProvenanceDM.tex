@@ -135,30 +135,29 @@
 \title{IVOA Provenance Data Model}
 
 \begin{abstract}
-This document describes how provenance information for astronomical datasets 
+This document describes how provenance information 
+%for astronomical datasets 
 %(with the focus on observational data) 
 can be modeled, stored and exchanged within 
 the astronomical community in a standardized way.
 We follow the definition of provenance as proposed by the W3C\footnote{\url{https://www.w3.org/TR/prov-overview/}}, i.e. that ``provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.''
-Such provenance information in astronomy is important to enable any scientist to trace back
-the origin of a dataset (e.g. an image, spectrum, catalog or single points in a 
-spectral energy distribution diagram or a light curve), learn about the people and 
-organizations involved in a project and assess the quality of the dataset as well
-as the usefulness of the dataset for her own scientific work.
+Such provenance information in astronomy is important to enable any scientist to trace back the origin of a dataset (e.g. an image, spectrum, catalog or single points in a spectral energy distribution diagram or a light curve), a document (e.g. an article, a technical note) or a device (e.g. a camera, a telescope), learn about the people and organizations involved in a project and assess the quality as well as the usefulness of the dataset, document or device for her own scientific work.
 \end{abstract}
 
 \section*{Acknowledgments}
 
-This document has been developed in part with support from the German
-Astrophysical Virtual Observatory, funded by BMBF Bewilligungsnummer 05A14BAD and 05A08VHA.
-The Provenance Working Group acknowledges support from the Astronomy ESFRI and Research Infrastructure Cluster – ASTERICS project, funded by the European Commission under the Horizon 2020 Programme (GA 653477).
+The Provenance Working Group acknowledges support from the Astronomy ESFRI and Research Infrastructure Cluster – ASTERICS project\footnote{\url{http://www.asterics2020.eu/}}, funded by the European Commission under the Horizon 2020 Programme (GA 653477).
+This document has been developed in part with support from the German Astrophysical Virtual Observatory, funded by BMBF Bewilligungsnummer 05A14BAD and 05A08VHA.
+Additional funding was provided by the INSU (Action Spécifique Observatoire Virtuel, ASOV), the Action Fédératrice CTA at the Observatoire de Paris and the Paris Astronomical Data Centre (PADC).
 
-Thanks for fruitful discussions to: Catherine Boisson, Karl Kosak and Jose Enrique Ruiz 
+Thanks for fruitful discussions to: Catherine Boisson, Karl Kosak, Johann Bregeon and Jose Enrique Ruiz 
 for the binding to the Cerenkov Telescope Array (CTA) project, Gerard
 Lemson and Laurent Michel for the VODML expression of the data model, Markus Demleitner,
 Harry Enke, Jochen Klar and Adrian Partl
 for fruitful discussions, remarks and comments during the different stages of this
 specification.
+
+We thank the participants of the Provenance Week 2018 in London, in particular Michael Johnson for joining one of our meeting.
 
 \section*{Conformance-related definitions}
 
@@ -181,7 +180,7 @@ infrastructure that enable VO applications.
 \input{intro-VOarchitecture}
 \input{intro-previousefforts}
 
-\section{The provenance data model}
+\section{The IVOA Provenance data model}
 \label{sec:datamodel}
 \input{datamodel-description}
 \clearpage
@@ -191,7 +190,7 @@ infrastructure that enable VO applications.
 \subsection{Introduction}
 \label{sec:intro-serialization}
 \input{serialisation-intro}
-\subsection{Serialization of description classes for web services}
+\subsection{Serialization of Description classes for web services}
 \label{sec:description-serialization}
 \input{serialization-descriptions}
 %\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}

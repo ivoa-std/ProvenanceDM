@@ -31,6 +31,7 @@ to concepts in ProvenanceDM.
 %\end{figure}
 % --> a similar figure is already given in the sections on entity and agent.
 
+
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
@@ -55,6 +56,7 @@ Agent.name, \newline wasAttributedTo.role=\newline Publisher               & Cur
 \label{tab:datasetmapping}
 \end{table}
 
+
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
@@ -77,6 +79,11 @@ EntityDescription & ObsDataset.calibLevel & (output) calibration level, integer 
 \end{table}
 
 
+The \class{Agent} class, which is used for defining responsible persons and 
+organizations in ProvenanceDM, is very similar to the \class{Party} class in DatasetDM (and in SimDM). Its details are depicted in Figure~\ref{fig:agent-relations}.
+The main difference between \class{Agent} and \class{Party} is that \class{Individual} and \class{Person} are subclasses in DatasetDM, whereas we just use the same class \emph{Agent} for both and distinguish between them using the \emph{Agent.type} attribute (which can have the value ``Individual'' or ``Organization''), which is closer to W3C's provenance data model.
+% Which is closer to W3C ProvDM!
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{agent-relations.pdf}
@@ -84,12 +91,6 @@ EntityDescription & ObsDataset.calibLevel & (output) calibration level, integer 
 (grey and yellow classes) with classes from the DatasetDM, party package (green).}
 \label{fig:agent-relations}
 \end{figure}
-
-The \class{Agent} class, which is used for defining responsible persons and 
-organizations in ProvenanceDM, is very similar to the \class{Party} class in DatasetDM (and in SimDM). Its details are depicted in Figure~\ref{fig:agent-relations}.
-The main difference between \class{Agent} and \class{Party} is that \class{Individual} and \class{Person} are subclasses in DatasetDM, whereas we just use the same class \emph{Agent} for both and distinguish between them using the \emph{Agent.type} attribute (which can have the value ``Individual'' or ``Organization''), which is closer to W3C's provenance data model.
-% Which is closer to W3C ProvDM!
-
 
 We imagine that services implementing both data models, \class{Dataset} and \class{ProvenanceDM} may just use \emph{one} class: either \class{Agent} or \class{Party}, enriched with all the necessary (project-specific) attributes. When delivering the data on request, the serialized versions can be adjusted to the corresponding notation.
 Note that for Provenance queries using a ProvTAP service or for W3C compatible serializations, the name \class{Agent} for the responsible individuals/organizations is required.
