@@ -1,5 +1,5 @@
 
-In this section, we describe the currently discussed Provenance DM. We 
+In this section, we describe the proposed Provenance DM. We 
 first explain the core elements with details for each class and relation (Section~\ref{sec:core_model}). We then define the extended model, introducing and defining specialized concepts and relation that brings useful provenance information for astronomy (Section~\ref{sec:extended_model}).
 
 % 2018-09 commented for now
@@ -41,7 +41,7 @@ first explain the core elements with details for each class and relation (Sectio
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1.0\textwidth]{CoreModel.png}
-\caption[Core classes and relations of the Provenance DM]{The main core classes and relations of the Provenance DM, which are taken from the W3C PROV-DM.}
+\caption[Core classes and relations of the Provenance DM]{The main core classes and relations of the Provenance DM, which are taken from the W3C PROV-DM. The different relations can be further described with associated classes.}
 \label{fig:coreclasses}
 \end{figure}
 
@@ -49,7 +49,7 @@ The core elements of the Provenance DM are \class{Entity},
 \class{Activity} and \class{Agent}. For these elements, we chose the same names
 that were used in the PROV recommendation of the World Wide Web Consortium
 (W3C PROV, \citealt{std:W3CProvDM}), which defines a very abstract pattern that can
-be reused here. The provenance information resides in the relations between those core elements, also taken from the W3C PROV-DM and the related ontology PROV-O \citealt{std:PROV-O}).
+be reused here. The provenance information can be discovered via the relations between those core elements, also taken from the W3C PROV-DM and the related ontology PROV-O \citealt{std:PROV-O}).
 
 We present the core classes, along with their relations to each other, in
 Figure~\ref{fig:coreclasses} and give short descriptions with some examples:
@@ -149,9 +149,9 @@ rights      & -- & string & access rights for the entity, values: public, secure
 %$\rightarrow$ wasAttributedTo & prov:wasAttributedTo & link & link to \class{WasAttributedTo} for linking with a responsible \class{Agent}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of \class{Entities}]{Attributes of \class{Entities}. Mandatory attributes are marked in \textbf{bold}.
+\caption[Attributes of the \class{Entity} class]{Attributes of the \class{Entity} class. Attributes in \textbf{bold} must not be null.
 %, references are indicated with an arrow ($\rightarrow$). 
-Further project-specific attributes (e.g. size, path, url, \dots) could be added when relevant for the project (see Section~\ref{sec:dataset-obscore}). 
+Further project-specific attributes (e.g. size, local path, url, \dots) could be added when relevant for the project (see also Section~\ref{sec:dataset-obscore}). 
 % %mireille I would comment this here, because in the model they are in EntityDescrioption while in the implementation one can decide to gather attributes from Entity and EntityDescription together
 %Attributes from \class{EntityDescription} (see next section) may appear here as well.
 }\label{tab:entity}
@@ -161,7 +161,7 @@ Entities in astronomy are usually astronomical or astrophysical datasets in the
 form of images, tables, numbers, etc. But they can also be observation or 
 simulation log files, files containing system information, environment
 variables, names and versions of packages, ambient conditions, or, in a wider
-sense, also observation proposals, scientific  articles, or manuals and other
+sense, observation proposals, scientific  articles, or manuals and other
 documents. 
 
 An entity is not restricted to being a file.
@@ -196,12 +196,10 @@ PROV-DM, we list its name in the second column.
 
 %\TODO{format and size may not be needed, if entities with the same content but different format and size are considered as the same entity.}
 
-The difference between entities that are used as input data and those used as
-output data becomes clear by specifying the relations between the data and the
-activities producing or using these data. More details on this will follow in
+The difference between entities that are used as inputs and those used as
+outputs becomes clear by specifying the relations between the entities and the
+activities producing or using these entities. More details on this will follow in
 Section \ref{sec:entity-activity-relations}.
-
-
 
 
 
@@ -233,7 +231,7 @@ relation, this direct derivation becomes known.
 \toprule
 \head{Attribute} & \head{Data type}   & \head{Description}\\
 \midrule
-id & string & an identifier for this relation\\
+\textbf{id} & string & an identifier for this relation\\
 \midrule
 $\rightarrow$ \textbf{generatedEntity} & link      & link to the \class{Entity}\\
 $\rightarrow$ \textbf{usedEntity}      & link      & link to the progenitor \class{Entity}, from which the generatedEntity was derived\\
@@ -242,13 +240,8 @@ $\rightarrow$ \textbf{usedEntity}      & link      & link to the progenitor \cla
 %usage            & string            & id of the \class{Used} relation\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{WasDerivedFrom} relation]{Attributes of the
-\class{WasDerivedFrom} relation. These are the same as those used in W3C's
-PROV-DM. \textbf{Mandatory} attributes are marked in bold, references in the data
-model are indicated with an arrow ($\rightarrow$). The W3C model contains
-additional optional links to the related \class{Activity},
-\class{WasGeneratedBy} and \class{Used} relations, which we do not include here for simplicity.
-}\label{tab:wasderivedfrom}
+\caption[Attributes of the \class{WasDerivedFrom} relation class]{Attributes of the
+\class{WasDerivedFrom} relation class. These are the same as those used in W3C's PROV-DM. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null. The W3C model contains additional optional links to the related \class{Activity}, \class{WasGeneratedBy} and \class{Used} relations, which we do not include here for simplicity.}\label{tab:wasderivedfrom}
 \end{table}
 % mireille moved  the table after the was derived from text 
 
@@ -313,7 +306,7 @@ status &  & string & can be used to describe the terminal status of the activity
 %$\rightarrow$ wasAssociatedWith & prov:wasAssociatedWith  & link & link to \class{WasAssociatedWith} for linking with a responsible \class{Agent}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of \class{Activity}.]{Attributes of \class{Activity}, their data types and equivalents in the W3C PROV-DM, if existing. Attributes in bold are \textbf{mandatory}.}\label{tab:activity}
+\caption[Attributes of the \class{Activity} class.]{Attributes of the \class{Activity} class. Attributes in \textbf{bold} must not be null.}\label{tab:activity}
 %, references are indicated with an arrow ($\rightarrow$).}
 \end{table}
 
@@ -352,7 +345,7 @@ $\rightarrow$ \textbf{informant}      & link      & link to the informing \class
 %usage            & string            & id of the \class{Used} relation\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{WasInformedBy} relation]{Attributes of the \class{WasInformedBy} relation.}\label{tab:wasinformedby}
+\caption[Attributes of the \class{WasInformedBy} relation class]{Attributes of the \class{WasInformedBy} relation class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}\label{tab:wasinformedby}
 \end{table}
 
 % \paragraph{WasPartOf.}
@@ -385,7 +378,7 @@ $\rightarrow$ \textbf{informant}      & link      & link to the informing \class
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.7]{entity-activity-relations-nodesc.pdf}
-\caption[\class{Entity}-\class{Activity} relations]{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relations. The \attribute{role} that an entity played when being used or generated by an activity is recorded  within the \class{Used} and \class{WasGeneratedBy} classes.}
+\caption[\class{Entity}-\class{Activity} relations]{\class{Entity} and \class{Activity} are linked via the \class{Used} and \class{WasGeneratedBy} relation classes. The \attribute{role} that an entity played when being used or generated by an activity is recorded  within the \class{Used} and \class{WasGeneratedBy} classes.}
 \label{fig:entity-activity-relations}
 \end{figure}
 
@@ -429,7 +422,7 @@ $\rightarrow$ \textbf{entity} & prov:entity & link & link to an \class{Entity}\\
 %$\rightarrow$ description  &  & link & link to the corresponding \class{UsedDescription}, if existing\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes and references of \class{Used} relation class]{Attributes and references of \class{Used} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes and references of the \class{Used} relation class]{Attributes and references of the \class{Used} relation class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \label{tab:used}
 \end{table}
 
@@ -452,14 +445,14 @@ $\rightarrow$ \textbf{activity} & prov:activity & link & link to an \class{Activ
 %$\rightarrow$ description  &  & link & link to the corresponding \class{WasGeneratedByDescription}, if existing\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes and references of \class{WasGeneratedBy} relation class]{Attributes and references of \class{WasGeneratedBy} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes and references of the \class{WasGeneratedBy} relation class]{Attributes and references of the \class{WasGeneratedBy} relation class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \label{tab:wasgeneratedby}
 \end{table}
 
 
-The \class{Used} and \class{WasGeneratedBy} relations can have the optional
-attribute \attribute{time} -- this is the time when usage of an entity started
-or the generation of an entity is finished.
+The \class{Used} and \class{WasGeneratedBy} relations can have the
+attribute \attribute{time}. This is the time when usage of an entity started
+or the generation of an entity is finished, which may not be the activity start or end time.
 %This generation time corresponds to e.g. \emph{DataID.date} in 
 %Dataset Metadata DM.
 %It therefore corresponds to the \emph{created}-time used in 
@@ -486,7 +479,7 @@ Similarly, the \class{WasGeneratedBy} relation is closely coupled with the \clas
 since a wasGeneratedBy relation makes no sense without its entity. So if an entity is deleted, 
 then its wasGeneratedBy relation must be deleted as well. There is a multiplicity * between \class{Activity}
 and \class{WasGeneratedBy}, because an activity can generate many entities.
-
+However, an entity can be generated by only one activity, so the multiplicity is 1 or 0 between \class{Entity} and \class{WasGeneratedBy}.
 
 
 \paragraph{Entity roles}\label{sec:entity-roles}
@@ -606,7 +599,7 @@ phone &  & string & Phone number\\
 % email   &  & string & Contact email of the agent both for Individual (Person) and Organization\\
 \bottomrule
 \end{tabulary}
-\caption[\class{Agent} attributes]{\class{Agent} attributes}
+\caption[Attributes of the \class{Agent} class]{Attributes of the \class{Agent} class. Attributes in \textbf{bold} must not be null.}
 \label{tab:agent}
 \end{table}
 
@@ -625,7 +618,7 @@ Organization & prov:Organization & Organization & a publishing house, institute 
 SoftwareAgent & prov:SoftwareAgent &  & A software agent is running software, e.g. a cron job or a trigger \\
 \bottomrule
 \end{tabulary}
-\caption[Agent class and types of agents/subclasses]{Agent class and types of agents/subclasses in this data model, compared to W3C PROV-DM and Dataset DM.}
+\caption[Agent class and types of subclasses]{Agent class and types of subclasses in this data model, compared to W3C PROV-DM and Dataset DM.}
 \label{tab:agent-types}
 \end{table}
 
@@ -681,7 +674,7 @@ $\rightarrow$ \textbf{activity} & prov:activity & link & link to an \class{Activ
 %$\rightarrow$ description  &  & link & link to the corresponding \class{WasGeneratedByDescription}, if existing\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes and references of \class{WasAssociatedWith} relation class]{Attributes and references of \class{WasAssociatedWith} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes and references of \class{WasAssociatedWith} relation class]{Attributes and references of \class{WasAssociatedWith} relation class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \label{tab:wasassociatedwith}
 \end{table}
 
@@ -703,7 +696,7 @@ $\rightarrow$ \textbf{agent} & prov:agent & link & link to an \class{Agent}\\
 $\rightarrow$ \textbf{entity} & prov:entity & link & link to an \class{Entity}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes and references of \class{WasAttributedTo} relation class]{Attributes and references of \class{WasAttributedTo} relation class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes and references of \class{WasAttributedTo} relation class]{Attributes and references of \class{WasAttributedTo} relation class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \label{tab:wasattributedto}
 \end{table}
 
@@ -787,13 +780,13 @@ provider & Organization & ``an organization that makes data and/or services avai
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1.0\textwidth]{ExtendedModel_2018-10-10.png}
-\caption[Class diagram showing the main functional features of the Provenance DM]{Class diagram showing the main functional features of the Provenance DM. This diagram includes a subset of all the specialized entities and relations defined in this section. Those are presented in separate diagrams and in the text.}
+\caption[Class diagram showing the main functional features of the Provenance DM]{Class diagram showing the main functional features of the Provenance DM. This diagram includes a subset of all the specialized entities and relations defined in this section (\ref{sec:extended_model}) which are further presented in diagrams~\ref{fig:spec_entities} and \ref{sec:spec_relations}. The various \class{hasDescription} relations are shown with red arrows.}
 \label{fig:classdiagram}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1.0\textwidth]{ExtendedModel_VODML.png}
+\includegraphics[width=1.0\textwidth]{ExtendedModel_VODML_2018-10-10.png}
 \caption[VO-DML compatible version of the class diagram in Figure~\ref{fig:classdiagram}]{VO-DML compatible version of the class diagram in Figure~\ref{fig:classdiagram}.}
 \label{fig:classdiagram_vodml}
 \end{figure}
@@ -869,7 +862,7 @@ It is important to note that specialized entities inherit from \class{Entity}, a
 \paragraph{MainEntity:}
 Provenance information are expected to be recorded primarily for those main entities, to which we may attach descriptions, detail the configuration that led to their generation and the context in which they were generated. 
 \begin{itemize}
-\item[\textbf{Data}]: digital, machine-readable information in some content that will be used/transformed/analysed. It could be a cell or a column in a table, a file, an image, a cube of data... This \class{Data} \class{Entity} might be bounded to a IVOA \class{Dataset} record or an IVOA ObsCore record.
+\item[\textbf{Data}]: digital, machine-readable information in some content that will be used/transformed/analysed. It could be a cell or a column in a table, a file, an image, a cube of data... This \class{Data} \class{Entity} might be bounded to a IVOA \class{Dataset} record or an IVOA ObsCore record (see also Section~\ref{sec:dataset-obscore} in the Appendix).
 \item[\textbf{Visualization}]: a digital visual representation.
 \item[\textbf{Document}]: information presented in a human readable form, e.g. a book, an article, or an observation proposal.
 \item[\textbf{Device}]: a physical object, such as a tool, an instrument, a telescope, etc.
@@ -917,7 +910,7 @@ In order to distinguish the different specialized entities in their usage or inf
 \label{fig:spec_relations}
 \end{figure}
 
-We thus provide a way to qualify the usage or influence of a specialized entity on an activity, or another entity. The \attribute{role} attribute in those relations is not expected to be defined as they are already qualified and generally point to specialized entities. Those relations can thus be seen as simple association tables.
+We thus provide a way to qualify the usage or influence of a specialized entity on an activity, or another entity. The \attribute{role} attribute in those relations is not expected to be defined as they are already qualified and should point to specialized entities. Those relations can thus be seen as simple association tables.
 
 
 \subsubsection{EntityDescription}
@@ -951,7 +944,7 @@ format    & string & type of container for the entity\\
 %\multicolumn{4}{@{}l}{from DatasetDM) can be added (Section~\ref{sec:dataset-obscore}).}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of \class{EntityDescription}]{Attributes of \class{EntityDescription}. 
+\caption[Attributes of the \class{EntityDescription} class]{Attributes of the \class{EntityDescription} class. Attributes in \textbf{bold} must not be null. 
 %For simple use cases, this description class may be ignored and its attributes may be used for \class{Entity} instead.
 %The utypes may vary depending on the data model, e.g. for simulation data they 
 %would point to utypes of SimDM.
@@ -960,19 +953,13 @@ format    & string & type of container for the entity\\
 
 
 %The Entity class can have an EntityDescription class attached. 
-The types of entities can be predefined using a
+The category of entities can be predefined using a
 description class \class{EntityDescription}. This class is meant to store
 descriptive information % In English,'information' lacks a plural form.
 about an entity that is known before an \class{Entity} instance is created.
-For example, if we run an activity to create an RGB image from three greyscale
-images, we may know one or several possible \attribute{format} for the input and output
-images before the activity's execution (JPG, PNG, FITS, \ldots), but we probably
-cannot know the final size of the image  that will be created.
-In this example, \attribute{format} would be an \class{EntityDescription} attribute,
-while size would be a property attached to the \class{Entity} instance. 
+For example, a \attribute{format} (e.g. JPG images, FITS, FITS-LDAC, \ldots) can be common to several entities. However, the size of this image or file cannot be known before it is created. In this example, \attribute{format} would be an \class{EntityDescription} attribute, while size would be a property attached to the \class{Entity} instance. 
 The \class{EntityDescription} general attributes are summarized in Table 
 \ref{tab:entitydescription}.
-
 %This class thus stores entity-related 
 Additional attributes that describe the content of the data could be derived from 
 the Dataset Metadata Model (see Section \ref{sec:dataset-obscore})
@@ -1004,7 +991,7 @@ relations (and their relation descriptions) between activities and entities
 $\rightarrow$ description & link & link to \class{ParameterDescription}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of \class{Parameter}]{Attributes of \class{Parameter}. Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes of the \class{Parameter} class]{Attributes of the \class{Parameter} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \end{table}
 %\footnote{Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
 \begin{table}[ht]
@@ -1024,7 +1011,7 @@ arraysize     & number & number of values of specified \attribute{datatype}, if 
 unit           & string & physical unit \\
 ucd           & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity\\
 utype        & string  & Utype, meant to express the role of the parameter in the context of an external data model \\
-xtype         & string & extended datatype as in VOTable 1.2 and above\\
+xtype         & string & extended datatype as in VOTable 1.2 and above. A list of proposed \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
 min           & number & minimum value \\
@@ -1035,7 +1022,7 @@ value       & (value dependent) & the default value of the parameter, type depen
 $\rightarrow$ activityDescription & link & link to \class{ActivityDescription}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of \class{ParameterDescription}]{Attributes of \class{ParameterDescription}.}
+\caption[Attributes of the \class{ParameterDescription} class]{Attributes of the  \class{ParameterDescription} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \end{table}
 
 The concept of activity configuration, generally a set of parameters that can be configured before the execution of an activity, is tightly linked to the concept of provenance. Configuration information can indeed be relevant to assess the quality and reliability of an activity or an entity.
@@ -1066,7 +1053,7 @@ We note that a parameter can be replaced by an existing entity, or can be derive
 %\emph{instrument characteristics}. This contextual data associated with an observation is not directly modelled in the ProvenanceDM. However, this information can be stored as different entities. 
 %Alternatively, one could list the instrument characteristics as a set of key-value parameters using the \class{Parameter} class, so that this information is structured and stored with the provenance information (and can thus be queried simultaneously). 
 
-For example, in the case of a processing activity that cleans an image with a sigma-clipping method, the input and output images would be the main entities and the value of the number of sigma for sigma-clipping would be carried by a \class{Parameter} entity se before running the activity. The corresponding \class{ParameterDescription} would define the type and range of the expected value for this parameter (using the attributes \attribute{datatype}, \attribute{min}, \attribute{max}, \attribute{options}...).
+For example, in the case of a processing activity that cleans an image with a sigma-clipping method, the input and output images would be the main entities and the value of the number of sigma for sigma-clipping would be carried by a \class{Parameter} entity set before running the activity. The corresponding \class{ParameterDescription} defines the type and range of the expected value for this parameter (using the attributes \attribute{datatype}, \attribute{min}, \attribute{max}, \attribute{options}...).
 %We may also want to define a 3-sigma-clipping activity where this parameter is fixed to 3.
 
 %For example for observations, the \emph{ambient conditions} as well as 
@@ -1094,7 +1081,7 @@ For example, in the case of a processing activity that cleans an image with a si
 %e.g. the CCD temperature. The instruments can also change within time because of aging.}
 
 \paragraph{Parameter value vs. ParameterDescription value.}
-The \class{ParameterDescription} class being a child of the \class{Entity} class, it contains a \attribute{value} attribute. As this class contains information known before a \class{Parameter} instance is created (as for EntityDescription in Section~\ref{sec:entity_desc}), its value can be considered to be the default value for the parameter.
+The \class{ParameterDescription} class being a child of the \class{Entity} class, it contains a \attribute{value} attribute. As this class contains information known before a \class{Parameter} instance is created (as for EntityDescription, see Section~\ref{sec:entity_desc}), its value can be considered to be the default value for the parameter.
 
 
 
@@ -1124,29 +1111,31 @@ code         & string & the code (software) used for this process, if applicable
 version      & string & a version number, if applicable (e.g. for the code)\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of \class{ActivityDescription}]{Attributes of \class{ActivityDescription}. Some of the attributes inherited from Entity (see Table~\ref{tab:entity}) are not indicated in this table.}
+\caption[Attributes of the \class{ActivityDescription} class]{Attributes of the \class{ActivityDescription} class. Attributes in \textbf{bold} must not be null.
+%Some of the attributes inherited from Entity (see Table~\ref{tab:entity}) are not indicated in this table.
+}
 \end{table}
 
 
-The working of an activity can be specified by a corresponding \class{ActivityDescription} class. This could be, for instance, the name of the \attribute{code} and its \attribute{version} used to perform an activity or a more general description of the underlying algorithm or process. 
-An activity is then a concrete case (instance) that follows the described working, with a \attribute{startTime} and an \attribute{endTime}, and it refers to a corresponding description for further information.
+The inner working of an activity can be explained by a corresponding \class{ActivityDescription} class. This could be, for instance, the name of the \attribute{code} and its \attribute{version} used to perform an activity or a more general description of the underlying algorithm or process. 
+An activity is then a concrete case (instance) that follows the described inner working, with a \attribute{startTime} and an \attribute{endTime}, and it refers to a corresponding description for further information.
 
 A close concept in the W3C PROV-DM is the \class{Plan} (defined as a subclass of \class{Entity}). However a plan in PROV-DM is primarily attached to the \class{Agent} class with \class{hadPlan} through the \class{wasAssociatedWith} relation. It is accepted to omit the agent, but it is always supposed that an agent exist.
 \class{ActivityDescription} is directly attached to \class{Activity} and can thus be seen as a list of attributes that can be known before an \class{Activity} instance is created. 
 
-There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a pipeline shall be grouped together, one needs to create a proper 
-\class{ActivityDescription} for describing all the steps at once. This method can then 
+There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a pipeline shall be grouped together, one needs to create a proper \class{ActivityDescription} for describing all the steps at once. This method can then 
 be referred to by the pipeline activity. 
 
 
-\paragraph{Descriptions of the Used and WasGeneratedBy relations}
+\paragraph{Descriptions of the Used and WasGeneratedBy relations.}
+
 In order to describe more largely an activity, it is common to define the expected inputs and outputs of this activity, i.e. what we expect to store in the Used and WasGeneratedBy relations.
 
 In the case of workflow description models, such as ProvONE (but also Kepler or Taverna for example), input and output \textbf{ports} are defined, and can be connected to build a workflow of activities. In ProvONE \citep{ProvONE}, an \class{ActivityDescription} is restricted to a \class{Program}, and an \class{Activity} is an \class{Execution} associated to a \class{Program}, with further entities and relations dedicated to workflow descriptions (see Section\ref{sec:dmlinks}). However, the description of workflows is out of the scope of this document, and the more general concepts we introduce here are the UsedDescription and the WasGeneratedByDescription classes. Those classes are meant to store descriptive information about the usage or generation of an entity that is known before the activity is executed.
 
 In particular, if the \attribute{role} attribute is given in those description classes, the corresponding \class{Used} and \class{WasGeneratedBy} relations must contain the same \attribute{role} value. 
 
-The \attribute{multiplicity} attribute indicates that more than one entity may have the same role, e.g. in the case of the stacking of several images, an undefined number of input images is expected and will share the same role.
+A \attribute{multiplicity} attribute can indicate that more than one entity may have the same role, e.g. in the case of the stacking of several images, an undefined number of input images is expected and will share the same role.
 
 %When serializing the DM, the attributes of the description class may be assigned to the activity for simplification.
 % in order to produce  a W3C compliant serialization, which is the same procedure as with
@@ -1173,7 +1162,7 @@ $\rightarrow$ entityDescription & link & link to \class{EntityDescription}\\
 % Analogous for the WasGeneratedByDescription; the same Activity may generate different types of files with the same role ("--format=png" or "--format=eps").
 \bottomrule
 \end{tabulary}
-\caption[Attributes and references of \class{UsedDescription} class]{Attributes and references of \class{UsedDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\caption[Attributes and references of the \class{UsedDescription} class]{Attributes and references of the \class{UsedDescription} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \label{tab:useddescription}
 \end{table}
 
@@ -1196,48 +1185,20 @@ $\rightarrow$ \textbf{activityDescription} & link & link to an \class{ActivityDe
 $\rightarrow$ entityDescription & link & link to \class{EntityDescription}\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes and references of \class{WasGeneratedByDescription} class]{Attributes and references of \class{WasGeneratedByDescription} class. Attributes/references in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$). }
+\caption[Attributes and references of the \class{WasGeneratedByDescription} class]{Attributes and references of the \class{WasGeneratedByDescription} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
 \label{tab:wasgeneratedbydescription}
 \end{table}
 
 \paragraph{EntityDescription in the context of an Activity.}
+
 %The description of the different ports is completed by the description of the  type of entity accepted as an input or output of the activity.
-When related to the \class{UsedDescription} or \class{WasGeneratedByDescription}, the attributes of EntityDescription (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity. For example: the input bias files must be in FITS format, or the red, green and blue channel images must be in PNG, or JPEG format. 
+When related to the \class{UsedDescription} or \class{WasGeneratedByDescription}, the attributes of EntityDescription (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity. For example: the input bias files must be in FITS format, or the red, green and blue channel images must be in PNG or JPEG format. 
 
 \paragraph{Input parameters.}
+
 %\class{UsedDescription} + \class{ParameterDescription} can be seen as a specialized input port attached to an \class{ActivityDescription}. 
 An activity may expect a list of input parameters, each one directly described with the attributes of \class{ParameterDescription} as defined in Section~\ref{sec:parameters}. 
 %\class{ParameterDescription} has a \attribute{name} attribute that should correspond to the \attribute{role} attribute of \class{UsedDescription}.
 Such a list of input parameters already exist in the IVOA ecosystem for service resources. In this context, they are written in the form of an IVOA DataLink Service Descriptor \citep{std:DataLink}.
-We find also a list of parameters in UWS services \citep{std:UWS}, some of which may carry identifiers referencing another entity.
+We find also a list of parameters in UWS services \citep{std:UWS}, some of which may carry identifiers referencing another entity. The link to the UWS pattern is further developed in Section~\ref{sec:uws_links} of the Appendix.
 
-\paragraph{Parameters that carry identifiers.}
-A parameter of an activity can sometimes be an identifier, a serial number, a file name, or a URL that points to an entity (e.g. a dataset). 
-Such parameters do not carry explicitly the value (or content) of the referenced entity. 
-It is thus not clear if the parameter value points to an input or output entity, or if it is just some text. 
-This is resolved in the UWS pattern \citep{std:UWS} by adding an attribute \attribute{byReference=true} to a parameter if it is an identifier to be resolved.
-%To remove this ambiguity, 
-%one could describe the used or generated entity in the UsedDescription or WasGeneratedByDescription classes presented in the next section, using the same name as the parameter. 
-%This would indicate that an entity is connected to an activity by simply giving its identifier through a parameter. 
-In that case, the \attribute{ucd} of the parameter as given in the \class{ParameterDescription} class should indicate that this is an identifier (e.g. \attribute{meta.id} or \attribute{meta.file}).
-%The \class{ParameterDescription} may thus point to a \class{UsedDescription} for the same \attribute{role} that describes the content of the referenced entity.
-
-%The associated \attribute{utype} may point to \attribute{Entity.id}.
-
-% comment from Ole
-% I don't understand the chapter above: Since a Parameter is an Entity, it may have a 
-% \attribute{value} or a \attribute{location}, depending on whether it is the value itself or
-% a reference. Why would you put an URL into the \attribute{value} field then?
-% If we split the ParameterDescription into an EntityDescription and a UsedDescription, then
-% there is no need to specify \attribute{utype} in case of references at all. And we can use
-% ucds & Co. in entity related values that are no parameters.
-
-%Mathieu: I tried to modify the text, following the last model. the value attribute can contain a URL or simply a filename because this exist in practice. We may excahnge just identifiers with an activity, then the activity has to resolve this identifier. This way we explicitely know that there is a used entity. Sometimes this is not known a priori from the list of parameters (even the from the uws parameters).
-
-%ole If it contains a file name or a link, than it is an ConfigFile Entity, not a Parameter, and this file should have a proper EntityDescription.
-%ole You usually always feed file names or URLs into a program; almost never the file itself (except if it comes from stdin or such, but this is probably rare in astro).
-%ole For example, ESO recipes get a command line parameter "fname.sof", which contains a list of input and calibration files.
-%ole This translates into one Entity per file (*not* one Parameter), and not having an (irrelevant) "fname.sof" parameter.
-%ole Parameters are by-value; we should take this seriously. If a reference is given, it is not a Parameter, even when it was done on the command line. Otherwise, one may break Provenance dependencies: how do I come from a file name to the provenance of the file it refers to?
-
-%Mathieu: the input parameter is configuration, the used entity is... used.

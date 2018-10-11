@@ -4,19 +4,23 @@
 %and how provenance information can be stored.
 
 The Provenance Data Model can be applied without making any links to other 
-IVOA data model classes. For example, when the data is not yet published, provenance information
-can be stored already, but a DatasetDM-description for the data may not yet exist.
+IVOA data model classes. 
+However, other IVOA standards and external models contain concepts that can be mapped with some Provenance DM concepts. This section provides links between those concepts, and gives some elements to extend the Provenance DM.
+
+For example, when the data is not yet published, provenance information
+can be stored, but a DatasetDM-description for the data may not yet exist.
 However, if there are data models implemented for the datasets, then it is 
 very useful to connect the classes and attributes of the other data models with provenance classes and attributes (if applicable), which we are going to discuss in this Section. These links help to avoid 
 unnecessary repetitions in the metadata of datasets, and also offer the possibility 
 to derive some basic provenance information from existing data model classes automatically, e.g. for creating provenance serializations from DatasetDM or SimDM metadata.
 
 
-\subsection{Links with Dataset/ObsCore Model}
+
+\subsection{Links with the IVOA Dataset/ObsCore models}
 \label{sec:dataset-obscore}
 
 \class{Entity} and \class{EntityDescription} in ProvenanceDM 
-are tightly linked to the \class{DataSet}-class in DatasetDM/ObsCoreDM, as well as to 
+are tightly linked to the \class{DataSet}-class in DatasetDM/ObsCoreDM \citep{std:DatasetDM, std:OBSCORE}, as well as to 
 \class{InputDataset} and \class{OutputDataSet} in the SimulationDM \citep{std:SimDM}.
 Tables~\ref{tab:datasetmapping} and \ref{tab:datasetmapping2} map classes and attributes from DatasetDM
 to concepts in ProvenanceDM. 
@@ -96,9 +100,11 @@ We imagine that services implementing both data models, \class{Dataset} and \cla
 Note that for Provenance queries using a ProvTAP service or for W3C compatible serializations, the name \class{Agent} for the responsible individuals/organizations is required.
 
 
-\subsection{Links with Simulation Data Model}
 
-In SimDM one also encounters a normalization similar to our separation of descriptions from 
+
+\subsection{Links with the IVOA Simulation Data Model}
+
+In SimDM \citep{std:SimDM}, one also encounters a normalization similar to our separation of descriptions from 
 actual data instances and executions of processes: the SimDM class \class{Experiment}
 is a type of \class{Activity} and its general, reusable description is called a \class{Protocol},
 which can be considered as a type of this model's \class{ActivityDescription}. 
@@ -143,11 +149,59 @@ to map from SimDM properties to ProvenanceDM, e.g. when serving serialized prove
 %versions of this working draft.
 
 
-\subsection{Links with ProvONE data model}
 
-The IVOA Provenance DM includes several concepts that can be the starting point to define and execute scientific workflow-based computational experiments. In this context, the provenance information could be translated and further developed following the ProvONE ontology and data model \citep{ProvONE}. A general mapping is presented in Table~\ref{tab:provonemapping}.
 
-ProvONE extends W3C PROV with classes and relation that could also be used to extend the IVOA Provenance DM. For example, the relation \class{wasPartOf} between a parent and a child entity can be used to describe the structure of \class{Execution} instances in that a parent \class{Execution} (associated with a \class{Workflow}) has child \class{Executions} (associated with \class{Programs} and subworkflows). In the same way, the \class{hasSubProgram} relation specifies the recursive composition of \class{Programs}, a parent \class{Program} includes a child \class{Program} as part of its specification.
+\subsection{Links with the IVOA UWS pattern}
+\label{sec:uws_links}
+
+The IVOA Universal Worker Service Pattern \citep{std:UWS} defines how to manage asynchronous execution of jobs on a service. Within this pattern, a \class{Job} can be seen as an \class{Activity}. A job uses input parameters and generates results.
+
+\paragraph{Job Description Language.}
+The UWS pattern states that ``the rules for setting and arranging the parameters for a job are called the Job-Description Language (JDL). The combination of the UWS pattern, a JDL and details of the job state visible to the client defines a service contract''.
+It is interesting to map this JDL with the Activity Description classes defined in the Provenance DM (section~\ref{sec:activity_desc}). When using the Activity Description classes as a JDL, a service following the UWS pattern is turned into a ``universal worker service''. This service is in addition \emph{Provenance enabled}, in that the provenance information can be automatically generated from the JDL.
+The serialization proposed in section~\ref{sec:description-serialization} completes the definition to make the JDL exchangeable.
+
+\paragraph{Value of UWS parameters.}
+The definition of UWS parameters corresponds to the definition of the \class{Parameter} class (see Section~\ref{sec:parameters}. 
+The UWS pattern states that ``each parameter value may be expressed either directly as the content of the parameter element, or the value expressed \emph{by reference}, where there returned parameter value is a URL that points to the location where the actual parameter value is stored''.
+A parameter value may also be an identifier, a serial number, a file name, that points to an external entity. 
+It is generally not clear if the parameter value points to an input or output entity, or if it is just some value. 
+This is resolved in the UWS pattern \citep{std:UWS} by adding an attribute \attribute{byReference=true} to a parameter if it is an URL to be resolved.
+%To remove this ambiguity, 
+%one could describe the used or generated entity in the UsedDescription or WasGeneratedByDescription classes presented in the next section, using the same name as the parameter. 
+%This would indicate that an entity is connected to an activity by simply giving its identifier through a parameter.
+In the same way, this can be resolved in the Provenance DM by adding to a \class{ParameterDescription} instance a link to a \class{UsedDescription} instance that explains in details the referenced external entity.
+In that case, the \class{ParameterDescription} instance should indicate that the parameter is an identifier (e.g. \attribute{ucd="meta.id"} or \attribute{ucd="meta.file"}) or a URL (\attribute{xtype="xs:anyURI"}).
+%The \class{ParameterDescription} may thus point to a \class{UsedDescription} for the same \attribute{role} that describes the content of the referenced entity.
+
+%The associated \attribute{utype} may point to \attribute{Entity.id}.
+
+% comment from Ole
+% I don't understand the chapter above: Since a Parameter is an Entity, it may have a 
+% \attribute{value} or a \attribute{location}, depending on whether it is the value itself or
+% a reference. Why would you put an URL into the \attribute{value} field then?
+% If we split the ParameterDescription into an EntityDescription and a UsedDescription, then
+% there is no need to specify \attribute{utype} in case of references at all. And we can use
+% ucds & Co. in entity related values that are no parameters.
+
+%Mathieu: I tried to modify the text, following the last model. the value attribute can contain a URL or simply a filename because this exist in practice. We may excahnge just identifiers with an activity, then the activity has to resolve this identifier. This way we explicitely know that there is a used entity. Sometimes this is not known a priori from the list of parameters (even the from the uws parameters).
+
+%ole If it contains a file name or a link, than it is an ConfigFile Entity, not a Parameter, and this file should have a proper EntityDescription.
+%ole You usually always feed file names or URLs into a program; almost never the file itself (except if it comes from stdin or such, but this is probably rare in astro).
+%ole For example, ESO recipes get a command line parameter "fname.sof", which contains a list of input and calibration files.
+%ole This translates into one Entity per file (*not* one Parameter), and not having an (irrelevant) "fname.sof" parameter.
+%ole Parameters are by-value; we should take this seriously. If a reference is given, it is not a Parameter, even when it was done on the command line. Otherwise, one may break Provenance dependencies: how do I come from a file name to the provenance of the file it refers to?
+
+%Mathieu: the input parameter is configuration, the used entity is... used.
+
+
+
+
+\subsection{Links with the ProvONE data model}
+
+The IVOA Provenance DM includes several concepts that can be the starting point to define and execute scientific workflow-based computational experiments. In this context, the provenance information could be translated and further developed following the ProvONE ontology and data model \citep{ProvONE}, that was developped as an extension to W3C PROV-DM \citep{std:W3CProvDM}. A general mapping is presented in Table~\ref{tab:provonemapping}.
+
+ProvONE extends W3C PROV with classes and relation that could also be used to extend the IVOA Provenance DM. For example, the relation \class{wasPartOf} between a parent and a child entity can be used to describe the structure of \class{Execution} instances, in that a parent \class{Execution} (associated with a \class{Workflow}) has child \class{Executions} (associated with \class{Programs} and subworkflows). In the same way, the \class{hasSubProgram} relation specifies the recursive composition of \class{Programs}, i.e. a parent \class{Program} includes a child \class{Program} as part of its specification.
 
 \begin{table}[ht]
 \centering

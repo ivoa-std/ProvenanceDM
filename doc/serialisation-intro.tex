@@ -9,6 +9,14 @@ means expose only the structure of the classes
 and relation tables and feed them with the related tuples in the database.
 On the client side, the content of a VO-Provenance serialization document can then be explored and represented using graphical interfaces, as inspired by the Provenance Southampton suite or by customized visualisation tools.
 
+Such serializations can be retrieved through IVOA access protocols (see Section~\ref{sec:access_protocols}), %\ref{sec:access_protocols})
+or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. 
+
+For FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the activities that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
+
+
+
+
 \subsection{W3C serialization formats: PROV-N, PROV-JSON and PROV-XML}
 % from W3C reused and extended
 
@@ -18,9 +26,9 @@ They can be reused here as well for serializations of our data model.
 
 In order to produce W3C compatible serializations, the classes and attributes defined in the IVOA Provenance DM model must be qualified names with the namespace \texttt{voprov}, except when they exist in the W3C PROV namespace \texttt{prov} (e.g. \texttt{prov:id}, \texttt{prov:type} and \texttt{prov:startTime}). A mapping is given in e.g. Tables~\ref{tab:entity}, \ref{tab:wasderivedfrom}, \ref{tab:activity}, \ref{tab:wasinformedby}, \ref{tab:used} and \ref{tab:wasgeneratedby}. 
 
-The specialized entities defined in Section~\ref{sec:spec_entities} should be written as Entity instances and the attribute \attribute{prov:type} must be set to the category of the specialized entity e.g. \attribute{voprov:Data}, \attribute{voprov:Parameter}, \attribute{voprov:ActivityDescription}. This is also the rule for \class{Collection}, as done in W3C PROV-DM. We note here that several \attribute{prov:type} can be provided.
+The specialized entities defined in Section~\ref{sec:spec_entities} must be written as Entity instances and the attribute \attribute{prov:type} must be set to the category of the specialized entity e.g. \attribute{voprov:Data}, \attribute{voprov:Parameter}, \attribute{voprov:ActivityDescription}. This is also the rule for \class{Collection}, as done in W3C PROV-DM. We note here that several \attribute{prov:type} values can be provided.
 
-The specialized relations defined in Section~\ref{sec:spec_relations} should be written as a W3C relation (e.g. used relation between an Activity and and Entity, or the more general wasInfluencedBy relation between all classes). The attribute \attribute{prov:type} must be set to the name of the specialized relation, e.g. \attribute{voprov:hadDescription} or  \attribute{voprov:hasConfiguration}.
+The specialized relations defined in Section~\ref{sec:spec_relations} must be written as a W3C relation (e.g. used relation between an Activity and and Entity, or the more general wasInfluencedBy relation between all classes). The attribute \attribute{prov:type} must be set to the name of the specialized relation, e.g. \attribute{voprov:hadDescription} or  \attribute{voprov:hasConfiguration}.
 
 To further export some concepts of the IVOA model to equivalent concepts in the W3C model, the following rules may be respected:
 
@@ -31,8 +39,8 @@ To further export some concepts of the IVOA model to equivalent concepts in the 
 %\item \class{hadMember} has no id and no optional attributes in W3C
 %\item Specialized entities: add \texttt{prov:type = 'voprov:...'}
 %\item Specialized relations: add \texttt{prov:type = 'voprov:...'}
-\item \class{voprov:ActivityDescription}: also add \texttt{prov:type = 'prov:Plan'}
-\item \class{voprov:hadDescription}: replace by \class{prov:wasAssociatedWith} with the activityDescription given as the plan through the \class{prov:hadPlan} relation
+\item \class{ActivityDescription}: also add \texttt{prov:type = 'prov:Plan'}
+\item \class{hadDescription}: replace by \class{prov:wasAssociatedWith} with the activityDescription given as the plan through the \class{prov:hadPlan} relation
 \end{itemize}
 
 %In the case of the \class{hadDescription} relation to \class{ActivityDescription}, it may be written as a \class{wasAssociatedWith} relation between the corresponding activity and the activityDescription (seen as a prov:Plan), specifying or not the involved agent.
@@ -41,6 +49,8 @@ To further export some concepts of the IVOA model to equivalent concepts in the 
 %see Section~\ref{sec:w3cserialization}.
 
 % NOTE: we actually never use PROV-XML here!!
+
+PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the \texttt{prov} or \texttt{voprov} python package (see Section ``voprov'' in Implementation Note \citep{std:ProvenanceImplementationNote}).
 
 %example KR provn 
 Here is an example of a serialization instance document for an entity being processed by an activity, in PROV-N notation:
@@ -108,8 +118,8 @@ Here is the same example in PROV-JSON format:
 }
 \end{minted}
 
-\noindent
-PROV-JSON, PROV-N and PROV-XML can be converted into each other, e.g.  using the \texttt{prov} or \texttt{voprov} python package (see Section ``voprov'' in Implementation Note \citep{std:ProvenanceImplementationNote}).
+
+
 
 \subsection{VOTable format for Provenance metadata} 
 
@@ -131,7 +141,12 @@ This can be appropriately used for two goals:
 	\item Providing the backbone for the TAP schema describing IVOA provenance metadata which is used for ProvTAP 
 \end{itemize}
 
-These VOTable serializations can be produced using the \texttt{voprov} python module, available to the community, as mentionned in see also in Implementation Note \citep[]{std:ProvenanceImplementationNote}.
+The VOTable serialization can be considered as a flat view on the various tables stored in a database implementing the data model structure explained in Section~\ref{sec:datamodel}.
+More examples of serialization documents are provided in Appendix \ref{sec:appendix-serialization-examples}.
+It is possible to create separate tables for each specialized entity, where the TABLE tag must have the name attribute set to the name of this specialized entity, and \attribute{utype=voprov:Entity}.
+
+A VOTable serialization can be produced using the \texttt{voprov} python module, available to the community, as mentioned in see also in Implementation Note \citep[]{std:ProvenanceImplementationNote}.
+
 
 Here is a VOTable document transcription of the serialization example given above in PROV-N and PROV-JSON:
 
@@ -215,14 +230,6 @@ Here is a VOTable document transcription of the serialization example given abov
 </VOTABLE>
 \end{minted}
 
-This VOTable serialization can be considered as a flat view on the various tables stored in a database implementing the data model structure explained in Section~\ref{sec:datamodel}.
-More examples of serialization documents are provided in Appendix \ref{sec:appendix-serialization-examples}.
-It is possible to create separate tables for each specialized entity, providing that the TABLE tag has the name of this specialized entity, and \attribute{utype=voprov:Entity}.
-
-Such serializations can be retrieved through IVOA access protocols (see Section~\ref{sec:access_protocols}), %\ref{sec:access_protocols})
-or directly integrated in dataset headers or ``associated metadata'' in order to provide provenance metadata for these datasets. 
-
-For FITS files, a provenance extension called ``PROVENANCE'' could be added which contains provenance information of the activities that generated the FITS file. This information could be stored directly using one of the serialization formats, for example as a unique cell in an ASCII TABLE extension.
 
 %\TODO{Add reference(s) to access protocols!}
 
