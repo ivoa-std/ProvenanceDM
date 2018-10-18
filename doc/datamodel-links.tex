@@ -171,7 +171,7 @@ This is resolved in the UWS pattern \citep{std:UWS} by adding an attribute \attr
 %one could describe the used or generated entity in the UsedDescription or WasGeneratedByDescription classes presented in the next section, using the same name as the parameter. 
 %This would indicate that an entity is connected to an activity by simply giving its identifier through a parameter.
 In the same way, this can be resolved in the Provenance DM by adding to a \class{ParameterDescription} instance a link to a \class{UsedDescription} instance that explains in details the referenced external entity.
-In that case, the \class{ParameterDescription} instance should indicate that the parameter is an identifier (e.g. \attribute{ucd="meta.id"} or \attribute{ucd="meta.file"}) or a URL (\attribute{xtype="xs:anyURI"}).
+In that case, the \class{ParameterDescription} instance should indicate that the parameter is an identifier (e.g. \attribute{ucd="meta.id"} or \attribute{ucd="meta.file"}) or a URL (\attribute{xtype="xs:anyURI"}), and the \attribute{role} of the corresponding \class{UsedDescription} instance must be the \attribute{name} of the \class{ParameterDescription} instance.
 %The \class{ParameterDescription} may thus point to a \class{UsedDescription} for the same \attribute{role} that describes the content of the referenced entity.
 
 %The associated \attribute{utype} may point to \attribute{Entity.id}.

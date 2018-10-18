@@ -49,7 +49,7 @@ The core elements of the Provenance DM are \class{Entity},
 \class{Activity} and \class{Agent}. For these elements, we chose the same names
 that were used in the PROV recommendation of the World Wide Web Consortium
 (W3C PROV, \citealt{std:W3CProvDM}), which defines a very abstract pattern that can
-be reused here. The provenance information can be discovered via the relations between those core elements, also taken from the W3C PROV-DM and the related ontology PROV-O \citealt{std:PROV-O}).
+be reused here. The provenance information can be discovered via the relations between those core elements, also taken from the W3C PROV-DM and the related ontology PROV-O \citep{std:PROV-O}.
 
 We present the core classes, along with their relations to each other, in
 Figure~\ref{fig:coreclasses} and give short descriptions with some examples:
@@ -248,7 +248,7 @@ $\rightarrow$ \textbf{usedEntity}      & link      & link to the progenitor \cla
 \subsubsection{Collection}\label{sec:collection}
 
 Collections are entities that are grouped together and can be treated as one single entity. From the provenance point of view, they have to have the \emph{same origin}, i.e., they were produced by the same activity (which could also be the activity of collecting data for a publication or similar). 
-The term ``collection'' is also used in the Dataset Metadata Model for grouping datasets.
+The term ``collection'' is used in the Dataset Metadata Model for grouping datasets.
 % (but with a slightly different meaning). 
 %As an example, a collection with the name `RAVE survey' could consist of a number of database tables and spectra files.
 It is also included in the W3C PROV-DM.
@@ -870,20 +870,20 @@ Provenance information are expected to be recorded primarily for those main enti
 We note that \class{Data}, \class{Visualization} and \class{Document} are classes that are also defined in the ProvONE ontology \citep{ProvONE}, with the following text: ''The \class{Data} class is defined to be generic and represents data items of various types (e.g. XML, JSON, CSV files, etc.). \class{Visualizations} are a differentiated class intended to represent various visualization items often output from workflows (JPG, PNG, SVG, MP4, etc.). The \class{Document} class is a generic representation of a published or unpublished article or report.‘‘
 
 \paragraph{Description:}
-This subclass of entities carries detailed information on the expected behaviour of an \class{Activity} and on the expected structure and use of an \class{Entity}. It describes in a structured way the plan prepared for and followed during an activity, and as such, influences directly the activity.
+This subclass of entities carries detailed information on the expected behaviour of an activity and on the expected structure and use of an entity. It describes in a structured way the plan prepared for and followed during an activity, and as such, influences directly the activity.
 \begin{itemize}
 \item[\textbf{EntityDescription}]: describes a category of entities, and contains descriptive information about an entity that is known before an entity instance is created (file format, MIME or content type, etc), for example: all files that follow the FITS-LDAC structure and format in a project. This class is further described in Sections~\ref{sec:entity_desc} and \ref{sec:activity_desc}.
-\item[\textbf{ParameterDescription}]: contains the attributes of a \class{Parameter} that are similar to the attributes of the PARAM block in a VOTable (unit, UCD, UType...). This class is further described in Section~\ref{sec:parameters}.
 \item[\textbf{ActivityDescription}]: explanations on the activity, such as the method used, the algorithm, the source code. This class is further described in Section~\ref{sec:activity_desc}.
-\item[\textbf{UsedDescription}]: describes the roles of expected inputs in an Activity, e.g. a red channel in the creation of an RGB image.
-\item[\textbf{WasGeneratedByDescription}]: describes the roles of expected outputs in an Activity, e.g. a master bias in the stacking of a set of bias images.
+\item[\textbf{UsedDescription}]: describes the roles of expected inputs in an Activity, e.g. a red channel in the creation of an RGB image (see Section~\ref{sec:activity_desc}).
+\item[\textbf{WasGeneratedByDescription}]: describes the roles of expected outputs in an Activity, e.g. a master bias in the stacking of a set of bias images (see Section~\ref{sec:activity_desc}).
+\item[\textbf{ParameterDescription}]: contains attributes that describe the value of a parameter. Those attributes are similar to the attributes of the FIELD or PARAM block in a VOTable (unit, UCD, UType...). This class is further described in Section~\ref{sec:parameters}.
 %\item[\textbf{ObsCoreDescription}]: contains the IVOA ObsCore fields that can be attached to an entity, e.g. in the case of a released dataset.
 \end{itemize}
 
 \paragraph{Configuration:}
 This subclass of entities corresponds to the information passed to an activity in order to configure its execution, and it thus directly influences the development of an activity.
 \begin{itemize}
-\item[\textbf{Parameter}]: configuration of the activity before execution as a key=value input parameter in the IVOA framework, e.g. the number of bins desired in the sampling of a signal. This class is further described in Section~\ref{sec:parameters}.
+\item[\textbf{Parameter}]: configuration of the activity before execution as a key=value input parameter, e.g. the number of bins desired in the sampling of a signal. This class is further described in Section~\ref{sec:parameters}.
 \item[\textbf{ConfigFile}]: file containing configuration information for the activity, e.g. a list of parameters (key=value) for a script, generally in a given format (txt, json, yaml, xml...)
 \item[\textbf{ObsConfig}]: structured list of parameters that gives the configuration of an observation. For example this can point to specific observing modes of an instrument, the filters used, the trigger mode, etc.
 \end{itemize}
@@ -971,119 +971,6 @@ relations (and their relation descriptions) between activities and entities
 
 
 
-\subsubsection{Parameter and ParameterDescription}
-\label{sec:parameters}
-
-\begin{table}[b]
-\small
-\tymax  0.5\textwidth
-\textbf{\normalsize Parameter}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{llL}
-\toprule
-\head{Attribute} &  \head{Data type} & \head{Description}\\
-\midrule
-\textbf{id}      & string & parameter unique identifier\\
-%description\_ref   & foreign key/url & link to \emph{ParameterDescription}\\
-%name            & string & parameter name, if no link to ParameterDescription is given\\
-\textbf{value}   & (value dependent) & the value of the parameter, type depends on \attribute{ParameterDescription.datatype} and \attribute{xtype}; follows same rules as VOTable TABLEDATA and DALI\\ % TODO: check and put proper reference somewhere!
-\midrule
-%$\rightarrow$ activity & link & link to \class{Activity}\\
-$\rightarrow$ description & link & link to \class{ParameterDescription}\\
-\bottomrule
-\end{tabulary}
-\caption[Attributes of the \class{Parameter} class]{Attributes of the \class{Parameter} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
-\end{table}
-%\footnote{Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
-\begin{table}[ht]
-\small
-\tymax  0.5\textwidth
-\textbf{\normalsize ParameterDescription}\vspace{0.25em}\\
-%\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
-\begin{tabulary}{1.0\textwidth}{p{2cm}lL}
-\toprule
-\head{Attribute} &  \head{Data type} & \head{Description}\\
-\midrule
-\textbf{id}  & string & parameter unique identifier\\
-\textbf{name} & string & parameter name\\
-annotation  & string & additional free text description\\
-datatype    & string & datatype as in VOTable 1.2 and above \\
-arraysize     & number & number of values of specified \attribute{datatype}, if there is more than one\\
-unit           & string & physical unit \\
-ucd           & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity\\
-utype        & string  & Utype, meant to express the role of the parameter in the context of an external data model \\
-xtype         & string & extended datatype as in VOTable 1.2 and above. A list of proposed \\
-\midrule
-\multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
-min           & number & minimum value \\
-max           & number & maximum value\\
-options     & list & list of accepted values\\
-value       & (value dependent) & the default value of the parameter, type depends on \attribute{datatype} and \attribute{xtype}; follows same rules as VOTable TABLEDATA and DALI\\
-\midrule
-$\rightarrow$ activityDescription & link & link to \class{ActivityDescription}\\
-\bottomrule
-\end{tabulary}
-\caption[Attributes of the \class{ParameterDescription} class]{Attributes of the  \class{ParameterDescription} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
-\end{table}
-
-The concept of activity configuration, generally a set of parameters that can be configured before the execution of an activity, is tightly linked to the concept of provenance. Configuration information can indeed be relevant to assess the quality and reliability of an activity or an entity.
-
-Activity configuration typically implies a set of input parameters attached to the activity before execution. The concept of parameter is very general, and already exists in the VO context, for example as PARAM elements in VOTable \citep{std:VOTABLE}, as uws:param elements in the UWS pattern \citep{std:UWS}, or as POST/GET parameters for web services \citep[see for example][for SODA services]{std:SODA}. A DataLink Service Descriptor \citep{std:DataLink} contains a group of InputParams with PARAM elements to define those input parameters. The Simulation DM also contains a \class{ParameterSetting} class \citep{std:SimDM}.
-
-%We identify three different ways to link configuration information to an activity:
-%\begin{itemize}
-%\item Declare a parameter set (or each parameter) as an input entity that is used by the activity. \\
-%        This also allows tracking the provenance of the parameter further.
-%\item Define families of activities, each one with fixed attributes.\\
-%        I.e. use different subclasses for activities with different fixed attributes.
-%\item Add activity attributes in the form of key-value parameters.
-%\end{itemize}
-
-In order to provide a link between configuration and provenance information, we add a \class{Parameter} class along with a \class{ParameterDescription}, so that configuration information is structured and stored with the provenance information (and can thus be queried simultaneously). 
-%The \class{Parameter} class is an entity that should be connected to an activity with the specialized usage relation hadConfiguration. 
-%The \attribute{value} attribute should provide the default value proposed for a parameter.
-A \class{Parameter} is an \class{Entity} with a \attribute{value} attribute that must be set. The \class{ParameterDescription} class can be used to describe this \attribute{value} attribute
-The optional attributes of \class{ParameterDescription} are taken from the FIELD and PARAM elements in VOTable \citep{std:VOTABLE}. 
-
-We note that a parameter can be replaced by an existing entity, or can be derived from another entity (the content or part of the content of an entity), thus having itself an origin, with provenance information.
-
-% 2018-09 commented
-%We note that a parameter can be seen as a simplified entity, though it can only be used by an activity and it has no provenance. In some cases, it may be relevant to define a specific parameter as an entity if its provenance should be traced.
-
-%For example, observations generally require information on \emph{ambient conditions} as well as 
-%\emph{instrument characteristics}. This contextual data associated with an observation is not directly modelled in the ProvenanceDM. However, this information can be stored as different entities. 
-%Alternatively, one could list the instrument characteristics as a set of key-value parameters using the \class{Parameter} class, so that this information is structured and stored with the provenance information (and can thus be queried simultaneously). 
-
-For example, in the case of a processing activity that cleans an image with a sigma-clipping method, the input and output images would be the main entities and the value of the number of sigma for sigma-clipping would be carried by a \class{Parameter} entity set before running the activity. The corresponding \class{ParameterDescription} defines the type and range of the expected value for this parameter (using the attributes \attribute{datatype}, \attribute{min}, \attribute{max}, \attribute{options}...).
-%We may also want to define a 3-sigma-clipping activity where this parameter is fixed to 3.
-
-%For example for observations, the \emph{ambient conditions} as well as 
-%\emph{instrument characteristics} need to be stored. But they can both be treated
-%as additional entities as well. 
-%Our model can then also take into account that a certain observation
-%method requires special ambient conditions, already defined via the 
-%ActivityDescription (e.g. radio observations rely on different ambient 
-%conditions than observations
-%of gamma rays), just following our data -- data description scheme.
-%Ambient conditions are recorded for a certain time (startTime, endTime) and are
-%usually only valid for a certain time interval. This time interval should be recorded
-%with a \emph{validity}-attribute for such entities.
-%
-%In contrast to ambient conditions, instrument characteristics do (usually) not
-%change from one observation to the other, so they are static, strictly related to
-%the instrument. 
-%All the characteristics could be described either as key-value pairs directly with the 
-%observation (as attributes) or just as datasets, using the \class{Entity} class. 
-%One would then 
-%link the instrument characteristics as a type of input (or output?) dataset to a certain 
-%observation activity. Thus we don't need a separate Instrument or Device class.
-
-%\note{One should also keep in mind that some instrument related parameters can change within time,
-%e.g. the CCD temperature. The instruments can also change within time because of aging.}
-
-\paragraph{Parameter value vs. ParameterDescription value.}
-The \class{ParameterDescription} class being a child of the \class{Entity} class, it contains a \attribute{value} attribute. As this class contains information known before a \class{Parameter} instance is created (as for EntityDescription, see Section~\ref{sec:entity_desc}), its value can be considered to be the default value for the parameter.
-
-
 
 \subsubsection{Activity Description classes}
 \label{sec:activity_desc}
@@ -1123,7 +1010,7 @@ An activity is then a concrete case (instance) that follows the described inner 
 A close concept in the W3C PROV-DM is the \class{Plan} (defined as a subclass of \class{Entity}). However a plan in PROV-DM is primarily attached to the \class{Agent} class with \class{hadPlan} through the \class{wasAssociatedWith} relation. It is accepted to omit the agent, but it is always supposed that an agent exist.
 \class{ActivityDescription} is directly attached to \class{Activity} and can thus be seen as a list of attributes that can be known before an \class{Activity} instance is created. 
 
-There MUST be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a pipeline shall be grouped together, one needs to create a proper \class{ActivityDescription} for describing all the steps at once. This method can then 
+There must be exactly zero or one \class{ActivityDescription} per \class{Activity}. If steps from a pipeline shall be grouped together, one needs to create a proper \class{ActivityDescription} for describing all the steps at once. This method can then 
 be referred to by the pipeline activity. 
 
 
@@ -1194,11 +1081,129 @@ $\rightarrow$ entityDescription & link & link to \class{EntityDescription}\\
 %The description of the different ports is completed by the description of the  type of entity accepted as an input or output of the activity.
 When related to the \class{UsedDescription} or \class{WasGeneratedByDescription}, the attributes of EntityDescription (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity. For example: the input bias files must be in FITS format, or the red, green and blue channel images must be in PNG or JPEG format. 
 
-\paragraph{Input parameters.}
+
+
+
+\subsubsection{Parameter and ParameterDescription}
+\label{sec:parameters}
+
+\begin{table}[b]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize Parameter}\vspace{0.25em}\\
+\begin{tabulary}{1.0\textwidth}{llL}
+\toprule
+\head{Attribute} &  \head{Data type} & \head{Description}\\
+\midrule
+\textbf{id}      & string & parameter unique identifier\\
+%description\_ref   & foreign key/url & link to \emph{ParameterDescription}\\
+%name            & string & parameter name, if no link to ParameterDescription is given\\
+\textbf{value}   & (value dependent) & the value of the parameter, type depends on \attribute{ParameterDescription.datatype} and \attribute{xtype}; follows same rules as VOTable TABLEDATA and DALI\\ % TODO: check and put proper reference somewhere!
+\midrule
+%$\rightarrow$ activity & link & link to \class{Activity}\\
+$\rightarrow$ description & link & link to \class{ParameterDescription}\\
+\bottomrule
+\end{tabulary}
+\caption[Attributes of the \class{Parameter} class]{Attributes of the \class{Parameter} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
+\end{table}
+%\footnote{Attributes in bold are \textbf{mandatory}, references to other classes are indicated with an arrow ($\rightarrow$).}
+\begin{table}[ht]
+\small
+\tymax  0.5\textwidth
+\textbf{\normalsize ParameterDescription}\vspace{0.25em}\\
+%\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{p{2cm}lL}
+\toprule
+\head{Attribute} &  \head{Data type} & \head{Description}\\
+\midrule
+\textbf{id}  & string & parameter unique identifier\\
+\textbf{name} & string & parameter name\\
+annotation  & string & additional free text description\\
+datatype    & string & datatype as in VOTable 1.2 and above \\
+arraysize     & number & number of values of specified \attribute{datatype}, if there is more than one\\
+unit           & string & physical unit \\
+ucd           & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity\\
+utype        & string  & Utype, meant to express the role of the parameter in the context of an external data model \\
+xtype         & string & extended datatype as in VOTable 1.2 and above. A list of proposed \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
+min           & number & minimum value \\
+max           & number & maximum value\\
+options     & list & list of accepted values\\
+value       & (value dependent) & the default value of the parameter, type depends on \attribute{datatype} and \attribute{xtype}; follows same rules as VOTable TABLEDATA and DALI\\
+\midrule
+$\rightarrow$ activityDescription & link & link to \class{ActivityDescription}\\
+\bottomrule
+\end{tabulary}
+\caption[Attributes of the \class{ParameterDescription} class]{Attributes of the  \class{ParameterDescription} class. References in the data model are indicated with an arrow ($\rightarrow$). Attributes in \textbf{bold} must not be null.}
+\end{table}
+
+The concept of activity configuration is tightly linked to the concept of provenance. Configuration information can indeed be relevant to assess the quality and reliability of an activity or an entity.
+
+Activity configuration typically implies a set of input parameters attached to the activity before execution. The concept of parameter is very general, and already exists in the VO context, for example as PARAM elements in VOTable \citep{std:VOTABLE}, as POST/GET parameters for web services \citep[see for example][for SODA services]{std:SODA} or as uws:param elements in the UWS pattern \citep{std:UWS}. 
+The Simulation DM also contains a \class{ParameterSetting} class \citep{std:SimDM}.
+
+In the context of web service resources, a list of input parameters is written in the form of an IVOA DataLink Service Descriptor \citep{std:DataLink}, a VOTable resource that contains a group of InputParams with PARAM elements. This connection to Service Descriptors is further developped in Section~\ref{sec:description-serialization}.
+For UWS services \citep{std:UWS}, we also find a list of parameters, some of which may carry identifiers referencing another entity. The link to the UWS pattern is further developed in Section~\ref{sec:uws_links} of the Appendix.
+
+%We identify three different ways to link configuration information to an activity:
+%\begin{itemize}
+%\item Declare a parameter set (or each parameter) as an input entity that is used by the activity. \\
+%        This also allows tracking the provenance of the parameter further.
+%\item Define families of activities, each one with fixed attributes.\\
+%        I.e. use different subclasses for activities with different fixed attributes.
+%\item Add activity attributes in the form of key-value parameters.
+%\end{itemize}
+
+In order to provide a link between detailed configuration and provenance information, we propose to add a \class{Parameter} class directly connected to the \class{Activity} class, along with a \class{ParameterDescription}, so that configuration information is structured and stored next to the provenance information (and can thus be queried simultaneously). 
+%The \class{Parameter} class is an entity that should be connected to an activity with the specialized usage relation hadConfiguration. 
+%The \attribute{value} attribute should provide the default value proposed for a parameter.
+A \class{Parameter} is an \class{Entity} with a \attribute{value} attribute that must be set. The \class{ParameterDescription} class should be used to describe this \attribute{value} attribute
+The attributes of \class{ParameterDescription} are taken from the FIELD and PARAM elements in the VOTable specification \citep{std:VOTABLE}. 
+
+We note that a parameter can be replaced by an existing entity, or can be derived from another entity (the content or part of the content of an entity), thus having itself an origin, with provenance information.
+
+% 2018-09 commented
+%We note that a parameter can be seen as a simplified entity, though it can only be used by an activity and it has no provenance. In some cases, it may be relevant to define a specific parameter as an entity if its provenance should be traced.
+
+%For example, observations generally require information on \emph{ambient conditions} as well as 
+%\emph{instrument characteristics}. This contextual data associated with an observation is not directly modelled in the ProvenanceDM. However, this information can be stored as different entities. 
+%Alternatively, one could list the instrument characteristics as a set of key-value parameters using the \class{Parameter} class, so that this information is structured and stored with the provenance information (and can thus be queried simultaneously). 
+
+For example, in the case of a processing activity that cleans an image with a sigma-clipping method, the input and output images would be the main entities and the value of the number of sigma for sigma-clipping would be carried by a \class{Parameter} entity set before running the activity. The corresponding \class{ParameterDescription} defines the type and range of the expected value for this parameter (using the attributes \attribute{datatype}, \attribute{min}, \attribute{max}, \attribute{options}...).
+%We may also want to define a 3-sigma-clipping activity where this parameter is fixed to 3.
+
+%For example for observations, the \emph{ambient conditions} as well as 
+%\emph{instrument characteristics} need to be stored. But they can both be treated
+%as additional entities as well. 
+%Our model can then also take into account that a certain observation
+%method requires special ambient conditions, already defined via the 
+%ActivityDescription (e.g. radio observations rely on different ambient 
+%conditions than observations
+%of gamma rays), just following our data -- data description scheme.
+%Ambient conditions are recorded for a certain time (startTime, endTime) and are
+%usually only valid for a certain time interval. This time interval should be recorded
+%with a \emph{validity}-attribute for such entities.
+%
+%In contrast to ambient conditions, instrument characteristics do (usually) not
+%change from one observation to the other, so they are static, strictly related to
+%the instrument. 
+%All the characteristics could be described either as key-value pairs directly with the 
+%observation (as attributes) or just as datasets, using the \class{Entity} class. 
+%One would then 
+%link the instrument characteristics as a type of input (or output?) dataset to a certain 
+%observation activity. Thus we don't need a separate Instrument or Device class.
+
+%\note{One should also keep in mind that some instrument related parameters can change within time,
+%e.g. the CCD temperature. The instruments can also change within time because of aging.}
+
+\paragraph{Parameter value vs. ParameterDescription value.}
+The \class{ParameterDescription} class being a child of the \class{Entity} class, it contains a \attribute{value} attribute. As this class contains information known before a \class{Parameter} instance is created (as for EntityDescription, see Section~\ref{sec:entity_desc}), its value can be considered to be the default value for the parameter.
+
+
+%\paragraph{Input parameters for an .}
 
 %\class{UsedDescription} + \class{ParameterDescription} can be seen as a specialized input port attached to an \class{ActivityDescription}. 
-An activity may expect a list of input parameters, each one directly described with the attributes of \class{ParameterDescription} as defined in Section~\ref{sec:parameters}. 
+%An activity may expect a list of input parameters directly connected to the activity, each one directly described with the attributes of \class{ParameterDescription} as defined in Section~\ref{sec:parameters}. 
 %\class{ParameterDescription} has a \attribute{name} attribute that should correspond to the \attribute{role} attribute of \class{UsedDescription}.
-Such a list of input parameters already exist in the IVOA ecosystem for service resources. In this context, they are written in the form of an IVOA DataLink Service Descriptor \citep{std:DataLink}.
-We find also a list of parameters in UWS services \citep{std:UWS}, some of which may carry identifiers referencing another entity. The link to the UWS pattern is further developed in Section~\ref{sec:uws_links} of the Appendix.
-
+%Such a list of input parameters already exist in the IVOA ecosystem for service resources. In this context, they are written in the form of an IVOA DataLink Service Descriptor \citep{std:DataLink}.
