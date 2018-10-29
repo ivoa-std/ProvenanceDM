@@ -21,7 +21,7 @@ to derive some basic provenance information from existing data model classes aut
 
 \class{Entity} and \class{EntityDescription} in ProvenanceDM 
 are tightly linked to the \class{DataSet}-class in DatasetDM/ObsCoreDM \citep{std:DatasetDM, std:OBSCORE}, as well as to 
-\class{InputDataset} and \class{OutputDataSet} in the SimulationDM \citep{std:SimDM}.
+\class{InputDataset} and \class{OutputDataSet} in the SimulationDM \citep{2012ivoa.spec.0503L}.
 Tables~\ref{tab:datasetmapping} and \ref{tab:datasetmapping2} map classes and attributes from DatasetDM
 to concepts in ProvenanceDM. 
 %If the DatasetDM attributes are used in the serialization of an entity, they have the corresponding DatasetDM namespace.
@@ -104,7 +104,7 @@ Note that for Provenance queries using a ProvTAP service or for W3C compatible s
 
 \subsection{Links with the IVOA Simulation Data Model}
 
-In SimDM \citep{std:SimDM}, one also encounters a normalization similar to our separation of descriptions from 
+In SimDM \citep{2012ivoa.spec.0503L}, one also encounters a normalization similar to our separation of descriptions from 
 actual data instances and executions of processes: the SimDM class \class{Experiment}
 is a type of \class{Activity} and its general, reusable description is called a \class{Protocol},
 which can be considered as a type of this model's \class{ActivityDescription}. 
