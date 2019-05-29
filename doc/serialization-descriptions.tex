@@ -5,20 +5,22 @@
 % 2018-09 commented
 %Description classes in ProvenanceDM gather information on the activity which can preexist to the activity itself. As presented in Section~\ref{sec:activity_desc}, the \class{ActivityDescription} class gives generic information on the activity (\attribute{name}, \attribute{annotation}, \attribute{doculink}...) and the parameters expected as an input with \class{ParameterDescription} instances. In addition, \class{UsedDescription} and \class{WasGeneratedByDescription} classes indicate the expected roles of the input and output entities, respectively. Finally, the activity may expect specific kinds of entities as inputs or outputs, for which there may be detailed descriptions stored as \class{EntityDescription} records.
 
-The serialization of an ActivityDescription, that includes all the description classes presented in Section~\ref{sec:activity_desc}, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:DataLink}, and can thus be stored as a VOTable \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that may execute an activity using input parameters, some of which probably point to entities. One may thus easily translate an ActivityDescription VOTable to a DataLink service descriptor VOTable block, and vice-versa.
+The Description classes presented in Section~\ref{sec:activity_desc} are intended to store information about an activity that is known before the execution of this activity. Such information could thus be stored and transported separately from the main provenance information that traces the execution of activities.
 
-The VOTable contains one resource with attributes type=``meta'' and utype=``voprov:ActivityDescription''. This resource contains PARAM elements to describe the activity and then GROUP elements gathering additional PARAM elements to describe:
+The serialization of an \class{ActivityDescription} instance, that includes all the Description classes presented in Section~\ref{sec:activity_desc}, is based on the IVOA DataLink Service Descriptors for service resources \citep{std:DataLink}, and can thus be stored as a VOTable \citep{std:VOTABLE}. Indeed, a service descriptor points to a service that may execute an activity, using input parameters, some of which probably are or point to entities. One may thus easily translate an ActivityDescription VOTable resource to a DataLink service descriptor VOTable resource, and vice-versa.
+
+The VOTable contains one resource with attributes \attribute{type="meta"} and \attribute{utype="voprov:ActivityDescription"}. This resource contains PARAM elements to describe the activity and then GROUP elements gathering additional PARAM elements to describe:
 \begin{itemize}
- \item the input parameters (group name=``InputParams''), which is similar to the group defining input parameters in a DataLink service descriptor,
- \item the input entities (group name=``InputEntities''),
- \item the output entities (group name=``OutputEntities''). 
+ \item the input parameters (group \attribute{name="InputParams"}), which is similar to the group defining input parameters in a DataLink service descriptor,
+ \item the input entities (group \attribute{name="InputEntities"}),
+ \item the output entities (group \attribute{name="OutputEntities"}). 
  \end{itemize}
  
 % comment Mireille: 
 % what if an activity computes a number , a boolean as a result and produces an output parameter instead of an output entity: e.g compare 2 sets of dataproducts : false/True correlate two datasets : correlation value, etc ...  
 % --> add output parameters  ?
 
-The PARAM elements of the resource correspond to the attributes of the \class{ActivityDescription} class (see Section~\ref{sec:activity_desc}) and may include a main contact with a name and email ("contact\_name" and "contact\_email"), that corresponds to an agent associated with the \class{ActivityDescription}.
+The PARAM elements of the resource correspond to the attributes of the \class{ActivityDescription} class (see Section~\ref{sec:activity_desc}) and may include a main contact with a name and email (\attribute{contact\_name} and \attribute{"contact\_email"}), that corresponds to an agent associated with the \class{ActivityDescription}.
 The \attribute{utype} attribute is used to connect the PARAM element to its corresponding element in the Provenance DM. Other optional elements can be added with their corresponding \attribute{utype} set, if relevant.
 
 For the input parameters, each attribute located in the \class{ParameterDescription} class in the model (e.g. \attribute{units}, \attribute{ucd}, \attribute{utype}, \attribute{min}, \dots) is mapped to an attribute of a PARAM element in the VOTable (both have the same structure, see Section \ref{sec:parameters}).
@@ -33,8 +35,8 @@ Each input or output entity is then described within a GROUP block where the nam
 This GROUP block contains PARAM elements with names corresponding to attributes of \class{UsedDescription}, \class{WasGeneratedByDescription} or \class{EntityDescription}.
 For example, the following names can be found :
 \begin{itemize}
- \item name="role" that gives the role of the entity with respect to the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
- \item name="content\_type" for the MIME type expected by the activity for the input or output entity,
+ \item \attribute{name="role"}: gives the role of the entity with respect to the Used or WasGeneratedBy relation (e.g. "red", "green" or "blue" channel image, or the output "RGB" file),
+ \item \attribute{name="content\_type"}: indicates the MIME type expected by the activity for the input or output entity,
  \end{itemize} 
 
 %In the following example the output file name "RGB.jpg" is expected as a parameter to the activity and is thus referenced by the id PARAM element located in the GROUP of generated entities (with ref="RGB").

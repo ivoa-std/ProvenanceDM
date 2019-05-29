@@ -1,18 +1,17 @@
 
-In this document, we discuss a draft of an IVOA standard data model for
-describing the provenance of astronomical data. 
+In this document, we propose an IVOA standard data model (DM) for describing the provenance of astronomical data. 
+How this specification of the Provenance model can be implemented is developed in a companion document to be published as an IVOA Note \citep{std:ProvenanceImplementationNote}.
+
+The provenance of scientific data is a part of the open publishing policy for science data and follows some of the FAIR principles for data sharing \citep{FAIR-principles}.
+
 We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
-In astronomy, such entities are generally datasets composed of VOTables, FITS
-files, database tables or files containing values (spectra, light curves), logs,
-parameters.
-The activities correspond to processes like an observation, a
-simulation, processing steps (image stacking, object extraction, etc.), execution of data analysis code, publication, etc.
-The people involved can be for example individual persons (observer, publisher, etc.), groups or organisations. An example for activities, entities and agents as they can be discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
+In astronomy, such entities are generally datasets composed of VOTables, FITS files, database tables or files containing values (spectra, light curves), any value, logs, documents, or physical objects such as devices or instruments.
+The activities correspond to processes like an observation, a simulation, processing steps (image stacking, object extraction, etc.), execution of data analysis code, publication, etc.
+The people involved can be for example individual persons (observer, publisher, etc.), groups or organisations, i.e. any agent related to an activity or an entity.
 
-The links between the Provenance DM and other IVOA data models will be discussed in Appendix~\ref{sec:dmlinks}. We note here that the provenance of simulated data is included in the Simulation DM \citep[SimDM,][]{2012ivoa.spec.0503L}. Therefore we also give a mapping between SimDM and the Provenance DM in Appendix~\ref{sec:dmlinks}.
+An example for activities, entities and agents as they can be discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
 
-We also introduce a few constructs from the ProvONE data model \citep{ProvONE}, that proposes extensions to W3C PROV for scientific workflow provenance. We discuss the mapping between ProvONE and the Provenance DM in Appendix~\ref{sec:dmlinks}.
 
 \begin{figure}[ht]
 \centering
@@ -24,116 +23,101 @@ discovered.}
 \end{figure}
 
 
-%including extraction of data from 
-%databases or even the flow of scientific proposals from application to 
-%acceptance, including scheduling of the observations proposed therein.
-%Provenance information could also be used to check internal processes,
-%e.g., whether a proposal was approved by a person from a certain committee,
-%or whether the time span between application and acceptance or rejection
-%does not extend a certain period, etc... 
-
-
 \subsection{Goal of the provenance model}
 \label{sec:goals}
 
-The goal of this Provenance DM is to describe how provenance information
-can be modelled, stored and exchanged. Its scope
-is mainly modelling of the flow of data, of the relations between data,
-and of processing steps. The currently discussed Provenance DM is sufficiently abstract that its core pattern (see Section~\ref{sec:core_model}) could be applied to any kind of process using either observation or simulation data.
-It could also be used to describe the workflow for observation proposals or the publication of scientific articles based on (astronomical) data.
+The goal of this Provenance DM is to describe how provenance information arising from astronomy projects can be modelled, stored and exchanged. 
+Its scope is mainly modelling of the flow of data, of the relations between pieces of data, and of processing steps. 
+However, the Provenance DM is sufficiently abstract that its core pattern could be applied to any kind of process related to either observation or simulation data.
+%It could also be used to track the provenance of observation proposals or the publication of scientific articles based on (astronomical) data.
 
-Characteristics of observation activities such as ambient conditions and
-instrument characteristics provide useful information to assess the quality and reliability of the generated entities. 
-Experimental configuration or contextual information during
-the execution of processing activities (computer structure, nodes, operating
-system used, etc) can also be relevant for the description of the main entities generated. This complementary information should be included in the form of metadata or additional entities and connected to an activity (see Section~\ref{sec:extended_model}). However, the precise structure and modelling of those characteristics is out of the scope of this document. 
+Information attached to observation activities such as ambient conditions and instrument characteristics provide useful information to assess the quality and reliability of the generated entities.
+Contextual information during the execution of processing activities (computer structure, nodes, operating system used, etc.) can also be relevant for the description of the main entities generated. 
+This complementary information should be included in the form of metadata or additional entities connected to an activity. 
+However, the precise structure and modelling of this information is out of the scope of this document. 
 
 In general, the model shall capture information in a machine-readable way that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
-This will help the scientist to decide if the dataset 
-is adequate for her research goal, assess its quality and get enough information
-to be able to trace back its history as far as required or possible. 
+This will help the scientist to decide if the dataset is adequate for her research goal, assess its quality and reliability and get enough information to be able to trace back its history as far as required or possible. 
 
-Provenance information may be recorded in minute detail or by using coarser
-elements, depending on the intended usage and the desired level of detail
-for a specific project that records provenance. 
-This granularity depends on the needs of the project and the intended usage when implementing a system to track provenance information.
-% NOTE: maybe we need to define minimal requirements of what needs to be included as provenance information?
+%Provenance information may be recorded in minute detail or by using coarser elements. 
+Provenance information can be exposed with different granularity. A specific project has to decide this granularity.
+%at which the provenance information is recorded.
+The granularity and amount of provenance information provided depends on the available information, the needs of the project and the intended usage of this information.
 
-The following list is a collection of tasks which the Provenance DM should help to solve. They are flagged with [S] for problems which are more interesting for the end user of datasets (usually a scientist) and with [P] for tasks that are probably more important for data producers and publishers.
-More specific use cases in the astronomy domain for different types of datasets and workflows along with example implementations are given in the Implementation Note \citep{std:ProvenanceImplementationNote}.
+This flexible approach has an impact on the interoperability between different services as this level of detail is not known a priori. 
+The objective of the model is to propose a general structure for the provenance information. In addition, proposed vocabularies of reserved words help to further formalize the detailed provenance information.
+%The project is responsible for the relevance and integrity of the provenance information.
 
 
-\paragraphlb{A: Tracking the production history [S]}
-        Find out which steps were taken to produce a dataset and list the
-        methods\slash{}tools\slash{}software that were involved. Track the
-        history back to the raw data files \slash{} raw images, show the
-        workflow (backwards search), or return a list of progenitor datasets.
-
-        \noindent Examples: 
-        \begin{itemize}
-            \item Is an image already calibrated?
-What about dark field subtraction? Were foreground stars removed? Which technique
-was used?  
-            \item Is the background noise of atmospheric muons still present in my neutrino data sample?  
-        \end{itemize}
-
-        We do not go as far as to consider easy reproducibility as a use case -- this would be too ambitious. But at least the 
-        major steps undertaken to create a piece of data should be recoverable.
+The following list is a collection of use cases addressed by the Provenance DM. 
+%More specific use cases in the astronomy domain for different types of dataset and workflow along with example implementations are given in an implementation note \citep{std:ProvenanceImplementationNote}.
 
 
-\paragraphlb{B: Attribution and contact information [S]}
-        Find the people involved in the production of a dataset,
-        the people\slash{}organizations\slash{}institutes that need to be cited
-        or can be asked for more information.
+\paragraphlb{A: Traceability of products}
+        Track the lineage of a product back to the raw material (backwards search), show the
+        workflow or the data flow that led to a product.
 
         \noindent Examples: 
         \begin{itemize}
-            \item I want to use an image for my own work -- who was involved in
-creating it? Who do I need to cite or who can I contact to get this information? Is a license attached to the data? 
-            \item I have a question about column xxx in a data
-table. Who can I ask about that?  
-            \item Who should be cited or acknowledged if I use this data in my work?
+            \item Having a dataset, find the main progenitors and in particular locate the raw data.
+            \item Find out what processing steps have been already performed for a given dataset: Is an image already calibrated? What about dark field subtraction? Were foreground stars removed?
+            \item Find out if a filter to remove atmospheric background muons has been applied.
         \end{itemize}
 
 
-\paragraphlb{C: Locate error sources [S, P]}
-        Find the location of possible error sources in the generation of a dataset.
+\paragraphlb{B: Acknowledgement and contact information}
+        Find the people involved in the production of a dataset, the people\slash{}organizations\slash{}institutes that one may want to acknowledge or can be asked for more information.
 
-        \noindent Examples:
+        \noindent Examples: 
         \begin{itemize}
-            \item I found something strange in an image. Where does
-the image come from? Which instrument was used, with which characteristics,
-etc.? Was there anything strange noted when the image was taken?  
-            \item Which pipeline version was used -- the old one
-with a known bug for treating bright objects or a newer version?  
-            \item This light curve doesn't look quite right. How was
-the photometry determined for each data point?  
+            \item I want to use an image for my own work -- who was involved in creating it? Who can I contact to get information? 
+            \item Find out who was on shift for data taking for a given dataset
+            \item I have a question about column xxx in a data table. Who can I ask about that? 
         \end{itemize}
 
 
-\paragraphlb{D: Quality assessment [P]}
-        Judge the quality of an observation, production step or dataset.
+\paragraphlb{C: Quality and Reliability assessment}
+Assess the quality and reliability of an observation, production step or dataset, e.g. based on detailed descriptions of the processing steps and manipulated entities.
         
         \noindent Examples:
         \begin{itemize}
-            \item Since wrong calibration images may increase the
-number of artifacts on an image rather than removing them, knowledge about
-the calibration image set will help to assess the quality of the calibrated
-image.  
+            \item Get detailed information on the methods/tools/software that were involved: What algorithm was used for Cherenkov photon reconstruction? How was the stacking of images performed?
+            \item Check if the processing steps (including data acquisition) went "well": Were there any warnings during the data processing? Any quality control parameters?
+            \item Extract the ambient conditions during data acquisition (cloud coverage? wind? temperature?)
+            \item Is the dataset produced or published by a person\slash{}organisation I can trust?
         \end{itemize}
-      
 
-\paragraphlb{E: Search in structured provenance metadata [P, S]}
-        This would allow one to also do a ``forward search'', i.e. locate derived datasets or outputs, e.g. finding all images produced by a certain processing step or derived from data which were taken by a given facility.
+
+\paragraphlb{D: Identification of error location}
+Find the location of possible error sources in the generation of a product. This is connected to use cases described in section C above, but implies an access to more information on the execution such as configuration or execution environment.
+
+        \noindent Examples:
+        \begin{itemize}
+            \item I found something strange in an image. Was there anything strange noted when the image was taken? a warning during the processing? 
+            \item Which pipeline version was used, the old one with a known bug for treating bright objects or a newer version? 
+            \item What was the execution environment of the pipeline (operating system, coding language version, ...)?
+            \item What was the detailed configuration of the pipeline? were the parameters correctly set for the image cleaning step?
+        \end{itemize}
+
+
+\paragraphlb{E: Search in structured provenance metadata}
+        Use Provenance criteria to locate datasets (forward search), e.g. finding all images produced by a certain processing step or derived from data which were taken by a given facility.
         
         \noindent Examples:
         \begin{itemize}
-            \item Give me more images that were produced using the same pipeline.  
-            \item Give me an overview on all images reduced with the same calibration dataset.  
+            \item Find more images that were produced using the same version of the CTA pipeline.
+            \item Get an overview of all images reduced with the same calibration dataset.
             \item Are there any more images attributed to this observer?  
-            \item Which images of the Crab Nebula are of good quality and were produced within the last 10 years by someone not from ESO or NASA?
-            \item Find all datasets generated using this given algorithm for this given step of the data processing.
+            %\item Which images of the Crab Nebula are of good quality and were produced within the last 10 years?
+            \item Find all datasets generated using this given algorithm, with this given configuration, for this given step of the data processing.
+            \item Find all generated data files that used incorrectly generated file X as an input, so that they can be marked for re-processing
+            \item Extract all the provenance information of a SVOM light curve or spectrum to reprocess the raw data with refined parameters.
           % add another specific use case for tracking scientific productivity?
         \end{itemize}
 
-        This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed this task separately, since we may decide that we can't keep this one, but we definitely want A.
+%        This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed this task separately, since we may decide that we can't keep this one, but we definitely want A.
+
+\paragraphlb{General Remarks}
+In addition to those use cases, if the stored information is sufficiently fine grained, it is possible to enable the \textbf{reproducibility} of an activity or sequence of activities, with the exact same configuration and exact same conditions.
+
+Another important usage of provenance information is to assess the \textbf{pertinence of a product for scientific objectives}, which can be facilitated through the selection of the relevant provenance information attached to an entity that is delivered to a science user.

@@ -26,17 +26,21 @@
 \author{Mathieu Servillat}
 \author{Kristin Riebe}
 \author{François Bonnarel}
+\author{Catherine Boisson}
 \author{Anastasia Galkin}
 \author{Mireille Louys}
 \author{Markus Nullmeier}
+\author{Nicolas Renault-Tinacci}
 \author{Michèle Sanguillon}
 \author{Ole Streicher}
-\author{and the IVOA Data Model Working Group}
-
+%\author{and the IVOA Data Model Working Group}
+ 
 \editor{Mathieu Servillat}
-\editor{Kristin Riebe}
+%\editor{Kristin Riebe}
 
 % \previousversion[????URL????]{????Funny Label????}
+\previousversion[http://www.ivoa.net/documents/ProvenanceDM/20181015/]{PR-ProvenanceDM-1.0-20181015.pdf}
+\previousversion[http://wiki.ivoa.net/internal/IVOA/ObservationProvenanceDataModel/WD-ProvenanceDM-1.0-20180530.pdf]{WD-ProvenanceDM-1.0-20180530.pdf}
 \previousversion[http://www.ivoa.net/documents/ProvenanceDM/20170921/]{WD-ProvenanceDM-1.0-20170921.pdf}
 \previousversion[http://www.ivoa.net/documents/ProvenanceDM/20161121/]{WD-ProvenanceDM-1.0-20161121.pdf}
 \previousversion[http://volute.g-vo.org/svn/trunk/projects/dm/provenance/description/ProvDM-0.2-20160428.pdf]{ProvDM-0.2-20160428.pdf}
@@ -109,6 +113,7 @@
 \renewcommand{\slash}{/\penalty\exhyphenpenalty\hspace{0pt}}
 
 \begin{document}
+
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 % define listing parameters 
@@ -133,28 +138,25 @@
 
 \title{IVOA Provenance Data Model}
 
+
 \begin{abstract}
-This document describes how provenance information 
-%for astronomical datasets 
-%(with the focus on observational data) 
-can be modeled, stored and exchanged within 
-the astronomical community in a standardized way.
+This document describes how provenance information can be modeled, stored and exchanged within the astronomical community in a standardized way.
 We follow the definition of provenance as proposed by the W3C\footnote{\url{https://www.w3.org/TR/prov-overview/}}, i.e. that ``provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.''
-Such provenance information in astronomy is important to enable any scientist to trace back the origin of a dataset (e.g. an image, spectrum, catalog or single points in a spectral energy distribution diagram or a light curve), a document (e.g. an article, a technical note) or a device (e.g. a camera, a telescope), learn about the people and organizations involved in a project and assess the quality as well as the usefulness of the dataset, document or device for her own scientific work.
+Such provenance information in astronomy is important to enable any scientist to trace back the origin of a dataset (e.g. an image, spectrum, catalog or single points in a spectral energy distribution diagram or a light curve), a document (e.g. an article, a technical note) or a device (e.g. a camera, a telescope), learn about the people and organizations involved in a project and assess the reliability, quality as well as the usefulness of the dataset, document or device for her own scientific work.
 \end{abstract}
 
 \section*{Acknowledgments}
 
 The Provenance Working Group acknowledges support from the Astronomy ESFRI and Research Infrastructure Cluster – ASTERICS project\footnote{\url{http://www.asterics2020.eu/}}, funded by the European Commission under the Horizon 2020 Programme (GA 653477).
 This document has been developed in part with support from the German Astrophysical Virtual Observatory, funded by BMBF Bewilligungsnummer 05A14BAD and 05A08VHA.
-Additional funding was provided by the INSU (Action Spécifique Observatoire Virtuel, ASOV), the Action Fédératrice CTA at the Observatoire de Paris and the Paris Astronomical Data Centre (PADC).
+Additional funding was provided by the INSU (Action Spécifique Observatoire Virtuel, ASOV), the Action Fédératrice CTA at the Observatoire de Paris, the Paris Astronomical Data Centre (PADC), and the E-Info-Astro project (BMBF 05AI7BA2).
 
-Thanks for fruitful discussions to: Catherine Boisson, Karl Kosak, Johann Bregeon and Jose Enrique Ruiz 
+
+Thanks to: Karl Kosak, Johan Bregeon, Julien Lefaucheur and Jose Enrique Ruiz 
 for the binding to the Cerenkov Telescope Array (CTA) project, Gerard
 Lemson and Laurent Michel for the VODML expression of the data model, Markus Demleitner,
-Harry Enke, Florian Rothmaier, Jochen Klar and Adrian Partl
-for fruitful discussions, remarks and comments during the different stages of this
-specification.
+Harry Enke, Florian Rothmaier, Jochen Klar and Adrian Partl,
+for fruitful discussions, remarks and comments at different stages during the preparation of this specification.
 
 We thank the participants of the Provenance Week 2018 in London, in particular Michael Johnson for joining one of our meeting.
 
@@ -182,38 +184,64 @@ infrastructure that enable VO applications.
 \section{The IVOA Provenance data model}
 \label{sec:datamodel}
 \input{datamodel-description}
-\clearpage
+%\clearpage
 
-\section{Serialization of the provenance data model}
-\label{sec:serialisations}
-\subsection{Introduction}
-\label{sec:intro-serialization}
-\input{serialisation-intro}
-\subsection{Serialization of Description classes for web services}
-\label{sec:description-serialization}
-\input{serialization-descriptions}
-%\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}
-%\input{serialization-w3c}
+% 2018-12 commented
+%\section{Serialization of the provenance data model}
+%\label{sec:serialisations}
+%\subsection{Introduction}
+%\label{sec:intro-serialization}
+%\input{serialisation-intro}
+%\subsection{Serialization of Description classes for web services}
+%\label{sec:description-serialization}
+%\input{serialization-descriptions}
+%%\subsection{W3C PROV-DM compatible serializations}\label{sec:w3cserialization}
+%%\input{serialization-w3c}
 
-\section{Accessing provenance information}
-\label{sec:provaccess}
-\input{provaccess}
+% 2018-12 commented
+%\section{Accessing provenance information}
+%\label{sec:provaccess}
+%\input{provaccess}
 % --> Main part moved to ProvDAL and ProvTAP documents
+
+
+\section{Full class diagram}
+\label{sec:fulldiagram}
+
+\begin{figure}[h]
+\centering
+\hspace*{-.13\textwidth} 
+%\includegraphics[width=1.26\textwidth]{2019-05-27_detailedView.png}
+% Mireille: je suggere de mettre ce nouveau diagramme avec les bonnes multiplicités d attributs / a confirmer Mathieu si ok 
+\includegraphics[width=1.26\textwidth]{2019-05-28_fullview.png}
+\caption[Full class diagram of the IVOA Provenance Data Model]{Full class diagram of the IVOA Provenance Data Model.}
+\label{fig:fulldiagram}
+\end{figure}
+
 
 \begin{appendices}
 
-\section{Serialization Examples}
-\label{sec:appendix-serialization-examples}
-\input{serialization-examples}
+% 2018-12 commented
+%\section{Serialization Examples}
+%\label{sec:appendix-serialization-examples}
+%\input{serialization-examples}
 
-\section{Links to other data models}
-\label{sec:dmlinks}
-\input{datamodel-links}
+% \section{Links to other data models}
+% \label{sec:dmlinks}
+% \input{datamodel-links}
+% \clearpage
+
 \clearpage
 
 \section{Changes from Previous Versions}
 \label{sec:changes}
 \input{changes}
+
+% Appendix for UML diagram conventions
+\input{modeling_conventions}
+
+% Appendix for IVOA Base types
+\input{ivoa_types}
 
 \end{appendices}
 

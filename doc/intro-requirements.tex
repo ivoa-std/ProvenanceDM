@@ -1,71 +1,60 @@
-\subsection{Minimum requirements for provenance}\label{sec:requirements}
+\subsection{Requirements and best practices}
+\label{sec:requirements}
 
-We derived from our goals and use cases the following minimum requirements for the Provenance Data Model:
+\subsubsection{Model requirements}
+
+This document was developed with these general requirements in mind:
 
 \begin{itemize}
 
-
 % == other models / serialisation
 
-\item Provenance information must be stored in a standard model, with standard serialization formats.
+\item Provenance information MUST be formalized following a standard model, with corresponding standard serialization formats.
 
-\item Provenance information must be machine readable.
+\item Provenance information MUST be machine readable.
 
-\item Provenance data model classes and attributes should be linked, when relevant, to IVOA semantics, data models and formats (DatasetDM, ObsCoreDM, SimDM, VOTable, UCDs, \ldots).
+\item Provenance data model classes and attributes SHOULD make use of existing IVOA standards.
 
-\item Provenance information should be serializable into the W3C provenance standard formats (PROV-N, PROV-XML, PROV-JSON) with minimum information loss.
+\item Provenance information SHOULD be serializable into the W3C provenance standard formats (PROV-N, PROV-XML, PROV-JSON) with minimum information loss.
 
+\item Entities, Activities and Agents MUST be uniquely identifiable within a domain.
+% Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
+\end{itemize}
+
+
+\subsubsection{Best practices}
+
+The following additional points are recommended when managing provenance information within the VO context:
+
+\begin{itemize}
 
 % == links between entity/activity
 
-\item Provenance metadata must contain information to find immediate progenitor(s) (if existing) for a given entity, i.e. a dataset.
+\item The reliability of provenance information SHOULD be ensured (e.g. by an authority endorsing the information, or by provenance of provenance).
+
+\item Provenance metadata for a given entity SHOULD contain information to find immediate progenitor(s).
 %All produced entities must contain information to find its immediate progenitor(s).
 
-
-\item An entity must be linked to the activity that generated it (if the activity is recorded).
+\item An entity SHOULD be linked to the activity that generated it.
 %Provenance metadata must contain information to find the activity that generated a given entity.
 %* All produced entities must contain information to find the activity that generated it
 
-\item Activities must be linked to input entities (if applicable).
+\item Activities SHOULD be linked to input entities.
+%(if applicable).
 
-\item Activities may point to output entities.
+\item Activities SHOULD point to output entities.
 
-\item Provenance information should make it possible to derive the chronological sequence of activities.
+\item Provenance information SHOULD make it possible to derive the logical sequence of activities.
 %The order of the activities should be available.
 
 %\item Provenance information should contain the list of activities and progenitor entities.
 % too vague .... must be an ordered list ... One step should also be allowed.
-\end{itemize}
 
-% ==== Comment: 
-%These links can be used to trace back the sequence of processing steps (activities) and possibly the interim results.
+%\item Released entities SHOULD have a main contact.
+% same as below.
 
-
-% == additional information
-
-\begin{itemize}
-
-% Released entities must have a unique, persistent identifier (DOI, obs_publisher_did, ...), at least in their domain.
-\item Entities, Activities and Agents must be uniquely identifiable within a domain and should have persistent identifiers.
-% Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
-% comment: (DOI, obs_publisher_did, ...)
-% Thus entities have to have a unique, persistent identifier.
-% (to avoid ambiguities).
-
-\item Released entities should have a main contact.
-
-\item All activities and entities should have contact information and contain a (short) description or link to a description.
+\item All activities and entities are recommended to have contact information and contain a (short) description or link to a description.
 % could also be the documentation.
 
 \end{itemize}
-
-
-% Should this go into the requirements or the model?
-%\item Activities should be defined by following keywords (attributes):
-%    \begin{itemize}
-%    \item unique ID
-%    \item status (COMPLETED/ERROR/...)
-%
-%... (see working draft and data model)
-%* Entities should be defined by... (see working draft and data model)
 
