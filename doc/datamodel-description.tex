@@ -23,7 +23,7 @@
 
 \begin{figure}[hbt]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/2019-05-17_IVOAModel_VODML_Overview.png}
+\includegraphics[width=1.0\textwidth]{PROV_WD_Overview.png}
 \caption[Overview class diagram of the IVOA Provenance Data Model]{Overview class diagram of the IVOA Provenance Data Model. The core part in yellow is based on W3C PROV definitions where relations are shown in grey. It is extended by a Description part (orange), specific types of entities (red) and an optional Activity Configuration package (green). A full diagram with attributes is shown in Section~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}}
 \label{fig:overview}
 \end{figure}
@@ -36,7 +36,7 @@ The model includes in addition Description classes (see Section~\ref{sec:descrip
 The IVOA Provenance DM is a class data model that follows the VO-DML designing rules \citep{std:VODML}. It is represented as a UML class diagram: an overview diagram is shown in Figure~\ref{fig:overview}, and a full diagram with attributes is shown in Appendix~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}. 
 
 
-\subsection{Entity-Activity classes}
+\subsection{Entity and Activity classes}
 \label{sec:ent_act}
 
 %\subsubsection{Class diagram}
@@ -46,7 +46,7 @@ Traceability (see goal A in Section~\ref{sec:goals}) is enabled by chaining enti
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/2019-05-17_CoreModel_VODML.png}
+\includegraphics[width=1.0\textwidth]{PROV_WD_Core.png}
 \caption[Core classes and relations]{Core classes and relations. Attributes for these classes are detailed in tables found in Sections~\ref{sec:ent_act} to~\ref{sec:agent+relations}.}
 \label{fig:coreclasses}
 \end{figure}
@@ -116,7 +116,6 @@ comment  &  string & text containing specific comments on the entity\\
 %the \class{Dataset} class can be mapped directly to attributes of the
 %\class{Entity} class, see the mappings of 
 %Table~\ref{tab:datasetmapping} in Section~\ref{sec:dmlinks}.
-
 
 
 A \textbf{collection} is an entity that provides a structure to some constituents that must themselves be entities (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-collection}{\S5.6.1}). These constituents are said to be member of the collections. They are connected in the model with a \class{hadMember} relation.
@@ -405,13 +404,13 @@ It is recommended to use organizational agents and agents with generic contacts.
 \midrule
 \textbf{id}    & string & unique identifier for an agent\\
 \textbf{name}  & string & a common name for this agent; e.g. first name and last name; project name,  pipeline team, data center.\\
-\textbf{type}  & AgentType & type of the agent as given in Table~\ref{tab:agent-types}\\
+type        & AgentType & type of the agent as given in Table~\ref{tab:agent-types}\\
 comment     & string & text containing specific comments on the agent\\
 email       & string & contact email of the agent\\
 affiliation & string & affiliation of the agent\\
 phone       & string & phone number\\
 address     & string & address of the agent\\
-url         & anyURL & reference URL to the agent\\
+url         & anyURI & reference URL to the agent\\
 % insert here the attributes dedicated to contact for a Party in DataSet Metadata DM.
 % \hline
 % \multicolumn{4}{l}{Additional optional attributes from Dataset.Party subclasses:}\\
@@ -557,6 +556,7 @@ Creator     & The agent created this entity (creators of articles or software ar
 Curator     & The agent curated this entity \\
 Editor      & The agent was responsible for editing this entity \\
 Funder      & The agent provided financial support for this activity or the creation of the entity \\
+Investigator & The agent is responsible for the scientific goals of this activity \\
 Observer    & The agent was observing and is associated to a specific “observation” activity or responsible for observing a specific entity \\
 Operator    & The agent was an operator for a specific activity \\ % removed executor: ambiguous
 Provider    & The agent provided this entity \\
@@ -585,7 +585,7 @@ Figure~\ref{fig:classdiagram_descriptions} shows the class diagram part focused 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1.0\textwidth]{2019-05-17_IVOAModel_VODML_Descriptions.png}
+\includegraphics[width=1.0\textwidth]{PROV_WD_PartialDescription.png}
 \caption[Partial class diagram focused on description classes.]{Partial class diagram focused on description classes.}
 \label{fig:classdiagram_descriptions}
 \end{figure}
@@ -630,7 +630,7 @@ Figure~\ref{fig:classdiagram_descriptions} shows the class diagram part focused 
 \textbf{name}         & string & a human-readable name\\
 version      & string & a version number, if applicable (e.g. for the code used)\\
 description  & string & additional free text description for the activity\\
-doculink     & anyURL & link to further documentation on this activity, e.g. a 
+doculink     & anyURI & link to further documentation on this activity, e.g. a 
 paper, the source code in a version control system etc.\\
 type        & string & type of the activity\\
 subtype     & string & more specific subtype of the activity\\
@@ -703,7 +703,7 @@ Analysis       & Process of inspecting, cleansing, transforming, and modeling da
 %\textbf{id} & string & a unique identifier for this description\\
 name       & string & a human-readable name for the entity description\\
 description  & string & a descriptive text for this kind of entity\\
-doculink    & anyURL & link to more documentation\\
+doculink    & anyURI & link to more documentation\\
 type      & string & type of the entity\\
 % \midrule
 % \multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
@@ -863,12 +863,12 @@ In astronomy and the VO, we thus define two main types of entity classes:
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/2019-05-17_IVOAModel_VODML_EntityClasses.png}
+\includegraphics[width=1.0\textwidth]{PROV_WD_partialSpecificEntities.png}
 \caption[Partial class diagram focused on specific types of Entity classes.]{Partial class diagram focused on Specific types of Entity classes.}
 \label{fig:classdiagram_entityclasses}
 \end{figure}
 
-We anticipate that more specific categories of entities can be defined by the projects (for example, a Device, a Document, a Vizualization...). The \attribute{type} attribute of the \class{EntityDescription} class should be used to differentiate the different categories of entities.
+We anticipate that more specific categories of entities can be defined by the projects (for example, a device, a Ddocument, a vizualization...). The \attribute{type} attribute of the \class{EntityDescription} class should be used to differentiate the different categories of entities.
 
 
 \subsubsection{DatasetEntity and DatasetDescription classes}
@@ -901,6 +901,22 @@ The handling of values is implemented in the model by a \class{ValueEntity} clas
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
+\textbf{\normalsize ValueEntity}\vspace{0.25em}\\
+%\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
+\begin{tabulary}{1.0\textwidth}{llL}
+\toprule
+\head{Attribute} &  \head{Data type} & \head{Description}\\
+\midrule
+\textbf{value}  & string  & the value of the entity. If a corresponding \class{ValueDescription}.\attribute{valueType} attribute is set, the value string can be interpreted by this \attribute{valueType}. \\
+\bottomrule
+\end{tabulary}
+\caption[Attributes of the \class{ValueEntity} class]{Attributes of the  \class{ValueEntity} class. The class also inherits the attributes of \class{EntityDescription} listed in Table \ref{tab:entitydescription}. Attributes in \textbf{bold} must not be null.}
+\label{tab:valueentity}
+\end{table}
+
+\begin{table}[ht]
+\small
+\tymax  0.5\textwidth
 \textbf{\normalsize ValueDescription}\vspace{0.25em}\\
 %\begin{tabulary}{1.0\textwidth}{@{}p{2.5cm}p{0cm}lL@{}}
 \begin{tabulary}{1.0\textwidth}{p{2cm}LL}
@@ -915,10 +931,10 @@ utype       & string  & Utype, meant to express the role of the value in the con
 %xtype       & string & extended datatype as in VOTable 1.2 and above. A list of proposed \\
 % \midrule
 % \multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
-min         & string whose value can be interpreted by the valueType attribute & minimum value \\
-max         & string whose value can be interpreted by the valueType attribute & maximum value\\
+min         & string & minimum value as a string whose value can be interpreted by the \attribute{valueType} attribute \\
+max         & string & maximum value as a string whose value can be interpreted by the \attribute{valueType} attribute\\
 options     & string & comma separated list of possible values\\
-default     & string whose value can be interpreted by the valueType attribute & the default value of the value entity \\
+default     & string & the default value of the value entity as a string whose value can be interpreted by the \attribute{valueType} attribute \\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of the \class{ValueDescription} class]{Attributes of the \class{ValueDescription} class. The class also inherits the attributes of \class{EntityDescription} listed in Table \ref{tab:entitydescription}. Attributes in \textbf{bold} must not be null.}
