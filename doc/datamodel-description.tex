@@ -33,7 +33,7 @@ In this context, the provenance of something is a sequence of activities using a
 
 The model includes in addition Description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of Entity classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an optional Activity Configuration package (see Section~\ref{sec:configuration}).
 
-The IVOA Provenance DM is a class data model that follows the VO-DML designing rules \citep{std:VODML}. It is represented as a UML class diagram: an overview diagram is shown in Figure~\ref{fig:overview}, and a full diagram with attributes is shown in Appendix~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}. 
+The IVOA Provenance DM is a class data model that follows the VO-DML designing rules \citep{2018ivoa.spec.0910L}. It is represented as a UML class diagram: an overview diagram is shown in Figure~\ref{fig:overview}, and a full diagram with attributes is shown in Appendix~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}.
 
 
 \subsection{Entity and Activity classes}
@@ -83,7 +83,7 @@ name        & string & a human-readable name for the entity\\
 location    & string & a path or spatial coordinates, e.g. a URL, latitude-longitude coordinates on Earth, the name of a place.\\
 %value       & prov:value &  & provides a value that is a direct representation of the entity \\
 generatedAtTime  & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
-invalidatedAtTime  & datetime & date and time of the destruction, cessation, or expiry of the entity. The entity is no longer available for use (or further invalidation) after invalidation. This does not relate to the validity period of calibration files.\\
+invalidatedAtTime  & datetime & date and time of the destruction, cessation, or expiry of the entity. The entity is no longer available for use (or further invalidation) after invalidation. This does not relate to the validity of the entity.\\
 comment  &  string & text containing specific comments on the entity\\
 %rights      & -- & string & access rights for the entity, values: public, secure or proprietary; see Curation.Rights, RightsType in DatasetDM\\
 %\midrule
@@ -875,7 +875,7 @@ We anticipate that more specific categories of entities can be defined by the pr
 
 The handling of datasets is implemented in the model by a \class{DatasetEntity} class. A corresponding \class{DatasetDescription} class contains a \attribute{contentType} attribute that must not be null (see Table~\ref{tab:datasetdescription}).
 
-The \attribute{contentType} may indicate the MIME-type or format of a file, or a more precise structure, following the definition of the attribute \attribute{access\_format} defined in ObsCoreDM (\citet{std:OBSCORE}, Section 4.7).
+The \attribute{contentType} may indicate the MIME-type or format of a file, or a more precise structure, following the definition of the attribute \attribute{access\_format} defined in ObsCoreDM (\citet{2017ivoa.spec.0509L}, Section 4.7).
 
 \begin{table}[ht]
 \small
@@ -924,9 +924,9 @@ The handling of values is implemented in the model by a \class{ValueEntity} clas
 \head{Attribute} &  \head{Data type} & \head{Description}\\
 \midrule
 %\textbf{id}  & string & parameter unique identifier\\
-\textbf{valueType} & string & VODML value type, see \citet{std:VODML} \\
-unit        & string & physical unit, see \citet{std:VOUNIT} for recommended unit representation \\
-ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{std:UCD}\\
+\textbf{valueType} & string & VO-DML value type, see \citet{2018ivoa.spec.0910L} \\
+unit        & string & physical unit, see \citet{2014ivoa.spec.0523D} for recommended unit representation \\
+ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{2018ivoa.spec.0527M}\\
 utype       & string  & Utype, meant to express the role of the value in the context of an external data model, see \citet{note:utypeusage} \\
 %xtype       & string & extended datatype as in VOTable 1.2 and above. A list of proposed \\
 % \midrule
