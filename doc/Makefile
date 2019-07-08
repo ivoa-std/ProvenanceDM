@@ -1,4 +1,4 @@
-# ivoatex Makefile.  The ivoatex/README for the targets available.
+ # ivoatex Makefile.  The ivoatex/README for the targets available.
 
 # short name of your document (edit $DOCNAME.tex; would be like RegTAP)
 DOCNAME = ProvenanceDM
