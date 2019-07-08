@@ -8,7 +8,7 @@ DOCNAME = ProvenanceDM
 DOCVERSION = 1.0
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2019-06-07
+DOCDATE = 2019-07-08
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
 DOCTYPE = WD
@@ -19,7 +19,7 @@ AUTHOR_EMAIL=
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
-SOURCES = $(DOCNAME).texi
+SOURCES = $(DOCNAME).tex
 # role_diagram.pdf
 
 # List of image files to be included in submitted package (anything that
