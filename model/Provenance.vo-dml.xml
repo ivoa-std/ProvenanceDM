@@ -1,0 +1,1766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 http://www.ivoa.net/xml/VODML/vo-dml-v1.xsd">
+  <name>Provenance</name>
+  <description>Data model describing the structure and content of the IVOA Provenance Data Model. This re-uses the concepts from the W3C Provenance DM, but extends it with a description layer for Activities and Entities.</description>
+  <uri/>
+  <title/>
+  <version>0.x</version>
+  <lastModified>2019-07-09T17:21:01</lastModified>
+
+  <package>
+    <vodml-id>ivoa</vodml-id>
+    <name>ivoa</name>
+    <description>Package for IVIOA datatypes</description>
+    <primitiveType>
+      <vodml-id>ivoa.real</vodml-id>
+      <name>real</name>
+      <description>real value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.decimal</vodml-id>
+      <name>decimal</name>
+      <description>decimal value
+</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.datetime</vodml-id>
+      <name>datetime</name>
+      <description>Date time</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.anyURI</vodml-id>
+      <name>anyURI</name>
+      <description>URI</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.string</vodml-id>
+      <name>string</name>
+      <description>String value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.nonnegativeInteger</vodml-id>
+      <name>nonnegativeInteger</name>
+      <description>Non negative integer value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.boolean</vodml-id>
+      <name>boolean</name>
+      <description>Boolean value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.integer</vodml-id>
+      <name>integer</name>
+      <description>Integer value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.rational</vodml-id>
+      <name>rational</name>
+      <description>rational value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.complex</vodml-id>
+      <name>complex</name>
+      <description>complex value</description>
+    </primitiveType>
+
+    <primitiveType>
+      <vodml-id>ivoa.duration</vodml-id>
+      <name>duration</name>
+      <description>Duration value</description>
+    </primitiveType>
+
+    <dataType>
+      <vodml-id>ivoa.Identity</vodml-id>
+      <name>Identity</name>
+      <description>&lt;Enter note text here&gt;</description>
+      <attribute>
+        <vodml-id>ivoa.Identity.id</vodml-id>
+        <name>id</name>
+        <description>Identifier</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>ivoa.Identity.xmlId</vodml-id>
+        <name>xmlId</name>
+        <description>XML identifier
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>ivoa.Identity.ivoId</vodml-id>
+        <name>ivoId</name>
+        <description>IVOA identifier</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>ivoa.Identity.publisherDID</vodml-id>
+        <name>publisherDID</name>
+        <description>IVOA publisher DID</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+
+
+    <package>
+      <vodml-id>ivoa.quantity</vodml-id>
+      <name>quantity</name>
+      <description>Package for IVOA quantities datatypes</description>
+      <primitiveType>
+        <vodml-id>ivoa.quantity.Unit</vodml-id>
+        <name>Unit</name>
+        <description>Unit quantity</description>
+        <extends>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </extends>
+      </primitiveType>
+
+      <dataType abstract="true">
+        <vodml-id>ivoa.quantity.AtomicValue</vodml-id>
+        <name>AtomicValue</name>
+        <description>Atomic value quantity</description>
+        <attribute>
+          <vodml-id>ivoa.quantity.AtomicValue.ucd</vodml-id>
+          <name>ucd</name>
+          <description>IVOA uniform content descriptor</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+      <dataType>
+        <vodml-id>ivoa.quantity.StringValue</vodml-id>
+        <name>StringValue</name>
+        <description>String quantity</description>
+        <extends>
+          <vodml-ref>Provenance:ivoa.quantity.AtomicValue</vodml-ref>
+        </extends>
+        <attribute>
+          <vodml-id>ivoa.quantity.StringValue.value</vodml-id>
+          <name>value</name>
+          <description>String value</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+      <dataType>
+        <vodml-id>ivoa.quantity.BooleanValue</vodml-id>
+        <name>BooleanValue</name>
+        <description>Boolean Quantity</description>
+        <extends>
+          <vodml-ref>Provenance:ivoa.quantity.AtomicValue</vodml-ref>
+        </extends>
+        <attribute>
+          <vodml-id>ivoa.quantity.BooleanValue.value</vodml-id>
+          <name>value</name>
+          <description>boolean value</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.boolean</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+      <dataType abstract="true">
+        <vodml-id>ivoa.quantity.Quantity</vodml-id>
+        <name>Quantity</name>
+        <description>Generic quantity
+</description>
+        <extends>
+          <vodml-ref>Provenance:ivoa.quantity.AtomicValue</vodml-ref>
+        </extends>
+        <attribute>
+          <vodml-id>ivoa.quantity.Quantity.unit</vodml-id>
+          <name>unit</name>
+          <description>IVOA unit for the quantity</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.quantity.Unit</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+      <dataType>
+        <vodml-id>ivoa.quantity.IntegerQuantity</vodml-id>
+        <name>IntegerQuantity</name>
+        <description>Integer quantity</description>
+        <extends>
+          <vodml-ref>Provenance:ivoa.quantity.Quantity</vodml-ref>
+        </extends>
+        <attribute>
+          <vodml-id>ivoa.quantity.IntegerQuantity.value</vodml-id>
+          <name>value</name>
+          <description>Integer value</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.integer</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+      <dataType>
+        <vodml-id>ivoa.quantity.RealQuantity</vodml-id>
+        <name>RealQuantity</name>
+        <description>Real quantity</description>
+        <extends>
+          <vodml-ref>Provenance:ivoa.quantity.Quantity</vodml-ref>
+        </extends>
+        <attribute>
+          <vodml-id>ivoa.quantity.RealQuantity.value</vodml-id>
+          <name>value</name>
+          <description>Real value</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.real</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+    </package>
+
+  </package>
+
+
+
+  <package>
+    <vodml-id>provenance</vodml-id>
+    <name>provenance</name>
+    <description>Data model describing the structure and content of the IVOA Provenance Data Model. This re-uses the concepts from the W3C Provenance DM, but extends it with a description layer for Activities and Entities.
+</description>
+    <enumeration>
+      <vodml-id>provenance.TypeOfConfigArtifact</vodml-id>
+      <name>TypeOfConfigArtifact</name>
+      <description>The configuration for an Activity ( job)  can be fully explicit , with a list of searchable parameters , or expressed into a document file storing the configuration . This attribute contains the type of config information at the end of the wasConfiguredby association instance .</description>
+      <literal>
+        <vodml-id>provenance.TypeOfConfigArtifact.Parameter</vodml-id>
+        <name>Parameter</name>
+        <description>Label for parameter config artifact</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfConfigArtifact.Configfile</vodml-id>
+        <name>Configfile</name>
+        <description>Label for config file config artifact</description>
+      </literal>
+    </enumeration>
+
+    <enumeration>
+      <vodml-id>provenance.TypeOfAgentRole</vodml-id>
+      <name>TypeOfAgentRole</name>
+      <description>The various values for the role keyword for an Agent with respect to an Activity or an Entity.</description>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Author</vodml-id>
+        <name>Author</name>
+        <description>Label for agents playing a author role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Contributor</vodml-id>
+        <name>Contributor</name>
+        <description>Label for agents playing a contributor role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Coordinator</vodml-id>
+        <name>Coordinator</name>
+        <description>Label for agents playing a coordinator role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Creator</vodml-id>
+        <name>Creator</name>
+        <description>Label for agents playing a creator role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Curator</vodml-id>
+        <name>Curator</name>
+        <description>Label for agents playing a curator role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Editor</vodml-id>
+        <name>Editor</name>
+        <description>Label for agents playing a editor role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Funder</vodml-id>
+        <name>Funder</name>
+        <description>Label for agents playing a funder role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Investigator</vodml-id>
+        <name>Investigator</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Observer</vodml-id>
+        <name>Observer</name>
+        <description>Label for agents playing a observer role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Operator</vodml-id>
+        <name>Operator</name>
+        <description>Label for agents playing a operator role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Provider</vodml-id>
+        <name>Provider</name>
+        <description>Label for agents playing a provider role</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.TypeOfAgentRole.Publisher</vodml-id>
+        <name>Publisher</name>
+        <description>Label for agents playing a publisher role</description>
+      </literal>
+    </enumeration>
+
+    <enumeration>
+      <vodml-id>provenance.AgentType</vodml-id>
+      <name>AgentType</name>
+      <description>A literal for specifying the Agent type : Individal or Organisation or SoftwareAgent</description>
+      <literal>
+        <vodml-id>provenance.AgentType.Person</vodml-id>
+        <name>Person</name>
+        <description>Label for agents considered as persons</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentType.Organization</vodml-id>
+        <name>Organization</name>
+        <description>Label for agents considered as organizations</description>
+      </literal>
+      <literal>
+        <vodml-id>provenance.AgentType.SoftwareAgent</vodml-id>
+        <name>SoftwareAgent</name>
+        <description>Label for agents considered as software agents</description>
+      </literal>
+    </enumeration>
+
+    <objectType>
+      <vodml-id>provenance.Agent</vodml-id>
+      <name>Agent</name>
+      <description>A person or an organisation that was involved in the follow-up of an Activity, or can be credited for the production of an Entity.</description>
+      <attribute>
+        <vodml-id>provenance.Agent.id</vodml-id>
+        <name>id</name>
+        <description>Unique identifier for an Agent. Must be unique in the domain.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.name</vodml-id>
+        <name>name</name>
+        <description>Agent name</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.type</vodml-id>
+        <name>type</name>
+        <description>Defines the Agent type : Person, Organization or SoftwareAgent</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.AgentType</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.comment</vodml-id>
+        <name>comment</name>
+        <description>A short text about some peculiar information on the instance.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.email</vodml-id>
+        <name>email</name>
+        <description>Email address of the Agent</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.affiliation</vodml-id>
+        <name>affiliation</name>
+        <description>Agent's affiliation</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.phone</vodml-id>
+        <name>phone</name>
+        <description>Agent's phone number</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.address</vodml-id>
+        <name>address</name>
+        <description>Agent's postmail address</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Agent.url</vodml-id>
+        <name>url</name>
+        <description>Reference URL to the agent</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasAssociatedWith</vodml-id>
+      <name>WasAssociatedWith</name>
+      <description>Denotes the assignment of responsibility to an agent for an activity.</description>
+      <attribute>
+        <vodml-id>provenance.WasAssociatedWith.role</vodml-id>
+        <name>role</name>
+        <description>Function of the agent with respect to the activity
+The role values belong to the AgentRole type defined in the Provenance vocabulary.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.WasAssociatedWith.agent</vodml-id>
+        <name>agent</name>
+        <description>Points to the agent</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Agent</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasAttributedTo</vodml-id>
+      <name>WasAttributedTo</name>
+      <description>Links an Agent to the Entity it is responsible for. Various roles for this relation are allowed and defined in the Provenance vocabulary under TypeOfAgentRole</description>
+      <attribute>
+        <vodml-id>provenance.WasAttributedTo.role</vodml-id>
+        <name>role</name>
+        <description>Function of the agent with respect to the entity
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.WasAttributedTo.agent</vodml-id>
+        <name>agent</name>
+        <description>Points to the agent</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Agent</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Activity</vodml-id>
+      <name>Activity</name>
+      <description>A task executed at some time. It consumes products via relations of type Used and produces results via relations of type WasGeneratedBy. 
+The method applied for this task is described in the ActivityDescription class and its subtree.</description>
+      <attribute>
+        <vodml-id>provenance.Activity.id</vodml-id>
+        <name>id</name>
+        <description>Unique identifier for an Activity. Must be unique in the domain.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.name</vodml-id>
+        <name>name</name>
+        <description>Activity name</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.startTime</vodml-id>
+        <name>startTime</name>
+        <description>This allows to know when the activity was launched . 
+This is recommended to fill in as it helps to check dependencies and errors into the database.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.endTime</vodml-id>
+        <name>endTime</name>
+        <description>Time when the Activity ends up.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Activity.comment</vodml-id>
+        <name>comment</name>
+        <description>A short text about some peculiar information on the instance.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.Activity.wasAssoociatedWith</vodml-id>
+        <name>wasAssoociatedWith</name>
+        <description>Gathers Agents bound to this Activity instance</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.WasAssociatedWith</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.Activity.used</vodml-id>
+        <name>used</name>
+        <description>Gathers Entities used by the Activity instance</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Used</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.Activity.wasConfiguredBy</vodml-id>
+        <name>wasConfiguredBy</name>
+        <description>Gathers Configuration elements for this Activity instance</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.ActivityConfiguration.WasConfiguredBy</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <reference>
+        <vodml-id>provenance.Activity.informant</vodml-id>
+        <name>informant</name>
+        <description>refers to an activity providing information</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Activity.activityDescription</vodml-id>
+        <name>activityDescription</name>
+        <description>Points to the corresponding description class</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.ActivityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Used</vodml-id>
+      <name>Used</name>
+      <description>Binds an Activity to the Entities it consumes .</description>
+      <attribute>
+        <vodml-id>provenance.Used.role</vodml-id>
+        <name>role</name>
+        <description>function of the entity with respect to the activity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Used.time</vodml-id>
+        <name>time</name>
+        <description>Time at which the usage of an entity started</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.Used.entity</vodml-id>
+        <name>entity</name>
+        <description>Points to the used entity</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Used.usageDescription</vodml-id>
+        <name>usageDescription</name>
+        <description>This link points to  some description of the Usage in the context of one specific ActivityDescription.</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.UsageDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Entity</vodml-id>
+      <name>Entity</name>
+      <description>A thing which is consumed or produced in a task , namely here in the astronomical domain. It represents some data as single element or file or an instrument.
+
+</description>
+      <attribute>
+        <vodml-id>provenance.Entity.id</vodml-id>
+        <name>id</name>
+        <description>Unique identifier for an Entity. Must be unique in the domain.
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.name</vodml-id>
+        <name>name</name>
+        <description>This is a text string which designate the Entity for display in application or diagrams . It can follow various syntax and naming conventions depending on the Entity subclass : dataset, quality flag, device name convention, etc .
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.location</vodml-id>
+        <name>location</name>
+        <description>A path,  a URL, coordinates or the name of a place.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.generatedAtTime</vodml-id>
+        <name>generatedAtTime</name>
+        <description>The time of generation for the entity , in ISOTime
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.datetime</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.invalidatedAtTime</vodml-id>
+        <name>invalidatedAtTime</name>
+        <description>Time stamp after which the entity is considered no longer valid for further usage in an Activity. It may still be available in the system but not used for
+operations .</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.Entity.comment</vodml-id>
+        <name>comment</name>
+        <description>A short text about some peculiar information on the instance.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.Entity.wasGeneratedBy</vodml-id>
+        <name>wasGeneratedBy</name>
+        <description>Binds to the activity which generated this entity</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.WasGeneratedBy</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.Entity.wasAttributedTo</vodml-id>
+        <name>wasAttributedTo</name>
+        <description>Gathers Agents to which the entity was attributed</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.WasAttributedTo</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <reference>
+        <vodml-id>provenance.Entity.usedEntity</vodml-id>
+        <name>usedEntity</name>
+        <description>The link from the progenitor Entity to its descendant.</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.Entity.entityDescription</vodml-id>
+        <name>entityDescription</name>
+        <description>Link to the corresponding EntityDescription instance.  Many Entities may share the same  EntityDescription instance.</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.EntityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.WasGeneratedBy</vodml-id>
+      <name>WasGeneratedBy</name>
+      <description>Binds an Entity to the Activity that produced it as a result.</description>
+      <attribute>
+        <vodml-id>provenance.WasGeneratedBy.role</vodml-id>
+        <name>role</name>
+        <description>Function of the entity with respect to the activity.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.WasGeneratedBy.activity</vodml-id>
+        <name>activity</name>
+        <description>points the creating activity</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Activity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>provenance.WasGeneratedBy.generationDescription</vodml-id>
+        <name>generationDescription</name>
+        <description>Points to the instance of GenerationDescription describing this kind of generated output.</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.GenerationDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.Collection</vodml-id>
+      <name>Collection</name>
+      <description>A collection of Entities. It is a way to consider a set of entities when produced and consumed with respect to an Activity. 
+Allows coarse description of the provenance.</description>
+      <extends>
+        <vodml-ref>Provenance:provenance.Entity</vodml-ref>
+      </extends>
+      <reference>
+        <vodml-id>provenance.Collection.entity</vodml-id>
+        <name>entity</name>
+        <description>Binds a collection entity to its members</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.Entity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ValueEntity</vodml-id>
+      <name>ValueEntity</name>
+      <description>An entity that only contains a value. The way to interpret this value is described in the ValueDescription instance it linked to.</description>
+      <extends>
+        <vodml-ref>Provenance:provenance.Entity</vodml-ref>
+      </extends>
+      <constraint xsi:type="vo-dml:SubsettedRole">
+        <role>
+          <vodml-ref>Provenance:provenance.ValueEntity</vodml-ref>
+        </role>
+        <datatype>
+          <vodml-ref>Provenance:provenance.ValueDescription</vodml-ref>
+        </datatype>
+      </constraint>
+      <attribute>
+        <vodml-id>provenance.ValueEntity.value</vodml-id>
+        <name>value</name>
+        <description>The value of the Entity.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.DatasetEntity</vodml-id>
+      <name>DatasetEntity</name>
+      <description>An Entity which represents a data file in the Provenance system. It is not the data file itself</description>
+      <extends>
+        <vodml-ref>Provenance:provenance.Entity</vodml-ref>
+      </extends>
+      <constraint xsi:type="vo-dml:SubsettedRole">
+        <role>
+          <vodml-ref>Provenance:provenance.DatasetEntity</vodml-ref>
+        </role>
+        <datatype>
+          <vodml-ref>Provenance:provenance.DatasetDescription</vodml-ref>
+        </datatype>
+      </constraint>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ActivityDescription</vodml-id>
+      <name>ActivityDescription</name>
+      <description>Gives further information on how an activity works internally.</description>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.name</vodml-id>
+        <name>name</name>
+        <description>Instance name</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.version</vodml-id>
+        <name>version</name>
+        <description>Version number, if applicable</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.description</vodml-id>
+        <name>description</name>
+        <description>A descriptive text for this kind of activity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.docuLink</vodml-id>
+        <name>docuLink</name>
+        <description>Link to more documentation</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.type</vodml-id>
+        <name>type</name>
+        <description>type of the activity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ActivityDescription.subtype</vodml-id>
+        <name>subtype</name>
+        <description>More specific subtype of the activity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>provenance.ActivityDescription.parameterDescription</vodml-id>
+        <name>parameterDescription</name>
+        <description>Gathers the description text for a parameter</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.ActivityConfiguration.ParameterDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.ActivityDescription.configFileDescription</vodml-id>
+        <name>configFileDescription</name>
+        <description>Gathers the description of the config files</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.ActivityConfiguration.ConfigFileDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.ActivityDescription.usageDescription</vodml-id>
+        <name>usageDescription</name>
+        <description>This link points to  some description of the Usage in the context of one specific ActivityDescription.</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.UsageDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+      <composition>
+        <vodml-id>provenance.ActivityDescription.generationDescription</vodml-id>
+        <name>generationDescription</name>
+        <description>This link points to  some description of the results produced in the context of one specific ActivityDescription.</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.GenerationDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.UsageDescription</vodml-id>
+      <name>UsageDescription</name>
+      <description>This class gathers description features about the products an ActivityDescription considers as input resources. It can differentiate various roles and types of Entities consumed by the task described by the corresponding ActivityDescription instance.</description>
+      <attribute>
+        <vodml-id>provenance.UsageDescription.role</vodml-id>
+        <name>role</name>
+        <description>function of the entity with respect to its usage by the activity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.UsageDescription.description</vodml-id>
+        <name>description</name>
+        <description>A descriptive text for this kind of usage
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.UsageDescription.type</vodml-id>
+        <name>type</name>
+        <description>type of the usage. It is a free text attribute with some reserved words</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.UsageDescription.multiplicity</vodml-id>
+        <name>multiplicity</name>
+        <description>String representation of the number of expected input entities that are used with the given role (« unbounded «  if not set)</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.UsageDescription.entityDescription</vodml-id>
+        <name>entityDescription</name>
+        <description>Points to the description of the used entities</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.EntityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.GenerationDescription</vodml-id>
+      <name>GenerationDescription</name>
+      <description>This class gathers description features about the products an ActivityDescription considers as output results.</description>
+      <attribute>
+        <vodml-id>provenance.GenerationDescription.role</vodml-id>
+        <name>role</name>
+        <description>A label that describes the function of what was produced. It is defined in the context of an ActivityDescription instance.</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.GenerationDescription.description</vodml-id>
+        <name>description</name>
+        <description>A descriptive text for this kind of entity generation</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.GenerationDescription.type</vodml-id>
+        <name>type</name>
+        <description>Type of the entity generation. It is a free text attribute with some reserved words</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.GenerationDescription.multiplicity</vodml-id>
+        <name>multiplicity</name>
+        <description>String representation of the number of expected output entities that will be generated with the given role (« unbounded «  if not set)</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <reference>
+        <vodml-id>provenance.GenerationDescription.entityDescription</vodml-id>
+        <name>entityDescription</name>
+        <description>Points to the description of the used entities</description>
+        <datatype>
+          <vodml-ref>Provenance:provenance.EntityDescription</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.EntityDescription</vodml-id>
+      <name>EntityDescription</name>
+      <description>This class is meant to store descriptive information for
+different categories of entities.</description>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.name</vodml-id>
+        <name>name</name>
+        <description>Instance name
+</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.description</vodml-id>
+        <name>description</name>
+        <description>A descriptive text for this kind of entity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.docuLink</vodml-id>
+        <name>docuLink</name>
+        <description>Link to more documentation</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.anyURI</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.EntityDescription.type</vodml-id>
+        <name>type</name>
+        <description>Type of the entity</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.ValueDescription</vodml-id>
+      <name>ValueDescription</name>
+      <description>Description of the properties of a ValueEntity.</description>
+      <extends>
+        <vodml-ref>Provenance:provenance.EntityDescription</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.valueType</vodml-id>
+        <name>valueType</name>
+        <description>VODML-compliant data type of the value</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.unit</vodml-id>
+        <name>unit</name>
+        <description>VO-compliant unit string</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.quantity.Unit</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.ucd</vodml-id>
+        <name>ucd</name>
+        <description>VO-compliant UCD string</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.utype</vodml-id>
+        <name>utype</name>
+        <description>Role of the value in the context of an external VO data mode</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.min</vodml-id>
+        <name>min</name>
+        <description>Minimum value as a string whose content can be interpreted by the valueType attribute</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.max</vodml-id>
+        <name>max</name>
+        <description>Maximum value as a string whose content can be interpreted by the valueType attribute</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.default</vodml-id>
+        <name>default</name>
+        <description>Default value  as a string whose content can be interpreted by the valueType attribute</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>provenance.ValueDescription.options</vodml-id>
+        <name>options</name>
+        <description>Comma separated list of possible values</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>provenance.DatasetDescription</vodml-id>
+      <name>DatasetDescription</name>
+      <description>The description of a DatasetEntity. Can be pointed to by multiple instances of DatasetEntity.</description>
+      <extends>
+        <vodml-ref>Provenance:provenance.EntityDescription</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>provenance.DatasetDescription.contentType</vodml-id>
+        <name>contentType</name>
+        <description>MIME-type or format of the dataset</description>
+        <datatype>
+          <vodml-ref>Provenance:ivoa.string</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+
+
+    <package>
+      <vodml-id>provenance.ActivityConfiguration</vodml-id>
+      <name>ActivityConfiguration</name>
+      <description>This package gathers the necessary classes for expressing the configuration of a task before, during and after execution. 
+We consider only the executed version will be stored in a provenance information system.</description>
+      <objectType>
+        <vodml-id>provenance.ActivityConfiguration.ParameterDescription</vodml-id>
+        <name>ParameterDescription</name>
+        <description>How to both use and interpret the parameter</description>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.name</vodml-id>
+          <name>name</name>
+          <description>Name of the parameter</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.valueType</vodml-id>
+          <name>valueType</name>
+          <description>VO-DML compliant data type of the parameter value</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.unit</vodml-id>
+          <name>unit</name>
+          <description>VO compliant unit string used for this parameter</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.quantity.Unit</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.ucd</vodml-id>
+          <name>ucd</name>
+          <description>Unified Content Descriptor, supplying a standardized classification of the physical quantity</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.utype</vodml-id>
+          <name>utype</name>
+          <description>Expresses the role of the parameter in the context of VO data mode text</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.min</vodml-id>
+          <name>min</name>
+          <description>Minimum parameter value as a string whose value can be interpreted by the valueType attribute</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.max</vodml-id>
+          <name>max</name>
+          <description>Maximum parameter value as a string whose value can be interpreted by the valueType attribute</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.default</vodml-id>
+          <name>default</name>
+          <description>Default parameter value as a string whose value can be interpreted by the valueType attribute</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.options</vodml-id>
+          <name>options</name>
+          <description>Comma separated list of possible values</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ParameterDescription.description</vodml-id>
+          <name>description</name>
+          <description>A short text that explains the content and purpose of this Parameter.</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </objectType>
+
+      <objectType>
+        <vodml-id>provenance.ActivityConfiguration.ConfigFileDescription</vodml-id>
+        <name>ConfigFileDescription</name>
+        <description>Properties of the configuration files</description>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFileDescription.name</vodml-id>
+          <name>name</name>
+          <description>Name of the instance</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFileDescription.contentType</vodml-id>
+          <name>contentType</name>
+          <description>MIME-type or format of the configuration file</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFileDescription.description</vodml-id>
+          <name>description</name>
+          <description>A short text that explains the content and purpose of the configuration file.</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </objectType>
+
+      <objectType>
+        <vodml-id>provenance.ActivityConfiguration.Parameter</vodml-id>
+        <name>Parameter</name>
+        <description>A simple value which is part of the configuration of an activity instance</description>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.Parameter.value</vodml-id>
+          <name>value</name>
+          <description>The value of the parameter. The data  type, meaning, units, etc., are stored in the ParameterDescription instance bound to it.</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.Parameter.name</vodml-id>
+          <name>name</name>
+          <description>Name of the parameter</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <reference>
+          <vodml-id>provenance.ActivityConfiguration.Parameter.valueEntity</vodml-id>
+          <name>valueEntity</name>
+          <description>A Parameter instance can have a value derived from a ValueEntity value element computed previously by some former Activity instance. Therefore, the ValueEntity it refers to is generated with another instance of the Activity class, in a different generation scenario executed previously.</description>
+          <datatype>
+            <vodml-ref>Provenance:provenance.ValueEntity</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </reference>
+        <reference>
+          <vodml-id>provenance.ActivityConfiguration.Parameter.parameterDescription</vodml-id>
+          <name>parameterDescription</name>
+          <description>Description of the individual parameters</description>
+          <datatype>
+            <vodml-ref>Provenance:provenance.ActivityConfiguration.ParameterDescription</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </reference>
+      </objectType>
+
+      <objectType>
+        <vodml-id>provenance.ActivityConfiguration.ConfigFile</vodml-id>
+        <name>ConfigFile</name>
+        <description>The values used to control the activity can be provided as a Configuration file document.
+</description>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFile.name</vodml-id>
+          <name>name</name>
+          <description>Name of the file</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFile.location</vodml-id>
+          <name>location</name>
+          <description>Path or URL to the config file</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFile.comment</vodml-id>
+          <name>comment</name>
+          <description>A descriptive text for this instance</description>
+          <datatype>
+            <vodml-ref>Provenance:ivoa.string</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <reference>
+          <vodml-id>provenance.ActivityConfiguration.ConfigFile.configFileDescription</vodml-id>
+          <name>configFileDescription</name>
+          <description>Points to the corresponding description class</description>
+          <datatype>
+            <vodml-ref>Provenance:provenance.ActivityConfiguration.ConfigFileDescription</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </reference>
+      </objectType>
+
+      <objectType>
+        <vodml-id>provenance.ActivityConfiguration.WasConfiguredBy</vodml-id>
+        <name>WasConfiguredBy</name>
+        <description>This is an association class binding an Activity Instance to one configuration artefact which can be a Parameter instance  or a ConfigFile instance . 
+Attribute "artefactType" holds the type of its target .</description>
+        <attribute>
+          <vodml-id>provenance.ActivityConfiguration.WasConfiguredBy.artefactType</vodml-id>
+          <name>artefactType</name>
+          <description>Object type pointed by the instance
+</description>
+          <datatype>
+            <vodml-ref>Provenance:provenance.TypeOfConfigArtifact</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>1</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <reference>
+          <vodml-id>provenance.ActivityConfiguration.WasConfiguredBy.configFile</vodml-id>
+          <name>configFile</name>
+          <description>Points to the configuration file</description>
+          <datatype>
+            <vodml-ref>Provenance:provenance.ActivityConfiguration.ConfigFile</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </reference>
+        <reference>
+          <vodml-id>provenance.ActivityConfiguration.WasConfiguredBy.parameter</vodml-id>
+          <name>parameter</name>
+          <description>points to parameter</description>
+          <datatype>
+            <vodml-ref>Provenance:provenance.ActivityConfiguration.Parameter</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </reference>
+      </objectType>
+
+    </package>
+
+  </package>
+
+</vo-dml:model>
