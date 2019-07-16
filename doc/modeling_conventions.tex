@@ -28,11 +28,11 @@ enumeration class name.
 
   \subsection{Generalization}
   \label{sect:Generalization}
-  Generalizations are represented by a red line, with open triangle at the end of the source, or more general, object.
+  Generalizations are represented by a line (shown in red in Figure \ref{fig:notation_example}), with open triangle at the end of the source, or more general, object.
 
   \subsection{Composition}
   \label{sect:Composition}
-  The composition relation is indicated by a black line with a solid diamond attached to the
+  The composition relation is indicated by a line with a solid diamond attached to the
 containing object, and an arrow pointing to the object being contained. The composition relation is
 very tight, where the container is responsible for the creation and existence of the target. Any
 object may be in no more than one composition relation with any container. The attribute name
@@ -41,7 +41,7 @@ typically a lower-cased version of the destination class name, but this is not r
 
   \subsection{Reference}
   \label{sect:Reference}
-  The reference relation is indicated by a green line, with an arrow pointing to the object being
+  The reference relation is indicated by a line (shown in green in Figure \ref{fig:notation_example}), with an arrow pointing to the object being
 referenced. The reference relation is much looser than composition, the container has no
 ownership of the target, but merely holds a pointer, or other indirect connection to it. The
 attribute name is annotated at the destination of the relation ( e.g. "+ proposal"). This is typically

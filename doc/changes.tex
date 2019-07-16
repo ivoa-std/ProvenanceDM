@@ -5,9 +5,9 @@
 \item Rewording of the use cases in the Goal section.
 \item Requirements divided into Model Requirements and Best Practices.
 \item Restruturation of Section \ref{sec:datamodel}, removing the separation of the Core Model and the Extended Model. An overview is now given in \ref{sec:overview}, and each following subsection corresponds to a feature of the model, in relation with the goals. Each subsubsection is an element of the model presented in Figure \ref{fig:overview}.
-\item \class{WasInformedBy} and \class{WasDerivedFrom} are optional and included in section \ref{sec:entity-activity-relations} on Entity-Activity relations. They are simple relations.
+\item \class{WasInformedBy} and \class{WasDerivedFrom} are optional and included in section \ref{sec:entity-activity-relations} on \class{Entity}-\class{Activity} relations. They are simple relations.
 \item Addition of \class{ValueEntity} and \class{DatasetEntity} (with their description classes) as specific types of Entity classes (section \ref{sec:spec_entities}).
-\item Grouping of the Parameter-ParameterDescription classes as an optional ActivityConfiguration package that also includes config files.
+\item Grouping of the \class{Parameter}-\class{ParameterDescription} classes as an optional \class{ActivityConfiguration} package that also includes config files.
 \item Modification of class attributes: 
 \begin{itemize}
   \item \attribute{annotation} $\rightarrow$ \attribute{comment} (\attribute{annotation} $\rightarrow$ \attribute{description} in Description classes)
@@ -18,7 +18,7 @@
 \end{itemize}
 \item Datatype of a value is replaced by a valueType (see VO-DML document).
 \item Only attributes are shown in tables, relations between classes are shown in diagrams.
-\item Lists of terms are explicitely given for Agent roles, ActivityDescription types, Usage/Generation types.
+\item Lists of terms are explicitely given for \class{Agent} roles, \class{ActivityDescription} types, \class{UsageDescription}/\class{GenerationDescription} types.
 \item The section on serializations was removed (a dedicated document will be proposed). References to serialization in the text were removed, as well as related sentences, and Appendix A.
 \item The section on accessing provenance information was removed (it was already reduced to a paragraph referencing external documents in preparation).
 \item Appendix B on Links to other data models was removed.
