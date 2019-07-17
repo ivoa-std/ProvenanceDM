@@ -7,96 +7,12 @@
   <uri/>
   <title/>
   <version>0.x</version>
-  <lastModified>2019-07-15T17:54:49</lastModified>
+  <lastModified>2019-07-17T11:11:57</lastModified>
   <import>
     <name>ivoa</name>
     <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html</url>
     <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html</documentationURL>
   </import>
-  <enumeration>
-    <vodml-id>TypeOfConfigArtifact</vodml-id>
-    <name>TypeOfConfigArtifact</name>
-    <description>The configuration for an Activity ( job)  can be fully explicit , with a list of searchable parameters , or expressed into a document file storing the configuration . This attribute contains the type of config information at the end of the wasConfiguredby association instance .</description>
-    <literal>
-      <vodml-id>TypeOfConfigArtifact.Parameter</vodml-id>
-      <name>Parameter</name>
-      <description>Label for parameter config artifact</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfConfigArtifact.Configfile</vodml-id>
-      <name>Configfile</name>
-      <description>Label for config file config artifact</description>
-    </literal>
-  </enumeration>
-
-  <enumeration>
-    <vodml-id>TypeOfAgentRole</vodml-id>
-    <name>TypeOfAgentRole</name>
-    <description>The various values for the role keyword for an Agent with respect to an Activity or an Entity.</description>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Author</vodml-id>
-      <name>Author</name>
-      <description>Label for agents playing a author role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Contributor</vodml-id>
-      <name>Contributor</name>
-      <description>Label for agents playing a contributor role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Coordinator</vodml-id>
-      <name>Coordinator</name>
-      <description>Label for agents playing a coordinator role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Creator</vodml-id>
-      <name>Creator</name>
-      <description>Label for agents playing a creator role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Curator</vodml-id>
-      <name>Curator</name>
-      <description>Label for agents playing a curator role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Editor</vodml-id>
-      <name>Editor</name>
-      <description>Label for agents playing a editor role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Funder</vodml-id>
-      <name>Funder</name>
-      <description>Label for agents playing a funder role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Investigator</vodml-id>
-      <name>Investigator</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Observer</vodml-id>
-      <name>Observer</name>
-      <description>Label for agents playing a observer role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Operator</vodml-id>
-      <name>Operator</name>
-      <description>Label for agents playing a operator role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Provider</vodml-id>
-      <name>Provider</name>
-      <description>Label for agents playing a provider role</description>
-    </literal>
-    <literal>
-      <vodml-id>TypeOfAgentRole.Publisher</vodml-id>
-      <name>Publisher</name>
-      <description>Label for agents playing a publisher role</description>
-    </literal>
-  </enumeration>
-
   <enumeration>
     <vodml-id>AgentType</vodml-id>
     <name>AgentType</name>
@@ -154,7 +70,7 @@
         <vodml-ref>Provenance:AgentType</vodml-ref>
       </datatype>
       <multiplicity>
-        <minOccurs>1</minOccurs>
+        <minOccurs>0</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
@@ -1166,6 +1082,22 @@ different categories of entities.</description>
     <name>ActivityConfiguration</name>
     <description>This package gathers the necessary classes for expressing the configuration of a task before, during and after execution. 
 We consider only the executed version will be stored in a provenance information system.</description>
+    <enumeration>
+      <vodml-id>ActivityConfiguration.TypeOfConfigArtifact</vodml-id>
+      <name>TypeOfConfigArtifact</name>
+      <description>The configuration for an Activity ( job)  can be fully explicit , with a list of searchable parameters , or expressed into a document file storing the configuration . This attribute contains the type of config information at the end of the wasConfiguredby association instance .</description>
+      <literal>
+        <vodml-id>ActivityConfiguration.TypeOfConfigArtifact.Parameter</vodml-id>
+        <name>Parameter</name>
+        <description>Label for parameter config artifact</description>
+      </literal>
+      <literal>
+        <vodml-id>ActivityConfiguration.TypeOfConfigArtifact.Configfile</vodml-id>
+        <name>Configfile</name>
+        <description>Label for config file config artifact</description>
+      </literal>
+    </enumeration>
+
     <objectType>
       <vodml-id>ActivityConfiguration.ParameterDescription</vodml-id>
       <name>ParameterDescription</name>
@@ -1454,7 +1386,7 @@ Attribute "artefactType" holds the type of its target .</description>
         <description>Object type pointed by the instance
 </description>
         <datatype>
-          <vodml-ref>Provenance:TypeOfConfigArtifact</vodml-ref>
+          <vodml-ref>Provenance:ActivityConfiguration.TypeOfConfigArtifact</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>1</minOccurs>
