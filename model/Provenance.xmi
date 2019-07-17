@@ -1,1089 +1,1089 @@
-<?xml version="1.0" encoding="UTF-8"?><xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IVOA_UML_Profile="http:///schemas/IVOA_UML_Profile/_mYJq8KhyEemf1uNNAktmdg/0" xmlns:default="http:///schemas/default/_mYY7gKhyEemf1uNNAktmdg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmi:version="2.1" xsi:schemaLocation="http://www.eclipse.org/uml2/3.0.0/UML http://schema.omg.org/spec/UML/20110701 http:///schemas/IVOA_UML_Profile/_mYJq8KhyEemf1uNNAktmdg/0 IVOA_UML_Profile.profile.xmi#_mYdM8KhyEemf1uNNAktmdg http:///schemas/default/_mYY7gKhyEemf1uNNAktmdg/0 default.profile.xmi#_mcyTVqhyEemf1uNNAktmdg">
-  <uml:Model xmi:id="_mX9dsKhyEemf1uNNAktmdg" name="Provenance">
-    <eAnnotations xmi:id="_mX9dsahyEemf1uNNAktmdg" source="Objing">
-      <contents xmi:type="uml:Property" xmi:id="_mX9dsqhyEemf1uNNAktmdg" name="exporterVersion">
-        <defaultValue xmi:type="uml:LiteralString" xmi:id="_mX9ds6hyEemf1uNNAktmdg" value="3.0.0"/>
+<?xml version="1.0" encoding="UTF-8"?><xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IVOA_UML_Profile="http:///schemas/IVOA_UML_Profile/_FdEH8KiIEemf1uNNAktmdg/0" xmlns:default="http:///schemas/default/_FdlsYKiIEemf1uNNAktmdg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmi:version="2.1" xsi:schemaLocation="http://www.eclipse.org/uml2/3.0.0/UML http://schema.omg.org/spec/UML/20110701 http:///schemas/IVOA_UML_Profile/_FdEH8KiIEemf1uNNAktmdg/0 IVOA_UML_Profile.profile.xmi#_FdrzB6iIEemf1uNNAktmdg http:///schemas/default/_FdlsYKiIEemf1uNNAktmdg/0 default.profile.xmi#_FegSZ6iIEemf1uNNAktmdg">
+  <uml:Model xmi:id="_FdAdkKiIEemf1uNNAktmdg" name="Provenance">
+    <eAnnotations xmi:id="_FdAdkaiIEemf1uNNAktmdg" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_FdAdkqiIEemf1uNNAktmdg" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_FdAdk6iIEemf1uNNAktmdg" value="3.0.0"/>
       </contents>
     </eAnnotations>
-    <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dtKhyEemf1uNNAktmdg">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdlKiIEemf1uNNAktmdg">
       <body>Data model describing the structure and content of the IVOA Provenance Data Model. This re-uses the concepts from the W3C Provenance DM, but extends it with a description layer for Activities and Entities.</body>
     </ownedComment>
-    <ownedRule xmi:type="uml:Constraint" xmi:id="_mX9dtahyEemf1uNNAktmdg" name="Provenance:provenance.ValueEntity" constrainedElement="_mX-E9qhyEemf1uNNAktmdg">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dtqhyEemf1uNNAktmdg">
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FdAdlaiIEemf1uNNAktmdg" name="Provenance:provenance.ValueEntity" constrainedElement="_FdBF96iIEemf1uNNAktmdg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdlqiIEemf1uNNAktmdg">
         <body>&lt;Enter note text here&gt;</body>
       </ownedComment>
-      <specification xmi:type="uml:LiteralString" xmi:id="_mX9dt6hyEemf1uNNAktmdg" value="Provenance:provenance.ValueDescription"/>
+      <specification xmi:type="uml:LiteralString" xmi:id="_FdAdl6iIEemf1uNNAktmdg" value="Provenance:provenance.ValueDescription"/>
     </ownedRule>
-    <ownedRule xmi:type="uml:Constraint" xmi:id="_mX9duKhyEemf1uNNAktmdg" name="Provenance:provenance.DatasetEntity" constrainedElement="_mX-E-6hyEemf1uNNAktmdg">
-      <specification xmi:type="uml:LiteralString" xmi:id="_mX9duahyEemf1uNNAktmdg" value="Provenance:provenance.DatasetDescription"/>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FdAdmKiIEemf1uNNAktmdg" name="Provenance:provenance.DatasetEntity" constrainedElement="_FdBF_KiIEemf1uNNAktmdg">
+      <specification xmi:type="uml:LiteralString" xmi:id="_FdAdmaiIEemf1uNNAktmdg" value="Provenance:provenance.DatasetDescription"/>
     </ownedRule>
-    <packagedElement xmi:type="uml:Package" xmi:id="_mX9duqhyEemf1uNNAktmdg" name="ivoa">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9du6hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Package" xmi:id="_FdAdmqiIEemf1uNNAktmdg" name="ivoa">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdm6iIEemf1uNNAktmdg">
         <body>Package for IVOA datatypes</body>
       </ownedComment>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_mX9dvKhyEemf1uNNAktmdg" name="Identity">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dvahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_FdAdnKiIEemf1uNNAktmdg" name="Identity">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdnaiIEemf1uNNAktmdg">
           <body>&lt;Enter note text here&gt;</body>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9dvqhyEemf1uNNAktmdg" name="id" visibility="public" type="_mX9d6KhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dv6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdAdnqiIEemf1uNNAktmdg" name="id" visibility="public" type="_FdBExKiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdn6iIEemf1uNNAktmdg">
             <body>Identifier</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9dwKhyEemf1uNNAktmdg" name="xmlId" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dwahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdAdoKiIEemf1uNNAktmdg" name="xmlId" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdoaiIEemf1uNNAktmdg">
             <body>XML identifier
 </body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9dwqhyEemf1uNNAktmdg" name="ivoId" visibility="public" type="_mX9dzKhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dw6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdAdoqiIEemf1uNNAktmdg" name="ivoId" visibility="public" type="_FdBEqKiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdAdo6iIEemf1uNNAktmdg">
             <body>IVOA identifier</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9dxKhyEemf1uNNAktmdg" name="publisherDID" visibility="public" type="_mX9dzKhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dxahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBEoKiIEemf1uNNAktmdg" name="publisherDID" visibility="public" type="_FdBEqKiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEoaiIEemf1uNNAktmdg">
             <body>IVOA publisher DID</body>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9dxqhyEemf1uNNAktmdg" name="real">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dx6hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEoqiIEemf1uNNAktmdg" name="real">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEo6iIEemf1uNNAktmdg">
           <body>real value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9dyKhyEemf1uNNAktmdg" name="decimal">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dyahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEpKiIEemf1uNNAktmdg" name="decimal">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEpaiIEemf1uNNAktmdg">
           <body>decimal value
 </body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9dyqhyEemf1uNNAktmdg" name="datetime">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dy6hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEpqiIEemf1uNNAktmdg" name="datetime">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEp6iIEemf1uNNAktmdg">
           <body>Date time</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9dzKhyEemf1uNNAktmdg" name="anyURI">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dzahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEqKiIEemf1uNNAktmdg" name="anyURI">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEqaiIEemf1uNNAktmdg">
           <body>URI</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_mX9dzqhyEemf1uNNAktmdg" name="quantity">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9dz6hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Package" xmi:id="_FdBEqqiIEemf1uNNAktmdg" name="quantity">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEq6iIEemf1uNNAktmdg">
           <body>Package for IVOA quantities datatypes</body>
         </ownedComment>
-        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d0KhyEemf1uNNAktmdg" name="Unit">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d0ahyEemf1uNNAktmdg">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBErKiIEemf1uNNAktmdg" name="Unit">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEraiIEemf1uNNAktmdg">
             <body>Unit quantity</body>
           </ownedComment>
-          <generalization xmi:type="uml:Generalization" xmi:id="_mX9d0qhyEemf1uNNAktmdg" general="_mX9d4qhyEemf1uNNAktmdg"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_FdBErqiIEemf1uNNAktmdg" general="_FdBEvqiIEemf1uNNAktmdg"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:DataType" xmi:id="_mX9d06hyEemf1uNNAktmdg" name="Quantity" isAbstract="true">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d1KhyEemf1uNNAktmdg">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_FdBEr6iIEemf1uNNAktmdg" name="Quantity" isAbstract="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEsKiIEemf1uNNAktmdg">
             <body>Generic quantity with a unit
 </body>
           </ownedComment>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d1ahyEemf1uNNAktmdg" name="unit" visibility="public" type="_mX9d0KhyEemf1uNNAktmdg" isUnique="false">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d1qhyEemf1uNNAktmdg">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBEsaiIEemf1uNNAktmdg" name="unit" visibility="public" type="_FdBErKiIEemf1uNNAktmdg" isUnique="false">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEsqiIEemf1uNNAktmdg">
               <body>IVOA unit for the quantity</body>
             </ownedComment>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9d16hyEemf1uNNAktmdg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBEs6iIEemf1uNNAktmdg"/>
           </ownedAttribute>
         </packagedElement>
-        <packagedElement xmi:type="uml:DataType" xmi:id="_mX9d2KhyEemf1uNNAktmdg" name="IntegerQuantity">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d2ahyEemf1uNNAktmdg">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_FdBEtKiIEemf1uNNAktmdg" name="IntegerQuantity">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEtaiIEemf1uNNAktmdg">
             <body>Integer quantity</body>
           </ownedComment>
-          <generalization xmi:type="uml:Generalization" xmi:id="_mX9d2qhyEemf1uNNAktmdg" general="_mX9d06hyEemf1uNNAktmdg"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d26hyEemf1uNNAktmdg" name="value" visibility="public" type="_mX9d6KhyEemf1uNNAktmdg" isUnique="false">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d3KhyEemf1uNNAktmdg">
+          <generalization xmi:type="uml:Generalization" xmi:id="_FdBEtqiIEemf1uNNAktmdg" general="_FdBEr6iIEemf1uNNAktmdg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBEt6iIEemf1uNNAktmdg" name="value" visibility="public" type="_FdBExKiIEemf1uNNAktmdg" isUnique="false">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEuKiIEemf1uNNAktmdg">
               <body>Integer value</body>
             </ownedComment>
           </ownedAttribute>
         </packagedElement>
-        <packagedElement xmi:type="uml:DataType" xmi:id="_mX9d3ahyEemf1uNNAktmdg" name="RealQuantity">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d3qhyEemf1uNNAktmdg">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_FdBEuaiIEemf1uNNAktmdg" name="RealQuantity">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEuqiIEemf1uNNAktmdg">
             <body>Real quantity</body>
           </ownedComment>
-          <generalization xmi:type="uml:Generalization" xmi:id="_mX9d36hyEemf1uNNAktmdg" general="_mX9d06hyEemf1uNNAktmdg"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d4KhyEemf1uNNAktmdg" name="value" visibility="public" type="_mX9dxqhyEemf1uNNAktmdg" isUnique="false">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d4ahyEemf1uNNAktmdg">
+          <generalization xmi:type="uml:Generalization" xmi:id="_FdBEu6iIEemf1uNNAktmdg" general="_FdBEr6iIEemf1uNNAktmdg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBEvKiIEemf1uNNAktmdg" name="value" visibility="public" type="_FdBEoqiIEemf1uNNAktmdg" isUnique="false">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEvaiIEemf1uNNAktmdg">
               <body>Real value</body>
             </ownedComment>
           </ownedAttribute>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d4qhyEemf1uNNAktmdg" name="string">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d46hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEvqiIEemf1uNNAktmdg" name="string">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEv6iIEemf1uNNAktmdg">
           <body>String value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d5KhyEemf1uNNAktmdg" name="nonnegativeInteger">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d5ahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEwKiIEemf1uNNAktmdg" name="nonnegativeInteger">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEwaiIEemf1uNNAktmdg">
           <body>Non negative integer value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d5qhyEemf1uNNAktmdg" name="boolean">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d56hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEwqiIEemf1uNNAktmdg" name="boolean">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEw6iIEemf1uNNAktmdg">
           <body>Boolean value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d6KhyEemf1uNNAktmdg" name="integer">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d6ahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBExKiIEemf1uNNAktmdg" name="integer">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBExaiIEemf1uNNAktmdg">
           <body>Integer value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d6qhyEemf1uNNAktmdg" name="rational">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d66hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBExqiIEemf1uNNAktmdg" name="rational">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEx6iIEemf1uNNAktmdg">
           <body>rational value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d7KhyEemf1uNNAktmdg" name="complex">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d7ahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEyKiIEemf1uNNAktmdg" name="complex">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEyaiIEemf1uNNAktmdg">
           <body>complex value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_mX9d7qhyEemf1uNNAktmdg" name="duration">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d76hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FdBEyqiIEemf1uNNAktmdg" name="duration">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEy6iIEemf1uNNAktmdg">
           <body>Duration value</body>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:InformationItem" xmi:id="_mX9d8KhyEemf1uNNAktmdg" name="IVOA Base Types V1.0 (2014)"/>
+      <packagedElement xmi:type="uml:InformationItem" xmi:id="_FdBEzKiIEemf1uNNAktmdg" name="IVOA Base Types V1.0 (2014)"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:InformationItem" xmi:id="_mX9d8ahyEemf1uNNAktmdg" name="Template Model V1.0 (2016)"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_mX9d8qhyEemf1uNNAktmdg" name="ActivityConfiguration">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d86hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:InformationItem" xmi:id="_FdBEzaiIEemf1uNNAktmdg" name="Template Model V1.0 (2016)"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_FdBEzqiIEemf1uNNAktmdg" name="ActivityConfiguration">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBEz6iIEemf1uNNAktmdg">
         <body>This package gathers the necessary classes for expressing the configuration of a task before, during and after execution. 
 We consider only the executed version will be stored in a provenance information system.</body>
       </ownedComment>
-      <packagedElement xmi:type="uml:Class" xmi:id="_mX9d9KhyEemf1uNNAktmdg" name="ParameterDescription">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d9ahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_FdBE0KiIEemf1uNNAktmdg" name="ParameterDescription">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE0aiIEemf1uNNAktmdg">
           <body>How to both use and interpret the parameter</body>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d9qhyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d96hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE0qiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE06iIEemf1uNNAktmdg">
             <body>Name of the parameter</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d-KhyEemf1uNNAktmdg" name="valueType" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d-ahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE1KiIEemf1uNNAktmdg" name="valueType" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE1aiIEemf1uNNAktmdg">
             <body>VO-DML compliant data type of the parameter value</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d-qhyEemf1uNNAktmdg" name="unit" visibility="public" type="_mX9d0KhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d-6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE1qiIEemf1uNNAktmdg" name="unit" visibility="public" type="_FdBErKiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE16iIEemf1uNNAktmdg">
             <body>VO compliant unit string used for this parameter</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9d_KhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE2KiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9d_ahyEemf1uNNAktmdg" name="ucd" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9d_qhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE2aiIEemf1uNNAktmdg" name="ucd" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE2qiIEemf1uNNAktmdg">
             <body>Unified Content Descriptor, supplying a standardized classification of the physical quantity</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9d_6hyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE26iIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eAKhyEemf1uNNAktmdg" name="utype" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eAahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE3KiIEemf1uNNAktmdg" name="utype" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE3aiIEemf1uNNAktmdg">
             <body>Expresses the role of the parameter in the context of VO data mode text</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eAqhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE3qiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eA6hyEemf1uNNAktmdg" name="min" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eBKhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE36iIEemf1uNNAktmdg" name="min" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE4KiIEemf1uNNAktmdg">
             <body>Minimum parameter value as a string whose value can be interpreted by the valueType attribute</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eBahyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE4aiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eBqhyEemf1uNNAktmdg" name="max" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eB6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE4qiIEemf1uNNAktmdg" name="max" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE46iIEemf1uNNAktmdg">
             <body>Maximum parameter value as a string whose value can be interpreted by the valueType attribute</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eCKhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE5KiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eCahyEemf1uNNAktmdg" name="default" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eCqhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE5aiIEemf1uNNAktmdg" name="default" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE5qiIEemf1uNNAktmdg">
             <body>Default parameter value as a string whose value can be interpreted by the valueType attribute.</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eC6hyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE56iIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eDKhyEemf1uNNAktmdg" name="options" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eDahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE6KiIEemf1uNNAktmdg" name="options" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE6aiIEemf1uNNAktmdg">
             <body>Comma separated list of possible values</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eDqhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE6qiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eD6hyEemf1uNNAktmdg" name="description" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eEKhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE66iIEemf1uNNAktmdg" name="description" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE7KiIEemf1uNNAktmdg">
             <body>A short text that explains the content and purpose of this Parameter.</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eEahyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE7aiIEemf1uNNAktmdg"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_mX9eEqhyEemf1uNNAktmdg" name="ConfigFileDescription">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eE6hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_FdBE7qiIEemf1uNNAktmdg" name="ConfigFileDescription">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE76iIEemf1uNNAktmdg">
           <body>Properties of the configuration files</body>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eFKhyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eFahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE8KiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE8aiIEemf1uNNAktmdg">
             <body>Name of the instance</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eFqhyEemf1uNNAktmdg" name="contentType" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eF6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE8qiIEemf1uNNAktmdg" name="contentType" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE86iIEemf1uNNAktmdg">
             <body>MIME-type or format of the configuration file</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eGKhyEemf1uNNAktmdg" name="description" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eGahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE9KiIEemf1uNNAktmdg" name="description" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE9aiIEemf1uNNAktmdg">
             <body>A short text that explains the content and purpose of the configuration file.</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eGqhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE9qiIEemf1uNNAktmdg"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_mX9eG6hyEemf1uNNAktmdg" name="Parameter">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eHKhyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_FdBE96iIEemf1uNNAktmdg" name="Parameter">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE-KiIEemf1uNNAktmdg">
           <body>A simple value which is part of the configuration of an activity instance</body>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eHahyEemf1uNNAktmdg" name="valueEntity" visibility="public" type="_mX-E9qhyEemf1uNNAktmdg" association="_mX9eV6hyEemf1uNNAktmdg">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eHqhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE-aiIEemf1uNNAktmdg" name="valueEntity" visibility="public" type="_FdBF96iIEemf1uNNAktmdg" association="_FdBFM6iIEemf1uNNAktmdg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE-qiIEemf1uNNAktmdg">
             <body>A Parameter instance can have a value derived from a ValueEntity value element computed previously by some former Activity instance. Therefore, the ValueEntity it refers to is generated with another instance of the Activity class, in a different generation scenario executed previously.</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eH6hyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE-6iIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eIKhyEemf1uNNAktmdg" name="parameterDescription" visibility="public" type="_mX9d9KhyEemf1uNNAktmdg" association="_mX9eJ6hyEemf1uNNAktmdg">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eIahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE_KiIEemf1uNNAktmdg" name="parameterDescription" visibility="public" type="_FdBE0KiIEemf1uNNAktmdg" association="_FdBFA6iIEemf1uNNAktmdg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBE_aiIEemf1uNNAktmdg">
             <body>Description of the individual parameters</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eIqhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBE_qiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eI6hyEemf1uNNAktmdg" name="value" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eJKhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBE_6iIEemf1uNNAktmdg" name="value" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFAKiIEemf1uNNAktmdg">
             <body>The value of the parameter. The data  type, meaning, units, etc., are stored in the ParameterDescription instance bound to it.</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eJahyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eJqhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFAaiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFAqiIEemf1uNNAktmdg">
             <body>Name of the parameter</body>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eJ6hyEemf1uNNAktmdg" memberEnd="_mX9eIKhyEemf1uNNAktmdg _mX9eKKhyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eKKhyEemf1uNNAktmdg" visibility="public" type="_mX9eG6hyEemf1uNNAktmdg" association="_mX9eJ6hyEemf1uNNAktmdg">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9eKahyEemf1uNNAktmdg" value="*"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eKqhyEemf1uNNAktmdg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFA6iIEemf1uNNAktmdg" memberEnd="_FdBE_KiIEemf1uNNAktmdg _FdBFBKiIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFBKiIEemf1uNNAktmdg" visibility="public" type="_FdBE96iIEemf1uNNAktmdg" association="_FdBFA6iIEemf1uNNAktmdg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFBaiIEemf1uNNAktmdg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFBqiIEemf1uNNAktmdg"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_mX9eK6hyEemf1uNNAktmdg" name="ConfigFile">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eLKhyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_FdBFB6iIEemf1uNNAktmdg" name="ConfigFile">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFCKiIEemf1uNNAktmdg">
           <body>The values used to control the activity can be provided as a Configuration file document.
 </body>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eLahyEemf1uNNAktmdg" name="configFileDescription" visibility="public" type="_mX9eEqhyEemf1uNNAktmdg" association="_mX9eOKhyEemf1uNNAktmdg">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eLqhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFCaiIEemf1uNNAktmdg" name="configFileDescription" visibility="public" type="_FdBE7qiIEemf1uNNAktmdg" association="_FdBFFKiIEemf1uNNAktmdg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFCqiIEemf1uNNAktmdg">
             <body>Points to the corresponding description class</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eL6hyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFC6iIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eMKhyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eMahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFDKiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFDaiIEemf1uNNAktmdg">
             <body>Name of the file</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eMqhyEemf1uNNAktmdg" name="location" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eM6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFDqiIEemf1uNNAktmdg" name="location" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFD6iIEemf1uNNAktmdg">
             <body>Path or URL to the config file</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eNKhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFEKiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eNahyEemf1uNNAktmdg" name="comment" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eNqhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFEaiIEemf1uNNAktmdg" name="comment" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFEqiIEemf1uNNAktmdg">
             <body>A descriptive text for this instance</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eN6hyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFE6iIEemf1uNNAktmdg"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eOKhyEemf1uNNAktmdg" memberEnd="_mX9eLahyEemf1uNNAktmdg _mX9eOahyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eOahyEemf1uNNAktmdg" visibility="public" type="_mX9eK6hyEemf1uNNAktmdg" association="_mX9eOKhyEemf1uNNAktmdg">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9eOqhyEemf1uNNAktmdg" value="*"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eO6hyEemf1uNNAktmdg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFFKiIEemf1uNNAktmdg" memberEnd="_FdBFCaiIEemf1uNNAktmdg _FdBFFaiIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFFaiIEemf1uNNAktmdg" visibility="public" type="_FdBFB6iIEemf1uNNAktmdg" association="_FdBFFKiIEemf1uNNAktmdg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFFqiIEemf1uNNAktmdg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFF6iIEemf1uNNAktmdg"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_mX9ePKhyEemf1uNNAktmdg" name="WasConfiguredBy">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ePahyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_FdBFGKiIEemf1uNNAktmdg" name="WasConfiguredBy">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFGaiIEemf1uNNAktmdg">
           <body>This is an association class binding an Activity Instance to one configuration artefact which can be a Parameter instance  or a ConfigFile instance . 
 Attribute "artefactType" holds the type of its target .</body>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ePqhyEemf1uNNAktmdg" name="configFile" visibility="public" type="_mX9eK6hyEemf1uNNAktmdg" association="_mX9eRqhyEemf1uNNAktmdg">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eP6hyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFGqiIEemf1uNNAktmdg" name="configFile" visibility="public" type="_FdBFB6iIEemf1uNNAktmdg" association="_FdBFIqiIEemf1uNNAktmdg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFG6iIEemf1uNNAktmdg">
             <body>Points to the configuration file</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eQKhyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFHKiIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eQahyEemf1uNNAktmdg" name="parameter" visibility="public" type="_mX9eG6hyEemf1uNNAktmdg" association="_mX9eSKhyEemf1uNNAktmdg">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eQqhyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFHaiIEemf1uNNAktmdg" name="parameter" visibility="public" type="_FdBE96iIEemf1uNNAktmdg" association="_FdBFJKiIEemf1uNNAktmdg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFHqiIEemf1uNNAktmdg">
             <body>points to parameter</body>
           </ownedComment>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eQ6hyEemf1uNNAktmdg"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFH6iIEemf1uNNAktmdg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eRKhyEemf1uNNAktmdg" name="artefactType" visibility="public" type="_mX9eSqhyEemf1uNNAktmdg" isUnique="false">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eRahyEemf1uNNAktmdg">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFIKiIEemf1uNNAktmdg" name="artefactType" visibility="public" type="_FdBFJqiIEemf1uNNAktmdg" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFIaiIEemf1uNNAktmdg">
             <body>Object type pointed by the instance
 </body>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eRqhyEemf1uNNAktmdg" memberEnd="_mX9ePqhyEemf1uNNAktmdg _mX9eR6hyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eR6hyEemf1uNNAktmdg" visibility="public" type="_mX9ePKhyEemf1uNNAktmdg" association="_mX9eRqhyEemf1uNNAktmdg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFIqiIEemf1uNNAktmdg" memberEnd="_FdBFGqiIEemf1uNNAktmdg _FdBFI6iIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFI6iIEemf1uNNAktmdg" visibility="public" type="_FdBFGKiIEemf1uNNAktmdg" association="_FdBFIqiIEemf1uNNAktmdg"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eSKhyEemf1uNNAktmdg" memberEnd="_mX9eQahyEemf1uNNAktmdg _mX9eSahyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eSahyEemf1uNNAktmdg" visibility="public" type="_mX9ePKhyEemf1uNNAktmdg" association="_mX9eSKhyEemf1uNNAktmdg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFJKiIEemf1uNNAktmdg" memberEnd="_FdBFHaiIEemf1uNNAktmdg _FdBFJaiIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFJaiIEemf1uNNAktmdg" visibility="public" type="_FdBFGKiIEemf1uNNAktmdg" association="_FdBFJKiIEemf1uNNAktmdg"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="_mX9eSqhyEemf1uNNAktmdg" name="TypeOfConfigArtifact">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eS6hyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_FdBFJqiIEemf1uNNAktmdg" name="TypeOfConfigArtifact">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFJ6iIEemf1uNNAktmdg">
           <body>The configuration for an Activity ( job)  can be fully explicit , with a list of searchable parameters , or expressed into a document file storing the configuration . This attribute contains the type of config information at the end of the wasConfiguredby association instance .</body>
         </ownedComment>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mX9eTKhyEemf1uNNAktmdg" name="Parameter">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eTahyEemf1uNNAktmdg">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FdBFKKiIEemf1uNNAktmdg" name="Parameter">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFKaiIEemf1uNNAktmdg">
             <body>Label for parameter config artifact</body>
           </ownedComment>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mX9eTqhyEemf1uNNAktmdg" name="Configfile">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eT6hyEemf1uNNAktmdg">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FdBFKqiIEemf1uNNAktmdg" name="Configfile">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFK6iIEemf1uNNAktmdg">
             <body>Label for config file config artifact</body>
           </ownedComment>
         </ownedLiteral>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eUKhyEemf1uNNAktmdg" memberEnd="_mX9enahyEemf1uNNAktmdg _mX9eUahyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eUahyEemf1uNNAktmdg" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX9eUKhyEemf1uNNAktmdg">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eUqhyEemf1uNNAktmdg">
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFLKiIEemf1uNNAktmdg" memberEnd="_FdBFeaiIEemf1uNNAktmdg _FdBFLaiIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFLaiIEemf1uNNAktmdg" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBFLKiIEemf1uNNAktmdg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFLqiIEemf1uNNAktmdg">
             <body>Gathers Configuration elements for this Activity instance</body>
           </ownedComment>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eU6hyEemf1uNNAktmdg" memberEnd="_mX-FAKhyEemf1uNNAktmdg _mX9eVKhyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eVKhyEemf1uNNAktmdg" visibility="public" type="_mX-E_qhyEemf1uNNAktmdg" association="_mX9eU6hyEemf1uNNAktmdg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFL6iIEemf1uNNAktmdg" memberEnd="_FdBGAaiIEemf1uNNAktmdg _FdBFMKiIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFMKiIEemf1uNNAktmdg" visibility="public" type="_FdBF_6iIEemf1uNNAktmdg" association="_FdBFL6iIEemf1uNNAktmdg"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mX9eVahyEemf1uNNAktmdg" memberEnd="_mX-FBKhyEemf1uNNAktmdg _mX9eVqhyEemf1uNNAktmdg">
-        <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eVqhyEemf1uNNAktmdg" visibility="public" type="_mX-E_qhyEemf1uNNAktmdg" association="_mX9eVahyEemf1uNNAktmdg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_FdBFMaiIEemf1uNNAktmdg" memberEnd="_FdBGBaiIEemf1uNNAktmdg _FdBFMqiIEemf1uNNAktmdg">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFMqiIEemf1uNNAktmdg" visibility="public" type="_FdBF_6iIEemf1uNNAktmdg" association="_FdBFMaiIEemf1uNNAktmdg"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9eV6hyEemf1uNNAktmdg" name="hadReference" memberEnd="_mX9eHahyEemf1uNNAktmdg _mX9eWKhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eWKhyEemf1uNNAktmdg" visibility="public" type="_mX9eG6hyEemf1uNNAktmdg" association="_mX9eV6hyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9eWahyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eWqhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFM6iIEemf1uNNAktmdg" name="hadReference" memberEnd="_FdBE-aiIEemf1uNNAktmdg _FdBFNKiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFNKiIEemf1uNNAktmdg" visibility="public" type="_FdBE96iIEemf1uNNAktmdg" association="_FdBFM6iIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFNaiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFNqiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX9eW6hyEemf1uNNAktmdg" name="Agent">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eXKhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBFN6iIEemf1uNNAktmdg" name="Agent">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFOKiIEemf1uNNAktmdg">
         <body>A person or an organisation that was involved in the follow-up of an Activity, or can be credited for the production of an Entity.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eXahyEemf1uNNAktmdg" name="id" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eXqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFOaiIEemf1uNNAktmdg" name="id" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFOqiIEemf1uNNAktmdg">
           <body>Unique identifier for an Agent. Must be unique in the domain.</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eX6hyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eYKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFO6iIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFPKiIEemf1uNNAktmdg">
           <body>Agent name</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eYahyEemf1uNNAktmdg" name="type" visibility="public" type="_mX-FeqhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eYqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFPaiIEemf1uNNAktmdg" name="type" visibility="public" type="_FdBGe6iIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFPqiIEemf1uNNAktmdg">
           <body>Defines the Agent type : Person, Organization or SoftwareAgent</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eY6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFP6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eZKhyEemf1uNNAktmdg" name="comment" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eZahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFQKiIEemf1uNNAktmdg" name="comment" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFQaiIEemf1uNNAktmdg">
           <body>A short text about some peculiar information on the instance.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eZqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFQqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eZ6hyEemf1uNNAktmdg" name="email" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eaKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFQ6iIEemf1uNNAktmdg" name="email" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFRKiIEemf1uNNAktmdg">
           <body>Email address of the Agent</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eaahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFRaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eaqhyEemf1uNNAktmdg" name="affiliation" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ea6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFRqiIEemf1uNNAktmdg" name="affiliation" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFR6iIEemf1uNNAktmdg">
           <body>Agent's affiliation</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ebKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFSKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ebahyEemf1uNNAktmdg" name="phone" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ebqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFSaiIEemf1uNNAktmdg" name="phone" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFSqiIEemf1uNNAktmdg">
           <body>Agent's phone number</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eb6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFS6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ecKhyEemf1uNNAktmdg" name="address" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ecahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFTKiIEemf1uNNAktmdg" name="address" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFTaiIEemf1uNNAktmdg">
           <body>Agent's postmail address</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ecqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFTqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ec6hyEemf1uNNAktmdg" name="url" visibility="public" type="_mX9dzKhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9edKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFT6iIEemf1uNNAktmdg" name="url" visibility="public" type="_FdBEqKiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFUKiIEemf1uNNAktmdg">
           <body>Reference URL to the agent</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9edahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFUaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX9edqhyEemf1uNNAktmdg" name="WasAssociatedWith">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ed6hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBFUqiIEemf1uNNAktmdg" name="WasAssociatedWith">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFU6iIEemf1uNNAktmdg">
         <body>Denotes the assignment of responsibility to an agent for an activity.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eeKhyEemf1uNNAktmdg" name="agent" visibility="public" type="_mX9eW6hyEemf1uNNAktmdg" association="_mX9efahyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eeahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFVKiIEemf1uNNAktmdg" name="agent" visibility="public" type="_FdBFN6iIEemf1uNNAktmdg" association="_FdBFWaiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFVaiIEemf1uNNAktmdg">
           <body>Points to the agent</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eeqhyEemf1uNNAktmdg" name="role" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ee6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFVqiIEemf1uNNAktmdg" name="role" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFV6iIEemf1uNNAktmdg">
           <body>Function of the agent with respect to the activity
 The role values belong to the AgentRole type defined in the Provenance vocabulary.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9efKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFWKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9efahyEemf1uNNAktmdg" memberEnd="_mX9eeKhyEemf1uNNAktmdg _mX9efqhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9efqhyEemf1uNNAktmdg" visibility="public" type="_mX9edqhyEemf1uNNAktmdg" association="_mX9efahyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9ef6hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9egKhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFWaiIEemf1uNNAktmdg" memberEnd="_FdBFVKiIEemf1uNNAktmdg _FdBFWqiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFWqiIEemf1uNNAktmdg" visibility="public" type="_FdBFUqiIEemf1uNNAktmdg" association="_FdBFWaiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFW6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFXKiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX9egahyEemf1uNNAktmdg" name="WasAttributedTo">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9egqhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBFXaiIEemf1uNNAktmdg" name="WasAttributedTo">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFXqiIEemf1uNNAktmdg">
         <body>Links an Agent to the Entity it is responsible for. Various roles for this relation are allowed and defined in the Provenance vocabulary under TypeOfAgentRole</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eg6hyEemf1uNNAktmdg" name="agent" visibility="public" type="_mX9eW6hyEemf1uNNAktmdg" association="_mX9eiKhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ehKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFX6iIEemf1uNNAktmdg" name="agent" visibility="public" type="_FdBFN6iIEemf1uNNAktmdg" association="_FdBFZKiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFYKiIEemf1uNNAktmdg">
           <body>Points to the agent</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ehahyEemf1uNNAktmdg" name="role" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ehqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFYaiIEemf1uNNAktmdg" name="role" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFYqiIEemf1uNNAktmdg">
           <body>Function of the agent with respect to the entity
 </body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eh6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFY6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9eiKhyEemf1uNNAktmdg" memberEnd="_mX9eg6hyEemf1uNNAktmdg _mX9eiahyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eiahyEemf1uNNAktmdg" visibility="public" type="_mX9egahyEemf1uNNAktmdg" association="_mX9eiKhyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9eiqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ei6hyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFZKiIEemf1uNNAktmdg" memberEnd="_FdBFX6iIEemf1uNNAktmdg _FdBFZaiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFZaiIEemf1uNNAktmdg" visibility="public" type="_FdBFXaiIEemf1uNNAktmdg" association="_FdBFZKiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFZqiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFZ6iIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX9ejKhyEemf1uNNAktmdg" name="Activity">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ejahyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBFaKiIEemf1uNNAktmdg" name="Activity">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFaaiIEemf1uNNAktmdg">
         <body>A task executed at some time. It consumes products via relations of type Used and produces results via relations of type WasGeneratedBy. 
 The method applied for this task is described in the ActivityDescription class and its subtree.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ejqhyEemf1uNNAktmdg" name="wasAssoociatedWith" visibility="public" type="_mX9edqhyEemf1uNNAktmdg" aggregation="composite" association="_mX9er6hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ej6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFaqiIEemf1uNNAktmdg" name="wasAssociatedWith" visibility="public" type="_FdBFUqiIEemf1uNNAktmdg" aggregation="composite" association="_FdBFi6iIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFa6iIEemf1uNNAktmdg">
           <body>Gathers Agents bound to this Activity instance</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9ekKhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ekahyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFbKiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFbaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ekqhyEemf1uNNAktmdg" name="informant" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX9esahyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ek6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFbqiIEemf1uNNAktmdg" name="informant" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBFjaiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFb6iIEemf1uNNAktmdg">
           <body>refers to an activity providing information</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9elKhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9elahyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFcKiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFcaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9elqhyEemf1uNNAktmdg" name="used" visibility="public" type="_mX9eu6hyEemf1uNNAktmdg" aggregation="composite" association="_mX9etahyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9el6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFcqiIEemf1uNNAktmdg" name="used" visibility="public" type="_FdBFl6iIEemf1uNNAktmdg" aggregation="composite" association="_FdBFkaiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFc6iIEemf1uNNAktmdg">
           <body>Gathers Entities used by the Activity instance</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9emKhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9emahyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFdKiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFdaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9emqhyEemf1uNNAktmdg" name="activityDescription" visibility="public" type="_mX-E_qhyEemf1uNNAktmdg" association="_mX9et6hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9em6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFdqiIEemf1uNNAktmdg" name="activityDescription" visibility="public" type="_FdBF_6iIEemf1uNNAktmdg" association="_FdBFk6iIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFd6iIEemf1uNNAktmdg">
           <body>Points to the corresponding description class</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9enKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFeKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9enahyEemf1uNNAktmdg" name="wasConfiguredBy" visibility="public" type="_mX9ePKhyEemf1uNNAktmdg" aggregation="composite" association="_mX9eUKhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9enqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFeaiIEemf1uNNAktmdg" name="wasConfiguredBy" visibility="public" type="_FdBFGKiIEemf1uNNAktmdg" aggregation="composite" association="_FdBFLKiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFeqiIEemf1uNNAktmdg">
           <body>Gathers Configuration elements for this Activity instance</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9en6hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eoKhyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFe6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFfKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eoahyEemf1uNNAktmdg" name="id" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eoqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFfaiIEemf1uNNAktmdg" name="id" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFfqiIEemf1uNNAktmdg">
           <body>Unique identifier for an Activity. Must be unique in the domain.</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eo6hyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9epKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFf6iIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFgKiIEemf1uNNAktmdg">
           <body>Activity name</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9epahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFgaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9epqhyEemf1uNNAktmdg" name="startTime" visibility="public" type="_mX9dyqhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ep6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFgqiIEemf1uNNAktmdg" name="startTime" visibility="public" type="_FdBEpqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFg6iIEemf1uNNAktmdg">
           <body>This allows to know when the activity was launched . 
 This is recommended to fill in as it helps to check dependencies and errors into the database.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eqKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFhKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9eqahyEemf1uNNAktmdg" name="endTime" visibility="public" type="_mX9dyqhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9eqqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFhaiIEemf1uNNAktmdg" name="endTime" visibility="public" type="_FdBEpqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFhqiIEemf1uNNAktmdg">
           <body>Time when the Activity ends up.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9eq6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFh6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9erKhyEemf1uNNAktmdg" name="comment" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9erahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFiKiIEemf1uNNAktmdg" name="comment" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFiaiIEemf1uNNAktmdg">
           <body>A short text about some peculiar information on the instance.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9erqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFiqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9er6hyEemf1uNNAktmdg" memberEnd="_mX9ejqhyEemf1uNNAktmdg _mX9esKhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9esKhyEemf1uNNAktmdg" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX9er6hyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFi6iIEemf1uNNAktmdg" memberEnd="_FdBFaqiIEemf1uNNAktmdg _FdBFjKiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFjKiIEemf1uNNAktmdg" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBFi6iIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9esahyEemf1uNNAktmdg" name="wasInformedBy" memberEnd="_mX9ekqhyEemf1uNNAktmdg _mX9esqhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9esqhyEemf1uNNAktmdg" name="informed" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX9esahyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9es6hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9etKhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFjaiIEemf1uNNAktmdg" name="wasInformedBy" memberEnd="_FdBFbqiIEemf1uNNAktmdg _FdBFjqiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFjqiIEemf1uNNAktmdg" name="informed" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBFjaiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFj6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFkKiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9etahyEemf1uNNAktmdg" memberEnd="_mX9elqhyEemf1uNNAktmdg _mX9etqhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9etqhyEemf1uNNAktmdg" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX9etahyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFkaiIEemf1uNNAktmdg" memberEnd="_FdBFcqiIEemf1uNNAktmdg _FdBFkqiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFkqiIEemf1uNNAktmdg" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBFkaiIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9et6hyEemf1uNNAktmdg" memberEnd="_mX9emqhyEemf1uNNAktmdg _mX9euKhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9euKhyEemf1uNNAktmdg" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX9et6hyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9euahyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9euqhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFk6iIEemf1uNNAktmdg" memberEnd="_FdBFdqiIEemf1uNNAktmdg _FdBFlKiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFlKiIEemf1uNNAktmdg" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBFk6iIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFlaiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFlqiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX9eu6hyEemf1uNNAktmdg" name="Used">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9evKhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBFl6iIEemf1uNNAktmdg" name="Used">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFmKiIEemf1uNNAktmdg">
         <body>Binds an Activity to the Entities it consumes .</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9evahyEemf1uNNAktmdg" name="entity" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX9eyKhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9evqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFmaiIEemf1uNNAktmdg" name="entity" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBFpKiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFmqiIEemf1uNNAktmdg">
           <body>Points to the used entity</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ev6hyEemf1uNNAktmdg" name="usageDescription" visibility="public" type="_mX-FJahyEemf1uNNAktmdg" association="_mX9ezKhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ewKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFm6iIEemf1uNNAktmdg" name="usageDescription" visibility="public" type="_FdBGJqiIEemf1uNNAktmdg" association="_FdBFqKiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFnKiIEemf1uNNAktmdg">
           <body>This link points to  some description of the Usage in the context of one specific ActivityDescription.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ewahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFnaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9ewqhyEemf1uNNAktmdg" name="role" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9ew6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFnqiIEemf1uNNAktmdg" name="role" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFn6iIEemf1uNNAktmdg">
           <body>function of the entity with respect to the activity</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9exKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFoKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9exahyEemf1uNNAktmdg" name="time" visibility="public" type="_mX9dyqhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9exqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFoaiIEemf1uNNAktmdg" name="time" visibility="public" type="_FdBEpqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFoqiIEemf1uNNAktmdg">
           <body>Time at which the usage of an entity started</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ex6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFo6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9eyKhyEemf1uNNAktmdg" memberEnd="_mX9evahyEemf1uNNAktmdg _mX9eyahyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9eyahyEemf1uNNAktmdg" visibility="public" type="_mX9eu6hyEemf1uNNAktmdg" association="_mX9eyKhyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9eyqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ey6hyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFpKiIEemf1uNNAktmdg" memberEnd="_FdBFmaiIEemf1uNNAktmdg _FdBFpaiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFpaiIEemf1uNNAktmdg" visibility="public" type="_FdBFl6iIEemf1uNNAktmdg" association="_FdBFpKiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFpqiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFp6iIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX9ezKhyEemf1uNNAktmdg" memberEnd="_mX9ev6hyEemf1uNNAktmdg _mX9ezahyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX9ezahyEemf1uNNAktmdg" visibility="public" type="_mX9eu6hyEemf1uNNAktmdg" association="_mX9ezKhyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9ezqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9ez6hyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFqKiIEemf1uNNAktmdg" memberEnd="_FdBFm6iIEemf1uNNAktmdg _FdBFqaiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFqaiIEemf1uNNAktmdg" visibility="public" type="_FdBFl6iIEemf1uNNAktmdg" association="_FdBFqKiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFqqiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFq6iIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX9e0KhyEemf1uNNAktmdg" name="Entity">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e0ahyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBFrKiIEemf1uNNAktmdg" name="Entity">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFraiIEemf1uNNAktmdg">
         <body>A thing which is consumed or produced in a task , namely here in the astronomical domain. It represents some data as single element or file or an instrument.
 
 </body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9e0qhyEemf1uNNAktmdg" name="wasGeneratedBy" visibility="public" type="_mX-E2ahyEemf1uNNAktmdg" aggregation="composite" association="_mX-EzKhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e06hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFrqiIEemf1uNNAktmdg" name="wasGeneratedBy" visibility="public" type="_FdBF2qiIEemf1uNNAktmdg" aggregation="composite" association="_FdBFzaiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFr6iIEemf1uNNAktmdg">
           <body>Binds to the activity which generated this entity</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9e1KhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFsKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9e1ahyEemf1uNNAktmdg" name="wasAttributedTo" visibility="public" type="_mX9egahyEemf1uNNAktmdg" aggregation="composite" association="_mX-EzqhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e1qhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFsaiIEemf1uNNAktmdg" name="wasAttributedTo" visibility="public" type="_FdBFXaiIEemf1uNNAktmdg" aggregation="composite" association="_FdBFz6iIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFsqiIEemf1uNNAktmdg">
           <body>Gathers Agents to which the entity was attributed</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9e16hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9e2KhyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFs6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFtKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9e2ahyEemf1uNNAktmdg" name="usedEntity" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX-E0KhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e2qhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFtaiIEemf1uNNAktmdg" name="usedEntity" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBF0aiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFtqiIEemf1uNNAktmdg">
           <body>The link from the progenitor Entity to its descendant.</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX9e26hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9e3KhyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBFt6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFuKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9e3ahyEemf1uNNAktmdg" name="entityDescription" visibility="public" type="_mX-FT6hyEemf1uNNAktmdg" association="_mX-E1ahyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e3qhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFuaiIEemf1uNNAktmdg" name="entityDescription" visibility="public" type="_FdBGUKiIEemf1uNNAktmdg" association="_FdBF1qiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFuqiIEemf1uNNAktmdg">
           <body>Link to the corresponding EntityDescription instance.  Many Entities may share the same  EntityDescription instance.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9e36hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFu6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9e4KhyEemf1uNNAktmdg" name="id" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e4ahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFvKiIEemf1uNNAktmdg" name="id" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFvaiIEemf1uNNAktmdg">
           <body>Unique identifier for an Entity. Must be unique in the domain.
 </body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX9e4qhyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX9e46hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFvqiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFv6iIEemf1uNNAktmdg">
           <body>This is a text string which designate the Entity for display in application or diagrams . It can follow various syntax and naming conventions depending on the Entity subclass : dataset, quality flag, device name convention, etc .
 </body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX9e5KhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFwKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-EwKhyEemf1uNNAktmdg" name="location" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-EwahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFwaiIEemf1uNNAktmdg" name="location" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFwqiIEemf1uNNAktmdg">
           <body>A path,  a URL, coordinates or the name of a place.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-EwqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFw6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-Ew6hyEemf1uNNAktmdg" name="generatedAtTime" visibility="public" type="_mX9dyqhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-ExKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFxKiIEemf1uNNAktmdg" name="generatedAtTime" visibility="public" type="_FdBEpqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFxaiIEemf1uNNAktmdg">
           <body>The time of generation for the entity , in ISOTime
 </body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-ExahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFxqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-ExqhyEemf1uNNAktmdg" name="invalidatedAtTime" visibility="public" type="_mX9dyqhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-Ex6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFx6iIEemf1uNNAktmdg" name="invalidatedAtTime" visibility="public" type="_FdBEpqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFyKiIEemf1uNNAktmdg">
           <body>Time stamp after which the entity is considered no longer valid for further usage in an Activity. It may still be available in the system but not used for
 operations .</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-EyKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFyaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-EyahyEemf1uNNAktmdg" name="comment" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-EyqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBFyqiIEemf1uNNAktmdg" name="comment" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBFy6iIEemf1uNNAktmdg">
           <body>A short text about some peculiar information on the instance.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-Ey6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBFzKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-EzKhyEemf1uNNAktmdg" memberEnd="_mX9e0qhyEemf1uNNAktmdg _mX-EzahyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-EzahyEemf1uNNAktmdg" name="entity" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX-EzKhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFzaiIEemf1uNNAktmdg" memberEnd="_FdBFrqiIEemf1uNNAktmdg _FdBFzqiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBFzqiIEemf1uNNAktmdg" name="entity" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBFzaiIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-EzqhyEemf1uNNAktmdg" memberEnd="_mX9e1ahyEemf1uNNAktmdg _mX-Ez6hyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-Ez6hyEemf1uNNAktmdg" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX-EzqhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBFz6iIEemf1uNNAktmdg" memberEnd="_FdBFsaiIEemf1uNNAktmdg _FdBF0KiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBF0KiIEemf1uNNAktmdg" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBFz6iIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-E0KhyEemf1uNNAktmdg" name="wasDerivedFrom" memberEnd="_mX9e2ahyEemf1uNNAktmdg _mX-E0ahyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-E0ahyEemf1uNNAktmdg" name="generatedEntity" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX-E0KhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E0qhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBF0aiIEemf1uNNAktmdg" name="wasDerivedFrom" memberEnd="_FdBFtaiIEemf1uNNAktmdg _FdBF0qiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBF0qiIEemf1uNNAktmdg" name="generatedEntity" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBF0aiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF06iIEemf1uNNAktmdg">
           <body>This indicates a dependency from one Entity (generated) to its progenitor (used). 
 The provenance information system may not have the involved Activity instance  implemented into the data base. </body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-E06hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E1KhyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBF1KiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF1aiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-E1ahyEemf1uNNAktmdg" memberEnd="_mX9e3ahyEemf1uNNAktmdg _mX-E1qhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-E1qhyEemf1uNNAktmdg" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX-E1ahyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-E16hyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E2KhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBF1qiIEemf1uNNAktmdg" memberEnd="_FdBFuaiIEemf1uNNAktmdg _FdBF16iIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBF16iIEemf1uNNAktmdg" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBF1qiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBF2KiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF2aiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-E2ahyEemf1uNNAktmdg" name="WasGeneratedBy">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E2qhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBF2qiIEemf1uNNAktmdg" name="WasGeneratedBy">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF26iIEemf1uNNAktmdg">
         <body>Binds an Entity to the Activity that produced it as a result.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-E26hyEemf1uNNAktmdg" name="activity" visibility="public" type="_mX9ejKhyEemf1uNNAktmdg" association="_mX-E46hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E3KhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBF3KiIEemf1uNNAktmdg" name="activity" visibility="public" type="_FdBFaKiIEemf1uNNAktmdg" association="_FdBF5KiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF3aiIEemf1uNNAktmdg">
           <body>points the creating activity</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-E3ahyEemf1uNNAktmdg" name="generationDescription" visibility="public" type="_mX-FOqhyEemf1uNNAktmdg" association="_mX-E56hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E3qhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBF3qiIEemf1uNNAktmdg" name="generationDescription" visibility="public" type="_FdBGO6iIEemf1uNNAktmdg" association="_FdBF6KiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF36iIEemf1uNNAktmdg">
           <body>Points to the instance of GenerationDescription describing this kind of generated output.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E36hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF4KiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-E4KhyEemf1uNNAktmdg" name="role" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E4ahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBF4aiIEemf1uNNAktmdg" name="role" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF4qiIEemf1uNNAktmdg">
           <body>Function of the entity with respect to the activity.</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E4qhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF46iIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-E46hyEemf1uNNAktmdg" memberEnd="_mX-E26hyEemf1uNNAktmdg _mX-E5KhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-E5KhyEemf1uNNAktmdg" visibility="public" type="_mX-E2ahyEemf1uNNAktmdg" association="_mX-E46hyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-E5ahyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E5qhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBF5KiIEemf1uNNAktmdg" memberEnd="_FdBF3KiIEemf1uNNAktmdg _FdBF5aiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBF5aiIEemf1uNNAktmdg" visibility="public" type="_FdBF2qiIEemf1uNNAktmdg" association="_FdBF5KiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBF5qiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF56iIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-E56hyEemf1uNNAktmdg" memberEnd="_mX-E3ahyEemf1uNNAktmdg _mX-E6KhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-E6KhyEemf1uNNAktmdg" visibility="public" type="_mX-E2ahyEemf1uNNAktmdg" association="_mX-E56hyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-E6ahyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E6qhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBF6KiIEemf1uNNAktmdg" memberEnd="_FdBF3qiIEemf1uNNAktmdg _FdBF6aiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBF6aiIEemf1uNNAktmdg" visibility="public" type="_FdBF2qiIEemf1uNNAktmdg" association="_FdBF6KiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBF6qiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF66iIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-E66hyEemf1uNNAktmdg" name="Collection">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E7KhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBF7KiIEemf1uNNAktmdg" name="Collection">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF7aiIEemf1uNNAktmdg">
         <body>A collection of Entities. It is a way to consider a set of entities when produced and consumed with respect to an Activity. 
 Allows coarse description of the provenance.</body>
       </ownedComment>
-      <generalization xmi:type="uml:Generalization" xmi:id="_mX-E7ahyEemf1uNNAktmdg" general="_mX9e0KhyEemf1uNNAktmdg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-E7qhyEemf1uNNAktmdg" name="entity" visibility="public" type="_mX9e0KhyEemf1uNNAktmdg" association="_mX-E8qhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E76hyEemf1uNNAktmdg">
+      <generalization xmi:type="uml:Generalization" xmi:id="_FdBF7qiIEemf1uNNAktmdg" general="_FdBFrKiIEemf1uNNAktmdg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBF76iIEemf1uNNAktmdg" name="entity" visibility="public" type="_FdBFrKiIEemf1uNNAktmdg" association="_FdBF86iIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF8KiIEemf1uNNAktmdg">
           <body>Binds a collection entity to its members</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-E8KhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E8ahyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBF8aiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF8qiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-E8qhyEemf1uNNAktmdg" name="hadMember" memberEnd="_mX-E7qhyEemf1uNNAktmdg _mX-E86hyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-E86hyEemf1uNNAktmdg" name="collection" visibility="public" type="_mX-E66hyEemf1uNNAktmdg" association="_mX-E8qhyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-E9KhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-E9ahyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBF86iIEemf1uNNAktmdg" name="hadMember" memberEnd="_FdBF76iIEemf1uNNAktmdg _FdBF9KiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBF9KiIEemf1uNNAktmdg" name="collection" visibility="public" type="_FdBF7KiIEemf1uNNAktmdg" association="_FdBF86iIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBF9aiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBF9qiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-E9qhyEemf1uNNAktmdg" name="ValueEntity">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E96hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBF96iIEemf1uNNAktmdg" name="ValueEntity">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF-KiIEemf1uNNAktmdg">
         <body>An entity that only contains a value. The way to interpret this value is described in the ValueDescription instance it linked to.</body>
       </ownedComment>
-      <generalization xmi:type="uml:Generalization" xmi:id="_mX-E-KhyEemf1uNNAktmdg" general="_mX9e0KhyEemf1uNNAktmdg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-E-ahyEemf1uNNAktmdg" name="value" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E-qhyEemf1uNNAktmdg">
+      <generalization xmi:type="uml:Generalization" xmi:id="_FdBF-aiIEemf1uNNAktmdg" general="_FdBFrKiIEemf1uNNAktmdg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBF-qiIEemf1uNNAktmdg" name="value" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF-6iIEemf1uNNAktmdg">
           <body>The value of the Entity.</body>
         </ownedComment>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-E-6hyEemf1uNNAktmdg" name="DatasetEntity">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E_KhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBF_KiIEemf1uNNAktmdg" name="DatasetEntity">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBF_aiIEemf1uNNAktmdg">
         <body>An Entity which represents a data file in the Provenance system. It is not the data file itself</body>
       </ownedComment>
-      <generalization xmi:type="uml:Generalization" xmi:id="_mX-E_ahyEemf1uNNAktmdg" general="_mX9e0KhyEemf1uNNAktmdg"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_FdBF_qiIEemf1uNNAktmdg" general="_FdBFrKiIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-E_qhyEemf1uNNAktmdg" name="ActivityDescription">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-E_6hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBF_6iIEemf1uNNAktmdg" name="ActivityDescription">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGAKiIEemf1uNNAktmdg">
         <body>Gives further information on how an activity works internally.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FAKhyEemf1uNNAktmdg" name="parameterDescription" visibility="public" type="_mX9d9KhyEemf1uNNAktmdg" aggregation="composite" association="_mX9eU6hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FAahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGAaiIEemf1uNNAktmdg" name="parameterDescription" visibility="public" type="_FdBE0KiIEemf1uNNAktmdg" aggregation="composite" association="_FdBFL6iIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGAqiIEemf1uNNAktmdg">
           <body>Gathers the description text for a parameter</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FAqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FA6hyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGA6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGBKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FBKhyEemf1uNNAktmdg" name="configFileDescription" visibility="public" type="_mX9eEqhyEemf1uNNAktmdg" aggregation="composite" association="_mX9eVahyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FBahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGBaiIEemf1uNNAktmdg" name="configFileDescription" visibility="public" type="_FdBE7qiIEemf1uNNAktmdg" aggregation="composite" association="_FdBFMaiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGBqiIEemf1uNNAktmdg">
           <body>Gathers the description of the config files</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FBqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FB6hyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGB6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGCKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FCKhyEemf1uNNAktmdg" name="usageDescription" visibility="public" type="_mX-FJahyEemf1uNNAktmdg" aggregation="composite" association="_mX-FIahyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FCahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGCaiIEemf1uNNAktmdg" name="usageDescription" visibility="public" type="_FdBGJqiIEemf1uNNAktmdg" aggregation="composite" association="_FdBGIqiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGCqiIEemf1uNNAktmdg">
           <body>This link points to  some description of the Usage in the context of one specific ActivityDescription.</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FCqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FC6hyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGC6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGDKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FDKhyEemf1uNNAktmdg" name="generationDescription" visibility="public" type="_mX-FOqhyEemf1uNNAktmdg" aggregation="composite" association="_mX-FI6hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FDahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGDaiIEemf1uNNAktmdg" name="generationDescription" visibility="public" type="_FdBGO6iIEemf1uNNAktmdg" aggregation="composite" association="_FdBGJKiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGDqiIEemf1uNNAktmdg">
           <body>This link points to  some description of the results produced in the context of one specific ActivityDescription.</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FDqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FD6hyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGD6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGEKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FEKhyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FEahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGEaiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGEqiIEemf1uNNAktmdg">
           <body>Instance name</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FEqhyEemf1uNNAktmdg" name="version" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FE6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGE6iIEemf1uNNAktmdg" name="version" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGFKiIEemf1uNNAktmdg">
           <body>Version number, if applicable</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FFKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGFaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FFahyEemf1uNNAktmdg" name="description" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FFqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGFqiIEemf1uNNAktmdg" name="description" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGF6iIEemf1uNNAktmdg">
           <body>A descriptive text for this kind of activity</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FF6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGGKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FGKhyEemf1uNNAktmdg" name="docuLink" visibility="public" type="_mX9dzKhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FGahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGGaiIEemf1uNNAktmdg" name="docuLink" visibility="public" type="_FdBEqKiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGGqiIEemf1uNNAktmdg">
           <body>Link to more documentation</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FGqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGG6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FG6hyEemf1uNNAktmdg" name="type" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FHKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGHKiIEemf1uNNAktmdg" name="type" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGHaiIEemf1uNNAktmdg">
           <body>type of the activity</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FHahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGHqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FHqhyEemf1uNNAktmdg" name="subtype" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FH6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGH6iIEemf1uNNAktmdg" name="subtype" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGIKiIEemf1uNNAktmdg">
           <body>More specific subtype of the activity</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FIKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGIaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-FIahyEemf1uNNAktmdg" memberEnd="_mX-FCKhyEemf1uNNAktmdg _mX-FIqhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-FIqhyEemf1uNNAktmdg" visibility="public" type="_mX-E_qhyEemf1uNNAktmdg" association="_mX-FIahyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBGIqiIEemf1uNNAktmdg" memberEnd="_FdBGCaiIEemf1uNNAktmdg _FdBGI6iIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBGI6iIEemf1uNNAktmdg" visibility="public" type="_FdBF_6iIEemf1uNNAktmdg" association="_FdBGIqiIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-FI6hyEemf1uNNAktmdg" memberEnd="_mX-FDKhyEemf1uNNAktmdg _mX-FJKhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-FJKhyEemf1uNNAktmdg" visibility="public" type="_mX-E_qhyEemf1uNNAktmdg" association="_mX-FI6hyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBGJKiIEemf1uNNAktmdg" memberEnd="_FdBGDaiIEemf1uNNAktmdg _FdBGJaiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBGJaiIEemf1uNNAktmdg" visibility="public" type="_FdBF_6iIEemf1uNNAktmdg" association="_FdBGJKiIEemf1uNNAktmdg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-FJahyEemf1uNNAktmdg" name="UsageDescription">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FJqhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBGJqiIEemf1uNNAktmdg" name="UsageDescription">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGJ6iIEemf1uNNAktmdg">
         <body>This class gathers description features about the products an ActivityDescription considers as input resources. It can differentiate various roles and types of Entities consumed by the task described by the corresponding ActivityDescription instance.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FJ6hyEemf1uNNAktmdg" name="entityDescription" visibility="public" type="_mX-FT6hyEemf1uNNAktmdg" association="_mX-FNqhyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FKKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGKKiIEemf1uNNAktmdg" name="entityDescription" visibility="public" type="_FdBGUKiIEemf1uNNAktmdg" association="_FdBGN6iIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGKaiIEemf1uNNAktmdg">
           <body>Points to the description of the used entities</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FKahyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FKqhyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGKqiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGK6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FK6hyEemf1uNNAktmdg" name="role" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FLKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGLKiIEemf1uNNAktmdg" name="role" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGLaiIEemf1uNNAktmdg">
           <body>function of the entity with respect to its usage by the activity</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FLahyEemf1uNNAktmdg" name="description" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FLqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGLqiIEemf1uNNAktmdg" name="description" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGL6iIEemf1uNNAktmdg">
           <body>A descriptive text for this kind of usage
 </body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FL6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGMKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FMKhyEemf1uNNAktmdg" name="type" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FMahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGMaiIEemf1uNNAktmdg" name="type" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGMqiIEemf1uNNAktmdg">
           <body>type of the usage. It is a free text attribute with some reserved words</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FMqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGM6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FM6hyEemf1uNNAktmdg" name="multiplicity" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FNKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGNKiIEemf1uNNAktmdg" name="multiplicity" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGNaiIEemf1uNNAktmdg">
           <body>String representation of the number of expected input entities that are used with the given role (« unbounded «  if not set)</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FNahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGNqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-FNqhyEemf1uNNAktmdg" memberEnd="_mX-FJ6hyEemf1uNNAktmdg _mX-FN6hyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-FN6hyEemf1uNNAktmdg" visibility="public" type="_mX-FJahyEemf1uNNAktmdg" association="_mX-FNqhyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FOKhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FOahyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBGN6iIEemf1uNNAktmdg" memberEnd="_FdBGKKiIEemf1uNNAktmdg _FdBGOKiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBGOKiIEemf1uNNAktmdg" visibility="public" type="_FdBGJqiIEemf1uNNAktmdg" association="_FdBGN6iIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGOaiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGOqiIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-FOqhyEemf1uNNAktmdg" name="GenerationDescription">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FO6hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBGO6iIEemf1uNNAktmdg" name="GenerationDescription">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGPKiIEemf1uNNAktmdg">
         <body>This class gathers description features about the products an ActivityDescription considers as output results.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FPKhyEemf1uNNAktmdg" name="entityDescription" visibility="public" type="_mX-FT6hyEemf1uNNAktmdg" association="_mX-FS6hyEemf1uNNAktmdg">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FPahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGPaiIEemf1uNNAktmdg" name="entityDescription" visibility="public" type="_FdBGUKiIEemf1uNNAktmdg" association="_FdBGTKiIEemf1uNNAktmdg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGPqiIEemf1uNNAktmdg">
           <body>Points to the description of the used entities</body>
         </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FPqhyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FP6hyEemf1uNNAktmdg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGP6iIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGQKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FQKhyEemf1uNNAktmdg" name="role" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FQahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGQaiIEemf1uNNAktmdg" name="role" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGQqiIEemf1uNNAktmdg">
           <body>A label that describes the function of what was produced. It is defined in the context of an ActivityDescription instance.</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FQqhyEemf1uNNAktmdg" name="description" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FQ6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGQ6iIEemf1uNNAktmdg" name="description" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGRKiIEemf1uNNAktmdg">
           <body>A descriptive text for this kind of entity generation</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FRKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGRaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FRahyEemf1uNNAktmdg" name="type" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FRqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGRqiIEemf1uNNAktmdg" name="type" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGR6iIEemf1uNNAktmdg">
           <body>Type of the entity generation. It is a free text attribute with some reserved words</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FR6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGSKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FSKhyEemf1uNNAktmdg" name="multiplicity" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FSahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGSaiIEemf1uNNAktmdg" name="multiplicity" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGSqiIEemf1uNNAktmdg">
           <body>String representation of the number of expected output entities that will be generated with the given role (« unbounded «  if not set)</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FSqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGS6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_mX-FS6hyEemf1uNNAktmdg" memberEnd="_mX-FPKhyEemf1uNNAktmdg _mX-FTKhyEemf1uNNAktmdg">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mX-FTKhyEemf1uNNAktmdg" visibility="public" type="_mX-FOqhyEemf1uNNAktmdg" association="_mX-FS6hyEemf1uNNAktmdg">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mX-FTahyEemf1uNNAktmdg" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FTqhyEemf1uNNAktmdg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FdBGTKiIEemf1uNNAktmdg" memberEnd="_FdBGPaiIEemf1uNNAktmdg _FdBGTaiIEemf1uNNAktmdg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FdBGTaiIEemf1uNNAktmdg" visibility="public" type="_FdBGO6iIEemf1uNNAktmdg" association="_FdBGTKiIEemf1uNNAktmdg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdBGTqiIEemf1uNNAktmdg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGT6iIEemf1uNNAktmdg"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-FT6hyEemf1uNNAktmdg" name="EntityDescription">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FUKhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBGUKiIEemf1uNNAktmdg" name="EntityDescription">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGUaiIEemf1uNNAktmdg">
         <body>This class is meant to store descriptive information for
 different categories of entities.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FUahyEemf1uNNAktmdg" name="name" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FUqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGUqiIEemf1uNNAktmdg" name="name" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGU6iIEemf1uNNAktmdg">
           <body>Instance name
 </body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FU6hyEemf1uNNAktmdg" name="description" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FVKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGVKiIEemf1uNNAktmdg" name="description" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGVaiIEemf1uNNAktmdg">
           <body>A descriptive text for this kind of entity</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FVahyEemf1uNNAktmdg" name="docuLink" visibility="public" type="_mX9dzKhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FVqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGVqiIEemf1uNNAktmdg" name="docuLink" visibility="public" type="_FdBEqKiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGV6iIEemf1uNNAktmdg">
           <body>Link to more documentation</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FV6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGWKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FWKhyEemf1uNNAktmdg" name="type" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FWahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGWaiIEemf1uNNAktmdg" name="type" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGWqiIEemf1uNNAktmdg">
           <body>Type of the entity</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FWqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGW6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-FW6hyEemf1uNNAktmdg" name="ValueDescription">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FXKhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBGXKiIEemf1uNNAktmdg" name="ValueDescription">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGXaiIEemf1uNNAktmdg">
         <body>Description of the properties of a ValueEntity.</body>
       </ownedComment>
-      <generalization xmi:type="uml:Generalization" xmi:id="_mX-FXahyEemf1uNNAktmdg" general="_mX-FT6hyEemf1uNNAktmdg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FXqhyEemf1uNNAktmdg" name="valueType" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FX6hyEemf1uNNAktmdg">
+      <generalization xmi:type="uml:Generalization" xmi:id="_FdBGXqiIEemf1uNNAktmdg" general="_FdBGUKiIEemf1uNNAktmdg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGX6iIEemf1uNNAktmdg" name="valueType" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGYKiIEemf1uNNAktmdg">
           <body>VODML-compliant data type of the value</body>
         </ownedComment>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FYKhyEemf1uNNAktmdg" name="unit" visibility="public" type="_mX9d0KhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FYahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGYaiIEemf1uNNAktmdg" name="unit" visibility="public" type="_FdBErKiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGYqiIEemf1uNNAktmdg">
           <body>VO-compliant unit string</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FYqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGY6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FY6hyEemf1uNNAktmdg" name="ucd" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FZKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGZKiIEemf1uNNAktmdg" name="ucd" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGZaiIEemf1uNNAktmdg">
           <body>VO-compliant UCD string</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FZahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGZqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FZqhyEemf1uNNAktmdg" name="utype" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FZ6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGZ6iIEemf1uNNAktmdg" name="utype" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGaKiIEemf1uNNAktmdg">
           <body>Role of the value in the context of an external VO data mode</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FaKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGaaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FaahyEemf1uNNAktmdg" name="min" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FaqhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGaqiIEemf1uNNAktmdg" name="min" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGa6iIEemf1uNNAktmdg">
           <body>Minimum value as a string whose content can be interpreted by the valueType attribute</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-Fa6hyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGbKiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FbKhyEemf1uNNAktmdg" name="max" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FbahyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGbaiIEemf1uNNAktmdg" name="max" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGbqiIEemf1uNNAktmdg">
           <body>Maximum value as a string whose content can be interpreted by the valueType attribute</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FbqhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGb6iIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-Fb6hyEemf1uNNAktmdg" name="default" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FcKhyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGcKiIEemf1uNNAktmdg" name="default" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGcaiIEemf1uNNAktmdg">
           <body>Default value  as a string whose content can be interpreted by the valueType attribute</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FcahyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGcqiIEemf1uNNAktmdg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FcqhyEemf1uNNAktmdg" name="options" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-Fc6hyEemf1uNNAktmdg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGc6iIEemf1uNNAktmdg" name="options" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGdKiIEemf1uNNAktmdg">
           <body>Comma separated list of possible values</body>
         </ownedComment>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mX-FdKhyEemf1uNNAktmdg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdBGdaiIEemf1uNNAktmdg"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mX-FdahyEemf1uNNAktmdg" name="DatasetDescription">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FdqhyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FdBGdqiIEemf1uNNAktmdg" name="DatasetDescription">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGd6iIEemf1uNNAktmdg">
         <body>The description of a DatasetEntity. Can be pointed to by multiple instances of DatasetEntity.</body>
       </ownedComment>
-      <generalization xmi:type="uml:Generalization" xmi:id="_mX-Fd6hyEemf1uNNAktmdg" general="_mX-FT6hyEemf1uNNAktmdg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mX-FeKhyEemf1uNNAktmdg" name="contentType" visibility="public" type="_mX9d4qhyEemf1uNNAktmdg" isUnique="false">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FeahyEemf1uNNAktmdg">
+      <generalization xmi:type="uml:Generalization" xmi:id="_FdBGeKiIEemf1uNNAktmdg" general="_FdBGUKiIEemf1uNNAktmdg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FdBGeaiIEemf1uNNAktmdg" name="contentType" visibility="public" type="_FdBEvqiIEemf1uNNAktmdg" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGeqiIEemf1uNNAktmdg">
           <body>MIME-type or format of the dataset</body>
         </ownedComment>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_mX-FeqhyEemf1uNNAktmdg" name="AgentType">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_mX-Fe6hyEemf1uNNAktmdg">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_FdBGe6iIEemf1uNNAktmdg" name="AgentType">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGfKiIEemf1uNNAktmdg">
         <body>A literal for specifying the Agent type : Individal or Organisation or SoftwareAgent</body>
       </ownedComment>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mX-FfKhyEemf1uNNAktmdg" name="Person">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FfahyEemf1uNNAktmdg">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FdBGfaiIEemf1uNNAktmdg" name="Person">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGfqiIEemf1uNNAktmdg">
           <body>Label for agents considered as persons</body>
         </ownedComment>
       </ownedLiteral>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mX-FfqhyEemf1uNNAktmdg" name="Organization">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-Ff6hyEemf1uNNAktmdg">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FdBGf6iIEemf1uNNAktmdg" name="Organization">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGgKiIEemf1uNNAktmdg">
           <body>Label for agents considered as organizations</body>
         </ownedComment>
       </ownedLiteral>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mX-FgKhyEemf1uNNAktmdg" name="SoftwareAgent">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_mX-FgahyEemf1uNNAktmdg">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FdBGgaiIEemf1uNNAktmdg" name="SoftwareAgent">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_FdBGgqiIEemf1uNNAktmdg">
           <body>Label for agents considered as software agents</body>
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="_mX9dsKhyEemf1uNNAktmdg" xmi:id="_mfRmoKhyEemf1uNNAktmdg">
-      <eAnnotations xmi:id="_mfUp8KhyEemf1uNNAktmdg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="IVOA_UML_Profile.profile.xmi#_mYdM8KhyEemf1uNNAktmdg"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="_FdAdkKiIEemf1uNNAktmdg" xmi:id="_Ff71wKiIEemf1uNNAktmdg">
+      <eAnnotations xmi:id="_Ff71waiIEemf1uNNAktmdg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="IVOA_UML_Profile.profile.xmi#_FdrzB6iIEemf1uNNAktmdg"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="_mfRmoKhyEemf1uNNAktmdg" href="IVOA_UML_Profile.profile.xmi#_mYcl4KhyEemf1uNNAktmdg"/>
+      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="_Ff71wKiIEemf1uNNAktmdg" href="IVOA_UML_Profile.profile.xmi#_FdrzAKiIEemf1uNNAktmdg"/>
     </profileApplication>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="_mX9dsKhyEemf1uNNAktmdg" xmi:id="_mfZicKhyEemf1uNNAktmdg">
-      <eAnnotations xmi:id="_mfaJgKhyEemf1uNNAktmdg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="default.profile.xmi#_mcyTVqhyEemf1uNNAktmdg"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="_FdAdkKiIEemf1uNNAktmdg" xmi:id="_FgAHMKiIEemf1uNNAktmdg">
+      <eAnnotations xmi:id="_FgAHMaiIEemf1uNNAktmdg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="default.profile.xmi#_FegSZ6iIEemf1uNNAktmdg"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="_mfZicKhyEemf1uNNAktmdg" href="default.profile.xmi#_mcvQAKhyEemf1uNNAktmdg"/>
+      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="_FgAHMKiIEemf1uNNAktmdg" href="default.profile.xmi#_FegSYKiIEemf1uNNAktmdg"/>
     </profileApplication>
   </uml:Model>
-  <IVOA_UML_Profile:model xmi:id="_mfgQIKhyEemf1uNNAktmdg" base_Package="_mX9dsKhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelimport xmi:id="_mfg3MKhyEemf1uNNAktmdg" base_Package="_mX9duqhyEemf1uNNAktmdg" name="ivoa" version="1.0" url="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html" documentationURL="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfjTcKhyEemf1uNNAktmdg" base_DataType="_mX9dvKhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfjTcahyEemf1uNNAktmdg" base_NamedElement="_mX9dvKhyEemf1uNNAktmdg" vodmlid="Identity"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfj6gKhyEemf1uNNAktmdg" base_DataType="_mX9dxqhyEemf1uNNAktmdg" base_PrimitiveType="_mX9dxqhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfj6gahyEemf1uNNAktmdg" base_NamedElement="_mX9dxqhyEemf1uNNAktmdg" vodmlid="real"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfj6gqhyEemf1uNNAktmdg" base_DataType="_mX9dyKhyEemf1uNNAktmdg" base_PrimitiveType="_mX9dyKhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfkhkKhyEemf1uNNAktmdg" base_NamedElement="_mX9dyKhyEemf1uNNAktmdg" vodmlid="decimal"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfkhkahyEemf1uNNAktmdg" base_DataType="_mX9dyqhyEemf1uNNAktmdg" base_PrimitiveType="_mX9dyqhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfkhkqhyEemf1uNNAktmdg" base_NamedElement="_mX9dyqhyEemf1uNNAktmdg" vodmlid="datetime"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfkhk6hyEemf1uNNAktmdg" base_DataType="_mX9dzKhyEemf1uNNAktmdg" base_PrimitiveType="_mX9dzKhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mflIoKhyEemf1uNNAktmdg" base_NamedElement="_mX9dzKhyEemf1uNNAktmdg" vodmlid="anyURI"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mflIoahyEemf1uNNAktmdg" base_NamedElement="_mX9dzqhyEemf1uNNAktmdg" vodmlid="quantity"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mflIoqhyEemf1uNNAktmdg" base_DataType="_mX9d0KhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d0KhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mflvsKhyEemf1uNNAktmdg" base_NamedElement="_mX9d0KhyEemf1uNNAktmdg" vodmlid="quantity.Unit"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mflvsahyEemf1uNNAktmdg" base_NamedElement="_mX9d06hyEemf1uNNAktmdg" vodmlid="quantity.Quantity"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfnk4KhyEemf1uNNAktmdg" base_NamedElement="_mX9d2KhyEemf1uNNAktmdg" vodmlid="quantity.IntegerValue"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfozAKhyEemf1uNNAktmdg" base_NamedElement="_mX9d3ahyEemf1uNNAktmdg" vodmlid="quantity.RealQuantity"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfpaEKhyEemf1uNNAktmdg" base_DataType="_mX9d4qhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d4qhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfpaEahyEemf1uNNAktmdg" base_NamedElement="_mX9d4qhyEemf1uNNAktmdg" vodmlid="string"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfpaEqhyEemf1uNNAktmdg" base_DataType="_mX9d5KhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d5KhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfpaE6hyEemf1uNNAktmdg" base_NamedElement="_mX9d5KhyEemf1uNNAktmdg" vodmlid="nonnegativeInteger"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfqBIKhyEemf1uNNAktmdg" base_DataType="_mX9d5qhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d5qhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfqBIahyEemf1uNNAktmdg" base_NamedElement="_mX9d5qhyEemf1uNNAktmdg" vodmlid="boolean"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfqBIqhyEemf1uNNAktmdg" base_DataType="_mX9d6KhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d6KhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfqBI6hyEemf1uNNAktmdg" base_NamedElement="_mX9d6KhyEemf1uNNAktmdg" vodmlid="integer"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfqBJKhyEemf1uNNAktmdg" base_DataType="_mX9d6qhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d6qhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfqoMKhyEemf1uNNAktmdg" base_NamedElement="_mX9d6qhyEemf1uNNAktmdg" vodmlid="rational"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfqoMahyEemf1uNNAktmdg" base_DataType="_mX9d7KhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d7KhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfqoMqhyEemf1uNNAktmdg" base_NamedElement="_mX9d7KhyEemf1uNNAktmdg" vodmlid="complex"/>
-  <IVOA_UML_Profile:primitive xmi:id="_mfrPQKhyEemf1uNNAktmdg" base_DataType="_mX9d7qhyEemf1uNNAktmdg" base_PrimitiveType="_mX9d7qhyEemf1uNNAktmdg"/>
-  <IVOA_UML_Profile:modelelement xmi:id="_mfrPQahyEemf1uNNAktmdg" base_NamedElement="_mX9d7qhyEemf1uNNAktmdg" vodmlid="duration"/>
-  <default:subset xmi:id="_mfrPQqhyEemf1uNNAktmdg" base_Constraint="_mX9dtahyEemf1uNNAktmdg"/>
-  <default:subset xmi:id="_mfrPQ6hyEemf1uNNAktmdg" base_Constraint="_mX9duKhyEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:model xmi:id="_FgEYoKiIEemf1uNNAktmdg" base_Package="_FdAdkKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelimport xmi:id="_FgE_sKiIEemf1uNNAktmdg" base_Package="_FdAdmqiIEemf1uNNAktmdg" name="ivoa" version="1.0" url="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html" documentationURL="https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgFmwKiIEemf1uNNAktmdg" base_DataType="_FdAdnKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgFmwaiIEemf1uNNAktmdg" base_NamedElement="_FdAdnKiIEemf1uNNAktmdg" vodmlid="Identity"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgFmwqiIEemf1uNNAktmdg" base_DataType="_FdBEoqiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEoqiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgGN0KiIEemf1uNNAktmdg" base_NamedElement="_FdBEoqiIEemf1uNNAktmdg" vodmlid="real"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgGN0aiIEemf1uNNAktmdg" base_DataType="_FdBEpKiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEpKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgGN0qiIEemf1uNNAktmdg" base_NamedElement="_FdBEpKiIEemf1uNNAktmdg" vodmlid="decimal"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgG04KiIEemf1uNNAktmdg" base_DataType="_FdBEpqiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEpqiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgG04aiIEemf1uNNAktmdg" base_NamedElement="_FdBEpqiIEemf1uNNAktmdg" vodmlid="datetime"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgG04qiIEemf1uNNAktmdg" base_DataType="_FdBEqKiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEqKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgG046iIEemf1uNNAktmdg" base_NamedElement="_FdBEqKiIEemf1uNNAktmdg" vodmlid="anyURI"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgG05KiIEemf1uNNAktmdg" base_NamedElement="_FdBEqqiIEemf1uNNAktmdg" vodmlid="quantity"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgHb8KiIEemf1uNNAktmdg" base_DataType="_FdBErKiIEemf1uNNAktmdg" base_PrimitiveType="_FdBErKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgHb8aiIEemf1uNNAktmdg" base_NamedElement="_FdBErKiIEemf1uNNAktmdg" vodmlid="quantity.Unit"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgIDAKiIEemf1uNNAktmdg" base_NamedElement="_FdBEr6iIEemf1uNNAktmdg" vodmlid="quantity.Quantity"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgIqEKiIEemf1uNNAktmdg" base_NamedElement="_FdBEtKiIEemf1uNNAktmdg" vodmlid="quantity.IntegerValue"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgIqEaiIEemf1uNNAktmdg" base_NamedElement="_FdBEuaiIEemf1uNNAktmdg" vodmlid="quantity.RealQuantity"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgIqEqiIEemf1uNNAktmdg" base_DataType="_FdBEvqiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEvqiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgJRIKiIEemf1uNNAktmdg" base_NamedElement="_FdBEvqiIEemf1uNNAktmdg" vodmlid="string"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgJRIaiIEemf1uNNAktmdg" base_DataType="_FdBEwKiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEwKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgJRIqiIEemf1uNNAktmdg" base_NamedElement="_FdBEwKiIEemf1uNNAktmdg" vodmlid="nonnegativeInteger"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgJ4MKiIEemf1uNNAktmdg" base_DataType="_FdBEwqiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEwqiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgJ4MaiIEemf1uNNAktmdg" base_NamedElement="_FdBEwqiIEemf1uNNAktmdg" vodmlid="boolean"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgJ4MqiIEemf1uNNAktmdg" base_DataType="_FdBExKiIEemf1uNNAktmdg" base_PrimitiveType="_FdBExKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgJ4M6iIEemf1uNNAktmdg" base_NamedElement="_FdBExKiIEemf1uNNAktmdg" vodmlid="integer"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgKfQKiIEemf1uNNAktmdg" base_DataType="_FdBExqiIEemf1uNNAktmdg" base_PrimitiveType="_FdBExqiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgKfQaiIEemf1uNNAktmdg" base_NamedElement="_FdBExqiIEemf1uNNAktmdg" vodmlid="rational"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgKfQqiIEemf1uNNAktmdg" base_DataType="_FdBEyKiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEyKiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgLGUKiIEemf1uNNAktmdg" base_NamedElement="_FdBEyKiIEemf1uNNAktmdg" vodmlid="complex"/>
+  <IVOA_UML_Profile:primitive xmi:id="_FgLGUaiIEemf1uNNAktmdg" base_DataType="_FdBEyqiIEemf1uNNAktmdg" base_PrimitiveType="_FdBEyqiIEemf1uNNAktmdg"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_FgLGUqiIEemf1uNNAktmdg" base_NamedElement="_FdBEyqiIEemf1uNNAktmdg" vodmlid="duration"/>
+  <default:subset xmi:id="_FgLGU6iIEemf1uNNAktmdg" base_Constraint="_FdAdlaiIEemf1uNNAktmdg"/>
+  <default:subset xmi:id="_FgLtYKiIEemf1uNNAktmdg" base_Constraint="_FdAdmKiIEemf1uNNAktmdg"/>
 </xmi:XMI>

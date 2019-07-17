@@ -7,7 +7,7 @@
   <uri/>
   <title/>
   <version>0.x</version>
-  <lastModified>2019-07-17T11:11:57</lastModified>
+  <lastModified>2019-07-17T13:54:18</lastModified>
   <import>
     <name>ivoa</name>
     <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html</url>
@@ -277,8 +277,8 @@ This is recommended to fill in as it helps to check dependencies and errors into
       </multiplicity>
     </attribute>
     <composition>
-      <vodml-id>Activity.wasAssoociatedWith</vodml-id>
-      <name>wasAssoociatedWith</name>
+      <vodml-id>Activity.wasAssociatedWith</vodml-id>
+      <name>wasAssociatedWith</name>
       <description>Gathers Agents bound to this Activity instance</description>
       <datatype>
         <vodml-ref>Provenance:WasAssociatedWith</vodml-ref>
