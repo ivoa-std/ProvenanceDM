@@ -7,11 +7,11 @@
   <uri/>
   <title/>
   <version>0.x</version>
-  <lastModified>2019-07-17T13:54:18</lastModified>
+  <lastModified>2019-07-18T09:16:32</lastModified>
   <import>
     <name>ivoa</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.html</documentationURL>
+    <url>http://www.ivoa.net/xml/VODML/20180519/IVOA-v1.0.vo-dml.xml</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html</documentationURL>
   </import>
   <enumeration>
     <vodml-id>AgentType</vodml-id>
@@ -597,10 +597,10 @@ Allows coarse description of the provenance.</description>
     </extends>
     <constraint xsi:type="vo-dml:SubsettedRole">
       <role>
-        <vodml-ref>Provenance:provenance.ValueEntity</vodml-ref>
+        <vodml-ref>Provenance:ValueEntity</vodml-ref>
       </role>
       <datatype>
-        <vodml-ref>Provenance:provenance.ValueDescription</vodml-ref>
+        <vodml-ref>Provenance:ValueDescription</vodml-ref>
       </datatype>
     </constraint>
     <attribute>
@@ -626,10 +626,10 @@ Allows coarse description of the provenance.</description>
     </extends>
     <constraint xsi:type="vo-dml:SubsettedRole">
       <role>
-        <vodml-ref>Provenance:provenance.DatasetEntity</vodml-ref>
+        <vodml-ref>Provenance:DatasetEntity</vodml-ref>
       </role>
       <datatype>
-        <vodml-ref>Provenance:provenance.DatasetDescription</vodml-ref>
+        <vodml-ref>Provenance:DatasetDescription</vodml-ref>
       </datatype>
     </constraint>
   </objectType>
