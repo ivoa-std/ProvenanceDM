@@ -428,7 +428,7 @@ url         & anyURI & reference URL to the agent\\
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize AgentType}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{lp{9cm}}
+\begin{tabulary}{1.0\textwidth}{lp{8cm}}
 \toprule
 \head{Literal} &\head{Comment} \\
 \midrule
@@ -545,7 +545,7 @@ Roles in relations to Agent are free text attributes, but if one of the terms in
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize Agent roles}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{lL}
+\begin{tabulary}{1.0\textwidth}{lp{8cm}}
 \toprule
 \head{Role} & \head{Comment} \\
 \midrule
@@ -654,7 +654,7 @@ There must be exactly zero or one \class{ActivityDescription} per \class{Activit
 % If steps from a pipeline shall be grouped together, one needs to create a proper \class{ActivityDescription} for describing all the steps at once. This method can then be referred to by the pipeline activity. 
 Note that if an instance of \class{Used}/\class{WasGeneratedBy}/\class{Entity} is linked to its corresponding description (see next sections), then there must exist a link between the corresponding activity and activity description.
 
-The activity \attribute{type} is a free text attribute, but if one of the terms in Table \ref{tab:activitydescription} applies, it should be used.
+The activity \attribute{type} is a free text attribute, but if one of the terms in Table \ref{tab:activitydescription-types} applies, it should be used.
 %except for predefined words listed in Table \ref{tab:activitydescription-roles}.
 The activity \attribute{subtype} is a free text attribute to be used internally by the project that defined \class{ActivityDescription} instances (e.g. mosaicing, denoising, photometric calibration, cross correlation).
 
@@ -669,7 +669,7 @@ The activity \attribute{subtype} is a free text attribute to be used internally 
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize ActivityDescription types}\vspace{0.25em}\\
-\begin{tabulary}{1.0\textwidth}{lL}
+\begin{tabulary}{1.0\textwidth}{lp{8cm}}
 \toprule
 \head{Type} & \head{Comment} \\
 \midrule
@@ -683,7 +683,7 @@ Analysis       & Process of inspecting, cleansing, transforming, and modeling da
 \bottomrule
 \end{tabulary}
 \caption[Terms applicable as activity types.]{Terms applicable as activity types.}
-\label{tab:activitydescription-roles}
+\label{tab:activitydescription-types}
 \end{table}
 
 
@@ -825,7 +825,7 @@ It is a free text attribute, but if one of the terms in Table \ref{tab:usage-gen
 \begin{table}[ht]
 \small
 \tymax  0.5\textwidth
-\begin{tabulary}{1.0\textwidth}{Lp{9cm}}
+\begin{tabulary}{1.0\textwidth}{Lp{8cm}}
 \toprule
 \head{Type} & \head{Description} \\
 \midrule
