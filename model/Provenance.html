@@ -1,12 +1,12 @@
 <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>Provenance</title>
     <link rel="stylesheet" href="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/style/ivoa_wg.css" type="text/css">
     <link rel="stylesheet" href="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/style/xmi.css" type="text/css">
   </head>
   <body>
-    <h1></h1>
+    <h1>Provenance</h1>
     <h2><a id="contents" name="contents">Table of Contents</a></h2>
     <div class="head">
       <table class=".toc">
@@ -136,7 +136,7 @@
       </table>
     </div>
     <hr>
-    <h1><a name="model_section">1. Model:  (Provenance)</a></h1>
+    <h1><a name="model_section">1. Model: Provenance (Provenance)</a></h1>
     <table>
       <tr>
         <td align="right"><b>Authors</b></td>
@@ -146,12 +146,12 @@
       <tr>
         <td align="right"><b>Date</b></td>
         <td> : </td>
-        <td>2019-07-18T09:16:32</td>
+        <td>2019-07-19T16:15:43</td>
       </tr>
       <tr>
         <td align="right"><b>Version</b></td>
         <td> : </td>
-        <td>0.x</td>
+        <td>1.0</td>
       </tr>
       <tr>
         <td align="right" valign="top"><b>Abstract</b></td>
@@ -673,7 +673,9 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Gathers the description text for a parameter</td>
+                      <td class="feature-detail">Gathers the description classes explaining the Parameter object that can be applied when running an Activity  that can follow
+                        this ActivityDescription template. 
+                      </td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="5"><a name="ActivityDescription.usageDescription"></a><b>usageDescription</b></td>
@@ -923,7 +925,7 @@
       </tr>
       <tr>
         <td class="feature-heading">description</td>
-        <td class="feature-detail">Label for agents considered as persons</td>
+        <td class="feature-detail">Type label for agents considered as persons</td>
       </tr>
       <tr>
         <td class="feature-detail" rowspan="2" valign="top"><a name="AgentType.Organization"></a>Organization
@@ -933,7 +935,7 @@
       </tr>
       <tr>
         <td class="feature-heading">description</td>
-        <td class="feature-detail">Label for agents considered as organizations</td>
+        <td class="feature-detail">Type label for agents considered as organizations</td>
       </tr>
       <tr>
         <td class="feature-detail" rowspan="2" valign="top"><a name="AgentType.SoftwareAgent"></a>SoftwareAgent
@@ -943,7 +945,7 @@
       </tr>
       <tr>
         <td class="feature-heading">description</td>
-        <td class="feature-detail">Label for agents considered as software agents</td>
+        <td class="feature-detail">Type label for agents considered as software agents</td>
       </tr>
     </table><br><h3><a name="Collection"></a>2.1.5 objectType: Collection
     </h3>
@@ -1650,7 +1652,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">function of the entity with respect to its usage by the activity</td>
+                      <td class="feature-detail">Function of the entity with respect to its usage by the activity.</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="UsageDescription.description"></a><b>description</b></td>
@@ -2140,7 +2142,7 @@
                     <tr>
                       <td class="feature-heading">description</td>
                       <td class="feature-detail">Function of the agent with respect to the activity
-                        The role values belong to the AgentRole type defined in the Provenance vocabulary.
+                        The role values belong to the AgentRole list defined in IVOA Provenance DataModel, Table 9. 
                       </td>
                     </tr>
                     <tr>
@@ -2218,7 +2220,8 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Function of the agent with respect to the entity
+                      <td class="feature-detail">Function of the agent with respect to the entity. Values for role are listed in the AgentRole type, as listed in Table 9 of
+                        the PROV-DM specification. 
                         
                       </td>
                     </tr>
@@ -2245,7 +2248,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Points to the agent</td>
+                      <td class="feature-detail">Points to the agent.</td>
                     </tr>
                   </table>
                 </td>
@@ -2320,7 +2323,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">points the creating activity</td>
+                      <td class="feature-detail">points to the creating Activity instance.</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="WasGeneratedBy.generationDescription"></a><b>generationDescription</b></td>
@@ -2682,7 +2685,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Description of the individual parameters</td>
+                      <td class="feature-detail">Gathers the properties and the description of the Parameter instance. </td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="ActivityConfiguration.Parameter.valueEntity"></a><b>valueEntity</b></td>
@@ -2702,6 +2705,7 @@
                       <td class="feature-detail">A Parameter instance can have a value derived from a ValueEntity value element computed previously by some former Activity
                         instance. Therefore, the ValueEntity it refers to is generated with another instance of the Activity class, in a different
                         generation scenario executed previously.
+                        This references such a ValueEntity from the Parameter instance.
                       </td>
                     </tr>
                   </table>
@@ -3183,7 +3187,9 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityDescription.parameterDescription">ActivityDescription.parameterDescription</a></td>
         <td class="feature-detail">composition</td>
-        <td class="feature-detail">Gathers the description text for a parameter</td>
+        <td class="feature-detail">Gathers the description classes explaining the Parameter object that can be applied when running an Activity  that can follow
+          this ActivityDescription template. 
+        </td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityDescription.subtype">ActivityDescription.subtype</a></td>
@@ -3265,17 +3271,17 @@
       <tr>
         <td class="feature-detail"><a href="#AgentType.Organization">AgentType.Organization</a></td>
         <td class="feature-detail">literal</td>
-        <td class="feature-detail">Label for agents considered as organizations</td>
+        <td class="feature-detail">Type label for agents considered as organizations</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#AgentType.Person">AgentType.Person</a></td>
         <td class="feature-detail">literal</td>
-        <td class="feature-detail">Label for agents considered as persons</td>
+        <td class="feature-detail">Type label for agents considered as persons</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#AgentType.SoftwareAgent">AgentType.SoftwareAgent</a></td>
         <td class="feature-detail">literal</td>
-        <td class="feature-detail">Label for agents considered as software agents</td>
+        <td class="feature-detail">Type label for agents considered as software agents</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#Collection">Collection</a></td>
@@ -3462,7 +3468,7 @@
       <tr>
         <td class="feature-detail"><a href="#UsageDescription.role">UsageDescription.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">function of the entity with respect to its usage by the activity</td>
+        <td class="feature-detail">Function of the entity with respect to its usage by the activity.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#UsageDescription.type">UsageDescription.type</a></td>
@@ -3565,7 +3571,7 @@
         <td class="feature-detail"><a href="#WasAssociatedWith.role">WasAssociatedWith.role</a></td>
         <td class="feature-detail">attribute</td>
         <td class="feature-detail">Function of the agent with respect to the activity
-          The role values belong to the AgentRole type defined in the Provenance vocabulary.
+          The role values belong to the AgentRole list defined in IVOA Provenance DataModel, Table 9. 
         </td>
       </tr>
       <tr>
@@ -3578,12 +3584,13 @@
       <tr>
         <td class="feature-detail"><a href="#WasAttributedTo.agent">WasAttributedTo.agent</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">Points to the agent</td>
+        <td class="feature-detail">Points to the agent.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#WasAttributedTo.role">WasAttributedTo.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Function of the agent with respect to the entity
+        <td class="feature-detail">Function of the agent with respect to the entity. Values for role are listed in the AgentRole type, as listed in Table 9 of
+          the PROV-DM specification. 
           
         </td>
       </tr>
@@ -3595,7 +3602,7 @@
       <tr>
         <td class="feature-detail"><a href="#WasGeneratedBy.activity">WasGeneratedBy.activity</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">points the creating activity</td>
+        <td class="feature-detail">points to the creating Activity instance.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#WasGeneratedBy.generationDescription">WasGeneratedBy.generationDescription</a></td>
@@ -3675,7 +3682,7 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.Parameter.parameterDescription">ActivityConfiguration.Parameter.parameterDescription</a></td>
         <td class="feature-detail">reference</td>
-        <td class="feature-detail">Description of the individual parameters</td>
+        <td class="feature-detail">Gathers the properties and the description of the Parameter instance. </td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.Parameter.value">ActivityConfiguration.Parameter.value</a></td>
@@ -3690,6 +3697,7 @@
         <td class="feature-detail">A Parameter instance can have a value derived from a ValueEntity value element computed previously by some former Activity
           instance. Therefore, the ValueEntity it refers to is generated with another instance of the Activity class, in a different
           generation scenario executed previously.
+          This references such a ValueEntity from the Parameter instance.
         </td>
       </tr>
       <tr>
