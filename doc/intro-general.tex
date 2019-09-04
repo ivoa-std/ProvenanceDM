@@ -2,7 +2,7 @@
 In this document, we propose an IVOA standard data model (DM) for describing the provenance of astronomical data. 
 How this specification of the Provenance model can be implemented is developed in a companion document to be published as an IVOA Note \citep{std:ProvenanceImplementationNote}.
 
-The provenance of scientific data is a part of the open publishing policy for science data and follows some of the FAIR principles for data sharing \citep{FAIR-principles}.
+The provenance of scientific data is related to the FAIR principles for data sharing \citep{FAIR-principles} and corresponds to relevant information in the context of openly published science data.
 
 We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
@@ -29,7 +29,6 @@ discovered.}
 The goal of this Provenance DM is to describe how provenance information arising from astronomy projects can be modelled, stored and exchanged. 
 Its scope is mainly modelling of the flow of data, of the relations between pieces of data, and of processing steps. 
 However, the Provenance DM is sufficiently abstract that its core pattern could be applied to any kind of process related to either observation or simulation data.
-%It could also be used to track the provenance of observation proposals or the publication of scientific articles based on (astronomical) data.
 
 Information attached to observation activities such as ambient conditions and instrument characteristics provide useful information to assess the quality and reliability of the generated entities.
 Contextual information during the execution of processing activities (computer structure, nodes, operating system used, etc.) can also be relevant for the description of the main entities generated. 
@@ -39,18 +38,14 @@ However, the precise structure and modelling of this information is out of the s
 In general, the model shall capture information in a machine-readable way that would enable a scientist who has no prior knowledge about a dataset to get more background information. 
 This will help the scientist to decide if the dataset is adequate for her research goal, assess its quality and reliability and get enough information to be able to trace back its history as far as required or possible. 
 
-%Provenance information may be recorded in minute detail or by using coarser elements. 
 Provenance information can be exposed with different granularity. A specific project has to decide this granularity.
-%at which the provenance information is recorded.
 The granularity and amount of provenance information provided depends on the available information, the needs of the project and the intended usage of this information.
 
 This flexible approach has an impact on the interoperability between different services as this level of detail is not known a priori. 
 The objective of the model is to propose a general structure for the provenance information. In addition, proposed vocabularies of reserved words help to further formalize the detailed provenance information.
-%The project is responsible for the relevance and integrity of the provenance information.
 
 
 The following list is a collection of use cases addressed by the Provenance DM. 
-%More specific use cases in the astronomy domain for different types of dataset and workflow along with example implementations are given in an implementation note \citep{std:ProvenanceImplementationNote}.
 
 
 \paragraphlb{A: Traceability of products}
@@ -108,14 +103,10 @@ Find the location of possible error sources in the generation of a product. This
             \item Find more images that were produced using the same version of the CTA pipeline.
             \item Get an overview of all images reduced with the same calibration dataset.
             \item Are there any more images attributed to this observer?  
-            %\item Which images of the Crab Nebula are of good quality and were produced within the last 10 years?
             \item Find all datasets generated using this given algorithm, with this given configuration, for this given step of the data processing.
             \item Find all generated data files that used incorrectly generated file X as an input, so that they can be marked for re-processing
             \item Extract all the provenance information of a SVOM light curve or spectrum to reprocess the raw data with refined parameters.
-          % add another specific use case for tracking scientific productivity?
         \end{itemize}
-
-%        This task is probably the most challenging. It also includes tracking the history of data items as in A, but we still have listed this task separately, since we may decide that we can't keep this one, but we definitely want A.
 
 \paragraphlb{General Remarks}
 In addition to those use cases, if the stored information is sufficiently fine grained, it is possible to enable the \textbf{reproducibility} of an activity or sequence of activities, with the exact same configuration and exact same conditions.

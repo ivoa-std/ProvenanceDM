@@ -67,7 +67,7 @@ There can be several instances of a \class{Parameter} (respectively \class{Confi
 \textbf{value} & string & the value of the parameter. If a corresponding \class{ParameterDescription}.\attribute{valueType} attribute is set, the value string can be interpreted by this \attribute{valueType}. \\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{Parameter} class]{Attributes of the \class{Parameter} class. Attributes in \textbf{bold} must not be null.}
+\caption[Attributes of the \class{Parameter} class]{Attributes of the \class{Parameter} class. Attributes in \textbf{bold} are mandatory and must not be null.}
 \label{tab:param}
 \end{table}
 
@@ -83,7 +83,7 @@ There can be several instances of a \class{Parameter} (respectively \class{Confi
 \textbf{name} & string & name of the parameter \\
 \textbf{valueType} & string & value types of the VODML ivoa base model, see \citet{2018ivoa.spec.0910L} \\
 description & string  & a descriptive text for the parameter \\
-unit        & Unit  & physical unit, see \ref{sect:Units} and \citet{2014ivoa.spec.0523D} for recommended unit representation \\
+unit        & Unit  & VO unit, see \ref{sect:Units} and \citet{2014ivoa.spec.0523D} for recommended unit representation \\
 ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{2018ivoa.spec.0527M} \\
 utype       & string  & Utype, meant to express the role of the parameter in the context of an external data model, see \citet{note:utypeusage} \\
 % Mireille   removed the reference to the Utype note by Graham and al. not the definition of it but critics instead. 
@@ -96,7 +96,7 @@ options     & string & comma separated list of possible values\\
 default     & string & the default value of the parameter as a string whose value can be interpreted by the \attribute{valueType} attribute \\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{ParameterDescription} class]{Attributes of the  \class{ParameterDescription} class. Attributes in \textbf{bold} must not be null.}
+\caption[Attributes of the \class{ParameterDescription} class]{Attributes of the  \class{ParameterDescription} class. Attributes in \textbf{bold} are mandatory and must not be null.}
 \label{tab:Paramdescription}
 \end{table}
 
@@ -105,6 +105,8 @@ The \class{Parameter} class contains a \attribute{value} and a \attribute{name} 
 The \class{ParameterDescription} class describes the parameter \attribute{value} attribute similarly to the \class{ValueEntity} and \class{ValueDescription} classes. Those attributes are listed in Table~\ref{tab:Paramdescription}.
 
 If a \class{ParameterDescription} instance is defined, the \attribute{name} attribute of the related \class{Parameter} instances must match the \attribute{name} attribute of this \class{ParameterDescription} instance.
+
+The \class{Parameter} instance may refer to a \class{ValueEntity} instance using a \textit{hadReference} relation which gives the origin of the parameter value.
 
 
 \subsubsection{ConfigFile and ConfigFileDescription classes}
@@ -123,7 +125,7 @@ If a \class{ParameterDescription} instance is defined, the \attribute{name} attr
 comment & string  & text containing comments on the config file  \\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{ConfigFile} class]{Attributes of the \class{ConfigFile} class. Attributes in \textbf{bold} must not be null.}
+\caption[Attributes of the \class{ConfigFile} class]{Attributes of the \class{ConfigFile} class. Attributes in \textbf{bold} are mandatory and must not be null.}
 \label{tab:configfile}
 \end{table}
 
@@ -137,11 +139,11 @@ comment & string  & text containing comments on the config file  \\
  \midrule
 %\textbf{id}  & string &  unique ParemeterDescription identifier\\
 \textbf{name}    & string & a human-readable name for the config file \\
-\textbf{contentType}  & string  & MIME-type or format of the dataset \\
+\textbf{contentType}  & string  & format of the config file, MIME type when applicable \\
 description     & string  & a descriptive text for the config file \\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{ConfigFileDescription} class]{Attributes of the  \class{ConfigFileDescription} class. Attributes in \textbf{bold} must not be null.}
+\caption[Attributes of the \class{ConfigFileDescription} class]{Attributes of the  \class{ConfigFileDescription} class. Attributes in \textbf{bold} are mandatory and must not be null.}
 \label{tab:configfiledescription}
 \end{table}
 
@@ -163,10 +165,10 @@ If a \class{ConfigFileDescription} instance is defined, the \attribute{name} att
  \head{Attribute} & \head{Data type}   & \head{Description}\\
  \midrule
 %\textbf{id}   & string            & a unique id\\
-\textbf{artefactType} &  TypeOfConfigArtefact & string that takes the value "Parameter" or "ConfigFile" to indicate the type of class pointed by the \class{WasConfiguredBy} instance. \\
+\textbf{artefactType} &  TypeOfConfigArtefact & literal that takes the value "Parameter" or "ConfigFile" to indicate the type of class pointed by the \class{WasConfiguredBy} instance. \\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{WasConfiguredBy} class]{Attributes of the \class{WasConfiguredBy} class. Attributes in \textbf{bold} must not be null.}
+\caption[Attributes of the \class{WasConfiguredBy} class]{Attributes of the \class{WasConfiguredBy} class. Attributes in \textbf{bold} are mandatory and must not be null.}
 \label{tab:WasConfiguredBy}
 \end{table}
 
@@ -182,10 +184,3 @@ For instance, a cube analysis activity with a parameter "nbofChannels" will poin
 % Other implementation examples are provided together on the RFC page. See \url{https://wiki.ivoa.net/twiki/bin/view/IVOA/ProvFocusAstericsExamples}.
 
 Similarly, we can foresee a number of different \class{ConfigFile} instances used for various instances of an \class{Activity}, which rely on the same \class{ConfigFileDescription} instance bound to the corresponding \class{ActivityDescription} instance. 
-
-%  ??? a deplacer vers la partie Description ?? 
-% Mathieu: This suggest a dedicated serialisation of the description, explained in a separate document
-%An \class{ActivityDescription} works as a template which binds to the configuration, to the top of the diagram and to the data flow represented in \class{UsageDescription} and \class{GenerationDescription} where the Entities consumed and produced by the ActivityDescription are designated with their role. Such a template can be imported from a project code repository, for instance. 
-
-%Some \class{Parameter} values may have been elaborated from a computation, a process which produced this value and can be part of the provenance information. In this case an \class{Activity} instance exists in the system that did produce a \class{ValueEntity} instance which contains this specific value. 
-The \class{Parameter} instance may refer to a \class{ValueEntity} instance using a \textit{hadReference} which gives the origin of this value. 
