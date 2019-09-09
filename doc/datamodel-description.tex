@@ -7,14 +7,14 @@
 \begin{figure}[hbt]
 \centering
 \includegraphics[width=1.0\textwidth]{PROV_Fig3.png}
-\caption[Overview class diagram of the IVOA Provenance Data Model]{Overview class diagram of the IVOA Provenance Data Model. The core part in yellow is based on W3C PROV definitions where relations are shown in grey. It is extended by a Description part (orange), specific types of entities (red) and an optional Activity Configuration package (green). A full diagram with attributes is shown in Section~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}}
+\caption[Overview class diagram of the IVOA Provenance Data Model]{Overview class diagram of the IVOA Provenance Data Model. The core part in yellow is based on W3C PROV definitions where relations are shown in grey. It is extended by a description part (orange), specific types of entities (red) and an optional \class{ActivityConfiguration} package (green). A full diagram with attributes is shown in Section~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}}
 \label{fig:overview}
 \end{figure}
 
 The IVOA Provenance DM is based on the the PROV-DM recommendation \citep{std:W3CProvDM} of the World Wide Web Consortium (W3C), that provides the core elements of the model (see Sections~\ref{sec:ent_act} to~\ref{sec:agent+relations}). 
 In the VO context, the provenance of something is thus a sequence of activities using and generating entities run by agents.
 
-The model includes in addition Description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of \class{Entity} classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an optional \class{ActivityConfiguration} package (see Section~\ref{sec:configuration}).
+The model includes in addition description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of \class{Entity} classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an optional \class{ActivityConfiguration} package (see Section~\ref{sec:configuration}).
 
 The IVOA Provenance DM is a class data model that follows the VO-DML designing rules \citep{2018ivoa.spec.0910L}. It is represented as a UML class diagram: an overview diagram is shown in Figure~\ref{fig:overview}, and a full diagram with attributes is shown in Appendix~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}.
 
@@ -61,7 +61,8 @@ name        & string & a human-readable name for the entity\\
 location    & string & a path or spatial coordinates, e.g. a URL, latitude-longitude coordinates on Earth, the name of a place.\\
 %value       & prov:value &  & provides a value that is a direct representation of the entity \\
 generatedAtTime  & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
-invalidatedAtTime  & datetime & date and time of the destruction or cessation of the entity. The entity is no longer available for use (or further invalidation) after invalidation.\\
+invalidatedAtTime  & datetime & date and time of invalidation of the entity. After that date, the entity is no longer available for any use.\\
+%date and time of the destruction or cessation of the entity. The entity is no longer available for use (or further invalidation) after invalidation.\\
 comment  &  string & text containing specific comments on the entity\\
 %rights      & -- & string & access rights for the entity, values: public, secure or proprietary; see Curation.Rights, RightsType in DatasetDM\\
 %\midrule
@@ -295,7 +296,7 @@ url         & anyURI & reference URL to the agent\\
 \toprule
 \head{Type} &\head{Description} \\
 \midrule
-Person        & Person agents are people\\
+Person        & person agents are people\\
 Organization  & a social or legal institution, e.g. an institute, a consortium, a project\\
 SoftwareAgent & running software, e.g. a cron job or a trigger \\
 \bottomrule
@@ -614,7 +615,7 @@ Instances of \class{Used} (respectively \class{WasGeneratedBy}) may thus point t
 
 If a \class{UsageDescription} (respectively \class{GenerationDescription}) instance is defined, the \attribute{role} attribute of the related \class{Used} (respectively \class{WasGeneratedBy}) instances must match the \attribute{role} attribute of this \class{UsageDescription} (respectively \class{GenerationDescription}) instance.
 
-A \attribute{multiplicity} attribute should be specified to indicate the number of entities expected to share the same role for a given ActivityDescription instance, e.g. in the case of the stacking of images, several images are expected with the same input role (\attribute{multiplicity=*}).
+A \attribute{multiplicity} attribute should be specified to indicate the number of entities expected to share the same role for a given \class{ActivityDescription} instance, e.g. in the case of the stacking of images, several images are expected with the same input role (\attribute{multiplicity=*}).
 
 When related to the \class{UsageDescription} or \class{GenerationDescription}, the attributes of \class{EntityDescription} (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity. For example: when the input bias files are expected to be in FITS format (relation to a \class{DatasetDescription} with \attribute{contentType}=application/fits), or the red, green and blue channel images are expected to be in PNG or JPEG format. 
 
@@ -672,7 +673,7 @@ In astronomy and the VO, we thus define two main types of entity classes:
 \label{fig:classdiagram_entityclasses}
 \end{figure}
 
-As shown in Figure~\ref{fig:classdiagram_entityclasses}, the entity description classes for both \class{ValueEntity} and \class{DatasetEntity} are subsetted respectively as \class{ValueDescription} or \class{DatasetDescription}.
+As shown in Figure~\ref{fig:classdiagram_entityclasses}, the entity description classes for both \class{ValueEntity} and \class{DatasetEntity} are subsetted respectively as \class{ValueDescription} and \class{DatasetDescription}.
 
 We anticipate that more specific categories of entities can be defined by the projects (for example, a device, a document, a vizualization...). The \attribute{type} attribute of the \class{EntityDescription} class should be used to differentiate the different categories of entities.
 

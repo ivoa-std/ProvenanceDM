@@ -6,11 +6,11 @@
 \item Requirements divided into Model Requirements and Best Practices.
 \item Restruturation of Section \ref{sec:datamodel}, removing the separation of the Core Model and the Extended Model. An overview is now given in \ref{sec:overview}, and each following subsection corresponds to a feature of the model, in relation with the goals. Each subsubsection is an element of the model presented in Figure \ref{fig:overview}.
 \item \class{WasInformedBy} and \class{WasDerivedFrom} are optional and included in section \ref{sec:entity-activity-relations} on \class{Entity}-\class{Activity} relations. They are simple relations.
-\item Addition of \class{ValueEntity} and \class{DatasetEntity} (with their description classes) as specific types of Entity classes (section \ref{sec:spec_entities}).
+\item Addition of \class{ValueEntity} and \class{DatasetEntity} (with their description classes) as specific types of \class{Entity} classes (section \ref{sec:spec_entities}).
 \item Grouping of the \class{Parameter}-\class{ParameterDescription} classes as an optional \class{ActivityConfiguration} package that also includes config files.
 \item Modification of class attributes: 
 \begin{itemize}
-  \item \attribute{annotation} $\rightarrow$ \attribute{comment} (\attribute{annotation} $\rightarrow$ \attribute{description} in Description classes)
+  \item \attribute{annotation} $\rightarrow$ \attribute{comment} (\attribute{annotation} $\rightarrow$ \attribute{description} in description classes)
   \item \attribute{creationTime} $\rightarrow$ \attribute{generatedAtTime} (W3C PROV term)
   \item \attribute{destructionTime} $\rightarrow$ \attribute{invalidatedAtTime} (W3C PROV term)
   \item added: \class{Agent}.\attribute{url}
