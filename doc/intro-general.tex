@@ -2,13 +2,13 @@
 In this document, we propose an IVOA standard data model (DM) for describing the provenance of astronomical data. 
 How this specification of the Provenance model can be implemented is developed in a companion document to be published as an IVOA Note \citep{std:ProvenanceImplementationNote}.
 
-The provenance of scientific data is related to the FAIR principles for data sharing \citep{FAIR-principles} and corresponds to relevant information in the context of openly published science data.
+The provenance of scientific data is cited in the FAIR principles for data sharing \citep{FAIR-principles} and corresponds to particularly relevant information in the context of openly published science data.
 
-We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e. that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
+We follow the definition of provenance as proposed by the W3C \citep{std:W3CProvDM}, i.e.~that provenance is ``information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness''.
 
-In astronomy, such entities are generally datasets composed of VOTables, FITS files, database tables or files containing values (spectra, light curves), any value, logs, documents, as well as physical objects such as instruments, detectors or photographic plates.
+In astronomy, such entities are generally datasets composed of VOTables, FITS files, database tables or files containing values (spectra, light curves),  it could also be any value, logs, documents, as well as physical objects such as instruments, detectors or photographic plates.
 The activities correspond to processes like an observation, a simulation, processing steps (image stacking, object extraction, etc.), execution of data analysis code, publication, etc.
-The people involved can be for example individual persons (observer, publisher, etc.), groups or organisations, i.e. any agent related to an activity or an entity.
+The people involved can be for example individual persons (observer, publisher, etc.), groups or organisations, i.e.~any agent related to an activity or an entity.
 
 An example for activities, entities and agents as they can be discovered backwards in time is given in Figure~\ref{fig:example-workflow}.
 
@@ -66,20 +66,20 @@ The following list is a collection of use cases addressed by the Provenance DM.
         \noindent Examples: 
         \begin{itemize}
             \item I want to use an image for my own work -- who was involved in creating it? Who can I contact to get information? 
-            \item Find out who was on shift for data taking for a given dataset
+            \item Who was on shift while the data was taken?
             \item I have a question about column xxx in a data table. Who can I ask about that? 
         \end{itemize}
 
 
 \paragraphlb{C: Quality and Reliability assessment}
-Assess the quality and reliability of an observation, production step or dataset, e.g. based on detailed descriptions of the processing steps and manipulated entities.
+Assess the quality and reliability of an observation, production step or dataset, e.g., based on detailed descriptions of the processing steps and manipulated entities.
         
         \noindent Examples:
         \begin{itemize}
             \item Get detailed information on the methods/tools/software that were involved: What algorithm was used for Cherenkov photon reconstruction? How was the stacking of images performed?
-            \item Check if the processing steps (including data acquisition) went "well": Were there any warnings during the data processing? Any quality control parameters?
+            \item Check if the processing steps (including data acquisition) went ``well'': Were there any warnings during the data processing? Any quality control parameters?
             \item Extract the ambient conditions during data acquisition (cloud coverage? wind? temperature?)
-            \item Is the dataset produced or published by a person\slash{}organisation I can trust?
+            \item Is the dataset produced or published by a person/organisation I rely on? Using methods I trust?
         \end{itemize}
 
 
@@ -90,13 +90,13 @@ Find the location of possible error sources in the generation of a product. This
         \begin{itemize}
             \item I found something strange in an image. Was there anything strange noted when the image was taken? a warning during the processing? 
             \item Which pipeline version was used, the old one with a known bug for treating bright objects or a newer version? 
-            \item What was the execution environment of the pipeline (operating system, coding language version, ...)?
+            \item What was the execution environment of the pipeline (operating system, system dependencies, software version, etc.)?
             \item What was the detailed configuration of the pipeline? were the parameters correctly set for the image cleaning step?
         \end{itemize}
 
 
 \paragraphlb{E: Search in structured provenance metadata}
-        Use Provenance criteria to locate datasets (forward search), e.g. finding all images produced by a certain processing step or derived from data which were taken by a given facility.
+        Use Provenance criteria to locate datasets (forward search), e.g., finding all images produced by a certain processing step or derived from data which were taken by a given facility.
         
         \noindent Examples:
         \begin{itemize}
@@ -111,4 +111,4 @@ Find the location of possible error sources in the generation of a product. This
 \paragraphlb{General Remarks}
 In addition to those use cases, if the stored information is sufficiently fine grained, it is possible to enable the \textbf{reproducibility} of an activity or sequence of activities, with the exact same configuration and exact same conditions.
 
-Another important usage of provenance information is to assess the \textbf{pertinence of a product for scientific objectives}, which can be facilitated through the selection of the relevant provenance information attached to an entity that is delivered to a science user.
+Provenance information delivers additional information about a scientific dataset to enable the scientist to evaluate its \textbf{relevance for his work}.

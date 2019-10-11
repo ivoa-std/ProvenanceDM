@@ -1,5 +1,4 @@
 
-
 \subsection{Overview and class diagram}
 \label{sec:overview}
 
@@ -7,14 +6,14 @@
 \begin{figure}[hbt]
 \centering
 \includegraphics[width=1.0\textwidth]{PROV_Fig3.png}
-\caption[Overview class diagram of the IVOA Provenance Data Model]{Overview class diagram of the IVOA Provenance Data Model. The core part in yellow is based on W3C PROV definitions where relations are shown in grey. It is extended by a description part (orange), specific types of entities (red) and an optional \class{ActivityConfiguration} package (green). A full diagram with attributes is shown in Section~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}}
+\caption[Overview class diagram of the IVOA Provenance Data Model]{Overview class diagram of the IVOA Provenance Data Model. The core part in yellow is based on W3C PROV definitions where relations are shown in grey. It is extended by a description part (orange), specific types of entities (red) and an \class{ActivityConfiguration} package (green). A full diagram with attributes is shown in Section~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}}
 \label{fig:overview}
 \end{figure}
 
 The IVOA Provenance DM is based on the the PROV-DM recommendation \citep{std:W3CProvDM} of the World Wide Web Consortium (W3C), that provides the core elements of the model (see Sections~\ref{sec:ent_act} to~\ref{sec:agent+relations}). 
 In the VO context, the provenance of something is thus a sequence of activities using and generating entities run by agents.
 
-The model includes in addition description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of \class{Entity} classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an optional \class{ActivityConfiguration} package (see Section~\ref{sec:configuration}).
+The model includes in addition description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of \class{Entity} classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an \class{ActivityConfiguration} package (see Section~\ref{sec:configuration}).
 
 The IVOA Provenance DM is a class data model that follows the VO-DML designing rules \citep{2018ivoa.spec.0910L}. It is represented as a UML class diagram: an overview diagram is shown in Figure~\ref{fig:overview}, and a full diagram with attributes is shown in Appendix~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}.
 
@@ -43,7 +42,7 @@ An \textbf{entity} is a physical, digital, conceptual, or other kind of thing wi
 The \class{Entity} class in the model have the attributes given in Table \ref{tab:entity}. 
 
 Entities in astronomy are usually astronomical or astrophysical datasets in the form of images, tables, numbers, etc. But they can also be log files, files containing system information, any input or output value, environment variables, ambient conditions, or, in a wider sense, observation proposals, scientific articles, or manuals and other documents. 
-Though the focus is on digital entities in this document, entities can also refer to physical entities that may be linked to digital entities, such as e.g. tools, instruments, detectors, photographic plates.
+Though the focus is on digital entities in this document, entities can also refer to physical entities that may be linked to digital entities, such as e.g., tools, instruments, detectors, photographic plates.
 
 
 \begin{table}[ht]
@@ -56,11 +55,11 @@ Though the focus is on digital entities in this document, entities can also refe
 \midrule
 \textbf{id} & string & a unique identifier for this entity\\
 name        & string & a human-readable name for the entity\\
-%a provenance type, i.e. one of: prov:collection, prov:bundle, prov:plan; or any of the specialized entities defined in Section~\ref{sec:spec_entities} \\
+%a provenance type, i.e.~one of: prov:collection, prov:bundle, prov:plan; or any of the specialized entities defined in Section~\ref{sec:spec_entities} \\
 %description\_ref  & foreign key/url & link to \class{EntityDescription}\\
-location    & string & a path or spatial coordinates, e.g. a URL, latitude-longitude coordinates on Earth, the name of a place.\\
+location    & string & a path or spatial coordinates, e.g., a URL, latitude-longitude coordinates on Earth, the name of a place.\\
 %value       & prov:value &  & provides a value that is a direct representation of the entity \\
-generatedAtTime  & datetime & date and time at which the entity was created (e.g. timestamp of a file)\\
+generatedAtTime  & datetime & date and time at which the entity was created (e.g., timestamp of a file)\\
 invalidatedAtTime  & datetime & date and time of invalidation of the entity. After that date, the entity is no longer available for any use.\\
 %date and time of the destruction or cessation of the entity. The entity is no longer available for use (or further invalidation) after invalidation.\\
 comment  &  string & text containing specific comments on the entity\\
@@ -109,7 +108,7 @@ endTime      & datetime & end of an activity\\
 % mireille :  I do not agree for this change by Ole : They can be unknown but they must be mandatory in order to allow to query on time for an activity, and to tell the execution order. 
 % ole so what should I put there if the time is not known? And what is the use case of using the temporal execution order instead of the logical one (following the provenance links used/wasgeneratedby)?
 comment      & string & text containing specific comments on the activity\\
-%status &  & string & can be used to describe the terminal status of the activity (e.g. completed, aborted, error...)\\
+%status &  & string & can be used to describe the terminal status of the activity (e.g., completed, aborted, error...)\\
 %votype & string & can be either ``activity'' or ``activityFlow''\\
 %, used to differentiate between these two class types, if ``activityFlow'' is not implemented as an extra class (and in W3C compatible serializations)\\
 %\midrule
@@ -210,7 +209,7 @@ An entity can be generated by only one activity, so the multiplicity is 1 or 0 b
 The \attribute{role} of an entity within an activity should be provided.
 Roles in \class{Entity}-\class{Activity} relations are free text attributes.
 
-The \attribute{role} cannot be an attribute of the \class{Entity} class, since the same entity (e.g. a specific file containing an image) may play different roles with different activities. 
+The \attribute{role} cannot be an attribute of the \class{Entity} class, since the same entity (e.g., a specific file containing an image) may play different roles with different activities.
 
 In some cases the role is mandatory to distinguish two input entities. For example, an activity for dark-frame subtraction requires two input images. But it is very important to know which of the images is the raw image and which one fulfils the role of dark frame.
 
@@ -222,18 +221,18 @@ Several entities may play the same role for an activity. For example, many image
 
 A \textbf{derivation} is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-Derivation}{\S5.2.1}).
 
-Derivation is an optional relation \class{wasDerivedFrom} in the model, that connects an instance of \class{Entity} to another instance.
+Derivation is a relation \class{wasDerivedFrom} in the model, that connects an instance of \class{Entity} to another instance.
 
 For example, the entity ``calibrated\_image.fits'' was derived from the entity ``raw\_image.fits''
 
-This relation makes it possible to visualize independently the flow of entities, e.g. a dataflow. It does not need a priori a specific class or table in an implementation, but it provides a way to expose partial information that follow the general chain \class{WasGeneratedBy}-\class{Activity}-\class{Used} where the activity may be an empty instance because it is unknown or irrelevant.
+This relation makes it possible to visualize independently the flow of entities, e.g., a dataflow. It does not need a priori a specific class or table in an implementation, but it provides a way to expose partial information that follow the general chain \class{WasGeneratedBy}-\class{Activity}-\class{Used} where the activity may be an empty instance because it is unknown or irrelevant.
 
 
 \subsubsection{WasInformedBy relation}
 
 \textbf{Communication} is the exchange of information (some unspecified entity) by two activities, one activity using some entity generated by the other (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-Communication}{\S5.1.5}).
 
-Communication is an optional relation \class{wasInformedBy} in the model, that connects an instance of \class{Activity} to another instance.
+Communication is a relation \class{wasInformedBy} in the model, that connects an instance of \class{Activity} to another instance.
 
 For example, the activity ``calibration'' was informed by the activity ``pipeline''.
 
@@ -267,7 +266,7 @@ It is recommended to use organizational agents and agents with generic contacts.
 \head{Attribute} & \head{Data type} & \head{Description}\\
 \midrule
 \textbf{id}    & string & unique identifier for an agent\\
-\textbf{name}  & string & a common name for this agent; e.g. first name and last name; project name,  pipeline team, data center.\\
+\textbf{name}  & string & a common name for this agent; e.g., first name and last name; project name,  pipeline team, data center.\\
 type        & AgentType & type of the agent as given in Table~\ref{tab:agent-types}\\
 comment     & string & text containing specific comments on the agent\\
 email       & string & contact email of the agent\\
@@ -297,8 +296,8 @@ url         & anyURI & reference URL to the agent\\
 \head{Type} &\head{Description} \\
 \midrule
 Person        & person agents are people\\
-Organization  & a social or legal institution, e.g. an institute, a consortium, a project\\
-SoftwareAgent & running software, e.g. a cron job or a trigger \\
+Organization  & a social or legal institution, e.g., an institute, a consortium, a project\\
+SoftwareAgent & running software, e.g., a cron job or a trigger \\
 \bottomrule
 \end{tabulary}
 \caption[Enumeration of Agent types.]{Enumeration of Agent types.}
@@ -319,7 +318,7 @@ SoftwareAgent & running software, e.g. a cron job or a trigger \\
 
 For each agent a \attribute{name} must be specified. 
 Other attributes can help locate or contact the agent (\attribute{email}, \attribute{affiliation}, \attribute{phone}, \attribute{address}).
-Not every project will need them; e.g. an advanced system may use permanent identifiers (e.g. ORCIDs, identities in federations, etc) to identify agents and retrieve their properties from an external system instead.
+Not every project will need them; e.g. an advanced system may use permanent identifiers (ORCIDs, identities in federations, etc) to identify agents ,and retrieve their properties from an external system instead.
 
 %It is desired to have at least one agent given for each activity.
 There can be more than one agent for each activity and one agent can be responsible for more than one activity or entity, using the relations defined in the following sections.
@@ -409,10 +408,10 @@ Roles in relations to \class{Agent} are free text attributes, but if one of the 
 \toprule
 \head{Role} & \head{Description} \\
 \midrule
-Author      & the agent is an author of this entity (e.g. article, software, proposal)\\
+Author      & the agent is an author of this entity (e.g., article, proposal)\\
 Contributor & the agent helped in the creation of this entity \\
 Coordinator & the agent was coordinating a specific activity \\ % we should choose one word : PI?
-Creator     & the agent created this entity (creators of articles or software are rather called ``author'') \\
+Creator     & the agent created this entity (creators of articles are rather called ``author'') \\
 Curator     & the agent curated this entity \\
 Editor      & the agent was responsible for editing this entity \\
 Funder      & the agent provided financial support for this activity or the creation of the entity \\
@@ -465,9 +464,9 @@ Figure~\ref{fig:classdiagram_descriptions} shows the class diagram part focused 
 \midrule
 %\textbf{id}  & string & a unique id for this activity description\\
 \textbf{name}         & string & a human-readable name\\
-version      & string & a version number, if applicable (e.g. for the code used)\\
-description  & string & additional free text description for the activity\\
-doculink     & anyURI & link to further documentation on this activity, e.g. a 
+version      & string & a version number, if applicable (e.g., for the code used)\\
+description  & string & additional free text describing how the activity works internally\\
+docurl       & anyURI & link to further documentation on this activity, e.g., a
 paper, the source code in a version control system etc.\\
 type        & string & type of the activity\\
 subtype     & string & more specific subtype of the activity\\
@@ -479,8 +478,7 @@ subtype     & string & more specific subtype of the activity\\
 \end{table}
 
 
-How an activity works internally is further explained by information contained in the \class{ActivityDescription} class.
-An activity is then a concrete case (instance) with a given start and stop time, and it refers to a description for further information.
+The information necessary to describe how an activity works internally are stored in \class{ActivityDescription} objects.
 
 \class{ActivityDescription} is directly attached to \class{Activity} and can thus be seen as a list of attributes that can be known before an \class{Activity} instance is created.
 
@@ -491,7 +489,7 @@ If an activity is linked to an \class{ActivityDescription} instance, \class{Used
 
 
 The activity \attribute{type} is a free text attribute, but if one of the terms in Table \ref{tab:activitydescription-types} applies, it should be used.
-The activity \attribute{subtype} is a free text attribute to be used internally by the project that defined \class{ActivityDescription} instances (e.g. mosaicing, denoising, photometric calibration, cross correlation).
+The activity \attribute{subtype} is a free text attribute to be used internally by the project that defined \class{ActivityDescription} instances (e.g., mosaicing, denoising, photometric calibration, cross correlation).
 
 
 \begin{table}[ht]
@@ -540,7 +538,7 @@ type      & string & type of the entity\\
 % content\_type    & string & MIME type for the content of the entity\\
 % format    & string & type of container for the entity\\
 % removed the obscore attributes, since specific for observations only, not applicable to configuration entities etc.
-% dataproduct\_ type  & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g. image, table)\\
+% dataproduct\_ type  & string       & from ObsCore data model \citep{std:ObsCore}, if applicable; describes, what kind of product it is (e.g., image, table)\\
 % dataproduct\_ subtype & string       & from ObsCore data model, more specific subtype\\
 % level       & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \bottomrule
@@ -552,9 +550,9 @@ type      & string & type of the entity\\
 
 The \class{EntityDescription} class is meant to store descriptive information for different categories of entities. It contains information that is known before an \class{Entity} instance is created. The \class{EntityDescription} general attributes are summarized in Table~\ref{tab:entitydescription}.
 
-For example, a specific category of entities in a project may be defined in details in a document or on a webpage (e.g. a CTA DL3 file, a CCD device, a photographic plate).
+For example, a specific category of entities in a project may be defined in details in a document or on a webpage (e.g., a CTA DL3 file, a CCD device, a photographic plate).
 
-The entity \attribute{type} is a free text attribute, that contains the general category of the entity, e.g. if it is data, a document, a vizualization, a device...
+The entity \attribute{type} is a free text attribute, that contains the general category of the entity, e.g., if it is data, a document, a vizualization, a device.
 
 The \class{EntityDescription} class should not contain information about the usage of the data, in particular, it generally tells nothing about them being used as input or generated as output. This kind of information should be provided by the relations (and their descriptions) between activities and entities (see Sections~\ref{sec:entity-activity-relations} and \ref{sec:use_gen_desc}).
 
@@ -577,7 +575,7 @@ The \class{EntityDescription} class should not contain information about the usa
 \textbf{role} & string   & function of the entity with respect to the activity \\
 description  & string & a descriptive text for this kind of usage \\
 type    & string   & type of relation, see Section~\ref{sec:ugtypes} \\
-multiplicity & string & Number of expected input entities to be used with the given role. The multiplicity syntax is the same as that of VO-DML, e.g. “*” for unbounded or ”3..*” for unbounded with at least 3 items (see also Section~\ref{sect:Multiplicity}). \\
+multiplicity & string & Number of expected input entities to be used with the given role. The multiplicity syntax is similar to that of VO-DML (\citealt{2018ivoa.spec.0910L}, \S4.19) in the form `minOccurs..maxOccurs'' or a single value if minOccurs and maxOccurs are identical, e.g., ``1'' for one item, ``*'' for unbounded or ``3..*'' for unbounded with at least 3 items. \\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of the \class{UsageDescription} class]{Attributes of the \class{UsageDescription} class. Attributes in \textbf{bold} are mandatory and must not be null.}
@@ -597,7 +595,7 @@ multiplicity & string & Number of expected input entities to be used with the gi
 \textbf{role} & string & function of the entity with respect to the activity \\
 description  & string & a descriptive text for this kind of generation \\
 type & string   & type of relation, see section \ref{sec:ugtypes} \\
-multiplicity & string & Number of expected output entities that will be generated with the given role. The multiplicity syntax is the same as that of VO-DML, e.g. “*” for unbounded or ”3..*” for unbounded with at least 3 items (see also Section~\ref{sect:Multiplicity}). \\
+multiplicity & string & Number of expected output entities that will be generated with the given role. The multiplicity syntax is similar to that of VO-DML (\citealt{2018ivoa.spec.0910L}, \S4.19) in the form `minOccurs..maxOccurs'' or a single value if minOccurs and maxOccurs are identical, e.g., ``1'' for one item, ``*'' for unbounded or ``3..*'' for unbounded with at least 3 items. \\
 % \midrule
 % $\rightarrow$ \textbf{activityDescription} & link & link to an \class{ActivityDescription}\\
 % $\rightarrow$ entityDescription & link & link to \class{EntityDescription}\\
@@ -610,14 +608,15 @@ multiplicity & string & Number of expected output entities that will be generate
 
 In order to describe more precisely an activity, the expected inputs and outputs of this activity should be specified.
 
-We introduce the \class{UsageDescription} and the \class{GenerationDescription} classes, that are meant to store the information about the usage or generation of entities that is known before an activity instance is executed, i.e. what we expect to store in the \class{Used} and \class{WasGeneratedBy} relations (see \ref{sec:entity-activity-relations}). 
+We introduce the \class{UsageDescription} and the \class{GenerationDescription} classes, that are meant to store the information about the usage or generation of entities that is known before an activity instance is executed, i.e.~wht we expect to store in the \class{Used} and \class{WasGeneratedBy} relations (see \ref{sec:entity-activity-relations}).
 Instances of \class{Used} (respectively \class{WasGeneratedBy}) may thus point to an instance of \class{UsageDescription} (respectively \class{GenerationDescription}).
 
 If a \class{UsageDescription} (respectively \class{GenerationDescription}) instance is defined, the \attribute{role} attribute of the related \class{Used} (respectively \class{WasGeneratedBy}) instances must match the \attribute{role} attribute of this \class{UsageDescription} (respectively \class{GenerationDescription}) instance.
 
-A \attribute{multiplicity} attribute should be specified to indicate the number of entities expected to share the same role for a given \class{ActivityDescription} instance, e.g. in the case of the stacking of images, several images are expected with the same input role (\attribute{multiplicity=*}).
+A \attribute{multiplicity} attribute should be specified to indicate the number of entities expected to share the same role for a given \class{ActivityDescription} instance, e.g., in the case of the stacking of images, several images are expected with the same input role (\attribute{multiplicity=*}).
 
-When related to the \class{UsageDescription} or \class{GenerationDescription}, the attributes of \class{EntityDescription} (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity. For example: when the input bias files are expected to be in FITS format (relation to a \class{DatasetDescription} with \attribute{contentType}=application/fits), or the red, green and blue channel images are expected to be in PNG or JPEG format. 
+When related to the \class{UsageDescription} or \class{GenerationDescription}, the attributes of \class{EntityDescription} (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity.
+For example: if the input bias files are expected to be in FITS format, the \class{UsageDescription} object would have a relation to a \class{DatasetDescription} object with \attribute{contentType}=`application/fits''.
 
 
 \subsubsection{Types of Usage and Generation}
@@ -625,8 +624,7 @@ When related to the \class{UsageDescription} or \class{GenerationDescription}, t
 
 The typing of those relations is particularly needed to enable quality assessment and identification of error sources in the process (see goals C and D in Section \ref{sec:goals}), so as to facilitate the exploration of provenance information. 
 
-The type of usage or generation is an optional attribute.
-It is a free text attribute, but if one of the terms in Table \ref{tab:usage-generation-types} applies, it should be used.
+The type of usage or generation is a free text attribute, but if one of the terms in Table \ref{tab:usage-generation-types} applies, it should be used.
 
 \begin{table}[ht]
 \small
@@ -635,11 +633,11 @@ It is a free text attribute, but if one of the terms in Table \ref{tab:usage-gen
 \toprule
 \head{Type} & \head{Description} \\
 \midrule
-Main           & main input or output entities of the activity, i.e. strictly necessary, and the primary objective of the activity\\
+Main           & main input or output entities of the activity, i.e.~strictly necessary, and the primary objective of the activity\\
 Calibration    & usage of an entity to calibrate another entity\\
 Preview        & generation of a quick representation of an entity\\
 Setup          & usage of an entity as configuration information, see also Section~\ref{sec:configurationpackage}\\
-Quality        & generation of information that helps to assess the quality of the activity results, example: errors, warnings, flags, percentage of overexposed pixels\\
+Quality        & generation of information that helps to assess the quality of the activity results, e.g., errors, warnings, flags, percentage of overexposed pixels\\
 Log            & generation of logging information\\
 Context        & contextual information that influences the activity, but for which there are no or little control at the moment of its execution, examples: temperature, wind, conditions of observation, execution platform, operating system, instrumental context\\
 \bottomrule
@@ -648,7 +646,7 @@ Context        & contextual information that influences the activity, but for wh
 \label{tab:usage-generation-types}
 \end{table}
 
-The type "Main" indicates the main input and output entities of an activity. It should help to provide the minimum relevant data flow to the initial entity or activity, i.e. to find the most relevant progenitors.
+The type ``Main'' indicates the main input and output entities of an activity. It should help to provide the minimum relevant data flow to the initial entity or activity, i.e.~to find the most relevant progenitors.
 
 
 \subsection{Specific types of Entity classes}
@@ -662,8 +660,8 @@ In some other cases, the content itself of an entity is relevant information to 
 In astronomy and the VO, we thus define two main types of entity classes:
 
 \begin{itemize}
-    \item \textbf{Dataset}: a dataset is a resource which encodes data in a defined structure. It is generally a file or a set of files which are considered to be a single deliverable. The content may be e.g. a cube, an image, a table, a list.
-    \item \textbf{Value}: a value is an atomic piece of data with a given value type (e.g. a data type such as boolean, integer, real, string).
+    \item \textbf{Dataset}: a dataset is a resource which encodes data in a defined structure. It is generally a file or a set of files which are considered to be a single deliverable. The content may be e.g., a cube, an image, a table, a list.
+    \item \textbf{Value}: a value is an atomic piece of data with a given value type (e.g., a data type such as boolean, integer, real, string).
 \end{itemize}
 
 \begin{figure}[ht]
@@ -675,7 +673,7 @@ In astronomy and the VO, we thus define two main types of entity classes:
 
 As shown in Figure~\ref{fig:classdiagram_entityclasses}, the entity description classes for both \class{ValueEntity} and \class{DatasetEntity} are subsetted respectively as \class{ValueDescription} and \class{DatasetDescription}.
 
-We anticipate that more specific categories of entities can be defined by the projects (for example, a device, a document, a vizualization...). The \attribute{type} attribute of the \class{EntityDescription} class should be used to differentiate the different categories of entities.
+We anticipate that more specific categories of entities can be defined by the projects (for example, a device, a document, a vizualization). The \attribute{type} attribute of the \class{EntityDescription} class should be used to differentiate the different categories of entities.
 
 
 \subsubsection{DatasetEntity and DatasetDescription classes}
@@ -731,17 +729,10 @@ The handling of values is implemented in the model by a \class{ValueEntity} clas
 \head{Attribute} &  \head{Data type} & \head{Description}\\
 \midrule
 %\textbf{id}  & string & parameter unique identifier\\
-\textbf{valueType} & string & value types of the VODML ivoa base model, see \citet{2018ivoa.spec.0910L} \\
+\textbf{valueType} & VOTableType & combination of \attribute{datatype}, \attribute{arraysize} and \attribute{xtype} following VOTable 1.3 \citep[][, \S4.1]{2013ivoa.spec.0920O} \\
 unit        & Unit & VO unit, see \ref{sect:Units} and \citet{2014ivoa.spec.0523D} for recommended unit representation \\
 ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{2018ivoa.spec.0527M}\\
 utype       & string  & Utype, meant to express the role of the value in the context of an external data model, see \citet{note:utypeusage} \\
-%xtype       & string & extended datatype as in VOTable 1.2 and above. A list of proposed \\
-% \midrule
-% \multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
-min         & string & minimum value as a string whose value can be interpreted by the \attribute{valueType} attribute \\
-max         & string & maximum value as a string whose value can be interpreted by the \attribute{valueType} attribute\\
-options     & string & comma separated list of possible values\\
-default     & string & a reference value defined in the context of a project for the corresponding value entities as a string whose value can be interpreted by the \attribute{valueType} attribute \\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of the \class{ValueDescription} class]{Attributes of the \class{ValueDescription} class. The class also inherits the attributes of \class{EntityDescription} listed in Table \ref{tab:entitydescription}. Attributes in \textbf{bold} are mandatory and must not be null.}
@@ -757,7 +748,7 @@ Configuring an activity is the way to set parameters so that the activity occurs
 
 In some cases developed in Section~\ref{sec:goals} (goals C and D in particular), configuration information is relevant to assess the quality and reliability of an activity or an entity, and to identify the location of configuration errors in a processing. It also facilitates the re-execution of an activity (reproducibility).
 
-Configuration information may be carried by entities using the core features, where an entity (e.g. \class{ValueEntity} and \class{DatasetEntity} instances) is referenced in \class{Used} relations with a given \attribute{role} and \attribute{type}=“setup”. With this solution, the configuration information is independent from the activity and can be generated and used as any entity.
+Configuration information may be carried by entities using the core features, where an entity (e.g., \class{ValueEntity} and \class{DatasetEntity} instances) is referenced in \class{Used} relations with a given \attribute{role} and \attribute{type}=“setup”. With this solution, the configuration information is independent from the activity and can be generated and used as any entity.
 
 The data model also provides a specialized \class{ActivityConfiguration} package to directly attach configuration information to an activity. This package is composed of a \class{WasConfiguredBy} relation connecting  \class{Parameter} and \class{ConfigFile} classes with the \class{Activity} class (see~\ref{sec:configurationpackage}). With this solution the configuration information is independent from the entities, and seen as part of the activity.
 
@@ -774,7 +765,7 @@ The data model also provides a specialized \class{ActivityConfiguration} package
 \subsubsection{Overview of the ActivityConfiguration package} \label{sec:configurationpackage}
 
 As shown in Figure \ref{fig:activityconfig} the \class{ActivityConfiguration} package contains two classes for the execution side: \class{Parameter} and \class{ConfigFile} which are connected to an \class{Activity} instance via the \class{WasConfiguredBy} association class.
-An \class{Activity} may thus be configured by a set of \class{Parameter} instances, or by \class{ConfigFile} instances containing a list of (key,value) pairs, or by a combination of both.
+An \class{Activity} may thus be configured by a set of \class{Parameter} instances, by \class{ConfigFile} instances, or by a combination of both.
 
 The corresponding description classes, \class{ParameterDescription} and \class{ConfigFileDescription}, are both defined in the context of the description of an activity.
 There can be several instances of a \class{Parameter} (respectively \class{ConfigFile}) that are described by the same instance of \class{ParameterDescription} (respectively \class{ConfigFileDescription}).
@@ -810,7 +801,7 @@ There can be several instances of a \class{Parameter} (respectively \class{Confi
  \midrule
 %\textbf{id}  & string &  unique ParemeterDescription identifier\\
 \textbf{name} & string & name of the parameter \\
-\textbf{valueType} & string & value types of the VODML ivoa base model, see \citet{2018ivoa.spec.0910L} \\
+\textbf{valueType} & VOTableType & combination of \attribute{datatype}, \attribute{arraysize} and \attribute{xtype} following VOTable 1.3 \citep[][, \S4.1]{2013ivoa.spec.0920O} \\
 description & string  & a descriptive text for the parameter \\
 unit        & Unit  & VO unit, see \ref{sect:Units} and \citet{2014ivoa.spec.0523D} for recommended unit representation \\
 ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{2018ivoa.spec.0527M} \\
@@ -820,7 +811,7 @@ utype       & string  & Utype, meant to express the role of the parameter in the
 % \multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
 min         & string & minimum value as a string whose value can be interpreted by the \attribute{valueType} attribute \\
 max         & string & maximum value as a string whose value can be interpreted by the \attribute{valueType} attribute\\
-options     & string & comma separated list of possible values\\
+options     & array of strings & array of possible values\\
 default     & string & the default value of the parameter as a string whose value can be interpreted by the \attribute{valueType} attribute \\
 \bottomrule
 \end{tabulary}
@@ -848,7 +839,7 @@ The \class{Parameter} instance may refer to a \class{ValueEntity} instance using
  \head{Attribute} & \head{Data type}   & \head{Description}\\
  \midrule
 \textbf{name} &  string & a human-readable name for the config file \\
-\textbf{location} & string  &  a path to the config file, e.g. a URL \\
+\textbf{location} & string  &  a path to the config file, e.g., a URL \\
 comment & string  & text containing comments on the config file  \\
 \bottomrule
 \end{tabulary}
@@ -873,7 +864,7 @@ description     & string  & a descriptive text for the config file \\
 \label{tab:configfiledescription}
 \end{table}
 
-The \class{ConfigFile} is a text file, where key value pairs are listed as parameters for running an activity. It contains a \attribute{location} and a \attribute{name} that must be set, and a \attribute{comment} attribute (Table~\ref{tab:configfile}).
+The \class{ConfigFile} points to a structured, machine readable file, where parameters for running an activity are stored. It contains a \attribute{location} and a \attribute{name} that must be set, and a \attribute{comment} attribute (Table~\ref{tab:configfile}).
 
 The \class{ConfigFileDescription} class indicates the format in which the list is provided in a \attribute{contentType} attribute (see Table~\ref{tab:configfiledescription}).
 
@@ -891,7 +882,7 @@ If a \class{ConfigFileDescription} instance is defined, the \attribute{name} att
  \head{Attribute} & \head{Data type}   & \head{Description}\\
  \midrule
 %\textbf{id}   & string            & a unique id\\
-\textbf{artefactType} &  TypeOfConfigArtefact & literal that takes the value "Parameter" or "ConfigFile" to indicate the type of class pointed by the \class{WasConfiguredBy} instance. \\
+\textbf{artefactType} &  TypeOfConfigArtefact & literal that takes the value ``Parameter'' or ``ConfigFile'' to indicate the type of class pointed by the \class{WasConfiguredBy} instance. \\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of the \class{WasConfiguredBy} class]{Attributes of the \class{WasConfiguredBy} class. Attributes in \textbf{bold} are mandatory and must not be null.}
@@ -905,6 +896,6 @@ The life cycle of a \class{ParameterDescription} instance (respectively \class{C
 This means that when an activity is deleted from the provenance repository, its parameters and config files also disappear.
 
 Several activities launched with various possible values for a parameter share the same \class{ParameterDescription} instance.
-For instance, a cube analysis activity with a parameter "nbofChannels" will point to the corresponding instance of \class{ParameterDescription} (\attribute{name} = "nbofChannels", \attribute{ucd} = "meta.number", \attribute{unit} = NULL, \attribute{description} = "Nb of channel used for segmentation").
-
+For instance, a cube analysis activity with a parameter ``nbofChannels'' will point to the corresponding instance of \class{ParameterDescription} (\attribute{name} = ``nbofChannels'', \attribute{ucd} = ``meta.number'', \attribute{unit} = Null, \attribute{description} = ``Nb of channel used for segmentation'').
+`
 Similarly, we can foresee a number of different \class{ConfigFile} instances used for various instances of an \class{Activity}, which rely on the same \class{ConfigFileDescription} instance bound to the corresponding \class{ActivityDescription} instance.

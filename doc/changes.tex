@@ -5,9 +5,9 @@
 \item Rewording of the use cases in the Goal section.
 \item Requirements divided into Model Requirements and Best Practices.
 \item Restruturation of Section \ref{sec:datamodel}, removing the separation of the Core Model and the Extended Model. An overview is now given in \ref{sec:overview}, and each following subsection corresponds to a feature of the model, in relation with the goals. Each subsubsection is an element of the model presented in Figure \ref{fig:overview}.
-\item \class{WasInformedBy} and \class{WasDerivedFrom} are optional and included in section \ref{sec:entity-activity-relations} on \class{Entity}-\class{Activity} relations. They are simple relations.
+\item \class{WasInformedBy} and \class{WasDerivedFrom} are included in section \ref{sec:entity-activity-relations} on \class{Entity}-\class{Activity} relations. They are simple relations.
 \item Addition of \class{ValueEntity} and \class{DatasetEntity} (with their description classes) as specific types of \class{Entity} classes (section \ref{sec:spec_entities}).
-\item Grouping of the \class{Parameter}-\class{ParameterDescription} classes as an optional \class{ActivityConfiguration} package that also includes config files.
+\item Grouping of the \class{Parameter}-\class{ParameterDescription} classes as a \class{ActivityConfiguration} package that also includes config files.
 \item Modification of class attributes: 
 \begin{itemize}
   \item \attribute{annotation} $\rightarrow$ \attribute{comment} (\attribute{annotation} $\rightarrow$ \attribute{description} in description classes)
@@ -89,7 +89,7 @@ new parameters, new figure and examples added.
     \item Added optional attributes \emph{Entity.creationTime} and \emph{EntityDescription.category}
     \item Added optional attributes \emph{Parameter.min},  \emph{Parameter.max},  \emph{Parameter.options}
     \item Removed the obscore/dataset attributes from EntityDescription, since they are specific for observations only and are not applicable to configuration entities etc.
-    \item Use voprov:type and voprov:role in Table on Agent roles, i.e. replaced prov:person by Individual and prov:organization by Organization.
+    \item Use voprov:type and voprov:role in Table on Agent roles, i.e.~ replaced prov:person by Individual and prov:organization by Organization.
     \item Renamed \emph{label} attribute to \emph{name} everywhere, for more consistency with SimDM naming scheme (\emph{label} is reserved there for SKOS labels).
     \item Renamed attribute \emph{Entity.access} to \emph{Entity.rights} for more consistency with DatasetDM etc.
     \item Avoid double-meaning of \emph{description} (as reference and free-text description) by renaming the free-text description to \emph{annotation}. Mark description-references with arrows in attribute tables.
