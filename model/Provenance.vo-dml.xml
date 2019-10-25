@@ -2,17 +2,26 @@
 <vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 http://www.ivoa.net/xml/VODML/vo-dml-v1.xsd">
-  <name>Provenance</name>
-  <description>Data model describing the structure and content of the IVOA Provenance Data Model. This re-uses the concepts from the W3C Provenance DM, but extends it with a description layer for Activities and Entities.</description>
+  <name>voprov</name>
+  <description>Data model describing the structure and content of the IVOA Provenance Data Model. This re-uses the concepts from the W3C Provenance DM, but extends it with a description layer for Activities and Entities. The « voprov » name has ben choosen to avoid clashing with W3C « prov » namespace</description>
   <uri/>
-  <title>Provenance</title>
+  <title>Provenance Data Model</title>
+  <author>Servillat Mathieu, Riebe Kristin, Boisson Catherine, Bonnarel François, Galkin Anastasia, Louys Mireille, Nullmeier Markus, Renault-Tinnaci Sanguillon Michèle, Streicher Ole</author>
   <version>1.0</version>
-  <lastModified>2019-07-19T16:15:43</lastModified>
+  <lastModified>2019-10-23T11:55:20</lastModified>
   <import>
     <name>ivoa</name>
     <url>http://www.ivoa.net/xml/VODML/20180519/IVOA-v1.0.vo-dml.xml</url>
     <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html</documentationURL>
   </import>
+  <primitiveType>
+    <vodml-id>VotableFieldFormat</vodml-id>
+    <name>VotableFieldFormat</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+  </primitiveType>
+
   <enumeration>
     <vodml-id>AgentType</vodml-id>
     <name>AgentType</name>
@@ -67,7 +76,7 @@
       <name>type</name>
       <description>Defines the Agent type : Person, Organization or SoftwareAgent</description>
       <datatype>
-        <vodml-ref>Provenance:AgentType</vodml-ref>
+        <vodml-ref>voprov:AgentType</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -170,7 +179,7 @@ The role values belong to the AgentRole list defined in IVOA Provenance DataMode
       <name>agent</name>
       <description>Points to the agent</description>
       <datatype>
-        <vodml-ref>Provenance:Agent</vodml-ref>
+        <vodml-ref>voprov:Agent</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -201,7 +210,7 @@ The role values belong to the AgentRole list defined in IVOA Provenance DataMode
       <name>agent</name>
       <description>Points to the agent.</description>
       <datatype>
-        <vodml-ref>Provenance:Agent</vodml-ref>
+        <vodml-ref>voprov:Agent</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -281,7 +290,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>wasAssociatedWith</name>
       <description>Gathers Agents bound to this Activity instance</description>
       <datatype>
-        <vodml-ref>Provenance:WasAssociatedWith</vodml-ref>
+        <vodml-ref>voprov:WasAssociatedWith</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -293,7 +302,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>used</name>
       <description>Gathers Entities used by the Activity instance</description>
       <datatype>
-        <vodml-ref>Provenance:Used</vodml-ref>
+        <vodml-ref>voprov:Used</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -305,7 +314,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>wasConfiguredBy</name>
       <description>Gathers Configuration elements for this Activity instance</description>
       <datatype>
-        <vodml-ref>Provenance:ActivityConfiguration.WasConfiguredBy</vodml-ref>
+        <vodml-ref>voprov:ActivityConfiguration.WasConfiguredBy</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -317,7 +326,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>informant</name>
       <description>refers to an activity providing information</description>
       <datatype>
-        <vodml-ref>Provenance:Activity</vodml-ref>
+        <vodml-ref>voprov:Activity</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -329,7 +338,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>activityDescription</name>
       <description>Points to the corresponding description class</description>
       <datatype>
-        <vodml-ref>Provenance:ActivityDescription</vodml-ref>
+        <vodml-ref>voprov:ActivityDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -371,7 +380,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>entity</name>
       <description>Points to the used entity</description>
       <datatype>
-        <vodml-ref>Provenance:Entity</vodml-ref>
+        <vodml-ref>voprov:Entity</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -383,7 +392,7 @@ This is recommended to fill in as it helps to check dependencies and errors into
       <name>usageDescription</name>
       <description>This link points to  some description of the Usage in the context of one specific ActivityDescription.</description>
       <datatype>
-        <vodml-ref>Provenance:UsageDescription</vodml-ref>
+        <vodml-ref>voprov:UsageDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -479,7 +488,7 @@ operations .</description>
       <name>wasGeneratedBy</name>
       <description>Binds to the activity which generated this entity</description>
       <datatype>
-        <vodml-ref>Provenance:WasGeneratedBy</vodml-ref>
+        <vodml-ref>voprov:WasGeneratedBy</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -491,7 +500,7 @@ operations .</description>
       <name>wasAttributedTo</name>
       <description>Gathers Agents to which the entity was attributed</description>
       <datatype>
-        <vodml-ref>Provenance:WasAttributedTo</vodml-ref>
+        <vodml-ref>voprov:WasAttributedTo</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -503,7 +512,7 @@ operations .</description>
       <name>usedEntity</name>
       <description>The link from the progenitor Entity to its descendant.</description>
       <datatype>
-        <vodml-ref>Provenance:Entity</vodml-ref>
+        <vodml-ref>voprov:Entity</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -515,7 +524,7 @@ operations .</description>
       <name>entityDescription</name>
       <description>Link to the corresponding EntityDescription instance.  Many Entities may share the same  EntityDescription instance.</description>
       <datatype>
-        <vodml-ref>Provenance:EntityDescription</vodml-ref>
+        <vodml-ref>voprov:EntityDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -545,7 +554,7 @@ operations .</description>
       <name>activity</name>
       <description>points to the creating Activity instance.</description>
       <datatype>
-        <vodml-ref>Provenance:Activity</vodml-ref>
+        <vodml-ref>voprov:Activity</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -557,7 +566,7 @@ operations .</description>
       <name>generationDescription</name>
       <description>Points to the instance of GenerationDescription describing this kind of generated output.</description>
       <datatype>
-        <vodml-ref>Provenance:GenerationDescription</vodml-ref>
+        <vodml-ref>voprov:GenerationDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -572,14 +581,14 @@ operations .</description>
     <description>A collection of Entities. It is a way to consider a set of entities when produced and consumed with respect to an Activity. 
 Allows coarse description of the provenance.</description>
     <extends>
-      <vodml-ref>Provenance:Entity</vodml-ref>
+      <vodml-ref>voprov:Entity</vodml-ref>
     </extends>
     <reference>
       <vodml-id>Collection.entity</vodml-id>
       <name>entity</name>
       <description>Binds a collection entity to its members</description>
       <datatype>
-        <vodml-ref>Provenance:Entity</vodml-ref>
+        <vodml-ref>voprov:Entity</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -593,7 +602,7 @@ Allows coarse description of the provenance.</description>
     <name>ValueEntity</name>
     <description>An entity that only contains a value. The way to interpret this value is described in the ValueDescription instance it linked to.</description>
     <extends>
-      <vodml-ref>Provenance:Entity</vodml-ref>
+      <vodml-ref>voprov:Entity</vodml-ref>
     </extends>
     <constraint xsi:type="vo-dml:SubsettedRole">
       <role>
@@ -622,7 +631,7 @@ Allows coarse description of the provenance.</description>
     <name>DatasetEntity</name>
     <description>An Entity which represents a data file in the Provenance system. It is not the data file itself</description>
     <extends>
-      <vodml-ref>Provenance:Entity</vodml-ref>
+      <vodml-ref>voprov:Entity</vodml-ref>
     </extends>
     <constraint xsi:type="vo-dml:SubsettedRole">
       <role>
@@ -675,8 +684,8 @@ Allows coarse description of the provenance.</description>
       </multiplicity>
     </attribute>
     <attribute>
-      <vodml-id>ActivityDescription.docuLink</vodml-id>
-      <name>docuLink</name>
+      <vodml-id>ActivityDescription.docurl</vodml-id>
+      <name>docurl</name>
       <description>Link to more documentation</description>
       <datatype>
         <vodml-ref>ivoa:anyURI</vodml-ref>
@@ -715,7 +724,7 @@ Allows coarse description of the provenance.</description>
       <name>parameterDescription</name>
       <description>Gathers the description classes explaining the Parameter object that can be applied when running an Activity  that can follow this ActivityDescription template. </description>
       <datatype>
-        <vodml-ref>Provenance:ActivityConfiguration.ParameterDescription</vodml-ref>
+        <vodml-ref>voprov:ActivityConfiguration.ParameterDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -727,7 +736,7 @@ Allows coarse description of the provenance.</description>
       <name>configFileDescription</name>
       <description>Gathers the description of the config files</description>
       <datatype>
-        <vodml-ref>Provenance:ActivityConfiguration.ConfigFileDescription</vodml-ref>
+        <vodml-ref>voprov:ActivityConfiguration.ConfigFileDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -739,7 +748,7 @@ Allows coarse description of the provenance.</description>
       <name>usageDescription</name>
       <description>This link points to  some description of the Usage in the context of one specific ActivityDescription.</description>
       <datatype>
-        <vodml-ref>Provenance:UsageDescription</vodml-ref>
+        <vodml-ref>voprov:UsageDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -751,7 +760,7 @@ Allows coarse description of the provenance.</description>
       <name>generationDescription</name>
       <description>This link points to  some description of the results produced in the context of one specific ActivityDescription.</description>
       <datatype>
-        <vodml-ref>Provenance:GenerationDescription</vodml-ref>
+        <vodml-ref>voprov:GenerationDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -818,7 +827,7 @@ Allows coarse description of the provenance.</description>
       <name>entityDescription</name>
       <description>Points to the description of the used entities</description>
       <datatype>
-        <vodml-ref>Provenance:EntityDescription</vodml-ref>
+        <vodml-ref>voprov:EntityDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -884,7 +893,7 @@ Allows coarse description of the provenance.</description>
       <name>entityDescription</name>
       <description>Points to the description of the used entities</description>
       <datatype>
-        <vodml-ref>Provenance:EntityDescription</vodml-ref>
+        <vodml-ref>voprov:EntityDescription</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
@@ -924,8 +933,8 @@ different categories of entities.</description>
       </multiplicity>
     </attribute>
     <attribute>
-      <vodml-id>EntityDescription.docuLink</vodml-id>
-      <name>docuLink</name>
+      <vodml-id>EntityDescription.docurl</vodml-id>
+      <name>docurl</name>
       <description>Link to more documentation</description>
       <datatype>
         <vodml-ref>ivoa:anyURI</vodml-ref>
@@ -954,14 +963,14 @@ different categories of entities.</description>
     <name>ValueDescription</name>
     <description>Description of the properties of a ValueEntity.</description>
     <extends>
-      <vodml-ref>Provenance:EntityDescription</vodml-ref>
+      <vodml-ref>voprov:EntityDescription</vodml-ref>
     </extends>
     <attribute>
       <vodml-id>ValueDescription.valueType</vodml-id>
       <name>valueType</name>
-      <description>VODML-compliant data type of the value</description>
+      <description>VOTable compliant data type of the parameter value</description>
       <datatype>
-        <vodml-ref>ivoa:string</vodml-ref>
+        <vodml-ref>voprov:VotableFieldFormat</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -1004,54 +1013,6 @@ different categories of entities.</description>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
-    <attribute>
-      <vodml-id>ValueDescription.min</vodml-id>
-      <name>min</name>
-      <description>Minimum value as a string whose content can be interpreted by the valueType attribute</description>
-      <datatype>
-        <vodml-ref>ivoa:string</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </attribute>
-    <attribute>
-      <vodml-id>ValueDescription.max</vodml-id>
-      <name>max</name>
-      <description>Maximum value as a string whose content can be interpreted by the valueType attribute</description>
-      <datatype>
-        <vodml-ref>ivoa:string</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </attribute>
-    <attribute>
-      <vodml-id>ValueDescription.default</vodml-id>
-      <name>default</name>
-      <description>Default value  as a string whose content can be interpreted by the valueType attribute</description>
-      <datatype>
-        <vodml-ref>ivoa:string</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </attribute>
-    <attribute>
-      <vodml-id>ValueDescription.options</vodml-id>
-      <name>options</name>
-      <description>Comma separated list of possible values</description>
-      <datatype>
-        <vodml-ref>ivoa:string</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>0</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </attribute>
   </objectType>
 
   <objectType>
@@ -1059,7 +1020,7 @@ different categories of entities.</description>
     <name>DatasetDescription</name>
     <description>The description of a DatasetEntity. Can be pointed to by multiple instances of DatasetEntity.</description>
     <extends>
-      <vodml-ref>Provenance:EntityDescription</vodml-ref>
+      <vodml-ref>voprov:EntityDescription</vodml-ref>
     </extends>
     <attribute>
       <vodml-id>DatasetDescription.contentType</vodml-id>
@@ -1083,16 +1044,16 @@ different categories of entities.</description>
     <description>This package gathers the necessary classes for expressing the configuration of a task before, during and after execution. 
 We consider only the executed version will be stored in a provenance information system.</description>
     <enumeration>
-      <vodml-id>ActivityConfiguration.TypeOfConfigArtifact</vodml-id>
-      <name>TypeOfConfigArtifact</name>
+      <vodml-id>ActivityConfiguration.TypeOfConfigArtefact</vodml-id>
+      <name>TypeOfConfigArtefact</name>
       <description>The configuration for an Activity ( job)  can be fully explicit , with a list of searchable parameters , or expressed into a document file storing the configuration . This attribute contains the type of config information at the end of the wasConfiguredby association instance .</description>
       <literal>
-        <vodml-id>ActivityConfiguration.TypeOfConfigArtifact.Parameter</vodml-id>
+        <vodml-id>ActivityConfiguration.TypeOfConfigArtefact.Parameter</vodml-id>
         <name>Parameter</name>
         <description>Label for parameter config artifact</description>
       </literal>
       <literal>
-        <vodml-id>ActivityConfiguration.TypeOfConfigArtifact.Configfile</vodml-id>
+        <vodml-id>ActivityConfiguration.TypeOfConfigArtefact.Configfile</vodml-id>
         <name>Configfile</name>
         <description>Label for config file config artifact</description>
       </literal>
@@ -1117,9 +1078,9 @@ We consider only the executed version will be stored in a provenance information
       <attribute>
         <vodml-id>ActivityConfiguration.ParameterDescription.valueType</vodml-id>
         <name>valueType</name>
-        <description>VO-DML compliant data type of the parameter value</description>
+        <description>VOTable compliant data type of the parameter value</description>
         <datatype>
-          <vodml-ref>ivoa:string</vodml-ref>
+          <vodml-ref>voprov:VotableFieldFormat</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>1</minOccurs>
@@ -1207,7 +1168,7 @@ We consider only the executed version will be stored in a provenance information
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
-          <maxOccurs>1</maxOccurs>
+          <maxOccurs>-1</maxOccurs>
         </multiplicity>
       </attribute>
       <attribute>
@@ -1300,7 +1261,7 @@ We consider only the executed version will be stored in a provenance information
         <description>A Parameter instance can have a value derived from a ValueEntity value element computed previously by some former Activity instance. Therefore, the ValueEntity it refers to is generated with another instance of the Activity class, in a different generation scenario executed previously.
 This references such a ValueEntity from the Parameter instance.</description>
         <datatype>
-          <vodml-ref>Provenance:ValueEntity</vodml-ref>
+          <vodml-ref>voprov:ValueEntity</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
@@ -1312,7 +1273,7 @@ This references such a ValueEntity from the Parameter instance.</description>
         <name>parameterDescription</name>
         <description>Gathers the properties and the description of the Parameter instance. </description>
         <datatype>
-          <vodml-ref>Provenance:ActivityConfiguration.ParameterDescription</vodml-ref>
+          <vodml-ref>voprov:ActivityConfiguration.ParameterDescription</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
@@ -1367,7 +1328,7 @@ This references such a ValueEntity from the Parameter instance.</description>
         <name>configFileDescription</name>
         <description>Points to the corresponding description class</description>
         <datatype>
-          <vodml-ref>Provenance:ActivityConfiguration.ConfigFileDescription</vodml-ref>
+          <vodml-ref>voprov:ActivityConfiguration.ConfigFileDescription</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
@@ -1387,7 +1348,7 @@ Attribute "artefactType" holds the type of its target .</description>
         <description>Object type pointed by the instance
 </description>
         <datatype>
-          <vodml-ref>Provenance:ActivityConfiguration.TypeOfConfigArtifact</vodml-ref>
+          <vodml-ref>voprov:ActivityConfiguration.TypeOfConfigArtefact</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>1</minOccurs>
@@ -1399,7 +1360,7 @@ Attribute "artefactType" holds the type of its target .</description>
         <name>configFile</name>
         <description>Points to the configuration file</description>
         <datatype>
-          <vodml-ref>Provenance:ActivityConfiguration.ConfigFile</vodml-ref>
+          <vodml-ref>voprov:ActivityConfiguration.ConfigFile</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
@@ -1411,7 +1372,7 @@ Attribute "artefactType" holds the type of its target .</description>
         <name>parameter</name>
         <description>points to parameter</description>
         <datatype>
-          <vodml-ref>Provenance:ActivityConfiguration.Parameter</vodml-ref>
+          <vodml-ref>voprov:ActivityConfiguration.Parameter</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
