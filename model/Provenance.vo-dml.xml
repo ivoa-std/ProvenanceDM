@@ -8,7 +8,7 @@
   <title>Provenance Data Model</title>
   <author>Servillat Mathieu, Riebe Kristin, Boisson Catherine, Bonnarel François, Galkin Anastasia, Louys Mireille, Nullmeier Markus, Renault-Tinnaci Sanguillon Michèle, Streicher Ole</author>
   <version>1.0</version>
-  <lastModified>2019-10-23T11:55:20</lastModified>
+  <lastModified>2019-11-07T16:46:57</lastModified>
   <import>
     <name>ivoa</name>
     <url>http://www.ivoa.net/xml/VODML/20180519/IVOA-v1.0.vo-dml.xml</url>
@@ -17,9 +17,7 @@
   <primitiveType>
     <vodml-id>VotableFieldFormat</vodml-id>
     <name>VotableFieldFormat</name>
-    <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+    <description>Field format as defined in the VOTable specification</description>
   </primitiveType>
 
   <enumeration>
@@ -252,7 +250,7 @@ The method applied for this task is described in the ActivityDescription class a
       <vodml-id>Activity.startTime</vodml-id>
       <name>startTime</name>
       <description>This allows to know when the activity was launched . 
-This is recommended to fill in as it helps to check dependencies and errors into the database.</description>
+This is might help to check dependencies and errors into the database.</description>
       <datatype>
         <vodml-ref>ivoa:datetime</vodml-ref>
       </datatype>
