@@ -422,7 +422,7 @@ Provider    & the agent effectively gave access and delivered the entity \\
 Publisher   & the agent certified and made an entity available to the public \\
 \bottomrule
 \end{tabulary}
-\caption[Terms applicable as agent roles.]{Terms applicable as agent roles.}
+\caption[Terms applicable as agent roles.]{Terms applicable as agent roles. This list of terms could be updated to follow the IVOA vocabularies 2.0 recommendation once adopted.}
 \label{tab:agent-roles}
 \end{table}
 
@@ -508,7 +508,7 @@ Selection      & application of filters or criteria to select partial informatio
 Analysis       & process of inspecting, cleaning, transforming, and modeling data with the goal of discovering useful information, informing conclusions, and supporting decision-making\\
 \bottomrule
 \end{tabulary}
-\caption[Terms applicable as activity types.]{Terms applicable as activity types.}
+\caption[Terms applicable as activity types.]{Terms applicable as activity types. This list of terms could be updated to follow the IVOA vocabularies 2.0 recommendation once adopted.}
 \label{tab:activitydescription-types}
 \end{table}
 
@@ -528,9 +528,9 @@ Analysis       & process of inspecting, cleaning, transforming, and modeling dat
 \head{Attribute} & \head{Data type} & \head{Description}\\
 \midrule
 %\textbf{id} & string & a unique identifier for this description\\
-name       & string & a human-readable name for the entity description\\
+\textbf{name}       & string & a human-readable name for the entity description\\
 description  & string & a descriptive text for this kind of entity\\
-doculink    & anyURI & link to more documentation\\
+docurl   & anyURI & link to more documentation\\
 type      & string & type of the entity\\
 % \midrule
 % \multicolumn{3}{@{}l}{\textbf{Optional attributes:}} \\
@@ -542,7 +542,7 @@ type      & string & type of the entity\\
 % level       & enum integer & the level of processing or calibration; for ObsCore's calib\_level it is an integer between 0 and 3\\
 \bottomrule
 \end{tabulary}
-\caption[Attributes of the \class{EntityDescription} class]{Attributes of the \class{EntityDescription} class.
+\caption[Attributes of the \class{EntityDescription} class]{Attributes of the \class{EntityDescription} class. Attributes in \textbf{bold} are mandatory and must not be null.
 }\label{tab:entitydescription}
 \end{table}
 
@@ -641,7 +641,7 @@ Log            & generation of logging information\\
 Context        & contextual information that influences the activity, but for which there are no or little control at the moment of its execution, examples: temperature, wind, conditions of observation, execution platform, operating system, instrumental context\\
 \bottomrule
 \end{tabulary}
-\caption[Terms applicable as usage or generation type.]{Terms applicable as usage or generation type.}
+\caption[Terms applicable as usage or generation type.]{Terms applicable as usage or generation type. This list of terms could be updated to follow the IVOA vocabularies 2.0 recommendation once adopted.}
 \label{tab:usage-generation-types}
 \end{table}
 
@@ -728,7 +728,7 @@ The handling of values is implemented in the model by a \class{ValueEntity} clas
 \head{Attribute} &  \head{Data type} & \head{Description}\\
 \midrule
 %\textbf{id}  & string & parameter unique identifier\\
-\textbf{valueType} & VOTableType & combination of \attribute{datatype}, \attribute{arraysize} and \attribute{xtype} following VOTable 1.3 \citep[][, \S4.1]{2013ivoa.spec.0920O} \\
+\textbf{valueType} & VotableFieldFormat & description of a value from a combination of \attribute{datatype}, \attribute{arraysize} and \attribute{xtype} following VOTable 1.3 \citep[][, \S4.1]{2013ivoa.spec.0920O} \\
 unit        & Unit & VO unit, see \ref{sect:Units} and \citet{2014ivoa.spec.0523D} for recommended unit representation \\
 ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{2018ivoa.spec.0527M}\\
 utype       & string  & Utype, meant to express the role of the value in the context of an external data model, see \citet{note:utypeusage} \\
@@ -747,7 +747,7 @@ Configuring an activity is the way to set parameters so that the activity occurs
 
 In some cases developed in Section~\ref{sec:goals} (goals C and D in particular), configuration information is relevant to assess the quality and reliability of an activity or an entity, and to identify the location of configuration errors in a processing. It also facilitates the re-execution of an activity (reproducibility).
 
-Configuration information may be carried by entities using the core features, where an entity (e.g., \class{ValueEntity} and \class{DatasetEntity} instances) is referenced in \class{Used} relations with a given \attribute{role} and \attribute{type}=“setup”. With this solution, the configuration information is independent from the activity and can be generated and used as any entity.
+Configuration information may be carried by entities using the core features, where an entity (e.g., \class{ValueEntity} and \class{DatasetEntity} instances) is referenced in \class{Used} relations with a given \attribute{role} and \attribute{type}=“Setup”. With this solution, the configuration information is independent from the activity and can be generated and used as any entity.
 
 The data model also provides a specialized \class{ActivityConfiguration} package to directly attach configuration information to an activity. This package is composed of a \class{WasConfiguredBy} relation connecting  \class{Parameter} and \class{ConfigFile} classes with the \class{Activity} class (see~\ref{sec:configurationpackage}). With this solution the configuration information is independent from the entities, and seen as part of the activity.
 
@@ -800,7 +800,7 @@ There can be several instances of a \class{Parameter} (respectively \class{Confi
  \midrule
 %\textbf{id}  & string &  unique ParemeterDescription identifier\\
 \textbf{name} & string & name of the parameter \\
-\textbf{valueType} & VOTableType & combination of \attribute{datatype}, \attribute{arraysize} and \attribute{xtype} following VOTable 1.3 \citep[][, \S4.1]{2013ivoa.spec.0920O} \\
+\textbf{valueType} & VotableFieldFormat & description of a value from a combination of \attribute{datatype}, \attribute{arraysize} and \attribute{xtype} following VOTable 1.3 \citep[][, \S4.1]{2013ivoa.spec.0920O} \\
 description & string  & a descriptive text for the parameter \\
 unit        & Unit  & VO unit, see \ref{sect:Units} and \citet{2014ivoa.spec.0523D} for recommended unit representation \\
 ucd         & string  & Unified Content Descriptor, supplying a standardized classification of the physical quantity, see \citet{2018ivoa.spec.0527M} \\
