@@ -152,7 +152,7 @@
       <tr>
         <td align="right"><b>Date</b></td>
         <td> : </td>
-        <td>2019-11-07T16:46:57</td>
+        <td>2019-11-21T13:30:01</td>
       </tr>
       <tr>
         <td align="right"><b>Version</b></td>
@@ -179,7 +179,7 @@
       <tr>
         <td colspan="3"></td>
       </tr>
-    </table><img src="Provenance.png" usemap="#GVmap"><map id="GVmap" name="GVmap">
+    </table><img src="voprov.png" usemap="#GVmap"><map id="GVmap" name="GVmap">
 <area shape="rect" id="node1" href="#ActivityConfiguration" title="ActivityConfiguration" alt="" coords="61,57,244,105"/>
 <area shape="rect" id="node2" href="#VotableFieldFormat" title="{&lt;&lt;primitive type&gt;&gt;\nVotableFieldFormat}" alt="" coords="269,57,378,106"/>
 <area shape="rect" id="node3" href="#AgentType" title="{&lt;&lt;enumeration&gt;&gt;\nAgentType|+Person\l+Organization\l+SoftwareAgent\l}" alt="" coords="402,40,501,123"/>
@@ -362,7 +362,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A short text about some peculiar information on the instance.</td>
+                      <td class="feature-detail">A text about some peculiar information on the instance.</td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -817,7 +817,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A short text about some peculiar information on the instance.</td>
+                      <td class="feature-detail">A text about some peculiar information on the instance.</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="Agent.email"></a><b>email</b></td>
@@ -1229,7 +1229,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">The time of generation for the entity , in ISOTime
+                      <td class="feature-detail">The time and date of generation for the entity. The format is chosen by the provider e.g. ISO 8601 
                         
                       </td>
                     </tr>
@@ -1248,10 +1248,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Time stamp after which the entity is considered no longer valid for further usage in an Activity. It may still be available
-                        in the system but not used for
-                        operations .
-                      </td>
+                      <td class="feature-detail">Date and time of invalidation of the entity. After that date, the entity is no longer available for any use.</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="Entity.comment"></a><b>comment</b></td>
@@ -1268,7 +1265,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A short text about some peculiar information on the instance.</td>
+                      <td class="feature-detail">A text about some peculiar information on the instance.</td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -1437,7 +1434,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">multiplicity</td>
-                      <td class="feature-detail">1</td>
+                      <td class="feature-detail">0..1</td>
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
@@ -1581,8 +1578,8 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">String representation of the number of expected output entities that will be generated with the given role («&nbsp;unbounded «&nbsp;
-                        if not set)
+                      <td class="feature-detail">Number of expected input entities to be generated with the given role. The string syntax is similar to that of VO-DML in the
+                        form ‘minOccurs..maxOccurs” or a single value if minOccurs and maxOccurs are identical.
                       </td>
                     </tr>
                     <tr>
@@ -1718,7 +1715,9 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">String representation of the number of expected input entities that are used with the given role («&nbsp;unbounded «&nbsp; if not set)</td>
+                      <td class="feature-detail">Number of expected input entities to be used with the given role. The string syntax is similar to that of VO-DML in the form
+                        ‘minOccurs..maxOccurs” or a single value if minOccurs and maxOccurs are identical.
+                      </td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -1923,7 +1922,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">VO-compliant unit string</td>
+                      <td class="feature-detail">VO unit string</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="ValueDescription.ucd"></a><b>ucd</b></td>
@@ -2098,7 +2097,7 @@
                     <tr>
                       <td class="feature-heading">description</td>
                       <td class="feature-detail">Function of the agent with respect to the activity
-                        The role values belong to the AgentRole list defined in IVOA Provenance DataModel, Table 9. 
+                        
                       </td>
                     </tr>
                     <tr>
@@ -2176,10 +2175,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Function of the agent with respect to the entity. Values for role are listed in the AgentRole type, as listed in Table 9 of
-                        the PROV-DM specification. 
-                        
-                      </td>
+                      <td class="feature-detail">Function of the agent with respect to the entity. </td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -2420,7 +2416,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A descriptive text for this instance</td>
+                      <td class="feature-detail">text containing comments on the config file</td>
                     </tr>
                     <tr>
                       <td colspan="3" class="info-title">references</td>
@@ -2538,7 +2534,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A short text that explains the content and purpose of the configuration file.</td>
+                      <td class="feature-detail">A text that explains the content and purpose of the configuration file.</td>
                     </tr>
                   </table>
                 </td>
@@ -2755,7 +2751,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">VO compliant unit string used for this parameter</td>
+                      <td class="feature-detail">VO unit string </td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="ActivityConfiguration.ParameterDescription.ucd"></a><b>ucd</b></td>
@@ -2857,7 +2853,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">Comma separated list of possible values</td>
+                      <td class="feature-detail">array of possible values</td>
                     </tr>
                     <tr>
                       <td class="feature-detail" valign="top" rowspan="4"><a name="ActivityConfiguration.ParameterDescription.description"></a><b>description</b></td>
@@ -2874,7 +2870,7 @@
                     </tr>
                     <tr>
                       <td class="feature-heading">description</td>
-                      <td class="feature-detail">A short text that explains the content and purpose of this Parameter.</td>
+                      <td class="feature-detail">A text that explains the content and purpose of this Parameter.</td>
                     </tr>
                   </table>
                 </td>
@@ -3067,7 +3063,7 @@
       <tr>
         <td class="feature-detail"><a href="#Activity.comment">Activity.comment</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A short text about some peculiar information on the instance.</td>
+        <td class="feature-detail">A text about some peculiar information on the instance.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#Activity.endTime">Activity.endTime</a></td>
@@ -3188,7 +3184,7 @@
       <tr>
         <td class="feature-detail"><a href="#Agent.comment">Agent.comment</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A short text about some peculiar information on the instance.</td>
+        <td class="feature-detail">A text about some peculiar information on the instance.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#Agent.email">Agent.email</a></td>
@@ -3280,7 +3276,7 @@
       <tr>
         <td class="feature-detail"><a href="#Entity.comment">Entity.comment</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A short text about some peculiar information on the instance.</td>
+        <td class="feature-detail">A text about some peculiar information on the instance.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#Entity.entityDescription">Entity.entityDescription</a></td>
@@ -3290,7 +3286,7 @@
       <tr>
         <td class="feature-detail"><a href="#Entity.generatedAtTime">Entity.generatedAtTime</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">The time of generation for the entity , in ISOTime
+        <td class="feature-detail">The time and date of generation for the entity. The format is chosen by the provider e.g. ISO 8601 
           
         </td>
       </tr>
@@ -3304,10 +3300,7 @@
       <tr>
         <td class="feature-detail"><a href="#Entity.invalidatedAtTime">Entity.invalidatedAtTime</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Time stamp after which the entity is considered no longer valid for further usage in an Activity. It may still be available
-          in the system but not used for
-          operations .
-        </td>
+        <td class="feature-detail">Date and time of invalidation of the entity. After that date, the entity is no longer available for any use.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#Entity.location">Entity.location</a></td>
@@ -3384,8 +3377,8 @@
       <tr>
         <td class="feature-detail"><a href="#GenerationDescription.multiplicity">GenerationDescription.multiplicity</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">String representation of the number of expected output entities that will be generated with the given role («&nbsp;unbounded «&nbsp;
-          if not set)
+        <td class="feature-detail">Number of expected input entities to be generated with the given role. The string syntax is similar to that of VO-DML in the
+          form ‘minOccurs..maxOccurs” or a single value if minOccurs and maxOccurs are identical.
         </td>
       </tr>
       <tr>
@@ -3420,7 +3413,9 @@
       <tr>
         <td class="feature-detail"><a href="#UsageDescription.multiplicity">UsageDescription.multiplicity</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">String representation of the number of expected input entities that are used with the given role («&nbsp;unbounded «&nbsp; if not set)</td>
+        <td class="feature-detail">Number of expected input entities to be used with the given role. The string syntax is similar to that of VO-DML in the form
+          ‘minOccurs..maxOccurs” or a single value if minOccurs and maxOccurs are identical.
+        </td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#UsageDescription.role">UsageDescription.role</a></td>
@@ -3470,7 +3465,7 @@
       <tr>
         <td class="feature-detail"><a href="#ValueDescription.unit">ValueDescription.unit</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">VO-compliant unit string</td>
+        <td class="feature-detail">VO unit string</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ValueDescription.utype">ValueDescription.utype</a></td>
@@ -3513,7 +3508,7 @@
         <td class="feature-detail"><a href="#WasAssociatedWith.role">WasAssociatedWith.role</a></td>
         <td class="feature-detail">attribute</td>
         <td class="feature-detail">Function of the agent with respect to the activity
-          The role values belong to the AgentRole list defined in IVOA Provenance DataModel, Table 9. 
+          
         </td>
       </tr>
       <tr>
@@ -3531,10 +3526,7 @@
       <tr>
         <td class="feature-detail"><a href="#WasAttributedTo.role">WasAttributedTo.role</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Function of the agent with respect to the entity. Values for role are listed in the AgentRole type, as listed in Table 9 of
-          the PROV-DM specification. 
-          
-        </td>
+        <td class="feature-detail">Function of the agent with respect to the entity. </td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#WasGeneratedBy">WasGeneratedBy</a></td>
@@ -3574,7 +3566,7 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ConfigFile.comment">ActivityConfiguration.ConfigFile.comment</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A descriptive text for this instance</td>
+        <td class="feature-detail">text containing comments on the config file</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ConfigFile.configFileDescription">ActivityConfiguration.ConfigFile.configFileDescription</a></td>
@@ -3604,7 +3596,7 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ConfigFileDescription.description">ActivityConfiguration.ConfigFileDescription.description</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A short text that explains the content and purpose of the configuration file.</td>
+        <td class="feature-detail">A text that explains the content and purpose of the configuration file.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ConfigFileDescription.name">ActivityConfiguration.ConfigFileDescription.name</a></td>
@@ -3655,7 +3647,7 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ParameterDescription.description">ActivityConfiguration.ParameterDescription.description</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">A short text that explains the content and purpose of this Parameter.</td>
+        <td class="feature-detail">A text that explains the content and purpose of this Parameter.</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ParameterDescription.max">ActivityConfiguration.ParameterDescription.max</a></td>
@@ -3675,7 +3667,7 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ParameterDescription.options">ActivityConfiguration.ParameterDescription.options</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">Comma separated list of possible values</td>
+        <td class="feature-detail">array of possible values</td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ParameterDescription.ucd">ActivityConfiguration.ParameterDescription.ucd</a></td>
@@ -3685,7 +3677,7 @@
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ParameterDescription.unit">ActivityConfiguration.ParameterDescription.unit</a></td>
         <td class="feature-detail">attribute</td>
-        <td class="feature-detail">VO compliant unit string used for this parameter</td>
+        <td class="feature-detail">VO unit string </td>
       </tr>
       <tr>
         <td class="feature-detail"><a href="#ActivityConfiguration.ParameterDescription.utype">ActivityConfiguration.ParameterDescription.utype</a></td>
