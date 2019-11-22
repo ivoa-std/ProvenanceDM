@@ -18,7 +18,7 @@ This document was developed with these general requirements in mind:
 \item Provenance information should be serializable into the W3C provenance standard formats (PROV-N, PROV-XML, PROV-JSON) with minimum information loss.
 
 \item Entities, Activities and Agents must be uniquely identifiable within a domain.
-% Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
+
 \end{itemize}
 
 
@@ -33,28 +33,16 @@ The following requirements concern the provenance usages in the VO context:
 \item The reliability of provenance information should be ensured (e.g., by an authority endorsing the information, or by provenance of provenance).
 
 \item Provenance metadata for a given entity should contain information to find immediate progenitor(s).
-%All produced entities must contain information to find its immediate progenitor(s).
 
 \item An entity should be linked to the activity that generated it.
-%Provenance metadata must contain information to find the activity that generated a given entity.
-%* All produced entities must contain information to find the activity that generated it
 
 \item Activities should be linked to input entities.
-%(if applicable).
 
 \item Activities should point to output entities.
 
 \item Provenance information should make it possible to derive the logical sequence of activities.
-%The order of the activities should be available.
-
-%\item Provenance information should contain the list of activities and progenitor entities.
-% too vague .... must be an ordered list ... One step should also be allowed.
-
-%\item Released entities SHOULD have a main contact.
-% same as below.
 
 \item All activities and entities are recommended to have contact information and contain a (short) description or link to a description.
-% could also be the documentation.
 
 \end{itemize}
 
