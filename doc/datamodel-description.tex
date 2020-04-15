@@ -13,7 +13,7 @@
 The IVOA Provenance DM is based on the the PROV-DM recommendation \citep{std:W3CProvDM} of the World Wide Web Consortium (W3C), that provides the core elements of the model (see Sections~\ref{sec:ent_act} to~\ref{sec:agent+relations}). 
 In the VO context, the provenance of something is thus a sequence of activities using and generating entities run by agents.
 
-The model includes in addition description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of \class{Entity} classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an \class{ActivityConfiguration} package (see Section~\ref{sec:configuration}).
+The model also includes description classes (see Section~\ref{sec:descriptions}) to provide information common to several elements; Specific types of \class{Entity} classes commonly used in astronomy (see Section~\ref{sec:spec_entities}); and an \class{ActivityConfiguration} package (see Section~\ref{sec:configuration}).
 
 The IVOA Provenance DM is a class data model that follows the VO-DML designing rules \citep{2018ivoa.spec.0910L}. It is represented as a UML class diagram: an overview diagram is shown in Figure~\ref{fig:overview}, and a full diagram with attributes is shown in Appendix~\ref{sec:fulldiagram}, Figure~\ref{fig:fulldiagram}.
 
@@ -39,7 +39,7 @@ Traceability (see goal A in Section~\ref{sec:goals}) is enabled by chaining enti
 
 An \textbf{entity} is a physical, digital, conceptual, or other kind of thing with some fixed aspects (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-entity}{\S5.1.1}). 
 
-The \class{Entity} class in the model have the attributes given in Table \ref{tab:entity}. 
+The \class{Entity} class in the model has the attributes given in Table \ref{tab:entity}.
 
 Entities in astronomy are usually astronomical or astrophysical datasets in the form of images, tables, numbers, etc. But they can also be log files, files containing system information, any input or output value, environment variables, ambient conditions, or, in a wider sense, observation proposals, scientific articles, or manuals and other documents. 
 Though the focus is on digital entities in this document, entities can also refer to physical entities that may be linked to digital entities, such as e.g., tools, instruments, detectors, photographic plates.
@@ -55,7 +55,7 @@ Though the focus is on digital entities in this document, entities can also refe
 \midrule
 \textbf{id} & string & a unique identifier for this entity\\
 name        & string & a human-readable name for the entity\\
-location    & string & a path or spatial coordinates, e.g., a URL, latitude-longitude coordinates on Earth, the name of a place.\\
+location    & string & a path or spatial coordinates, e.g., a URL/URI, latitude-longitude coordinates on Earth, the name of a place.\\
 generatedAtTime  & datetime & date and time at which the entity was created (e.g., timestamp of a file)\\
 invalidatedAtTime  & datetime & date and time of invalidation of the entity. After that date, the entity is no longer available for any use.\\
 comment  &  string & text containing specific comments on the entity\\
@@ -66,7 +66,7 @@ comment  &  string & text containing specific comments on the entity\\
 \end{table}
 
 
-A \textbf{collection} is an entity that provides a structure to some constituents that must themselves be entities (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-collection}{\S5.6.1}). These constituents are said to be member of the collections. They are connected in the model with a \class{hadMember} relation.
+A \textbf{collection} is an entity that provides a structure to some constituents that must themselves be entities (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-collection}{\S5.6.1}). These constituents are said to be members of the collections. They are connected in the model with a \class{hadMember} relation.
 
 
 \subsubsection{Activity class}
@@ -74,7 +74,7 @@ A \textbf{collection} is an entity that provides a structure to some constituent
 
 An \textbf{activity} is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-Activity}{\S5.1.2}). 
 
-The \class{Activity} class in the model have the attributes given in Table \ref{tab:activity}. 
+The \class{Activity} class in the model has the attributes given in Table \ref{tab:activity}.
 
 Activities in astronomy include all steps from obtaining data to the reduction
 of  images and production of new datasets, such as image calibration, bias
@@ -107,8 +107,8 @@ comment      & string & text containing specific comments on the activity\\
 \label{sec:entity-activity-relations}
 
 Each entity is usually a result of an activity, expressed by a link from the entity to its generating activity, and can be used as input for (many) other activities.
-Thus the information on whether data is used as input or was produced as output of some activity is given by the \emph{relations} between activities and entities.
-Tracking those relations answers one of the main objective of the model (see goal A in Section~\ref{sec:goals}).
+Thus the information on whether data are used as input or were produced as output of some activity is given by the \emph{relations} between activities and entities.
+Tracking those relations answers one of the main objectives of the model (see goal A in Section~\ref{sec:goals}).
 
 
 \subsubsection{Used class}
@@ -135,7 +135,7 @@ time  & datetime & time at which the usage of an entity started\\
 \label{tab:used}
 \end{table}
 
-The \attribute{time} of the usage can be specified, and must be between the \attribute{startTime} and the \attribute{stopTime} of the corresponding activity.
+The \attribute{time} of the usage can be specified, and must be between the \attribute{startTime} and the \attribute{endTime} of the corresponding activity.
 
 The \class{Used} class is closely coupled to the \class{Activity} by a composition (see \ref{sect:Composition}). 
 Any given entity can be used by more than one activity.
@@ -145,7 +145,7 @@ Any given entity can be used by more than one activity.
 
 \textbf{Generation} is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation (W3C PROV-DM \href{https://www.w3.org/TR/prov-dm/#term-Generation}{\S5.1.3}).
         
-Generation is implemented in the model by a class \class{WasGeneratedBy} that connects \class{Entity} to \class{Activity} and contains the attributes in Table~\ref{tab:used}.
+Generation is implemented in the model by a class \class{WasGeneratedBy} that connects \class{Entity} to \class{Activity} and contains the attributes in Table~\ref{tab:wasgeneratedby}.
 
 For example, the entity ``raw\_image.fits'' was generated by the activity ``observation'' with the role ``raw image''.
 
@@ -179,9 +179,9 @@ Roles in \class{Entity}-\class{Activity} relations are free text attributes.
 
 The \attribute{role} cannot be an attribute of the \class{Entity} class, since the same entity (e.g., a specific file containing an image) may play different roles with different activities.
 
-In some cases the role is mandatory to distinguish two input entities. For example, an activity for dark-frame subtraction requires two input images. But it is very important to know which of the images is the raw image and which one fulfils the role of dark frame.
+In some cases the role is mandatory to distinguish two input entities. For example, an activity for dark-frame subtraction requires two input images. But it is very important to know which of the images is the raw image and which one fulfils the role of dark-frame.
 
-Several entities may play the same role for an activity. For example, many image entities may be used as science-ready-images for an image stacking process.
+Several entities may play the same role for an activity. For example, many image entities may be used as science-ready images for an image stacking process.
 
 
 
@@ -193,7 +193,7 @@ Derivation is a relation \class{wasDerivedFrom} in the model, that connects an i
 
 For example, the entity ``calibrated\_image.fits'' was derived from the entity ``raw\_image.fits''
 
-This relation makes it possible to visualize independently the flow of entities, e.g., a dataflow. It does not need a priori a specific class or table in an implementation, but it provides a way to expose partial information that follow the general chain \class{WasGeneratedBy}-\class{Activity}-\class{Used} where the activity may be an empty instance because it is unknown or irrelevant.
+This relation makes it possible to visualize independently the flow of entities, e.g., a dataflow. It does not need a priori a specific class or table in an implementation, but it provides a way to expose partial information that follows the general chain \class{WasGeneratedBy}-\class{Activity}-\class{Used} where the activity may be an empty instance because it is unknown or irrelevant.
 
 
 \subsubsection{WasInformedBy relation}
@@ -204,7 +204,7 @@ Communication is a relation \class{wasInformedBy} in the model, that connects an
 
 For example, the activity ``calibration'' was informed by the activity ``pipeline''.
 
-This relation makes it possible to visualize independently the flow of activities as they occurred, which may be the result of the execution of a workflow. It does not need a priori a specific class or table in an implementation, but it provides a way to expose partial information that follow the general chain \class{Used}-\class{Entity}-\class{WasGeneratedBy} where the entity may be an empty instance because it is unknown or irrelevant.
+This relation makes it possible to visualize independently the flow of activities as they occurred, which may be the result of the execution of a workflow. It does not need a priori a specific class or table in an implementation, but it provides a way to expose partial information that follows the general chain \class{Used}-\class{Entity}-\class{WasGeneratedBy} where the entity may be an empty instance because it is unknown or irrelevant.
 
 
 \subsection{Agent and relations to Agent}
@@ -220,7 +220,7 @@ An \textbf{agent} is something that bears some form of responsibility for an act
 
 The \class{Agent} class in the model has the attributes given in Table \ref{tab:agent}. 
 
-An Agent is generally someone who pressed a button, ran a script, performed the observation or published a dataset. The agent can be a single person, a group of persons, a project or an institute (the vocabulary is defined in Table).
+An Agent is generally someone who pressed a button, ran a script, performed the observation or published a dataset. The agent can be a single person, a group of persons, a project or an institute (the vocabulary for agent types is given in Table~\ref{tab:agent-types}).
 
 It is recommended to use organizational agents and agents with generic contacts.
 
@@ -279,7 +279,7 @@ SoftwareAgent & running software, e.g., a cron job or a trigger \\
 
 For each agent a \attribute{name} must be specified. 
 Other attributes can help locate or contact the agent (\attribute{email}, \attribute{affiliation}, \attribute{phone}, \attribute{address}).
-Not every project will need them; e.g. an advanced system may use permanent identifiers (ORCIDs, identities in federations, etc) to identify agents ,and retrieve their properties from an external system instead.
+Not every project will need them; e.g. an advanced system may use permanent identifiers (ORCIDs, identities in federations, etc) to identify agents, and retrieve their properties from an external system instead.
 
 There can be more than one agent for each activity and one agent can be responsible for more than one activity or entity, using the relations defined in the following sections.
 
@@ -300,7 +300,7 @@ For example, the agent ``Max Smith'' was associated with the activity ``observat
 \toprule
 \head{Attribute} & \head{Data type} & \head{Description}\\
 \midrule
-role & string   & function of the agent with respect to the activity\\
+role & string   & function of the agent with respect to the activity, see Section~\ref{sec:agent_roles} \\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of \class{WasAssociatedWith} relation class]{Attributes of \class{WasAssociatedWith} relation class.}
@@ -325,7 +325,7 @@ For example, the entity ``science\_image.fits'' was attributed to the agent ``ob
 \toprule
 \head{Attribute} & \head{Data type} & \head{Description}\\
 \midrule
-role & string   & function of the agent with respect to the entity \\
+role & string   & function of the agent with respect to the entity, see Section~\ref{sec:agent_roles} \\
 \bottomrule
 \end{tabulary}
 \caption[Attributes of \class{WasAttributedTo} relation class]{Attributes of \class{WasAttributedTo} relation class.}
@@ -334,6 +334,7 @@ role & string   & function of the agent with respect to the entity \\
 
 
 \subsubsection{Agent roles}
+\label{sec:agent_roles}
 
 Agents may play a specific role with respect to an activity or an entity. 
 The \attribute{role} attribute should be specified whenever it is known.
@@ -446,7 +447,7 @@ Selection      & application of filters or criteria to select partial informatio
 Analysis       & process of inspecting, cleaning, transforming, and modeling data with the goal of discovering useful information, informing conclusions, and supporting decision-making\\
 \bottomrule
 \end{tabulary}
-\caption[Terms applicable as activity types.]{Terms applicable as activity types. This list of terms could be updated to follow the IVOA vocabularies 2.0 recommendation once adopted.}
+\caption[Terms applicable as activity types.]{Terms applicable as activity types.}
 \label{tab:activitydescription-types}
 \end{table}
 
@@ -487,7 +488,7 @@ The \class{EntityDescription} class should not contain information about the usa
 \subsubsection{UsageDescription and GenerationDescription classes}
 \label{sec:use_gen_desc}
 
-\begin{table}[ht]
+\begin{table}[h!]
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize UsageDescription}\vspace{0.25em}\\
@@ -506,7 +507,7 @@ multiplicity & string & Number of expected input entities to be used with the gi
 \end{table}
 
 
-\begin{table}[ht]
+\begin{table}[h!]
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize GenerationDescription}\vspace{0.25em}\\
@@ -527,7 +528,7 @@ multiplicity & string & Number of expected output entities that will be generate
 
 In order to describe more precisely an activity, the expected inputs and outputs of this activity should be specified.
 
-We introduce the \class{UsageDescription} and the \class{GenerationDescription} classes, that are meant to store the information about the usage or generation of entities that is known before an activity instance is executed, i.e.~wht we expect to store in the \class{Used} and \class{WasGeneratedBy} relations (see \ref{sec:entity-activity-relations}).
+We introduce the \class{UsageDescription} and the \class{GenerationDescription} classes, that are meant to store the information about the usage or generation of entities that is known before an activity instance is executed, i.e.~what we expect to store in the \class{Used} and \class{WasGeneratedBy} relations (see \ref{sec:entity-activity-relations}).
 Instances of \class{Used} (respectively \class{WasGeneratedBy}) may thus point to an instance of \class{UsageDescription} (respectively \class{GenerationDescription}).
 
 If a \class{UsageDescription} (respectively \class{GenerationDescription}) instance is defined, the \attribute{role} attribute of the related \class{Used} (respectively \class{WasGeneratedBy}) instances must match the \attribute{role} attribute of this \class{UsageDescription} (respectively \class{GenerationDescription}) instance.
@@ -535,7 +536,7 @@ If a \class{UsageDescription} (respectively \class{GenerationDescription}) insta
 A \attribute{multiplicity} attribute should be specified to indicate the number of entities expected to share the same role for a given \class{ActivityDescription} instance, e.g., in the case of the stacking of images, several images are expected with the same input role (\attribute{multiplicity=*}).
 
 When related to the \class{UsageDescription} or \class{GenerationDescription}, the attributes of \class{EntityDescription} (see Section~\ref{sec:entity_desc}) help to describe the category of entities expected as an input or an output in an activity.
-For example: if the input bias files are expected to be in FITS format, the \class{UsageDescription} object would have a relation to a \class{DatasetDescription} object with \attribute{contentType}=`application/fits''.
+For example: if the input bias files are expected to be in FITS format, the \class{UsageDescription} object would have a relation to a \class{DatasetDescription} object with \attribute{contentType}=`application/fits'' (see Section~\ref{sec:dataset_entity} for this specific type of entity).
 
 
 \subsubsection{Types of Usage and Generation}
@@ -561,7 +562,7 @@ Log            & generation of logging information\\
 Context        & contextual information that influences the activity, but for which there are no or little control at the moment of its execution, examples: temperature, wind, conditions of observation, execution platform, operating system, instrumental context\\
 \bottomrule
 \end{tabulary}
-\caption[Terms applicable as usage or generation type.]{Terms applicable as usage or generation type. This list of terms could be updated to follow the IVOA vocabularies 2.0 recommendation once adopted.}
+\caption[Terms applicable as usage or generation type.]{Terms applicable as usage or generation type.}
 \label{tab:usage-generation-types}
 \end{table}
 
@@ -595,6 +596,7 @@ We anticipate that more specific categories of entities can be defined by the pr
 
 
 \subsubsection{DatasetEntity and DatasetDescription classes}
+\label{sec:dataset_entity}
 
 The handling of datasets is implemented in the model by a \class{DatasetEntity} class. A corresponding \class{DatasetDescription} class contains a \attribute{contentType} attribute that must not be null (see Table~\ref{tab:datasetdescription}).
 
@@ -688,7 +690,7 @@ There can be several instances of a \class{Parameter} (respectively \class{Confi
 \subsubsection{Parameter and ParameterDescription classes}
 \label{sec:parameterandD}
 
-\begin{table}[ht]
+\begin{table}[h!]
 \small
 \tymax  0.5\textwidth
  \textbf{\normalsize Parameter}\vspace{0.25em}\\
@@ -704,7 +706,7 @@ There can be several instances of a \class{Parameter} (respectively \class{Confi
 \label{tab:param}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[h!]
 \small
 \tymax  0.5\textwidth
 \textbf{\normalsize ParameterDescription}\vspace{0.25em}\\
@@ -748,7 +750,7 @@ The \class{Parameter} instance may refer to a \class{ValueEntity} instance using
  \head{Attribute} & \head{Data type}   & \head{Description}\\
  \midrule
 \textbf{name} &  string & a human-readable name for the config file \\
-\textbf{location} & string  &  a path to the config file, e.g., a URL \\
+\textbf{location} & string  &  a path to the config file, e.g., a URL/URI \\
 comment & string  & text containing comments on the config file  \\
 \bottomrule
 \end{tabulary}
@@ -775,7 +777,7 @@ description     & string  & a descriptive text for the config file \\
 
 The \class{ConfigFile} points to a structured, machine readable file, where parameters for running an activity are stored. It contains a \attribute{location} and a \attribute{name} that must be set, and a \attribute{comment} attribute (Table~\ref{tab:configfile}).
 
-The \class{ConfigFileDescription} class indicates the format in which the list is provided in a \attribute{contentType} attribute (see Table~\ref{tab:configfiledescription}).
+The \class{ConfigFileDescription} class indicates the format in which the content of the file is provided using a \attribute{contentType} attribute (see Table~\ref{tab:configfiledescription}).
 
 If a \class{ConfigFileDescription} instance is defined, the \attribute{name} attribute of the related \class{ConfigFile} instances must match the \attribute{name} attribute of this \class{ConfigFileDescription} instance.
 
@@ -799,8 +801,8 @@ If a \class{ConfigFileDescription} instance is defined, the \attribute{name} att
 
 The relation of \class{Parameter} and \class{ConfigFile} to \class{Activity} is formalized by a \class{WasConfiguredBy} class. There must be exactly one instance connected to a \class{WasConfiguredBy} instance, either a \class{Parameter} instance or a \class{ConfigFile} instance. The \class{WasConfiguredBy} class contains the attribute \attribute{artefactType} to indicate the type of class pointed by the \class{WasConfiguredBy} instance (see Table~\ref{tab:WasConfiguredBy}).
 
-The life cycle of a \class{Parameter} instance (respectively \class{ConfigFile} instance) is the one of the corresponding \class{Activity} instance.
-The life cycle of a \class{ParameterDescription} instance (respectively \class{ConfigFileDescription} instance) is the one of the corresponding \class{ActivityDescription} instance.
+The life cycle of a \class{Parameter} instance (or \class{ConfigFile} instance) is the one of the corresponding \class{Activity} instance.
+The life cycle of a \class{ParameterDescription} instance (or \class{ConfigFileDescription} instance) is the one of the corresponding \class{ActivityDescription} instance.
 This means that when an activity is deleted from the provenance repository, its parameters and config files also disappear.
 
 Several activities launched with various possible values for a parameter share the same \class{ParameterDescription} instance.
