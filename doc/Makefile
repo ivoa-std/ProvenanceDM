@@ -8,10 +8,10 @@ DOCNAME = ProvenanceDM
 DOCVERSION = 1.0
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2019-12-14
+DOCDATE = 2020-04-11
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
-DOCTYPE = PR
+DOCTYPE = REC
 
 # An e-mail address of the person doing the submission to the document
 # repository (can be empty until a make upload is being made)
