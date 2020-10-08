@@ -1,0 +1,15 @@
+IVOA Provenance Data Model
+
+Provenance DM
+
+Mathieu Servillat, Kristin Riebe, Catherine Boisson, François Bonnarel, Anastasia Galkin, Mireille Louys, Markus Nullmeier, Nicolas Renault-Tinacci, Michèle Sanguillon, Ole Streicher
+
+Mathieu Servillat
+
+This document describes how provenance information can be modeled, stored and exchanged within the astronomical community in a standardized way. We follow the definition of provenance as proposed by the W3C 1, i.e. that “provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.” Such provenance information in astronomy is important to enable any scientist to trace back the origin of a dataset (e.g. an image, spectrum, catalog or single points in a spectral energy distribution diagram or a light curve), a document (e.g. an article, a technical note) or a device (e.g. a camera, a telescope), learn about the people and organizations involved in a project and assess the reliability, quality as well as the usefulness of the dataset, document or device for her own scientific work
+
+The Provenance-V1.0.vo-dml.xml file must be put in ivoadoc > XML SCHEMA > VO DML > Models > Provenance [v1.0]
+with a rewrite rule making 
+http://www.ivoa.net/xml/VODML/Provenace-v1.vo-dml.xml
+pointing to 
+http://www.ivoa.net/xml/VODML/Provenace-v1.0.vo-dml.xml

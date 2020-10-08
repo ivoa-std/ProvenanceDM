@@ -1,0 +1,48 @@
+\subsection{Requirements and best practices}
+\label{sec:requirements}
+
+\subsubsection{Model requirements}
+
+This document was developed with these general requirements in mind:
+
+\begin{itemize}
+
+% == other models / serialisation
+
+\item Provenance information must be formalized following a standard model, with corresponding standard serialization formats.
+
+\item Provenance information must be machine readable.
+
+\item Provenance data model classes and attributes should make use of existing IVOA standards.
+
+\item Provenance information should be serializable into the W3C provenance standard formats (PROV-N, PROV-XML, PROV-JSON) with minimum information loss.
+
+\item Entities, Activities and Agents must be uniquely identifiable within a domain.
+
+\end{itemize}
+
+
+\subsubsection{Best practices}
+
+The following requirements concern the provenance usages in the VO context:
+
+\begin{itemize}
+
+% == links between entity/activity
+
+\item The reliability of provenance information should be ensured (e.g., by an authority endorsing the information, or by provenance of provenance).
+
+\item Provenance metadata for a given entity should contain information to find immediate progenitor(s).
+
+\item An entity should be linked to the activity that generated it.
+
+\item Activities should be linked to input entities.
+
+\item Activities should point to output entities.
+
+\item Provenance information should make it possible to derive the logical sequence of activities.
+
+\item All activities and entities are recommended to have contact information and contain a (short) description or link to a description.
+
+\end{itemize}
+

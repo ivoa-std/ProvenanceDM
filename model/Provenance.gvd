@@ -1,0 +1,191 @@
+
+digraph GVmap {  
+	label = "\n\nvoprov data model"
+	rankdir=TB
+	
+	node [ 
+	  shape=tab
+	  style=filled
+	]
+	subgraph cluster_packages {
+	  label="Model"
+	  rankdir=TB
+      style=filled
+      fillcolor="/set312/1"
+	  
+    "ActivityConfiguration" [
+    URL="#ActivityConfiguration"
+    label = "ActivityConfiguration"
+    fillcolor="/set312/2"
+    ] ;
+    
+	}
+	
+	node [
+	shape=record
+	fontsize=8
+	style=filled] 
+    "voprov:VotableFieldFormat"[
+    URL="#VotableFieldFormat"
+    label = "{&lt;&lt;primitive type&gt;&gt;\nVotableFieldFormat}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:AgentType" [
+    URL="#AgentType"
+    label = "{&lt;&lt;enumeration&gt;&gt;\nAgentType|+Person\l+Organization\l+SoftwareAgent\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:Agent" [
+    URL="#Agent"
+    label = "{Agent|+id : ivoa:string\l+name : ivoa:string\l+type : voprov:AgentType\l+comment : ivoa:string\l+email : ivoa:string\l+affiliation : ivoa:string\l+phone : ivoa:string\l+address : ivoa:string\l+url : ivoa:anyURI\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:WasAssociatedWith" [
+    URL="#WasAssociatedWith"
+    label = "{WasAssociatedWith|+role : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:WasAttributedTo" [
+    URL="#WasAttributedTo"
+    label = "{WasAttributedTo|+role : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:Activity" [
+    URL="#Activity"
+    label = "{Activity|+id : ivoa:string\l+name : ivoa:string\l+startTime : ivoa:datetime\l+endTime : ivoa:datetime\l+comment : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:Used" [
+    URL="#Used"
+    label = "{Used|+role : ivoa:string\l+time : ivoa:datetime\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:Entity" [
+    URL="#Entity"
+    label = "{Entity|+id : ivoa:string\l+name : ivoa:string\l+location : ivoa:string\l+generatedAtTime : ivoa:datetime\l+invalidatedAtTime : ivoa:datetime\l+comment : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:WasGeneratedBy" [
+    URL="#WasGeneratedBy"
+    label = "{WasGeneratedBy|+role : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:Collection" [
+    URL="#Collection"
+    label = "{Collection}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:ValueEntity" [
+    URL="#ValueEntity"
+    label = "{ValueEntity|+value : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:DatasetEntity" [
+    URL="#DatasetEntity"
+    label = "{DatasetEntity}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:ActivityDescription" [
+    URL="#ActivityDescription"
+    label = "{ActivityDescription|+name : ivoa:string\l+version : ivoa:string\l+description : ivoa:string\l+docurl : ivoa:anyURI\l+type : ivoa:string\l+subtype : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:UsageDescription" [
+    URL="#UsageDescription"
+    label = "{UsageDescription|+role : ivoa:string\l+description : ivoa:string\l+type : ivoa:string\l+multiplicity : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:GenerationDescription" [
+    URL="#GenerationDescription"
+    label = "{GenerationDescription|+role : ivoa:string\l+description : ivoa:string\l+type : ivoa:string\l+multiplicity : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:EntityDescription" [
+    URL="#EntityDescription"
+    label = "{EntityDescription|+name : ivoa:string\l+description : ivoa:string\l+docurl : ivoa:anyURI\l+type : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:ValueDescription" [
+    URL="#ValueDescription"
+    label = "{ValueDescription|+valueType : voprov:VotableFieldFormat\l+unit : ivoa:Unit\l+ucd : ivoa:string\l+utype : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:DatasetDescription" [
+    URL="#DatasetDescription"
+    label = "{DatasetDescription|+contentType : ivoa:string\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "voprov:ActivityConfiguration.TypeOfConfigArtefact" [
+    URL="#ActivityConfiguration.TypeOfConfigArtefact"
+    label = "{&lt;&lt;enumeration&gt;&gt;\nActivityConfiguration/TypeOfConfigArtefact|+Parameter\l+Configfile\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "voprov:ActivityConfiguration.ParameterDescription" [
+    URL="#ActivityConfiguration.ParameterDescription"
+    label = "{ActivityConfiguration/ParameterDescription|+name : ivoa:string\l+valueType : voprov:VotableFieldFormat\l+unit : ivoa:Unit\l+ucd : ivoa:string\l+utype : ivoa:string\l+min : ivoa:string\l+max : ivoa:string\l+default : ivoa:string\l+options : ivoa:string\l+description : ivoa:string\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "voprov:ActivityConfiguration.ConfigFileDescription" [
+    URL="#ActivityConfiguration.ConfigFileDescription"
+    label = "{ActivityConfiguration/ConfigFileDescription|+name : ivoa:string\l+contentType : ivoa:string\l+description : ivoa:string\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "voprov:ActivityConfiguration.Parameter" [
+    URL="#ActivityConfiguration.Parameter"
+    label = "{ActivityConfiguration/Parameter|+value : ivoa:string\l+name : ivoa:string\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "voprov:ActivityConfiguration.ConfigFile" [
+    URL="#ActivityConfiguration.ConfigFile"
+    label = "{ActivityConfiguration/ConfigFile|+name : ivoa:string\l+location : ivoa:string\l+comment : ivoa:string\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "voprov:ActivityConfiguration.WasConfiguredBy" [
+    URL="#ActivityConfiguration.WasConfiguredBy"
+    label = "{ActivityConfiguration/WasConfiguredBy|+artefactType : voprov:ActivityConfiguration.TypeOfConfigArtefact\l}"
+    fillcolor="/set312/2"
+    ] ;
+  
+ 
+    edge [color="red", arrowtail="none", arrowhead="empty"]
+    "voprov:Collection" -> "voprov:Entity" ;
+  "voprov:ValueEntity" -> "voprov:Entity" ;
+  "voprov:DatasetEntity" -> "voprov:Entity" ;
+  "voprov:ValueDescription" -> "voprov:EntityDescription" ;
+  "voprov:DatasetDescription" -> "voprov:EntityDescription" ;
+  
+ 
+    edge [color="blue", arrowhead="open", arrowtail="diamond",dir="both",fontsize="10"]
+    "voprov:Activity" -> "voprov:WasAssociatedWith" [headlabel="0..*",label="wasAssociatedWith",labelfontsize=10] ;
+  "voprov:Activity" -> "voprov:Used" [headlabel="0..*",label="used",labelfontsize=10] ;
+  "voprov:Activity" -> "voprov:ActivityConfiguration.WasConfiguredBy" [headlabel="0..*",label="wasConfiguredBy",labelfontsize=10] ;
+  "voprov:Entity" -> "voprov:WasGeneratedBy" [headlabel="0..1",label="wasGeneratedBy",labelfontsize=10] ;
+  "voprov:Entity" -> "voprov:WasAttributedTo" [headlabel="0..*",label="wasAttributedTo",labelfontsize=10] ;
+  "voprov:ActivityDescription" -> "voprov:ActivityConfiguration.ParameterDescription" [headlabel="0..*",label="parameterDescription",labelfontsize=10] ;
+  "voprov:ActivityDescription" -> "voprov:ActivityConfiguration.ConfigFileDescription" [headlabel="0..*",label="configFileDescription",labelfontsize=10] ;
+  "voprov:ActivityDescription" -> "voprov:UsageDescription" [headlabel="0..*",label="usageDescription",labelfontsize=10] ;
+  "voprov:ActivityDescription" -> "voprov:GenerationDescription" [headlabel="0..*",label="generationDescription",labelfontsize=10] ;
+  
+ 
+    edge [color="green", arrowhead="open", arrowtail="none"]
+    "voprov:WasAssociatedWith" -> "voprov:Agent" [headlabel="1",label="agent",labelfontsize=10] ;
+  "voprov:WasAttributedTo" -> "voprov:Agent" [headlabel="1",label="agent",labelfontsize=10] ;
+  "voprov:Activity" -> "voprov:Activity" [headlabel="0..*",label="informant",labelfontsize=10] ;
+  "voprov:Activity" -> "voprov:ActivityDescription" [headlabel="0..1",label="activityDescription",labelfontsize=10] ;
+  "voprov:Used" -> "voprov:Entity" [headlabel="1",label="entity",labelfontsize=10] ;
+  "voprov:Used" -> "voprov:UsageDescription" [headlabel="0..1",label="usageDescription",labelfontsize=10] ;
+  "voprov:Entity" -> "voprov:Entity" [headlabel="0..*",label="usedEntity",labelfontsize=10] ;
+  "voprov:Entity" -> "voprov:EntityDescription" [headlabel="0..1",label="entityDescription",labelfontsize=10] ;
+  "voprov:WasGeneratedBy" -> "voprov:Activity" [headlabel="1",label="activity",labelfontsize=10] ;
+  "voprov:WasGeneratedBy" -> "voprov:GenerationDescription" [headlabel="0..1",label="generationDescription",labelfontsize=10] ;
+  "voprov:Collection" -> "voprov:Entity" [headlabel="0..*",label="entity",labelfontsize=10] ;
+  "voprov:UsageDescription" -> "voprov:EntityDescription" [headlabel="0..*",label="entityDescription",labelfontsize=10] ;
+  "voprov:GenerationDescription" -> "voprov:EntityDescription" [headlabel="0..*",label="entityDescription",labelfontsize=10] ;
+  "voprov:ActivityConfiguration.Parameter" -> "voprov:ValueEntity" [headlabel="0..1",label="valueEntity",labelfontsize=10] ;
+  "voprov:ActivityConfiguration.Parameter" -> "voprov:ActivityConfiguration.ParameterDescription" [headlabel="0..1",label="parameterDescription",labelfontsize=10] ;
+  "voprov:ActivityConfiguration.ConfigFile" -> "voprov:ActivityConfiguration.ConfigFileDescription" [headlabel="0..1",label="configFileDescription",labelfontsize=10] ;
+  "voprov:ActivityConfiguration.WasConfiguredBy" -> "voprov:ActivityConfiguration.ConfigFile" [headlabel="0..1",label="configFile",labelfontsize=10] ;
+  "voprov:ActivityConfiguration.WasConfiguredBy" -> "voprov:ActivityConfiguration.Parameter" [headlabel="0..1",label="parameter",labelfontsize=10] ;
+    
+}
+  

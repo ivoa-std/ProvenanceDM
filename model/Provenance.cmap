@@ -1,0 +1,27 @@
+<map id="GVmap" name="GVmap">
+<area shape="rect" id="node1" href="#ActivityConfiguration" title="ActivityConfiguration" alt="" coords="61,57,244,105"/>
+<area shape="rect" id="node2" href="#VotableFieldFormat" title="{&lt;&lt;primitive type&gt;&gt;\nVotableFieldFormat}" alt="" coords="269,57,378,106"/>
+<area shape="rect" id="node3" href="#AgentType" title="{&lt;&lt;enumeration&gt;&gt;\nAgentType|+Person\l+Organization\l+SoftwareAgent\l}" alt="" coords="402,40,501,123"/>
+<area shape="rect" id="node4" href="#Agent" title="{Agent|+id : ivoa:string\l+name : ivoa:string\l+type : voprov:AgentType\l+comment : ivoa:string\l+email : ivoa:string\l+affiliation : ivoa:string\l+phone : ivoa:string\l+address : ivoa:string\l+url : ivoa:anyURI\l}" alt="" coords="5,971,140,1114"/>
+<area shape="rect" id="node5" href="#WasAssociatedWith" title="{WasAssociatedWith|+role : ivoa:string\l}" alt="" coords="105,191,214,241"/>
+<area shape="rect" id="node6" href="#WasAttributedTo" title="{WasAttributedTo|+role : ivoa:string\l}" alt="" coords="94,859,193,909"/>
+<area shape="rect" id="node7" href="#Activity" title="{Activity|+id : ivoa:string\l+name : ivoa:string\l+startTime : ivoa:datetime\l+endTime : ivoa:datetime\l+comment : ivoa:string\l}" alt="" coords="525,34,663,129"/>
+<area shape="rect" id="node8" href="#Used" title="{Used|+role : ivoa:string\l+time : ivoa:datetime\l}" alt="" coords="314,327,429,386"/>
+<area shape="rect" id="node14" href="#ActivityDescription" title="{ActivityDescription|+name : ivoa:string\l+version : ivoa:string\l+description : ivoa:string\l+docurl : ivoa:anyURI\l+type : ivoa:string\l+subtype : ivoa:string\l}" alt="" coords="937,303,1067,410"/>
+<area shape="rect" id="node25" href="#ActivityConfiguration.WasConfiguredBy" title="{ActivityConfiguration/WasConfiguredBy|+artefactType : voprov:ActivityConfiguration.TypeOfConfigArtefact\l}" alt="" coords="631,191,954,241"/>
+<area shape="rect" id="node9" href="#Entity" title="{Entity|+id : ivoa:string\l+name : ivoa:string\l+location : ivoa:string\l+generatedAtTime : ivoa:datetime\l+invalidatedAtTime : ivoa:datetime\l+comment : ivoa:string\l}" alt="" coords="194,690,370,797"/>
+<area shape="rect" id="node15" href="#UsageDescription" title="{UsageDescription|+role : ivoa:string\l+description : ivoa:string\l+type : ivoa:string\l+multiplicity : ivoa:string\l}" alt="" coords="501,509,631,591"/>
+<area shape="rect" id="node10" href="#WasGeneratedBy" title="{WasGeneratedBy|+role : ivoa:string\l}" alt="" coords="619,859,718,909"/>
+<area shape="rect" id="node17" href="#EntityDescription" title="{EntityDescription|+name : ivoa:string\l+description : ivoa:string\l+docurl : ivoa:anyURI\l+type : ivoa:string\l}" alt="" coords="553,1177,683,1259"/>
+<area shape="rect" id="node16" href="#GenerationDescription" title="{GenerationDescription|+role : ivoa:string\l+description : ivoa:string\l+type : ivoa:string\l+multiplicity : ivoa:string\l}" alt="" coords="553,1001,683,1084"/>
+<area shape="rect" id="node11" href="#Collection" title="{Collection}" alt="" coords="275,525,347,575"/>
+<area shape="rect" id="node12" href="#ValueEntity" title="{ValueEntity|+value : ivoa:string\l}" alt="" coords="372,525,477,575"/>
+<area shape="rect" id="node13" href="#DatasetEntity" title="{DatasetEntity}" alt="" coords="88,525,169,575"/>
+<area shape="rect" id="node21" href="#ActivityConfiguration.ParameterDescription" title="{ActivityConfiguration/ParameterDescription|+name : ivoa:string\l+valueType : voprov:VotableFieldFormat\l+unit : ivoa:Unit\l+ucd : ivoa:string\l+utype : ivoa:string\l+min : ivoa:string\l+max : ivoa:string\l+default : ivoa:string\l+options : ivoa:string\l+description : ivoa:string\l}" alt="" coords="804,473,1019,627"/>
+<area shape="rect" id="node22" href="#ActivityConfiguration.ConfigFileDescription" title="{ActivityConfiguration/ConfigFileDescription|+name : ivoa:string\l+contentType : ivoa:string\l+description : ivoa:string\l}" alt="" coords="1143,515,1357,585"/>
+<area shape="rect" id="node18" href="#ValueDescription" title="{ValueDescription|+valueType : voprov:VotableFieldFormat\l+unit : ivoa:Unit\l+ucd : ivoa:string\l+utype : ivoa:string\l}" alt="" coords="708,1001,909,1084"/>
+<area shape="rect" id="node19" href="#DatasetDescription" title="{DatasetDescription|+contentType : ivoa:string\l}" alt="" coords="933,1018,1068,1067"/>
+<area shape="rect" id="node20" href="#ActivityConfiguration.TypeOfConfigArtefact" title="{&lt;&lt;enumeration&gt;&gt;\nActivityConfiguration/TypeOfConfigArtefact|+Parameter\l+Configfile\l}" alt="" coords="765,46,983,117"/>
+<area shape="rect" id="node23" href="#ActivityConfiguration.Parameter" title="{ActivityConfiguration/Parameter|+value : ivoa:string\l+name : ivoa:string\l}" alt="" coords="632,327,796,386"/>
+<area shape="rect" id="node24" href="#ActivityConfiguration.ConfigFile" title="{ActivityConfiguration/ConfigFile|+name : ivoa:string\l+location : ivoa:string\l+comment : ivoa:string\l}" alt="" coords="1142,321,1307,392"/>
+</map>
