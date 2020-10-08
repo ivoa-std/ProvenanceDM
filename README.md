@@ -1,4 +1,4 @@
-# Provenance data model recommendation v1.0
+# Provenance data model
 
 https://www.ivoa.net/documents/ProvenanceDM/
 
