@@ -1,15 +1,16 @@
-# Provenance data model recommendation v1.0
+# Provenance data model
 
 https://www.ivoa.net/documents/ProvenanceDM/
 
-## Interest/Working Group:
-http://www.ivoa.net/twiki/bin/view/IVOA/IvoaDataModel
-https://wiki.ivoa.net/twiki/bin/view/IVOA/ObservationProvenanceDataModel
+## Working Group
 
-## Author(s):
+ * [IVOA Data Model working group](http://www.ivoa.net/twiki/bin/view/IVOA/IvoaDataModel)
+ * [Provenance working group](https://wiki.ivoa.net/twiki/bin/view/IVOA/ObservationProvenanceDataModel)
+
+## Authors
 Mathieu Servillat, Kristin Riebe, Catherine Boisson, François Bonnarel, Anastasia Galkin, Mireille Louys, Markus Nullmeier, Nicolas Renault-Tinacci, Michèle Sanguillon, Ole Streicher
 
-## Editor(s):
+## Editor
 Mathieu Servillat
 
 ## Abstract
