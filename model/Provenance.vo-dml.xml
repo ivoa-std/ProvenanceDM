@@ -48,7 +48,7 @@
     <attribute>
       <vodml-id>Agent.id</vodml-id>
       <name>id</name>
-      <description>Unique identifier for an Agent. Must be unique in the domain.</description>
+      <description>Unique identifier for an Agent.</description>
       <datatype>
         <vodml-ref>ivoa:string</vodml-ref>
       </datatype>
@@ -224,7 +224,7 @@ The method applied for this task is described in the ActivityDescription class a
     <attribute>
       <vodml-id>Activity.id</vodml-id>
       <name>id</name>
-      <description>Unique identifier for an Activity. Must be unique in the domain.</description>
+      <description>Unique identifier for an Activity.</description>
       <datatype>
         <vodml-ref>ivoa:string</vodml-ref>
       </datatype>
@@ -407,7 +407,7 @@ This is might help to check dependencies and errors into the database.</descript
     <attribute>
       <vodml-id>Entity.id</vodml-id>
       <name>id</name>
-      <description>Unique identifier for an Entity. Must be unique in the domain.
+      <description>Unique identifier for an Entity.
 </description>
       <datatype>
         <vodml-ref>ivoa:string</vodml-ref>
